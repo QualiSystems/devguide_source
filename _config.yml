@@ -1,11 +1,6 @@
 # Site title and subtitle. This is used in _includes/header.html
-<<<<<<< HEAD
 title: 'CloudShell Developer Guide'
 subtitle: ''
-=======
-title: 'jekyll-docs-template'
-subtitle: 'Painless documentation for your projects'
->>>>>>> a312b9a3b1f056c0ffb5d7dc5614024097abd41f
 
 # if you wish to integrate disqus on pages set your shortname here
 disqus_shortname: ''
