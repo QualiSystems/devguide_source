@@ -1,0 +1,1 @@
+../_posts/2016-04-05-cloudshell-developer-guide.md
