@@ -1,5 +1,5 @@
 # Site title and subtitle. This is used in _includes/header.html
-title: 'CloudShell Developer Guide'
+title: 'CloudShell Shell Developer Guide'
 subtitle: ''
 
 # if you wish to integrate disqus on pages set your shortname here
@@ -12,7 +12,7 @@ google_analytics_id: ''
 #   0 - always hide
 #   1 - always show
 #   2 - show only if posts are present
-navigation: 2
+navigation: 1
 
 # URL to source code, used in _includes/footer.html
 codeurl: 'https://github.com/qualisystems'
@@ -21,7 +21,7 @@ codeurl: 'https://github.com/qualisystems'
 sections: [
     ['sta', 'Getting Started'],
     ['tut', 'Tutorial'],
-    ['pla', 'Platform'],
+    ['pla', 'Guide'],
     ['ref', 'Reference']
 ]
 
