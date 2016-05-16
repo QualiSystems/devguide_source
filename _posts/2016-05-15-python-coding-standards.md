@@ -35,12 +35,14 @@ def Deploy(self, context, Name=None):
 ```
 
 - Unit tests should be located under similar location as the class they test, for example:
-> tests
->> test_commands
->>> test_virtual_switch_to_machine_connector.py
-> vcenter_shell
->> commands
->>>virtual_switch_to_machine_connector.py
+
+vcenter_shell
+|-- tests
+|    |-- test_commands
+|          +-- test_virtual_switch_to_machine_connector.py
+|-- vcenter_shell
+     +-- commands
+          +-- virtual_switch_to_machine_connector.py
 
 [PEP 20 -- The Zen of Python](https://www.python.org/dev/peps/pep-0020/) is a set of sentences that express the spirit behind Python.
 
