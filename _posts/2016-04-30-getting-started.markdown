@@ -59,9 +59,17 @@ After you've edited and saved the file, run the following command from the shell
 
 {% highlight bash %} shellfoundry install {% endhighlight %}
 
-#### Create an instance of your shell in the local inventory
+This will package and install your shell into your local CloudShell server.
 
-#### Hello world Finally
+#### Create an instance of your shell in the local CloudShell inventory
+
+Now that we've installed our Shell, we can instantiate a shell resource in the inventory.
+Open and login to your local CloudShell portal and navigate the Inventory page using the top navigation bar.
+Click on the "Add New" button and instantiate a shell resource by providing a name and an address. For now, since we don't have an address of an actual server, lets just fill it in as "NA".
+
+#### Hello world finally
+
+
 
 
 ## A more real life example
