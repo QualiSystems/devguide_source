@@ -11,7 +11,9 @@ This guide will take you through the basic steps of a creating a new Shell from 
 * Creating the shell project
 * Implementing a shell resource command
 * Customizing the shell with additional attributes
-* Packaging the distributing the shell
+* Packaging and distributing the shell
+* Instantiating a shell resource in CloudShell
+* Adding the shell to a blueprint and run a command on the shell in a sandbox
 
 ## Prerequisites
 * Get CloudShell: Download the latest CloudShell SDK and run it on your machine.  
@@ -94,7 +96,7 @@ Open and login to your local CloudShell portal and navigate the Inventory page u
 Click on the "Add New" button and instantiate a shell resource by providing a name and an address. For now, since we don't have an address of an actual server, just leave it black.  Click on "Start Discovery" to complete the operation. Later in the scope of this guide, we'll introduce the concept of Shell discovery and how to use it effectively.
 
 #### Hello world finally
-    
+
 Now that we've instantiated our shell resource, we can finally add it to an environment blueprint and reserve it as a sandbox.
 Navigate to the Environments page and click on "Create New" to start a new environment blueprint. Next, click on the "Add New" button and drag in the shell resource you've created in the previous step. You can then reserve the blueprint and create a new sandbox.
 
