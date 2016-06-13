@@ -42,13 +42,38 @@ Finally, lets make sure all of the basic package requirements for the shell are 
 
 The source control for your shell is managed under the _src_ folder. The generating the project template, ShellFoundry already created a driver template as well under this folder. Open the file _driver.py_ in your preferred IDE/editor. You'll see it already contains a driver for our shell with an example commands already in place. We'll soon implement our first command in this file. For now, lets just make sure everything is in working order by adding a simple 'hello world'.
 
-Change the 'method_one' function to have the following content:
+Remove the example 'method_one' function and replace it with the following code:
 {% highlight python %}
-def method_one(self, context, request):
+def say_hello(self, context, name):
     """
     :type context: cloudshell.shell.core.driver_context.ResourceCommandContext
     """
-    print "hello from {resource_name}".format(resource_name=context.resource.name){% endhighlight %}
+    print "hello {name} from {resource_name}".format(name=name, resource_name=context.resource.name){% endhighlight %}
+
+We'll also want to add basic metadata like aliases and descriptions and such. The way to do that is by editing the drivermetadata.xml file located in the same folder.
+
+Open the drivermetadata.xml file in your preferred IDE and change it contents as follows:
+
+{% highlight xml %}
+
+<Driver Description="Describe the purpose of your CloudShell shell" MainClass="driver.LinuxServerShellDriver" Name="LinuxServerShellDriver" Version="1.0.0">
+    <Layout>
+        <Category Name="Samples">
+            <Command Description="Simple hello world function" DisplayName="Say Hello" Name="say_hello" >
+                <Parameters>
+                    <Parameter Name="name" Type="String" Mandatory = "True" DefaultValue="" DisplayName="Your name"
+                               Description="Enter your full name here"/>
+                </Parameters>
+            </Command>
+        </Category>
+    </Layout>
+</Driver>
+
+{% endhighlight %}
+
+There is no need to get into too many details at this stage. We'll dive more deeply into the drivermetadata.xml file in a later section of this guide. For now its sufficient to understand that we use this file to provide more CloudShell specific information regarding how to interpret and display the driver commands and their parameters.
+
+Save the file. We're now ready to install the new Shell.
 
 #### Install the shell to your local CloudShell
 
@@ -65,11 +90,18 @@ This will package and install your shell into your local CloudShell server.
 
 Now that we've installed our Shell, we can instantiate a shell resource in the inventory.
 Open and login to your local CloudShell portal and navigate the Inventory page using the top navigation bar.
-Click on the "Add New" button and instantiate a shell resource by providing a name and an address. For now, since we don't have an address of an actual server, lets just fill it in as "NA".
+
+Click on the "Add New" button and instantiate a shell resource by providing a name and an address. For now, since we don't have an address of an actual server, just leave it black.  Click on "Start Discovery" to complete the operation. Later in the scope of this guide, we'll introduce the concept of Shell discovery and how to use it effectively.
 
 #### Hello world finally
+    
+Now that we've instantiated our shell resource, we can finally add it to an environment blueprint and reserve it as a sandbox.
+Navigate to the Environments page and click on "Create New" to start a new environment blueprint. Next, click on the "Add New" button and drag in the shell resource you've created in the previous step. You can then reserve the blueprint and create a new sandbox.
 
+In the sandbox reservation diagram, select the "commands" icon from the radial menu over the shell resource.
+This will open the commands side pane. Click the play button next to the "Say Hello" command to start it. Check the output panel to see the result.
 
+#### What's next
 
-
-## A more real life example
+We've successfully gone through the steps of adding a working Shell.
+In the following sections we'll review of these steps in depth and review the concepts, available options and customizations and how they interface with CloudShell.
