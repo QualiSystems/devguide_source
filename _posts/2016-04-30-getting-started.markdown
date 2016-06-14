@@ -9,20 +9,19 @@ date: "2016-04-30 13:02:32 +0300"
 This guide will take you through the basic steps of a creating a new Shell from scratch. We'll go through the following steps:
 
 * Creating the shell project
-* Implementing a shell resource command
-* Customizing the shell with additional attributes
-* Packaging and distributing the shell
+* Implementing a shell resource command in the shell driver
+* Installing the shell to the local CloudShell development installation
 * Instantiating a shell resource in CloudShell
-* Adding the shell to a blueprint and run a command on the shell in a sandbox
+* Adding the shell to a blueprint and running a command on the shell in a sandbox
 
 ### Prerequisites
 * Get CloudShell: Download the latest CloudShell SDK and run it on your machine.  
 * **Python**: You must have [Python](https://www.python.org/downloads/) 2.7.x (latest recommended) installed on your machine.
 * **IDE/Text Editor:** Any IDE or editor you'd rather use as an IDE. We recommend using PyCharm (which offers a free community edition) because of the tooling we've already created for that IDE, including a CloudShell developer plugin.
-* Install ShellFoundry using pip. Run {% highlight bash %} pip install shellfoundry {% endhighlight %}
+* **ShellFoundry** Install ShellFoundry using pip. Run the following in your local shell: {% highlight bash %} pip install shellfoundry {% endhighlight %}
 
 ### Creating the Shell Project
-To create the shell project, we'll take advantage of ShellFoundry. A CLI tool for generating and distributing shells. If you installed the prerequisites listed above this tool should already be installed and ready on your system.
+To create the shell project, we'll take advantage of ShellFoundry, a CLI tool for generating and distributing shells. If you installed the prerequisites listed above this tool should already be installed and ready on your system.
 
 To create a new project, simply run the following command in your local shell, which will create a new sub directory containing the basic shell project structure and files:
 

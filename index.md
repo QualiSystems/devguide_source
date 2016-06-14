@@ -16,11 +16,11 @@ From a developer's perspective, a 'Shell' is a plugin which can used to extend C
 
 * New physical components types can be instantiated in CloudShell's inventory.
 * New commands can be added to sandbox components
-* New app shells can be added to blueprints and deployed in sandboxes
+* New apps types can be added to blueprints and deployed in sandboxes
 
 
 ### The Shell Structure
 
-A shell is a project containing everything CloudShell needs to know in order to support a specific component type, app, or virtual appliance. The Shell project contains data-model definitions, attributes and the source code for the component driver.
+A shell is a project containing everything CloudShell needs to know in order to support a specific component type, app, or virtual appliance. The Shell project contains data-model definitions and attributes. In addition, the shell can include a driver, written in Python or developed using CloudShell Authoring. The shell driver can automate interactions with the Shell by implementing useful commands the users can invoke from the sandbox.
 
-In the next section of the guide we'll go through the steps of generating a new Shell project for a component and creating a simple driver in a few simple steps.
+In the next section of the guide we'll go through the steps of generating a new Shell project for a component and creating a simple driver.
