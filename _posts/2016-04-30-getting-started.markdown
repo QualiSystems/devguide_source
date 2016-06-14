@@ -33,7 +33,7 @@ Navigate to the new directory, you will see the following files have been create
 
 The generated folder contains all of the basic scaffolding needed for the new shell. We will review the shell project structure in a more in-depth manner in later stages of this guide.
 
-Finally, lets make sure all of the basic package requirements for the shell are satisfied. Run the follwing command:
+Finally, lets make sure all of the basic package requirements for the shell are satisfied. Run the following command:
 
 'python -m pip install .\src\requirements.txt' from the root of the project directory.
 
