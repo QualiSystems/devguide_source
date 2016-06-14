@@ -18,7 +18,7 @@ This guide will take you through the basic steps of a creating a new Shell from 
 * Get CloudShell: Download the latest CloudShell SDK and run it on your machine.  
 * **Python**: You must have [Python](https://www.python.org/downloads/) 2.7.x (latest recommended) installed on your machine.
 * **IDE/Text Editor:** Any IDE or editor you'd rather use as an IDE. We recommend using PyCharm (which offers a free community edition) because of the tooling we've already created for that IDE, including a CloudShell developer plugin.
-* **ShellFoundry** Install ShellFoundry using pip. Run the following in your local shell: {% highlight bash %} pip install shellfoundry {% endhighlight %}
+* **ShellFoundry** Install ShellFoundry using pip. Run the following command in your local shell: {% highlight bash %} pip install shellfoundry {% endhighlight %}
 
 ### Creating the Shell Project
 To create the shell project, we'll take advantage of ShellFoundry, a CLI tool for generating and distributing shells. If you installed the prerequisites listed above this tool should already be installed and ready on your system.
@@ -39,11 +39,12 @@ Finally, lets make sure all of the basic package requirements for the shell are 
 
 ### Testing the basic workflow
 
-#### Make a minor change to the driver
+#### Implement say_hello
 
-The source control for your shell is managed under the _src_ folder. The generating the project template, ShellFoundry already created a driver template as well under this folder. Open the file _driver.py_ in your preferred IDE/editor. You'll see it already contains a driver for our shell with an example commands already in place. We'll soon implement our first command in this file. For now, lets just make sure everything is in working order by adding a simple 'hello world'.
+The source control for your shell is managed under the _src_ folder. The default shell project scaffolding we've just created already contains a simple example driver under this folder.
 
-Remove the example 'method_one' function and replace it with the following code:
+Open the file _driver.py_ in your preferred IDE/editor. You'll see it already contains some code for our shell with an example commands already in place. To implement our "say_hello", remove the example 'method_one' function and replace it with the following code:
+
 {% highlight python %}
 def say_hello(self, context, name):
     """
@@ -72,7 +73,7 @@ Open the drivermetadata.xml file in your preferred IDE and change it contents as
 
 {% endhighlight %}
 
-There is no need to get into too many details at this stage. We'll dive more deeply into the drivermetadata.xml file in a later section of this guide. For now its sufficient to understand that we use this file to provide more CloudShell specific information regarding how to interpret and display the driver commands and their parameters.
+We'll sail right past explaining what each of the XML fields mean at this stage. We'll dive more deeply into the _drivermetadata.xml_ file in a later section of this guide. For now its sufficient to understand that we use this file to provide more CloudShell specific information regarding how to interpret and display the driver commands and their parameters.
 
 Save the file. We're now ready to install the new Shell.
 
