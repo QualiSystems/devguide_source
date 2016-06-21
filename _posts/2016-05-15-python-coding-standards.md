@@ -4,8 +4,7 @@ title: Python Coding Standards
 category: pla
 ---
 
-The below article will describe coding style that is applied in Quali for both internally and 
-externally developed scripts and drivers. Adhering to the same coding style makes our code more readable, 
+The below article will describe coding style that applies to all scripts and drivers. Adhering to the same coding style makes our code more readable, 
 easier to understand for other teams and easier for maintenance.  
 Quali Python Standard derives from [PEP 0008 -- Style Guide for Python Code](https://www.python.org/dev/peps/pep-0008/) and extends it with a few clarifications:
 
@@ -20,6 +19,8 @@ Quali Python Standard derives from [PEP 0008 -- Style Guide for Python Code](htt
 - Inline comments should start with # and a leading space
 - Code should be documented with doc string according to Sphynx. 
     For details guideline see: [Spinx Guideline](http://www.sphinx-doc.org/en/stable/domains.html#the-python-domain)
+
+## Sphinx documentation example
 
 ```Python
 def Deploy(self, context, Name=None):
