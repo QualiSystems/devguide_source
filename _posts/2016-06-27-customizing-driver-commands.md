@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Customizing driver commands visibility and usability
+title: Commands visibility and usability
 category: tut
 date: "2016-04-30 13:02:32 +0300"
 ---
