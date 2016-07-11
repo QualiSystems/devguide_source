@@ -2,21 +2,22 @@
 layout: page
 title: Python Coding Standards
 category: pla
+order: 7
 ---
-In this article we will describe the coding style for all scripts and drivers. Adhering to the same coding style makes our code more readable, 
+In this article we will describe the coding style for all scripts and drivers. Adhering to the same coding style makes our code more readable,
 easier to understand for other teams and easier to maintain.  
 Quali Python Standard derives from [PEP 0008 -- Style Guide for Python Code](https://www.python.org/dev/peps/pep-0008/) and extends it with a few clarifications:
 
 - 4 spaces are used for indentation
 - Class names should use the CapWords convention
 - Use one leading underscore only for non-public methods and instance variables.
-- Function names should be lowercase, with words separated by underscores as necessary, 
+- Function names should be lowercase, with words separated by underscores as necessary,
     started with a strong action verb (started with lower case)
 - Variables should be lower_case_with_underscores.  Avoid single character variable names
 - Module names -  lower_case_with_underscores.
 - Constants - UPPER_CASE_WITH_UNDERSCORES
 - Inline comments should start with # and a leading space
-- Code should be documented with doc string according to Sphynx. 
+- Code should be documented with doc string according to Sphynx.
     For details guideline see: [Spinx Guideline](http://www.sphinx-doc.org/en/stable/domains.html#the-python-domain)
 
 ## Sphinx documentation example

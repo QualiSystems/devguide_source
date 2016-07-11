@@ -3,6 +3,7 @@ layout: page
 title: Commands visibility and usability
 category: tut
 date: "2016-04-30 13:02:32 +0300"
+order: 6
 ---
 The Shell driver commands are accessible to CloudShell users via the portal as well as to orchestration scripts running on the sandbox.
 In this section we'll explore the different ways in which these commands can be customized in their appearance and behavior. The following customization options will be reviewed:
