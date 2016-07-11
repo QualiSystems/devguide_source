@@ -19,11 +19,11 @@ When the user executes a command for the first time on a shell instance in the S
 
 Inventory and app shell drivers behave a bit differently in terms of their lifecycle:
 
-* App Shells - As apps are deployed in the scope of the sandbox, the app shell driver is also instanced for the deployed app in the sandbox. Each app deployed in a sandbox will have its own driver instance managed by CloudShell. This means that if there are currently twenty active sandboxes and a MySql app has been deployed in each one, twenty shell driver instances will created, one to talk with each app in the sandbox.
+* **App Shells** - As apps are deployed in the scope of the sandbox, the app shell driver is also instanced for the deployed app in the sandbox. Each app deployed in a sandbox will have its own driver instance managed by CloudShell. This means that if there are currently twenty active sandboxes and a MySql app has been deployed in each one, twenty shell driver instances will created, one to talk with each app in the sandbox.
 
 ![Shell Commands]({{ site.url }}/devguide/assets/app_shell_arch.png)
 
-* Inventory Shells - For inventory Shells, a dedicated driver is managed per Inventory Shell resource instance. If you take for example a shell for physical switch like the NX-OS shell for Cisco switches, a shell driver instance will be created for each managed Cisco switch in your inventory. In this case, since the switch is a permanent inventory item and not created per sandbox, the driver is also instantiated per device.
+* **Inventory Shells** - For inventory Shells, a dedicated driver is managed per Inventory Shell resource instance. If you take for example a shell for physical switch like the NX-OS shell for Cisco switches, a shell driver instance will be created for each managed Cisco switch in your inventory. In this case, since the switch is a permanent inventory item and not created per sandbox, the driver is also instantiated per device.
 
 ![Shell Commands]({{ site.url }}/devguide/assets/inventory_shell_arch.png)
 
@@ -71,4 +71,4 @@ We'll review that option and how to configure it in the Shell customization sect
 
 #### Conclusion
 
-Hopefully this section provided a good overview of what shells are and how drivers fit into the picture. How drivers are scoped, what entities they are assigned to and what their basic lifecycle is. 
+Hopefully this section provided a good overview of what shells are and how drivers fit into the picture. How drivers are scoped, what entities they are assigned to and what their basic lifecycle is.
