@@ -3,9 +3,10 @@ layout: page
 title: Setting up the development Environment
 category: set
 date: "2016-04-30 13:02:32 +0300"
+order: 5
 ---
 
-In this section we'll go over the recommended steps for setting up a development environment for developing CloudShell Shells and orchestration scripts. 
+In this section we'll go over the recommended steps for setting up a development environment for developing CloudShell Shells and orchestration scripts.
 
 ### Get the latest Python 2.7.x
 ![Python]({{ site.url }}/devguide/assets/python-logo.png){:class="img-responsive"}
