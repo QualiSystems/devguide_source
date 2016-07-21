@@ -33,7 +33,7 @@ baseurl: '/devguide'
 permalink: none
 
 # Syntax highlighting
-highlighter: rouge
+highlighter: prism
 
 # Since these are pages, it doesn't really matter
 future: true
