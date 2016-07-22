@@ -81,7 +81,7 @@ is actually the one we'll mostly want to extend or customize. By default, when w
 a ResourceModel was automatically created as the Shell model with the same name of the Shell, which is the convention.
 The _shell_model.xml_ file which was automatically generated for our basic resource shell contains the following content:
 
-{% prism xml linenos=5-125  %}
+{% highlight xml  %}
 <Shell>
     <ShellAttributes>
     </ShellAttributes>
@@ -104,51 +104,7 @@ The _shell_model.xml_ file which was automatically generated for our basic resou
                 <AttachedAttribute Name="System Name" IsOverridable="true" IsLocal="true">
                   <AllowedValues />
                 </AttachedAttribute>
-                <AttachedAttribute Name="Vendor" IsOverridable="true" IsLocal="true">
-                  <AllowedValues />
-                </AttachedAttribute>
-                <AttachedAttribute Name="Location" IsOverridable="true" IsLocal="true">
-                  <AllowedValues />
-                </AttachedAttribute>
-                <AttachedAttribute Name="Backup Location" IsOverridable="true" IsLocal="true">
-                  <AllowedValues />
-                </AttachedAttribute>
-                <AttachedAttribute Name="Model" IsOverridable="true" IsLocal="true">
-                  <AllowedValues />
-                </AttachedAttribute>
-                <AttachedAttribute Name="SNMP Read Community" IsOverridable="true" IsLocal="true">
-                  <AllowedValues />
-                </AttachedAttribute>
-                <AttachedAttribute Name="SNMP Write Community" IsOverridable="true" IsLocal="true">
-                  <AllowedValues />
-                </AttachedAttribute>
-                <AttachedAttribute Name="SNMP V3 Password" IsOverridable="true" IsLocal="true">
-                  <AllowedValues />
-                </AttachedAttribute>
-                <AttachedAttribute Name="SNMP V3 Private Key" IsOverridable="true" IsLocal="true">
-                  <AllowedValues />
-                </AttachedAttribute>
-                <AttachedAttribute Name="SNMP V3 User" IsOverridable="true" IsLocal="true">
-                  <AllowedValues />
-                </AttachedAttribute>
-                <AttachedAttribute Name="SNMP Version" IsOverridable="true" IsLocal="true">
-                  <AllowedValues />
-                </AttachedAttribute>
-                <AttachedAttribute Name="Sessions Concurrency Limit" IsOverridable="true" IsLocal="true">
-                  <AllowedValues />
-                </AttachedAttribute>
-                <AttachedAttribute Name="Console Server IP Address" IsOverridable="true" IsLocal="true">
-                  <AllowedValues />
-                </AttachedAttribute>
-                <AttachedAttribute Name="Console User" IsOverridable="true" IsLocal="true">
-                  <AllowedValues />
-                </AttachedAttribute>
-                <AttachedAttribute Name="Console Password" IsOverridable="true" IsLocal="true">
-                  <AllowedValues />
-                </AttachedAttribute>
-                <AttachedAttribute Name="Console Port" IsOverridable="true" IsLocal="true">
-                  <AllowedValues />
-                </AttachedAttribute>
+                .... (more content here) ...
                 <AttachedAttribute Name="CLI Connection Type" IsOverridable="true" IsLocal="true">
                   <AllowedValues />
                 </AttachedAttribute>
@@ -164,16 +120,7 @@ The _shell_model.xml_ file which was automatically generated for our basic resou
                 <AttributeValue Name="Location" Value="" />
                 <AttributeValue Name="Model" Value="" />
                 <AttributeValue Name="Backup Location" Value="" />
-                <AttributeValue Name="SNMP Read Community" Value="" />
-                <AttributeValue Name="SNMP Write Community" Value="" />
-                <AttributeValue Name="SNMP V3 Password" Value="" />
-                <AttributeValue Name="SNMP V3 Private Key" Value="" />
-                <AttributeValue Name="SNMP V3 User" Value="" />
-                <AttributeValue Name="SNMP Version" Value="" />
-                <AttributeValue Name="Console Server IP Address" Value="" />
-                <AttributeValue Name="Console User" Value="" />
-                <AttributeValue Name="Console Password" Value="3M3u7nkDzxWb0aJ/IZYeWw==" />
-                <AttributeValue Name="Console Port" Value="0" />
+                .... (more content here) ...
                 <AttributeValue Name="CLI Connection Type" Value="Auto" />
                 <AttributeValue Name="Power Management" Value="False" />
               </AttributeValues>
@@ -185,9 +132,9 @@ The _shell_model.xml_ file which was automatically generated for our basic resou
         </ResourceModel>
     </ShellModel>
 </Shell>
-{% endprism %}
+{% endhighlight %}
 
-As you can see in the XML code above, our new Shell defines a unique model (highlighted). The model already has some
+As you can see in the XML code above, our new Shell defines a unique model ("ModelExample"). The model already has some
 associated with it which are defined in the Standard. We can customize the Shell datamodel in several way in this file.
 
 ### Changing the Shell image and description
@@ -195,9 +142,9 @@ associated with it which are defined in the Standard. We can customize the Shell
 First copy the image to the _datamodel_ folder. To set the Shell image, add the following attribute to the
 _\<ResourceModel>_ element:
 
-{% prism xml  %}
+{% highlight xml  %}
 <ResourceModel Name="ModelExample" Description="" SupportsConcurrentCommands="true" ImagePath="example_model_image.png">
-{% endprism %}
+{% endhighlight %}
 
 To update the Shell description change the value in the "Description" attribute in the above xml.
 
@@ -218,7 +165,16 @@ The _shell_model.xml_ file located in the _datamodel_ directory contains the bas
 As you can see our new Shell model already contains a lot of attribute associations, defined in the _\<AttachedAttributes>_ and
 _\<AttributeValues>_ sections.
 
-However, the _shell_model.xml_ also has a dedicated element just for custom attributes which you might want to add to the Shell
+In certain situations, however, you might want to extend the Shell by adding your own custom attributes.
+There are several common use cases for adding an attribute:
+
+* Saving administrative information - from custom permission groups to categories or contact person.
+
+* Saving additional information about the device - This information can be loaded by the driver or used by the driver
+
+* Set orchestration level settings such as profile for device usage or policies
+
+The _shell_model.xml_ has a dedicated element just for custom attributes which you might want to add to the Shell
 in addition to those provided by the standard. This element is currently empty and is the _\<ShellAttributes>_ element.
 We can add some attribute definitions here to extend the Shell with some custom attributes.
 
@@ -229,7 +185,7 @@ as visible to end users on the web.
 
 To add a simple attribute to the shell we first need to add an _\<AttributeInfo>_ element to this element like so:
 
-{% prism xml linenos=2-6 %}
+{% highlight xml linenos %}
 <ShellAttributes>
     <AttributeInfo Name="ModelExample Custom Att" Type="String" DefaultValue="" IsReadOnly="false">
       <Rules>
@@ -237,7 +193,7 @@ To add a simple attribute to the shell we first need to add an _\<AttributeInfo>
       </Rules>
     </AttributeInfo>
 </ShellAttributes>
-{% endprism %}
+{% endhighlight %}
 
 By adding this element, we've defined a new attribute. Next, we'll want to associated the new custom attribute to our Shell model and
 set the value for it. We do this by adding both an _\<AttachedAttribute>_ and a _\<AttributeValue>_ elements.
@@ -245,7 +201,7 @@ set the value for it. We do this by adding both an _\<AttachedAttribute>_ and a 
 First, under the _\<AttachedAttributes>_ element, append the following xml code (before, after or between the existing _AttachedAttribute_
 elements)
 
-{% prism xml linenos=4-7 %}
+{% highlight xml %}
 <ShellModel Family="Generic Resource">
       <ResourceModel Name="ModelExample" Description="" SupportsConcurrentCommands="true">
           <AttachedAttributes>
@@ -254,20 +210,21 @@ elements)
               </AttachedAttribute>
               <AttachedAttribute Name="User" IsOverridable="true" IsLocal="true">
 .... (more content here) ...
-{% endprism %}
+{% endhighlight %}
 
 Lastly, add the following _\<AttributeValue>_ under the  _AttributeValues_ element. Please notice that even if you don't
 want to specify a default value, you should still add this element with a blank value.
 
-{% prism xml linenos=5 %}
+{% highlight xml %}
 .... (more content here) ...
-          </AttachedAttribute>
-      </AttachedAttributes>
-      <AttributeValues>
-          <AttributeValue Name="ModelExample Custom Att"  Value="Default Value" />
-          <AttributeValue Name="User" Value="" />
+  </AttachedAttribute>
+</AttachedAttributes>
+<AttributeValues>
+  <AttributeValue Name="ModelExample Custom Att"  Value="Default Value" />
+  <AttributeValue Name="User" Value="" />
 .... (more content here) ...
-{% endprism %}
+{% endhighlight %}
+
 
 To test whether this worked lets re-install the Shell from command line:
 {% highlight bash %}
@@ -278,5 +235,67 @@ After refreshing the sandbox diagram and re-opening the attributes pane, you sho
 
 ![Shell Image]({{ site.url }}/devguide/assets/shell_custom_attribute.png)
 
+### Governing the usage of custom Shell attributes
 
-### Fine tuning custom shell attributes
+You may have noticed that when we added the attribute definition to the _shell_mode.xml_ file, we also added the following element
+under it:
+
+{% highlight xml %}
+<Rules>
+  <Rule Name="Setting" />
+</Rules>
+{% endhighlight %}
+
+The 'Setting' _rule_ which we've added here, indicates that this attribute is a setting that can be controlled from
+the sandbox or defined in the blueprint by end users. If we had not added that rule, the attribute would have been assigned
+to the resource but would not have appeared in the attributes pane.
+
+There are several such _Rules_ that can be set on attribute which can change how they behave and where they are used.
+We'll cover a few here:
+
+* **_Displayed in Search Filters_** (Inventory Resources) - Users will be able to filter based on that attribute. It makes sense
+to add this rules to attributes which are constrained to a limited set of values and which are used often to filter resources.
+It doesn't make sense to use this attribute for attributes with unique values such as serial number or uniqueid,
+since this feature enables filtering, not search.
+
+* **_Admin Only_** - Only administrators and domain administrators will be able to modify this attribute, users will be able to
+ see the attribute but not modify it.
+
+* **_Available For Abstract Resources_** (Inventory Resources)- This attribute can be used when creating an abstract resource to
+specify the rules for selection.
+
+* **_Displayed In Diagram_** This attribute will be displayed on the diagram component itself when using the larger icon size
+in the diagram.
+
+* **_Displayed In Insight_** This attribute value will be saved in Insight and can be used to later create BI around the resources
+linked to it.
+
+### Restricting attributes to specific values
+
+Its possible to improve usability an unnecessary human errors by restricting the possible inputs for an attribute to a
+given set of values. To avoid unpredictable results if a user typed in _OK_ instead of _Yes_, for example, or just had a typo.
+Any restrictions we add in this scope will be for this specific Shell only. Other Shells using the same attribute will not be
+affected. To add an attribute restriction, add the following to the _\<AttachedAttribute>_ element:
+
+{% highlight xml %}
+<AttachedAttribute Name="ModelExample Custom Att" IsOverridable="true" IsLocal="true">
+  <AllowedValues>
+      <AllowedValue>Protocol1</AllowedValue>
+      <AllowedValue>Protocol2</AllowedValue>
+      <AllowedValue>Protocol3</AllowedValue>
+      <AllowedValue>Default Value</AllowedValue>
+
+  </AllowedValues>
+</AttachedAttribute>
+{% endhighlight %}
+
+Notice how its important to remember to add the current value as one of the options for the possible values.
+Reinstall the Shell, refresh and open the attributes side pane again:
+
+![Shell Image]({{ site.url }}/devguide/assets/shell_custom_attribute.png)
+
+### Things to watch out for when adding custom
+
+1. Attribute name collisions: Avoid common general names like 'Speed' or 'Connected'. Try to include the Shell name, or some other unique element to avoid name collisions.
+2. Only add attributes to your Shell model, avoid changing the Standard models in the _datamodel.xml_ file.
+3. Only use the rules you need, adding all attributes as search filters, for example, would cause a lot of UI clutter.
