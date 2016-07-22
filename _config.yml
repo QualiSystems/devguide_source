@@ -38,6 +38,9 @@ highlighter: prism
 # Since these are pages, it doesn't really matter
 future: true
 
+gems:
+  - jekyll-sitemap
+  - jekyll_github_sample
 # Exclude non-site files
 exclude: ['bin', 'README.md']
 
