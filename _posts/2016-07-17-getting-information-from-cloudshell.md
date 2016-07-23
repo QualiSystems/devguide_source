@@ -4,7 +4,7 @@ title: Getting information from CloudShell
 category: tut
 order: 5
 ---
-A typical shell driver, will first get crucial information from the sandbox and then use that information
+A typical Shell driver, will first get crucial information from the sandbox and then use that information
 to access the device it controls. Some common information would be the resource or app's address, attributes
 such as username and password, as well as other information from other sandbox settings or components.
 
