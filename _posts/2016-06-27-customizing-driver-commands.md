@@ -79,6 +79,9 @@ The shell commands should now appear as follows:
 
 ![Shell Commands]({{ site.url }}/devguide/assets/commands_name_customization.png)
 
+Please note that changing the display name of a function will affect only how its visually rendered in the UI.
+Code trying to execute this command using the CloudShell API will need to still refer to it by the command _name_.
+
 <a name="customize_parameter_names"></a>
 
 ### Specify display name and descriptions for each parameter
