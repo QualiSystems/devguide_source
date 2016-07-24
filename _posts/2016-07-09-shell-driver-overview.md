@@ -6,17 +6,34 @@ order:  2
 ---
 #### What are Shells again?
 
-Shells are a way to extend CloudShell by adding support for different types of sandbox elements such as apps, virtual appliances or physical resources. A shell can contain the bare minimum required to be able to model the sandbox element in CloudShell, how categorize it or which unique attributes it possesses. The Shell can also define the interface through which users can orchestrate or configure the the app or resource by executing commands. Example commands would be saving, restoring, restarting, performing health checks, administrative operations or scaling up or down but any custom functionality can easily be added.
+Shells are a way to extend CloudShell by adding support for different types of sandbox elements such as apps,
+virtual appliances or physical resources. A shell can contain the bare minimum required to be able to model
+the sandbox element in CloudShell, how categorize it or which unique attributes it possesses.
+The Shell can also define the interface through which users can orchestrate or configure an app or a resource
+by executing commands. Example commands would be saving, restoring, restarting, performing health checks,
+administrative operations or scaling up or down.
 
 #### What are Shell drivers
 
-A Shell driver an optional component in the Shell project that allows adding commands to Shells. CloudShell creates and manage dedicated instances of the driver to communicate with each physical resource or app. When the user executes a command, either from the Sandbox UI or the API, CloudShell ensures a driver for the target resource or app is currently, then sends the command to the driver and relays back the response.
+A Shell driver is an optional component in the Shell project that allows adding commands to Shells.
+CloudShell creates and manage dedicated instances of the driver to communicate with each physical
+resource or app. When the user executes a command, either from the Sandbox UI or the API, CloudShell
+ensures a driver for the target resource or app is currently running, then sends the command to the driver and
+relays back the response.
 
-The driver can contain multiple files and folders but only one file is considered to be the main driver file. In the main driver file defines the Shell commands the driver provides. The default ShellFoundry template will generate the driver class inside the _driver.py_ file located in the _src_ directory. The generated class name will correspond to the Shell name, which is also the CloudShell convention.
+The driver can contain multiple files and folders but only one file contains a class which is considered to
+be the main driver class. This main class defines the Shell commands the driver provides.
+The default ShellFoundry template will generate ta main driver class and place it inside the _driver.py_
+file located in the _src_ directory. The generated class name will correspond to the Shell name, which is
+also the CloudShell convention.
 
 #### How CloudShell manages the Shell drivers
 
-When the user executes a command for the first time on a shell instance in the Sandbox, CloudShell will initialize a driver object from the Shell driver class. The object will be created in its own isolated process, separate from other object instances of that same driver which may be driving other shell instances - other devices or apps. All The Python process will initialize the driver class as a new object and will from that point on communicate with it to handle any commands.
+When the user executes a command for the first time on a deployed app or inventory resource in the Sandbox, CloudShell will
+initialize a driver object from the Shell driver class. The object will be created in its own isolated
+process, separate from other object instances of that same driver which may be driving other shell
+instances - other devices or apps. All The Python process will initialize the driver class as a new
+object and will from that point on communicate with it to handle any commands.
 
 Inventory and app shell drivers behave a bit differently in terms of their lifecycle:
 
@@ -28,8 +45,8 @@ Inventory and app shell drivers behave a bit differently in terms of their lifec
 
 ![Shell Commands]({{ site.url }}/devguide/assets/inventory_shell_arch.png)
 
-Whether the Shell instance is a deployed app or an inventory component, CloudShell will handle routing commands to the right driver instance. When the user executes a command on a shell instance, CloudShell will first check if a driver instance is already running for the Shell instance, find on which execution server is running, and send the command to that driver to handle. If a driver is not yet running,
-for that Shell instance, inventory resource or app, a new driver instance will be launched.
+Whether a deployed app or an inventory component, CloudShell will handle routing commands to the right driver instance. When the user executes a command on a shell instance, CloudShell will first check if a driver instance is already running for the Shell instance, find on which execution server is running, and send the command to that driver to handle. If a driver is not yet running,
+for that inventory resource or app, a new driver instance will be launched.
 
 #### Python virtual environment
 
@@ -38,9 +55,17 @@ If a newer version exists for one of the driver requirements, a new virtual envi
 
 #### The Shell driver instance lifecycle
 
-A driver instance is started the first time a command is sent to its Shell instance. At that time, the _initialize_ function of the driver is called prior to handling the command itself in the corresponding driver function. After a certain duration of inactivity, the CloudShell Server can opt to stop the driver instance until its needed again. When the driver instance is stopped the _cleanup_ function is first called, allowing any cleanup code to run and prepare the driver for shutdown.
+A driver instance is started the first time a command is sent to the resource or deployed app.
+As a part of the driver initialization the _initialize_ function of the driver is called. This function
+is guaranteed to be the first command executed on the driver and no other command is allowed to run until
+it completes successfully. Once complete, the driver can handle commands normally.
 
-The _initialize_ and _cleanup_ functions have a simple interface. If you generated your Shell project using ShellFoundry they should already be included in the generated _driver.py_ site.
+After a certain duration of inactivity, the CloudShell Server can opt to stop the driver instance until
+its needed again. When the driver instance is stopped  the _cleanup_ function is first called,
+allowing any cleanup code to run and prepare the driver for shutdown.
+
+The _initialize_ and _cleanup_ functions have a simple interface. If you generated your Shell
+project using ShellFoundry they should already be included in the generated _driver.py_ file.
 
 {% highlight python %}
     def initialize(self, context):
@@ -59,7 +84,11 @@ The _initialize_ and _cleanup_ functions have a simple interface. If you generat
         pass
 {% endhighlight %}
 
-The _initialize_ function is a good place to place code you expect to be called once during the lifecycle of the driver object. You should take into account that the driver is not guaranteed to run forever. The Quali server might elect to stop the driver instance due to inactivity. In general, it is recommended to keep the driver as stateless as possible, this will remove a lot of the complexity of cleanup and state recovery.
+The _initialize_ function is a good place to place to add code you expect to be called once during the
+lifecycle of the driver object. You should take into account that the driver is not guaranteed to run
+forever. The Quali server might choose to stop the driver instance due to inactivity. In general,
+it is recommended to keep the driver as stateless as possible, this will remove a lot of the complexity
+of cleanup and state recovery.
 
 The _cleanup_ function will be called whenever the driver instance is stopped. You can place any code that persists the current state of the driver, disconnects sessions or stop any external processes here.
 
@@ -68,7 +97,7 @@ The _cleanup_ function will be called whenever the driver instance is stopped. Y
 #### Commands Concurrency
 
 By default, Shell drivers handle commands sequentially. They handle commands one at a time and CloudShell maintains a queue of commands waiting to run on each driver if multiple executions are initiated. However, the shell can be configured to handle commands concurrently as well, in which case it becomes the responsibility of the driver developer to handle the concurrency and introduce mutexes where required.
-We'll review that option and how to configure it in the Shell customization section.
+We'll review that option and how to configure it in the [Shell customization section]({{ site.url }}/devguide/tut/customizing-driver-commands.html).
 
 #### Conclusion
 

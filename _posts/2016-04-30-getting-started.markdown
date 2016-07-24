@@ -44,7 +44,7 @@ Finally, lets make sure all of the basic package requirements for the shell are 
 
 The source control for your shell is managed under the _src_ folder. The generating the project template, ShellFoundry already created a driver template as well under this folder. Open the file _driver.py_ in your preferred IDE/editor. You'll see it already contains a driver for our shell with an example commands already in place. We'll soon implement our first command in this file. For now, lets just make sure everything is in working order by adding a simple 'hello world'.
 
-Remove the example 'method_one' function and replace it with the following code:
+Remove the 'example_function' function and replace it with the following code:
 {% highlight python %}
 def say_hello(self, context, name):
     """
@@ -52,7 +52,8 @@ def say_hello(self, context, name):
     """
     print "hello {name} from {resource_name}".format(name=name, resource_name=context.resource.name){% endhighlight %}
 
-We'll also want to add basic metadata like aliases and descriptions and such. The way to do that is by editing the drivermetadata.xml file located in the same folder.
+We'll also want to add basic metadata including aliases and descriptions. The way to do that is by
+editing the drivermetadata.xml file located in the same folder.
 
 Open the drivermetadata.xml file in your preferred IDE and change it contents as follows:
 
@@ -79,8 +80,12 @@ Save the file. We're now ready to install the new Shell.
 
 #### Install the shell to your local CloudShell
 
-ShellFoundry also provides and easy and convenient way to package and install your package to your CloudShell server. To make use of this feature, you'll need to first edit the cloudshell_config.yaml file in the shell root folder with your CloudShell admin user/password and the server address.
-Notice that this file should not be added to your source control obvious security reasons. If you're using git you're already covered as this configuration file is included in the automatically generated .gitingore file.
+ShellFoundry also provides and easy and convenient way to package and install your package to your CloudShell server.
+To make use of this feature, you'll need to first edit the cloudshell_config.yaml file, which is located root folder
+of the Shell Project. Update the file with your CloudShell admin user/password and the server address.
+**Notice** that this file should not be added to your source control obvious security reasons.
+If you're using git you're already covered as this configuration file is included in the automatically generated
+.gitingore file.
 
 After you've edited and saved the file, run the following command from the shell root directory:
 
@@ -90,18 +95,28 @@ This will package and install your shell into your local CloudShell server.
 
 #### Create an instance of your shell in the local CloudShell inventory
 
-Now that we've installed our Shell, we can instantiate a shell resource in the inventory.
-Open and login to your local CloudShell portal and navigate the Inventory page using the top navigation bar.
+The shell is installed in your development CloudShell. We can now create resources of that Shell in our
+inventory.
 
-Click on the "Add New" button and instantiate a shell resource by providing a name and an address. For now, since we don't have an address of an actual server, just leave it black.  Click on "Start Discovery" to complete the operation. Later in the scope of this guide, we'll introduce the concept of Shell discovery and how to use it effectively.
+1.	Open and login to your local CloudShell portal.
+2.	In the top menu, click the Inventory dashboard.
+3.	Click Add New and provide a name and an address for your shell resource. For now, since we don’t have an address of an actual server, just leave the address field black.
+4.	Click on Start Discovery to complete the operation.
 
 #### Hello world finally
 
 Now that we've instantiated our shell resource, we can finally add it to an environment blueprint and reserve it as a sandbox.
-Navigate to the Environments page and click on "Create New" to start a new environment blueprint. Next, click on the "Add New" button and drag in the shell resource you've created in the previous step. You can then reserve the blueprint and create a new sandbox.
 
-In the sandbox reservation diagram, select the "commands" icon from the radial menu over the shell resource.
-This will open the commands side pane. Click the play button next to the "Say Hello" command to start it. Check the output panel to see the result.
+1.	In CloudShell, from the top menu,  click Lab Management>  Environments
+2.	To create a new environment blueprint, click + Create Environment and then click the Create New Environment button.
+3.	Click Add New and drag in the shell resource you’ve created earlier.
+4.	Reserve the blueprint and create a new sandbox.
+5.	In the sandbox, hover over the shell resource and from the radial menu select Commands.
+The commands pane opens.
+6.	To run the “Say Hello” command, in the commands pane, click the play button next to the “Say Hello” command.
+
+To review the results, from the blueprint’s toolbar, click the Output button.
+The Output pane opens displaying the command execution results.
 
 #### What's next
 

@@ -1,6 +1,6 @@
 ---
 layout: page
-title: The Shell Project - Orientation Guide
+title: The Shell Project Guide
 category: tut
 order: 3
 ---
@@ -50,4 +50,4 @@ The _datamodel_ folder contains all of the custom attributes and basic definitio
 ### The _docs_ and _tests_ folders
 
 These are placeholders to place shell documentation and shell tests.
-Some tests are already automatically generated in the _tests_ folder, you can simply extend the class there.
+Some tests are already automatically generated in the _tests_ folder.

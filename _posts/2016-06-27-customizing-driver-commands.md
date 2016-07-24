@@ -15,20 +15,21 @@ In this section we'll explore the different ways in which these commands can be 
 * [Adding categories](#customizing_categories)
 * [Orchestration only commands](#customizing_orchestration_only_commands)
 
-If you haven't done some already it is recommended to go through the [Getting Started](/devguide/tut/getting-started.html) walkthrough before continuing to get a better understanding of the overall process of creating and using a shell. We also assume you've gone through the steps described in the [Setting up the development IDE](/devguide/set/setting-up-the-development-ide) section of this guide.
+If you haven't done some already it is recommended to go through the [Getting Started](/devguide/tut/getting-started.html) tutorial before continuing to get a better understanding of the overall process of creating and using a shell. We also assume you've gone through the steps described in the [Setting Up the Development IDE](/devguide/set/setting-up-the-development-ide) section of this guide.
 
 <a name="setting_up"></a>
 
 ### Setting up
 
-We'll start by creating a new shell that we'll use in this example. In the [Getting Started](/devguide/tut/getting-started.html) walkthrough we used the ShellFoundry CLI tool to generate a working shell to get started quickly. In this section we'll also be using the ShellFoundry to create an example shell, only this time we'll use a different project template. The _base-empty_ template is similar to the default template we've used previously only it doesn't contain any example driver functions. This will make it easier for us to really go through the experience of starting from a clean slate.
+We'll start by creating a new shell that we'll use in this example. In the [Getting Started](/devguide/tut/getting-started.html) tutorial we used the ShellFoundry CLI tool to generate a working shell to get started quickly. In this section we'll also be using the ShellFoundry to create an example shell, only this time we'll use a different project template. The _resource-clean_ template is similar to the default template we've used previously only it doesn't contain any example driver functions. This will make it easier for us to really go through the experience of starting from a clean slate.
 
 From the command line, navigate to a folder under which you'll want the new shell to be created and type in the following:
 {% highlight bash %}
-shellfoundry new customization-example --template=base-empty
+shellfoundry new customization-example --template=resource-clean
+cd customization_example
 {% endhighlight %}
 
-This will create a new project with an empty driver.
+A new project with an empty driver is created.
 
 Lets start by creating a function we can experiment on. Open the driver file. The file is named _driver.py_ and is located in the _src_ folder of the shell project.
 Add the following function to the shell driver class and save it:
@@ -43,13 +44,13 @@ def user_facing_function(self, context, some_parameter, some_other_parameter):
     print "Thank you for calling this function."
 {% endhighlight %}
 
-We've now created a shell with a single command. Similar to the flow covered in the [Getting Started](/devguide/tut/getting-started.html) walkthrough, the next steps would be to create a resource instance of this shell in CloudShell and add it to a sandbox so we can experiment with it. You should refer to the [Getting Started](/devguide/tut/getting-started.html) walkthrough for any question on how to accomplish the three steps below:
+We've now created a shell with a single command. Similar to the flow covered in the [Getting Started](/devguide/tut/getting-started.html) tutorial, the next steps would be to create a resource instance of this shell in CloudShell and add it to a sandbox so we can experiment with it. You should refer to the [Getting Started](/devguide/tut/getting-started.html) tutorial for any question on how to accomplish the three steps below:
 
 1. Install the shell by running the following from the shell directory: _shellfoundry install_
 2. Create a resource instance from the CloudShell inventory.
-3. Create a new sandbox and drag the resource instance into it. Open the commands panel.
+3. Create a new sandbox and drag the resource instance into it. Open the Commands pane.
 
-The commands panel should look something like this:
+At this point the Commands pane should look something like this:
 
 ![Shell Commands]({{ site.url }}/devguide/assets/commands_no_customization.png)
 
@@ -59,7 +60,7 @@ The information on how to display the driver functions in CloudShell is stored i
 
 <a name="customize_names"></a>
 
-### Change the function display name and description
+### Changeing the function display name and description
 
 For the first round of customizations, we'll work on the user facing function and improve the naming of the command and its parameters as they appear to the user in CloudShell. Open the _drivermetadata.xml_ file and add the following text to it:
 
@@ -74,7 +75,7 @@ For the first round of customizations, we'll work on the user facing function an
 
 Each _Command_ element in the xml above customizes a single python function specified by the _Name_ attribute. The _DisplayName_ and _Description_ attributes will determine the name of the command as it appears to the user and the description appearing next to it, respectively.
 
-Update the shell using {% highlight bash %} shellfoundry install {% endhighlight %} and check the sandbox command panel again.
+Reinstall the Shell in CloudShell by running {% highlight bash %} shellfoundry install {% endhighlight %} from command line and check the sandbox command panel again.
 The shell commands should now appear as follows:
 
 ![Shell Commands]({{ site.url }}/devguide/assets/commands_name_customization.png)
@@ -102,7 +103,7 @@ AS you can see in the screenshot below, the parameter name of the command still 
 </Driver>
 {% endhighlight %}
 
-In the xml above, you can see a _Parameters_ element which contains a list of _Parameter_ elements, each customizing a specific function parameter.  customizes a single python function specified by the _Name_ attribute. The _DisplayName_ and _Description_ attributes will determine the name of the command as it appears to the user and the description appearing next to it, respectively.
+In the _drivermetadata.xml_ XML, the _Parameters_ element  contains a list of _Parameter_ elements, each customizing a specific function parameter.  customizes a single python function specified by the _Name_ attribute. The _DisplayName_ and _Description_ attributes will determine the name of the command as it appears to the user and the description appearing next to it, respectively.
 
 After installing the shell again, the parameters for the command will now appear in a more readable format:
 
@@ -113,6 +114,8 @@ After installing the shell again, the parameters for the command will now appear
 ### Optional parameters and default values
 
 For each of the command parameters, we may want to specify whether that parameter is mandatory for the user to supply, and whether there should be a default value in case the user didn't enter any value.
+
+In the following example, we will make the first parameter mandatory by setting the Mandatory attribute to True. Users will be required to enter a value for parameters before being able to run the command. The second parameter is optional but now has a default value which we will set using the DefaultValue attribute:
 
 {% highlight xml %}
 <Driver Description="Describe the purpose of your CloudShell shell" MainClass="driver.CustomizationExampleDriver" Name="CustomizationExampleDriver" Version="1.0.0">
@@ -130,8 +133,6 @@ For each of the command parameters, we may want to specify whether that paramete
 </Driver>
 {% endhighlight %}
 
-In the above example, we've made the first parameter mandatory by setting the _Mandatory_ attribute to _True_. Users will be required to enter a value for for parameter before being able to run the command.
-The second parameter is optional but now has a default value which we've set using the _DefaultValue_ attribute.
 Re-installing the shell will update the commands pane accordingly:
 
 ![Shell Commands]({{ site.url }}/devguide/assets/commands_mandatory_customization.png)
@@ -160,7 +161,7 @@ For certain parameters, you might want the user to select between a pre-determin
 
 In the xml above, we've specified that the second parameter must be selected out of a specific set of possible values. To do that, we've added the _Type_ attribute to the parameter element and set it as _Lookup_. To define the possible values, we've added the _AllowedValues_ attribute, which sets the possible values for this parameter, represented as a comma separated list. In this case, the possible values are _Yes_ and _No_. We've also changed the default value to conform to the possible options.
 
-After re-installing the shell, the commands pane now reflects the parameter new value restriction:
+After re-installing the shell, the Commands pane now reflects the parameter new value restriction:
 
 ![Shell Commands]({{ site.url }}/devguide/assets/commands_lookup_customization.png)
 
@@ -218,8 +219,8 @@ After re-installing the shell we get the following command panel layout:
 
 ### Orchestration only commands
 
-Sometimes, you may wish to create commands that are intended to be used as a part of an orchestration flow, for example to be called during setup, but that you don't wish users to get direct access to or to be visible via the UI.
-To support that use case, CloudShell supports a special category, the _Hidden Commands_ category where you can place commands you want to be omitted from the web portal UI but that can still be invoked via the API.
+Sometimes, you may wish to create commands that are intended to be used as a part of an orchestration flow, for example to be called during setup, but that you don't wish users to get direct access to or to be visible via the UI. For example, a command that will be called during a sandbox’s Setup process.
+To support this use case, CloudShell supports a special category, the _Hidden Commands_ category which allows you to mark commands you want to be omitted from the web portal UI but that can still be invoked via the API.
 
 To demonstrate this capability, lets first add a new function to our driver class in the _driver.py_ file:
 
@@ -259,7 +260,7 @@ Next, lets add the special category to the _drivermetadata.xml_ file and nest th
 </Driver>
 {% endhighlight %}
 
-After re-installing the shell you'll see the new function doesn't appear in the commands panel:
+After re-installing the shell you'll see the new function doesn't appear in the Commands pane:
 ![Shell Commands]({{ site.url }}/devguide/assets/commands_hidden_customization.png)
 
 However if you query the list of commands on the shell via the API, you'll be able to see it as well as invoke it:
@@ -267,4 +268,4 @@ However if you query the list of commands on the shell via the API, you'll be ab
 
 ### Summary
 
-In this section we reviewed different ways in which we can customize the appearance and behavior commands and command parameters from the user's perspective. If you have feedback or additional suggestions for features and improvements be sure to post them on our idea box on the community website. We're always looking for new ideas!
+In this section we reviewed different ways in which its possible tocustomize the appearance and behavior commands and command parameters from the user's perspective. If you have feedback or additional suggestions for features and improvements be sure to post them on our idea box. We're always looking for new ideas!
