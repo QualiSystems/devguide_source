@@ -70,10 +70,10 @@ creating the right resources.
 
 Add the following code to the driver:
 
+{% github_sample_ref /QualiSystems/devguide_examples/blob/driver_deep_dive/adding_examples/implementing_discovery/src/driver.py %}
 {% highlight python %}
 {% github_sample /QualiSystems/devguide_examples/blob/driver_deep_dive/adding_examples/implementing_discovery/src/driver.py 31 43 %}
 {% endhighlight %}
-{% github_sample_ref /QualiSystems/devguide_examples/blob/driver_deep_dive/adding_examples/implementing_discovery/src/driver.py %}
 
 As you can see, the _get_inventory_ code creates a list of _AutoLoadResource_ objects which are the sub-resources to be
 imported/synched with CloudShell. Each _AutoLoadResource_ object needs to be initialized with three parameters:
@@ -96,10 +96,10 @@ again referencing them by their addresses which we've provided previously.
 
 After populating the attributes information, we need to return the result object with both sub-resources and attributes:
 
+{% github_sample_ref /QualiSystems/devguide_examples/blob/driver_deep_dive/adding_examples/implementing_discovery/src/driver.py %}
 {% highlight python %}
 {% github_sample /QualiSystems/devguide_examples/blob/driver_deep_dive/adding_examples/implementing_discovery/src/driver.py 45 62 %}
 {% endhighlight %}
-{% github_sample_ref /QualiSystems/devguide_examples/blob/driver_deep_dive/adding_examples/implementing_discovery/src/driver.py %}
 
 Notice that we're using an empty string ('') to refer to the root resource when setting its attribute values.
 
