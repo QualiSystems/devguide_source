@@ -18,10 +18,10 @@ need to decrypt it. To do that, you can use the CloudShellAPI function **_Decryp
 
 See the code below for an example:
 
+{% github_sample_ref /QualiSystems/devguide_examples/blob/driver_deep_dive/adding_examples/common_driver_recipes/src/driver.py %}
 {% highlight python %}
 {% github_sample /QualiSystems/devguide_examples/blob/driver_deep_dive/adding_examples/common_driver_recipes/src/driver.py 28 38 %}
 {% endhighlight %}
-{% github_sample_ref /QualiSystems/devguide_examples/blob/driver_deep_dive/adding_examples/common_driver_recipes/src/driver.py %}
 
 #### Updating the resource live status
 
@@ -31,11 +31,10 @@ be extended if needed.
 
 The following code will update the resource live status from offline to online:
 
+{% github_sample_ref /QualiSystems/devguide_examples/blob/driver_deep_dive/adding_examples/common_driver_recipes/src/driver.py %}
 {% highlight python %}
 {% github_sample /QualiSystems/devguide_examples/blob/driver_deep_dive/adding_examples/common_driver_recipes/src/driver.py 40 55 %}
 {% endhighlight %}
-{% github_sample_ref /QualiSystems/devguide_examples/blob/driver_deep_dive/adding_examples/common_driver_recipes/src/driver.py %}
-
 
 The full list of statuses can be found in the _ServerUniversalSettings.xml_ file which you can find on the Quali Server
 machine under the  %programdata%\\QualiSystems\\Settings\\Global directory:
@@ -67,7 +66,7 @@ Another way to update the sandbox regarding an operation progress is to use the 
 function to display message in the Sandbox console pane.
 We can easily modify the previous code to do that instead:
 
+{% github_sample_ref /QualiSystems/devguide_examples/blob/driver_deep_dive/adding_examples/common_driver_recipes/src/driver.py %}
 {% highlight python %}
 {% github_sample /QualiSystems/devguide_examples/blob/driver_deep_dive/adding_examples/common_driver_recipes/src/driver.py 57 70 %}
 {% endhighlight %}
-{% github_sample_ref /QualiSystems/devguide_examples/blob/driver_deep_dive/adding_examples/common_driver_recipes/src/driver.py %}

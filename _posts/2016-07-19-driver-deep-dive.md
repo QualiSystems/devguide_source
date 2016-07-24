@@ -75,10 +75,10 @@ likely result in an error.
 
 To demonstrate this, lets add a couple of functions to the driver:
 
+{% github_sample_ref /QualiSystems/devguide_examples/blob/driver_deep_dive/adding_examples/driver_deep_dive/src/driver.py %}
 {% highlight python %}
 {% github_sample /QualiSystems/devguide_examples/blob/driver_deep_dive/adding_examples/driver_deep_dive/src/driver.py 22 35 %}
 {% endhighlight %}
-{% github_sample_ref /QualiSystems/devguide_examples/blob/driver_deep_dive/adding_examples/driver_deep_dive/src/driver.py %}
 
 In the first example, we just return a line of string. In the second example, we actually return the context object that is
 being passed to the driver.
@@ -106,10 +106,10 @@ and the message property of the exception will be shown to the user.
 
 ![Command Results]({{ site.url }}/devguide/assets/failed_command.png)
 
+{% github_sample_ref /QualiSystems/devguide_examples/blob/driver_deep_dive/adding_examples/driver_deep_dive/src/driver.py %}
 {% highlight python %}
 {% github_sample /QualiSystems/devguide_examples/blob/driver_deep_dive/adding_examples/driver_deep_dive/src/driver.py 35 41 %}
 {% endhighlight %}
-{% github_sample_ref /QualiSystems/devguide_examples/blob/driver_deep_dive/adding_examples/driver_deep_dive/src/driver.py %}
 
 If the command is being called from an orchestration script or a different Python driver, calling a command that fails in
 this way will result in an exception of type CloudShellAPIError. The error message will include the type of exception (the original
@@ -137,17 +137,17 @@ will signal to CloudShell that the command supports cancellation and the user wi
 while it is running. Next, add an entry for the command in the _drivermetadata.xml_ file and add the attribute:
 **_EnableCancellation="true"_**
 
+{% github_sample_ref /QualiSystems/devguide_examples/blob/driver_deep_dive/adding_examples/driver_deep_dive/src/drivermetadata.xml %}
 {% highlight xml %}
 {% github_sample /QualiSystems/devguide_examples/blob/driver_deep_dive/adding_examples/driver_deep_dive/src/drivermetadata.xml 0 10 %}
 {% endhighlight %}
-{% github_sample_ref /QualiSystems/devguide_examples/blob/driver_deep_dive/adding_examples/driver_deep_dive/src/drivermetadata.xml %}
 
 Copy the following function to the driver to add a cancellable command:
 
+{% github_sample_ref /QualiSystems/devguide_examples/blob/driver_deep_dive/adding_examples/driver_deep_dive/src/driver.py %}
 {% highlight python %}
 {% github_sample /QualiSystems/devguide_examples/blob/driver_deep_dive/adding_examples/driver_deep_dive/src/driver.py 43 55 %}
 {% endhighlight %}
-{% github_sample_ref /QualiSystems/devguide_examples/blob/driver_deep_dive/adding_examples/driver_deep_dive/src/driver.py %}
 
 Re-install the shell. You'll now see the commands pane has a regular stop button (without an exclamation mark). If you click the
 stop button the _is_cancelled_ property on the _cancellation_context_ object will be updated and the driver will get a chance to
@@ -205,10 +205,10 @@ from cloudshell.api.cloudshell_api import CloudShellAPISession
 To log in we don't need a username/password, since we get a token we can use with the context object.
 Copy and paste the following function:
 
+{% github_sample_ref /QualiSystems/devguide_examples/blob/driver_deep_dive/adding_examples/driver_deep_dive/src/driver.py %}
 {% highlight python %}
 {% github_sample /QualiSystems/devguide_examples/blob/driver_deep_dive/adding_examples/driver_deep_dive/src/driver.py 56 64 %}
 {% endhighlight %}
-{% github_sample_ref /QualiSystems/devguide_examples/blob/driver_deep_dive/adding_examples/driver_deep_dive/src/driver.py %}
 
 This is pretty strait forward but can also probably get repetitive. That's why its encouraged that you use some of the helper
 classes that are provided with the _cloudshell_shell_core_ package. The _CloudShellSessionContext_ allows easily creating
@@ -217,10 +217,11 @@ a session from a context object. To user the helper first import the module by a
 from cloudshell.shell.core.cloudshell_session import CloudShellSessionContext
 
 Then, paste the following function:
+
+{% github_sample_ref /QualiSystems/devguide_examples/blob/driver_deep_dive/adding_examples/driver_deep_dive/src/driver.py %}
 {% highlight python %}
 {% github_sample /QualiSystems/devguide_examples/blob/driver_deep_dive/adding_examples/driver_deep_dive/src/driver.py 66 76 %}
 {% endhighlight %}
-{% github_sample_ref /QualiSystems/devguide_examples/blob/driver_deep_dive/adding_examples/driver_deep_dive/src/driver.py %}
 
 Now that we have a CloudShell API session, there are three main things we may want to do with it from our driver:
 Decrypt a password attribute, update the resource live status or update the console widget with progress report.
