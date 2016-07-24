@@ -63,7 +63,7 @@ to explore the available functions:
 ![API Autocomplete]({{ site.url }}/devguide/assets/api_autocomplete.png){:class="img-responsive"}
 
 In this case we want to get information about the resources and apps in the sandbox, so we can use the _GetReservationDetails_
-function:
+function. The following code will iterate over the resources and apps in the sandbox and print out their names:
 
 {% highlight python %}
 reservation_id = helpers.get_reservation_context_details().id
