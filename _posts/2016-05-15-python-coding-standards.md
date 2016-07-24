@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Python Coding Standards
-category: pla
+category: ref
 order: 7
 ---
 In this article we will describe the coding style for all scripts and drivers. Adhering to the same coding style makes our code more readable,

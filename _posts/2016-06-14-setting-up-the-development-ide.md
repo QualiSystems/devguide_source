@@ -21,7 +21,7 @@ Python, which means that there are many great options for an IDE.
 Some free IDEs to consider:
 
 * [Microsoft Visual Studio Code](https://code.visualstudio.com/)
-* [JetBrains PyCharm](https://code.visualstudio.com/)
+* [JetBrains PyCharm](https://www.jetbrains.com/pycharm/)
 * [GitHub Atom ](https://atom.io/)
 * [Sublime Text ](https://www.sublimetext.com/)
 
@@ -52,4 +52,5 @@ Follow the instructions on the [download page](https://qualisystems-staging.clou
 
 ### (Optional) Install the CloudShell PyCharm plugin (PyCharm)
 
-If you've selected to use PyCharm as your IDE, you can take advantage of the community contributed CloudShell plugin. Follow the installation instructions on the [project repo](https://github.com/QualiSystemsLab/CloudShell-PyCharm-Plugin). Follow steps 1-6 of the listed in the _Step-by-step installation guide_ but don't continue to configure the plugin usage further yet, we'll get to that part later in this guide.
+If you've selected to use PyCharm as your IDE, you can take advantage of the community contributed CloudShell plugin.
+Follow the installation instructions on the [project repo](https://github.com/QualiSystemsLab/CloudShell-PyCharm-Plugin). Follow steps 1-6 of the listed in the _Step-by-step installation guide_ but don't continue to configure the plugin usage further yet, we'll get to that part later in this guide.
