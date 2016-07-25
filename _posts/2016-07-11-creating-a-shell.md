@@ -306,7 +306,7 @@ Reinstall the Shell, refresh and open the attributes side pane again:
 
 ![Shell Image]({{ site.url }}/devguide/assets/shell_custom_attribute.png)
 
-### Things to watch out for when adding custom
+### Things to watch out for when adding custom attribute
 
 1. Attribute name collisions: Avoid common general names like 'Speed' or 'Connected'. Try to include the Shell name, or some other unique element to avoid name collisions.
 2. Only add attributes to your Shell model, avoid changing the Standard models in the _datamodel.xml_ file.

@@ -9,7 +9,7 @@ Welcome to the CloudShell developer guide!
 These pages will take you through all you need to know to become an expert Shell or orchestration developer.
  The guide is intended both for developers taking their first steps with the platform as well as for seasoned CloudShell developers.
 
-### A Shell in NutShell
+### A Shell in a nutshell
 
 Shells enable CloudShell users to interact with a wide range of components including physical devices, virtual appliances and apps.
 
