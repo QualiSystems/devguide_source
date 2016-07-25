@@ -28,3 +28,10 @@ CloudShell has built in flows for setup and teardown, which ensure sandbox apps 
 connected without having to add additional code. Users can extend or fork these scripts, as well as implement additional
 workflows for save/restore, scaling, or more use case specific workflows for anything from performance testing to
 failover simulation or traffic generation.
+
+
+CloudShells repository of both workflows and Shells has been steadily growing both with user contributed and
+out of the box content. By investing in creating clear standards for different CloudShell components, its also becoming
+much easier to share and import. The aim of this developer's guide is to share knowledge and expertise, save time
+and allow more rapidly onboarding new developers. We hope you find the information useful and are looking forward to your
+feedback.
