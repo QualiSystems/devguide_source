@@ -103,6 +103,9 @@ inventory.
 3.	Click Add New and provide a name and an address for your shell resource. For now, since we don’t have an address of an actual server, just leave the address field black.
 4.	Click on Start Discovery to complete the operation.
 
+![Shell Discovery]({{ site.url }}/devguide/assets/hello_world_shell.png)
+
+
 #### Hello world finally
 
 Now that we've instantiated our shell resource, we can finally add it to an environment blueprint and reserve it as a sandbox.
@@ -115,10 +118,12 @@ Now that we've instantiated our shell resource, we can finally add it to an envi
 The commands pane opens.
 6.	To run the “Say Hello” command, in the commands pane, click the play button next to the “Say Hello” command.
 
-To review the results, from the blueprint’s toolbar, click the Output button.
-The Output pane opens displaying the command execution results.
+The common output will appear in the environment output pane.
+
+![Shell Discovery]({{ site.url }}/devguide/assets/hello_world.png)
 
 #### What's next
 
-We've successfully gone through the steps of adding a working Shell.
-In the following sections we'll review of these steps in depth and review the concepts, available options and customizations and how they interface with CloudShell.
+We've successfully gone through the steps of adding a working, if naive, Shell.
+In the following sections we'll review of these steps in depth and review the concepts, available options
+and customizations and how they interface with CloudShell.
