@@ -41,6 +41,7 @@ future: true
 gems:
   - jekyll-sitemap
   - jekyll_github_sample
+  - jekyll-lunr-js-search
 # Exclude non-site files
 exclude: ['bin', 'README.md']
 
