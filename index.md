@@ -19,8 +19,12 @@ From a developer's perspective, a 'Shell' is a plugin which can used to extend C
 * New commands can be added to sandbox components
 * New apps types can be added to blueprints and deployed in sandboxes
 
+![Shell Discovery]({{ site.url }}/devguide/assets/diagram.png){: .center-image }
+
 ### Orchestration Scripts
 
-Orchestration scripts are the workflows behind the scenes which facilitate sandbox provisioning and cleanup as well as
-custom workflows which can be added to the blueprint. CloudShell contains some out of the box scripts but its easy to both extend
-their behavior and add new custom workflows to implement new use cases.
+Orchestration scripts are a feature in CloudShell which allows implementing sandbox workflows.
+CloudShell has built in flows for setup and teardown, which ensure sandbox apps and resources are powered on and
+connected without having to add additional code. Users can extend or fork these scripts, as well as implement additional
+workflows for save/restore, scaling, or more use case specific workflows for anything from performance testing to
+failover simulation or traffic generation.
