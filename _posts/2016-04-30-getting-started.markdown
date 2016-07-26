@@ -55,10 +55,10 @@ def say_hello(self, context, name):
 We'll also want to add basic metadata including aliases and descriptions. The way to do that is by
 editing the drivermetadata.xml file located in the same folder.
 
-Open the drivermetadata.xml file in your preferred IDE and change it contents as follows:
+Open the drivermetadata.xml file in your preferred IDE and replace the highlighted section so that it matches
+the test below:
 
-{% highlight xml %}
-
+{% prism python linenos=3-12 %}
 <Driver Description="Describe the purpose of your CloudShell shell" MainClass="driver.LinuxServerShellDriver" Name="LinuxServerShellDriver" Version="1.0.0">
     <Layout>
         <Category Name="Samples">
@@ -72,7 +72,7 @@ Open the drivermetadata.xml file in your preferred IDE and change it contents as
     </Layout>
 </Driver>
 
-{% endhighlight %}
+{% endprism %}
 
 There is no need to get into too many details at this stage. We'll dive more deeply into the drivermetadata.xml file in a later section of this guide. For now its sufficient to understand that we use this file to provide more CloudShell specific information regarding how to interpret and display the driver commands and their parameters.
 

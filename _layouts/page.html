@@ -9,3 +9,17 @@ layout: default
 </div>
 
 {{ content }}
+
+<br><br><br>
+<hr>
+<h4>
+    Related Posts
+</h4>
+
+<ul >
+    {% for post in site.related_posts limit 4 %}
+        <li><a href="{{ BASE_PATH }}/devguide/{{ post.url }}">{{ post.title }}</a></li>
+           {{ post.excerpt}}
+               <a href="{{ post.url }}">Read more...</a><br><br>
+    {% endfor %}
+</ul>

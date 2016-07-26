@@ -2,7 +2,7 @@
 layout: page
 title: Debugging Driver Commands
 category: tut
-order:  8
+order:  9
 ---
 As a part of developing the Shell driver you'll probably need to debug it in order to
 troubleshoot issues or get actual results from the app/device to understand how the code behaves.

@@ -3,6 +3,9 @@ layout: page
 title: Implementing Discovery for Inventory Shells
 category: tut
 order:  7
+tags:
+    - discovery
+    - SNMP
 ---
 Automated discovery makes it easy to import physical inventory devices into CloudShell
 by using automation to read their internal structure and attributes.

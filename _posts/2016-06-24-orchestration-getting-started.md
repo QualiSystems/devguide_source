@@ -3,6 +3,8 @@ layout: page
 title: Getting Started
 category: orch
 order: 1
+tags:
+    - orchestration
 ---
 Orchestration scripts can enable automating sandbox workflows. You can use orchestration scripts to create setup
 and teardown procedures as well as other custom workflows that can be made available in the sandbox. Examples would include

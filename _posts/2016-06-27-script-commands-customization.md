@@ -4,6 +4,8 @@ title: Script commands visibility and usability
 category: orch
 date: "2016-04-30 13:02:32 +0300"
 order: 6
+tags:
+    - orchestration
 ---
 You can control many aspect of how the orchestration commands appear and behave
 in CloudShell by editing the script from the scripts management page.
