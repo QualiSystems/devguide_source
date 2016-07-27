@@ -3,6 +3,7 @@ layout: page
 title: The Shell Project Guide
 category: tut
 order: 3
+comments: true
 ---
 When starting a new Shell, the first thing you'll want to do is generate the Shell project files and directory structure.
 Thankfully, this happens automatically when you use the ShellFoundry CLI tool. In this section, we'll look into the generated

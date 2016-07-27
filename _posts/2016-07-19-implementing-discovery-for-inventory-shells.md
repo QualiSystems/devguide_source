@@ -3,6 +3,7 @@ layout: page
 title: Implementing Discovery for Inventory Shells
 category: tut
 order:  7
+comments: true
 tags:
     - discovery
     - SNMP

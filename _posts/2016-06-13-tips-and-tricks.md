@@ -3,6 +3,7 @@ layout: page
 title: Tips and Tricks
 category: tut
 order: 11
+comments: true
 ---
 
 ### Managing the CloudShell session

@@ -2,6 +2,7 @@
 layout: page
 title: Modeling the Shell
 category: tut
+comments: true
 order:  4
 ---
 

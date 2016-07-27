@@ -2,6 +2,7 @@
 layout: page
 title: CloudShell's OOB Orchestration
 category: orch
+comments: true
 order:  9
 ---
 Every CloudShell install comes bundled with default setup and teardown workflows out of the box. These reflect
@@ -29,4 +30,4 @@ Be sure not to remove any step in the setup workflow. However, you can add your 
 ### Example adding basic sequencing to app deployment
 
 In this example, we want some apps - say the domain controllers - to be provisioned first.
-We assume an _order_rank_ attribute was added to all of those apps 
+We assume an _order_rank_ attribute was added to all of those apps

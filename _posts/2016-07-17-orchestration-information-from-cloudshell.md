@@ -2,6 +2,7 @@
 layout: page
 title: Getting information from CloudShell
 category: orch
+comments: true
 order: 2
 ---
 

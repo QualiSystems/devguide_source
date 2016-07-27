@@ -2,6 +2,7 @@
 layout: page
 title: Driver Deep Dive
 category: tut
+comments: true
 order:  6
 ---
 

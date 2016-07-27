@@ -2,6 +2,7 @@
 layout: page
 title: Getting information from CloudShell
 category: tut
+comments: true
 order: 5
 ---
 A typical Shell driver, will first get crucial information from the sandbox and then use that information

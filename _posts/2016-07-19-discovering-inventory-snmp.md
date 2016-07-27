@@ -2,6 +2,7 @@
 layout: page
 title: Discovering Inventory using SNMP
 category: tut
+comments: true
 order:  8
 tags:
     - discovery

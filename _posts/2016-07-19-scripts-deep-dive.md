@@ -2,6 +2,7 @@
 layout: page
 title: Scripts Deep Dive
 category: orch
+comments: true
 order:  6
 ---
 

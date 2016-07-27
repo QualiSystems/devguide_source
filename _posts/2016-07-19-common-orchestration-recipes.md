@@ -2,6 +2,7 @@
 layout: page
 title: Common Orchestration Script Recipes
 category: orch
+comments: true
 order:  9
 ---
 

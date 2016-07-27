@@ -2,6 +2,7 @@
 layout: page
 title: Debugging Driver Commands
 category: tut
+comments: true
 order:  9
 ---
 As a part of developing the Shell driver you'll probably need to debug it in order to

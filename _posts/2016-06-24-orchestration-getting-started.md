@@ -3,6 +3,7 @@ layout: page
 title: Getting Started
 category: orch
 order: 1
+comments: true
 tags:
     - orchestration
 ---
