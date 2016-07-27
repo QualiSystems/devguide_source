@@ -1,12 +1,12 @@
 # Site title and subtitle. This is used in _includes/header.html
-title: 'CloudShell Shell Developer Guide'
+title: 'CloudShell Developer Guide'
 subtitle: ''
 
 # if you wish to integrate disqus on pages set your shortname here
 disqus_shortname: ''
 
 # if you use google analytics, add your tracking id here
-google_analytics_id: ''
+google_analytics_id: 'UA-81468206-1'
 
 # Enable/show navigation. There are there options:
 #   0 - always hide

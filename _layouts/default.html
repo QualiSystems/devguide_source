@@ -12,7 +12,9 @@
         <link rel="stylesheet" href="{{ site.baseurl }}/css/main.css">
         <link rel="stylesheet" href="{{ site.baseurl }}/css/prism.css">
         <link rel="stylesheet" href="{{ site.baseurl }}/css/samples.css">
-
+        {% if jekyll.environment == 'production' %}
+        {% include google_analytics.html %}
+        {% endif %}
 
     </head>
     <body>
