@@ -5,7 +5,7 @@ category: orch
 order: 2
 ---
 
-Information about the sandbox you're script is running on and its components is automatically available in your script
+Information about the sandbox your script is running on and its components is automatically available in your script
 as an environment variable. The standard way to get that information in Python is to use the ‘os’ package.
 
 {% highlight python %}
@@ -95,7 +95,7 @@ version to install on it. In this case, this parameter is not used to select the
 selected resource in the active environment. Additional info parameters are accessing using the _RESOURCEADDITIONALINFO_
 environment variable.
 
- As with reservations, we've helpers to get the resource information in Python using the same object we used to get the
+ As with reservations, we can use some helper modules to get the resource information in Python using the same object we used to get the
  reservation details:  
 
  {% highlight python %}

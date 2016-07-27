@@ -60,7 +60,7 @@ The information on how to display the driver functions in CloudShell is stored i
 
 <a name="customize_names"></a>
 
-### Changeing the function display name and description
+### Changing the function display name and description
 
 For the first round of customizations, we'll work on the user facing function and improve the naming of the command and its parameters as they appear to the user in CloudShell. Open the _drivermetadata.xml_ file and add the following text to it:
 

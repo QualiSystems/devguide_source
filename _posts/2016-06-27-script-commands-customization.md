@@ -18,7 +18,7 @@ Create a new Python file and name it _customization_test.py_. Add the following 
 
 {% highlight python %}
 
-Open the Managemeimport cloudshell.helpers.scripts.cloudshell_scripts_helpers as helpers
+cloudshell.helpers.scripts.cloudshell_scripts_helpers as helpers
 import cloudshell.helpers.scripts.cloudshell_dev_helpers as dev_helpers
 from cloudshell.api.cloudshell_api import CloudShellAPISession
 

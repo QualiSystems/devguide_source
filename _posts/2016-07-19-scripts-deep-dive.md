@@ -10,7 +10,7 @@ used most effectively for CloudShell orchestration.
 
 #### How CloudShell handles scripts
 
-CloudShell runs Python scripts in a very simple and strait-forward way using by running it with a Python executable.
+CloudShell executes a Python script in a very simple and straightforward way by simply running it with a Python executable.
 To send information to the script, CloudShell sets environment variables in the scope of the script process.
 These environment variables include information about the sandbox reservation, as well as the script parameters.
 The script output is returned as the command result. If an exception is raised,

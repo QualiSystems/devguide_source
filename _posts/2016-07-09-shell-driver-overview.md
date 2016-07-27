@@ -16,14 +16,14 @@ administrative operations or scaling up or down.
 #### What are Shell drivers
 
 A Shell driver is an optional component in the Shell project that allows adding commands to Shells.
-CloudShell creates and manage dedicated instances of the driver to communicate with each physical
+CloudShell creates and manages dedicated instances of the driver to communicate with each physical
 resource or app. When the user executes a command, either from the Sandbox UI or the API, CloudShell
 ensures a driver for the target resource or app is currently running, then sends the command to the driver and
 relays back the response.
 
 The driver can contain multiple files and folders but only one file contains a class which is considered to
 be the main driver class. This main class defines the Shell commands the driver provides.
-The default ShellFoundry template will generate ta main driver class and place it inside the _driver.py_
+The default ShellFoundry template will generate the main driver class and place it inside the _driver.py_
 file located in the _src_ directory. The generated class name will correspond to the Shell name, which is
 also the CloudShell convention.
 
@@ -37,7 +37,10 @@ object and will from that point on communicate with it to handle any commands.
 
 Inventory and app shell drivers behave a bit differently in terms of their lifecycle:
 
-* **App Shells** - As apps are deployed in the scope of the sandbox, the app shell driver is also instanced for the deployed app in the sandbox. Each app deployed in a sandbox will have its own driver instance managed by CloudShell. This means that if there are currently twenty active sandboxes and a MySql app has been deployed in each one, twenty shell driver instances will created, one to talk with each app in the sandbox.
+* **App Shells** - As apps are deployed in the scope of the sandbox, the app shell driver is also instanced for
+    the deployed app in the sandbox. Each app deployed in a sandbox will have its own driver instance managed by
+    CloudShell. This means that if there are currently twenty active sandboxes and a MySql app has been deployed
+    in each one, twenty shell driver instances will be created, one to talk with each app in the sandbox.
 
 ![Shell Commands]({{ site.url }}/devguide/assets/app_shell_arch.png)
 

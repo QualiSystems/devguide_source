@@ -10,7 +10,7 @@ Shell drivers. To get started, we should first create a Shell project to experim
 Once again we'll use ShellFoundry.
 
 {% highlight bash %}
-shellfoundry new driver-example --template=resource-shell-clean
+shellfoundry new driver-example --template=resource-clean
 cd driver_example
 {% endhighlight %}
 
@@ -210,9 +210,7 @@ Copy and paste the following function:
 {% github_sample /QualiSystems/devguide_examples/blob/driver_deep_dive/adding_examples/driver_deep_dive/src/driver.py 56 64 %}
 {% endhighlight %}
 
-This is pretty strait forward but can also probably get repetitive. That's why its encouraged that you use some of the helper
-classes that are provided with the _cloudshell_shell_core_ package. The _CloudShellSessionContext_ allows easily creating
-a session from a context object. To user the helper first import the module by adding this to the _driver.py_ imports:
+This is pretty strait forward but can also probably get repetitive. The  the helper classes that are provided with the _cloudshell_shell_core_ package are intended help get rid some of that boilerplate. The _CloudShellSessionContext_ allows easily creating a session from a context object. To user the helper first import the module by adding this to the _driver.py_ imports:
 
 from cloudshell.shell.core.cloudshell_session import CloudShellSessionContext
 

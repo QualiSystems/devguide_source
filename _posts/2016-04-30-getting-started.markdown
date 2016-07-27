@@ -42,7 +42,7 @@ Finally, lets make sure all of the basic package requirements for the shell are 
 
 #### Make a minor change to the driver
 
-The source control for your shell is managed under the _src_ folder. The generating the project template, ShellFoundry already created a driver template as well under this folder. Open the file _driver.py_ in your preferred IDE/editor. You'll see it already contains a driver for our shell with an example commands already in place. We'll soon implement our first command in this file. For now, lets just make sure everything is in working order by adding a simple 'hello world'.
+The source control for your shell is managed under the _src_ folder. When generating the project template, ShellFoundry already created a driver template as well under this folder. Open the file _driver.py_ in your preferred IDE/editor. You'll see it already contains a driver for our shell with an example commands already in place. We'll soon implement our first command in this file. For now, lets just make sure everything is in working order by adding a simple 'hello world'.
 
 Remove the 'example_function' function and replace it with the following code:
 {% highlight python %}
@@ -100,7 +100,7 @@ inventory.
 
 1.	Open and login to your local CloudShell portal.
 2.	In the top menu, click the Inventory dashboard.
-3.	Click Add New and provide a name and an address for your shell resource. For now, since we don’t have an address of an actual server, just leave the address field black.
+3.	Click Add New and provide a name and an address for your shell resource. For now, since we don’t have an address of an actual server, just leave the address field blank.
 4.	Click on Start Discovery to complete the operation.
 
 ![Shell Discovery]({{ site.url }}/devguide/assets/hello_world_shell.png)

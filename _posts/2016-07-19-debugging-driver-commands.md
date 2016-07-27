@@ -103,7 +103,7 @@ the scenes is that its waiting for CloudShell to attach a debugger to the Python
 
 ![Run a command]({{ site.url }}/devguide/assets/command_running.png){:class="img-responsive"}
 
-Now set up a breakpoint in the initialize or in one of the other functions and run 'Tools/Attach to process' (in PyCharm).
+Now set up a breakpoint in the initialize or in one of the other functions and run 'Run/Attach to local process' (in PyCharm).
 Select the right Python process based on the path of the virtual environment, which will contain the driver name.
 Your IDE should transition to debug mode and you should be able to step over/into functions and access runtime data.
 
