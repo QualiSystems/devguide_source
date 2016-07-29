@@ -1,10 +1,13 @@
 # Site title and subtitle. This is used in _includes/header.html
 title: 'CloudShell Developer Guide'
 subtitle: ''
-
+description: 'CloudShell is a platform for Cloud Sandbox automation for devops and tests. This is the developer guide and knowledgebase for CloudShell Shell and orchestration scripts developers.'
+url: https://qualisystems.github.io
 # if you wish to integrate disqus on pages set your shortname here
 disqus_shortname: ''
-
+twitter:
+  username: qualisystems
+logo: '/assets/Quali Logo.png'
 # if you use google analytics, add your tracking id here
 google_analytics_id: 'UA-81468206-1'
 
@@ -42,6 +45,7 @@ gems:
   - jekyll-sitemap
   - jekyll_github_sample
   - jekyll-lunr-js-search
+  - jekyll-seo-tag
 # Exclude non-site files
 exclude: ['bin', 'README.md']
 

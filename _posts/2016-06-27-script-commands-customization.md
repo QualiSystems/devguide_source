@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Script commands visibility and usability
+title: Script commands Visibility and Usability
 category: orch
 date: "2016-04-30 13:02:32 +0300"
 order: 6

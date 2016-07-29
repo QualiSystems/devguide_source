@@ -52,7 +52,7 @@ To install ShellFoundry, simply open a new shell window and type in the followin
 To deploy, test and debug your automation you'll need to have a working CloudShell SDK.
 The CloudShell SDK is free for developers and can be downloaded from our
 [community website](http://community.quali.com/spaces/12/index.html).
-Follow the instructions on the [download page](https://qualisystems-staging.cloud.answerhub.com/spaces/365/index.html) to get a local development installation of CloudShell up and running.
+Follow the instructions on the [download page](http://info.quali.com/cloudshell-developer-edition-download) to get a local development installation of CloudShell up and running.
 
 ### (Optional) Install the CloudShell PyCharm plugin (PyCharm)
 

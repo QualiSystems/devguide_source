@@ -7,7 +7,7 @@
 
         <title>{{ site.title }}{% if page.title %} : {{ page.title }}{% endif %}</title>
         <meta name="description" content="{{ site.subtitle }}">
-
+        <link rel="shortcut icon" type="image/png" href="/devguide/favicon.png?">
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" href="{{ site.baseurl }}/css/main.css">
         <link rel="stylesheet" href="{{ site.baseurl }}/css/prism.css">
@@ -15,7 +15,7 @@
         {% if jekyll.environment == 'production' %}
         {% include google_analytics.html %}
         {% endif %}
-
+        {% seo %}
     </head>
     <body>
 

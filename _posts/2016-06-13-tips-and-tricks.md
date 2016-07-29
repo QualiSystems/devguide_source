@@ -4,6 +4,9 @@ title: Tips and Tricks
 category: tut
 order: 11
 comments: true
+tags:
+    - api
+    - logging
 ---
 
 ### Managing the CloudShell session

@@ -1,9 +1,11 @@
 ---
 layout: page
-title: Getting information from CloudShell
+title: Getting Information from CloudShell
 category: orch
 comments: true
 order: 2
+tags:
+    - api
 ---
 
 Information about the sandbox your script is running on and its components is automatically available in your script
@@ -40,8 +42,8 @@ This will return a Python object you can use to query the same reservation infor
 
 ### Getting the sandbox information using the API
 
-A common use case for a script is to get a list of the different apps and resources in the sandbox to be able
-to call additional commands on API functions on them. To get that information we can use the CloudShellAPI.
+A common use case for a script is to get a list of the different Apps and resources in the sandbox, to be able
+to call additional commands or API functions on them. To get that information we can use the CloudShellAPI.
 
 To start a CloudShell API session, we need connectivity details to the Quali server. These details are also available
 as an environment variable in your script called 'qualiConnectivityContext'. As with the reservation information,
@@ -63,8 +65,8 @@ to explore the available functions:
 
 ![API Autocomplete]({{ site.url }}/devguide/assets/api_autocomplete.png){:class="img-responsive"}
 
-In this case we want to get information about the resources and apps in the sandbox, so we can use the _GetReservationDetails_
-function. The following code will iterate over the resources and apps in the sandbox and print out their names:
+In this case we want to get information about the resources and Apps in the sandbox, so we can use the _GetReservationDetails_
+function. The following code will iterate over the resources and Apps in the sandbox and print out their names:
 
 {% highlight python %}
 reservation_id = helpers.get_reservation_context_details().id
@@ -84,16 +86,16 @@ The user inputs provided by the user when he reserved the blueprint are also a c
 accessed by your script. This data is stored in several environment variables based on the input type:
 
 *  **Global inputs** - These inputs are a part of the reservation form and can represent general data you wish to
-collect form the user for your automation. They can also be used to group together multiple other inputs as one data entry.
+collect from the user for your automation. They can also be used to group together multiple other inputs as one data entry.
 You can access these using the _GLOBALINPUTS_ environment variable.
 
-* **Resource requirements** - These are inputs related to abstract resource. An abstract resource in CloudShell allows you to declare a generic spec or requirements for a resource rather than explicitly using a specific one. When customizing such an abstract resource you can choose to publish some of its properties for the user to choose, so as to make it more flexible. For example, for a physical device, instead of specifying the model in the environment you can set that as a parameter with a dropdown list for the user to select from when reserving it.
-Resource requirements are accessing using the _RESOURCEREQUIREMENTS_ environment variable.
+* **Resource requirements** - These are inputs related to abstract resource. An abstract resource in CloudShell allows you to declare a generic spec or requirements for a resource rather than explicitly using a specific one. When customizing such an abstract resource you can choose to make some of its properties available for the user to select, so as to make it more flexible. For example, for a physical device, instead of specifying the model in the blueprint you can set that as a parameter with a dropdown list for the user to select from when reserving it.
+Resource requirements are accessed using the _RESOURCEREQUIREMENTS_ environment variable.
 
 * **Resource additional info** -  When customizing an abstract resource you can also choose to add some parameters to the
 resource that are not requirements but rather instructions on what to do with it. An example would be specifying an OS
 version to install on it. In this case, this parameter is not used to select the resource but rather to operate on the
-selected resource in the active environment. Additional info parameters are accessing using the _RESOURCEADDITIONALINFO_
+selected resource in the active environment. Additional info parameters are accessed using the _RESOURCEADDITIONALINFO_
 environment variable.
 
  As with reservations, we can use some helper modules to get the resource information in Python using the same object we used to get the
@@ -111,7 +113,7 @@ additiona_info_value = parameters.resource_additional_info['resource1']['input_n
 
 ### Getting script input parameters
 
-You can add input parameters to a script by editing the it from the script management page.
+You can add input parameters to a script by editing the it from the Script Management dashboard.
 The input parameter values are also provided automatically to your script. CloudShell sets up an environment variable with
 the same name as the parameter.
 

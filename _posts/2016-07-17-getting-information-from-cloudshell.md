@@ -1,9 +1,11 @@
 ---
 layout: page
-title: Getting information from CloudShell
+title: Getting Information from CloudShell
 category: tut
 comments: true
 order: 5
+tags:
+    - api
 ---
 A typical Shell driver, will first get crucial information from the sandbox and then use that information
 to access the device it controls. Some common information would be the resource or app's address, attributes

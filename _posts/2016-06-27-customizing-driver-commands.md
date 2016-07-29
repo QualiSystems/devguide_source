@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Commands visibility and usability
+title: Commands Visibility and Usability
 category: tut
 date: "2016-04-30 13:02:32 +0300"
 order: 6
