@@ -10,6 +10,12 @@ pre, code, pre code {
     font-size: 0.85em;
 }
 
+.search_ref {
+    font-size: 12px
+}
+.main_search {
+    width: 500px
+}
 .highlight {
     background-color: #f9f9f9;
 }

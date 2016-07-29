@@ -1,0 +1,33 @@
+.github-sample-reference {
+    width: 100%;
+    position: relative;
+    background-color: #eee;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    margin-bottom: -6px;
+    font-size: 11px;
+    color: #666;
+
+}
+
+.github-sample-reference .author-info {
+    float:right;
+    padding: 10px;
+}
+
+.github-sample-reference .meta-info {
+    padding: 10px;
+    word-wrap: break-word;
+}
+
+@media screen and (max-width: 980px) {
+    .github-sample-reference .author-info {
+        display: none;
+    }
+}
+
+.center-image
+{
+    margin: 0 auto;
+    display: block;
+}

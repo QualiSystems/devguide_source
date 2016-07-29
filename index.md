@@ -1,18 +1,37 @@
 ---
 layout: default
-title: "Jekyll Docs Template"
+title: "Introduction"
 ---
 
-### Get Started
+## Welcome
 
-Start by [creating a new post](http://jekyllrb.com/docs/posts/) one of the categories listed in `_config.yml`. It will appear in the navigation on the left once recompiled. Or use the supplied script to make creating pages easier:
+Welcome to the CloudShell developer guide!
+These pages will take you through all you need to know to become an expert Shell or orchestration developer.
+ The guide is intended both for developers taking their first steps with the platform as well as for seasoned CloudShell developers.
 
-```bash
-ruby bin/jekyll-page "Some Page Title" ref
-```
+### A Shell in a nutshell
 
-#### Don't Forget
+Shells enable CloudShell users to interact with a wide range of components including physical devices, virtual appliances and apps.
 
-- Add your own content to this page (i.e. `index.md`) and change the `title`
-- Change `title` and `subtitle` defined in `config.yml` for your site
-- Set the `baseurl` in `_config.yml` for your repo if deploying to GitHub pages
+From a developer's perspective, a 'Shell' is a plugin which can used to extend CloudShell. Installing a shell into CloudShell opens up new options for users and administrators. Just to name a few examples:
+
+* New physical components types can be instantiated in CloudShell's inventory.
+* New commands can be added to sandbox components
+* New apps types can be added to blueprints and deployed in sandboxes
+
+![Shell Discovery]({{ site.url }}/devguide/assets/diagram.png){: .center-image }
+
+### Orchestration Scripts
+
+Orchestration scripts are a feature in CloudShell which allows implementing sandbox workflows.
+CloudShell has built in flows for setup and teardown, which ensure sandbox apps and resources are powered on and
+connected without having to add additional code. Users can extend or fork these scripts, as well as implement additional
+workflows for save/restore, scaling, or more use case specific workflows for anything from performance testing to
+failover simulation or traffic generation.
+
+
+CloudShells repository of both workflows and Shells has been steadily growing both with user contributed and
+out of the box content. By investing in creating clear standards for different CloudShell components, its also becoming
+much easier to share and import. The aim of this developer's guide is to share knowledge and expertise, save time
+and allow more rapidly onboarding new developers. We hope you find the information useful and are looking forward to your
+feedback.

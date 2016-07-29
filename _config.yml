@@ -1,43 +1,51 @@
 # Site title and subtitle. This is used in _includes/header.html
 title: 'CloudShell Developer Guide'
 subtitle: ''
-
+description: 'CloudShell is a platform for Cloud Sandbox automation for devops and tests. This is the developer guide and knowledgebase for CloudShell Shell and orchestration scripts developers.'
+url: https://qualisystems.github.io
 # if you wish to integrate disqus on pages set your shortname here
 disqus_shortname: ''
-
+twitter:
+  username: qualisystems
+logo: '/assets/Quali Logo.png'
 # if you use google analytics, add your tracking id here
-google_analytics_id: ''
+google_analytics_id: 'UA-81468206-1'
 
 # Enable/show navigation. There are there options:
 #   0 - always hide
 #   1 - always show
 #   2 - show only if posts are present
-navigation: 2
+navigation: 1
 
 # URL to source code, used in _includes/footer.html
-codeurl: 'https://github.com/bruth/jekyll-docs-template'
+codeurl: 'https://github.com/qualisystems'
 
 # Default categories (in order) to appear in the navigation
 sections: [
-    ['sta', 'Getting Started'],
-    ['tut', 'Tutorial'],
-    ['pla', 'Platform'],
+    ['set', 'Setting up for development'],
+    ['tut', 'Extending CloudShell with Shells'],
+    ['orch', 'Orchestration scripts'],
     ['ref', 'Reference']
 ]
 
 # Keep as an empty string if served up at the root. If served up at a specific
 # path (e.g. on GitHub pages) leave off the trailing slash, e.g. /my-project
-baseurl: ''
+baseurl: '/devguide'
 
 # Dates are not included in permalinks
 permalink: none
 
 # Syntax highlighting
-highlighter: rouge
+highlighter: prism
 
 # Since these are pages, it doesn't really matter
 future: true
 
+gems:
+  - jekyll-sitemap
+  - jekyll_github_sample
+  - jekyll-lunr-js-search
+  - jekyll-seo-tag
 # Exclude non-site files
 exclude: ['bin', 'README.md']
 
