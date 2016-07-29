@@ -2,11 +2,12 @@
 layout: page
 title: Modeling the Shell
 category: tut
+comments: true
 order:  4
 ---
 
 By defining how a Shell is modeled in CloudShell we can control how its represented in CloudShell. If you've gone through the steps of the
-[Getting Started](/devguide/tut/getting-started.html) walkthrough you may have noticed that with little effort we've already managed
+[Getting Started](/devguide/tut/getting-started.html) tutorial you may have noticed that with little effort we've already managed
 to model a new type of entity. In this section we'll take a more in depth look at how we can customize how the Shell resources or deployed
 apps are viewed and behave in CloudShell. In the following sections we'll also look into how to add commands by writing a driver, but
 its important to note that even this initial step is enough in order to install and use a new Shell in CloudShell.
@@ -30,36 +31,40 @@ To give a few examples:
 Each standard has one or more ShellFoundry templates associated with it, so the best way to create a compliant Shell is to use the ShellFoundry
 template parameter.
 
-To get a list of the possible templates, run the following from command line:
+To get a list of the possible templates, run the following from Command Line:
 
 {% highlight bash %}
 shellfoundry list
 {% endhighlight %}
 
-For this example, we'll use the resource-shell-clean template, which is a clean implementation of the Shell basic standard, a generic standard for any
-standalone Shell. We'll look into some of the standards at greater depth in future sections of this guide.
+For this example, we'll use the resource-clean template, which is a clean implementation of the Shell's basic standard, a generic standard for any
+standalone Shell. We'll look into some of the standards in greater depth in future sections of this guide.
 
-Run the following from command line:
+Run the following from Command Line:
 
 {% highlight bash %}
-shellfoundry new model_example --template=resource-shell-clean
+shellfoundry new model_example --template=resource-clean
 cd model_example
 {% endhighlight %}
 
-To complete the basic setup, create an instance of that Shell in the Inventory page of the CloudShell and reserve
-the Shell physical resource. If you'd like to review again the steps of how to do that,
+To complete the basic setup, create a resource for that Shell in the Inventory page of the CloudShell and reserve
+it. If you'd like to review again the steps of how to do that,
 please refer to the [Getting Started](/devguide/tut/getting-started.html) guide.
 
 ### The Shell Datamodel
 
 As you may have seen in previous examples, by using ShellFoundry we've generated a Shell project which can be deployed to CloudShell.
-This time, however, we'll take a look at some of the important settings of the model and what can be customized.
-The main Shell model definition can be found in the shell_model.xml file found in the _datamodel_ directory.
+This time, however, we'll take a look at some of the important settings of the Shell model and demonstrate can be customized.
 
-There are two important files located in the _datamodel_ directory. One, _datamodel.xml_ represents the CloudShell Standard.
-You should avoid modifying the _datamodel.xml_ file as it represents definitions that are a part of the CloudShell standard relevant
-to the Shell type. It is helpful, however, to review this file in order to understand how it is structured
+There are two important files located in the _datamodel_ directory which are relevant to how the Shell is modeled.
+
+1. The _datamodel.xml_ represents the CloudShell Standard. You should avoid modifying the _datamodel.xml_ file as
+it represents definitions that are a part of the CloudShell standard relevant to the Shell type.
+It is helpful, however, to review this file in order to understand how it is structured
 and the type of data it presents.
+
+2. The _shell_model.xml_ file represents the modeling definitions of your specific Shell and is where we'll make most of the changes.
+
 
 #### Resource Families
 
@@ -81,12 +86,10 @@ a model and each model belongs to a family
 * Examples of deployed app shell models: Windows OS, MySQL, TeraVM TG Controller, JMeter
 * Examples of generic component models: Resource Port, Generic Power Port
 
-In the Shell project structure, the _datamodel.xml_ contains the models which are a part of the Standard. These are by definition
-not vendor, device or app specific but more general components. Looking at the models defined in the _datamodel.xml_ file
+In the Shell project structure, the _datamodel.xml_ contains the models which are a part of the Standard our Shell
+implements. These are by definition not vendor, device or app specific but more general components. Looking at the models defined in the _datamodel.xml_ file
 of our Shell we can similarly see it contains some very basic building blocks like _Resource Port_ and _Power Port_. Again,
-each of them has their attribute
-The model for the Shell we're developing, is actually not a part of the _datamodel.xml_ file. The reason for that is that our
-new Shell we are development is not a part of the standard, it is pointing to or implementing the standard.
+each of them has their attribute The model for the Shell we're developing, is actually not a part of the _datamodel.xml_ file. Our Shell just points to and extends the standard.
 
 Our Shell is actually defined in the _shell_model.xml_ file. The reason for the separation is that the _shell_model.xml_ file
 is actually the one we'll mostly want to extend or customize. By default, when we generated the Shell via ShellFoundry,
@@ -146,8 +149,8 @@ The _shell_model.xml_ file which was automatically generated for our basic resou
 </Shell>
 {% endhighlight %}
 
-As you can see in the XML code above, our new Shell defines a unique model ("ModelExample"). The model already has some
-associated with it which are defined in the Standard. We can customize the Shell datamodel in several way in this file.
+As you can see in the XML code above, our new Shell defines a unique model ("ModelExample").
+The model already has some attributes associated with it which are defined in the Standard. We can customize the Shell datamodel in several way in this file.
 
 ### Changing the Shell image and description
 
@@ -190,7 +193,7 @@ The _shell_model.xml_ has a dedicated element just for custom attributes which y
 in addition to those provided by the standard. This element is currently empty and is the _\<ShellAttributes>_ element.
 We can add some attribute definitions here to extend the Shell with some custom attributes.
 
-If we open up the attributes side pane in the sandbox page for the Shell resource we'll see the default attributes which are
+If we open up the Attributes side pane in the sandbox page for the Shell resource we'll see the default attributes which are
 as visible to end users on the web.
 
 ![Shell Image]({{ site.url }}/devguide/assets/shell_attributes_pane.png)
@@ -238,7 +241,7 @@ want to specify a default value, you should still add this element with a blank 
 {% endhighlight %}
 
 
-To test whether this worked lets re-install the Shell from command line:
+To test whether this worked lets re-install the Shell from Command Line:
 {% highlight bash %}
 shellfoundry install
 {% endhighlight %}
@@ -284,7 +287,7 @@ linked to it.
 
 ### Restricting attributes to specific values
 
-Its possible to improve usability an unnecessary human errors by restricting the possible inputs for an attribute to a
+Its possible to improve the user experience by restricting the possible inputs for an attribute to a
 given set of values. To avoid unpredictable results if a user typed in _OK_ instead of _Yes_, for example, or just had a typo.
 Any restrictions we add in this scope will be for this specific Shell only. Other Shells using the same attribute will not be
 affected. To add an attribute restriction, add the following to the _\<AttachedAttribute>_ element:
@@ -301,12 +304,12 @@ affected. To add an attribute restriction, add the following to the _\<AttachedA
 </AttachedAttribute>
 {% endhighlight %}
 
-Notice how its important to remember to add the current value as one of the options for the possible values.
+It is important to remember to add the current value as one of the options for the possible values.
 Reinstall the Shell, refresh and open the attributes side pane again:
 
 ![Shell Image]({{ site.url }}/devguide/assets/shell_custom_attribute.png)
 
-### Things to watch out for when adding custom
+### Things to watch out for when adding custom attribute
 
 1. Attribute name collisions: Avoid common general names like 'Speed' or 'Connected'. Try to include the Shell name, or some other unique element to avoid name collisions.
 2. Only add attributes to your Shell model, avoid changing the Standard models in the _datamodel.xml_ file.

@@ -2,25 +2,26 @@
 layout: page
 title: Scripts Deep Dive
 category: orch
+comments: true
 order:  6
 ---
 
-In this section we'll take a more in depth view at scripts and how they can be
+In this section we'll take a more in-depth view at scripts and how they can be
 used most effectively for CloudShell orchestration.
 
 #### How CloudShell handles scripts
 
-CloudShell runs Python scripts in a very simple and strait-forward way using by running it with a Python executable.
+CloudShell executes a Python script in a very simple and straightforward way by simply running it with a Python executable.
 To send information to the script, CloudShell sets environment variables in the scope of the script process.
 These environment variables include information about the sandbox reservation, as well as the script parameters.
 The script output is returned as the command result. If an exception is raised,
-or if a non zero result code is returned by the script, the execution will be considered a failure.
+or if a non-zero result code is returned by the script, the execution will be considered a failure.
 
 #### Using a main function and packaging multiple files
 
-As scripts become more complex, instead of structuring them as one big function, its recommended
+As scripts become more complex, instead of structuring them as one big function, it is advisable
 to create a _main_ function and separate the rest of the logic to different functions. Python
-requires to include some boilerplate code in addition to the _main_ function to make this work.
+requires including some boilerplate code in addition to the _main_ function to make this work.
 Here is some example code demonstrating how to use _main_ functions with scripts:
 
 {% highlight python %}
@@ -48,8 +49,8 @@ if __name__ == "__main__":
 {% endhighlight %}
 
 As you're writing more complex orchestration scripts, it may become prudent to also separate
-the code to multiple files. To do that, we can take advantage of Python's ability to support executing zip files
-containing multiple scripts. The only requirement, is that one of the files is name _\_\_main\_\_.py, which is how
+the code to multiple files. To do that, we can take advantage of Python's ability to support executing _.zip_ archives
+containing multiple scripts. The only requirement, is that one of the files is named _\_\_main\_\_.py, which is how
 the entry point of the Python process is determined.
 
 #### Referencing other packages
@@ -113,13 +114,13 @@ dev_helpers.attach_to_cloudshell_as(user="CLOUDSHELL_USER", password="CLOUDSHELL
 {% endhighlight %}      
 
 If we include the above code in the example script we provided earlier, we'll be able to run it locally as
-well as from the CloudShell sandbox. The  _attach_to_cloudshell_as_ function will populate all of the environment data
+well as from the CloudShell sandbox. The  _attach_to_cloudshell_as_ function will populate all of the blueprint data
 as CloudShell would so from the code perspective it doesn't make a different where its being run from. Furthermore,
 the code will ignore the special _attach_to_cloudshell_as_ function if you run it from CloudShell so that there is no
 adverse effect to leaving the statement there.
 
-One drawback of using this strategy is that its probably not a good idea to leave the CloudShell credentials in the code itself
-in plain site. That is why we recommend you use a similar function which takes the same information from a file.
+One drawback of using this strategy is that its probably not a good idea to leave your CloudShell credentials in the code itself
+in plain sight. That is why we recommend you use a similar function which takes the same information from a file.
 Make sure to add that file to the _.gitignore_ list so that it doesn't get on source control of course.
 The following code will have the same effect as the lines above, only it will look for the information in a
 JSON file named _quali_config.json_ which should be in the project root.

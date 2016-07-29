@@ -3,6 +3,7 @@ layout: page
 title: Python Coding Standards
 category: ref
 order: 7
+comments: true
 ---
 In this article we will describe the coding style for all scripts and drivers. Adhering to the same coding style makes our code more readable,
 easier to understand for other teams and easier to maintain.  

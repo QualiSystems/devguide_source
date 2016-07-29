@@ -1,8 +1,9 @@
 ---
 layout: page
-title: The Shell Project - Orientation Guide
+title: The Shell Project Guide
 category: tut
 order: 3
+comments: true
 ---
 When starting a new Shell, the first thing you'll want to do is generate the Shell project files and directory structure.
 Thankfully, this happens automatically when you use the ShellFoundry CLI tool. In this section, we'll look into the generated
@@ -50,4 +51,4 @@ The _datamodel_ folder contains all of the custom attributes and basic definitio
 ### The _docs_ and _tests_ folders
 
 These are placeholders to place shell documentation and shell tests.
-Some tests are already automatically generated in the _tests_ folder, you can simply extend the class there.
+Some tests are already automatically generated in the _tests_ folder.

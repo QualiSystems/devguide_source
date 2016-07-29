@@ -1,9 +1,12 @@
 ---
 layout: page
-title: Script commands visibility and usability
+title: Script commands Visibility and Usability
 category: orch
 date: "2016-04-30 13:02:32 +0300"
 order: 6
+comments: true
+tags:
+    - orchestration
 ---
 You can control many aspect of how the orchestration commands appear and behave
 in CloudShell by editing the script from the scripts management page.
@@ -16,7 +19,7 @@ Create a new Python file and name it _customization_test.py_. Add the following 
 
 {% highlight python %}
 
-Open the Managemeimport cloudshell.helpers.scripts.cloudshell_scripts_helpers as helpers
+cloudshell.helpers.scripts.cloudshell_scripts_helpers as helpers
 import cloudshell.helpers.scripts.cloudshell_dev_helpers as dev_helpers
 from cloudshell.api.cloudshell_api import CloudShellAPISession
 
