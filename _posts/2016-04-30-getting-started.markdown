@@ -140,6 +140,9 @@ The basic flow is:
     b. For a **_deployed app_** Shell: Define the App template in CloudShell including the deployment type and parameters, set the App model to the Shell model.
 3. Create a sandbox for testing in the development server. Either add the Shell resource to the sandbox or deploy the App in the sandbox.
 4. Make incremental changes to the Shell and update the development server each time with your changes by running _shellfoundry install_
+5. Rinse and repeat!
+
+For more information on how to deploy the Shell to production, refer to the [Deploying to Production]({{ site.baseurl }}/tut/deploying-to-production.html)
 
 #### What's next
 
