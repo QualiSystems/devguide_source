@@ -2,7 +2,7 @@
 layout: page
 title: Tips and Tricks
 category: tut
-order: 11
+order: 13
 comments: true
 tags:
     - api

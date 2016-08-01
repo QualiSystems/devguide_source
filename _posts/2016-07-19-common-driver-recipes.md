@@ -3,7 +3,7 @@ layout: page
 title: Common Driver Recipes
 category: tut
 comments: true
-order:  10
+order:  12
 ---
 In this section we'll provide a few handy examples of common driver operations.
 The intention is to grow this into a good source to copy paste common code from.

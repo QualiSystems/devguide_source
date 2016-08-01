@@ -19,6 +19,7 @@ navigation: 1
 
 # URL to source code, used in _includes/footer.html
 codeurl: 'https://github.com/qualisystems'
+mainurl: 'http://www.quali.com'
 
 # Default categories (in order) to appear in the navigation
 sections: [

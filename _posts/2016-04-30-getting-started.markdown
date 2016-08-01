@@ -106,7 +106,6 @@ inventory.
 
 ![Shell Discovery]({{ site.url }}/devguide/assets/hello_world_shell.png)
 
-
 #### Hello world finally
 
 Now that we've instantiated our shell resource, we can finally add it to an environment blueprint and reserve it as a sandbox.
@@ -121,7 +120,26 @@ The commands pane opens.
 
 The common output will appear in the environment output pane.
 
-![Shell Discovery]({{ site.url }}/devguide/assets/hello_world.png)
+![Shell Discovery]({{ site.baseurl }}/assets/hello_world.png)
+
+### Development process summary
+
+In this tutorial we've seen the basic flow involved in developing a Shell. It can be illustrated in the below diagram:
+
+![Context Object]({{ site.baseurl }}/assets/shell_development_workflow.png)
+
+The basic flow is:
+
+1. Create a new Shell project by running _shellfoundry new_
+2. Configure your CloudShell credentials in the _cloudshell_config.yml_ file located in the Shell project root
+3. Import the Shell to the development server using _shellfoundry install_
+4. Create an instance of the Shell for testing
+
+    a. For an **_inventory resource_** Shell: Create a Shell inventory resource in CloudShell using its _Resource Template_.
+
+    b. For a **_deployed app_** Shell: Define the App template in CloudShell including the deployment type and parameters, set the App model to the Shell model.
+3. Create a sandbox for testing in the development server. Either add the Shell resource to the sandbox or deploy the App in the sandbox.
+4. Make incremental changes to the Shell and update the development server each time with your changes by running _shellfoundry install_
 
 #### What's next
 
