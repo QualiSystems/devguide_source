@@ -15,7 +15,7 @@ use to attach to the driver process and debug it step by step.
 1. Install [JetBrains PyCharm](https://www.jetbrains.com/pycharm/) and
 [CloudShell's Pycharm plugin](https://github.com/QualiSystemsLab/CloudShell-PyCharm-Plugin).
 
-2. Have a CloudShell SDK developer edition set up. Have an ES running on the same machine as your IDE.
+2. Have a CloudShell SDK developer edition set up. Have an execution server running on the same machine as your IDE.
 
 #### Setting up
 

@@ -53,7 +53,7 @@ Here we used the same class to retrieve the entire IF table. The _get_table_ fun
 inherits from Python's _ordered_dictionary_ with additional handy sorting and filtering functions to get the table's
 rows and columns.
 
-Since the SNMP parameters are a part of the [Resource Standards](https://github.com/QualiSystems/shell-resource-standard/blob/master/spec/shell_resource_standard.md)
+Since the SNMP parameters are included as attributes in the [Resource Standard](https://github.com/QualiSystems/shell-resource-standard/blob/master/spec/shell_resource_standard.md)
 they can be easily retrieved by the driver when implementing the _get_inventory_ function:
 
 {% highlight python %}
@@ -77,7 +77,7 @@ smidump -f smiv2 -k IF-MIB.mib  > if-mib.txt
 smidump -f python -k if-mib.txt | libsmi2pysnmp > if-mib.py
 {% endhighlight %}
 
-In your shell, save the MIBs Python files in a sub-package in your Shell, the run the following code:
+In your shell, save the MIBs Python files in a sub-package, then run the following code:
 {% highlight bash %}
 snmp_service = QualiSnmp(ip=ip, snmp_version=snmp_params.snmp_version,
                          snmp_community=snmp_params.snmp_read_community,

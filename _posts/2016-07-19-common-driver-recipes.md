@@ -64,7 +64,7 @@ machine under the  %programdata%\\QualiSystems\\Settings\\Global directory:
 #### Sending a message to the sandbox console
 
 Another way to update the sandbox regarding an operation progress is to use the _WriteMessageToReservationOutput_
-function to display message in the Sandbox console pane.
+function to display a message in the Sandbox console pane.
 We can easily modify the previous code to do that instead:
 
 {% github_sample_ref /QualiSystems/devguide_examples/blob/driver_deep_dive/adding_examples/common_driver_recipes/src/driver.py %}

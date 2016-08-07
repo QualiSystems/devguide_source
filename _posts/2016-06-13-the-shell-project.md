@@ -10,11 +10,11 @@ Thankfully, this happens automatically when you use the ShellFoundry CLI tool. I
 files and structure and their different roles. At this stage, we'll only take a bird's eye view of the different files, folders and what they are used for. In the following sections we'll delve deeper into the specific options and format of each file and learn how to customize the driver and shell definition in CloudShell.
 
 Lets begin by generating a new shell project. If you've previously completed the [Getting Started](/devguide/tut/getting-started.html)
-tutorial you should have a reference project. You haven't completed the initial tutorial, its recommended you do so now. Otherwise, just run the following in your command line:
+tutorial you should have a reference project. If you haven't completed the initial tutorial, its recommended you do so now. Otherwise, just run the following in your command line:
 
 {% highlight bash %} shellfoundry new linux-server-shell {% endhighlight %}
 
-This will create a new linux_server_shell directory using the default shell template and generate some scaffolding for it. Notice that the generated project is already a valid Shell. From this point on you can further customize it or develop its driver commands but all of the basic components are there already. The suggested workflow is to use this as a baseline and continue to incrementally modify add functionality on top of the generated shell.
+This will create a new linux_server_shell directory using the default shell template and generate some scaffolding for it. Notice that the generated project is already a valid Shell. From this point on you can further customize it or develop its driver commands but all of the basic components are there already. The suggested workflow is to use this as a baseline and continue to incrementally add functionality on top of the generated shell.
 
 ### The Shell project root
 * _cloudshell_config.yml_: This file contains the address, username and password of your local development CloudShell Server.

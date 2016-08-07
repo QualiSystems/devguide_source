@@ -6,7 +6,7 @@ comments: true
 order:  6
 ---
 
-In this section we'll take a look at some of the design principles mechanics of
+In this section we'll take a look at some of the design principles and mechanics of
 Shell drivers. To get started, we should first create a Shell project to experiment with.
 Once again we'll use ShellFoundry.
 
@@ -158,11 +158,11 @@ complete its current actions and end its execution.
 
 CloudShell supports two modes for drivers:
 
-* A serial mode of execution in which for each app/resource driver instance CloudShell will send one command at a time.
+* A serial mode (default) of execution in which for each app/resource driver instance CloudShell will send one command at a time.
     With this mode, you can be sure as you're processing a command that no command will run in parallel with that
     same resource/app and using that driver instance object.
 
-* Concurrent execution (default) - with this mode enabled, it will be up to the driver to handle any synchronization between
+* Concurrent execution - with this mode enabled, it will be up to the driver to handle any synchronization between
     parallel threads if needed. CloudShell will send commands to the driver in parallel.
 
 The driver concurrency mode is defined in the shell datamodel. Open the _shell_model.xml_ file in the _datamodel_ directory.
@@ -211,7 +211,7 @@ Copy and paste the following function:
 {% github_sample /QualiSystems/devguide_examples/blob/driver_deep_dive/adding_examples/driver_deep_dive/src/driver.py 56 64 %}
 {% endhighlight %}
 
-This is pretty strait forward but can also probably get repetitive. The  the helper classes that are provided with the _cloudshell_shell_core_ package are intended help get rid some of that boilerplate. The _CloudShellSessionContext_ allows easily creating a session from a context object. To user the helper first import the module by adding this to the _driver.py_ imports:
+This is pretty straightforward but can also probably get repetitive. The  the helper classes that are provided with the _cloudshell_shell_core_ package are intended help get rid some of that boilerplate. The _CloudShellSessionContext_ allows easily creating a session from a context object. To use the helper first import the module by adding this to the _driver.py_ imports:
 
 from cloudshell.shell.core.cloudshell_session import CloudShellSessionContext
 
@@ -224,4 +224,4 @@ Then, paste the following function:
 
 Now that we have a CloudShell API session, there are three main things we may want to do with it from our driver:
 Decrypt a password attribute, update the resource live status or update the console widget with progress report.
-You can find the code for these operations in the examples section of the guide.
+You can find the code for these operations in the [Common Driver Recipes section]({{ site.baseurl}}/tut/common-driver-recipes.html) of this guide.

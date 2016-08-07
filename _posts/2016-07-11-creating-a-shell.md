@@ -54,7 +54,7 @@ please refer to the [Getting Started](/devguide/tut/getting-started.html) guide.
 ### The Shell Datamodel
 
 As you may have seen in previous examples, by using ShellFoundry we've generated a Shell project which can be deployed to CloudShell.
-This time, however, we'll take a look at some of the important settings of the Shell model and demonstrate can be customized.
+This time, however, we'll take a look at some of the important settings of the Shell model and demonstrate how it can be customized.
 
 There are two important files located in the _datamodel_ directory which are relevant to how the Shell is modeled.
 

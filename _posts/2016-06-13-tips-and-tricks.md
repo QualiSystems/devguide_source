@@ -20,6 +20,7 @@ For Shell drivers, the cloudshell-shell-core contains a convenient object to man
 We pass this helper the _context_ parameter of the driver command:
 
 {% highlight python %}
+from cloudshell.shell.core.session.cloudshell_session import CloudShellSessionContext
 with CloudShellSessionContext(context) as session:
          perform_validations(session)
          do_some_logic(session)
@@ -46,9 +47,9 @@ is the environment name.
 
 ![Log Structure]({{ site.url }}/devguide/assets/log_structure.png){:class="img-responsive"}
 
-All logs will be saved on the ES where the driver is running. The folder location will be
+All logs will be saved on the Execution Server where the driver is running. The folder location will be
 relative to the driver in the virtual environment location at:
- **_%venv%\\[drivername]\\Lib\\site-packages\\cloudshell\\Logs_**.
+ **_%venv%\\[drivername]\\Lib\\site-packages\\cloudshell\\Logs_**.  (e.g. C:\\ProgramData\\QualiSystems\\venv\\Deployment_Orchestrator_5_2\\Lib\\site-packages\\cloudshell\\Logs.)
 
 You can then use the regular logging level syntax to write messages as a part of the driver
 package or script flow:
@@ -93,12 +94,11 @@ _cloudshell-shell-core_ provides a handy scope:
 
 {% highlight python %}
 with ErrorHandlingContext(logger):
-    will_get_automatically_logged_on_exceptin()
-    will_get_automatically_logged_on_exceptin
+    will_get_automatically_logged_on_exception()
 {% endhighlight %}
 
-Using this cope exception raised within the scope of the _ErrorHandlingContext_ will be logged, even if no code remembered
-to explcitly call the logger.
+Using this cope am exception raised within the _ErrorHandlingContext_ will be logged, even if no code remembered
+to explicitly call the logger.
 
 ### Nested scopes
 

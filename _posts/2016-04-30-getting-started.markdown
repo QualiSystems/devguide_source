@@ -43,7 +43,7 @@ Finally, lets make sure all of the basic package requirements for the shell are 
 
 #### Make a minor change to the driver
 
-The source control for your shell is managed under the _src_ folder. When generating the project template, ShellFoundry already created a driver template as well under this folder. Open the file _driver.py_ in your preferred IDE/editor. You'll see it already contains a driver for our shell with an example commands already in place. We'll soon implement our first command in this file. For now, lets just make sure everything is in working order by adding a simple 'hello world'.
+The source control for your shell is managed under the _src_ folder. When generating the project template, ShellFoundry already created a driver template as well under this folder. Open the file _driver.py_ in your preferred IDE/editor. You'll see it already contains a driver for our shell with an example command already in place. We'll soon implement our first command in this file. For now, lets just make sure everything is in working order by adding a simple 'hello world'.
 
 Remove the 'example_function' function and replace it with the following code:
 {% highlight python %}
@@ -94,7 +94,7 @@ After you've edited and saved the file, run the following command from the shell
 
 This will package and install your shell into your local CloudShell server.
 
-#### Create an instance of your shell in the local CloudShell inventory
+#### Create an instance of your shell resource in the local CloudShell inventory
 
 The shell is installed in your development CloudShell. We can now create resources of that Shell in our
 inventory.
@@ -142,10 +142,10 @@ The basic flow is:
 4. Make incremental changes to the Shell and update the development server each time with your changes by running _shellfoundry install_
 5. Rinse and repeat!
 
-For more information on how to deploy the Shell to production, refer to the [Deploying to Production]({{ site.baseurl }}/tut/deploying-to-production.html)
+For more information on how to deploy the Shell to production, refer to the [Deploying to Production]({{ site.baseurl }}/tut/deploying-to-production.html) section.
 
 #### What's next
 
 We've successfully gone through the steps of adding a working, if naive, Shell.
-In the following sections we'll review of these steps in depth and review the concepts, available options
+In the following sections we'll review all of these steps in depth and review the concepts, available options
 and customizations and how they interface with CloudShell.

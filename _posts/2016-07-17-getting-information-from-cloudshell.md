@@ -65,8 +65,8 @@ context.resource.address   # The IP address of the resource / app
 context.resource.model   # The resource/app model
 context.resource.family = None  # The resource/app family or type classification
 context.resource.description = None  # The resource/app description
-context.resource.resource.attributes = None  # A dictionary that contains the resource attributes (name, value)
-user = context.attributes['User'] = # Get a specific attribute value from the dictionary
+context.resource.attributes = None  # A dictionary that contains the resource attributes (name, value)
+user = context.resource.attributes['User'] = # Get a specific attribute value from the dictionary
 context.resource.app_context = None # Infromation about the deployed app and app request to be discussed below
 {% endhighlight %}
 
