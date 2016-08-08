@@ -17,7 +17,7 @@ This guide will take you through the basic steps of a creating a new Shell from 
 * Adding the shell to a blueprint and running a command on the shell in a sandbox
 
 ### Prerequisites
-* Get CloudShell: Download the latest CloudShell SDK and run it on your machine.  
+* [Get CloudShell](http://info.quali.com/cloudshell-developer-edition-download): Download the latest CloudShell SDK and run it on your machine.  
 * **Python**: You must have [Python](https://www.python.org/downloads/) 2.7.x (latest recommended) installed on your machine.
 * **IDE/Text Editor:** Any IDE or editor you'd rather use as an IDE. We recommend using PyCharm (which offers a free community edition) because of the tooling we've already created for that IDE, including a CloudShell developer plugin.
 * **ShellFoundry** Install ShellFoundry using pip. Run the following in your local shell: {% highlight bash %} pip install shellfoundry {% endhighlight %}
@@ -35,9 +35,12 @@ Navigate to the new directory, you will see the following files have been create
 
 The generated folder contains all of the basic scaffolding needed for the new shell. We will review the shell project structure in a more in-depth manner in later stages of this guide.
 
-Finally, lets make sure all of the basic package requirements for the shell are satisfied. Run the follwing command:
+Finally, lets make sure all of the basic package requirements for the shell are satisfied. Run the following command
+from the root of the project directory:
 
-'python -m pip install .\src\requirements.txt' from the root of the project directory.
+{% highlight bash %}
+python -m pip install -r .\src\requirements.txt
+{% endhighlight %}
 
 ### Testing the basic workflow
 
@@ -51,7 +54,7 @@ def say_hello(self, context, name):
     """
     :type context: cloudshell.shell.core.driver_context.ResourceCommandContext
     """
-    print "hello {name} from {resource_name}".format(name=name, resource_name=context.resource.name){% endhighlight %}
+    return "hello {name} from {resource_name}".format(name=name, resource_name=context.resource.name){% endhighlight %}
 
 We'll also want to add basic metadata including aliases and descriptions. The way to do that is by
 editing the drivermetadata.xml file located in the same folder.

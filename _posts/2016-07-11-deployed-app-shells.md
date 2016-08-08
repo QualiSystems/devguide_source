@@ -1,7 +1,6 @@
 ---
 layout: page
 title: Authoring a Deployed App Shell
-category: tut
 comments: true
 order:  4
 ---
@@ -61,4 +60,4 @@ configure Couchbase in another way that makes sense in your environment.
 #### Option 1: AWS Deployment Type (Requires CloudShell 7.1 or newer)
 
 If you have an AWS account, you can use it to easily start a Couchbase server.
-First you'll need to configure 
+First you'll need to configure
