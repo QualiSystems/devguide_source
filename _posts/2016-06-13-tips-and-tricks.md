@@ -41,7 +41,7 @@ logger.info("log something")
 {% endhighlight %}
 
 For the default logger, the _log_category_ parameter defines the folder under which logs will be grouped
-whereas the _log_group_ defines the file. The CloudShel convention is to create a folder for each
+whereas the _log_group_ defines the file. The CloudShell convention is to create a folder for each
 reservation id and a file for each resource name. For orchestration scripts, the file name
 is the environment name.
 

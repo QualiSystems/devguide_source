@@ -104,7 +104,7 @@ on real sandbox reservation data. The helper functions allow the script to "atta
 Sandbox, by filling in all of the environment variables of the script so that the same information
 is available to it as would be if CloudShell launched it.
 
-To attach to a CloudShel sandbox, first create a sandbox reservation, then add the following code
+To attach to a CloudShell sandbox, first create a sandbox reservation, then add the following code
 and fill in the required data for the function parameters.
 
 {% highlight python %}

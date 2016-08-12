@@ -102,7 +102,7 @@ The _shell_model.xml_ file which was automatically generated for our basic resou
     </ShellAttributes>
 
     <ShellModel Family="Generic Resource">
-        <ResourceModel Name="ModelExample" Description="" SupportsConcurrentCommands="true">
+        <ResourceModel Name="ModelExample" Description="" SupportsConcurrentCommands="false">
             <AttachedAttributes>
                 <AttachedAttribute Name="User" IsOverridable="true" IsLocal="true">
                   <AllowedValues />
@@ -158,7 +158,7 @@ First copy the image to the _datamodel_ folder. To set the Shell image, add the 
 _\<ResourceModel>_ element:
 
 {% highlight xml  %}
-<ResourceModel Name="ModelExample" Description="" SupportsConcurrentCommands="true" ImagePath="example_model_image.png">
+<ResourceModel Name="ModelExample" Description="" SupportsConcurrentCommands="false" ImagePath="example_model_image.png">
 {% endhighlight %}
 
 To update the Shell description change the value in the "Description" attribute in the above xml.
@@ -218,7 +218,7 @@ elements)
 
 {% highlight xml %}
 <ShellModel Family="Generic Resource">
-      <ResourceModel Name="ModelExample" Description="" SupportsConcurrentCommands="true">
+      <ResourceModel Name="ModelExample" Description="" SupportsConcurrentCommands="false">
           <AttachedAttributes>
               <AttachedAttribute Name="ModelExample Custom Att" IsOverridable="true" IsLocal="true">
                 <AllowedValues />
@@ -241,7 +241,7 @@ want to specify a default value, you should still add this element with a blank 
 {% endhighlight %}
 
 
-To test whether this worked lets re-install the Shell from Command Line:
+To test whether this worked let's re-install the Shell from Command Line:
 {% highlight bash %}
 shellfoundry install
 {% endhighlight %}

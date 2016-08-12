@@ -63,7 +63,7 @@ The description is also easy to set via the edit form. Enter any text here, it w
 under the script name in the commands pane.
 
 Categories help improve usability by grouping commands with a similar role or domain under a folder in the sandbox command
-panel. This grouping has visual implications only and will not affect API calls. For this example, lets set the category name
+panel. This grouping has visual implications only and will not affect API calls. For this example, let's set the category name
 to 'Customization'.
 
 ### Adding parameters

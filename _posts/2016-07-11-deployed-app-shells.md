@@ -8,7 +8,7 @@ order:  4
 As we've discussed previously, there are two base types of Shells in CloudShell: Inventory Resources and Apps.
 As opposed to Inventory Resources, which are cataloged and exist in the CloudShell inventory regardless of their
 usage in sandboxes, Apps are deployed and exist within the Sandbox. They also follow a different lifecycle - each App is first
-defined as a blueprint in the Apps catalog, the deployed app Shell is only created once the app blueprint is deployed and finally the deployed app is deleted when the sandbox ends. Before we discuss Deployed App Shells development, lets cover that process in more depth.
+defined as a blueprint in the Apps catalog, the deployed app Shell is only created once the app blueprint is deployed and finally the deployed app is deleted when the sandbox ends. Before we discuss Deployed App Shells development, let's cover that process in more depth.
 
 ### The App blueprint
 

@@ -32,7 +32,7 @@ cd customization_example
 
 A new project with an empty driver is created.
 
-Lets start by creating a function we can experiment on. Open the driver file. The file is named _driver.py_ and is located in the _src_ folder of the shell project.
+Let's start by creating a function we can experiment on. Open the driver file. The file is named _driver.py_ and is located in the _src_ folder of the shell project.
 Add the following function to the shell driver class and save it:
 
 {% highlight python %}
@@ -171,7 +171,7 @@ After re-installing the shell, the Commands pane now reflects the parameter new 
 ### Adding categories
 
 As you add more commands to the resource, it can be useful to visually group them into categories and improve the usability of the commands panel.
-These categories will appear as folders which the user can navigate. To demonstrate this capability, lets first add additional commands to the shell. Open the _driver.py_ file located in the _src_ directory and add the following two functions:
+These categories will appear as folders which the user can navigate. To demonstrate this capability, let's first add additional commands to the shell. Open the _driver.py_ file located in the _src_ directory and add the following two functions:
 
 {% highlight python %}
 def backup(self, context):
@@ -223,7 +223,7 @@ After re-installing the shell we get the following command panel layout:
 Sometimes, you may wish to create commands that are intended to be used as a part of an orchestration flow, for example to be called during setup, but that you don't wish users to get direct access to or to be visible via the UI. For example, a command that will be called during a sandbox’s Setup process.
 To support this use case, CloudShell supports a special category, the _Hidden Commands_ category which allows you to mark commands you want to be omitted from the web portal UI but that can still be invoked via the API.
 
-To demonstrate this capability, lets first add a new function to our driver class in the _driver.py_ file:
+To demonstrate this capability, let's first add a new function to our driver class in the _driver.py_ file:
 
 {% highlight python %}
 def api_only_function(self, context):
@@ -233,7 +233,7 @@ def api_only_function(self, context):
     print "You didn't see this on the web interface..."
 {% endhighlight %}
 
-Next, lets add the special category to the _drivermetadata.xml_ file and nest that command under it:
+Next, let's add the special category to the _drivermetadata.xml_ file and nest that command under it:
 
 {% highlight xml %}
 <Driver Description="Describe the purpose of your CloudShell shell" MainClass="driver.CustomizationExampleDriver" Name="CustomizationExampleDriver" Version="1.0.0">

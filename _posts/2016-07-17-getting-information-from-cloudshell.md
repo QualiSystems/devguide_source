@@ -46,7 +46,7 @@ class ResourceCommandContext:
 #### Connectivity
 
 The **_connectivity_** property contains information about how to connect to CloudShell, information like server address, ports and so on.
-It also contains a token which can be used to log in to the CloudShell API. As we'll discuss, it is generally recommended to use the CloudShel API
+It also contains a token which can be used to log in to the CloudShell API. As we'll discuss, it is generally recommended to use the CloudShell API
 as little as possible in your Shell, with the exception of a few operations which we'll cover later in the examples section of this guide.
 So while the connectivity information is readily available on the context, in most cases you should not have to use it.
 

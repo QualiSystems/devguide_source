@@ -35,7 +35,7 @@ Navigate to the new directory, you will see the following files have been create
 
 The generated folder contains all of the basic scaffolding needed for the new shell. We will review the shell project structure in a more in-depth manner in later stages of this guide.
 
-Finally, lets make sure all of the basic package requirements for the shell are satisfied. Run the following command
+Finally, let's make sure all of the basic package requirements for the shell are satisfied. Run the following command
 from the root of the project directory:
 
 {% highlight bash %}
@@ -46,7 +46,7 @@ python -m pip install -r .\src\requirements.txt
 
 #### Make a minor change to the driver
 
-The source control for your shell is managed under the _src_ folder. When generating the project template, ShellFoundry already created a driver template as well under this folder. Open the file _driver.py_ in your preferred IDE/editor. You'll see it already contains a driver for our shell with an example command already in place. We'll soon implement our first command in this file. For now, lets just make sure everything is in working order by adding a simple 'hello world'.
+The source control for your shell is managed under the _src_ folder. When generating the project template, ShellFoundry already created a driver template as well under this folder. Open the file _driver.py_ in your preferred IDE/editor. You'll see it already contains a driver for our shell with an example command already in place. We'll soon implement our first command in this file. For now, let's just make sure everything is in working order by adding a simple 'hello world'.
 
 Remove the 'example_function' function and replace it with the following code:
 {% highlight python %}

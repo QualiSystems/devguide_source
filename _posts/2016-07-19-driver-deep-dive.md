@@ -74,7 +74,7 @@ String will be returned as is, if you return an object CloudShell will try to co
 Its not advisable to return complex objects that cannot be serialized such as sessions or connections as that would most
 likely result in an error.
 
-To demonstrate this, lets add a couple of functions to the driver:
+To demonstrate this, let's add a couple of functions to the driver:
 
 {% github_sample_ref /QualiSystems/devguide_examples/blob/driver_deep_dive/adding_examples/driver_deep_dive/src/driver.py %}
 {% highlight python %}
@@ -227,7 +227,7 @@ Then, paste the following function:
 
 {% github_sample_ref /QualiSystems/devguide_examples/blob/master/driver_deep_dive/src/driver.py %}
 {% highlight python %}
-{% github_sample /QualiSystems/devguide_examples/blob/master/driver_deep_dive/src/driver.py 66 76 %}
+{% github_sample /QualiSystems/devguide_examples/blob/master/driver_deep_dive/src/driver.py 63 73 %}
 {% endhighlight %}
 
 Now that we have a CloudShell API session, there are three main things we may want to do with it from our driver:
