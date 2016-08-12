@@ -13,7 +13,7 @@ These pages will take you through all you need to know to become an expert Shell
 
 Shells enable CloudShell users to interact with a wide range of components including physical devices, virtual appliances and apps.
 
-From a developer's perspective, a 'Shell' is a plugin which can used to extend CloudShell. Installing a shell into CloudShell opens up new options for users and administrators. Just to name a few examples:
+From a developer's perspective, a 'Shell' is a plugin which can be used to extend CloudShell. Installing a shell into CloudShell opens up new options for users and administrators. Just to name a few examples:
 
 * New physical components types can be instantiated in CloudShell's inventory.
 * New commands can be added to sandbox components

@@ -6,7 +6,7 @@ comments: true
 order:  6
 ---
 
-In this section we'll take a look at some of the design principles mechanics of
+In this section we'll take a look at some of the design principles and mechanics of
 Shell drivers. To get started, we should first create a Shell project to experiment with.
 Once again we'll use ShellFoundry.
 
@@ -74,7 +74,7 @@ String will be returned as is, if you return an object CloudShell will try to co
 Its not advisable to return complex objects that cannot be serialized such as sessions or connections as that would most
 likely result in an error.
 
-To demonstrate this, lets add a couple of functions to the driver:
+To demonstrate this, let's add a couple of functions to the driver:
 
 {% github_sample_ref /QualiSystems/devguide_examples/blob/driver_deep_dive/adding_examples/driver_deep_dive/src/driver.py %}
 {% highlight python %}
@@ -158,11 +158,11 @@ complete its current actions and end its execution.
 
 CloudShell supports two modes for drivers:
 
-* A serial mode of execution in which for each app/resource driver instance CloudShell will send one command at a time.
-    With this mode, you can be sure as you're processing a command that no command will run in parallel with that
+* A serial mode (default) of execution in which for each app/resource driver instance CloudShell will send one command at a time.
+    With this mode, you can be sure that when a command is executed no other command will run in parallel with that
     same resource/app and using that driver instance object.
 
-* Concurrent execution (default) - with this mode enabled, it will be up to the driver to handle any synchronization between
+* Concurrent execution - with this mode enabled, it will be up to the driver to handle any synchronization between
     parallel threads if needed. CloudShell will send commands to the driver in parallel.
 
 The driver concurrency mode is defined in the shell datamodel. Open the _shell_model.xml_ file in the _datamodel_ directory.
@@ -176,10 +176,14 @@ driver.
         <ResourceModel Name="DriverDeepDive" Description="" SupportsConcurrentCommands="true">
 {% endhighlight %}
 
-For simple drivers, which have relatively short operations it makes sense to set concurrency to false and not have to
-worry about operations happening in parallel. This is especially true if the Shell resource is used exclusively within each sandbox
-so its not anticipated that several users will try to use the same resource in parallel.
+Sequential execution is the default mode mainly because it simplifies the driver. If the driver doesn't have to worry about other things happening in parallel it can avoid adding mutex expressions or manage critical sections in the code.
 
+You should decide whether to enable concurrent execution by balancing the usage requirements for the driver and the complexity of supporting concurrency.
+
+* **Driver usage**: Sometimes the driver commands not called very often so it is likely that staying with sequential execution will not affect the user experience or increate wait times. This is especially true if the Shell resource is used exclusively within each sandbox.
+In such a scenario, it is being used by a single user at a time which may not require parallelism.
+
+* **Complexity of supporting concurrency**: Supporting concurrent executions can be more complex if the driver is not stateless or if the API or CLI the driver is communicating with does not itself support concurrency well or is limited to a specific number of sessions. In those situations there will be additional cost in terms of driver complexity to support concurrent execution.
 
 #### Using the CloudShell API
 
@@ -195,7 +199,11 @@ For more information about that object and the information it provides please se
 First, as we'll need the CloudShell API, we should add it to the _requirements.txt_ file. Open the _requirements.txt_ file
 and add the following line:
 
-cloudshell-automation-api>=7.0.0.0,<7.0.1.0
+cloudshell-automation-api>=7.0.0.0,<7.1.0.0
+
+You should constrain the _cloudshell-automation-api_ package based on the version of CloudShell you're currently using. This specific package version will always be prefixed by the relevant CloudShell version it supports. This means that if you're using 7.1, for example, the above line should read:
+
+cloudshell-automation-api>=7.1.0.0,<7.2.0.0
 
 To start a CloudShell API session, first import the _CloudShellAPISession_ module, then initialize an object with the
 connectivity parameters. Import the _CloudShellAPISession_ module by adding the following statement to the beginning of the
@@ -206,22 +214,22 @@ from cloudshell.api.cloudshell_api import CloudShellAPISession
 To log in we don't need a username/password, since we get a token we can use with the context object.
 Copy and paste the following function:
 
-{% github_sample_ref /QualiSystems/devguide_examples/blob/driver_deep_dive/adding_examples/driver_deep_dive/src/driver.py %}
+{% github_sample_ref /QualiSystems/devguide_examples/blob/master/driver_deep_dive/src/driver.py %}
 {% highlight python %}
-{% github_sample /QualiSystems/devguide_examples/blob/driver_deep_dive/adding_examples/driver_deep_dive/src/driver.py 56 64 %}
+{% github_sample /QualiSystems/devguide_examples/blob/master/driver_deep_dive/src/driver.py 56 64 %}
 {% endhighlight %}
 
-This is pretty strait forward but can also probably get repetitive. The  the helper classes that are provided with the _cloudshell_shell_core_ package are intended help get rid some of that boilerplate. The _CloudShellSessionContext_ allows easily creating a session from a context object. To user the helper first import the module by adding this to the _driver.py_ imports:
+This is pretty straightforward but can also probably get repetitive. The  the helper classes that are provided with the _cloudshell_shell_core_ package are intended help get rid some of that boilerplate. The _CloudShellSessionContext_ allows easily creating a session from a context object. To use the helper first import the module by adding this to the _driver.py_ imports:
 
-from cloudshell.shell.core.cloudshell_session import CloudShellSessionContext
+from cloudshell.shell.core.session.cloudshell_session import CloudShellSessionContext
 
 Then, paste the following function:
 
-{% github_sample_ref /QualiSystems/devguide_examples/blob/driver_deep_dive/adding_examples/driver_deep_dive/src/driver.py %}
+{% github_sample_ref /QualiSystems/devguide_examples/blob/master/driver_deep_dive/src/driver.py %}
 {% highlight python %}
-{% github_sample /QualiSystems/devguide_examples/blob/driver_deep_dive/adding_examples/driver_deep_dive/src/driver.py 66 76 %}
+{% github_sample /QualiSystems/devguide_examples/blob/master/driver_deep_dive/src/driver.py 63 73 %}
 {% endhighlight %}
 
 Now that we have a CloudShell API session, there are three main things we may want to do with it from our driver:
 Decrypt a password attribute, update the resource live status or update the console widget with progress report.
-You can find the code for these operations in the examples section of the guide.
+You can find the code for these operations in the [Common Driver Recipes section]({{ site.baseurl}}/tut/common-driver-recipes.html) of this guide.

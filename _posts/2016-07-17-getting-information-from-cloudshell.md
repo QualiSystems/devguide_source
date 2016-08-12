@@ -46,7 +46,7 @@ class ResourceCommandContext:
 #### Connectivity
 
 The **_connectivity_** property contains information about how to connect to CloudShell, information like server address, ports and so on.
-It also contains a token which can be used to log in to the CloudShell API. As we'll discuss, it is generally recommended to use the CloudShel API
+It also contains a token which can be used to log in to the CloudShell API. As we'll discuss, it is generally recommended to use the CloudShell API
 as little as possible in your Shell, with the exception of a few operations which we'll cover later in the examples section of this guide.
 So while the connectivity information is readily available on the context, in most cases you should not have to use it.
 
@@ -60,13 +60,13 @@ Lets examine the _ResourceContextDetails_ class properties:
 context.resource.id  # (str) The identifier of the resource / service / app - consistent value that can't be changed / renamed by the user
 context.resource.name   # The name of the resource/app
 context.resource.fullname   # The full name of the resource, including any parent resources (relevant to inventory resources only)
-context.resource.type   # (Service, App, Resource) The type can be either a Service an App (which means a deployed App) or a Resource
+context.resource.type   # (Service, App, Resource) The type can be either a Service, an App (which means a deployed App) or a Resource
 context.resource.address   # The IP address of the resource / app
 context.resource.model   # The resource/app model
 context.resource.family = None  # The resource/app family or type classification
 context.resource.description = None  # The resource/app description
-context.resource.resource.attributes = None  # A dictionary that contains the resource attributes (name, value)
-user = context.attributes['User'] = # Get a specific attribute value from the dictionary
+context.resource.attributes = None  # A dictionary that contains the resource attributes (name, value)
+user = context.resource.attributes['User'] = # Get a specific attribute value from the dictionary
 context.resource.app_context = None # Infromation about the deployed app and app request to be discussed below
 {% endhighlight %}
 
