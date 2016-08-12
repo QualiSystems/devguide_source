@@ -68,7 +68,7 @@ For the first round of customizations, we'll work on the user facing function an
 {% highlight xml %}
 <Driver Description="Describe the purpose of your CloudShell shell" MainClass="driver.CustomizationExampleDriver" Name="CustomizationExampleDriver" Version="1.0.0">
     <Layout>
-        <Command Description="This command if for the user" DisplayName="User Command" Name="user_facing_function" >
+        <Command Description="This command is for the user" DisplayName="User Command" Name="user_facing_function" >
         </Command>
     </Layout>
 </Driver>
@@ -88,12 +88,12 @@ Code trying to execute this command using the CloudShell API will need to still 
 
 ### Specify display name and descriptions for each parameter
 
-AS you can see in the screenshot below, the parameter name of the command still look pretty raw and we might want to customize that as well. We can do that by adding additional nested elements describing the parameters under each command. Update the _drivermetadata.xml_ file as follows:
+You may have noticed that the  parameter names still look pretty raw and code like. We might want to customize that as well. We can do that by adding additional nested elements describing the parameters under each command. Update the _drivermetadata.xml_ file as follows:
 
 {% highlight xml %}
 <Driver Description="Describe the purpose of your CloudShell shell" MainClass="driver.CustomizationExampleDriver" Name="CustomizationExampleDriver" Version="1.0.0">
     <Layout>
-        <Command Description="This command if for the user" DisplayName="User Command" Name="user_facing_function" >
+        <Command Description="This command is for the user" DisplayName="User Command" Name="user_facing_function" >
             <Parameters>
                     <Parameter Name="some_parameter" DisplayName="Some Parameter" Description="More info here about the parameter"/>
                     <Parameter Name="some_other_parameter" DisplayName="Some Other Parameter" Description="More info here about the parameter"/>
@@ -104,7 +104,7 @@ AS you can see in the screenshot below, the parameter name of the command still 
 </Driver>
 {% endhighlight %}
 
-In the _drivermetadata.xml_ XML, the _Parameters_ element  contains a list of _Parameter_ elements, each customizing a specific function parameter.  customizes a single python function specified by the _Name_ attribute. The _DisplayName_ and _Description_ attributes will determine the name of the command as it appears to the user and the description appearing next to it, respectively.
+In the _drivermetadata.xml_ XML, the _Parameters_ element  contains a list of _Parameter_ elements, each is responsible for a specific function parameter. The _DisplayName_ and _Description_ attributes will determine the name of the command as it appears to the user and the description appearing next to it, respectively.
 
 After installing the shell again, the parameters for the command will now appear in a more readable format:
 
@@ -116,12 +116,12 @@ After installing the shell again, the parameters for the command will now appear
 
 For each of the command parameters, we may want to specify whether that parameter is mandatory for the user to supply, and whether there should be a default value in case the user didn't enter any value.
 
-In the following example, we will make the first parameter mandatory by setting the Mandatory attribute to True. Users will be required to enter a value for parameters before being able to run the command. The second parameter is optional but now has a default value which we will set using the DefaultValue attribute:
+In the following example, we will make the first parameter mandatory by setting the _Mandatory_ attribute to True. Users will be required to enter a value for parameters before being able to run the command. The second parameter is optional but now has a default value which we will set using the DefaultValue attribute:
 
 {% highlight xml %}
 <Driver Description="Describe the purpose of your CloudShell shell" MainClass="driver.CustomizationExampleDriver" Name="CustomizationExampleDriver" Version="1.0.0">
     <Layout>
-        <Command Description="This command if for the user" DisplayName="User Command" Name="user_facing_function" >
+        <Command Description="This command is for the user" DisplayName="User Command" Name="user_facing_function" >
             <Parameters>
                     <Parameter Name="some_parameter" Mandatory = "True"
                                DisplayName="Some Mandatory Parameter" Description="More info here about the parameter"/>
@@ -147,7 +147,7 @@ For certain parameters, you might want the user to select between a pre-determin
 {% highlight xml %}
 <Driver Description="Describe the purpose of your CloudShell shell" MainClass="driver.CustomizationExampleDriver" Name="CustomizationExampleDriver" Version="1.0.0">
     <Layout>
-        <Command Description="This command if for the user" DisplayName="User Command" Name="user_facing_function" >
+        <Command Description="This command is for the user" DisplayName="User Command" Name="user_facing_function" >
             <Parameters>
                     <Parameter Name="some_parameter" Mandatory = "True"
                                DisplayName="Some Mandatory Parameter" Description="More info here about the parameter"/>
@@ -160,7 +160,7 @@ For certain parameters, you might want the user to select between a pre-determin
 </Driver>
 {% endhighlight %}
 
-In the xml above, we've specified that the second parameter must be selected out of a specific set of possible values. To do that, we've added the _Type_ attribute to the parameter element and set it as _Lookup_. To define the possible values, we've added the _AllowedValues_ attribute, which sets the possible values for this parameter, represented as a comma separated list. In this case, the possible values are _Yes_ and _No_. We've also changed the default value to conform to the possible options.
+In the xml above, we've specified that the second parameter must be selected out of a specific set of possible values. We did that by adding the _Type_ attribute to the parameter element and seting it as _Lookup_. To define the possible values, we've added the _AllowedValues_ attribute, which sets the possible values for this parameter, represented as a comma separated list. In this case, the possible values are _Yes_ and _No_. We've also changed the default value to conform to the possible options.
 
 After re-installing the shell, the Commands pane now reflects the parameter new value restriction:
 
@@ -193,7 +193,7 @@ Grouping together commands under a category is pretty strait forward: Simply add
 <Driver Description="Describe the purpose of your CloudShell shell" MainClass="driver.CustomizationExampleDriver" Name="CustomizationExampleDriver" Version="1.0.0">
     <Layout>
         <Category Name="Operate">
-            <Command Description="This command if for the user" DisplayName="User Command" Name="user_facing_function" >
+            <Command Description="This command is for the user" DisplayName="User Command" Name="user_facing_function" >
                 <Parameters>
                         <Parameter Name="some_parameter" Mandatory = "True"
                                    DisplayName="Some Mandatory Parameter" Description="More info here about the parameter"/>
@@ -239,7 +239,7 @@ Next, lets add the special category to the _drivermetadata.xml_ file and nest th
 <Driver Description="Describe the purpose of your CloudShell shell" MainClass="driver.CustomizationExampleDriver" Name="CustomizationExampleDriver" Version="1.0.0">
     <Layout>
         <Category Name="Operate">
-            <Command Description="This command if for the user" DisplayName="User Command" Name="user_facing_function" >
+            <Command Description="This command is for the user" DisplayName="User Command" Name="user_facing_function" >
                 <Parameters>
                         <Parameter Name="some_parameter" Mandatory = "True"
                                    DisplayName="Some Mandatory Parameter" Description="More info here about the parameter"/>
@@ -269,4 +269,4 @@ However if you query the list of commands on the shell via the API, you'll be ab
 
 ### Summary
 
-In this section we reviewed different ways in which its possible tocustomize the appearance and behavior commands and command parameters from the user's perspective. If you have feedback or additional suggestions for features and improvements be sure to post them on our idea box. We're always looking for new ideas!
+In this section we reviewed different ways in which its possible to customize the appearance and behavior of commands and command parameters from the user's perspective. If you have feedback or additional suggestions for features and improvements be sure to post them on our idea box. We're always looking for new ideas!

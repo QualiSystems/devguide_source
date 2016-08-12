@@ -60,7 +60,7 @@ Lets examine the _ResourceContextDetails_ class properties:
 context.resource.id  # (str) The identifier of the resource / service / app - consistent value that can't be changed / renamed by the user
 context.resource.name   # The name of the resource/app
 context.resource.fullname   # The full name of the resource, including any parent resources (relevant to inventory resources only)
-context.resource.type   # (Service, App, Resource) The type can be either a Service an App (which means a deployed App) or a Resource
+context.resource.type   # (Service, App, Resource) The type can be either a Service, an App (which means a deployed App) or a Resource
 context.resource.address   # The IP address of the resource / app
 context.resource.model   # The resource/app model
 context.resource.family = None  # The resource/app family or type classification

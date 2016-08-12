@@ -86,7 +86,7 @@ feature to debug your code, set breakpoints etc.
 
 One additional issue you may run into is that by the time you're
 attaching to the Python process the command is already past the point you need to debug. In other words, the Python function
-doesn't 'wait' for you to attach it. This is even more pronounced if your trying to debug the driver 'initialize' function
+doesn't 'wait' for you to attach it. This can become critical if you need to debug the driver 'initialize' function
 or some basic setup code. To help solve that problem, there is another attribute you can choose to set called 'waitForDebugger'.
 Setting that attribute to true will actually cause the driver to pause after its been launched, before even running
 the _initialize_ function, and wait for a debugger to attach to it.
@@ -100,7 +100,7 @@ Once you're done, click on the 'CloudShell' icon to deploy the driver in debug m
 ![Debugging]({{ site.url }}/devguide/assets/debugging_ide.png){:class="img-responsive"}
 
 You can now run the function in CloudShell. You'll notice it seems to be 'stuck' but what's really happening behind
-the scenes is that its waiting for CloudShell to attach a debugger to the Python process.
+the scenes is that the Python process is waiting for a debugger to attach to it in order to proceed.
 
 ![Run a command]({{ site.url }}/devguide/assets/command_running.png){:class="img-responsive"}
 

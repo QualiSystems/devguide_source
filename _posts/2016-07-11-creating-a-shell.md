@@ -76,7 +76,7 @@ standard, we get the _generic_resource_, _port_, and _power_port_ families.
 
 #### Resource models
 
-Models are more specific types of resource and apps in CloudShell. For physical resource Shells the
+Models are more specific types of resources and apps in CloudShell. For physical resource Shells the
 model corresponds to the specific vendor/OS combination the Shell covers. For deployed apps, the model is usually one to one
 with the app itself. There are also more generic models which represent basic components like ports or connectors
 which don't always need a high level of detailed modeling. In terms of hierarchy, every resource in CloudShell has
@@ -150,11 +150,11 @@ The _shell_model.xml_ file which was automatically generated for our basic resou
 {% endhighlight %}
 
 As you can see in the XML code above, our new Shell defines a unique model ("ModelExample").
-The model already has some attributes associated with it which are defined in the Standard. We can customize the Shell datamodel in several way in this file.
+The model already has some attributes associated with it which are defined in the Standard. We can customize the Shell datamodel in several ways by making changes to this file.
 
 ### Changing the Shell image and description
 
-First copy the image to the _datamodel_ folder. To set the Shell image, add the following attribute to the
+First copy the image to the _datamodel_ folder. To set the Shell image, add the _ImagePath_ attribute to the
 _\<ResourceModel>_ element:
 
 {% highlight xml  %}
@@ -169,7 +169,7 @@ Apply changes by running:
 shellfoundry install
 {% endhighlight %}
 
-Refreshing the reservation reservation, our shell resource will now show the updated image and description:
+Refreshing the reservation, our shell resource will now show the updated image and description:
 
 ![Shell Image]({{ site.url }}/devguide/assets/shell_custom_image.png)
 
@@ -282,7 +282,7 @@ specify the rules for selection.
 * **_Displayed In Diagram_** This attribute will be displayed on the diagram component itself when using the larger icon size
 in the diagram.
 
-* **_Displayed In Insight_** This attribute value will be saved in Insight and can be used to later create BI around the resources
+* **_Displayed In Insight (CloudShell 7.1EA and above only)_** This attribute value will be saved in Insight and can be used to later create BI around the resources
 linked to it.
 
 ### Restricting attributes to specific values

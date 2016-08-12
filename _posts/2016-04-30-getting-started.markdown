@@ -20,7 +20,7 @@ This guide will take you through the basic steps of a creating a new Shell from 
 * [Get CloudShell](http://info.quali.com/cloudshell-developer-edition-download): Download the latest CloudShell SDK and run it on your machine.  
 * **Python**: You must have [Python](https://www.python.org/downloads/) 2.7.x (latest recommended) installed on your machine.
 * **IDE/Text Editor:** Any IDE or editor you'd rather use as an IDE. We recommend using PyCharm (which offers a free community edition) because of the tooling we've already created for that IDE, including a CloudShell developer plugin.
-* **ShellFoundry** Install ShellFoundry using pip. Run the following in your local shell: {% highlight bash %} pip install shellfoundry {% endhighlight %}
+* **ShellFoundry** Install ShellFoundry using pip. Run the following in your local shell: {% highlight bash %} python -m pip install shellfoundry {% endhighlight %}
 
 ### Creating the Shell Project
 To create the shell project, we'll take advantage of ShellFoundry, a CLI tool for generating and distributing shells. If you installed the prerequisites listed above this tool should already be installed and ready on your system.
@@ -52,7 +52,8 @@ Remove the 'example_function' function and replace it with the following code:
 {% highlight python %}
 def say_hello(self, context, name):
     """
-    :type context: cloudshell.shell.core.driver_context.ResourceCommandContext
+    :param ResourceCommandContext context: the context the command runs on
+    :param str name: A user parameter
     """
     return "hello {name} from {resource_name}".format(name=name, resource_name=context.resource.name){% endhighlight %}
 

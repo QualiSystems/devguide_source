@@ -42,7 +42,7 @@ Here's a short explanation of the MIBs typically used in discovery:
 
 In the above example, we initialize the QualiSnmp module which requires at least the device IP and the community string.
 We then use the _get_property_ function to get the value of the _sysName_ property using one of the MIBs which are included
-wth cloudshell-snmp.
+with cloudshell-snmp.
 
 {% github_sample_ref /QualiSystems/devguide_examples/blob/master/snmp_example/snmp_generic_discovery/snmp_basic_usage.py %}
 {% highlight python %}
@@ -64,20 +64,20 @@ def get_inventory(self, context):
 
 #### Supporting custom vendor MIBs
 
-Some vendors will user their own custom MIBs which you'll want to include in the discovery. For example, this  CISCO site provides access to some common
+Some vendors will use their own custom MIBs which you'll want to include in the discovery. For example, this  CISCO site provides access to some common
 MIBS you can download: http://tools.cisco.com/ITDIT/MIBS/MainServlet?ReleaseSel=3&PlatformSel=236&fsSel=368. Other vendors have their own MIBs download links.
-To support custom MIBs in the discovery that are not included in cloudshell-snmp, you need to perform the following steps.
+To support custom MIBs in the discovery that are not included in cloudshell-snmp, you need to perform the following steps:
 
 First, Download the MIBs from the vendor website.
 
 Second, you'll need to compile the MIBs to Python files. We suggest using [smidump](http://linux.die.net/man/1/smidump), a simple Linux package to compile MIBs.
-For example, to use the _smidump_ package to compile the IF-MIB to Python, simply run these two lines from the shell:
+For example, to use the _smidump_ package to compile the IF-MIB to Python, simply run these two lines from the Command Line/terminal:
 {% highlight bash %}
 smidump -f smiv2 -k IF-MIB.mib  > if-mib.txt
 smidump -f python -k if-mib.txt | libsmi2pysnmp > if-mib.py
 {% endhighlight %}
 
-In your shell, save the MIBs Python files in a sub-package, then run the following code:
+In your shell driver project, save the MIBs Python files in a sub-package folder, then run the following code:
 {% highlight bash %}
 snmp_service = QualiSnmp(ip=ip, snmp_version=snmp_params.snmp_version,
                          snmp_community=snmp_params.snmp_read_community,
@@ -93,7 +93,7 @@ In order to successfully load the internal structure and attributes of a resourc
 function need to return lists of _AutoLoadResource_ and _AutoLoadAttribute_ objects.
 
 The following driver implements basic discovery using generic MIBs only and converts the result to
-the objects required by _get_inventory_. It can be used as a reference for creating similar procedures:
+the objects required by _get_inventory_. To view the full source click the 'view' or 'raw' links above the code snippet. The code can be used as a reference for creating similar procedures:
 
 {% github_sample_ref /QualiSystems/devguide_examples/blob/master/snmp_example/snmp_generic_discovery/generic_snmp_discovery.py %}
 {% highlight python %}
@@ -104,6 +104,8 @@ To use this module, simply initialize an instance of _GenericSNMPDiscovery_ and 
 
 {% highlight python %}
 def get_inventory(self, context):
+   snmp_version = context.resource.attributes['SNMP Version']
+   community_string = context.resource.attributes['SNMP Read Community']
    snmp_params = SNMPParams(snmp_version=snmp_version,snmp_read_community=snmp_community)
    GenericSNMPDiscovery().discover(device_ip,"Cisco 5k Switch", "Cisco",snmp_params )
 {% endhighlight %}

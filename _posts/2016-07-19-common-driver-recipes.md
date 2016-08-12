@@ -67,7 +67,7 @@ Another way to update the sandbox regarding an operation progress is to use the 
 function to display a message in the Sandbox console pane.
 We can easily modify the previous code to do that instead:
 
-{% github_sample_ref /QualiSystems/devguide_examples/blob/driver_deep_dive/adding_examples/common_driver_recipes/src/driver.py %}
+{% github_sample_ref QualiSystems/devguide_examples/blob/master/common_driver_recipes/src/driver.py %}
 {% highlight python %}
-{% github_sample /QualiSystems/devguide_examples/blob/driver_deep_dive/adding_examples/common_driver_recipes/src/driver.py 57 70 %}
+{% github_sample QualiSystems/devguide_examples/blob/master/common_driver_recipes/src/driver.py 57 70 %}
 {% endhighlight %}
