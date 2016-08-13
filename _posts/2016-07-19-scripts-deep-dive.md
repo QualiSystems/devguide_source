@@ -137,9 +137,9 @@ The _quali_config.json_ should have the following structure:
     "user" : "USER",
     "password" : "PASSWORD",
     "domain" : "DOMAIN",
-    "server_address" : "SERVER_ADDRESS"
-    "cloudshell_api_port" :"CLOUDSHELL_API_PORT"
-    "reservation_id" = "reservation_id"
+    "server_address" : "SERVER_ADDRESS",
+    "cloudshell_api_port" :"CLOUDSHELL_API_PORT",
+    "reservation_id" = "reservation_id",
     "command_parameters" = { "PARAM_NAME" : "PARAM_VALUE"    }
 }
 {% endhighlight %}
