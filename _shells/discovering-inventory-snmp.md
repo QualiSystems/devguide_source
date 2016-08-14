@@ -64,20 +64,38 @@ def get_inventory(self, context):
 
 #### Supporting custom vendor MIBs
 
+##### Compiling and downloading the vendor MIBs
+
 Some vendors will use their own custom MIBs which you'll want to include in the discovery. For example, this  CISCO site provides access to some common
 MIBS you can download: http://tools.cisco.com/ITDIT/MIBS/MainServlet?ReleaseSel=3&PlatformSel=236&fsSel=368. Other vendors have their own MIBs download links.
-To support custom MIBs in the discovery that are not included in cloudshell-snmp, you need to perform the following steps:
 
-First, Download the MIBs from the vendor website.
+To get started, download the MIBs from the vendor website.
 
-Second, you'll need to compile the MIBs to Python files. We suggest using [smidump](http://linux.die.net/man/1/smidump), a simple Linux package to compile MIBs.
-For example, to use the _smidump_ package to compile the IF-MIB to Python, simply run these two lines from the Command Line/terminal:
+Next, you'll need to compile the MIBs to Python files.
+
+**For Linux users:**
+We suggest using [smidump](http://linux.die.net/man/1/smidump), a simple Linux package to compile MIBs.
+For example, to use the _smidump_ package to compile the IF-MIB to Python, simply run these two lines from the terminal:
 {% highlight bash %}
 smidump -f smiv2 -k IF-MIB.mib  > if-mib.txt
 smidump -f python -k if-mib.txt | libsmi2pysnmp > if-mib.py
 {% endhighlight %}
 
-In your shell driver project, save the MIBs Python files in a sub-package folder, then run the following code:
+**If you're on a Windows machine:**
+For Windows user it is recommended to use the mibdump.py script which you can download from [this location](https://github.com/etingof/pysmi/blob/master/scripts/mibdump.py).
+
+The user must handle a repository of the main MIB file that should be used together with it’s dependencies MIB.
+If the user have a site which handles all the required MIBs such as http://mibs.snmplabs.com/asn1/ , the user can use the  --mib-source=URL flag where the URL is the source page of the MIBS.
+Note that URL can be also a local folder path or a remote FTP path which handles all the reuired MIBS.
+
+Finally, run mibdump.py:
+{% highlight bash %}
+Python mibdump.py (flags).
+{% endhighlight %}
+
+##### Including the compiled MIBs in your Shell project
+
+After downloading the MIB files using either the Linux or Windows option, you'll need to include them in your shell driver project, save the MIBs Python files in a sub-package folder and add the following code to your Shell:
 {% highlight bash %}
 snmp_service = QualiSnmp(ip=ip, snmp_version=snmp_params.snmp_version,
                          snmp_community=snmp_params.snmp_read_community,
