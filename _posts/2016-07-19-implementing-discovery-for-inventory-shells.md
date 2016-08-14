@@ -57,11 +57,11 @@ The _shellconfig.xml_ file located in the _datamodel_ directory has the followin
 {% endhighlight %}
 
 As you can see, it currently defines two attributes as mandatory for the user to supply when creating a Shell resource.
-This will mean that when the discovery process will run it can count on already having that information and be able
-to login to the device with it. You can add additional attributes by adding additional _\<Attribute>_ elements under
+This means that when the discovery process will run it can count on that information already being available and can use the supplied credentials
+to login to the device. You can add additional attributes by adding additional _\<Attribute>_ elements under
 the _\<Attributes>_ element.
 
-For this example, we'd like discovery to also be triggered automatically when adding new resources. To change that,
+For this example, we'd like discovery to also be triggered automatically when adding new resources from the Inventory Dashboard. To change that,
 set _\<AutoLoad Enable=**"true"**>_ in the XML and save the changes.
 
 #### Implementing the get_inventory function
@@ -83,7 +83,7 @@ As you can see, the _get_inventory_ code creates a list of _AutoLoadResource_ ob
 imported/synched with CloudShell. Each _AutoLoadResource_ object needs to be initialized with three parameters:
 
 * The _name_ of the resources
-* The _model_ of the resource according to the standard. The [Networking Shell Standard](https://github.com/QualiSystems/shell-networking-standard/blob/master/spec/networking_standard.md).
+* The _model_ of the resource according to the standard. The [Networking Shell Standard](https://github.com/QualiSystems/shell-networking-standard/blob/master/spec/networking_standard.md)
 defines a list of possible models, among them the ones used in this example.
 * The _relative_address_ of the resource. This field is also used to derive the hierarchy of the sub-resources. As you can
 see in the above example, 'Chassis 1' has the address "1" whereas the resource 'Generic Module' has the address of '1/1' which

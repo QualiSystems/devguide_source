@@ -2,7 +2,7 @@
 layout: page
 title: Tips and Tricks
 category: tut
-order: 11
+order: 13
 comments: true
 tags:
     - api
@@ -20,6 +20,7 @@ For Shell drivers, the cloudshell-shell-core contains a convenient object to man
 We pass this helper the _context_ parameter of the driver command:
 
 {% highlight python %}
+from cloudshell.shell.core.session.cloudshell_session import CloudShellSessionContext
 with CloudShellSessionContext(context) as session:
          perform_validations(session)
          do_some_logic(session)
@@ -40,32 +41,34 @@ logger.info("log something")
 {% endhighlight %}
 
 For the default logger, the _log_category_ parameter defines the folder under which logs will be grouped
-whereas the _log_group_ defines the file. The CloudShel convention is to create a folder for each
+whereas the _log_group_ defines the file. The CloudShell convention is to create a folder for each
 reservation id and a file for each resource name. For orchestration scripts, the file name
 is the environment name.
 
 ![Log Structure]({{ site.url }}/devguide/assets/log_structure.png){:class="img-responsive"}
 
-All logs will be saved on the ES where the driver is running. The folder location will be
+All logs will be saved on the Execution Server where the driver is running. The folder location will be
 relative to the driver in the virtual environment location at:
- **_%venv%\\[drivername]\\Lib\\site-packages\\cloudshell\\Logs_**.
+ **_%venv%\\[drivername]\\Lib\\site-packages\\cloudshell\\Logs_**.  (e.g. C:\\ProgramData\\QualiSystems\\venv\\Deployment_Orchestrator_5_2\\Lib\\site-packages\\cloudshell\\Logs.)
+
+Under windows, [venv] will be located at _%programdata%\\qualisystems\\venv_.
 
 You can then use the regular logging level syntax to write messages as a part of the driver
 package or script flow:
 
 {% highlight python %}
-logger.info("info message")
 logger.debug("debug message")
-logger.error("error message")
+logger.info("info message")
 logger.warn("warning message"
+logger.error("error message")
 {% endhighlight %}
 
-Only log messages which are greater then the log level currently set for the driver will be saved to file.
+Only messages which are greater than the log level currently set for the driver will be saved to file.
 Typically, changing the log level to a more verbose value would be done only in order to debug an issue, as
 writing too much to the logs can be expensive. You can change the logging level on the ES or driver level.
 
 To change the log level on the driver level, edit the following configuration file:
-**_%venv%\\[drivername]\\Lib\\site-packages\\cloudshell\\core\\logger\qs_config.init_** and change the
+**_[venv]\\[drivername]\\Lib\\site-packages\\cloudshell\\core\\logger\qs_config.init_** and change the
 log level value. Notice that this change will only be valid for that virtual environment, so if the driver
 is recycled due to inactivity the log level will revert to the default value.
 
@@ -79,7 +82,7 @@ _customer.config_ (change 'DEBUG' to the log level you wish to set):
 You will need to restart the ES following this change.
 
 Similar to the CloudShell API session, its recommended to create a logger once per command and then pass it
-to any internal classes the require it. As with the CloudShell API we've added some helpers in the _cloudshell-shell-core_
+to any internal classes that require it. As with the CloudShell API we've added some helpers in the _cloudshell-shell-core_
 package which can reduce some of the repetition around creating a logger and create a more explicit scope for it:
 
 {% highlight python %}
@@ -93,12 +96,11 @@ _cloudshell-shell-core_ provides a handy scope:
 
 {% highlight python %}
 with ErrorHandlingContext(logger):
-    will_get_automatically_logged_on_exceptin()
-    will_get_automatically_logged_on_exceptin
+    will_get_automatically_logged_on_exception()
 {% endhighlight %}
 
-Using this cope exception raised within the scope of the _ErrorHandlingContext_ will be logged, even if no code remembered
-to explcitly call the logger.
+Using this scope any exception raised within the _ErrorHandlingContext_ will be logged, even if no code remembered
+to explicitly call the logger.
 
 ### Nested scopes
 

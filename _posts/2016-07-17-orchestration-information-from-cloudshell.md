@@ -132,5 +132,5 @@ You can also use the scripting helper class:
 
 {% highlight python %}
 import cloudshell.helpers.scripts.cloudshell_scripts_helpers as helpers
-helpers.get_user_param('PARAM1')
+helpers.get_user_param('Param1')
 {% endhighlight %}

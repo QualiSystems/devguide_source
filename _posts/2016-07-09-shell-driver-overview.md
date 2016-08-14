@@ -33,7 +33,7 @@ also the CloudShell convention.
 When the user executes a command for the first time on a deployed app or inventory resource in the Sandbox, CloudShell will
 initialize a driver object from the Shell driver class. The object will be created in its own isolated
 process, separate from other object instances of that same driver which may be driving other shell
-instances - other devices or apps. All The Python process will initialize the driver class as a new
+instances - other devices or apps. The Python process will initialize the driver class as a new
 object and will from that point on communicate with it to handle any commands.
 
 Inventory and app shell drivers behave a bit differently in terms of their lifecycle:
@@ -72,23 +72,23 @@ The _initialize_ and _cleanup_ functions have a simple interface. If you generat
 project using ShellFoundry they should already be included in the generated _driver.py_ file.
 
 {% highlight python %}
-    def initialize(self, context):
-        """
-        Initialize the driver session, this function is called every time a new instance of the driver is created
-        This is a good place to load and cache the driver configuration, initiate sessions etc.
-        :param InitCommandContext context: the context the command runs on
-        """
-        pass
+def initialize(self, context):
+    """
+    Initialize the driver session, this function is called every time a new instance of the driver is created
+    This is a good place to load and cache the driver configuration, initiate sessions etc.
+    :param InitCommandContext context: the context the command runs on
+    """
+    pass
 
-    def cleanup(self):
-        """
-        Destroy the driver session, this function is called every time a driver instance is destroyed
-        This is a good place to close any open sessions, finish writing to log files
-        """
-        pass
+def cleanup(self):
+    """
+    Destroy the driver session, this function is called every time a driver instance is destroyed
+    This is a good place to close any open sessions, finish writing to log files
+    """
+    pass
 {% endhighlight %}
 
-The _initialize_ function is a good place to place to add code you expect to be called once during the
+The _initialize_ function is a good place to add code you expect to be called once during the
 lifecycle of the driver object. You should take into account that the driver is not guaranteed to run
 forever. The Quali server might choose to stop the driver instance due to inactivity. In general,
 it is recommended to keep the driver as stateless as possible, this will remove a lot of the complexity
@@ -100,7 +100,7 @@ The _cleanup_ function will be called whenever the driver instance is stopped. Y
 
 #### Commands Concurrency
 
-By default, Shell drivers handle commands sequentially. They handle commands one at a time and CloudShell maintains a queue of commands waiting to run on each driver if multiple executions are initiated. However, the shell can be configured to handle commands concurrently as well, in which case it becomes the responsibility of the driver developer to handle the concurrency and introduce mutexes where required.
+By default, CloudShell will run Shell drivers in sequential mode. This means that CloudShell will send out commands to the driver one at a time and maintain a queue of pending commands if multiple executions are initiated. However, the shell can be configured to handle commands concurrently as well, in which case it becomes the responsibility of the driver developer to handle the concurrency and introduce mutexes where required.
 We'll review that option and how to configure it in the [Shell customization section]({{ site.url }}/devguide/tut/customizing-driver-commands.html).
 
 #### Conclusion

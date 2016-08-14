@@ -3,7 +3,7 @@ layout: page
 title: Common Driver Recipes
 category: tut
 comments: true
-order:  10
+order:  12
 ---
 In this section we'll provide a few handy examples of common driver operations.
 The intention is to grow this into a good source to copy paste common code from.
@@ -64,10 +64,10 @@ machine under the  %programdata%\\QualiSystems\\Settings\\Global directory:
 #### Sending a message to the sandbox console
 
 Another way to update the sandbox regarding an operation progress is to use the _WriteMessageToReservationOutput_
-function to display message in the Sandbox console pane.
+function to display a message in the Sandbox console pane.
 We can easily modify the previous code to do that instead:
 
-{% github_sample_ref /QualiSystems/devguide_examples/blob/driver_deep_dive/adding_examples/common_driver_recipes/src/driver.py %}
+{% github_sample_ref QualiSystems/devguide_examples/blob/master/common_driver_recipes/src/driver.py %}
 {% highlight python %}
-{% github_sample /QualiSystems/devguide_examples/blob/driver_deep_dive/adding_examples/common_driver_recipes/src/driver.py 57 70 %}
+{% github_sample QualiSystems/devguide_examples/blob/master/common_driver_recipes/src/driver.py 57 70 %}
 {% endhighlight %}
