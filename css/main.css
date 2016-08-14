@@ -10,6 +10,16 @@ pre, code, pre code {
     font-size: 0.85em;
 }
 
+.next {
+    float: right;
+    font-size: 15px;
+    line-height: 4;
+}
+
+.prev {
+    font-size: 15px;
+    line-height: 4;
+}
 .search_ref {
     font-size: 12px
 }

@@ -17,6 +17,9 @@ google_analytics_id: 'UA-81468206-1'
 #   2 - show only if posts are present
 navigation: 1
 
+collections:
+    shells:
+        output: true
 # URL to source code, used in _includes/footer.html
 codeurl: 'https://github.com/qualisystems'
 mainurl: 'http://www.quali.com'

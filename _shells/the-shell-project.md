@@ -27,7 +27,7 @@ The settings in this file are used by the Shellfoundry CLI tool to install the S
         password: YOUR_PASSWORD
         domain: Global
     {% endhighlight %}
-Notice that this file shouldn't generally be stored in a public source control index (in fact, its excluded in the auto-generated .gitignore file) as it contains CloudShell's login credentials.
+Notice that this file shouldn't generally be stored in a public source control index (in fact, its excluded in the auto-generated .gitignore file) as it contains your Dev CloudShell’s administrator login credentials.
 
 * _readme.rst_: Default Shell readme file.
 * _shell.yml_: Basic shell metadata such as the name of the shell, the author name/email, create date etc.

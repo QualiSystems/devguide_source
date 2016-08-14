@@ -1,7 +1,6 @@
 ---
 layout: page
 title: "Getting Started"
-category: tut
 date: "2016-04-30 13:02:32 +0300"
 order: 1
 comments: true

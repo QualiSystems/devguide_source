@@ -10,6 +10,48 @@ layout: default
 
 {{ content }}
 
+<div id="post-nav" class="clearfix">
+  {% if page.previous.url %}
+    <a class="prev" href="{{site.baseurl}}/{{page.previous.url}}">&laquo; {{page.previous.title}}</a>
+  {% endif %}
+  {% if page.next.url %}
+    <a class="next" href="{{site.baseurl}}/{{page.next.url}}">{{page.next.title}} &raquo;</a>
+  {% endif %}
+</div>
+
+{% capture the_collection %}{{page.collection}}{% endcapture %}
+{% if page.collection %}
+    {% assign  document = site[the_collection] | sort: "date" | reversed %}
+{% endif %}
+
+{% for links in document %}
+    {% if links.title == page.title %}
+
+        {% unless forloop.first %}
+            {% assign prevurl = prev.url %}
+
+            {% assign prevtitle = prev.title %}
+        {% endunless %}
+
+        {% unless forloop.last %}
+            {% assign next = document[forloop.index] %}
+
+            {% assign nexturl = next.url %}
+
+            {% assign nexttitle = next.title %}
+        {% endunless %}
+    {% endif %}
+
+    {% assign prev = links %}
+{% endfor %}
+
+{% if prevurl or nexturl %}
+    <div class="pagination">
+        {% if prevurl %}<a href="{{prevurl}}" class="prev"><i class="fa fa-angle-left"></i> &laquo; {{ prevtitle}}</a>{% endif %}
+        {% if nexturl %}<a href="{{nexturl}}" class="next">{{nexttitle}} &laquo; <i class="fa fa-angle-right"></i></a>{% endif %}
+    </div>
+{% endif %}
+
 {% if page.comments %}
 <div id="disqus_thread"></div>
 <script>
@@ -44,8 +86,8 @@ layout: default
 
 <ul >
     {% for post in site.related_posts limit 4 %}
-        <li><a href="{{ BASE_PATH }}/devguide/{{ post.url }}">{{ post.title }}</a></li>
+        <li><a href="{{ site.baseurl }}/{{ post.url }}">{{ post.title }}</a></li>
            {{ post.excerpt}}
-               <a href="{{ BASE_PATH }}/devguide/{{ post.url }}">Read more...</a><br><br>
+               <a href="{{ site.baseurl }}/{{ post.url }}">Read more...</a><br><br>
     {% endfor %}
 </ul>
