@@ -52,9 +52,11 @@ code {
     margin-top: 0;
 }
 
-
+.nav>li>a {
+    padding: 0;
+    line-height: 30px;
+}
 #navigation {
-    font-size: 0.9em;
 }
 
 #navigation li a {
@@ -65,6 +67,8 @@ code {
 #navigation .nav-header {
     padding-left: 0;
     padding-right: 0;
+    margin-top: 10px;
+    font-weight: bold;
 }
 
 body.rtl {

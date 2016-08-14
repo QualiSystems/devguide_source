@@ -14,8 +14,8 @@ used most effectively for CloudShell orchestration.
 CloudShell executes a Python script in a very simple and straightforward way by simply running it with a Python executable.
 To send information to the script, CloudShell sets environment variables in the scope of the script process.
 These environment variables include information about the sandbox reservation, as well as the script parameters.
-The script output is returned as the command result. If an exception is raised,
-or if a non-zero result code is returned by the script, the execution will be considered a failure.
+The script standard output is returned as the command result. If an exception is raised,
+or if a non-zero process result code is returned by the script, the execution will be considered a failure.
 
 #### Using a main function and packaging multiple files
 
@@ -104,7 +104,7 @@ on real sandbox reservation data. The helper functions allow the script to "atta
 Sandbox, by filling in all of the environment variables of the script so that the same information
 is available to it as would be if CloudShell launched it.
 
-To attach to a CloudShel sandbox, first create a sandbox reservation, then add the following code
+To attach to a CloudShell sandbox, first create a sandbox reservation, then add the following code
 and fill in the required data for the function parameters.
 
 {% highlight python %}
@@ -137,9 +137,9 @@ The _quali_config.json_ should have the following structure:
     "user" : "USER",
     "password" : "PASSWORD",
     "domain" : "DOMAIN",
-    "server_address" : "SERVER_ADDRESS"
-    "cloudshell_api_port" :"CLOUDSHELL_API_PORT"
-    "reservation_id" = "reservation_id"
+    "server_address" : "SERVER_ADDRESS",
+    "cloudshell_api_port" :"CLOUDSHELL_API_PORT",
+    "reservation_id" = "reservation_id",
     "command_parameters" = { "PARAM_NAME" : "PARAM_VALUE"    }
 }
 {% endhighlight %}
