@@ -69,7 +69,7 @@ def get_inventory(self, context):
 Some vendors will use their own custom MIBs which you'll want to include in the discovery. For example, this  CISCO site provides access to some common
 MIBS you can download: http://tools.cisco.com/ITDIT/MIBS/MainServlet?ReleaseSel=3&PlatformSel=236&fsSel=368. Other vendors have their own MIBs download links.
 
-To get started, download the MIBs from the vendor website.
+To get started, download the MIBs from the vendor website or any other valid source.
 
 Next, you'll need to compile the MIBs to Python files.
 
