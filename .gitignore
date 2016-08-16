@@ -1,5 +1,4 @@
 *.sw?
 _site
 _pages
-Gemfile
 Gemfile.lock
