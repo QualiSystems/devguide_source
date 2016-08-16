@@ -232,4 +232,4 @@ Then, paste the following function:
 
 Now that we have a CloudShell API session, there are three main things we may want to do with it from our driver:
 Decrypt a password attribute, update the resource live status or update the console widget with progress report.
-You can find the code for these operations in the [Common Driver Recipes section]({{ site.baseurl}}/tut/common-driver-recipes.html) of this guide.
+You can find the code for these operations in the [Common Driver Recipes section]({{ site.baseurl}}/shells/common-driver-recipes.html) of this guide.

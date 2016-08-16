@@ -145,7 +145,7 @@ The basic flow is:
 4. Make incremental changes to the Shell and update the development server each time with your changes by running _shellfoundry install_
 5. Rinse and repeat!
 
-For more information on how to deploy the Shell to production, refer to the [Deploying to Production]({{ site.baseurl }}/tut/deploying-to-production.html) section.
+For more information on how to deploy the Shell to production, refer to the [Deploying to Production]({{ site.baseurl }}/shells/deploying-to-production.html) section.
 
 #### What's next
 
