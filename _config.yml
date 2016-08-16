@@ -18,19 +18,25 @@ google_analytics_id: 'UA-81468206-1'
 navigation: 1
 
 collections:
+    setting-up:
+        output: true
+        title: "Setting up for development"
+
     shells:
         output: true
+        title: "Extending CloudShell with Shells"
+
+    orchestration:
+        output: true
+        title: "Orchestration scripts"
+
+    reference:
+        output: true
+        title: "Reference"
+
 # URL to source code, used in _includes/footer.html
 codeurl: 'https://github.com/qualisystems'
 mainurl: 'http://www.quali.com'
-
-# Default categories (in order) to appear in the navigation
-sections: [
-    ['set', 'Setting up for development'],
-    ['tut', 'Extending CloudShell with Shells'],
-    ['orch', 'Orchestration scripts'],
-    ['ref', 'Reference']
-]
 
 # Keep as an empty string if served up at the root. If served up at a specific
 # path (e.g. on GitHub pages) leave off the trailing slash, e.g. /my-project

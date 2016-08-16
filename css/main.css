@@ -62,10 +62,22 @@ code {
     margin-top: 0;
 }
 
+.nav>li>a:hover {
+    text-decoration: none;
+    background-color: transparent;
+}
+
 .nav>li>a {
     padding: 0;
     line-height: 30px;
 }
+
+.nav .active {
+    border-left-color: #aa6708;
+    border-left-width: medium;
+    border-left-style: solid;
+}
+
 #navigation {
 }
 

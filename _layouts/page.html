@@ -2,7 +2,7 @@
 layout: default
 ---
 
-<div class="page-header">
+<div class="page-header" data-page-id="{{ page.path }}">
     <h2>{{ page.title }}
         {% if page.subtitle %}<small>{{ page.subtitle }}</small>{% endif %}
     </h2>
@@ -10,84 +10,19 @@ layout: default
 
 {{ content }}
 
-<div id="post-nav" class="clearfix">
-  {% if page.previous.url %}
-    <a class="prev" href="{{site.baseurl}}/{{page.previous.url}}">&laquo; {{page.previous.title}}</a>
-  {% endif %}
-  {% if page.next.url %}
-    <a class="next" href="{{site.baseurl}}/{{page.next.url}}">{{page.next.title}} &raquo;</a>
-  {% endif %}
-</div>
+{% include next_previous.html %}
 
-{% capture the_collection %}{{page.collection}}{% endcapture %}
-{% if page.collection %}
-    {% assign  document = site[the_collection] | sort: "date" | reversed %}
-{% endif %}
+{% include disqus.html %}
 
-{% for links in document %}
-    {% if links.title == page.title %}
+{% include related_posts.html %}
 
-        {% unless forloop.first %}
-            {% assign prevurl = prev.url %}
-
-            {% assign prevtitle = prev.title %}
-        {% endunless %}
-
-        {% unless forloop.last %}
-            {% assign next = document[forloop.index] %}
-
-            {% assign nexturl = next.url %}
-
-            {% assign nexttitle = next.title %}
-        {% endunless %}
-    {% endif %}
-
-    {% assign prev = links %}
-{% endfor %}
-
-{% if prevurl or nexturl %}
-    <div class="pagination">
-        {% if prevurl %}<a href="{{prevurl}}" class="prev"><i class="fa fa-angle-left"></i> &laquo; {{ prevtitle}}</a>{% endif %}
-        {% if nexturl %}<a href="{{nexturl}}" class="next">{{nexttitle}} &laquo; <i class="fa fa-angle-right"></i></a>{% endif %}
-    </div>
-{% endif %}
-
-{% if page.comments %}
-<div id="disqus_thread"></div>
 <script>
-    var disqus_config = function () {
-        var disqus_identifier = '{{ page.id }}';
-        var disqus_url = '{{ site.url }}{{ page.url }}';
-        this.page.url = "{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}";  // Replace PAGE_URL with your page's canonical URL variable
-        this.page.identifier = disqus_identifier; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-    };
-    (function() {  // DON'T EDIT BELOW THIS LINE
-        var d = document, s = d.createElement('script');
-
-        s.src = '//qualidev.disqus.com/embed.js';
-
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
+$(function() {
+    page = $(".page-header").attr("data-page-id")
+    nav_item = $(".nav li[data-page-id='"+page+"']")
+    if (nav_item) {
+        $(".nav").find(".active").removeClass("active");
+        nav_item.addClass("active");
+    }
+})
 </script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
-{% endif %}
-
-{% if site.related_posts and site.related_posts != empty %}
-
-<br><br><br>
-<hr>
-<h4>
-    Related Posts
-</h4>
-
-{% else %}
-{% endif %}
-
-<ul >
-    {% for post in site.related_posts limit 4 %}
-        <li><a href="{{ site.baseurl }}/{{ post.url }}">{{ post.title }}</a></li>
-           {{ post.excerpt}}
-               <a href="{{ site.baseurl }}/{{ post.url }}">Read more...</a><br><br>
-    {% endfor %}
-</ul>

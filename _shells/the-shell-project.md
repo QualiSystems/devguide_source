@@ -9,7 +9,7 @@ When starting a new Shell, the first thing you'll want to do is generate the She
 Thankfully, this happens automatically when you use the ShellFoundry CLI tool. In this section, we'll look into the generated
 files and structure and their different roles. At this stage, we'll only take a bird's eye view of the different files, folders and what they are used for. In the following sections we'll delve deeper into the specific options and format of each file and learn how to customize the driver and shell definition in CloudShell.
 
-Let's begin by generating a new shell project. If you've previously completed the [Getting Started](/devguide/tut/getting-started.html)
+Let's begin by generating a new shell project. If you've previously completed the [Getting Started]({{site.baseurl}}/shells/getting-started.html)
 tutorial you should have a reference project. If you haven't completed the initial tutorial, its recommended you do so now. Otherwise, just run the following in your command line:
 
 {% highlight bash %} shellfoundry new linux-server-shell {% endhighlight %}

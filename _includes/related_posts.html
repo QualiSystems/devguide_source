@@ -1,0 +1,18 @@
+{% if site.related_posts and site.related_posts != empty %}
+
+<br><br><br>
+<hr>
+<h4>
+    Related Posts
+</h4>
+
+{% else %}
+{% endif %}
+
+<ul >
+    {% for post in site.related_posts limit 4 %}
+        <li><a href="{{ site.baseurl }}/{{ post.url }}">{{ post.title }}</a></li>
+           {{ post.excerpt}}
+               <a href="{{ site.baseurl }}/{{ post.url }}">Read more...</a><br><br>
+    {% endfor %}
+</ul>

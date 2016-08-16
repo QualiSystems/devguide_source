@@ -33,12 +33,12 @@ parameter called _context_. This parameter will be provided by CloudShell as an 
 and resource/app the device is executing against. Another special property of the _context_ parameter is that its completely
 invisible to users or API clients executing the command. If you execute the command from the UI or API you will never see a
 _context_ parameter. The _context_ object is reviewed in the
- [Getting information from CloudShell](/devguide/tut/getting-information-from-cloudshell.html) section of this guide.
+ [Getting information from CloudShell]({{site.baseurl}}/shells/getting-information-from-cloudshell.html) section of this guide.
 
 The **_drivermetadata.xml_** file, also located in the _src_ directory provides additional
 information on the driver functions and how CloudShell should expose and display them as CloudShell
 Commands. More information about this file and how to customize CloudShell commands can be found in the
-[Commands visibility and usability](/devguide/tut/customizing-driver-commands.html) section.
+[Commands visibility and usability]({{site.baseurl}}/shells/customizing-driver-commands.html) section.
 
 The driver can contain additional files and folders which you can reference in your driver class.
 In order to reference a file in a nested folder you need to add an  **_\_\_init\_\_.py_** file according
@@ -194,7 +194,7 @@ CloudShell regarding the status of the resource or write additional messages to 
 Starting a CloudShell API session requires information regarding the sandbox reservation and the server connectivity information.
 All of that information is available in the _context_ parameter of the command function that is being passed by CloudShell.
 For more information about that object and the information it provides please see the
-[Getting information from CloudShell](/devguide/tut/getting-information-from-cloudshell.html) section.
+[Getting information from CloudShell]({{site.baseurl}}/shells/getting-information-from-cloudshell.html) section.
 
 First, as we'll need the CloudShell API, we should add it to the _requirements.txt_ file. Open the _requirements.txt_ file
 and add the following line:
