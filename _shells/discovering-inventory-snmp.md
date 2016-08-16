@@ -82,7 +82,7 @@ smidump -f python -k if-mib.txt | libsmi2pysnmp > if-mib.py
 {% endhighlight %}
 
 **If you're on a Windows machine:**
-For Windows user it is recommended to use the mibdump.py script which you can download from [this location](https://github.com/etingof/pysmi/blob/master/scripts/mibdump.py).
+For Windows user we suggest using the mibdump.py tool which you can download from this location. which you can download from [this location](https://github.com/etingof/pysmi/blob/master/scripts/mibdump.py).
 
 The user must handle a repository of the main MIB file that should be used together with it’s dependencies MIB.
 If the user have a site which handles all the required MIBs such as http://mibs.snmplabs.com/asn1/ , the user can use the  --mib-source=URL flag where the URL is the source page of the MIBS.
