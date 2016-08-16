@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Debugging Driver Commands
+title: Debugging Shell Driver Commands
 category: tut
 comments: true
 order:  9
@@ -27,7 +27,7 @@ cd debugging_example
 {% endhighlight %}
 
 Then create an instance of the DebuggingExample resource and add it to a sandbox so we can use it for testing.
-These steps are identical to the ones demonstrated in the [Getting Started](/devguide/tut/getting-started.html) section,
+These steps are identical to the ones demonstrated in the [Getting Started]({{site.baseurl}}/shells/getting-started.html) section,
 which you can use a reference.
 
 #### Setting up

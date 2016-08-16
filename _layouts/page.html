@@ -2,7 +2,7 @@
 layout: default
 ---
 
-<div class="page-header">
+<div class="page-header" data-page-id="{{ page.path }}">
     <h2>{{ page.title }}
         {% if page.subtitle %}<small>{{ page.subtitle }}</small>{% endif %}
     </h2>
@@ -10,42 +10,19 @@ layout: default
 
 {{ content }}
 
-{% if page.comments %}
-<div id="disqus_thread"></div>
+{% include next_previous.html %}
+
+{% include disqus.html %}
+
+{% include related_posts.html %}
+
 <script>
-    var disqus_config = function () {
-        var disqus_identifier = '{{ page.id }}';
-        var disqus_url = '{{ site.url }}{{ page.url }}';
-        this.page.url = "{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}";  // Replace PAGE_URL with your page's canonical URL variable
-        this.page.identifier = disqus_identifier; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-    };
-    (function() {  // DON'T EDIT BELOW THIS LINE
-        var d = document, s = d.createElement('script');
-
-        s.src = '//qualidev.disqus.com/embed.js';
-
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
+$(function() {
+    page = $(".page-header").attr("data-page-id")
+    nav_item = $(".nav li[data-page-id='"+page+"']")
+    if (nav_item) {
+        $(".nav").find(".active").removeClass("active");
+        nav_item.addClass("active");
+    }
+})
 </script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
-{% endif %}
-
-{% if site.related_posts and site.related_posts != empty %}
-
-<br><br><br>
-<hr>
-<h4>
-    Related Posts
-</h4>
-
-{% else %}
-{% endif %}
-
-<ul >
-    {% for post in site.related_posts limit 4 %}
-        <li><a href="{{ BASE_PATH }}/devguide/{{ post.url }}">{{ post.title }}</a></li>
-           {{ post.excerpt}}
-               <a href="{{ BASE_PATH }}/devguide/{{ post.url }}">Read more...</a><br><br>
-    {% endfor %}
-</ul>

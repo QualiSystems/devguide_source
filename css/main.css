@@ -10,6 +10,16 @@ pre, code, pre code {
     font-size: 0.85em;
 }
 
+.next {
+    float: right;
+    font-size: 15px;
+    line-height: 4;
+}
+
+.prev {
+    font-size: 15px;
+    line-height: 4;
+}
 .search_ref {
     font-size: 12px
 }
@@ -52,10 +62,22 @@ code {
     margin-top: 0;
 }
 
+.nav>li>a:hover {
+    text-decoration: none;
+    background-color: transparent;
+}
+
 .nav>li>a {
     padding: 0;
     line-height: 30px;
 }
+
+.nav .active {
+    border-left-color: #aa6708;
+    border-left-width: medium;
+    border-left-style: solid;
+}
+
 #navigation {
 }
 
