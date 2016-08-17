@@ -3,7 +3,7 @@
 
 
 <p align="center">
-![Quali](https://github.com/QualiSystems/devguide_source/raw/master/logo.png)
+<img src="https://github.com/QualiSystems/devguide_source/raw/master/logo.png"></img>
 </p>
 
 # CloudShell DevGuide Source
