@@ -1,6 +1,8 @@
 [![Stories in Ready](https://badge.waffle.io/QualiSystems/devguide_source.svg?label=ready&title=Ready)](http://waffle.io/QualiSystems/devguide_source)
 [![Build Status](https://travis-ci.org/QualiSystems/devguide_source.svg?branch=master)](https://travis-ci.org/QualiSystems/devguide_source)
 
+[![Quali](https://github.com/QualiSystems/devguide_source/raw/master/logo.png)
+
 # CloudShell DevGuide Source
 
 This is the home repo of the CloudShell DevGuide. The CloudShell Developer's Guide is an open
