@@ -8,7 +8,7 @@
 
 # CloudShell DevGuide Source
 
-This is the home repo of the CloudShell DevGuide. The CloudShell Developer's Guide is an open
+This is the home repo of the [CloudShell DevGuide](http://qualisystems.github.io/devguide/). The CloudShell Developer's Guide is an open
 source documentation initiative. You can submit pull requests with articles or bug fixes or post issues for enhancement suggestions, corrections and feedback.
 
 ## How to contribute
