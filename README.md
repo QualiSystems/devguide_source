@@ -8,7 +8,7 @@ source documentation initiative. You can submit pull requests with articles or b
 
 ## How to contribute
 
-To provide feedback or request enhancements simply create an issue in the repository. You can use the Waffle board to add issues directly and catch up on the current backlog progress.
+To provide feedback or request enhancements simply create an issue in the repository. You can use the [Waffle Board](https://waffle.io/QualiSystems/devguide_source) to add issues directly and catch up on the current backlog progress.
 
 You're welcome to submit new documentation articles or suggestions modification or fixes to existing articles.
 Simply clone or fork the repo and submit pull request to the master branch.
