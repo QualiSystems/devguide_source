@@ -30,6 +30,10 @@ collections:
         output: true
         title: "Orchestration scripts"
 
+    devops:
+        output: true
+        title: "Integrating CloudShell into the DevOps Cycle"
+
     reference:
         output: true
         title: "Reference"
