@@ -26,12 +26,12 @@ You can download the latest Python package reference from the CloudShell online 
 
 When using the _cloudshell-automation-api_ package, make sure to install the version of the API which is compatible with your CloudShell version. To make the task of finding the right version easier, this package follows a versioning schema different from other CloudShell packages. The _major_ and _minor_ version of the _cloudshell-automation-api_ package will always match the CloudShell release its compatible with. Therefore, to install the latest compatible version you need to add these version requirements when installing from pip. For example, to install the latest _cloudshell-automation-api_ compatible with CloudShell 7.0, run:
 {% highlight bash %}
-python -m pip install cloudshell-automation-api>=7.0,<7.1
+python -m pip install "cloudshell-automation-api>=7.0,<7.1"
 {% endhighlight %}
 
 To install the latest _cloudshell-automation-api_ compatible with CloudShell 7.1, run:
 {% highlight bash %}
-python -m pip install cloudshell-automation-api>=7.1,<7.2
+python -m pip install "cloudshell-automation-api>=7.1,<7.2"
 {% endhighlight %}
 
 ### Starting and stopping a sandbox
@@ -62,7 +62,7 @@ Since sandboxes used this way are really a scope for testing. It can be benefici
 
 ### Sandbox REST API Missing and Upcoming Features
 
-The Sandbox REST API has some known limitations. Currently (as of CloudShell 7.1GA) does not support blueprint inputs and will not support future (pending) reservation of sandboxes. The blueprint feature is currently "in the oven" and scheduled for a 7.2EA release. If your CloudShell environment does require those features you may need to fall back to the _cloudshel-automation-api_ package API for sandbox reservation.
+The Sandbox REST API has some known limitations. Currently (as of CloudShell 7.1GA) it does not support blueprint inputs and the creation of future (pending) reservation of sandboxes. The blueprint feature is currently "in the oven" and scheduled for a 7.2EA release. If your CloudShell environment does require those features you may need to fall back to the _cloudshel-automation-api_ package API for sandbox reservation.
 
 The following code demonstrates implementing the same basic flow using the Python package:
 
