@@ -64,25 +64,35 @@ def get_inventory(self, context):
 
 #### Supporting custom vendor MIBs
 
+##### Compiling and downloading the vendor MIBs
+
 Some vendors will use their own custom MIBs which you'll want to include in the discovery. For example, this  CISCO site provides access to some common
 MIBS you can download: http://tools.cisco.com/ITDIT/MIBS/MainServlet?ReleaseSel=3&PlatformSel=236&fsSel=368. Other vendors have their own MIBs download links.
-To support custom MIBs in the discovery that are not included in cloudshell-snmp, you need to perform the following steps:
 
-First, Download the MIBs from the vendor website.
+To compile the MIBs we recommend using the [smidump.py](https://github.com/etingof/pysmi/blob/master/scripts/mibdump.py) script which is part of the [PySMI](http://pysmi.sourceforge.net) SNMP libraries and tools. The _smidump.py_ script supports both compiling MIB sources you've downloaded locally as well as using remote MIB sources. For example, the [snmplabs](http://mibs.snmplabs.com/asn1/) repository provides a wealth of publicly available MIBs. Notice, if you are trying to compile MIB sources you've downloaded locally, you should be sure to download all of the dependencies to the same folder (e.g. IF-MIB depends on SNMPV2-MIB). However, you can specify more than one MIB source, so you can include both your local MIB sources and remote repositories.
 
-Second, you'll need to compile the MIBs to Python files. We suggest using [smidump](http://linux.die.net/man/1/smidump), a simple Linux package to compile MIBs.
-For example, to use the _smidump_ package to compile the IF-MIB to Python, simply run these two lines from the Command Line/terminal:
+The following example will compile the IF-MIB source from the _snmplabs_ repository:
+{% highlight bash %}
+python mibdump.py --mib-source=http://mibs.snmplabs.com/asn1/@mib@ IF-MIB
+{% endhighlight %}
+
+If you're a Linux user, you can take advantage of the [smidump package](http://linux.die.net/man/1/smidump).
+This package is available as an RPM/APT package for various Linux distros.
+The _smidump_ package is somewhat easier to use with a clear syntax. For example, to use the _smidump_ package to compile the IF-MIB to Python, simply run these two lines from the terminal:
+
 {% highlight bash %}
 smidump -f smiv2 -k IF-MIB.mib  > if-mib.txt
 smidump -f python -k if-mib.txt | libsmi2pysnmp > if-mib.py
 {% endhighlight %}
 
-In your shell driver project, save the MIBs Python files in a sub-package folder, then run the following code:
+##### Including the compiled MIBs in your Shell project
+
+After downloading the MIB files using either the Linux or Windows option, you'll need to include them in your shell driver project, save the MIBs Python files in a sub-package folder and add the following code to your Shell:
 {% highlight bash %}
 snmp_service = QualiSnmp(ip=ip, snmp_version=snmp_params.snmp_version,
                          snmp_community=snmp_params.snmp_read_community,
                          logger=logger)
-snmp_service.load_mib('VENDOR-MIB')
+snmp_service.load_mib('IF-MIB')
 {% endhighlight %}
 
 After loading the MIB, you'll be able to use it like any of the MIBs included in cloudshell-snmp and retrieve properties and tables.
