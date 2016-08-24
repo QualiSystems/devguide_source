@@ -12,6 +12,7 @@
         <link rel="stylesheet" href="{{ site.baseurl }}/css/main.css">
         <link rel="stylesheet" href="{{ site.baseurl }}/css/prism.css">
         <link rel="stylesheet" href="{{ site.baseurl }}/css/samples.css">
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
         <script src="{{ site.baseurl }}/js/jquery-3.1.0.min.js"></script>
 
         {% if jekyll.environment == 'production' %}
@@ -20,22 +21,20 @@
         {% seo %}
     </head>
     <body>
-
-        <div class="container">
-            <div class="row">
-                <div id="header" class="col-sm-12">
-                    {% include header.html %}
-                </div>
+        <div id="header">
+            <div class="container">
+                {% include header.html %}
             </div>
-
+        </div>
+        <div class="container">
             <div class="row">
                 {% assign post_count = site.posts|size %}
                 {% if site.navigation != 0 and site.navigation == 1 or post_count > 0 %}
-                    <div id="navigation" class="col-sm-3">
+                    <div id="navigation" class="col-md-3 col-sm-4">
                         {% include navigation.html %}
                     </div>
 
-                    <div id="content" class="col-sm-9">
+                    <div id="content" class="col-md-9 col-sm-8">
                         {{ content }}
                     </div>
                 {% else %}
