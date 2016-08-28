@@ -7,7 +7,7 @@ url: https://qualisystems.github.io
 disqus_shortname: ''
 twitter:
   username: qualisystems
-logo: '/assets/Quali Logo.png'
+logo: './assets/logo.png'
 # if you use google analytics, add your tracking id here
 google_analytics_id: 'UA-81468206-1'
 
@@ -18,9 +18,9 @@ google_analytics_id: 'UA-81468206-1'
 navigation: 1
 
 collections:
-    setting-up:
+    introduction:
         output: true
-        title: "Setting up for development"
+        title: "Introduction"
 
     shells:
         output: true

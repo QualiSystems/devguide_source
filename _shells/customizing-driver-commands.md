@@ -16,7 +16,7 @@ In this section we'll explore the different ways in which these commands can be 
 * [Adding categories](#customizing_categories)
 * [Orchestration only commands](#customizing_orchestration_only_commands)
 
-If you haven't done some already it is recommended to go through the [Getting Started]({{site.baseurl}}/shells/getting-started.html) tutorial before continuing to get a better understanding of the overall process of creating and using a shell. We also assume you've gone through the steps described in the [Setting Up the Development IDE]({{site.baseurl}}/setting-up/setting-up-the-development-ide.html) section of this guide.
+If you haven't done some already it is recommended to go through the [Getting Started]({{site.baseurl}}/shells/getting-started.html) tutorial before continuing to get a better understanding of the overall process of creating and using a shell. We also assume you've gone through the steps described in the [Setting Up the Development IDE]({{site.baseurl}}/introduction/setting-up-the-development-ide.html) section of this guide.
 
 <a name="setting_up"></a>
 

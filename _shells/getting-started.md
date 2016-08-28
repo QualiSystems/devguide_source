@@ -5,15 +5,7 @@ date: "2016-04-30 13:02:32 +0300"
 order: 1
 comments: true
 ---
-### Creating your first Shell
-
-This guide will take you through the basic steps of a creating a new Shell from scratch. We'll go through the following steps:
-
-* Creating the shell project
-* Implementing a shell resource command in the shell driver
-* Installing the shell to the local CloudShell development installation
-* Instantiating a shell resource in CloudShell
-* Adding the shell to a blueprint and running a command on the shell in a sandbox
+This section will take you through the basic steps of a creating a new Shell. The goal is to demonstrate the end-to-end cycle, from generating a new Shell project to instancing Shell resources and running commands in CloudShell. 
 
 ### Prerequisites
 * [Get CloudShell](http://info.quali.com/cloudshell-developer-edition-download): Download the latest CloudShell SDK and run it on your machine.  
