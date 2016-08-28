@@ -18,9 +18,9 @@ google_analytics_id: 'UA-81468206-1'
 navigation: 1
 
 collections:
-    setting-up:
+    introduction:
         output: true
-        title: "Setting up for development"
+        title: "Introduction"
 
     shells:
         output: true

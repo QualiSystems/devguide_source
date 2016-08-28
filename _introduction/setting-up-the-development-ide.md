@@ -1,9 +1,8 @@
 ---
 layout: page
 title: Setting up the Development Environment
-category: set
 date: "2016-04-30 13:02:32 +0300"
-order: 5
+order: 1
 comments: true
 ---
 
@@ -59,3 +58,11 @@ Follow the instructions on the [download page](http://info.quali.com/cloudshell-
 If you've selected to use PyCharm as your IDE, you can take advantage of the community contributed CloudShell plugin.
 Follow the installation instructions on the [project repo](https://github.com/QualiSystemsLab/CloudShell-PyCharm-Plugin).
 From the _Step-by-step installation guide_ section perform steps 1-6 only. Don't continue to configure the plugin usage further yet, we'll get to that part later in this guide.
+
+### Where to next?
+
+This guide contains three main areas depending on the type of development or integration you wish to do with CloudShell:
+
+* [Extending cloudShell with Shells]({{site.baseurl}}/shells/getting-started.html)
+* [Orchestration Scripts]({{site.baseurl}}/orchestration/getting-started.html)
+* [Integrating CloudShell into the DevOps Cycle]({{site.baseurl}}/devops/devops-integration.html)
