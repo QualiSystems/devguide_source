@@ -1,6 +1,6 @@
 ---
 layout: page
-title: "The CloudShell DevGuide"
+title: "CloudShell Developer Guide"
 ---
 Welcome to the CloudShell developer guide!
 These pages will take you through all you need to know to become an expert CloudShell developer.
@@ -30,7 +30,7 @@ This area will examine how CloudShell can be used in conjunction with other DevO
 
 ### Where to go next
 
-The _[Setting Up the Development IDE]({{site.baseurl}}/introduction/setting-up-the-development-ide.html)_ section contains important information for tooling and infrastructure you should install before starting development. 
+The _[Setting Up the Development IDE]({{site.baseurl}}/introduction/setting-up-the-development-ide.html)_ section contains important information for tooling and infrastructure you should install before starting development.
 
 You can then proceed to any one of the development areas described above:
 
