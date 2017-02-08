@@ -53,6 +53,14 @@ relative to the driver in the virtual environment location at:
 
 Under windows, [venv] will be located at _%programdata%\\qualisystems\\venv_.
 
+The Execution Server can be configured so that all drivers log to the same locaiton rather than under their own virtual environmaent location. Add the following key to the ES _customer.config_:
+
+{% highlight xml %}
+<add key="DefaultPythonEnvrionmentVariables" value="LOG_PATH=c:\[path]\[to]\[directory]"/>
+{% endhighlight %}
+
+You will need to restart the ES following this change.
+
 You can then use the regular logging level syntax to write messages as a part of the driver
 package or script flow:
 
@@ -80,6 +88,12 @@ _customer.config_ (change 'DEBUG' to the log level you wish to set):
 {% endhighlight %}
 
 You will need to restart the ES following this change.
+
+If you are configuring both the LOG_LEVEL and LOG_PATH, use the following syntax for the DefaultPythonEnvironmentVariables key:
+
+{% highlight xml %}
+<add key="DefaultPythonEnvrionmentVariables" value="LOG_LEVEL=DEBUG;LOG_PATH=c:\[path]\[to]\[dir]"/>
+{% endhighlight %}
 
 Similar to the CloudShell API session, its recommended to create a logger once per command and then pass it
 to any internal classes that require it. As with the CloudShell API we've added some helpers in the _cloudshell-shell-core_
