@@ -12,6 +12,8 @@ This diagram, that we've visited before, illustrates the development flow for Sh
 
 We'll be concentrating on the last two phases in the above diagram - creating a distributable package and deploying it to the production server.
 
+
+
 ### Creating a distributable package
 
 To create a distributable package which can be imported to CloudShell, run the following from Command Line, make sure

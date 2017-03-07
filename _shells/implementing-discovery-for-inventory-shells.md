@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Implementing Discovery for Inventory Shells
+title: Auto-discovery for Inventory Shells
 category: tut
 order:  7
 comments: true
@@ -8,130 +8,175 @@ tags:
     - discovery
     - SNMP
 ---
-Automated discovery makes it easy to import physical inventory devices into CloudShell
-by using automation to read their internal structure and attributes.
+Automated discovery makes it easy to import physical inventory devices into CloudShell by using automation to read their internal structure and attributes.
 
-#### Shell sub-resources
 
-Physical resources Shells are defined with a certain internal structure which can be
-found in their CloudShell Standard. A basic physical resource can have _Resource Port_ sub-resources,
-for example, whereas a _Switch_ can have blades and port channels according to the
-[Networking Shell Standard](https://github.com/QualiSystems/shell-networking-standard/blob/master/spec/networking_standard.md).
+### Inventory Shells in CloudShell
 
-In the context of this example, we'll create a new Switch type device based on the
-[Networking Shell Standard](https://github.com/QualiSystems/shell-networking-standard/blob/master/spec/networking_standard.md).
-Run the following command to create a new Shell project:
+Shells for physical devices are defined with a certain internal structure which can be found in their CloudShell Standard. For example, a basic physical resource can have Resource Port sub-resources, whereas a Switch can have blades and port channels according to the
+[Networking Shell Standard](https://github.com/QualiSystems/cloudshell-standards/blob/master/Documentation/networking_standard.md).
 
+
+### The Auto-discovery process
+
+Auto-discovery is triggered when creating resources for Shells that support it. When the administrator creates a resource in CloudShell Portal, CloudShell prompts the administrator to fill out mandatory attributes and then launches the Auto-discovery process, querying the physical device and describing its internal structure and attributes to CloudShell.
+
+
+**To implement the Auto-discovery process in a Shell:**
+
+1.	Enable Auto-discovery in the shell-definition.yaml file
+2.	Add mandatory attributes to the Auto-discovery process
+3.	Implement the get_inventory function
+4.	Add validations
+5.	To test your code, create a resource with the template
+
+
+
+#### Enable Auto-discovery in the shell-definition.yaml file
+In the context of this example, we’ll create a new Switch type resource based on the
+[Networking Shell Standard](https://github.com/QualiSystems/cloudshell-standards/blob/master/Documentation/networking_standard.md).
+
+**To create a new Shell project:**
+* Run the following command in your Command Line:
 {% highlight bash %}
-shellfoundry new implementing-discovery --template=networking/switch
+shellfoundry new implementing-discovery --template=gen2/networking/switch
 cd implementing_discovery
 {% endhighlight %}
 
-#### Resource templates and discovery
 
-Auto-discovery can be automatically triggered when adding resources for Shells that support it.
-To do that, you can take advantage of the _Shell resource templates_ feature. This feature provides
-a template for creating instances of resources for that Shell from the Inventory page of the CloudShell
-portal. When the administrator creates a resource this way, he is first prompted to fill out any mandatory
-attributes defined in the template, and then the discovery process is launched automatically.
+The _shell-definition.yaml_ file includes a basic Auto-discovery template.
 
-A _resource_template_ has been generated automatically as a part of the ShellFoundry template.
-The _shellconfig.xml_ file located in the _datamodel_ directory has the following content:
-
-{% highlight xml %}
-<?xml version="1.0" encoding="utf-8"?>
-<ShellsConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.qualisystems.com/ResourceManagement/ShellsConfigurationSchema.xsd">
-<ResourceTemplates>
-    <ResourceTemplate Name="ImplementingDiscovery" Model="ImplementingDiscovery" Driver="ImplementingDiscoveryDriver">
-        <Description></Description>
-        <AutoLoad Enable="false">
-            <Description>Description for autoload </Description>
-        </AutoLoad>
-        <Attributes>
-            <Attribute Name="User" Value="" />
-            <Attribute Name="Password" Value="" />
-        </Attributes>
-    </ResourceTemplate>    
-</ResourceTemplates>
-</ShellsConfiguration>
+{% highlight yaml %}
+vendor.ImplementingDiscovery:
+  derived_from: cloudshell.nodes.Switch
+  capabilities:
+    auto_discovery_capability:
+      type: cloudshell.capabilities.AutoDiscovery
+      properties:
+        enable_auto_discovery:
+          type: boolean
+          default: true
+        auto_discovery_description:
+          type: string
+          default: Describe the auto discovery
+        inventory_description:
+          type: string
+          default: Describe the resource shell template
 {% endhighlight %}
 
-As you can see, it currently defines two attributes as mandatory for the user to supply when creating a Shell resource.
-This means that when the discovery process will run it can count on that information already being available and can use the supplied credentials
-to login to the device. You can add additional attributes by adding additional _\<Attribute>_ elements under
-the _\<Attributes>_ element.
 
-For this example, we'd like discovery to also be triggered automatically when adding new resources from the Inventory Dashboard. To change that,
-set _\<AutoLoad Enable=**"true"**>_ in the XML and save the changes.
+The Auto-discovery process is described as a TOSCA capability with several properties.
+*	**enable_auto_discovery** - This property defines whether the Auto-discovery process is automatically triggered when creating a new resource.
+*	**auto_discovery_description** - This description is presented to the user before the Auto-discovery process begins.
+*	**inventory_description** - This is the description of the Shell template. It is presented to the user when creating a new resource.
 
-#### Implementing the get_inventory function
 
-The goal of the _get_inventory_ function is to query the device and return a list of sub-resources
-and attribute values back to CloudShell.
+#### Add mandatory attributes to the Auto-discovery process
+In many Auto-discovery implementations, we need to ask the administrator for information before communicating with the physical device, for example, to provide the administrator’s credentials. If we add custom attributes to the Auto-discovery definition of the Shell, CloudShell will prompt the administrator to fill out these attributes before running the discovery. This ensures that the information will be available for the discovery process to use.
 
-After querying the device, the function should return a specific result to CloudShell to allow
-creating the right resources.
+In the context of this example, we’ll add 3 properties to the Auto-discovery process: _User_, _Password_ and _my_custom_attribute_.
 
-Add the following code to the driver:
+The _User_ and _Password_ attributes are defined in the standard, so we only need to add them to the _auto_discovery_capability_ section. However, _my_custom_attribute_ is a specific attribute that we want to add to this Shell, so we need to add the attribute to both the properties section and the _auto_discovery_capability_ section.
 
-{% github_sample_ref /QualiSystems/devguide_examples/blob/driver_deep_dive/adding_examples/implementing_discovery/src/driver.py %}
+{% highlight yaml %}
+vendor.ImplementingDiscovery:
+  derived_from: cloudshell.nodes.Switch
+  properties:
+    my_custom_attribute:
+      type: string          # optional values: string, integer, float, boolean, cloudshell.datatypes.Password
+  capabilities:
+    auto_discovery_capability:
+      type: cloudshell.capabilities.AutoDiscovery
+      properties:
+        enable_auto_discovery:
+          type: boolean
+          default: true
+        auto_discovery_description:
+          type: string
+          default: Describe the auto discovery
+        inventory_description:
+          type: string
+          default: Describe the resource shell template
+        User:
+          type: string
+        Password:
+          type: cloudshell.datatypes.Password
+        my_custom_attribute:
+          type: string
+{% endhighlight %}
+
+
+
+#### Implement the get_inventory function
+
+The goal of the _get_inventory_ function in the Shell’s driver is to query the device and return a list of sub-resources and attribute values back to CloudShell.
+After querying the device, the function should return a specific result to CloudShell to allow creating the right resources.
+
+**To implement the get_inventory function:**
+
+* Run the _shellfoundry generate_ command to generate the Shell’s data model.
+  For more information about the Shell’s data model, see chapter [Managing the Shell Data Model]({{site.baseurl}}/shells/generating-shell-data-model.html)
+
+This is an example of the _get_inventory_ implementation:
+
+{% github_sample_ref QualiSystems/devguide_examples/blob/master/2nd%20gen%20shells%20-%20implementing_discovery/src/driver.py %}
 {% highlight python %}
-{% github_sample /QualiSystems/devguide_examples/blob/driver_deep_dive/adding_examples/implementing_discovery/src/driver.py 31 43 %}
+{% github_sample QualiSystems/devguide_examples/blob/master/2nd%20gen%20shells%20-%20implementing_discovery/src/driver.py 14 42 %}
 {% endhighlight %}
 
-As you can see, the _get_inventory_ code creates a list of _AutoLoadResource_ objects which are the sub-resources to be
-imported/synched with CloudShell. Each _AutoLoadResource_ object needs to be initialized with three parameters:
+This _get_inventory_ code creates an instance of the root resource by calling the _create_from_context_ function. Then, it assigns attribute values and creates a hierarchy of sub-resources.
 
-* The _name_ of the resources
-* The _model_ of the resource according to the standard. The [Networking Shell Standard](https://github.com/QualiSystems/shell-networking-standard/blob/master/spec/networking_standard.md)
-defines a list of possible models, among them the ones used in this example.
-* The _relative_address_ of the resource. This field is also used to derive the hierarchy of the sub-resources. As you can
-see in the above example, 'Chassis 1' has the address "1" whereas the resource 'Generic Module' has the address of '1/1' which
-is all we need to do to indicate the module is nested under the chassis in the resource structure.
+Note that we’re only returning information about sub-resources. The root resource already exists at this stage and already has the mandatory attributes defined by the template.
 
-Notice that we're only returning information about sub-resources. The root resource at this stage already exists, with the
-mandatory attributes defined by the template already assigned to it.
+This sample creates _GenericChassis_, _GenericModule_ and _GenericPort_ resource models and uses the _add_sub_resource_ function to build the resource hierarchy.
 
-#### Adding attribute information
 
-So far we've seen how to return information about sub-resources. We also may want to populate some of the resource attributes
-at this point with values we've loaded from the device. We can update both the root resource and the sub-resources attributes,
-again referencing them by their addresses which we've provided previously.
+**To create the port:**
 
-After populating the attributes information, we need to return the result object with both sub-resources and attributes:
+1) Create a new _GenericPort_ instance.
 
-{% github_sample_ref /QualiSystems/devguide_examples/blob/driver_deep_dive/adding_examples/implementing_discovery/src/driver.py %}
-{% highlight python %}
-{% github_sample /QualiSystems/devguide_examples/blob/driver_deep_dive/adding_examples/implementing_discovery/src/driver.py 45 62 %}
-{% endhighlight %}
+2) Provide a unique name for the port.
 
-Notice that we're using an empty string ('') to refer to the root resource when setting its attribute values.
+3) Add it as a sub resource of a specific module:
+  a.	Call the _add_sub_resource_ function on the module.
+  b.	Provide both the _relative_address_ of the port and the instance that represents the port.
 
-#### Adding validations
 
-A common enhancement for discovery functions that greatly improves the process usability is to validate that the attributes
-the user provided are correct. For example, trying to log in with the address and credentials and reporting back any error,
-or validating the that text doesn't contain illegal characters.
+To return the information back to CloudShell, we need to use a specific data structure that represents the result of the discovery. The data structure is created automatically by calling the _create_autoload_details()_ function.
 
-Any exceptions you raise in the get_inventory flow will pop up the error message to the user so he/she can correct
-their input and try again.
+
+
+#### Add validations
+
+A common enhancement for discovery functions that greatly improves the usability of the Auto-discovery process is to validate the information provided by the administrator. For example, trying to log in with the address and credentials and reporting back any error, or checking the text for illegal characters.
+
+Any exceptions raised in the _get_inventory_ flow will display an error message to help the administrator correct their input and try again
+
+
 
 #### Create a resource with the template
 
-To test our code, first install the Shell using ShellFoundry.
-Next, go to the inventory page and click on the "Create New" button. A dialog will appear where you'll be asked
-to select the template you wish to use and choose a resource name. Select the "ImplementingDiscovery" template, enter
-a name for the resource and click create.
+To test the code, let’s create a resource based on the Shell template.
 
-The following dialog will pop up:
+**To create a resource with the template:**
 
-![Discovery Dialog]({{ site.url }}/devguide/assets/discovery_page.png){:class="img-responsive"}
+1) Import the Shell template using ShellFoundry.
 
-Enter some values for the Username/Password attributes and click start discovery. This will run the _get_inventory_ function
-we've created and if everything works correctly create the entire device structure and a message should pop up indicating
-the discovery processes completed successfully.
+2) Open CloudShell Portal’s **Inventory** dashboard and click the **Add New** button.
+A dialog box is displayed, prompting you to select the template and enter a resource name.
 
-To validate, enter the name of the new resource in the inventory search box. You should see a list of sub-resources with the
-discovered attributes:
+3) Select the **ImplementingDiscovery** template, enter a name for the resource, and click **Create**.
 
-![Discovery Dialog]({{ site.url }}/devguide/assets/inventory_search.png){:class="img-responsive"}
+
+The **Resource** dialog box is displayed.
+
+![Discovery Dialog]({{ site.baseurl}}/assets/discovery_page.png){:class="img-responsive"}
+
+4) Enter the **Username** and **Password** and click **Start discovery**.
+The _get_inventory_ function creates the entire device structure and a system message pops up to indicate the discovery process completed successfully.
+
+5) To validate, enter the name of the new resource in the **Inventory** search field.
+You should see a list of sub-resources with the discovered attributes:
+
+
+![Discovery Dialog]({{ site.baseurl}}/assets/inventory_search.png){:class="img-responsive"}

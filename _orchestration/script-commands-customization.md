@@ -8,7 +8,6 @@ comments: true
 tags:
     - orchestration
 ---
-
 You can control many aspect of how the orchestration commands appear and behave
 in CloudShell by editing the script from the scripts management page.
 
@@ -48,11 +47,11 @@ if __name__ == "__main__":
 
 In the CloudShell portal, open the Management tab. Navigate to the _Scripts_ sub section and select _Environment_.
 
-![Scripts Management Page]({{ site.url }}/devguide/assets/environment_scripts.png){:class="img-responsive"}
+![Scripts Management Page]({{ site.baseurl}}/assets/environment_scripts.png){:class="img-responsive"}
 
 Drag and drop or add the _customization_test.py_ script. Then click the "Edit" button to customize it.
 
-![Scripts Management Page]({{ site.url }}/devguide/assets/orch_script_edit.png){:class="img-responsive"}
+![Scripts Management Page]({{ site.baseurl}}/assets/orch_script_edit.png){:class="img-responsive"}
 
 ### Setting display name, descriptions and category
 
@@ -84,4 +83,4 @@ To test the script, we need to add it to a blueprint. Go to Lab Management -> En
 select an existing one and attach the script to it from the properties page of the environment.
 Reserve the environment and open the command pane in the sandbox.
 
-![Scripts Management Page]({{ site.url }}/devguide/assets/scripts_customization.png){:class="img-responsive"}
+![Scripts Management Page]({{ site.baseurl}}/assets/scripts_customization.png){:class="img-responsive"}

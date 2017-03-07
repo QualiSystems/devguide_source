@@ -7,24 +7,19 @@ order: 5
 tags:
     - api
 ---
-A typical Shell driver, will first get crucial information from the sandbox and then use that information
-to access the device it controls. Some common information would be the resource or app's address, attributes
-such as username and password, as well as other information from other sandbox settings or components.
+A typical Shell driver will first get crucial information from the sandbox and then use that information to access the device it controls. Some common information would be the address of the resource or App, attributes such as username and password, and information from other sandbox settings or components.
 
-To provide easy access to such common information, each driver function has access to a special context object parameter,
-which is created by CloudShell for each driver command execution. If you've generated the default driver template,
-you may have noticed that the pre-generated functions already have some docstring code-hint annotation.
-This allows some IDEs like Pycharm to provide autocomplete for the class properties and make it a lot easier to user.
+To provide easy access to such common information, each driver function has access to a special context object parameter, which is created by CloudShell for each driver command’s execution.
 
-#### CloudShell Shell Core
+If you’ve generated the default driver template, you may have noticed that the pre-generated functions already have some docstring code-hint annotation. This allows some IDEs like PyCharm to provide autocomplete for the class properties and make it a lot easier to user.
 
-The classes used for the command context parameters, as well as other interface classes CloudShell provides are provided
-in the **_cloudshell-shell-core_** package which you also may have noticed is imported in the sample driver class.
-The term _Resource_ may be a confusing one for the context object. In the CloudShell platform there are really two types
-of resources, a _deployed app_ is a resource which is deployed and lives inside the sandbox, whereas a _physical resource_
-or as its sometimes called _inventory_resource_ is a type of resource that lives in the CloudShell inventory and is pulled into
-blueprints and sandboxes.
-Lets take a look at the ResourceCommandContext class to understand more about the information it provides:
+
+### CloudShell Shell Core
+
+The classes used for the command context parameters as well as other CloudShell interface classes are provided in the **cloudshell-shell-core package**, which is imported in the sample driver class.
+The term _Resource_ may be a confusing one for the context object. In the CloudShell platform there are really two types of resources: a _deployed App_ is a resource that is deployed and lives inside the sandbox, whereas a _physical_ resource, or as it’s sometimes called _inventory_resource_, is a type of resource that lives in the CloudShell inventory and is pulled into blueprints and sandboxes.
+Let’s take a look at the _ResourceCommandContext_ class to understand more about the information it provides:
+
 
 {% highlight python %}
 class ResourceCommandContext:
@@ -39,22 +34,18 @@ class ResourceCommandContext:
         """:type : list[Connector]"""
 {% endhighlight %}
 
-#### The ResourceContextDetails object
+### The ResourceContextDetails object
 
-![Context Object]({{ site.url }}/devguide/assets/context_object_completion.png)
+![Context Object]({{ site.baseurl}}/assets/context_object_completion.png)
 
 #### Connectivity
 
-The **_connectivity_** property contains information about how to connect to CloudShell, information like server address, ports and so on.
-It also contains a token which can be used to log in to the CloudShell API. As we'll discuss, it is generally recommended to use the CloudShell API
-as little as possible in your Shell, with the exception of a few operations which we'll cover later in the examples section of this guide.
-So while the connectivity information is readily available on the context, in most cases you should not have to use it.
+The **_connectivity_** property contains information about how to connect to CloudShell, such as server address, ports, and so on. It also contains a token which can be used to log in to CloudShell API. As we’ll discuss later, it is generally recommended to use the CloudShell API as little as possible in your Shell, with the exception of a few operations, which we’ll cover later in the examples section of this guide. So while the connectivity information is readily available on the context, in most cases you should not have to use it.
 
 #### Resource Context
 
-The **_resource_** property contains most of the information you'll need about the app or resource to which your Shell driver is assigned.
-This is the key pieces of information any driver will need to implement commands that work with the device/app.
-Lets examine the _ResourceContextDetails_ class properties:
+The **_resource_** property contains most of the information we’ll need about the App or resource to which the Shell driver is assigned. This is the key piece of information any driver will need in order to implement commands that work with the device/App.
+Let’s examine the _ResourceContextDetails_ class properties:
 
 {% highlight python %}
 context.resource.id  # (str) The identifier of the resource / service / app - consistent value that can't be changed / renamed by the user
@@ -65,21 +56,16 @@ context.resource.address   # The IP address of the resource / app
 context.resource.model   # The resource/app model
 context.resource.family = None  # The resource/app family or type classification
 context.resource.description = None  # The resource/app description
-context.resource.attributes = None  # A dictionary that contains the resource attributes (name, value)
-user = context.resource.attributes['User'] = # Get a specific attribute value from the dictionary
 context.resource.app_context = None # Infromation about the deployed app and app request to be discussed below
 {% endhighlight %}
 
-There is a lot of useful information in this object. Of special importance is The _name_ of the resource, the _address_ and the _model_. These provide
-the most basic details about the resource or app required to communicate with it. Other attributes, such as the user and password credentials, additional
-interfaces and other settings will be found in _attributes_ property. The _attributes_ property is a dictionary with the keys being the attribute names
-and the value being the current value.
+There is a lot of useful information in this object. Of special importance is the name of the resource, the address and the model. These provide the most basic details about the resource or App, and are required in order to communicate with it.
+
+
 
 #### Connectors information
 
-The **_connectors_** property provides information about the resource or app's connectors (visual or network connectors) in the sandbox.
-The property maps to a list of Connector objects, each provides information about the source and target resource. As
-well as the connector attributes:
+The **_connectors_** property provides information about the resource or App’s connectors (visual or network connectors) in the sandbox. The property maps to a list of Connector objects, each provides information about the source and target resource, as well as the connector’s attributes:
 
 {% highlight python %}
 for connector in context.connectors:
@@ -107,8 +93,7 @@ for connector in context.connectors:
 
 #### Sandbox information
 
-The **_reservation_** property contains information about the sandbox reservation the command is running under.
-class ReservationContextDetails:
+The **_reservation_** property contains information about the sandbox in which the command is running:
 
 {% highlight python %}
 context.reservation.reservation_id
@@ -136,16 +121,28 @@ context.reservation.owner_email
 
 #### Additional information for apps and VMs
 
-The resource property of the context object also contains the **_app_context_** property which is relevant to deployed app and virtual
-machine drivers only. The **_app_context_** object has two separate JSON string properties nested under it: The **_app_request_json_**
-property is a JSON string containing information about the app template which was requested in the blueprint. The **_deployed_app_json_**  
-JSON, to the contrary, contains information about the deployed application and where its running.
+The **_resource_** property of the context object also contains the **_app_context_** property, which is relevant to deployed App and virtual machine drivers only. The **_app_context_** object has two separate JSON string properties nested under it: (1) the **_app_request_json_** property is a JSON string containing information about the app template which was requested in the blueprint, while (2) the **_deployed_app_json_** JSON contains information about the deployed application and where it’s running.
 
-You can find a JSON schema definitions of the two JSON objects here:
+You can find JSON schema definitions of these two JSON objects here:
+
 
 * [App Request JSON Schema](https://github.com/QualiSystems/cloudshell-shell-core/blob/dev/cloudshell/shell/core/schemas/app_request.json)
 
 * [Deployed App JSON Schema](https://github.com/QualiSystems/cloudshell-shell-core/blob/dev/cloudshell/shell/core/schemas/deployed_app.json)
 
-More information and examples about the information in this JSON and how to use it will be provided in the deployed apps driver
-section of this guide.
+
+#### Custom Attributes and the Shell’s data model
+In many cases, the Shell has specific information that is stored in attributes. For example, user credentials that are needed in order to connect to the resource. These attributes are part of the Shell’s data model. Their value can be easily retrieved by converting the _ResourceCommandContext_ to an instance of the generated Shell’s data model.
+
+{% highlight python %}
+from data_model import *
+
+class DataModelExampleDriver (ResourceDriverInterface):
+
+    def custom_command(self, context):
+      resource = DataModelExample.create_from_context(context)
+      resource.vendor = 'specify the shell vendor'
+      resource.model = 'specify the shell model'
+{% endhighlight %}
+
+In this example, you can see that the code imports the generated Shell’s data_model, and then uses the _create_from_context_ function to convert the context parameter into an instance of _DataModelExample_, which is the Shell data model structure. Then, the code retrieves the attribute values by using properties such as _resource.vendor_ and _resource.model_. The properties of the Shell’s model will match the data model definition in the _shell-definition.yaml_ file.

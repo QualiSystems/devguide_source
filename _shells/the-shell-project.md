@@ -5,52 +5,46 @@ category: tut
 order: 3
 comments: true
 ---
-When starting a new Shell, the first thing you'll want to do is generate the Shell project files and directory structure.
-Thankfully, this happens automatically when you use the ShellFoundry CLI tool. In this section, we'll look into the generated
-files and structure and their different roles. At this stage, we'll only take a bird's eye view of the different files, folders and what they are used for. In the following sections we'll delve deeper into the specific options and format of each file and learn how to customize the driver and shell definition in CloudShell.
+CloudShell’s 2nd generation Shells are based on the Topology and Orchestration Specification for Cloud Applications (TOSCA) industry standard and use yaml files. To develop a Shell for CloudShell there is no need to dive deep into the details of TOSCA. We made it all simple. However, if you do wish to learn more about TOSCA, follow [this list of references](http://docs.oasis-open.org/tosca/TOSCA-Simple-Profile-YAML/v1.0/TOSCA-Simple-Profile-YAML-v1.0.html).
 
-Let's begin by generating a new shell project. If you've previously completed the [Getting Started]({{site.baseurl}}/shells/getting-started.html)
-tutorial you should have a reference project. If you haven't completed the initial tutorial, its recommended you do so now. Otherwise, just run the following in your command line:
 
-{% highlight bash %} shellfoundry new linux-server-shell {% endhighlight %}
+When starting a new Shell, the first thing we’ll want to do is generate the Shell project files and directory structure. Thankfully, this happens automatically when we use the ShellFoundry CLI tool.
 
-This will create a new linux_server_shell directory using the default shell template and generate some scaffolding for it. Notice that the generated project is already a valid Shell. From this point on you can further customize it or develop its driver commands but all of the basic components are there already. The suggested workflow is to use this as a baseline and continue to incrementally add functionality on top of the generated shell.
+In this section, we’ll look into the generated files and structure, and their different roles. At this stage, we’ll only take a bird’s eye view of the different files and folders, and what they are used for. In the following sections, we’ll delve deeper into the specific options and format of each file and learn how to customize the Shell’s driver and definition .
 
-### The Shell project root
-* _cloudshell_config.yml_: This file contains the address, username and password of your local development CloudShell Server.
-The settings in this file are used by the Shellfoundry CLI tool to install the Shell to CloudShell using the 'shellfoundry install' command. The file structure is pretty simple:
-    {% highlight yaml %}
-    install:
-        host: localhost
-        port: 9000
-        username: YOUR_USERNAME
-        password: YOUR_PASSWORD
-        domain: Global
-    {% endhighlight %}
-Notice that this file shouldn't generally be stored in a public source control index (in fact, its excluded in the auto-generated .gitignore file) as it contains your Dev CloudShell’s administrator login credentials.
+Let’s begin by generating a new Shell project. If you’ve previously completed the [Getting Started tutorial]({{site.baseurl}}/shells/getting-started.html), you should have a reference project. If you haven’t completed the initial tutorial, it’s recommended to do so now. Otherwise, just run the following in your Command Line:
 
-* _readme.rst_: Default Shell readme file.
-* _shell.yml_: Basic shell metadata such as the name of the shell, the author name/email, create date etc.
-* _test_requirements.txt_: Python requirements for running the shell tests
-* _version.txt_: The current shell version. You should increment the shell version in this file on each release.
 
-### The _src_ folder
+{% highlight bash %}
+shellfoundry new linux-server-shell
+cd linux-server-shell
+{% endhighlight %}
 
-The _src_ folder contains the shell Python driver source files.
+This will create a new _linux_server_shell_ folder using the default Shell template and generate some scaffolding for it. Notice that the generated project is already a valid Shell. From this point on, you can further customize it or develop its driver commands, but all of the basic components are there already. We recommend that you use this as a baseline and continue to incrementally add functionality on top of the generated Shell.
 
-* _driver.py_: The main driver file. This file contains the functions that will be published as CloudShell commands. By default, the _driver.py_ file contains a single Python class named <shellname>Driver. You'll see it already contains some example functions.  
-* _drivermetadata.xml_: This file contains metadata related to the display and behavior of the driver functions as CloudShell commands.
-* _requirements.txt_: A pip requirements file used for setting up the driver virtual environment. Any dependency the shell driver has needs to be in this file.
 
-### The _datamodel_ folder
-The _datamodel_ folder contains all of the custom attributes and basic definitions about the shell type in CloudShell. These will allow users to instantiate resource instances of the shell in their inventory (if applicable) and control how these can be filtered, searched, and interacted with.
 
-* _datamodel.xml_: This file describes the standard used for this shell, including attributes, families, models, resource structure and more.
-* _shellconfig.xml_: This file defines how users can instantiate shell inventory resource instances from the web portal. It defines which attribute inputs they need to provide and whether the shell driver supports automatic discovery.
-* _shell_model.xml_: This file defines the shell 'type' in CloudShell. It links it to one of the CloudShell standards and defines custom attributes.
-* _metadata.xml_: You generally don't need to do anything with this file, it will be used as a part of CloudShell's internal API.
+### The Shell project’s root folder
+![Directory Structure]({{ site.baseurl}}/assets/shell_folder.png)
 
-### The _docs_ and _tests_ folders
+*  The **dist** folder: Contains the Shell package that is created by running the _shellfoundry install_ or _shellfoundry pack_ commands.  
 
-These are placeholders to place shell documentation and shell tests.
-Some tests are already automatically generated in the _tests_ folder.
+*  The **docs** and *tests* folders: Placeholders to place Shell documentation and Shell tests. Some tests are already automatically generated in the _tests_ folder.
+
+*  The **src** folder: Contains the Shell’s Python driver source files:
+
+    * **driver.py**: The main driver file. This file contains the functions that will be published as CloudShell commands. By default, the _driver.py_ file contains a single Python class named _Driver_. You'll see that it already contains some functions.  
+    * **drivermetadata.xml**: Contains metadata related to the display and behavior of the driver functions as CloudShell commands.
+    * **requirements.txt**: A pip requirements file used for setting up the driver’s virtual environment . Any dependency of the Shell driver needs to be in this file.
+
+* The **TOSCA-Metadata** folder: Contains a TOSCA standard file. Its content is filled out by Quali and requires no additional updates on your part.
+
+* The **.gitignor.txt** file: Standard Git repository file that specifies files which are not managed by source control.
+
+* The **deployment.xml** file: Contains the debugging specifications. For more information, see [Debugging Shell Commands]({{site.baseurl}}/shells/debugging-shell-commands.html)
+
+* The **shell-definition.yaml** file: Contains the information needed for importing the Shell’s data model, which defines how the Shell resources are presented in CloudShell. This file is automatically generated by ShellFoundry according to the selected ShellFoundry template.
+
+* The **shell-icon.png** file: Default icon that will appear for the Shell in CloudShell Portal.
+
+* The **test_requirements.txt** file: Contains all Python requirements for running the Shell’s tests.

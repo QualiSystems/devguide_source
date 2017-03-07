@@ -11,7 +11,7 @@ Shell drivers. To get started, we should first create a Shell project to experim
 Once again we'll use ShellFoundry.
 
 {% highlight bash %}
-shellfoundry new driver-example --template=resource-clean
+shellfoundry new driver-example --template=gen2/resource
 cd driver_example
 {% endhighlight %}
 
@@ -86,9 +86,9 @@ being passed to the driver.
 
 After adding the functions reinstall the Shell using ShellFoundry and run the new commands:
 
-![Simple String Result]({{ site.url }}/devguide/assets/simple_string_return.png)
+![Simple String Result]({{ site.baseurl}}/assets/simple_string_return.png)
 
-![Simple String Result]({{ site.url }}/devguide/assets/complex_object_result.png)
+![Simple String Result]({{ site.baseurl}}/assets/complex_object_result.png)
 
 Returning a result has several effects:
 
@@ -105,7 +105,7 @@ Returning a result has several effects:
 If the command failed you can throw an exception as you would in any Python code. The exception will be parsed
 and the message property of the exception will be shown to the user.
 
-![Command Results]({{ site.url }}/devguide/assets/failed_command.png)
+![Command Results]({{ site.baseurl}}/assets/failed_command.png)
 
 {% github_sample_ref /QualiSystems/devguide_examples/blob/driver_deep_dive/adding_examples/driver_deep_dive/src/driver.py %}
 {% highlight python %}
@@ -116,7 +116,7 @@ If the command is being called from an orchestration script or a different Pytho
 this way will result in an exception of type CloudShellAPIError. The error message will include the type of exception (the original
     exception raised in the code) as well as the error message.
 
-![Command Results]({{ site.url }}/devguide/assets/failed_api_error.png)
+![Command Results]({{ site.baseurl}}/assets/failed_api_error.png)
 
 #### Cancellation and termination
 
@@ -165,15 +165,16 @@ CloudShell supports two modes for drivers:
 * Concurrent execution - with this mode enabled, it will be up to the driver to handle any synchronization between
     parallel threads if needed. CloudShell will send commands to the driver in parallel.
 
-The driver concurrency mode is defined in the shell datamodel. Open the _shell_model.xml_ file in the _datamodel_ directory.
-Notice the _\<ResourceModel>_ element below. The _SupportsConcurrentCommands_ will set the concurrency mode for the Shell
-driver.
+The driver concurrency mode is defined in the _shell-definition.yaml_ file.
 
-{% highlight xml %}
+**To support concurrency:**
 
-<Shell>
-    <ShellModel Family="Generic Resource">
-        <ResourceModel Name="DriverDeepDive" Description="" SupportsConcurrentCommands="true">
+Open the _shell-definition.yaml_ and add the _concurrent_execution_ capability.
+
+{% highlight yaml %}
+capabilities:
+  concurrent_execution:
+    type: cloudshell.capabilities.SupportConcurrentCommands
 {% endhighlight %}
 
 Sequential execution is the default mode mainly because it simplifies the driver. If the driver doesn't have to worry about other things happening in parallel it can avoid adding mutex expressions or manage critical sections in the code.
