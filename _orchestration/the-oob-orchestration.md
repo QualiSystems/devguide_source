@@ -26,3 +26,6 @@ or controlling the order in which the sandbox is provisioned.
 
 To extend the default setup or teardown, create a copy of the scripts and upload them separately as Setup/Teardown scripts.
 Be sure not to remove any step in the setup workflow. However, you can add your own steps or change the order of execution.
+
+Make sure not to name your extended script 'setup' but give it a more specific name. There is a certain issue with the name 'setup' being a reserved name
+and causing some inconsistencies when used on a setup script.
