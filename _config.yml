@@ -11,6 +11,7 @@ logo: './assets/logo.png'
 # if you use google analytics, add your tracking id here
 google_analytics_id: 'UA-81468206-1'
 
+
 # Enable/show navigation. There are there options:
 #   0 - always hide
 #   1 - always show
