@@ -83,7 +83,7 @@ As you can see, the _get_inventory_ code creates a list of _AutoLoadResource_ ob
 imported/synched with CloudShell. Each _AutoLoadResource_ object needs to be initialized with three parameters:
 
 * The _name_ of the resources
-* The _model_ of the resource according to the standard. The [Networking Shell Standard](https://github.com/QualiSystems/shell-networking-standard/blob/master/spec/networking_standard.md)
+* The _model_ of the resource according to the standard. The [Networking Shell Standard](https://github.com/QualiSystems/cloudshell-standards/blob/master/Documentation/networking_standard.md)
 defines a list of possible models, among them the ones used in this example.
 * The _relative_address_ of the resource. This field is also used to derive the hierarchy of the sub-resources. As you can
 see in the above example, 'Chassis 1' has the address "1" whereas the resource 'Generic Module' has the address of '1/1' which
