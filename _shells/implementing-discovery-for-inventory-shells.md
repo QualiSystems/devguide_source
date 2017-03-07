@@ -16,10 +16,10 @@ by using automation to read their internal structure and attributes.
 Physical resources Shells are defined with a certain internal structure which can be
 found in their CloudShell Standard. A basic physical resource can have _Resource Port_ sub-resources,
 for example, whereas a _Switch_ can have blades and port channels according to the
-[Networking Shell Standard](https://github.com/QualiSystems/shell-networking-standard/blob/master/spec/networking_standard.md).
+[Networking Shell Standard](https://github.com/QualiSystems/cloudshell-standards/blob/master/Documentation/networking_standard.md).
 
 In the context of this example, we'll create a new Switch type device based on the
-[Networking Shell Standard](https://github.com/QualiSystems/shell-networking-standard/blob/master/spec/networking_standard.md).
+[Networking Shell Standard](https://github.com/QualiSystems/cloudshell-standards/blob/master/Documentation/networking_standard.md).
 Run the following command to create a new Shell project:
 
 {% highlight bash %}
