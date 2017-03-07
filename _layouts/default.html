@@ -7,13 +7,21 @@
 
         <title>{{ site.title }}{% if page.title %} : {{ page.title }}{% endif %}</title>
         <meta name="description" content="{{ site.subtitle }}">
-        <link rel="shortcut icon" type="image/png" href="/devguide/favicon.png?">
+        <link rel="shortcut icon" type="image/png" href="{{ site.baseurl }}/favicon.png?">
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" href="{{ site.baseurl }}/css/main.css">
         <link rel="stylesheet" href="{{ site.baseurl }}/css/prism.css">
         <link rel="stylesheet" href="{{ site.baseurl }}/css/samples.css">
+        <link rel="stylesheet" href="{{ site.baseurl }}/css/normalize.css">
+        <link rel="stylesheet" href="{{ site.baseurl }}/css/test-hot-block.webflow.css">
+
+
         <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
         <script src="{{ site.baseurl }}/js/jquery-3.1.0.min.js"></script>
+        <script src="{{ site.baseurl }}/js/modernizr.js"></script>
+        <script src="{{ site.baseurl }}/js/webflow.js"></script>
+
 
         {% if jekyll.environment == 'production' %}
         {% include google_analytics.html %}

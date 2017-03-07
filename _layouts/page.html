@@ -2,6 +2,10 @@
 layout: default
 ---
 
+{% if page.name == 'index.md' %}
+        {% include notice.html %}
+{% endif %}
+
 <div class="page-header" data-page-id="{{ page.path }}">
     <h2>{{ page.title }}
         {% if page.subtitle %}<small>{{ page.subtitle }}</small>{% endif %}
@@ -17,14 +21,12 @@ layout: default
 
 {% include disqus.html %}
 
-{% include related_posts.html %}
-
 <script src="{{ site.baseurl }}/js/search.min.js" type="text/javascript" charset="utf-8"></script>
 
 <script type="text/javascript">
   $(function() {
     $('#search-query').lunrSearch({
-      indexUrl  : '/devguide/js/index.json',           // url for the .json file containing search index data
+      indexUrl  : '{{site.baseurl}}/js/index.json',           // url for the .json file containing search index data
       results   : '#search-results',          // selector for containing search results element
       template  : '#search-results-template', // selector for Mustache.js template
       titleMsg  : '',   // message attached in front of results (can be empty)

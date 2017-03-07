@@ -21,22 +21,27 @@ collections:
     introduction:
         output: true
         title: "Introduction"
+        display-order: 0
 
     shells:
         output: true
         title: "Extending CloudShell with Shells"
+        display-order: 1
 
     orchestration:
         output: true
         title: "Orchestration scripts"
+        display-order: 2
 
     devops:
         output: true
         title: "Integrating CloudShell into the DevOps Cycle"
+        display-order: 3
 
     reference:
         output: true
         title: "Reference"
+        display-order: 4
 
 # URL to source code, used in _includes/footer.html
 codeurl: 'https://github.com/qualisystems'
