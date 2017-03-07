@@ -18,15 +18,15 @@ The first thing to do is to classify the Shell according to one of the CloudShel
 standards defined which make it easier to create a new Shell without having to re-invent its structure and properties.
 To give a few examples:
 
-* [Deployed App Shell Standard](https://github.com/QualiSystems/shell-deployedapp-standard/blob/master/spec/deployed_app_standard.md)
+* [Deployed App Shell Standard](https://github.com/QualiSystems/cloudshell-standards/blob/master/Documentation/deployed_app_standard.md)
 
-* [Compute Shell Standard](https://github.com/QualiSystems/shell-compute-standard/blob/master/spec/compute_standard.md)
+* [Compute Shell Standard](https://github.com/QualiSystems/cloudshell-standards/blob/master/Documentation/compute_standard.md)
 
-* [Networking Shell Standard](https://github.com/QualiSystems/shell-networking-standard/blob/master/spec/networking_standard.md)
+* [Networking Shell Standard](https://github.com/QualiSystems/cloudshell-standards/blob/master/Documentation/networking_standard.md)
 
-* [PDU Shell Standard](https://github.com/QualiSystems/shell-pdu-standard/blob/master/spec/pdu_standard.md)
+* [PDU Shell Standard](https://github.com/QualiSystems/cloudshell-standards/blob/master/Documentation/pdu_standard.md)
 
-* [Firewall Shell Standard](https://github.com/QualiSystems/shell-firewall-standard/blob/master/spec/firewall_standard.md)
+* [Firewall Shell Standard](https://github.com/QualiSystems/cloudshell-standards/blob/master/Documentation/firewall_standard.md)
 
 Each standard has one or more ShellFoundry templates associated with it, so the best way to create a compliant Shell is to use the ShellFoundry
 template parameter.
