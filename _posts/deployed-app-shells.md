@@ -15,13 +15,13 @@ defined as a blueprint in the Apps catalog, the deployed app Shell is only creat
 The App Blueprint is the spec or plan describing how to create and configure the Deployed App. Viewed schematically,
 its comprised of the following layers:
 
-![App Architecture]({{ site.baseurl }}/assets/app_architecture.png){: .center-image }
+![App Architecture]({{site.baseurl}}/assets/app_architecture.png){: .center-image }
 
 The App Blueprint is created in the App Dashboard. In CloudShell portal, open the Manage dashboard. In the left sidebar, click _Apps_.
 
 * **Deployment Type** - The app deployment type includes the technology which should be used to deploy the App as well as the relevant parameters. When you create a new App Blueprint in the catalog, in addition to naming the app, specifying the deployment type and parameters are the initial steps. For example, these are the options for a vCenter Linked Clone deployment type:
 
-![App Architecture]({{ site.baseurl }}/assets/deployment_type.png){: .center-image }
+![App Architecture]({{site.baseurl}}/assets/deployment_type.png){: .center-image }
 
 * **Installation Script** - The installation script is run after the deployment is complete. A prerequisite to running
 the script is that the OS is up and connected to the network. The role of the installation script is to complete any
@@ -33,7 +33,7 @@ and these are provided when it is selected.
 ### The App lifecycle
 
 The following diagram illustrates the App lifecycle:
-![App Architecture]({{ site.baseurl }}/assets/app_lifecycle.png){: .center-image }
+![App Architecture]({{site.baseurl}}/assets/app_lifecycle.png){: .center-image }
 
 App Blueprints are created in the Catalog. They can then be added to Environment blueprints and customized there, or directly to a sandbox. The App becomes a a deployed app as a result of two processes only: The Sandbox setup, or when the user manually select to deploy it.
 

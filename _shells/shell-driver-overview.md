@@ -43,11 +43,11 @@ Inventory and app shell drivers behave a bit differently in terms of their lifec
     CloudShell. This means that if there are currently twenty active sandboxes and a MySql app has been deployed
     in each one, twenty shell driver instances will be created, one to talk with each app in the sandbox.
 
-![Shell Commands]({{ site.baseurl }}/assets/app_shell_arch.png)
+![Shell Commands]({{site.baseurl}}/assets/app_shell_arch.png)
 
 * **Inventory Shells** - For inventory Shells, a dedicated driver is managed per Inventory Shell resource instance. If you take for example a shell for physical switch like the NX-OS shell for Cisco switches, a shell driver instance will be created for each managed Cisco switch in your inventory. In this case, since the switch is a permanent inventory item and not created per sandbox, the driver is also instantiated per device.
 
-![Shell Commands]({{ site.baseurl }}/assets/inventory_shell_arch.png)
+![Shell Commands]({{site.baseurl}}/assets/inventory_shell_arch.png)
 
 Whether a deployed app or an inventory component, CloudShell will handle routing commands to the right driver instance. When the user executes a command on a shell instance, CloudShell will first check if a driver instance is already running for the Shell instance, find on which execution server is running, and send the command to that driver to handle. If a driver is not yet running,
 for that inventory resource or app, a new driver instance will be launched.
@@ -96,7 +96,7 @@ of cleanup and state recovery.
 
 The _cleanup_ function will be called whenever the driver instance is stopped. You can place any code that persists the current state of the driver, disconnects sessions or stop any external processes here.
 
-![Shell Commands]({{ site.baseurl }}/assets/driver_lifecycle.png)
+![Shell Commands]({{site.baseurl}}/assets/driver_lifecycle.png)
 
 #### Commands Concurrency
 

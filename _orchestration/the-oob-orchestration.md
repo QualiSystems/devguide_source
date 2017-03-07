@@ -12,7 +12,7 @@ As of CloudShell 7.1 the out of the box scripts are included as a part of the de
 blueprint will by default have these scripts.
 The following diagram describes the OOB setup and teardown flow:
 
-![Setup Workflow]({{ site.baseurl }}/assets/orchestration_workflow.png){: .center-image }
+![Setup Workflow]({{site.baseurl}}/assets/orchestration_workflow.png){: .center-image }
 
 The out-of-the-box setup and teardown scripts can be found in the scripts management page.
 You can review their source code in the

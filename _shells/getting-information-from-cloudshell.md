@@ -41,7 +41,7 @@ class ResourceCommandContext:
 
 #### The ResourceContextDetails object
 
-![Context Object]({{ site.baseurl }}/assets/context_object_completion.png)
+![Context Object]({{site.baseurl}}/assets/context_object_completion.png)
 
 #### Connectivity
 

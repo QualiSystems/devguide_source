@@ -8,7 +8,7 @@ order: 11
 In this section we'll discuss the procedure of packaging and readying a Shell for deployment in a production environment.
 This diagram, that we've visited before, illustrates the development flow for Shells:
 
-![Context Object]({{ site.baseurl }}/assets/shell_development_workflow.png)
+![Context Object]({{site.baseurl}}/assets/shell_development_workflow.png)
 
 We'll be concentrating on the last two phases in the above diagram - creating a distributable package and deploying it to the production server.
 
@@ -42,6 +42,6 @@ To deploy the Shell to the production CloudShell server:
 2. Open the _Admin_ menu located on the top of the page, and select _Import Package_
 3. Select the Shell zip file created earlier and click _Open_ to import it.
 
-![Context Object]({{ site.baseurl }}/assets/import_package.png){: .center-image }
+![Context Object]({{site.baseurl}}/assets/import_package.png){: .center-image }
 
 Your Shell should now be ready for use in the production environment.

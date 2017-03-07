@@ -171,7 +171,7 @@ shellfoundry install
 
 Refreshing the reservation, our shell resource will now show the updated image and description:
 
-![Shell Image]({{ site.baseurl }}/assets/shell_custom_image.png)
+![Shell Image]({{site.baseurl}}/assets/shell_custom_image.png)
 
 
 ### Adding a custom attribute to the Shell
@@ -196,7 +196,7 @@ We can add some attribute definitions here to extend the Shell with some custom 
 If we open up the Attributes side pane in the sandbox page for the Shell resource we'll see the default attributes which are
 as visible to end users on the web.
 
-![Shell Image]({{ site.baseurl }}/assets/shell_attributes_pane.png)
+![Shell Image]({{site.baseurl}}/assets/shell_attributes_pane.png)
 
 To add a simple attribute to the shell we first need to add an _\<AttributeInfo>_ element to this element like so:
 
@@ -248,7 +248,7 @@ shellfoundry install
 
 After refreshing the sandbox diagram and re-opening the attributes pane, you should be able to see the new attribute:
 
-![Shell Image]({{ site.baseurl }}/assets/shell_custom_attribute.png)
+![Shell Image]({{site.baseurl}}/assets/shell_custom_attribute.png)
 
 ### Governing the usage of custom Shell attributes
 
@@ -307,7 +307,7 @@ affected. To add an attribute restriction, add the following to the _\<AttachedA
 It is important to remember to add the current value as one of the options for the possible values.
 Reinstall the Shell, refresh and open the attributes side pane again:
 
-![Shell Image]({{ site.baseurl }}/assets/shell_custom_attribute.png)
+![Shell Image]({{site.baseurl}}/assets/shell_custom_attribute.png)
 
 ### Things to watch out for when adding custom attribute
 

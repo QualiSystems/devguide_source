@@ -22,7 +22,7 @@ To create a new project, simply run the following command in your local shell, w
 
 Navigate to the new directory, you will see the following files have been created for you:
 
-![Directory Structure]({{ site.baseurl }}/assets/shell_folder.png)
+![Directory Structure]({{site.baseurl}}/assets/shell_folder.png)
 
 The generated folder contains all of the basic scaffolding needed for the new shell. We will review the shell project structure in a more in-depth manner in later stages of this guide.
 
@@ -99,7 +99,7 @@ inventory.
 3.	Click Add New and provide a name and an address for your shell resource. For now, since we don’t have an address of an actual server, just leave the address field blank.
 4.	Click on Start Discovery to complete the operation.
 
-![Shell Discovery]({{ site.baseurl }}/assets/hello_world_shell.png)
+![Shell Discovery]({{site.baseurl}}/assets/hello_world_shell.png)
 
 #### Hello world finally
 
@@ -115,13 +115,13 @@ The commands pane opens.
 
 The common output will appear in the environment output pane.
 
-![Shell Discovery]({{ site.baseurl }}/assets/hello_world.png)
+![Shell Discovery]({{site.baseurl}}/assets/hello_world.png)
 
 ### Development process summary
 
 In this tutorial we've seen the basic flow involved in developing a Shell. It can be illustrated in the below diagram:
 
-![Context Object]({{ site.baseurl }}/assets/shell_development_workflow.png)
+![Context Object]({{site.baseurl}}/assets/shell_development_workflow.png)
 
 The basic flow is:
 
@@ -137,7 +137,7 @@ The basic flow is:
 4. Make incremental changes to the Shell and update the development server each time with your changes by running _shellfoundry install_
 5. Rinse and repeat!
 
-For more information on how to deploy the Shell to production, refer to the [Deploying to Production]({{ site.baseurl }}/shells/deploying-to-production.html) section.
+For more information on how to deploy the Shell to production, refer to the [Deploying to Production]({{site.baseurl}}/shells/deploying-to-production.html) section.
 
 #### What's next
 

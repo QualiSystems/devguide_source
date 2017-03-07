@@ -29,7 +29,7 @@ Save the file and give it any name, for example 'hello.py'.
 In CloudShell portal, open the Manage dashboard. In the left sidebar, click _Scripts_ and select the _Environment_ option.
 The page should be similar to this:
 
-![Scripts Management Page]({{ site.baseurl }}/assets/environment_scripts.png){:class="img-responsive"}
+![Scripts Management Page]({{site.baseurl}}/assets/environment_scripts.png){:class="img-responsive"}
 
 Click the ‘Add New Script’ button to fill in some basic details on your script and upload it to CloudShell.
 For now, just provide a name for the script, click _Browse_ to upload your script and finally hit click _Save_ to seal the deal. Your script is now in CloudShell, all we need now is a blueprint where it can work its magic.
@@ -54,7 +54,7 @@ Click the ‘Play’ icon next to the command to launch it!
 If the command executed successfully you should see a checkmark appear next to the command name and the output pane
 will display the command output.
 
-![Scripts Management Page]({{ site.baseurl }}/assets/run_script.png){:class="img-responsive"}
+![Scripts Management Page]({{site.baseurl}}/assets/run_script.png){:class="img-responsive"}
 
 In the scope of this simple tutorial, we’ve seen how to link a trivial Python script with a CloudShell environment.
 We'll look into more concrete example and nuances in later sections of the guide.

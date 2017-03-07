@@ -125,7 +125,7 @@ a name for the resource and click create.
 
 The following dialog will pop up:
 
-![Discovery Dialog]({{ site.baseurl }}/assets/discovery_page.png){:class="img-responsive"}
+![Discovery Dialog]({{site.baseurl}}/assets/discovery_page.png){:class="img-responsive"}
 
 Enter some values for the Username/Password attributes and click start discovery. This will run the _get_inventory_ function
 we've created and if everything works correctly create the entire device structure and a message should pop up indicating
@@ -134,4 +134,4 @@ the discovery processes completed successfully.
 To validate, enter the name of the new resource in the inventory search box. You should see a list of sub-resources with the
 discovered attributes:
 
-![Discovery Dialog]({{ site.baseurl }}/assets/inventory_search.png){:class="img-responsive"}
+![Discovery Dialog]({{site.baseurl}}/assets/inventory_search.png){:class="img-responsive"}
