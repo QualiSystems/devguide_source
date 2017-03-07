@@ -107,6 +107,12 @@ After populating the attributes information, we need to return the result object
 
 Notice that we're using an empty string ('') to refer to the root resource when setting its attribute values.
 
+There are 4 special attribute names that you can use in the attributes list that you return in your driver. These are mapped on the server to the resource properties:
+* ResourceName - will allow you to update the resource name (mostly relevant for updating the root resource name)
+* ResourceAddress - update the resource address (again, mostly relevant for the root resource)
+* ResourceDescription - update the resource description
+* ResourceUniqueIdentifier - update the unique id (this is less important with the python drivers since you have a specific input for that in the AutoLoadResource class). Notice that if you are using unique identifiers you have to make sure they are indeed unique. Its not possible to add two resources with the same unique identifier.
+
 #### Adding validations
 
 A common enhancement for discovery functions that greatly improves the process usability is to validate that the attributes
