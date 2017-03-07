@@ -22,7 +22,7 @@ To create a new project, simply run the following command in your local shell, w
 
 Navigate to the new directory, you will see the following files have been created for you:
 
-![Directory Structure]({{ site.url }}/devguide/assets/shell_folder.png)
+![Directory Structure]({{ site.baseurl }}/assets/shell_folder.png)
 
 The generated folder contains all of the basic scaffolding needed for the new shell. We will review the shell project structure in a more in-depth manner in later stages of this guide.
 
@@ -99,7 +99,7 @@ inventory.
 3.	Click Add New and provide a name and an address for your shell resource. For now, since we don’t have an address of an actual server, just leave the address field blank.
 4.	Click on Start Discovery to complete the operation.
 
-![Shell Discovery]({{ site.url }}/devguide/assets/hello_world_shell.png)
+![Shell Discovery]({{ site.baseurl }}/assets/hello_world_shell.png)
 
 #### Hello world finally
 

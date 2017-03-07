@@ -9,7 +9,7 @@ comments: true
 In this section we'll go over the recommended steps for setting up a development environment for developing CloudShell Shells and orchestration scripts.
 
 ### Get the latest Python 2.7.x
-![Python]({{ site.url }}/devguide/assets/python-logo.png){:class="img-responsive"}
+![Python]({{ site.baseurl }}/assets/python-logo.png){:class="img-responsive"}
 
 Download and install the latest version of Python 2.7.x from the [official website](https://www.python.org/downloads/).
 We also recommend installing pip (even though technically its included in the latest versions of Python). Follow the instructions on this website: [https://pip.pypa.io/en/stable/installing/](https://pip.pypa.io/en/stable/installing/)
@@ -31,7 +31,7 @@ your life a little easier by automating some steps required to upload your drive
 
 ### Install Git
 
-![Git]({{ site.url }}/devguide/assets/git-logo.png){:class="img-responsive"}
+![Git]({{ site.baseurl }}/assets/git-logo.png){:class="img-responsive"}
 
 Some CloudShell developer tools require Git to be installed.
 Follow the installation instructions on the [official website](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
@@ -46,7 +46,7 @@ To install ShellFoundry, simply open a new command line  window and type in the 
 
 ### Install and setup the CloudShell SDK
 
-![CloudShell]({{ site.url }}/devguide/assets/cloudshell-logo.png){:class="img-responsive"}
+![CloudShell]({{ site.baseurl }}/assets/cloudshell-logo.png){:class="img-responsive"}
 
 To deploy, test and debug your automation you'll need to have a working CloudShell SDK.
 The CloudShell SDK is free for developers and can be downloaded from our

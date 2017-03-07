@@ -45,7 +45,7 @@ whereas the _log_group_ defines the file. The CloudShell convention is to create
 reservation id and a file for each resource name. For orchestration scripts, the file name
 is the environment name.
 
-![Log Structure]({{ site.url }}/devguide/assets/log_structure.png){:class="img-responsive"}
+![Log Structure]({{ site.baseurl }}/assets/log_structure.png){:class="img-responsive"}
 
 All logs will be saved on the Execution Server where the driver is running. The folder location will be
 relative to the driver in the virtual environment location at:
