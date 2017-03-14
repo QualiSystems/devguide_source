@@ -11,7 +11,7 @@ In this section, we’ll go through the basic steps of creating a new Shell. The
 ### Supported versions - CloudShell v.8.0 and up
 As of version 8.0, CloudShell supports 2nd Gen Shells. This guide includes instructions on developing **2nd Gen Shells only**.
 
-For information on developing 1st Gen Shells, see [CloudShell Developer Guide](http://www.google.com) CloudShell v7.1 and below.
+For information on developing 1st Gen Shells, see [CloudShell Developer Guide](https://qualisystems.github.io/devguide_7/) CloudShell v7.1 and below.
 
 To learn more about the  different versions of the Shells used by CloudShell and how to upgrade a 1st Gen Shell, see [Converting 1st Generation Shells]({{site.baseurl}}/shells/migrating_1st_gen_shells.html)
 
