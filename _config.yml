@@ -63,7 +63,7 @@ future: true
 gems:
   - jekyll-sitemap
   - jekyll_github_sample
-  - jekyll-lunr-js-searchd
+  - jekyll-lunr-js-search
   - jekyll-seo-tag
 # Exclude non-site files
 exclude: [vendor,'bin', 'README.md']
