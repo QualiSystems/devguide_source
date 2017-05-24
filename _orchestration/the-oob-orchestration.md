@@ -16,7 +16,7 @@ The following diagram describes the OOB setup and teardown flow:
 
 The out-of-the-box setup and teardown scripts can be found in the scripts management page.
 You can review their source code in the
-[cloudshell-orch-sandbox repository](https://github.com/QualiSystems/cloudshell-orch-sandbox/tree/develop/sandbox_scripts).
+[cloudshell-orch-sandbox repository](https://github.com/QualiSystems/cloudshell-orch-sandbox/tree/master/sandbox_scripts).
 
 ### Extending the OOB Orchestration Scripts
 
