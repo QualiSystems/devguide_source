@@ -11,7 +11,6 @@ logo: './assets/logo.png'
 # if you use google analytics, add your tracking id here
 google_analytics_id: 'UA-81468206-1'
 
-
 # Enable/show navigation. There are there options:
 #   0 - always hide
 #   1 - always show
@@ -64,10 +63,10 @@ future: true
 gems:
   - jekyll-sitemap
   - jekyll_github_sample
-  - jekyll-lunr-js-search
+  - jekyll-lunr-js-searchd
   - jekyll-seo-tag
 # Exclude non-site files
-exclude: ['bin', 'README.md']
+exclude: [vendor,'bin', 'README.md']
 
 # Use the kramdown Markdown renderer
 markdown: kramdown
