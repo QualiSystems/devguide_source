@@ -22,5 +22,12 @@ env:
 
 sudo: false # route your build to the container-based infrastructure for a faster build
 
-after_success:
-- ./scripts/deploy.sh
+#after_success:
+#- ./scripts/deploy.sh
+
+deploy:
+  skip_cleanup: true
+  provider: script
+  script: scripts/deploy.sh
+  on:
+    branch: master
