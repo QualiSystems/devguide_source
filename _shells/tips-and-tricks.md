@@ -11,7 +11,7 @@ tags:
 
 ### Managing the CloudShell session
 
-Creating an instance of CloudShellAPISession can be expensive. Each time such an object is created
+Creating an instance of CloudShellAPISession can be expensive. Hence, Each time such an object is created
 a new login request is made, which can impact the performance of the driver/script. In theory
 it would be better to create the session once per command and then pass it in a convenient way
 to any internal function called in the execution flow.
