@@ -24,7 +24,7 @@ To learn more about the  different versions of the Shells used by CloudShell and
 * **ShellFoundry** Install ShellFoundry using pip. Run the following in your local Command Line:
 {% highlight bash %} python -m pip install shellfoundry {% endhighlight %}
 If ShellFoundry is already installed, run the following command to update:
-{% highlight bash %} python -m pip install shellfoundry --update {% endhighlight %}
+{% highlight bash %} python -m pip install shellfoundry --upgrade {% endhighlight %}
 
 
 ### Creating the Shell Project
