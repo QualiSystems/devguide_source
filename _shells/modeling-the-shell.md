@@ -6,7 +6,7 @@ comments: true
 order:  4
 ---
 
-By defining how a Shell is modeled in CloudShell, we can control how it’s represented in CloudShell. If you’ve gone through the steps of the Getting Started [Getting Started]({{site.baseurl}}/shells/getting-started.html) tutorial, you may have noticed that with little effort we’ve already managed to model a new type of entity.
+By defining how a Shell is modeled in CloudShell, we can control how it’s represented in CloudShell. If you’ve gone through the steps of the [Getting Started]({{site.baseurl}}/shells/getting-started.html) tutorial, you may have noticed that with little effort we’ve already managed to model a new type of entity.
 
 
 In this section, we’ll take a more in-depth look at how we can customize how Shell resources or deployed Apps are presented and behave in CloudShell.
