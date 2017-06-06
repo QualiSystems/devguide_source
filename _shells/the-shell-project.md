@@ -39,7 +39,7 @@ This will create a new _linux_server_shell_ folder using the default Shell templ
 
 * The **TOSCA-Metadata** folder: Contains a TOSCA standard file. Its content is filled out by Quali and requires no additional updates on your part.
 
-* The **.gitignor.txt** file: Standard Git repository file that specifies files which are not managed by source control.
+* The **.gitignore.txt** file: Standard Git repository file that specifies files which are not managed by source control.
 
 * The **deployment.xml** file: Contains the debugging specifications. For more information, see [Debugging Shell Commands]({{site.baseurl}}/shells/debugging-shell-commands.html)
 
