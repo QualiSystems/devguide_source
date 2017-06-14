@@ -3,6 +3,9 @@ layout: page
 title: Automating CloudShell Sandboxes for DevOps
 comments: true
 order:  1
+version:
+    - 8.0.0
+    - 7.1.0
 ---
 In this section, we'll look at different recipes for creating and using CloudShell Sandboxes as a part of your CI/CD
 or other DevOps pipelines. In this context, we'll concentrate on the use case of automating CloudShell externally from scripts or other platforms.

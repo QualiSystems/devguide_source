@@ -3,6 +3,9 @@ layout: page
 title: CloudShell's OOB Orchestration
 category: orch
 comments: true
+version: 
+    - 8.0
+    - 7.1
 order:  9
 ---
 Every CloudShell install comes bundled with default setup and teardown workflows out of the box. These reflect
