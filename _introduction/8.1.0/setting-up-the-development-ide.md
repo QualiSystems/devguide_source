@@ -4,6 +4,8 @@ title: Setting up the Development Environment
 date: "2016-04-30 13:02:32 +0300"
 order: 1
 comments: true
+version:
+    - 8.1.0
 ---
 
 In this section we'll go over the recommended steps for setting up a development environment for developing CloudShell Shells and orchestration scripts.

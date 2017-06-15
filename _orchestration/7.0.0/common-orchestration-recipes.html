@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width">
+
+        <title>CloudShell Developer Guide : Common Orchestration Script Recipes</title>
+        <meta name="description" content="">
+        <link rel="shortcut icon" type="image/png" href="/devguide_7/favicon.png?">
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="/devguide_7/css/main.css">
+        <link rel="stylesheet" href="/devguide_7/css/prism.css">
+        <link rel="stylesheet" href="/devguide_7/css/samples.css">
+        <link rel="stylesheet" href="/devguide_7/css/normalize.css">
+        <link rel="stylesheet" href="/devguide_7/css/test-hot-block.webflow.css">
+
+
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+        <script src="/devguide_7/js/jquery-3.1.0.min.js"></script>
+        <script src="/devguide_7/js/modernizr.js"></script>
+        <script src="/devguide_7/js/webflow.js"></script>
+
+
+        
+        <script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+ (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+ m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+ })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ ga('create', 'UA-81468206-1', 'auto');
+ ga('send', 'pageview');
+
+</script>
+
+        <!-- Begin Jekyll SEO tag v2.1.0 -->
+<title>Common Orchestration Script Recipes - CloudShell Developer Guide</title>
+<meta property="og:title" content="Common Orchestration Script Recipes" />
+<meta name="description" content="In this section we’ll provide a few handy examples of common script operations. The intention is to grow this into a good source to copy paste common code from. All of the examples will be available in the DevGuide Examples repository under the script_driver_recipes folder." />
+<meta property="og:description" content="In this section we’ll provide a few handy examples of common script operations. The intention is to grow this into a good source to copy paste common code from. All of the examples will be available in the DevGuide Examples repository under the script_driver_recipes folder." />
+<link rel="canonical" href="https://qualisystems.github.io/devguide_7/orchestration/common-orchestration-recipes.html" />
+<meta property="og:url" content="https://qualisystems.github.io/devguide_7/orchestration/common-orchestration-recipes.html" />
+<meta property="og:site_name" content="CloudShell Developer Guide" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2017-03-07T23:34:49+02:00" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@qualisystems" />
+<script type="application/ld+json">
+{"@context": "http://schema.org",
+"@type": "BlogPosting",
+"headline": "Common Orchestration Script Recipes",
+"datePublished": "2017-03-07T23:34:49+02:00",
+"description": "In this section we’ll provide a few handy examples of common script operations. The intention is to grow this into a good source to copy paste common code from. All of the examples will be available in the DevGuide Examples repository under the script_driver_recipes folder.",
+"publisher": {"@type": "Organization",
+"logo": {"@type": "ImageObject",
+"url": "https://qualisystems.github.io/devguide_7/assets/logo.png"}},
+"url": "https://qualisystems.github.io/devguide_7/orchestration/common-orchestration-recipes.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+        
+    </head>
+    <body>
+        <div id="header">
+            <div class="container">
+                <div class="row">
+    <div class="col-md-3 col-sm-4">
+        <a class="brand" href="/devguide_7/">
+            <img alt="CloudShell Logo" src="/devguide_7/assets/logo.png" />
+            CloudShell <small>Developer Guide</small>
+        </a>
+    </div>
+    <div class="col-md-9 col-sm-8">
+        <form class="search" action="/devguide_7/search.html">
+            <input class="input" id="search-query" type="text" name="q" placeholder="Search" />
+            <input class="button" type="submit" value="Search"></input>
+        </form>
+    </div>
+</div>
+
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                
+                
+                    <div id="navigation" class="col-md-3 col-sm-4">
+                        <ul class="nav nav-list">
+     
+     
+        <li class="nav-header"></li>
+        
+        
+        
+     
+        <li class="nav-header">Introduction</li>
+        
+                <li data-page-id="index.md"><a href="/devguide_7/">The CloudShell DevGuide</a></li>
+        
+        
+        
+                    <li data-page-id="_introduction/setting-up-the-development-ide.md" data-order="1"><a href="/devguide_7/introduction/setting-up-the-development-ide.html">Setting up the Development Environment</a></li>
+        
+     
+        <li class="nav-header">Extending cloudshell with shells</li>
+        
+        
+        
+                    <li data-page-id="_shells/getting-started.md" data-order="1"><a href="/devguide_7/shells/getting-started.html">Getting Started</a></li>
+        
+                    <li data-page-id="_shells/shell-driver-overview.md" data-order="2"><a href="/devguide_7/shells/shell-driver-overview.html">Shell Drivers Overview</a></li>
+        
+                    <li data-page-id="_shells/the-shell-project.md" data-order="3"><a href="/devguide_7/shells/the-shell-project.html">The Shell Project Guide</a></li>
+        
+                    <li data-page-id="_shells/modeling-the-shell.md" data-order="4"><a href="/devguide_7/shells/modeling-the-shell.html">Modeling the Shell</a></li>
+        
+                    <li data-page-id="_shells/getting-information-from-cloudshell.md" data-order="5"><a href="/devguide_7/shells/getting-information-from-cloudshell.html">Getting Information from CloudShell</a></li>
+        
+                    <li data-page-id="_shells/driver-deep-dive.md" data-order="6"><a href="/devguide_7/shells/driver-deep-dive.html">Driver Deep Dive</a></li>
+        
+                    <li data-page-id="_shells/customizing-driver-commands.md" data-order="6"><a href="/devguide_7/shells/customizing-driver-commands.html">Commands Visibility and Usability</a></li>
+        
+                    <li data-page-id="_shells/implementing-discovery-for-inventory-shells.md" data-order="7"><a href="/devguide_7/shells/implementing-discovery-for-inventory-shells.html">Implementing Discovery for Inventory Shells</a></li>
+        
+                    <li data-page-id="_shells/discovering-inventory-snmp.md" data-order="8"><a href="/devguide_7/shells/discovering-inventory-snmp.html">Discovering Inventory using SNMP</a></li>
+        
+                    <li data-page-id="_shells/debugging-shell-commands.md" data-order="9"><a href="/devguide_7/shells/debugging-shell-commands.html">Debugging Shell Driver Commands</a></li>
+        
+                    <li data-page-id="_shells/deploying-to-production.md" data-order="11"><a href="/devguide_7/shells/deploying-to-production.html">Deploying to Production</a></li>
+        
+                    <li data-page-id="_shells/common-driver-recipes.md" data-order="12"><a href="/devguide_7/shells/common-driver-recipes.html">Common Driver Recipes</a></li>
+        
+                    <li data-page-id="_shells/tips-and-tricks.md" data-order="13"><a href="/devguide_7/shells/tips-and-tricks.html">Tips and Tricks</a></li>
+        
+     
+        <li class="nav-header">Orchestration scripts</li>
+        
+        
+        
+                    <li data-page-id="_orchestration/getting-started.md" data-order="1"><a href="/devguide_7/orchestration/getting-started.html">Getting Started</a></li>
+        
+                    <li data-page-id="_orchestration/getting-information-from-cloudshell.md" data-order="2"><a href="/devguide_7/orchestration/getting-information-from-cloudshell.html">Getting Information from CloudShell</a></li>
+        
+                    <li data-page-id="_orchestration/script-commands-customization.md" data-order="6"><a href="/devguide_7/orchestration/script-commands-customization.html">Script commands Visibility and Usability</a></li>
+        
+                    <li data-page-id="_orchestration/scripts-deep-dive.md" data-order="6"><a href="/devguide_7/orchestration/scripts-deep-dive.html">Scripts Deep Dive</a></li>
+        
+                    <li data-page-id="_orchestration/common-orchestration-recipes.md" data-order="9"><a href="/devguide_7/orchestration/common-orchestration-recipes.html">Common Orchestration Script Recipes</a></li>
+        
+                    <li data-page-id="_orchestration/the-oob-orchestration.md" data-order="9"><a href="/devguide_7/orchestration/the-oob-orchestration.html">CloudShell's OOB Orchestration</a></li>
+        
+     
+        <li class="nav-header">Integrating cloudshell into the devops cycle</li>
+        
+        
+        
+                    <li data-page-id="_devops/devops-integration.md" data-order="1"><a href="/devguide_7/devops/devops-integration.html">Automating CloudShell Sandboxes for DevOps</a></li>
+        
+     
+        <li class="nav-header">Reference</li>
+        
+        
+        
+                    <li data-page-id="_reference/python-coding-standards.md" data-order="7"><a href="/devguide_7/reference/python-coding-standards.html">Python Coding Standards</a></li>
+        
+     
+</ul>
+
+                    </div>
+
+                    <div id="content" class="col-md-9 col-sm-8">
+                        
+
+<div class="page-header" data-page-id="_orchestration/common-orchestration-recipes.md">
+    <h2>Common Orchestration Script Recipes
+        
+        
+          <span style="float: right;font-size: 20px"><small><a href="https://github.com/QualiSystems/devguide_source/tree/master/_orchestration/common-orchestration-recipes.md">Suggest edits</a></small></span>
+        
+    </h2>
+</div>
+
+<p>In this section we’ll provide a few handy examples of common script operations.
+The intention is to grow this into a good source to copy paste common code from.
+All of the examples will be available in the
+<a href="https://github.com/QualiSystems/devguide_examples">DevGuide Examples</a> repository
+under the <em>script_driver_recipes</em> folder.</p>
+
+<h4 id="executing-commands-on-sandbox-resources">Executing commands on sandbox resources</h4>
+
+<p>The following script will try to execute a command only on resources that support it.
+If a resource does not support the command it will simply ignore it and move to the next
+resource.</p>
+
+<div class="github-sample-reference">
+  <div class="author-info">
+    <a href="https://github.com/QualiSystems/devguide_examples/blob/master/orchestration_scripts_examples/try_execute_commands/try_execute_commands.py">This Github Sample</a> is by <a href="https://github.com/QualiSystems">QualiSystems</a>
+  </div>
+  <div class="meta-info">
+    orchestration_scripts_examples/try_execute_commands/try_execute_commands.py <a href="https://github.com/QualiSystems/devguide_examples/blob/master/orchestration_scripts_examples/try_execute_commands/try_execute_commands.py">view</a> <a href="https://raw.githubusercontent.com/QualiSystems/devguide_examples/master/orchestration_scripts_examples/try_execute_commands/try_execute_commands.py">raw</a>
+  </div>
+</div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python">def try_execute_command_on_resources(session, reservation_id, command_name, command_inputs=[]):
+    &quot;&quot;&quot;
+    This function will try to execute a command on all app resources that support it
+    :param CloudShellAPISession session: CloudShell API Session
+    :param str reservation_id: The reservation Id to run the commands on
+    :param str command_name: The command to try and execute
+    :param list[InputNameValue] command_inputs: Inputs parameters for the command
+    :return: The aggregated results of the successful calls
+    :rtype: dict[str,str]
+    &quot;&quot;&quot;
+    results = {}
+    for resource in session.GetReservationDetails(reservation_id).ReservationDescription.Resources:
+        try:
+            result = session.ExecuteCommand(reservation_id, resource.Name, &quot;Resource&quot;, command_name, command_inputs)
+            results[resource.Name] = result.Output
+
+        except CloudShellAPIError as exc:
+            # Ignore the error if the command doesn&#39;t exist on the resource or its not assigned a driver
+            if exc.code not in (NO_DRIVER_ERR,DRIVER_FUNCTION_ERROR):
+                raise
+    return results</code></pre></figure>
+
+
+
+
+
+
+
+
+
+    <div id="post-nav" class="clearfix">
+        
+            <a class="prev" href="/devguide_7/orchestration/scripts-deep-dive.html">&laquo; Scripts Deep Dive</a>
+        
+        
+            <a class="next" href="/devguide_7/orchestration/the-oob-orchestration.html">CloudShell's OOB Orchestration &raquo;</a>
+        
+    </div>
+
+
+
+
+<div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+        var disqus_identifier = '_orchestration/common-orchestration-recipes.md';
+        var disqus_url = 'https://qualisystems.github.io/orchestration/common-orchestration-recipes.html';
+        this.page.url = "https://qualisystems.github.io/devguide_7/orchestration/common-orchestration-recipes.html";  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = disqus_identifier; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    (function() {  // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+
+        s.src = '//qualidev.disqus.com/embed.js';
+
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+
+
+<script src="/devguide_7/js/search.min.js" type="text/javascript" charset="utf-8"></script>
+
+<script type="text/javascript">
+  $(function() {
+    $('#search-query').lunrSearch({
+      indexUrl  : '/devguide_7/js/index.json',           // url for the .json file containing search index data
+      results   : '#search-results',          // selector for containing search results element
+      template  : '#search-results-template', // selector for Mustache.js template
+      titleMsg  : '',   // message attached in front of results (can be empty)
+      emptyMsg  : '<p>Nothing found.</p>'     // shown message if search returns no results
+    });
+  });
+</script>
+
+<script>
+$(function() {
+    page = $(".page-header").attr("data-page-id")
+    nav_item = $(".nav li[data-page-id='"+page+"']")
+    if (nav_item) {
+        $(".nav").find(".active").removeClass("active");
+        nav_item.addClass("active");
+    }
+})
+</script>
+
+                    </div>
+                
+            </div>
+
+            
+
+            <div class="row">
+                <div id="footer" class="col-sm-12">
+                    Documentation for <a href="http://www.quali.com">CloudShell Developer Guide</a>
+
+                </div>
+            </div>
+        </div>
+
+        <script src="/devguide_7/js/prism.js"></script>
+
+        
+        <script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+ (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+ m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+ })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ ga('create', 'UA-81468206-1', 'auto');
+ ga('send', 'pageview');
+
+</script>
+
+        
+    </body>
+</html>

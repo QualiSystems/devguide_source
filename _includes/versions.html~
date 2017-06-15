@@ -2,7 +2,8 @@
 	<select class="form-control" id="version">
    {% assign pageUrlSplited = page.url | split: "/" %}
    {% assign pageVersion = pageUrlSplited[2] %}	
-	{% for version in site.versions %}
+	{% assign versions = site.versions | sort | reverse %}	
+	{% for version in versions %}
 	{% if version == pageVersion %}
 	  <option value="{{ version }}" selected>{{ version }}</option>
 	{% else %}	  

@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width">
+
+        <title>CloudShell Developer Guide : Getting Information from CloudShell</title>
+        <meta name="description" content="">
+        <link rel="shortcut icon" type="image/png" href="/devguide_7/favicon.png?">
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="/devguide_7/css/main.css">
+        <link rel="stylesheet" href="/devguide_7/css/prism.css">
+        <link rel="stylesheet" href="/devguide_7/css/samples.css">
+        <link rel="stylesheet" href="/devguide_7/css/normalize.css">
+        <link rel="stylesheet" href="/devguide_7/css/test-hot-block.webflow.css">
+
+
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+        <script src="/devguide_7/js/jquery-3.1.0.min.js"></script>
+        <script src="/devguide_7/js/modernizr.js"></script>
+        <script src="/devguide_7/js/webflow.js"></script>
+
+
+        
+        <script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+ (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+ m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+ })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ ga('create', 'UA-81468206-1', 'auto');
+ ga('send', 'pageview');
+
+</script>
+
+        <!-- Begin Jekyll SEO tag v2.1.0 -->
+<title>Getting Information from CloudShell - CloudShell Developer Guide</title>
+<meta property="og:title" content="Getting Information from CloudShell" />
+<meta name="description" content="A typical Shell driver, will first get crucial information from the sandbox and then use that information to access the device it controls. Some common information would be the resource or app’s address, attributes such as username and password, as well as other information from other sandbox settings or components." />
+<meta property="og:description" content="A typical Shell driver, will first get crucial information from the sandbox and then use that information to access the device it controls. Some common information would be the resource or app’s address, attributes such as username and password, as well as other information from other sandbox settings or components." />
+<link rel="canonical" href="https://qualisystems.github.io/devguide_7/shells/getting-information-from-cloudshell.html" />
+<meta property="og:url" content="https://qualisystems.github.io/devguide_7/shells/getting-information-from-cloudshell.html" />
+<meta property="og:site_name" content="CloudShell Developer Guide" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2017-03-07T23:34:49+02:00" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@qualisystems" />
+<script type="application/ld+json">
+{"@context": "http://schema.org",
+"@type": "BlogPosting",
+"headline": "Getting Information from CloudShell",
+"datePublished": "2017-03-07T23:34:49+02:00",
+"description": "A typical Shell driver, will first get crucial information from the sandbox and then use that information to access the device it controls. Some common information would be the resource or app’s address, attributes such as username and password, as well as other information from other sandbox settings or components.",
+"publisher": {"@type": "Organization",
+"logo": {"@type": "ImageObject",
+"url": "https://qualisystems.github.io/devguide_7/assets/logo.png"}},
+"url": "https://qualisystems.github.io/devguide_7/shells/getting-information-from-cloudshell.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+        
+    </head>
+    <body>
+        <div id="header">
+            <div class="container">
+                <div class="row">
+    <div class="col-md-3 col-sm-4">
+        <a class="brand" href="/devguide_7/">
+            <img alt="CloudShell Logo" src="/devguide_7/assets/logo.png" />
+            CloudShell <small>Developer Guide</small>
+        </a>
+    </div>
+    <div class="col-md-9 col-sm-8">
+        <form class="search" action="/devguide_7/search.html">
+            <input class="input" id="search-query" type="text" name="q" placeholder="Search" />
+            <input class="button" type="submit" value="Search"></input>
+        </form>
+    </div>
+</div>
+
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                
+                
+                    <div id="navigation" class="col-md-3 col-sm-4">
+                        <ul class="nav nav-list">
+     
+     
+        <li class="nav-header"></li>
+        
+        
+        
+     
+        <li class="nav-header">Introduction</li>
+        
+                <li data-page-id="index.md"><a href="/devguide_7/">The CloudShell DevGuide</a></li>
+        
+        
+        
+                    <li data-page-id="_introduction/setting-up-the-development-ide.md" data-order="1"><a href="/devguide_7/introduction/setting-up-the-development-ide.html">Setting up the Development Environment</a></li>
+        
+     
+        <li class="nav-header">Extending cloudshell with shells</li>
+        
+        
+        
+                    <li data-page-id="_shells/getting-started.md" data-order="1"><a href="/devguide_7/shells/getting-started.html">Getting Started</a></li>
+        
+                    <li data-page-id="_shells/shell-driver-overview.md" data-order="2"><a href="/devguide_7/shells/shell-driver-overview.html">Shell Drivers Overview</a></li>
+        
+                    <li data-page-id="_shells/the-shell-project.md" data-order="3"><a href="/devguide_7/shells/the-shell-project.html">The Shell Project Guide</a></li>
+        
+                    <li data-page-id="_shells/modeling-the-shell.md" data-order="4"><a href="/devguide_7/shells/modeling-the-shell.html">Modeling the Shell</a></li>
+        
+                    <li data-page-id="_shells/getting-information-from-cloudshell.md" data-order="5"><a href="/devguide_7/shells/getting-information-from-cloudshell.html">Getting Information from CloudShell</a></li>
+        
+                    <li data-page-id="_shells/driver-deep-dive.md" data-order="6"><a href="/devguide_7/shells/driver-deep-dive.html">Driver Deep Dive</a></li>
+        
+                    <li data-page-id="_shells/customizing-driver-commands.md" data-order="6"><a href="/devguide_7/shells/customizing-driver-commands.html">Commands Visibility and Usability</a></li>
+        
+                    <li data-page-id="_shells/implementing-discovery-for-inventory-shells.md" data-order="7"><a href="/devguide_7/shells/implementing-discovery-for-inventory-shells.html">Implementing Discovery for Inventory Shells</a></li>
+        
+                    <li data-page-id="_shells/discovering-inventory-snmp.md" data-order="8"><a href="/devguide_7/shells/discovering-inventory-snmp.html">Discovering Inventory using SNMP</a></li>
+        
+                    <li data-page-id="_shells/debugging-shell-commands.md" data-order="9"><a href="/devguide_7/shells/debugging-shell-commands.html">Debugging Shell Driver Commands</a></li>
+        
+                    <li data-page-id="_shells/deploying-to-production.md" data-order="11"><a href="/devguide_7/shells/deploying-to-production.html">Deploying to Production</a></li>
+        
+                    <li data-page-id="_shells/common-driver-recipes.md" data-order="12"><a href="/devguide_7/shells/common-driver-recipes.html">Common Driver Recipes</a></li>
+        
+                    <li data-page-id="_shells/tips-and-tricks.md" data-order="13"><a href="/devguide_7/shells/tips-and-tricks.html">Tips and Tricks</a></li>
+        
+     
+        <li class="nav-header">Orchestration scripts</li>
+        
+        
+        
+                    <li data-page-id="_orchestration/getting-started.md" data-order="1"><a href="/devguide_7/orchestration/getting-started.html">Getting Started</a></li>
+        
+                    <li data-page-id="_orchestration/getting-information-from-cloudshell.md" data-order="2"><a href="/devguide_7/orchestration/getting-information-from-cloudshell.html">Getting Information from CloudShell</a></li>
+        
+                    <li data-page-id="_orchestration/script-commands-customization.md" data-order="6"><a href="/devguide_7/orchestration/script-commands-customization.html">Script commands Visibility and Usability</a></li>
+        
+                    <li data-page-id="_orchestration/scripts-deep-dive.md" data-order="6"><a href="/devguide_7/orchestration/scripts-deep-dive.html">Scripts Deep Dive</a></li>
+        
+                    <li data-page-id="_orchestration/common-orchestration-recipes.md" data-order="9"><a href="/devguide_7/orchestration/common-orchestration-recipes.html">Common Orchestration Script Recipes</a></li>
+        
+                    <li data-page-id="_orchestration/the-oob-orchestration.md" data-order="9"><a href="/devguide_7/orchestration/the-oob-orchestration.html">CloudShell's OOB Orchestration</a></li>
+        
+     
+        <li class="nav-header">Integrating cloudshell into the devops cycle</li>
+        
+        
+        
+                    <li data-page-id="_devops/devops-integration.md" data-order="1"><a href="/devguide_7/devops/devops-integration.html">Automating CloudShell Sandboxes for DevOps</a></li>
+        
+     
+        <li class="nav-header">Reference</li>
+        
+        
+        
+                    <li data-page-id="_reference/python-coding-standards.md" data-order="7"><a href="/devguide_7/reference/python-coding-standards.html">Python Coding Standards</a></li>
+        
+     
+</ul>
+
+                    </div>
+
+                    <div id="content" class="col-md-9 col-sm-8">
+                        
+
+<div class="page-header" data-page-id="_shells/getting-information-from-cloudshell.md">
+    <h2>Getting Information from CloudShell
+        
+        
+          <span style="float: right;font-size: 20px"><small><a href="https://github.com/QualiSystems/devguide_source/tree/master/_shells/getting-information-from-cloudshell.md">Suggest edits</a></small></span>
+        
+    </h2>
+</div>
+
+<p>A typical Shell driver, will first get crucial information from the sandbox and then use that information
+to access the device it controls. Some common information would be the resource or app’s address, attributes
+such as username and password, as well as other information from other sandbox settings or components.</p>
+
+<p>To provide easy access to such common information, each driver function has access to a special context object parameter,
+which is created by CloudShell for each driver command execution. If you’ve generated the default driver template,
+you may have noticed that the pre-generated functions already have some docstring code-hint annotation.
+This allows some IDEs like Pycharm to provide autocomplete for the class properties and make it a lot easier to user.</p>
+
+<h4 id="cloudshell-shell-core">CloudShell Shell Core</h4>
+
+<p>The classes used for the command context parameters, as well as other interface classes CloudShell provides are provided
+in the <strong><em>cloudshell-shell-core</em></strong> package which you also may have noticed is imported in the sample driver class.
+The term <em>Resource</em> may be a confusing one for the context object. In the CloudShell platform there are really two types
+of resources, a <em>deployed app</em> is a resource which is deployed and lives inside the sandbox, whereas a <em>physical resource</em>
+or as its sometimes called <em>inventory_resource</em> is a type of resource that lives in the CloudShell inventory and is pulled into
+blueprints and sandboxes.
+Lets take a look at the ResourceCommandContext class to understand more about the information it provides:</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python">class ResourceCommandContext:
+    def __init__(self, connectivity, resource, reservation, connectors):
+        self.connectivity = connectivity                # Connectivity details that can help connect to the APIs
+        &quot;&quot;&quot;:type : ConnectivityContext&quot;&quot;&quot;
+        self.resource = resource                        # The details of the resource using the driver
+        &quot;&quot;&quot;:type : ResourceContextDetails&quot;&quot;&quot;
+        self.reservation = reservation                  # The details of the reservation
+        &quot;&quot;&quot;:type : ReservationContextDetails&quot;&quot;&quot;
+        self.connectors = connectors                    # The list of visual connectors and routes that are connected to the resource (the resource will be considered as the source end point)
+        &quot;&quot;&quot;:type : list[Connector]&quot;&quot;&quot;</code></pre></figure>
+
+<h4 id="the-resourcecontextdetails-object">The ResourceContextDetails object</h4>
+
+<p><img src="/devguide_7/assets/context_object_completion.png" alt="Context Object" /></p>
+
+<h4 id="connectivity">Connectivity</h4>
+
+<p>The <strong><em>connectivity</em></strong> property contains information about how to connect to CloudShell, information like server address, ports and so on.
+It also contains a token which can be used to log in to the CloudShell API. As we’ll discuss, it is generally recommended to use the CloudShell API
+as little as possible in your Shell, with the exception of a few operations which we’ll cover later in the examples section of this guide.
+So while the connectivity information is readily available on the context, in most cases you should not have to use it.</p>
+
+<h4 id="resource-context">Resource Context</h4>
+
+<p>The <strong><em>resource</em></strong> property contains most of the information you’ll need about the app or resource to which your Shell driver is assigned.
+This is the key pieces of information any driver will need to implement commands that work with the device/app.
+Lets examine the <em>ResourceContextDetails</em> class properties:</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python">context.resource.id  # (str) The identifier of the resource / service / app - consistent value that can&#39;t be changed / renamed by the user
+context.resource.name   # The name of the resource/app
+context.resource.fullname   # The full name of the resource, including any parent resources (relevant to inventory resources only)
+context.resource.type   # (Service, App, Resource) The type can be either a Service, an App (which means a deployed App) or a Resource
+context.resource.address   # The IP address of the resource / app
+context.resource.model   # The resource/app model
+context.resource.family = None  # The resource/app family or type classification
+context.resource.description = None  # The resource/app description
+context.resource.attributes = None  # A dictionary that contains the resource attributes (name, value)
+user = context.resource.attributes[&#39;User&#39;] = # Get a specific attribute value from the dictionary
+context.resource.app_context = None # Infromation about the deployed app and app request to be discussed below</code></pre></figure>
+
+<p>There is a lot of useful information in this object. Of special importance is The <em>name</em> of the resource, the <em>address</em> and the <em>model</em>. These provide
+the most basic details about the resource or app required to communicate with it. Other attributes, such as the user and password credentials, additional
+interfaces and other settings will be found in <em>attributes</em> property. The <em>attributes</em> property is a dictionary with the keys being the attribute names
+and the value being the current value.</p>
+
+<h4 id="connectors-information">Connectors information</h4>
+
+<p>The <strong><em>connectors</em></strong> property provides information about the resource or app’s connectors (visual or network connectors) in the sandbox.
+The property maps to a list of Connector objects, each provides information about the source and target resource. As
+well as the connector attributes:</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python">for connector in context.connectors:
+    connector.source  # The name of the source resource (end point)
+    &quot;&quot;&quot;:type : str&quot;&quot;&quot;
+    connector.target  # The name of the target resource (end point)
+    &quot;&quot;&quot;:type : str&quot;&quot;&quot;
+    connector.target_family   # The family of the target resource
+    &quot;&quot;&quot;:type : str&quot;&quot;&quot;
+    connector.target_model   # The model of the target resource
+    &quot;&quot;&quot;:type : str&quot;&quot;&quot;
+    connector.target_type   # The type of the target resource  (Service, App, Resource)
+    &quot;&quot;&quot;:type : str&quot;&quot;&quot;
+    connector.target_attributes   # A dictionary with the target resource attributes (name, value)
+    &quot;&quot;&quot;:type : dict[str,str]&quot;&quot;&quot;
+    connector.direction   # The direction of the connection: Uni, Bi
+    &quot;&quot;&quot;:type : str&quot;&quot;&quot;
+    connector.alias  # The connection alias
+    &quot;&quot;&quot;:type : str&quot;&quot;&quot;
+    connector.attributes   # The dictionary that includes the connection attributes (name, value)
+    &quot;&quot;&quot;:type : dict[str,str]&quot;&quot;&quot;
+    connector.connection_type   # The type of the connection: Route, Visual Connector, Physical
+    &quot;&quot;&quot;:type : str&quot;&quot;&quot;</code></pre></figure>
+
+<h4 id="sandbox-information">Sandbox information</h4>
+
+<p>The <strong><em>reservation</em></strong> property contains information about the sandbox reservation the command is running under.
+class ReservationContextDetails:</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python">context.reservation.reservation_id
+&quot;&quot;&quot;:type : str&quot;&quot;&quot;
+# The unique identifier of the sandbox reservation
+context.reservation.environment_name  
+&quot;&quot;&quot;:type : str&quot;&quot;&quot;
+# The name of the blueprint
+context.reservation.environment_path
+&quot;&quot;&quot;:type : str&quot;&quot;&quot;
+# The full path of the blueprint
+context.reservation.domain
+&quot;&quot;&quot;:type : str&quot;&quot;&quot;
+# The sandbox reservation CloudShell Domain        
+context.reservation.description
+# The sandbox reservation description
+&quot;&quot;&quot;:type : str&quot;&quot;&quot;
+context.reservation.owner_user  
+# the owner of the reservation
+&quot;&quot;&quot;:type : str&quot;&quot;&quot;
+context.reservation.owner_email
+# the email of the owner of the reservation
+&quot;&quot;&quot;:type : str&quot;&quot;&quot;</code></pre></figure>
+
+<h4 id="additional-information-for-apps-and-vms">Additional information for apps and VMs</h4>
+
+<p>The resource property of the context object also contains the <strong><em>app_context</em></strong> property which is relevant to deployed app and virtual
+machine drivers only. The <strong><em>app_context</em></strong> object has two separate JSON string properties nested under it: The <strong><em>app_request_json</em></strong>
+property is a JSON string containing information about the app template which was requested in the blueprint. The <strong><em>deployed_app_json</em></strong><br />
+JSON, to the contrary, contains information about the deployed application and where its running.</p>
+
+<p>You can find a JSON schema definitions of the two JSON objects here:</p>
+
+<ul>
+  <li>
+    <p><a href="https://github.com/QualiSystems/cloudshell-shell-core/blob/dev/cloudshell/shell/core/schemas/app_request.json">App Request JSON Schema</a></p>
+  </li>
+  <li>
+    <p><a href="https://github.com/QualiSystems/cloudshell-shell-core/blob/dev/cloudshell/shell/core/schemas/deployed_app.json">Deployed App JSON Schema</a></p>
+  </li>
+</ul>
+
+<p>More information and examples about the information in this JSON and how to use it will be provided in the deployed apps driver
+section of this guide.</p>
+
+
+
+
+
+
+
+
+    <div id="post-nav" class="clearfix">
+        
+            <a class="prev" href="/devguide_7/shells/modeling-the-shell.html">&laquo; Modeling the Shell</a>
+        
+        
+            <a class="next" href="/devguide_7/shells/driver-deep-dive.html">Driver Deep Dive &raquo;</a>
+        
+    </div>
+
+
+
+
+<div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+        var disqus_identifier = '_shells/getting-information-from-cloudshell.md';
+        var disqus_url = 'https://qualisystems.github.io/shells/getting-information-from-cloudshell.html';
+        this.page.url = "https://qualisystems.github.io/devguide_7/shells/getting-information-from-cloudshell.html";  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = disqus_identifier; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    (function() {  // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+
+        s.src = '//qualidev.disqus.com/embed.js';
+
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+
+
+<script src="/devguide_7/js/search.min.js" type="text/javascript" charset="utf-8"></script>
+
+<script type="text/javascript">
+  $(function() {
+    $('#search-query').lunrSearch({
+      indexUrl  : '/devguide_7/js/index.json',           // url for the .json file containing search index data
+      results   : '#search-results',          // selector for containing search results element
+      template  : '#search-results-template', // selector for Mustache.js template
+      titleMsg  : '',   // message attached in front of results (can be empty)
+      emptyMsg  : '<p>Nothing found.</p>'     // shown message if search returns no results
+    });
+  });
+</script>
+
+<script>
+$(function() {
+    page = $(".page-header").attr("data-page-id")
+    nav_item = $(".nav li[data-page-id='"+page+"']")
+    if (nav_item) {
+        $(".nav").find(".active").removeClass("active");
+        nav_item.addClass("active");
+    }
+})
+</script>
+
+                    </div>
+                
+            </div>
+
+            
+
+            <div class="row">
+                <div id="footer" class="col-sm-12">
+                    Documentation for <a href="http://www.quali.com">CloudShell Developer Guide</a>
+
+                </div>
+            </div>
+        </div>
+
+        <script src="/devguide_7/js/prism.js"></script>
+
+        
+        <script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+ (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+ m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+ })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ ga('create', 'UA-81468206-1', 'auto');
+ ga('send', 'pageview');
+
+</script>
+
+        
+    </body>
+</html>

@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width">
+
+        <title>CloudShell Developer Guide : Modeling the Shell</title>
+        <meta name="description" content="">
+        <link rel="shortcut icon" type="image/png" href="/devguide_7/favicon.png?">
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="/devguide_7/css/main.css">
+        <link rel="stylesheet" href="/devguide_7/css/prism.css">
+        <link rel="stylesheet" href="/devguide_7/css/samples.css">
+        <link rel="stylesheet" href="/devguide_7/css/normalize.css">
+        <link rel="stylesheet" href="/devguide_7/css/test-hot-block.webflow.css">
+
+
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+        <script src="/devguide_7/js/jquery-3.1.0.min.js"></script>
+        <script src="/devguide_7/js/modernizr.js"></script>
+        <script src="/devguide_7/js/webflow.js"></script>
+
+
+        
+        <script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+ (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+ m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+ })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ ga('create', 'UA-81468206-1', 'auto');
+ ga('send', 'pageview');
+
+</script>
+
+        <!-- Begin Jekyll SEO tag v2.1.0 -->
+<title>Modeling the Shell - CloudShell Developer Guide</title>
+<meta property="og:title" content="Modeling the Shell" />
+<meta name="description" content="By defining how a Shell is modeled in CloudShell we can control how its represented in CloudShell. If you’ve gone through the steps of the Getting Started tutorial you may have noticed that with little effort we’ve already managed to model a new type of entity. In this section we’ll take a more in depth look at how we can customize how the Shell resources or deployed apps are viewed and behave in CloudShell. In the following sections we’ll also look into how to add commands by writing a driver, but its important to note that even this initial step is enough in order to install and use a new Shell in CloudShell." />
+<meta property="og:description" content="By defining how a Shell is modeled in CloudShell we can control how its represented in CloudShell. If you’ve gone through the steps of the Getting Started tutorial you may have noticed that with little effort we’ve already managed to model a new type of entity. In this section we’ll take a more in depth look at how we can customize how the Shell resources or deployed apps are viewed and behave in CloudShell. In the following sections we’ll also look into how to add commands by writing a driver, but its important to note that even this initial step is enough in order to install and use a new Shell in CloudShell." />
+<link rel="canonical" href="https://qualisystems.github.io/devguide_7/shells/modeling-the-shell.html" />
+<meta property="og:url" content="https://qualisystems.github.io/devguide_7/shells/modeling-the-shell.html" />
+<meta property="og:site_name" content="CloudShell Developer Guide" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2017-03-07T23:34:49+02:00" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@qualisystems" />
+<script type="application/ld+json">
+{"@context": "http://schema.org",
+"@type": "BlogPosting",
+"headline": "Modeling the Shell",
+"datePublished": "2017-03-07T23:34:49+02:00",
+"description": "By defining how a Shell is modeled in CloudShell we can control how its represented in CloudShell. If you’ve gone through the steps of the Getting Started tutorial you may have noticed that with little effort we’ve already managed to model a new type of entity. In this section we’ll take a more in depth look at how we can customize how the Shell resources or deployed apps are viewed and behave in CloudShell. In the following sections we’ll also look into how to add commands by writing a driver, but its important to note that even this initial step is enough in order to install and use a new Shell in CloudShell.",
+"publisher": {"@type": "Organization",
+"logo": {"@type": "ImageObject",
+"url": "https://qualisystems.github.io/devguide_7/assets/logo.png"}},
+"url": "https://qualisystems.github.io/devguide_7/shells/modeling-the-shell.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+        
+    </head>
+    <body>
+        <div id="header">
+            <div class="container">
+                <div class="row">
+    <div class="col-md-3 col-sm-4">
+        <a class="brand" href="/devguide_7/">
+            <img alt="CloudShell Logo" src="/devguide_7/assets/logo.png" />
+            CloudShell <small>Developer Guide</small>
+        </a>
+    </div>
+    <div class="col-md-9 col-sm-8">
+        <form class="search" action="/devguide_7/search.html">
+            <input class="input" id="search-query" type="text" name="q" placeholder="Search" />
+            <input class="button" type="submit" value="Search"></input>
+        </form>
+    </div>
+</div>
+
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                
+                
+                    <div id="navigation" class="col-md-3 col-sm-4">
+                        <ul class="nav nav-list">
+     
+     
+        <li class="nav-header"></li>
+        
+        
+        
+     
+        <li class="nav-header">Introduction</li>
+        
+                <li data-page-id="index.md"><a href="/devguide_7/">The CloudShell DevGuide</a></li>
+        
+        
+        
+                    <li data-page-id="_introduction/setting-up-the-development-ide.md" data-order="1"><a href="/devguide_7/introduction/setting-up-the-development-ide.html">Setting up the Development Environment</a></li>
+        
+     
+        <li class="nav-header">Extending cloudshell with shells</li>
+        
+        
+        
+                    <li data-page-id="_shells/getting-started.md" data-order="1"><a href="/devguide_7/shells/getting-started.html">Getting Started</a></li>
+        
+                    <li data-page-id="_shells/shell-driver-overview.md" data-order="2"><a href="/devguide_7/shells/shell-driver-overview.html">Shell Drivers Overview</a></li>
+        
+                    <li data-page-id="_shells/the-shell-project.md" data-order="3"><a href="/devguide_7/shells/the-shell-project.html">The Shell Project Guide</a></li>
+        
+                    <li data-page-id="_shells/modeling-the-shell.md" data-order="4"><a href="/devguide_7/shells/modeling-the-shell.html">Modeling the Shell</a></li>
+        
+                    <li data-page-id="_shells/getting-information-from-cloudshell.md" data-order="5"><a href="/devguide_7/shells/getting-information-from-cloudshell.html">Getting Information from CloudShell</a></li>
+        
+                    <li data-page-id="_shells/driver-deep-dive.md" data-order="6"><a href="/devguide_7/shells/driver-deep-dive.html">Driver Deep Dive</a></li>
+        
+                    <li data-page-id="_shells/customizing-driver-commands.md" data-order="6"><a href="/devguide_7/shells/customizing-driver-commands.html">Commands Visibility and Usability</a></li>
+        
+                    <li data-page-id="_shells/implementing-discovery-for-inventory-shells.md" data-order="7"><a href="/devguide_7/shells/implementing-discovery-for-inventory-shells.html">Implementing Discovery for Inventory Shells</a></li>
+        
+                    <li data-page-id="_shells/discovering-inventory-snmp.md" data-order="8"><a href="/devguide_7/shells/discovering-inventory-snmp.html">Discovering Inventory using SNMP</a></li>
+        
+                    <li data-page-id="_shells/debugging-shell-commands.md" data-order="9"><a href="/devguide_7/shells/debugging-shell-commands.html">Debugging Shell Driver Commands</a></li>
+        
+                    <li data-page-id="_shells/deploying-to-production.md" data-order="11"><a href="/devguide_7/shells/deploying-to-production.html">Deploying to Production</a></li>
+        
+                    <li data-page-id="_shells/common-driver-recipes.md" data-order="12"><a href="/devguide_7/shells/common-driver-recipes.html">Common Driver Recipes</a></li>
+        
+                    <li data-page-id="_shells/tips-and-tricks.md" data-order="13"><a href="/devguide_7/shells/tips-and-tricks.html">Tips and Tricks</a></li>
+        
+     
+        <li class="nav-header">Orchestration scripts</li>
+        
+        
+        
+                    <li data-page-id="_orchestration/getting-started.md" data-order="1"><a href="/devguide_7/orchestration/getting-started.html">Getting Started</a></li>
+        
+                    <li data-page-id="_orchestration/getting-information-from-cloudshell.md" data-order="2"><a href="/devguide_7/orchestration/getting-information-from-cloudshell.html">Getting Information from CloudShell</a></li>
+        
+                    <li data-page-id="_orchestration/script-commands-customization.md" data-order="6"><a href="/devguide_7/orchestration/script-commands-customization.html">Script commands Visibility and Usability</a></li>
+        
+                    <li data-page-id="_orchestration/scripts-deep-dive.md" data-order="6"><a href="/devguide_7/orchestration/scripts-deep-dive.html">Scripts Deep Dive</a></li>
+        
+                    <li data-page-id="_orchestration/common-orchestration-recipes.md" data-order="9"><a href="/devguide_7/orchestration/common-orchestration-recipes.html">Common Orchestration Script Recipes</a></li>
+        
+                    <li data-page-id="_orchestration/the-oob-orchestration.md" data-order="9"><a href="/devguide_7/orchestration/the-oob-orchestration.html">CloudShell's OOB Orchestration</a></li>
+        
+     
+        <li class="nav-header">Integrating cloudshell into the devops cycle</li>
+        
+        
+        
+                    <li data-page-id="_devops/devops-integration.md" data-order="1"><a href="/devguide_7/devops/devops-integration.html">Automating CloudShell Sandboxes for DevOps</a></li>
+        
+     
+        <li class="nav-header">Reference</li>
+        
+        
+        
+                    <li data-page-id="_reference/python-coding-standards.md" data-order="7"><a href="/devguide_7/reference/python-coding-standards.html">Python Coding Standards</a></li>
+        
+     
+</ul>
+
+                    </div>
+
+                    <div id="content" class="col-md-9 col-sm-8">
+                        
+
+<div class="page-header" data-page-id="_shells/modeling-the-shell.md">
+    <h2>Modeling the Shell
+        
+        
+          <span style="float: right;font-size: 20px"><small><a href="https://github.com/QualiSystems/devguide_source/tree/master/_shells/modeling-the-shell.md">Suggest edits</a></small></span>
+        
+    </h2>
+</div>
+
+<p>By defining how a Shell is modeled in CloudShell we can control how its represented in CloudShell. If you’ve gone through the steps of the
+<a href="/devguide_7/shells/getting-started.html">Getting Started</a> tutorial you may have noticed that with little effort we’ve already managed
+to model a new type of entity. In this section we’ll take a more in depth look at how we can customize how the Shell resources or deployed
+apps are viewed and behave in CloudShell. In the following sections we’ll also look into how to add commands by writing a driver, but
+its important to note that even this initial step is enough in order to install and use a new Shell in CloudShell.</p>
+
+<h3 id="setting-the-standard">Setting the Standard</h3>
+
+<p>The first thing to do is to classify the Shell according to one of the CloudShell standards. CloudShell has a growing number of
+standards defined which make it easier to create a new Shell without having to re-invent its structure and properties.
+To give a few examples:</p>
+
+<ul>
+  <li>
+    <p><a href="https://github.com/QualiSystems/cloudshell-standards/blob/master/Documentation/deployed_app_standard.md">Deployed App Shell Standard</a></p>
+  </li>
+  <li>
+    <p><a href="https://github.com/QualiSystems/cloudshell-standards/blob/master/Documentation/compute_standard.md">Compute Shell Standard</a></p>
+  </li>
+  <li>
+    <p><a href="https://github.com/QualiSystems/cloudshell-standards/blob/master/Documentation/networking_standard.md">Networking Shell Standard</a></p>
+  </li>
+  <li>
+    <p><a href="https://github.com/QualiSystems/cloudshell-standards/blob/master/Documentation/pdu_standard.md">PDU Shell Standard</a></p>
+  </li>
+  <li>
+    <p><a href="https://github.com/QualiSystems/cloudshell-standards/blob/master/Documentation/firewall_standard.md">Firewall Shell Standard</a></p>
+  </li>
+</ul>
+
+<p>Each standard has one or more ShellFoundry templates associated with it, so the best way to create a compliant Shell is to use the ShellFoundry
+template parameter.</p>
+
+<p>To get a list of the possible templates, run the following from Command Line:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">shellfoundry list</code></pre></figure>
+
+<p>For this example, we’ll use the resource-clean template, which is a clean implementation of the Shell’s basic standard, a generic standard for any
+standalone Shell. We’ll look into some of the standards in greater depth in future sections of this guide.</p>
+
+<p>Run the following from Command Line:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">shellfoundry new model_example --template=resource-clean
+cd model_example</code></pre></figure>
+
+<p>To complete the basic setup, create a resource for that Shell in the Inventory page of the CloudShell and reserve
+it. If you’d like to review again the steps of how to do that,
+please refer to the <a href="/devguide_7/shells/getting-started.html">Getting Started</a> guide.</p>
+
+<h3 id="the-shell-datamodel">The Shell Datamodel</h3>
+
+<p>As you may have seen in previous examples, by using ShellFoundry we’ve generated a Shell project which can be deployed to CloudShell.
+This time, however, we’ll take a look at some of the important settings of the Shell model and demonstrate how it can be customized.</p>
+
+<p>There are two important files located in the <em>datamodel</em> directory which are relevant to how the Shell is modeled.</p>
+
+<ol>
+  <li>
+    <p>The <em>datamodel.xml</em> represents the CloudShell Standard. You should avoid modifying the <em>datamodel.xml</em> file as
+it represents definitions that are a part of the CloudShell standard relevant to the Shell type.
+It is helpful, however, to review this file in order to understand how it is structured
+and the type of data it presents.</p>
+  </li>
+  <li>
+    <p>The <em>shell_model.xml</em> file represents the modeling definitions of your specific Shell and is where we’ll make most of the changes.</p>
+  </li>
+</ol>
+
+<h4 id="resource-families">Resource Families</h4>
+
+<p>Resource families represent broad categories or abstract types or roles of resources.
+Examples of families are: Switch, Router, Firewall or Generic App.
+The families in the <em>datamodel.xml</em> file are listed under the <em>&lt;ResourceFamilies&gt;</em> element. Each of the
+families can come predefined with its own attributes and additional metadata. Using the <em>resource-shell</em>
+standard, we get the <em>generic_resource</em>, <em>port</em>, and <em>power_port</em> families.</p>
+
+<h4 id="resource-models">Resource models</h4>
+
+<p>Models are more specific types of resources and apps in CloudShell. For physical resource Shells the
+model corresponds to the specific vendor/OS combination the Shell covers. For deployed apps, the model is usually one to one
+with the app itself. There are also more generic models which represent basic components like ports or connectors
+which don’t always need a high level of detailed modeling. In terms of hierarchy, every resource in CloudShell has
+a model and each model belongs to a family</p>
+
+<ul>
+  <li>Examples of resource shell models: Cisco NXOS Switch, Raritan PDU</li>
+  <li>Examples of deployed app shell models: Windows OS, MySQL, TeraVM TG Controller, JMeter</li>
+  <li>Examples of generic component models: Resource Port, Generic Power Port</li>
+</ul>
+
+<p>In the Shell project structure, the <em>datamodel.xml</em> contains the models which are a part of the Standard our Shell
+implements. These are by definition not vendor, device or app specific but more general components. Looking at the models defined in the <em>datamodel.xml</em> file
+of our Shell we can similarly see it contains some very basic building blocks like <em>Resource Port</em> and <em>Power Port</em>. Again,
+each of them has their attribute The model for the Shell we’re developing, is actually not a part of the <em>datamodel.xml</em> file. Our Shell just points to and extends the standard.</p>
+
+<p>Our Shell is actually defined in the <em>shell_model.xml</em> file. The reason for the separation is that the <em>shell_model.xml</em> file
+is actually the one we’ll mostly want to extend or customize. By default, when we generated the Shell via ShellFoundry,
+a ResourceModel was automatically created as the Shell model with the same name of the Shell, which is the convention.
+The <em>shell_model.xml</em> file which was automatically generated for our basic resource shell contains the following content:</p>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml">&lt;Shell&gt;
+    &lt;ShellAttributes&gt;
+    &lt;/ShellAttributes&gt;
+
+    &lt;ShellModel Family=&quot;Generic Resource&quot;&gt;
+        &lt;ResourceModel Name=&quot;ModelExample&quot; Description=&quot;&quot; SupportsConcurrentCommands=&quot;false&quot;&gt;
+            &lt;AttachedAttributes&gt;
+                &lt;AttachedAttribute Name=&quot;User&quot; IsOverridable=&quot;true&quot; IsLocal=&quot;true&quot;&gt;
+                  &lt;AllowedValues /&gt;
+                &lt;/AttachedAttribute&gt;
+                &lt;AttachedAttribute Name=&quot;Password&quot; IsOverridable=&quot;true&quot; IsLocal=&quot;true&quot;&gt;
+                  &lt;AllowedValues /&gt;
+                &lt;/AttachedAttribute&gt;
+                &lt;AttachedAttribute Name=&quot;Power Management&quot; IsOverridable=&quot;true&quot; IsLocal=&quot;true&quot;&gt;
+                  &lt;AllowedValues /&gt;
+                &lt;/AttachedAttribute&gt;
+                &lt;AttachedAttribute Name=&quot;Enable Password&quot; IsOverridable=&quot;true&quot; IsLocal=&quot;true&quot;&gt;
+                  &lt;AllowedValues /&gt;
+                &lt;/AttachedAttribute&gt;
+                &lt;AttachedAttribute Name=&quot;System Name&quot; IsOverridable=&quot;true&quot; IsLocal=&quot;true&quot;&gt;
+                  &lt;AllowedValues /&gt;
+                &lt;/AttachedAttribute&gt;
+                .... (more content here) ...
+                &lt;AttachedAttribute Name=&quot;CLI Connection Type&quot; IsOverridable=&quot;true&quot; IsLocal=&quot;true&quot;&gt;
+                  &lt;AllowedValues /&gt;
+                &lt;/AttachedAttribute&gt;
+            &lt;/AttachedAttributes&gt;
+            &lt;AttributeValues&gt;
+                &lt;AttributeValue Name=&quot;User&quot; Value=&quot;&quot; /&gt;
+                &lt;AttributeValue Name=&quot;Password&quot; Value=&quot;3M3u7nkDzxWb0aJ/IZYeWw==&quot; /&gt;
+                &lt;AttributeValue Name=&quot;Enable Password&quot; Value=&quot;3M3u7nkDzxWb0aJ/IZYeWw==&quot; /&gt;
+                &lt;AttributeValue Name=&quot;System Name&quot; Value=&quot;&quot; /&gt;
+                &lt;AttributeValue Name=&quot;Contact Name&quot; Value=&quot;&quot; /&gt;
+                &lt;AttributeValue Name=&quot;OS Version&quot; Value=&quot;&quot; /&gt;
+                &lt;AttributeValue Name=&quot;Vendor&quot; Value=&quot;&quot; /&gt;
+                &lt;AttributeValue Name=&quot;Location&quot; Value=&quot;&quot; /&gt;
+                &lt;AttributeValue Name=&quot;Model&quot; Value=&quot;&quot; /&gt;
+                &lt;AttributeValue Name=&quot;Backup Location&quot; Value=&quot;&quot; /&gt;
+                .... (more content here) ...
+                &lt;AttributeValue Name=&quot;CLI Connection Type&quot; Value=&quot;Auto&quot; /&gt;
+                &lt;AttributeValue Name=&quot;Power Management&quot; Value=&quot;False&quot; /&gt;
+              &lt;/AttributeValues&gt;
+            &lt;ParentModels /&gt;
+            &lt;Drivers&gt;
+                &lt;DriverName&gt;ModelExampleDriver&lt;/DriverName&gt;
+            &lt;/Drivers&gt;
+            &lt;Scripts /&gt;
+        &lt;/ResourceModel&gt;
+    &lt;/ShellModel&gt;
+&lt;/Shell&gt;</code></pre></figure>
+
+<p>As you can see in the XML code above, our new Shell defines a unique model (“ModelExample”).
+The model already has some attributes associated with it which are defined in the Standard. We can customize the Shell datamodel in several ways by making changes to this file.</p>
+
+<h3 id="changing-the-shell-image-and-description">Changing the Shell image and description</h3>
+
+<p>First copy the image to the <em>datamodel</em> folder. To set the Shell image, add the <em>ImagePath</em> attribute to the
+<em>&lt;ResourceModel&gt;</em> element:</p>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml">&lt;ResourceModel Name=&quot;ModelExample&quot; Description=&quot;&quot; SupportsConcurrentCommands=&quot;false&quot; ImagePath=&quot;example_model_image.png&quot;&gt;</code></pre></figure>
+
+<p>To update the Shell description change the value in the “Description” attribute in the above xml.</p>
+
+<p>Apply changes by running:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">shellfoundry install</code></pre></figure>
+
+<p>Refreshing the reservation, our shell resource will now show the updated image and description:</p>
+
+<p><img src="/devguide_7/assets/shell_custom_image.png" alt="Shell Image" /></p>
+
+<h3 id="adding-a-custom-attribute-to-the-shell">Adding a custom attribute to the Shell</h3>
+
+<p>The <em>shell_model.xml</em> file located in the <em>datamodel</em> directory contains the basic shell attributes.
+As you can see our new Shell model already contains a lot of attribute associations, defined in the <em>&lt;AttachedAttributes&gt;</em> and
+<em>&lt;AttributeValues&gt;</em> sections.</p>
+
+<p>In certain situations, however, you might want to extend the Shell by adding your own custom attributes.
+There are several common use cases for adding an attribute:</p>
+
+<ul>
+  <li>
+    <p>Saving administrative information - from custom permission groups to categories or contact person.</p>
+  </li>
+  <li>
+    <p>Saving additional information about the device - This information can be loaded by the driver or used by the driver</p>
+  </li>
+  <li>
+    <p>Set orchestration level settings such as profile for device usage or policies</p>
+  </li>
+</ul>
+
+<p>The <em>shell_model.xml</em> has a dedicated element just for custom attributes which you might want to add to the Shell
+in addition to those provided by the standard. This element is currently empty and is the <em>&lt;ShellAttributes&gt;</em> element.
+We can add some attribute definitions here to extend the Shell with some custom attributes.</p>
+
+<p>If we open up the Attributes side pane in the sandbox page for the Shell resource we’ll see the default attributes which are
+as visible to end users on the web.</p>
+
+<p><img src="/devguide_7/assets/shell_attributes_pane.png" alt="Shell Image" /></p>
+
+<p>To add a simple attribute to the shell we first need to add an <em>&lt;AttributeInfo&gt;</em> element to this element like so:</p>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml">&lt;ShellAttributes&gt;
+    &lt;AttributeInfo Name=&quot;ModelExample Custom Att&quot; Type=&quot;String&quot; DefaultValue=&quot;&quot; IsReadOnly=&quot;false&quot;&gt;
+      &lt;Rules&gt;
+        &lt;Rule Name=&quot;Setting&quot; /&gt;
+      &lt;/Rules&gt;
+    &lt;/AttributeInfo&gt;
+&lt;/ShellAttributes&gt;</code></pre></figure>
+
+<p>By adding this element, we’ve defined a new attribute. Next, we’ll want to associated the new custom attribute to our Shell model and
+set the value for it. We do this by adding both an <em>&lt;AttachedAttribute&gt;</em> and a <em>&lt;AttributeValue&gt;</em> elements.</p>
+
+<p>First, under the <em>&lt;AttachedAttributes&gt;</em> element, append the following xml code (before, after or between the existing <em>AttachedAttribute</em>
+elements)</p>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml">&lt;ShellModel Family=&quot;Generic Resource&quot;&gt;
+      &lt;ResourceModel Name=&quot;ModelExample&quot; Description=&quot;&quot; SupportsConcurrentCommands=&quot;false&quot;&gt;
+          &lt;AttachedAttributes&gt;
+              &lt;AttachedAttribute Name=&quot;ModelExample Custom Att&quot; IsOverridable=&quot;true&quot; IsLocal=&quot;true&quot;&gt;
+                &lt;AllowedValues /&gt;
+              &lt;/AttachedAttribute&gt;
+              &lt;AttachedAttribute Name=&quot;User&quot; IsOverridable=&quot;true&quot; IsLocal=&quot;true&quot;&gt;
+.... (more content here) ...</code></pre></figure>
+
+<p>Lastly, add the following <em>&lt;AttributeValue&gt;</em> under the  <em>AttributeValues</em> element. Please notice that even if you don’t
+want to specify a default value, you should still add this element with a blank value.</p>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml">.... (more content here) ...
+  &lt;/AttachedAttribute&gt;
+&lt;/AttachedAttributes&gt;
+&lt;AttributeValues&gt;
+  &lt;AttributeValue Name=&quot;ModelExample Custom Att&quot;  Value=&quot;Default Value&quot; /&gt;
+  &lt;AttributeValue Name=&quot;User&quot; Value=&quot;&quot; /&gt;
+.... (more content here) ...</code></pre></figure>
+
+<p>To test whether this worked let’s re-install the Shell from Command Line:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">shellfoundry install</code></pre></figure>
+
+<p>After refreshing the sandbox diagram and re-opening the attributes pane, you should be able to see the new attribute:</p>
+
+<p><img src="/devguide_7/assets/shell_custom_attribute.png" alt="Shell Image" /></p>
+
+<h3 id="governing-the-usage-of-custom-shell-attributes">Governing the usage of custom Shell attributes</h3>
+
+<p>You may have noticed that when we added the attribute definition to the <em>shell_mode.xml</em> file, we also added the following element
+under it:</p>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml">&lt;Rules&gt;
+  &lt;Rule Name=&quot;Setting&quot; /&gt;
+&lt;/Rules&gt;</code></pre></figure>
+
+<p>The ‘Setting’ <em>rule</em> which we’ve added here, indicates that this attribute is a setting that can be controlled from
+the sandbox or defined in the blueprint by end users. If we had not added that rule, the attribute would have been assigned
+to the resource but would not have appeared in the attributes pane.</p>
+
+<p>There are several such <em>Rules</em> that can be set on attribute which can change how they behave and where they are used.
+We’ll cover a few here:</p>
+
+<ul>
+  <li>
+    <p><strong><em>Displayed in Search Filters</em></strong> (Inventory Resources) - Users will be able to filter based on that attribute. It makes sense
+to add this rules to attributes which are constrained to a limited set of values and which are used often to filter resources.
+It doesn’t make sense to use this attribute for attributes with unique values such as serial number or uniqueid,
+since this feature enables filtering, not search.</p>
+  </li>
+  <li>
+    <p><strong><em>Admin Only</em></strong> - Only administrators and domain administrators will be able to modify this attribute, users will be able to
+ see the attribute but not modify it.</p>
+  </li>
+  <li>
+    <p><strong><em>Available For Abstract Resources</em></strong> (Inventory Resources)- This attribute can be used when creating an abstract resource to
+specify the rules for selection.</p>
+  </li>
+  <li>
+    <p><strong><em>Displayed In Diagram</em></strong> This attribute will be displayed on the diagram component itself when using the larger icon size
+in the diagram.</p>
+  </li>
+  <li>
+    <p><strong><em>Displayed In Insight (CloudShell 7.1EA and above only)</em></strong> This attribute value will be saved in Insight and can be used to later create BI around the resources
+linked to it.</p>
+  </li>
+</ul>
+
+<h3 id="restricting-attributes-to-specific-values">Restricting attributes to specific values</h3>
+
+<p>Its possible to improve the user experience by restricting the possible inputs for an attribute to a
+given set of values. To avoid unpredictable results if a user typed in <em>OK</em> instead of <em>Yes</em>, for example, or just had a typo.
+Any restrictions we add in this scope will be for this specific Shell only. Other Shells using the same attribute will not be
+affected. To add an attribute restriction, add the following to the <em>&lt;AttachedAttribute&gt;</em> element:</p>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml">&lt;AttachedAttribute Name=&quot;ModelExample Custom Att&quot; IsOverridable=&quot;true&quot; IsLocal=&quot;true&quot;&gt;
+  &lt;AllowedValues&gt;
+      &lt;AllowedValue&gt;Protocol1&lt;/AllowedValue&gt;
+      &lt;AllowedValue&gt;Protocol2&lt;/AllowedValue&gt;
+      &lt;AllowedValue&gt;Protocol3&lt;/AllowedValue&gt;
+      &lt;AllowedValue&gt;Default Value&lt;/AllowedValue&gt;
+
+  &lt;/AllowedValues&gt;
+&lt;/AttachedAttribute&gt;</code></pre></figure>
+
+<p>It is important to remember to add the current value as one of the options for the possible values.
+Reinstall the Shell, refresh and open the attributes side pane again:</p>
+
+<p><img src="/devguide_7/assets/shell_custom_attribute.png" alt="Shell Image" /></p>
+
+<h3 id="things-to-watch-out-for-when-adding-custom-attribute">Things to watch out for when adding custom attribute</h3>
+
+<ol>
+  <li>Attribute name collisions: Avoid common general names like ‘Speed’ or ‘Connected’. Try to include the Shell name, or some other unique element to avoid name collisions.</li>
+  <li>Only add attributes to your Shell model, avoid changing the Standard models in the <em>datamodel.xml</em> file.</li>
+  <li>Only use the rules you need, adding all attributes as search filters, for example, would cause a lot of UI clutter.</li>
+</ol>
+
+
+
+
+
+
+
+
+    <div id="post-nav" class="clearfix">
+        
+            <a class="prev" href="/devguide_7/shells/the-shell-project.html">&laquo; The Shell Project Guide</a>
+        
+        
+            <a class="next" href="/devguide_7/shells/getting-information-from-cloudshell.html">Getting Information from CloudShell &raquo;</a>
+        
+    </div>
+
+
+
+
+<div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+        var disqus_identifier = '_shells/modeling-the-shell.md';
+        var disqus_url = 'https://qualisystems.github.io/shells/modeling-the-shell.html';
+        this.page.url = "https://qualisystems.github.io/devguide_7/shells/modeling-the-shell.html";  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = disqus_identifier; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    (function() {  // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+
+        s.src = '//qualidev.disqus.com/embed.js';
+
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+
+
+<script src="/devguide_7/js/search.min.js" type="text/javascript" charset="utf-8"></script>
+
+<script type="text/javascript">
+  $(function() {
+    $('#search-query').lunrSearch({
+      indexUrl  : '/devguide_7/js/index.json',           // url for the .json file containing search index data
+      results   : '#search-results',          // selector for containing search results element
+      template  : '#search-results-template', // selector for Mustache.js template
+      titleMsg  : '',   // message attached in front of results (can be empty)
+      emptyMsg  : '<p>Nothing found.</p>'     // shown message if search returns no results
+    });
+  });
+</script>
+
+<script>
+$(function() {
+    page = $(".page-header").attr("data-page-id")
+    nav_item = $(".nav li[data-page-id='"+page+"']")
+    if (nav_item) {
+        $(".nav").find(".active").removeClass("active");
+        nav_item.addClass("active");
+    }
+})
+</script>
+
+                    </div>
+                
+            </div>
+
+            
+
+            <div class="row">
+                <div id="footer" class="col-sm-12">
+                    Documentation for <a href="http://www.quali.com">CloudShell Developer Guide</a>
+
+                </div>
+            </div>
+        </div>
+
+        <script src="/devguide_7/js/prism.js"></script>
+
+        
+        <script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+ (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+ m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+ })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ ga('create', 'UA-81468206-1', 'auto');
+ ga('send', 'pageview');
+
+</script>
+
+        
+    </body>
+</html>

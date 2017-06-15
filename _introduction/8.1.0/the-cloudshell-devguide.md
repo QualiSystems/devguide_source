@@ -1,6 +1,12 @@
 ---
 layout: page
-title: "CloudShell Developer Guide"
+title: "The CloudShell DevGuide"
+date: "2016-04-30 13:02:32 +0300"
+order: 1
+comments: true
+version:
+    - 8.1.0
+    
 ---
 Welcome! In the following pages you will learn all you need to know to become an expert CloudShell developer. The guide is intended both for developers taking their first steps with the platform and seasoned CloudShell developers.
 

@@ -2,9 +2,7 @@
      {% assign collections = site.collections  | sort: "display-order"  %}
         {% for collection in collections %}
            <li class="nav-header">{{ collection.title | capitalize }}</li>
-           {% if collection.title == "Introduction" %}
-                   <li data-page-id="index.md"><a href="{{ site.baseurl }}/">The CloudShell DevGuide</a></li>
-           {% endif%}
+          
            {% assign documents = collection.docs  | sort: "order"  %}
            {% for document in documents %}
                {% assign pageUrlSplited = page.url | split: "/" %}

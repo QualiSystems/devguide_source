@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width">
+
+        <title>CloudShell Developer Guide : Automating CloudShell Sandboxes for DevOps</title>
+        <meta name="description" content="">
+        <link rel="shortcut icon" type="image/png" href="/devguide_7/favicon.png?">
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="/devguide_7/css/main.css">
+        <link rel="stylesheet" href="/devguide_7/css/prism.css">
+        <link rel="stylesheet" href="/devguide_7/css/samples.css">
+        <link rel="stylesheet" href="/devguide_7/css/normalize.css">
+        <link rel="stylesheet" href="/devguide_7/css/test-hot-block.webflow.css">
+
+
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+        <script src="/devguide_7/js/jquery-3.1.0.min.js"></script>
+        <script src="/devguide_7/js/modernizr.js"></script>
+        <script src="/devguide_7/js/webflow.js"></script>
+
+
+        
+        <script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+ (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+ m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+ })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ ga('create', 'UA-81468206-1', 'auto');
+ ga('send', 'pageview');
+
+</script>
+
+        <!-- Begin Jekyll SEO tag v2.1.0 -->
+<title>Automating CloudShell Sandboxes for DevOps - CloudShell Developer Guide</title>
+<meta property="og:title" content="Automating CloudShell Sandboxes for DevOps" />
+<meta name="description" content="In this section, we’ll look at different recipes for creating and using CloudShell Sandboxes as a part of your CI/CD or other DevOps pipelines. In this context, we’ll concentrate on the use case of automating CloudShell externally from scripts or other platforms." />
+<meta property="og:description" content="In this section, we’ll look at different recipes for creating and using CloudShell Sandboxes as a part of your CI/CD or other DevOps pipelines. In this context, we’ll concentrate on the use case of automating CloudShell externally from scripts or other platforms." />
+<link rel="canonical" href="https://qualisystems.github.io/devguide_7/devops/devops-integration.html" />
+<meta property="og:url" content="https://qualisystems.github.io/devguide_7/devops/devops-integration.html" />
+<meta property="og:site_name" content="CloudShell Developer Guide" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2017-03-07T23:34:49+02:00" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@qualisystems" />
+<script type="application/ld+json">
+{"@context": "http://schema.org",
+"@type": "BlogPosting",
+"headline": "Automating CloudShell Sandboxes for DevOps",
+"datePublished": "2017-03-07T23:34:49+02:00",
+"description": "In this section, we’ll look at different recipes for creating and using CloudShell Sandboxes as a part of your CI/CD or other DevOps pipelines. In this context, we’ll concentrate on the use case of automating CloudShell externally from scripts or other platforms.",
+"publisher": {"@type": "Organization",
+"logo": {"@type": "ImageObject",
+"url": "https://qualisystems.github.io/devguide_7/assets/logo.png"}},
+"url": "https://qualisystems.github.io/devguide_7/devops/devops-integration.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+        
+    </head>
+    <body>
+        <div id="header">
+            <div class="container">
+                <div class="row">
+    <div class="col-md-3 col-sm-4">
+        <a class="brand" href="/devguide_7/">
+            <img alt="CloudShell Logo" src="/devguide_7/assets/logo.png" />
+            CloudShell <small>Developer Guide</small>
+        </a>
+    </div>
+    <div class="col-md-9 col-sm-8">
+        <form class="search" action="/devguide_7/search.html">
+            <input class="input" id="search-query" type="text" name="q" placeholder="Search" />
+            <input class="button" type="submit" value="Search"></input>
+        </form>
+    </div>
+</div>
+
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                
+                
+                    <div id="navigation" class="col-md-3 col-sm-4">
+                        <ul class="nav nav-list">
+     
+     
+        <li class="nav-header"></li>
+        
+        
+        
+     
+        <li class="nav-header">Introduction</li>
+        
+                <li data-page-id="index.md"><a href="/devguide_7/">The CloudShell DevGuide</a></li>
+        
+        
+        
+                    <li data-page-id="_introduction/setting-up-the-development-ide.md" data-order="1"><a href="/devguide_7/introduction/setting-up-the-development-ide.html">Setting up the Development Environment</a></li>
+        
+     
+        <li class="nav-header">Extending cloudshell with shells</li>
+        
+        
+        
+                    <li data-page-id="_shells/getting-started.md" data-order="1"><a href="/devguide_7/shells/getting-started.html">Getting Started</a></li>
+        
+                    <li data-page-id="_shells/shell-driver-overview.md" data-order="2"><a href="/devguide_7/shells/shell-driver-overview.html">Shell Drivers Overview</a></li>
+        
+                    <li data-page-id="_shells/the-shell-project.md" data-order="3"><a href="/devguide_7/shells/the-shell-project.html">The Shell Project Guide</a></li>
+        
+                    <li data-page-id="_shells/modeling-the-shell.md" data-order="4"><a href="/devguide_7/shells/modeling-the-shell.html">Modeling the Shell</a></li>
+        
+                    <li data-page-id="_shells/getting-information-from-cloudshell.md" data-order="5"><a href="/devguide_7/shells/getting-information-from-cloudshell.html">Getting Information from CloudShell</a></li>
+        
+                    <li data-page-id="_shells/driver-deep-dive.md" data-order="6"><a href="/devguide_7/shells/driver-deep-dive.html">Driver Deep Dive</a></li>
+        
+                    <li data-page-id="_shells/customizing-driver-commands.md" data-order="6"><a href="/devguide_7/shells/customizing-driver-commands.html">Commands Visibility and Usability</a></li>
+        
+                    <li data-page-id="_shells/implementing-discovery-for-inventory-shells.md" data-order="7"><a href="/devguide_7/shells/implementing-discovery-for-inventory-shells.html">Implementing Discovery for Inventory Shells</a></li>
+        
+                    <li data-page-id="_shells/discovering-inventory-snmp.md" data-order="8"><a href="/devguide_7/shells/discovering-inventory-snmp.html">Discovering Inventory using SNMP</a></li>
+        
+                    <li data-page-id="_shells/debugging-shell-commands.md" data-order="9"><a href="/devguide_7/shells/debugging-shell-commands.html">Debugging Shell Driver Commands</a></li>
+        
+                    <li data-page-id="_shells/deploying-to-production.md" data-order="11"><a href="/devguide_7/shells/deploying-to-production.html">Deploying to Production</a></li>
+        
+                    <li data-page-id="_shells/common-driver-recipes.md" data-order="12"><a href="/devguide_7/shells/common-driver-recipes.html">Common Driver Recipes</a></li>
+        
+                    <li data-page-id="_shells/tips-and-tricks.md" data-order="13"><a href="/devguide_7/shells/tips-and-tricks.html">Tips and Tricks</a></li>
+        
+     
+        <li class="nav-header">Orchestration scripts</li>
+        
+        
+        
+                    <li data-page-id="_orchestration/getting-started.md" data-order="1"><a href="/devguide_7/orchestration/getting-started.html">Getting Started</a></li>
+        
+                    <li data-page-id="_orchestration/getting-information-from-cloudshell.md" data-order="2"><a href="/devguide_7/orchestration/getting-information-from-cloudshell.html">Getting Information from CloudShell</a></li>
+        
+                    <li data-page-id="_orchestration/script-commands-customization.md" data-order="6"><a href="/devguide_7/orchestration/script-commands-customization.html">Script commands Visibility and Usability</a></li>
+        
+                    <li data-page-id="_orchestration/scripts-deep-dive.md" data-order="6"><a href="/devguide_7/orchestration/scripts-deep-dive.html">Scripts Deep Dive</a></li>
+        
+                    <li data-page-id="_orchestration/common-orchestration-recipes.md" data-order="9"><a href="/devguide_7/orchestration/common-orchestration-recipes.html">Common Orchestration Script Recipes</a></li>
+        
+                    <li data-page-id="_orchestration/the-oob-orchestration.md" data-order="9"><a href="/devguide_7/orchestration/the-oob-orchestration.html">CloudShell's OOB Orchestration</a></li>
+        
+     
+        <li class="nav-header">Integrating cloudshell into the devops cycle</li>
+        
+        
+        
+                    <li data-page-id="_devops/devops-integration.md" data-order="1"><a href="/devguide_7/devops/devops-integration.html">Automating CloudShell Sandboxes for DevOps</a></li>
+        
+     
+        <li class="nav-header">Reference</li>
+        
+        
+        
+                    <li data-page-id="_reference/python-coding-standards.md" data-order="7"><a href="/devguide_7/reference/python-coding-standards.html">Python Coding Standards</a></li>
+        
+     
+</ul>
+
+                    </div>
+
+                    <div id="content" class="col-md-9 col-sm-8">
+                        
+
+<div class="page-header" data-page-id="_devops/devops-integration.md">
+    <h2>Automating CloudShell Sandboxes for DevOps
+        
+        
+          <span style="float: right;font-size: 20px"><small><a href="https://github.com/QualiSystems/devguide_source/tree/master/_devops/devops-integration.md">Suggest edits</a></small></span>
+        
+    </h2>
+</div>
+
+<p>In this section, we’ll look at different recipes for creating and using CloudShell Sandboxes as a part of your CI/CD
+or other DevOps pipelines. In this context, we’ll concentrate on the use case of automating CloudShell externally from scripts or other platforms.</p>
+
+<h3 id="available-apis">Available APIs</h3>
+
+<p>CloudShell currently supports two different sets of APIs which can be used to automate and integrate Sandboxes with DevOps.</p>
+
+<ul>
+  <li>The Python cloudshell-automation-api packge - This Python package contains an exhaustive set of APIs for anything from managing inventory and connections to administrating users and groups as well as managing sandboxes and blueprints.</li>
+  <li>The CloudShell Sandbox REST Apis - These are CloudShell’s next generation set of APIs. They are already using the latest terminology (sandboxes and blueprints instead of reservations and topologies/environments) and have advantages in performance and scaling. As of today, these APIs are limited to a specific set of commands focused on the workflow of starting and ending sandboxes. However, with each release more functionality is being added to the REST APIs and the intention is for this API set to eventually replace the Python package completely for most DevOps related workflows.</li>
+</ul>
+
+<h4 id="which-api-to-choose">Which API to choose?</h4>
+<p>If the functionality you’re looking for is covered by the REST APIs it is recommended to use it over the Python package.
+If not, you can consider using the REST API for whatever subset of the required functionality it does offer and complement that with Python API calls.</p>
+
+<h4 id="where-are-the-apis-documented">Where are the APIs documented?</h4>
+<p>The REST API live documentation page is installed with CloudShell. To access it simply browse to the following default address:
+http://[CloudShellPortalAddress]:8032/api/v1/explore/. If you’re accessing the link from the CloudShell Portal machine itself, or from the CloudShell SDK edition machine, you can simply use “localhost” or “127.0.0.1”. The API documentation page allows you to test and experiment with the APIs as well as provide information on the different operations and parameters.</p>
+
+<p>You can download the latest Python package reference from the CloudShell online help <a href="http://help.qualisystems.com/Online%20Help/7.1.0.0/Portal/Content/API/Pyth-API-Overvw.htm?Highlight=cloudshell-automation-api">here</a>.</p>
+
+<p>When using the <em>cloudshell-automation-api</em> package, make sure to install the version of the API which is compatible with your CloudShell version. To make the task of finding the right version easier, this package follows a versioning schema different from other CloudShell packages. The <em>major</em> and <em>minor</em> version of the <em>cloudshell-automation-api</em> package will always match the CloudShell release its compatible with. Therefore, to install the latest compatible version you need to add these version requirements when installing from pip. For example, to install the latest <em>cloudshell-automation-api</em> compatible with CloudShell 7.0, run:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">python -m pip install &quot;cloudshell-automation-api&gt;=7.0,&lt;7.1&quot;</code></pre></figure>
+
+<p>To install the latest <em>cloudshell-automation-api</em> compatible with CloudShell 7.1, run:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">python -m pip install &quot;cloudshell-automation-api&gt;=7.1,&lt;7.2&quot;</code></pre></figure>
+
+<h3 id="starting-and-stopping-a-sandbox">Starting and stopping a sandbox</h3>
+
+<p>The simplest and recommended way to start or stop a new sandbox instance from a blueprint is using the REST API.
+The REST API documentation page contains the details of the response and request format. The basic URLs of these operation is  <em>/blueprints/{blueprint_identifier}/start</em> and <em>/sandboxes/{sandbox_id}/stop</em>.</p>
+
+<h4 id="using-the-rest-api-from-python">Using the Rest API from Python</h4>
+
+<p>The following code sample demonstrates using the REST APIs for a simple flow - creating a sandbox from a blueprint, ensuring setup completes successfully then after running some tests.</p>
+
+<div class="github-sample-reference">
+  <div class="author-info">
+    <a href="https://github.com/QualiSystems/devguide_examples/blob/master/devops_integration/sandbox_api_python_2_and_3/sandbox_api_example.py">This Github Sample</a> is by <a href="https://github.com/QualiSystems">QualiSystems</a>
+  </div>
+  <div class="meta-info">
+    devops_integration/sandbox_api_python_2_and_3/sandbox_api_example.py <a href="https://github.com/QualiSystems/devguide_examples/blob/master/devops_integration/sandbox_api_python_2_and_3/sandbox_api_example.py">view</a> <a href="https://raw.githubusercontent.com/QualiSystems/devguide_examples/master/devops_integration/sandbox_api_python_2_and_3/sandbox_api_example.py">raw</a>
+  </div>
+</div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python">def main():
+    &quot;&quot;&quot;
+    Example workflow of starting a sandbox, waiting for it to setup, then stopping it
+    :return:
+    &quot;&quot;&quot;
+    api_example = SandboxRESTAPI(&#39;localhost&#39;, &#39;8032&#39;)
+    api_example.login(&quot;admin&quot;, &quot;admin&quot;, &quot;Global&quot;)
+    sandbox_id = api_example.start_sandbox(&#39;Simple blueprint&#39;, datetime.timedelta(hours=2), &#39;test_sandbox&#39;)
+    sandox_details = api_example.wait_for_sandbox_setup(sandbox_id)
+    run_some_tests_or_other_code(sandox_details)
+    api_example.stop_sandbox(sandbox_id)
+    api_example.wait_for_sandbox_teardown(sandbox_id)</code></pre></figure>
+
+<p>This code uses a simple wrapper around the REST API which uses the <em>requests</em> package. You can find the source code for that implementation <a href="https://github.com/QualiSystems/devguide_examples/blob/master/devops_integration/sandbox_api_python_2_and_3/sandbox_api/sandbox_apis.py">here</a>:</p>
+
+<p>Since sandboxes used this way are really a scope for testing. It can be beneficial to use Python’s <em>with</em> statement to ensure a sandbox is always set up and torn down properly with every usage. The following code wraps the Sandbox REST API as a context, ensuring proper cleanup and providing convenient access to the sandbox details.</p>
+
+<div class="github-sample-reference">
+  <div class="author-info">
+    <a href="https://github.com/QualiSystems/devguide_examples/blob/master/devops_integration/sandbox_api_python_2_and_3/sandbox_context_example.py">This Github Sample</a> is by <a href="https://github.com/QualiSystems">QualiSystems</a>
+  </div>
+  <div class="meta-info">
+    devops_integration/sandbox_api_python_2_and_3/sandbox_context_example.py <a href="https://github.com/QualiSystems/devguide_examples/blob/master/devops_integration/sandbox_api_python_2_and_3/sandbox_context_example.py">view</a> <a href="https://raw.githubusercontent.com/QualiSystems/devguide_examples/master/devops_integration/sandbox_api_python_2_and_3/sandbox_context_example.py">raw</a>
+  </div>
+</div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python">def main():
+    &quot;&quot;&quot;
+    Example of using sandbox as a context
+    &quot;&quot;&quot;
+    connectivity_params = QualiConnectivityParams(&#39;localhost&#39;, &#39;8032&#39;, &#39;admin&#39;, &#39;admin&#39;, &#39;Global&#39;)
+
+    with SandboxContext(connectivity_params, &#39;Simple blueprint&#39;, datetime.timedelta(hours=2)) as sandbox:
+        run_some_tests_or_other_code(sandbox)</code></pre></figure>
+
+<p><strong>Both of the above examples are Python 2/3 compatible.</strong></p>
+
+<h3 id="sandbox-rest-api-missing-and-upcoming-features">Sandbox REST API Missing and Upcoming Features</h3>
+
+<p>The Sandbox REST API has some known limitations. Currently (as of CloudShell 7.1GA) it does not support blueprint inputs and the creation of future (pending) reservation of sandboxes. The blueprint feature is currently “in the oven” and scheduled for a 7.2EA release. If your CloudShell environment does require those features you may need to fall back to the <em>cloudshel-automation-api</em> package API for sandbox reservation.</p>
+
+<p>The following code demonstrates implementing the same basic flow using the Python package:</p>
+
+<div class="github-sample-reference">
+  <div class="author-info">
+    <a href="https://github.com/QualiSystems/devguide_examples/blob/master/devops_integration/python_api/python_api_example.py">This Github Sample</a> is by <a href="https://github.com/QualiSystems">QualiSystems</a>
+  </div>
+  <div class="meta-info">
+    devops_integration/python_api/python_api_example.py <a href="https://github.com/QualiSystems/devguide_examples/blob/master/devops_integration/python_api/python_api_example.py">view</a> <a href="https://raw.githubusercontent.com/QualiSystems/devguide_examples/master/devops_integration/python_api/python_api_example.py">raw</a>
+  </div>
+</div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python">def main():
+    &quot;&quot;&quot;
+    Example workflow of starting a sandbox, waiting for it to setup, then stopping it
+    :return:
+    &quot;&quot;&quot;
+
+    session = CloudShellAPISession(&#39;localhost&#39;, &quot;admin&quot;, &quot;admin&quot;, &quot;Global&quot;)
+    # Create the sandbox
+    sandbox = session.CreateImmediateTopologyReservation(&#39;test sandbox&#39;, owner=&#39;admin&#39;,
+                                                         durationInMinutes=120,
+                                                         topologyFullPath=&#39;Simple Blueprint1&#39;,
+                                                         globalInputs=[UpdateTopologyGlobalInputsRequest(&#39;Target Cloud&#39;, &#39;AWS&#39;)]).Reservation
+
+    sandbox_details = SandboxHelpers().wait_for_sandbox_setup(sandbox.Id, session,10)
+    run_some_tests_or_other_code(session, sandbox_details)
+    session.EndReservation(sandbox.Id)</code></pre></figure>
+
+<p>Similar to the REST example, we can wrap the setup and teardown of the sandbox in a context object and take advantage of the Python <em>with</em> operator to simplify the flow.</p>
+
+<div class="github-sample-reference">
+  <div class="author-info">
+    <a href="https://github.com/QualiSystems/devguide_examples/blob/master/devops_integration/python_api/python_api_context_example.py">This Github Sample</a> is by <a href="https://github.com/QualiSystems">QualiSystems</a>
+  </div>
+  <div class="meta-info">
+    devops_integration/python_api/python_api_context_example.py <a href="https://github.com/QualiSystems/devguide_examples/blob/master/devops_integration/python_api/python_api_context_example.py">view</a> <a href="https://raw.githubusercontent.com/QualiSystems/devguide_examples/master/devops_integration/python_api/python_api_context_example.py">raw</a>
+  </div>
+</div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python">def main():
+    &quot;&quot;&quot;
+    Example workflow of starting a sandbox, waiting for it to setup, then stopping it
+    :return:
+    &quot;&quot;&quot;
+    connectivity_params = QualiConnectivityParams(api_service_host=&#39;localhost&#39;, domain=&#39;Global&#39;,
+                                                  password=&#39;admin&#39;, username=&#39;admin&#39;)
+    inputs = BlueprintInputs(global_inputs=[UpdateTopologyGlobalInputsRequest(&#39;Target Cloud&#39;, &#39;AWS&#39;)])
+
+    with SandboxContext(connectivity_params=connectivity_params,
+                        blueprint_name=&#39;Simple Blueprint1&#39;, duration=120,
+                        blueprint_inputs=inputs) as sandbox:
+        run_some_tests_or_other_code(sandbox)</code></pre></figure>
+
+<h3 id="executing-orchestration-commands">Executing Orchestration Commands</h3>
+
+<p>Executing orchestration commands from the REST API is not yet supported and is also scheduled for 7.2EA.
+Meanwhile, the Python package provides the necessary APIs to execute orchestration scripts in the sandbox:</p>
+
+<div class="github-sample-reference">
+  <div class="author-info">
+    <a href="https://github.com/QualiSystems/devguide_examples/blob/master/devops_integration/python_api/python_api_example.py">This Github Sample</a> is by <a href="https://github.com/QualiSystems">QualiSystems</a>
+  </div>
+  <div class="meta-info">
+    devops_integration/python_api/python_api_example.py <a href="https://github.com/QualiSystems/devguide_examples/blob/master/devops_integration/python_api/python_api_example.py">view</a> <a href="https://raw.githubusercontent.com/QualiSystems/devguide_examples/master/devops_integration/python_api/python_api_example.py">raw</a>
+  </div>
+</div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python">def run_some_tests_or_other_code(session, sandox_details):
+    session.ExecuteEnvironmentCommand(reservationId=sandox_details.Id, commandName=&#39;Update Version&#39;,
+                                      commandInputs=InputNameValue(Name=&#39;Version&#39;, Value=&#39;1.1&#39;))
+    pp = pprint.PrettyPrinter(indent=4)
+    pp.pprint(jsonpickle.dumps(sandox_details))
+
+    time.sleep(10)</code></pre></figure>
+
+<h3 id="integrating-with-ci-tools">Integrating with CI tools</h3>
+
+<p>The same basic workflow demonstrated in the above examples can be used to implement a plugin for CI frameworks
+such as Jenkins, Travis or TeamCity.</p>
+
+<p>Several Quali community projects already provide readymade solutions for some CI tools.</p>
+
+<p>The <a href="https://github.com/QualiSystems/Sandbox-Jenkins-Plugin">Sandbox-Jenkins-Plugin</a> provides build steps for creating and ending sandboxes for Jenkins, as well as integration with the new PipeLines feature for continuous delivery and DevOps automation.</p>
+
+<p>The <a href="https://github.com/QualiSystems/Sandbox-TeamCIty-Plugin">Sandbox-Teamcity-Plugin</a> provides similar build steps and integration for TeamCity.</p>
+
+
+
+
+
+
+
+
+
+
+
+<div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+        var disqus_identifier = '_devops/devops-integration.md';
+        var disqus_url = 'https://qualisystems.github.io/devops/devops-integration.html';
+        this.page.url = "https://qualisystems.github.io/devguide_7/devops/devops-integration.html";  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = disqus_identifier; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    (function() {  // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+
+        s.src = '//qualidev.disqus.com/embed.js';
+
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+
+
+<script src="/devguide_7/js/search.min.js" type="text/javascript" charset="utf-8"></script>
+
+<script type="text/javascript">
+  $(function() {
+    $('#search-query').lunrSearch({
+      indexUrl  : '/devguide_7/js/index.json',           // url for the .json file containing search index data
+      results   : '#search-results',          // selector for containing search results element
+      template  : '#search-results-template', // selector for Mustache.js template
+      titleMsg  : '',   // message attached in front of results (can be empty)
+      emptyMsg  : '<p>Nothing found.</p>'     // shown message if search returns no results
+    });
+  });
+</script>
+
+<script>
+$(function() {
+    page = $(".page-header").attr("data-page-id")
+    nav_item = $(".nav li[data-page-id='"+page+"']")
+    if (nav_item) {
+        $(".nav").find(".active").removeClass("active");
+        nav_item.addClass("active");
+    }
+})
+</script>
+
+                    </div>
+                
+            </div>
+
+            
+
+            <div class="row">
+                <div id="footer" class="col-sm-12">
+                    Documentation for <a href="http://www.quali.com">CloudShell Developer Guide</a>
+
+                </div>
+            </div>
+        </div>
+
+        <script src="/devguide_7/js/prism.js"></script>
+
+        
+        <script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+ (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+ m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+ })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ ga('create', 'UA-81468206-1', 'auto');
+ ga('send', 'pageview');
+
+</script>
+
+        
+    </body>
+</html>
