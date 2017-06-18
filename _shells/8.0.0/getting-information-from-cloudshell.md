@@ -3,7 +3,7 @@ layout: page
 title: Getting Information from CloudShell
 category: tut
 comments: true
-order: 5
+order: 6
 version:
     - 8.0.0
     - 7.1.0

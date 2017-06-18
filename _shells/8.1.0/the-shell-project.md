@@ -3,9 +3,9 @@ layout: page
 title: The Shell Project Guide
 category: tut
 order: 3
+comments: true
 version:
     - 8.1.0
-comments: true
 ---
 CloudShell’s 2nd generation Shells are based on the Topology and Orchestration Specification for Cloud Applications (TOSCA) industry standard and use yaml files. To develop a Shell for CloudShell there is no need to dive deep into the details of TOSCA. We made it all simple. However, if you do wish to learn more about TOSCA, follow [this list of references](http://docs.oasis-open.org/tosca/TOSCA-Simple-Profile-YAML/v1.0/TOSCA-Simple-Profile-YAML-v1.0.html).
 

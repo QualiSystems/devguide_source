@@ -2,7 +2,7 @@
 layout: page
 title: Auto-discovery for Inventory Shells
 category: tut
-order:  7
+order:  9
 comments: true
 version:
     - 8.0.0

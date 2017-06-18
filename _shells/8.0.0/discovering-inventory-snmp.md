@@ -3,7 +3,7 @@ layout: page
 title: Discovering Inventory using SNMP
 category: tut
 comments: true
-order:  8
+order:  10
 version:
     - 8.0.0
     - 7.1.0

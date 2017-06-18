@@ -2,7 +2,7 @@
 layout: page
 title: Tips and Tricks
 category: tut
-order: 13
+order: 15
 comments: true
 version:
     - 8.1.0

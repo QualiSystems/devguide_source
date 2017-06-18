@@ -4,8 +4,6 @@ title: Tips and Tricks
 category: tut
 order: 13
 comments: true
-version:
-    - 8.1.0
 tags:
     - api
     - logging

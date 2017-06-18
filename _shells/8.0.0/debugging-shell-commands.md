@@ -3,7 +3,7 @@ layout: page
 title: Debugging Shell Driver Commands
 category: tut
 comments: true
-order:  9
+order:  11
 version:
     - 8.0.0
     - 7.1.0
