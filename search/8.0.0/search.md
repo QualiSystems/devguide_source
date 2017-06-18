@@ -4,9 +4,10 @@ title: Search Results
 ---
 <section id="search-results" style="display: none;"> </section>
 
-{% raw %}
+
 <script id="search-results-template" type="text/mustache">
-   debugger;
+	<script>	debugger; </script>
+{% raw %}
   {{#entries}}
     <article>
       <h3>
@@ -19,5 +20,5 @@ title: Search Results
       {{/is_post}}
     </article>
   {{/entries}}
+  {% endraw %}
 </script>
-{% endraw %}

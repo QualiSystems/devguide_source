@@ -6,7 +6,7 @@ title: Search Results
 
 
 <script id="search-results-template" type="text/mustache">
-aa : {{entries}}
+	<script>	debugger; </script>
 {% raw %}
   {{#entries}}
     <article>

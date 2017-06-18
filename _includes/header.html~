@@ -6,7 +6,9 @@
         </a>
     </div>
     <div class="col-md-9 col-sm-8">
-        <form class="search" action="{{ site.baseurl }}/search.html">
+        {% assign pageUrlSplited = page.url | split: "/" %}
+		  {% assign pageVersion = pageUrlSplited[2] %}
+        <form class="search" action="{{ site.baseurl }}/search/{{pageVersion}}/search.html">
             <input class="input" id="search-query" type="text" name="q" placeholder="Search" />
             <input class="button" type="submit" value="Search"></input>
         </form>

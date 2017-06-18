@@ -6,7 +6,9 @@ title: Search Results
 
 
 <script id="search-results-template" type="text/mustache">
-aa : {{entries}}
+{% for e in entries%}
+{{ a.url }}
+{% endfor %}
 {% raw %}
   {{#entries}}
     <article>

@@ -22,6 +22,7 @@
         <script src="{{ site.baseurl }}/js/modernizr.js"></script>
         <script src="{{ site.baseurl }}/js/webflow.js"></script>
         <script src="{{ site.baseurl }}/js/version-redirect.js"></script>
+        <script src="{{ site.baseurl }}/js/handlebars-v4.0.10.js"></script>
 
         {% if jekyll.environment == 'production' %}
         {% include google_analytics.html %}
