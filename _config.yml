@@ -18,7 +18,6 @@ google_analytics_id: 'UA-81468206-1'
 navigation: 1
 
 versions: 
-    - 7.0.0
     - 8.0.0
     - 8.1.0
 
@@ -72,7 +71,6 @@ future: true
 gems:
   - jekyll-sitemap
   - jekyll_github_sample
-  - jekyll-lunr-js-search
   - jekyll-seo-tag
   
 # Exclude non-site files
