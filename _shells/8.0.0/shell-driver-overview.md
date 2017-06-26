@@ -108,7 +108,7 @@ The _cleanup_ function will be called whenever the driver instance is stopped. Y
 #### Commands Concurrency
 
 By default, CloudShell will run Shell drivers in sequential mode. This means that CloudShell will send out commands to the driver one at a time and maintain a queue of pending commands if multiple executions are initiated. However, the shell can be configured to handle commands concurrently as well, in which case it becomes the responsibility of the driver developer to handle the concurrency and introduce mutexes where required.
-We'll review that option and how to configure it in the [Shell customization section]({{ site.url }}{{site.baseurl}}/shells/{{pageVersion}}/customizing-driver-commands.html).
+We'll review that option and how to configure it in the [Shell customization section]({{site.baseurl}}/shells/{{pageVersion}}/customizing-driver-commands.html).
 
 #### Conclusion
 
