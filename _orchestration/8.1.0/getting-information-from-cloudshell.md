@@ -10,106 +10,77 @@ tags:
     - api
 ---
 
-Information about the sandbox your script is running on and its components is automatically available in your script
-as an environment variable. The standard way to get that information in Python is to use the ‘os’ package.
+Information about the sandbox on which your script is running and its components is available in your script as an environment variable. The standard way to get the information is using the **Sandbox** object.
+
+**To use the *Sandbox* object:** 
+
+* Import the cloudshell-orch-core python package and add it to your script, as illustrated in the example below. Note that the package is automatically imported when your sandbox starts.
+In this example, the following code gets an object that contains all of the sandbox’s information:
 
 {% highlight python %}
-import os
-os.environ['RESERVATIONCONTEXT']
-# {"id":"5487c6ce-d0b3-43e9-8ee7-e27af8406905",
-#  "ownerUser":"bob",
-#  "ownerPass":"nIqm+BG6ZGJjby5hUittVFFJASc=",
-#  "domain":"Global",
-#  "environmentName":"My environment",
-#  "description":"New demo environment",
-#  "parameters":
-#    { "globalInputs": [],
-#      "resourceRequirements":[],
-#      "resourceAdditionalInfo":[]}}
-
+from cloudshell.workflow.orchestration.Sandbox import Sandbox
+Sandbox = Sandbox()
+reservation_context_details = Sandbox.reservationContextDetails
 {% endhighlight %}
 
-However, we’ve added helpers to make it easier to get that information without having to parse the environment
-variables yourself. Just import our helper classes to take advantage of that functionality.
-You can use the following code to get an object which contains all of the sandbox information:
+To facilitate writing and debugging activities, it is recommended to use advanced IDEs such as PyCharm, which provide autocomplete functionality, as illustrated below. 
+
+![Sandbox information]({{ site.baseurl}}/assets/reservation_context_8_1.png){:class="img-responsive"}
+
+### Accessing the sandbox components
+
+Use the **Sandbox** class to access and use the components of a sandbox in your orchestration scripts to implement custom logic. 
+
+For example, let’s assume we want to get the names of the resources and Apps in a sandbox. To do so, we will use **Sandbox.component**.  The following code will iterate over the resources and Apps in the sandbox and print out their names:
 
 {% highlight python %}
-import cloudshell.helpers.scripts.cloudshell_scripts_helpers as helpers
-helpers.get_reservation_context_details()
+from cloudshell.workflow.orchestration.Sandbox import Sandbox
+Sandbox = Sandbox()
+
+for resource_name, resource in Sandbox.components.resources.iteritems():
+    print 'Found resource: {0}, with address: {0}'.format(resource_name, resource.FullAddress)
+
+for app_name, app in Sandbox.components.apps.iteritems():
+    print app_name
 {% endhighlight %}
 
-This will return a Python object you can use to query the same reservation information directly:
-
-![Sandbox information]({{ site.baseurl}}/assets/reservation_context.png){:class="img-responsive"}
-
-### Getting the sandbox information using the API
-
-A common use case for a script is to get a list of the different Apps and resources in the sandbox, to be able
-to call additional commands or API functions on them. To get that information we can use the CloudShellAPI.
-
-To start a CloudShell API session, we need connectivity details to the Quali server. These details are also available
-as an environment variable in your script called 'qualiConnectivityContext'. As with the reservation information,
-you can use the _script_helpers_ module to quickly get the connectivity information in a more convenient object form
-and initialize a CloudShellAPISession object by calling _helpers.get_reservation_context_details()_.
-
-However, since initializing a CloudShell API session object is a very common operation, you can use the helpers to directly
-create an object. The helper module will take care of passing all of the required connectivity information for you.
-The _cloudshell_script_helpers_ module provides a shortcut which makes accessing the CloudShell API from your script
-much easier. Simply use the following code:
+The components in the sandbox are stored in a dictionary object, from which a specific resource can be retrieved using a simple syntax. For example:
 
 {% highlight python %}
-import cloudshell.helpers.scripts.cloudshell_scripts_helpers as helpers
-helpers.get_api_session()
+Sandbox = Sandbox()
+resource_details = Sandbox.components.resources['my_resource']
 {% endhighlight %}
 
-The _get_api_session()_ function will return a CloudShell API session object. You can use the IDE's autocomplete capabilities
-to explore the available functions:
-
-![API Autocomplete]({{ site.baseurl}}/assets/api_autocomplete.png){:class="img-responsive"}
-
-In this case we want to get information about the resources and Apps in the sandbox, so we can use the _GetReservationDetails_
-function. The following code will iterate over the resources and Apps in the sandbox and print out their names:
+It’s also possible to get the sandbox components using helpers methods located under Sandbox.component such as get_resources_by_model, get_apps_by_name_contains and others. For example: 
 
 {% highlight python %}
-reservation_id = helpers.get_reservation_context_details().id
-reservation_details = helpers.get_api_session().GetReservationDetails(reservation_id).ReservationDescription
-
-for resource in reservation_details.Resources:
-    print resource.Name
-
-for app in reservation_details.Apps:
-    print app.Name
-
+Sandbox = Sandbox()
+services = Sandbox.components.get_services_by_alias('my-service-alias')
+for service in services:
+    print service.Alias
 {% endhighlight %}
 
-### Accessing the sandbox user inputs
+To refresh the components information at any time during the sandbox’s lifecycle, use the **Sandbox.components.refresh_components** method.
 
-The user inputs provided by the user when he reserved the blueprint are also a contextual information that can be
-accessed by your script. This data is stored in several environment variables based on the input type:
 
-*  **Global inputs** - These inputs are a part of the reservation form and can represent general data you wish to
-collect from the user for your automation. They can also be used to group together multiple other inputs as one data entry.
-You can access these using the _GLOBALINPUTS_ environment variable.
+### Accessing the sandbox’s user inputs
 
-* **Resource requirements** - These are inputs related to abstract resource. An abstract resource in CloudShell allows you to declare a generic spec or requirements for a resource rather than explicitly using a specific one. When customizing such an abstract resource you can choose to make some of its properties available for the user to select, so as to make it more flexible. For example, for a physical device, instead of specifying the model in the blueprint you can set that as a parameter with a dropdown list for the user to select from when reserving it.
-Resource requirements are accessed using the _RESOURCEREQUIREMENTS_ environment variable.
+User inputs provided by the user when they reserved the blueprint can be accessed by your script, as contextual information. This data is stored in several environment variables based on the input type:
 
-* **Resource additional info** -  When customizing an abstract resource you can also choose to add some parameters to the
-resource that are not requirements but rather instructions on what to do with it. An example would be specifying an OS
-version to install on it. In this case, this parameter is not used to select the resource but rather to operate on the
-selected resource in the active environment. Additional info parameters are accessed using the _RESOURCEADDITIONALINFO_
-environment variable.
+*  **Global inputs** - These inputs are a part of the reservation form and can represent general data you wish to collect from the user for your automation. They can also be used to group together multiple other inputs as one data entry. You can access these using the GLOBALINPUTS environment variable.
 
- As with reservations, we can use some helper modules to get the resource information in Python using the same object we used to get the
- reservation details:  
+* **Resource requirements** - These are inputs related to abstract resources. An abstract resource in CloudShell allows you to declare a generic spec or criteria for a resource rather than explicitly using a specific one. When customizing such an abstract resource, you can choose to make some of its properties available for the user to select, so as to make it more flexible. For example, for a physical device, instead of specifying the model in the blueprint, you can set the model as a parameter with a dropdown list for the user to select from when reserving it. Resource requirements are accessed using the RESOURCEREQUIREMENTS environment variable.
+
+* **Resource additional info** -  When customizing an abstract resource, you can also choose to add some parameters to the resource that are not requirements but rather instructions on what to do with it. An example would be specifying an OS version to install on it. In this case, this parameter is not used to select the resource but rather to operate on the selected resource in the active environment. Additional info parameters are accessed using the RESOURCEADDITIONALINFO environment variable.
+
+ As with sandboxes, we can use some helper modules to get the resource information in Python using the same object we used to get the reservation details:  
 
  {% highlight python %}
+Sandbox = Sandbox()
 
-parameters = helpers.get_reservation_context_details().parameters
-global_value = parameters.global_inputs['input name']
-requirement_value = parameters.resource_requirements['resource1']['input_name']
-additiona_info_value = parameters.resource_additional_info['resource1']['input_name']
-
+global_value = Sandbox.global_inputs['input name']
+requirement_value = Sandbox.requirement_inputs['resource1']['input_name']
+additiona_info_value = Sandbox.additional_info_inputs['resource1']['input_name']
 {% endhighlight %}
 
 
@@ -133,6 +104,27 @@ os.environ['Param1']
 You can also use the scripting helper class:
 
 {% highlight python %}
-import cloudshell.helpers.scripts.cloudshell_scripts_helpers as helpers
-helpers.get_user_param('Param1')
+from cloudshell.workflow.orchestration.Sandbox import Sandbox
+Sandbox = Sandbox()
+Sandbox.get_user_param('Param1')
+
 {% endhighlight %}
+
+### Getting sandbox information using the API
+
+A common use case for a script is to get a list of the different Apps and resources in the sandbox, to be able to call additional commands or API functions on them. To get that information, we can use the CloudShellAPI.
+
+**To start a CloudShell API session:**
+
+1. Obtain the Quali Server’s connectivity details. These details are also available as an environment variable in your script called ‘qualiConnectivityContext’. As with the sandbox information, you can use the Sandbox class to quickly get the connectivity information in a more convenient object form and initialize a CloudShellAPISession object by calling **Sandbox.connectivityContextDetails**.
+
+2. Create a CloudShell API session object. Aince initializing a CloudShell API session object is a very common operation, you can use the **Sandbox** class to directly create an object. The **Sandbox** class will handle the passing of all of the required connectivity information for you. The **Sandbox** class provides a shortcut which makes accessing the CloudShell API from your script much easier. Simply use the following code:
+
+{% highlight python %}
+from cloudshell.workflow.orchestration.Sandbox import Sandbox
+session = Sandbox.automation_api
+{% endhighlight %}
+
+**Sandbox.automation_api** is a CloudShell API session object. You can use the IDE’s autocomplete capabilities to explore the available functions:
+
+![Sandbox information]({{ site.baseurl}}/assets/sandbox_automation_api.png){:class="img-responsive"}

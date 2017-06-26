@@ -8,47 +8,93 @@ version:
 order:  6
 ---
 
-In this section we'll take a more in-depth view at scripts and how they can be
-used most effectively for CloudShell orchestration.
+In this section we’ll take a more in-depth view at scripts and learn how they can be used most effectively for CloudShell orchestration.
 
 #### How CloudShell handles scripts
 
-CloudShell executes a Python script in a very simple and straightforward way by simply running it with a Python executable.
-To send information to the script, CloudShell sets environment variables in the scope of the script process.
-These environment variables include information about the sandbox reservation, as well as the script parameters.
-The script standard output is returned as the command result. If an exception is raised,
-or if a non-zero process result code is returned by the script, the execution will be considered a failure.
+CloudShell executes a Python script by creating a temporary virtual environment for the script’s execution, downloading all required packages from the script’s requirement.txt file and executing the script using the Execution Server python engine. 
+
+To send information to the script, CloudShell sets environment variables in the scope of the script process. These environment variables include information about the sandbox reservation, as well as the script’s parameters. The script standard output is returned as the command result. If an exception is raised, or if a non-zero process result code is returned, the execution will be considered a failure.
+
+
+#### Using requirement.txt with CloudShell orchestration scripts
+
+It’s now possible to attach a requirement.exe file to make sure your script will have all dependencies installed on the virtual environment before the script’s execution starts. 
+
+*To use the requirement.exe:*
+* Archive this file with the orchestration script in one ZIP file. It will then be possible to upload this ZIP file to CloudShell using the CloudShell Portal.
 
 #### Using a main function and packaging multiple files
 
-As scripts become more complex, instead of structuring them as one big function, it is advisable
-to create a _main_ function and separate the rest of the logic to different functions. Python
-requires including some boilerplate code in addition to the _main_ function to make this work.
-Here is some example code demonstrating how to use _main_ functions with scripts:
+As scripts become more complex, instead of structuring them as one big function, it is advisable to create a main function and separate the rest of the logic into different functions. Python requires some boilerplate code in addition to the main function to make this work. Here is an example code demonstrating how to use main functions with scripts:
 
 {% highlight python %}
 
-import cloudshell.helpers.scripts.cloudshell_scripts_helpers as helpers
+from cloudshell.workflow.orchestration.Sandbox import Sandbox
 import os
 
 def print_keys():
     for key in os.environ:
         print key + " : " + os.environ[key]
 
-def print_app_names(session):
-    reservation_details = session.GetReservationDetails().ReservationDescription
+def print_app_names(sandbox):
+    """
+    :param Sandbox sandbox:
+    :return:
+    """
+    reservation_details = sandbox.automation_api.GetReservationDetails().ReservationDescription
     for app in reservation_details.Apps:
         print app.Name
 
 def main():
-    session = helpers.get_api_session()
+    sandbox = Sandbox()
     print_keys()
-    print_app_names(session)
+    print_app_names(sandbox)
 
 if __name__ == "__main__":
     main()
 
 {% endhighlight %}
+
+Depending on the complexity of the script, it may be wise to also separate the code into multiple files. To do that, we can take advantage of Python’s ability to support executing .zip archives containing multiple scripts. The only requirement is that one of the files is named ___main__.py, which is how the entry point of the Python process is determined.
+
+#### Setup and teardown scripts
+
+Setup and teardown are special types of orchestration scripts. There are two things that make them special:
+1. They can’t have any inputs as they are launched automatically
+2. If you use CloudShell’s default *Python Setup & Teardown* driver, then simply including a teardown or setup script in the reservation and setting a duration for the setup/teardown is enough for CloudShell to launch it.
+
+*To set a script as a teardown or setup script: *
+
+1. In the *Scripts - Blueprint* management page, edit the script. 
+2. From the script’s *Script Type* dropdown list, select *Setup* or *Teardown*, as appropriate.
+The script will take on that special behavior. Note that the script can only run as part of the sandbox Setup or Teardown process. In addition, you won’t be able to add any inputs to it.
+
+#### Logging in orchestration scripts
+*To implement logging in your orchestration script:*
+
+* Use Sandbox.logger, which is based on the CloudShell standard logging format. 
+The logger lists all the data that is needed for debugging the script, including the Sandbox id, function names, error level, time stamp and more.
+
+
+{% highlight python %}
+from cloudshell.workflow.orchestration.Sandbox import Sandbox
+
+Sandbox = Sandbox()
+
+resource_name = 'My_Resource'
+try:
+    Sandbox.automation_api.IncludeResource(resource_name)
+except:
+    Sandbox.logger.error('Failed to include resource {0}'.format(resource_name))
+{% endhighlight %}
+
+#### Debugging scripts
+
+CloudShell includes some helper functions to make it easier to debug a script by running it on real sandbox reservation data. The helper functions allow the script to be “attached” to a CloudShell sandbox, by filling in all of the script’s environment variables so that the same information is available to it as if it were launched by CloudShell.
+
+*To attach a script to a CloudShell sandbox:*
+
 
 As you're writing more complex orchestration scripts, it may become prudent to also separate
 the code to multiple files. To do that, we can take advantage of Python's ability to support executing _.zip_ archives
@@ -57,75 +103,20 @@ the entry point of the Python process is determined.
 
 #### Referencing other packages
 
-As opposed to Shell drivers, CloudShell doesn't look for a requirement.txt file for scripts and doesn't attempt
-to retrieve dependencies from Pypi. The script dependencies must be installed on the Python used by the Execution Server.
-
-On windows machines, the ES will by default use the Python included with the ES installation. It can be found in the
-_\\Python\\2.7.10_ directory under the ES installation folder. If you're using Linux, the Execution Server will use
-the default Python configured in the os. In both cases it is possible, however, to specify a different Python environment. To do so, add the following key
-to the execution server _customer.config_ file:
-
-{% highlight xml %}
-<add key="ScriptRunnerExecutablePath" value="PATH_TO_EXECUTABLE" />
-{% endhighlight %}
-
-To install a dependency, run the following using the Python executable referenced by the ES:
-
-{% highlight bash %}
-python -m pip install [PACKAGE_NAME]
-{% endhighlight %}
-
-As dependencies can get complex, it is recommended to keep a centralized _requirements.txt_ file where you can catalog
-the requirements of all of the orchestration scripts and add new ones if needed. This will both make it easier to keep
-track of the dependencies used by the orchestration scrips and avoid version conflicts, and make it easier to deploy new
-Execution Servers. Instead of installing each dependency independently you'll then be able to run:
-
-{% highlight bash %}
-python -m pip install -r [REQUIREMENTS_FILE_PATH]
-{% endhighlight %}
-
-#### Setup and teardown scripts
-
-Setup and teardown are a special types of orchestration scripts. There are two things that make them
-special:
-
-1. They can't have any inputs as they are being launched automatically
-2. If you use the default 'Python Setup & Teardown' driver, then simply including a teardown or setup
-    script in the reservation and setting a duration for the setup/teardown is enough for CloudShell
-    to launch it.
-
-To set a script as a teardown or setup script, you need to edit it from the script management page.
-One of the fields allows you to select the _Script Type_. By choosing 'Setup/Teardown' the script will take on
-that special behavior. Notice that you'll not be able to run it separately from the environment built in setup and teardown
-commands and you won't be able to add any inputs to it.
-
-#### Debugging scripts
-
-CloudShell includes some helper functions to make it easier to debug a script by running it
-on real sandbox reservation data. The helper functions allow the script to "attach" to a CloudShell
-Sandbox, by filling in all of the environment variables of the script so that the same information
-is available to it as would be if CloudShell launched it.
-
-To attach to a CloudShell sandbox, first create a sandbox reservation, then add the following code
-and fill in the required data for the function parameters.
+1. Create a Sandbox reservation. 
+2. Add the following code and fill in the required data for the function parameters.
 
 {% highlight python %}
 import cloudshell.helpers.scripts.cloudshell_dev_helpers as dev_helpers
 dev_helpers.attach_to_cloudshell_as(user="CLOUDSHELL_USER", password="CLOUDSHELL_PWD", domain="DOMAIN",
                                     reservation_id="RESERVATION_ID", server_address="ADDRESS", command_parameters={"NAME":"VALUE"})
-{% endhighlight %}      
+{% endhighlight %}
 
-If we include the above code in the example script we provided earlier, we'll be able to run it locally as
-well as from the CloudShell sandbox. The  _attach_to_cloudshell_as_ function will populate all of the blueprint data
-as CloudShell would so from the code perspective it doesn't make a different where its being run from. Furthermore,
-the code will ignore the special _attach_to_cloudshell_as_ function if you run it from CloudShell so that there is no
-adverse effect to leaving the statement there.
 
-One drawback of using this strategy is that its probably not a good idea to leave your CloudShell credentials in the code itself
-in plain sight. That is why we recommend you use a similar function which takes the same information from a file.
-Make sure to add that file to the _.gitignore_ list so that it doesn't get on source control of course.
-The following code will have the same effect as the lines above, only it will look for the information in a
-JSON file named _quali_config.json_ which should be in the project root.
+Note that if we include the above code in the example script we provided earlier, we’ll be able to run it locally as well as from the CloudShell Sandbox. The attach_to_cloudshell_as function will populate all of the blueprint data as CloudShell would, so from the code’s perspective, it doesn’t make a different where it is being run from. Furthermore, the code will ignore the special attach_to_cloudshell_as function if you run it from CloudShell so that there is no adverse effect to leaving the statement there.
+
+
+However, using this strategy will expose your CloudShell credentials in the code. To avoid this, we recommend you use a similar function which takes the same information from a file. Make sure to add that file to the .gitignore list so that it doesn’t get on source control. The following code will have the same effect as the lines above, but will look for the information in a JSON file named quali_config.json, which should be in the project root.
 
 {% highlight python %}
 import cloudshell.helpers.scripts.cloudshell_dev_helpers as dev_helpers

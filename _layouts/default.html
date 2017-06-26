@@ -36,15 +36,16 @@
         </div>
         <div class="container">
             <div class="row"> 
-            	  
-                <div id="versions" class="col-md-3 col-sm-4">
-                    {% include versions.html %}
-                </div>
-
-               
+            	
+                <!-- <div class="col-md-3"><span> Sveta </span></div> -->
+                               
                 {% assign post_count = site.posts|size %}
                 {% if site.navigation != 0 and site.navigation == 1 or post_count > 0 %}
-                    <div id="navigation" class="col-md-3 col-sm-4" style="position: absolute; margin-top: 20px;">
+                    <div id="navigation" class="col-md-3 col-sm-4">
+                        <span><strong>CloudShell Version: </strong></span>
+                        <div id="versions">
+                            {% include versions.html %}
+                        </div>
                         {% include navigation.html %}
                     </div>
 

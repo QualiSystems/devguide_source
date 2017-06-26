@@ -3,7 +3,7 @@ layout: page
 title: "The CloudShell DevGuide"
 date: "2016-04-30 13:02:32 +0300"
 order: 1
-comments: true
+comments: false
 version:
     - 8.0.0
     - 7.1.0
