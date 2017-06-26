@@ -9,6 +9,11 @@ version:
     - 8.0.0
     - 7.1.0
 ---
+
+{% assign pageUrlSplited = page.url | split: "/" %}
+{% assign pageVersion = pageUrlSplited[2] %}
+
+
 The Shell driver commands are accessible to CloudShell users via the portal as well as to orchestration scripts running on the sandbox.
 In this section we'll explore the different ways in which these commands can be customized in their appearance and behavior. The following customization options will be reviewed:
 
@@ -19,13 +24,13 @@ In this section we'll explore the different ways in which these commands can be 
 * [Adding categories](#customizing_categories)
 * [Orchestration only commands](#customizing_orchestration_only_commands)
 
-If you haven't done some already it is recommended to go through the [Getting Started]({{site.baseurl}}/shells/getting-started.html) tutorial before continuing to get a better understanding of the overall process of creating and using a shell. We also assume you've gone through the steps described in the [Setting Up the Development IDE]({{site.baseurl}}/introduction/setting-up-the-development-ide.html) section of this guide.
+If you haven't done some already it is recommended to go through the [Getting Started]({{site.baseurl}}/shells/{{pageVersion}}/getting-started.html) tutorial before continuing to get a better understanding of the overall process of creating and using a shell. We also assume you've gone through the steps described in the [Setting Up the Development IDE]({{site.baseurl}}/introduction/{{pageVersion}}/setting-up-the-development-ide.html) section of this guide.
 
 <a name="setting_up"></a>
 
 ### Setting up
 
-We'll start by creating a new shell that we'll use in this example. In the [Getting Started]({{site.baseurl}}/shells/getting-started.html) tutorial we used the ShellFoundry CLI tool to generate a working shell to get started quickly. In this section we'll also be using the ShellFoundry to create an example shell, only this time we'll use a different project template. The _resource-clean_ template is similar to the default template we've used previously only it doesn't contain any example driver functions. This will make it easier for us to really go through the experience of starting from a clean slate.
+We'll start by creating a new shell that we'll use in this example. In the [Getting Started]({{site.baseurl}}/shells/{{pageVersion}}/getting-started.html) tutorial we used the ShellFoundry CLI tool to generate a working shell to get started quickly. In this section we'll also be using the ShellFoundry to create an example shell, only this time we'll use a different project template. The _resource-clean_ template is similar to the default template we've used previously only it doesn't contain any example driver functions. This will make it easier for us to really go through the experience of starting from a clean slate.
 
 From the command line, navigate to a folder under which you'll want the new shell to be created and type in the following:
 {% highlight bash %}
@@ -48,7 +53,7 @@ def user_facing_function(self, context, some_parameter, some_other_parameter):
     print "Thank you for calling this function."
 {% endhighlight %}
 
-We've now created a shell with a single command. Similar to the flow covered in the [Getting Started]({{site.baseurl}}/shells/getting-started.html) tutorial, the next steps would be to create a resource instance of this shell in CloudShell and add it to a sandbox so we can experiment with it. You should refer to the [Getting Started]({{site.baseurl}}/shells/getting-started.html) tutorial for any question on how to accomplish the three steps below:
+We've now created a shell with a single command. Similar to the flow covered in the [Getting Started]({{site.baseurl}}/{{pageVersion}}/shells/getting-started.html) tutorial, the next steps would be to create a resource instance of this shell in CloudShell and add it to a sandbox so we can experiment with it. You should refer to the [Getting Started]({{site.baseurl}}/shells/{{pageVersion}}/getting-started.html) tutorial for any question on how to accomplish the three steps below:
 
 1. Install the shell by running the following from the shell directory: _shellfoundry install_
 2. Create a resource instance from the CloudShell inventory.
