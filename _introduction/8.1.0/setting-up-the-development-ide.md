@@ -8,6 +8,9 @@ version:
     - 8.1.0
 ---
 
+{% assign pageUrlSplited = page.url | split: "/" %}
+{% assign pageVersion = pageUrlSplited[2] %}
+
 In this section we'll go over the recommended steps for setting up a development environment for developing CloudShell Shells and orchestration scripts.
 
 ### Get the latest Python 2.7.x
@@ -65,6 +68,6 @@ From the _Step-by-step installation guide_ section perform steps 1-6 only. Don't
 
 This guide contains three main areas depending on the type of development or integration you wish to do with CloudShell:
 
-* [Extending cloudShell with Shells]({{site.baseurl}}/shells/getting-started.html)
-* [Orchestration Scripts]({{site.baseurl}}/orchestration/getting-started.html)
-* [Integrating CloudShell into the DevOps Cycle]({{site.baseurl}}/devops/devops-integration.html)
+* [Extending cloudShell with Shells]({{site.baseurl}}/shells/{{pageVersion}}/getting-started.html)
+* [Orchestration Scripts]({{site.baseurl}}/orchestration/{{pageVersion}}/getting-started.html)
+* [Integrating CloudShell into the DevOps Cycle]({{site.baseurl}}/devops/{{pageVersion}}/devops-integration.html)
