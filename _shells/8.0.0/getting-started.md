@@ -8,6 +8,10 @@ version:
     - 8.0.0
     - 7.1.0
 ---
+
+{% assign pageUrlSplited = page.url | split: "/" %}
+{% assign pageVersion = pageUrlSplited[2] %}
+
 In this section, we’ll go through the basic steps of creating a new Shell. The goal is to demonstrate the end-to-end cycle, from generating a new Shell project to instancing Shell resources and running commands in CloudShell.
 
 
@@ -16,7 +20,7 @@ As of version 8.0, CloudShell supports 2nd Gen Shells. This guide includes instr
 
 For information on developing 1st Gen Shells, see [CloudShell Developer Guide](https://qualisystems.github.io/devguide_7/) CloudShell v7.1 and below.
 
-To learn more about the  different versions of the Shells used by CloudShell and how to upgrade a 1st Gen Shell, see [Converting 1st Generation Shells]({{site.baseurl}}/shells/migrating_1st_gen_shells.html)
+To learn more about the  different versions of the Shells used by CloudShell and how to upgrade a 1st Gen Shell, see [Converting 1st Generation Shells]({{site.baseurl}}/shells/{{pageVersion}}/migrating_1st_gen_shells.html)
 
 
 
@@ -209,7 +213,7 @@ The basic flow is:
 
 7) Rinse and repeat!
 
-For more information on how to deploy the Shell to production, refer to the [Deploying to Production]({{ site.baseurl }}/shells/deploying-to-production.html) section.
+For more information on how to deploy the Shell to production, refer to the [Deploying to Production]({{ site.baseurl }}/shells/{{pageVersion}}/deploying-to-production.html) section.
 
 #### What's next
 
