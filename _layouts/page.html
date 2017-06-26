@@ -11,7 +11,9 @@ layout: default
     <h2>{{ page.title }}
         {% if page.subtitle %}<small>{{ page.subtitle }}</small>{% endif %}
         {% if page.title != "Search Results" %}
+          {% if jekyll.environment == 'production' %}
           <span style="float: right;font-size: 20px"><small><a href="https://github.com/QualiSystems/devguide_source/tree/master/{{ page.relative_path }}">Suggest edits</a></small></span>
+          {% endif %}
         {% endif %}
     </h2>
 </div>
