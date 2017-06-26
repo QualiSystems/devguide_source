@@ -8,7 +8,11 @@ version:
 order:  4
 ---
 
-By defining how a Shell is modeled in CloudShell, we can control how it’s represented in CloudShell. If you’ve gone through the steps of the [Getting Started]({{site.baseurl}}/shells/getting-started.html) tutorial, you may have noticed that with little effort we’ve already managed to model a new type of entity.
+{% assign pageUrlSplited = page.url | split: "/" %}
+{% assign pageVersion = pageUrlSplited[2] %}
+
+
+By defining how a Shell is modeled in CloudShell, we can control how it’s represented in CloudShell. If you’ve gone through the steps of the [Getting Started]({{site.baseurl}}/shells/{{pageVersion}}/getting-started.html) tutorial, you may have noticed that with little effort we’ve already managed to model a new type of entity.
 
 
 In this section, we’ll take a more in-depth look at how we can customize how Shell resources or deployed Apps are presented and behave in CloudShell.
@@ -306,4 +310,4 @@ capabilities:
         default: Describe the resource shell template
 {% endhighlight %}
 
-The most common use case is customizing the Auto-discovery process. This is covered in detail in [Auto Discovery For Inventory Shells]({{site.baseurl}}/shells/implementing-discovery-for-inventory-shells.html)
+The most common use case is customizing the Auto-discovery process. This is covered in detail in [Auto Discovery For Inventory Shells]({{site.baseurl}}/shells/{{pageVersion}}/implementing-discovery-for-inventory-shells.html)

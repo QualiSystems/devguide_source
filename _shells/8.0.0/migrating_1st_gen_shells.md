@@ -11,6 +11,10 @@ tags:
     - migration
     - 1st gen shells
 ---
+
+{% assign pageUrlSplited = page.url | split: "/" %}
+{% assign pageVersion = pageUrlSplited[2] %}
+
 As of version 8.0, CloudShell supports 2nd Generation Shells. In this topic we’ll go through the steps needed to convert a 1st Generation Shell into a 2nd Generation Shell.
 
 
@@ -142,11 +146,11 @@ imports:
 
 *	If the Shell includes custom attributes, see the following page to learn how to model them in 2nd Gen Shell format:
 
-[Modeling the Shell]({{site.baseurl}}/shells/modeling-the-shell.html)
+[Modeling the Shell]({{site.baseurl}}/shells/{{pageVersion}}/modeling-the-shell.html)
 
 *	If the Shell includes custom attributes in the discovery process, see the following page to learn how to customize the Auto-discovery process:
 
-[Auto Discovery For Inventory Shells]({{site.baseurl}}/shells/implementing-discovery-for-inventory-shells.html)
+[Auto Discovery For Inventory Shells]({{site.baseurl}}/shells/{{pageVersion}}/implementing-discovery-for-inventory-shells.html)
 
 
 ### Convert the Driver
@@ -234,7 +238,7 @@ return migrated_details.create_autoload_details()
 {% endhighlight %}
 
 
-By using _LegacyUtils_ we can avoid rewriting the _get_invontory_ function. However, in the long term, it is recommended to refactor the code to use the Shell’s data model, as defined in   [Auto Discovery For Inventory Shells]({{site.baseurl}}/shells/implementing-discovery-for-inventory-shells.html)
+By using _LegacyUtils_ we can avoid rewriting the _get_invontory_ function. However, in the long term, it is recommended to refactor the code to use the Shell’s data model, as defined in   [Auto Discovery For Inventory Shells]({{site.baseurl}}/shells/{{pageVersion}}/implementing-discovery-for-inventory-shells.html)
 
 
 ### Test the conversion

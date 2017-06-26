@@ -53,7 +53,7 @@ def user_facing_function(self, context, some_parameter, some_other_parameter):
     print "Thank you for calling this function."
 {% endhighlight %}
 
-We've now created a shell with a single command. Similar to the flow covered in the [Getting Started]({{site.baseurl}}/{{pageVersion}}/shells/getting-started.html) tutorial, the next steps would be to create a resource instance of this shell in CloudShell and add it to a sandbox so we can experiment with it. You should refer to the [Getting Started]({{site.baseurl}}/shells/{{pageVersion}}/getting-started.html) tutorial for any question on how to accomplish the three steps below:
+We've now created a shell with a single command. Similar to the flow covered in the [Getting Started]({{site.baseurl}}/shells/{{pageVersion}}/getting-started.html) tutorial, the next steps would be to create a resource instance of this shell in CloudShell and add it to a sandbox so we can experiment with it. You should refer to the [Getting Started]({{site.baseurl}}/shells/{{pageVersion}}/getting-started.html) tutorial for any question on how to accomplish the three steps below:
 
 1. Install the shell by running the following from the shell directory: _shellfoundry install_
 2. Create a resource instance from the CloudShell inventory.

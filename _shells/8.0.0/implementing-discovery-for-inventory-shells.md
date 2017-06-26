@@ -11,6 +11,11 @@ tags:
     - discovery
     - SNMP
 ---
+
+{% assign pageUrlSplited = page.url | split: "/" %}
+{% assign pageVersion = pageUrlSplited[2] %}
+
+
 Automated discovery makes it easy to import physical inventory devices into CloudShell by using automation to read their internal structure and attributes.
 
 
@@ -118,7 +123,7 @@ After querying the device, the function should return a specific result to Cloud
 **To implement the get_inventory function:**
 
 * Run the _shellfoundry generate_ command to generate the Shell’s data model.
-  For more information about the Shell’s data model, see chapter [Managing the Shell Data Model]({{site.baseurl}}/shells/generating-shell-data-model.html)
+  For more information about the Shell’s data model, see chapter [Managing the Shell Data Model]({{site.baseurl}}/shells/{{pageVersion}}/generating-shell-data-model.html)
 
 This is an example of the _get_inventory_ implementation:
 

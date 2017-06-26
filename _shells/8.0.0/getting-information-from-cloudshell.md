@@ -10,6 +10,7 @@ version:
 tags:
     - api
 ---
+
 A typical Shell driver will first get crucial information from the sandbox and then use that information to access the device it controls. Some common information would be the address of the resource or App, attributes such as username and password, and information from other sandbox settings or components.
 
 To provide easy access to such common information, each driver function has access to a special context object parameter, which is created by CloudShell for each driver command’s execution.

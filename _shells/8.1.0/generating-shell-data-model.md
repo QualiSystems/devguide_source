@@ -9,6 +9,10 @@ version:
 tags:
     - data model
 ---
+
+{% assign pageUrlSplited = page.url | split: "/" %}
+{% assign pageVersion = pageUrlSplited[2] %}
+
 Shells often have a complex data model, which consists of multiple levels of hierarchy and many attributes. CloudShell provides a way to generate Python classes that represent the data model. These classes enable some Python IDEs (like PyCharm) to provide auto complete support to facilitate the development of the Shell’s driver.
 
 ### Generating the Shell’s data model
@@ -27,7 +31,7 @@ cd data-model-example
 
 The Shell project includes the _shell-definition.yaml_ file, which contains the information needed for importing the Shell’s data model according to the relevant TOSCA Shell standard.
 
-For a detailed explanation on how to customize the Shell using TOSCA, see [Modeling Shells with TOSCA]({{site.baseurl}}/shells/modeling-the-shell.html)
+For a detailed explanation on how to customize the Shell using TOSCA, see [Modeling Shells with TOSCA]({{site.baseurl}}/shells/{{pageVersion}}/modeling-the-shell.html)
 
 2) Add the following example properties _custom_property_1_ and _custom_property_2_ to the  _shell-definition.yaml_ file:
 
@@ -76,8 +80,8 @@ The _data_model.py_ is mainly used to work with resource attributes and implemen
 
 For more information see the following related topics:
 
-* [Getting Information From CloudShell]({{site.baseurl}}/shells/getting-information-from-cloudshell.html)
-* [Auto Discovery For Inventory Shells]({{site.baseurl}}/shells/implementing-discovery-for-inventory-shells.html)
+* [Getting Information From CloudShell]({{site.baseurl}}/shells/{{pageVersion}}/getting-information-from-cloudshell.html)
+* [Auto Discovery For Inventory Shells]({{site.baseurl}}/shells/{{pageVersion}}/implementing-discovery-for-inventory-shells.html)
 
 
 ### Updating the Shell’s data model

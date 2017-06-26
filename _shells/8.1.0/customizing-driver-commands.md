@@ -12,6 +12,7 @@ version:
 {% assign pageUrlSplited = page.url | split: "/" %}
 {% assign pageVersion = pageUrlSplited[2] %}
 
+
 The Shell driver commands are accessible to CloudShell users via the portal as well as to orchestration scripts running on the sandbox.
 In this section we'll explore the different ways in which these commands can be customized in their appearance and behavior. The following customization options will be reviewed:
 

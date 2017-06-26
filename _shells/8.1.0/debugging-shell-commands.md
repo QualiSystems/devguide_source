@@ -7,6 +7,11 @@ order:  11
 version:
     - 8.1.0
 ---
+
+{% assign pageUrlSplited = page.url | split: "/" %}
+{% assign pageVersion = pageUrlSplited[2] %}
+
+
 As a part of developing the Shell driver you'll probably need to debug it in order to
 troubleshoot issues or get actual results from the app/device to understand how the code behaves.
 In order to help with this process, CloudShell provides debugging capabilities that you can
@@ -29,7 +34,7 @@ cd debugging_example
 {% endhighlight %}
 
 Then create an instance of the DebuggingExample resource and add it to a sandbox so we can use it for testing.
-These steps are identical to the ones demonstrated in the [Getting Started]({{site.baseurl}}/shells/getting-started.html) section,
+These steps are identical to the ones demonstrated in the [Getting Started]({{site.baseurl}}/shells/{{pageVersion}}/getting-started.html) section,
 which you can use a reference.
 
 #### Setting up
