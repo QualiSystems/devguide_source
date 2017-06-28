@@ -57,6 +57,7 @@ To deploy, test and debug your automation you'll need to have a working CloudShe
 The CloudShell SDK is free for developers and can be downloaded from our
 [community website](http://community.quali.com/spaces/12/index.html).
 Follow the instructions on the [download page](http://info.quali.com/cloudshell-developer-edition-download) to get a local development installation of CloudShell up and running.
+Please make sure you use an SDK version that matches your CloudShell production version for which you are developing Shells and Orchestration.
 
 ### (Optional) Install the CloudShell PyCharm plugin (PyCharm)
 
