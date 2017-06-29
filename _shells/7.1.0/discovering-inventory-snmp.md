@@ -3,9 +3,9 @@ layout: page
 title: Discovering Inventory using SNMP
 category: tut
 comments: true
-order:  10
+order:  8
 version:
-    - 8.0.0
+    - 7.1.0
 tags:
     - discovery
     - SNMP
@@ -55,7 +55,7 @@ Here we used the same class to retrieve the entire IF table. The _get_table_ fun
 inherits from Python's _ordered_dictionary_ with additional handy sorting and filtering functions to get the table's
 rows and columns.
 
-Since the SNMP parameters are included as attributes in the [Resource Standard](https://github.com/QualiSystems/cloudshell-standards/blob/master/Documentation/compute_standard.md)
+Since the SNMP parameters are included as attributes in the [Resource Standard](https://github.com/QualiSystems/cloudshell-standards/blob/master/Documentation/shell_resource_standard.md)
 they can be easily retrieved by the driver when implementing the _get_inventory_ function:
 
 {% highlight python %}

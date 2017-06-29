@@ -4,8 +4,8 @@ title: Getting Information from CloudShell
 category: orch
 comments: true
 order: 2
-version: 
-    - 8.0.0
+version:
+    - 7.1.0
 tags:
     - api
 ---
@@ -40,7 +40,7 @@ helpers.get_reservation_context_details()
 
 This will return a Python object you can use to query the same reservation information directly:
 
-![Sandbox information]({{ site.baseurl}}/assets/reservation_context.png){:class="img-responsive"}
+![Sandbox information]({{site.baseurl}}/assets/reservation_context.png){:class="img-responsive"}
 
 ### Getting the sandbox information using the API
 
@@ -65,7 +65,7 @@ helpers.get_api_session()
 The _get_api_session()_ function will return a CloudShell API session object. You can use the IDE's autocomplete capabilities
 to explore the available functions:
 
-![API Autocomplete]({{ site.baseurl}}/assets/api_autocomplete.png){:class="img-responsive"}
+![API Autocomplete]({{site.baseurl}}/assets/api_autocomplete.png){:class="img-responsive"}
 
 In this case we want to get information about the resources and Apps in the sandbox, so we can use the _GetReservationDetails_
 function. The following code will iterate over the resources and Apps in the sandbox and print out their names:
@@ -121,7 +121,7 @@ the same name as the parameter.
 
 This means that if your script looks like this, with a parameter called ‘Param1’ defined:
 
-![Sandbox information]({{ site.baseurl}}/assets/script_param.png){:class="img-responsive"}
+![Sandbox information]({{site.baseurl}}/assets/script_param.png){:class="img-responsive"}
 
 You’ll be able to access it using an environment variable by that name:
 

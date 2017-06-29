@@ -6,7 +6,6 @@ order:  5
 comments: true
 version:
     - 8.0.0
-    - 7.1.0
 tags:
     - data model
 ---

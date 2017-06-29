@@ -3,10 +3,10 @@ layout: page
 title: Commands Visibility and Usability
 category: tut
 date: "2016-04-30 13:02:32 +0300"
-order: 7
+order: 6
 comments: true
 version:
-    - 8.0.0
+    - 7.1.0
 ---
 
 {% assign pageUrlSplited = page.url | split: "/" %}
@@ -33,7 +33,7 @@ We'll start by creating a new shell that we'll use in this example. In the [Gett
 
 From the command line, navigate to a folder under which you'll want the new shell to be created and type in the following:
 {% highlight bash %}
-shellfoundry new customization-example
+shellfoundry new customization-example --template=resource-clean
 cd customization_example
 {% endhighlight %}
 
@@ -60,7 +60,7 @@ We've now created a shell with a single command. Similar to the flow covered in 
 
 At this point the Commands pane should look something like this:
 
-![Shell Commands]({{ site.baseurl}}/assets/commands_no_customization.png)
+![Shell Commands]({{site.baseurl}}/assets/commands_no_customization.png)
 
 As you can see, we didn't need to specify any additional details to get our Python functions to be visible as shell commands in the CloudShell sandbox, however the commands appear if a very 'code' like manner so our next step would be making them a bit more presentable.
 
@@ -86,7 +86,7 @@ Each _Command_ element in the xml above customizes a single python function spec
 Reinstall the Shell in CloudShell by running {% highlight bash %} shellfoundry install {% endhighlight %} from command line and check the sandbox command panel again.
 The shell commands should now appear as follows:
 
-![Shell Commands]({{ site.baseurl}}/assets/commands_name_customization.png)
+![Shell Commands]({{site.baseurl}}/assets/commands_name_customization.png)
 
 Please note that changing the display name of a function will affect only how its visually rendered in the UI.
 Code trying to execute this command using the CloudShell API will need to still refer to it by the command _name_.
@@ -115,7 +115,7 @@ In the _drivermetadata.xml_ XML, the _Parameters_ element  contains a list of _P
 
 After installing the shell again, the parameters for the command will now appear in a more readable format:
 
-![Shell Commands]({{ site.baseurl}}/assets/commands_param_customization.png)
+![Shell Commands]({{site.baseurl}}/assets/commands_param_customization.png)
 
 <a name="customizing_optional_parameters"></a>
 
@@ -143,7 +143,7 @@ In the following example, we will make the first parameter mandatory by setting 
 
 Re-installing the shell will update the commands pane accordingly:
 
-![Shell Commands]({{ site.baseurl}}/assets/commands_mandatory_customization.png)
+![Shell Commands]({{site.baseurl}}/assets/commands_mandatory_customization.png)
 
 <a name="customizing_lookup_values"></a>
 
@@ -171,7 +171,7 @@ In the xml above, we've specified that the second parameter must be selected out
 
 After re-installing the shell, the Commands pane now reflects the parameter new value restriction:
 
-![Shell Commands]({{ site.baseurl}}/assets/commands_lookup_customization.png)
+![Shell Commands]({{site.baseurl}}/assets/commands_lookup_customization.png)
 
 <a name="customizing_categories"></a>
 
@@ -221,7 +221,7 @@ Grouping together commands under a category is pretty strait forward: Simply add
 
 After re-installing the shell we get the following command panel layout:
 
-![Shell Commands]({{ site.baseurl}}/assets/commands_category_customization.png)
+![Shell Commands]({{site.baseurl}}/assets/commands_category_customization.png)
 
 <a name="customizing_orchestration_only_commands"></a>
 
@@ -269,10 +269,10 @@ Next, let's add the special category to the _drivermetadata.xml_ file and nest t
 {% endhighlight %}
 
 After re-installing the shell you'll see the new function doesn't appear in the Commands pane:
-![Shell Commands]({{ site.baseurl}}/assets/commands_hidden_customization.png)
+![Shell Commands]({{site.baseurl}}/assets/commands_hidden_customization.png)
 
 However if you query the list of commands on the shell via the API, you'll be able to see it as well as invoke it:
-![Shell Commands]({{ site.baseurl}}/assets/commands_hidden_list_from_api.png)
+![Shell Commands]({{site.baseurl}}/assets/commands_hidden_list_from_api.png)
 
 ### Summary
 

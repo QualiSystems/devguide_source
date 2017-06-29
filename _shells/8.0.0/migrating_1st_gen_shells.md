@@ -6,7 +6,6 @@ order:  14
 comments: true
 version:
     - 8.0.0
-    - 7.1.0
 tags:
     - migration
     - 1st gen shells

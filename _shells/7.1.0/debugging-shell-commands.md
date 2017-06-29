@@ -3,14 +3,13 @@ layout: page
 title: Debugging Shell Driver Commands
 category: tut
 comments: true
-order:  11
+order:  9
 version:
-    - 8.0.0
+    - 7.1.0
 ---
 
 {% assign pageUrlSplited = page.url | split: "/" %}
 {% assign pageVersion = pageUrlSplited[2] %}
-
 
 As a part of developing the Shell driver you'll probably need to debug it in order to
 troubleshoot issues or get actual results from the app/device to understand how the code behaves.
@@ -29,7 +28,7 @@ use to attach to the driver process and debug it step by step.
 To test the debugging capabilities, create a new Shell project using ShellFoundry by running:
 
 {% highlight bash %}
-shellfoundry new debugging_example 
+shellfoundry new debugging_example --template=resource
 cd debugging_example
 {% endhighlight %}
 
@@ -104,15 +103,15 @@ First, make sure you set both 'waitForDebugger' and runFromLocalProject="true" a
 Then, add some code to the initialize as well as to some of the sample functions in the sample driver in our project.
 Once you're done, click on the 'CloudShell' icon to deploy the driver in debug mode:
 
-![Debugging]({{ site.baseurl}}/assets/debugging_ide.png){:class="img-responsive"}
+![Debugging]({{site.baseurl}}/assets/debugging_ide.png){:class="img-responsive"}
 
 You can now run the function in CloudShell. You'll notice it seems to be 'stuck' but what's really happening behind
 the scenes is that the Python process is waiting for a debugger to attach to it in order to proceed.
 
-![Run a command]({{ site.baseurl}}/assets/command_running.png){:class="img-responsive"}
+![Run a command]({{site.baseurl}}/assets/command_running.png){:class="img-responsive"}
 
 Now set up a breakpoint in the initialize or in one of the other functions and run 'Run/Attach to local process' (in PyCharm).
 Select the right Python process based on the path of the virtual environment, which will contain the driver name.
 Your IDE should transition to debug mode and you should be able to step over/into functions and access runtime data.
 
-![Debugging]({{ site.baseurl}}/assets/debugging_session.png){:class="img-responsive"}
+![Debugging]({{site.baseurl}}/assets/debugging_session.png){:class="img-responsive"}

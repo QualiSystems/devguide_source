@@ -4,8 +4,8 @@ title: Common Orchestration Script Recipes
 category: orch
 comments: true
 order:  9
-version: 
-    - 8.0.0
+version:
+    - 7.1.0
 ---
 
 In this section we'll provide a few handy examples of common script operations.

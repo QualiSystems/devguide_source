@@ -10,7 +10,7 @@ title: Search Results
   {{#entries}}
     <article>
       <h3>
-        <a href="/devguide/{{url}}">{{title}}</a>
+        <a href="/devguide{{url}}">{{title}}</a>
       </h3>
     </article>
   {{/entries}}

@@ -6,7 +6,6 @@ order: 1
 comments: true
 version:
     - 8.0.0
-    - 7.1.0
 ---
 
 {% assign pageUrlSplited = page.url | split: "/" %}

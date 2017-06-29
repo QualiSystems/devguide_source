@@ -6,7 +6,6 @@ order: 1
 comments: false
 version:
     - 8.0.0
-    - 7.1.0
     
 ---
 

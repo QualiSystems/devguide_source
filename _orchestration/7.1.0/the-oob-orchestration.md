@@ -3,10 +3,11 @@ layout: page
 title: CloudShell's OOB Orchestration
 category: orch
 comments: true
-version: 
-    - 8.0.0
 order:  9
+version:
+    - 7.1.0
 ---
+
 Every CloudShell install comes bundled with default setup and teardown workflows out of the box. These reflect
 some common workflows we see across many of our customers that we've decided to integrate as a default behavior.
 The OOB setup and teardown handle App deployment and startup, connectivity App discovery and installation.
@@ -14,11 +15,11 @@ As of CloudShell 7.1 the out of the box scripts are included as a part of the de
 blueprint will by default have these scripts.
 The following diagram describes the OOB setup and teardown flow:
 
-![Setup Workflow]({{ site.baseurl}}/assets/orchestration_workflow.png){: .center-image }
+![Setup Workflow]({{site.baseurl}}/assets/orchestration_workflow.png){: .center-image }
 
 The out-of-the-box setup and teardown scripts can be found in the scripts management page.
 You can review their source code in the
-[cloudshell-orch-sandbox repository](https://github.com/QualiSystems/cloudshell-orch-sandbox/tree/master/sandbox_scripts).
+[cloudshell-orch-sandbox repository](https://github.com/QualiSystems/cloudshell-orch-sandbox/tree/develop/sandbox_scripts).
 
 ### Extending the OOB Orchestration Scripts
 
