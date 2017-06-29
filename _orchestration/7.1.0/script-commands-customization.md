@@ -84,6 +84,6 @@ Repeat the process, this time for the second param which the script expects to b
 
 To test the script, we need to add it to a blueprint. Go to Lab Management -> Environment. Create a new environment or
 select an existing one and attach the script to it from the properties page of the environment.
-Reserve the environment and open the command pane in the sandbox.
+Reserve the environment and open the command pane in the sandbox, you'll see the following:
 
 ![Scripts Management Page]({{site.baseurl}}/assets/scripts_customization.png){:class="img-responsive"}
