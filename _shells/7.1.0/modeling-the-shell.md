@@ -12,8 +12,7 @@ version:
 {% assign pageVersion = pageUrlSplited[2] %}
 
 By defining how a Shell is modeled in CloudShell we can control how its represented in CloudShell. If you've gone through the steps of the
-[Getting Started]({{site.baseurl}}
-/shells/{{pageVersion}}/getting-started.html) tutorial you may have noticed that with little effort we've already managed
+[Getting Started]({{site.baseurl}}/shells/{{pageVersion}}/getting-started.html) tutorial you may have noticed that with little effort we've already managed
 to model a new type of entity. In this section we'll take a more in depth look at how we can customize how the Shell resources or deployed
 apps are viewed and behave in CloudShell. In the following sections we'll also look into how to add commands by writing a driver, but
 its important to note that even this initial step is enough in order to install and use a new Shell in CloudShell.

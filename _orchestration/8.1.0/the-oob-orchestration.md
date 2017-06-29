@@ -14,7 +14,7 @@ The following diagram describes the OOB setup and teardown flow:
 
 ![Setup Workflow]({{ site.baseurl}}/assets/orchestration_workflow.png){: .center-image }
 
-These OOB setup and teardown scripts can be found in the Scripts – Blueprint management page. You can review their source code in the [cloudshell-orch-sandbox repository](https://github.com/QualiSystems/cloudshell-orch-sandbox/tree/master/sandbox_scripts).
+These OOB setup and teardown scripts can be found in the Scripts – Blueprint management page. You can review their source code in the [cloudshell-orch-sandbox repository](https://github.com/QualiSystems/cloudshell-orch-sandbox/tree/v8.1/SandboxOrchestration/environment_scripts).
 
 As of CloudShell 8.1, the default setup and teardown logic moved to a python package called cloudshell-orch-core for ease of use. The default blueprint template includes a reference to the cloudshell-orch-core package using the requirments.txt mechanism, which is supported for orchestration scripts. Here is the implementation of the OOTB setup script:
 
