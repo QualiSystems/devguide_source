@@ -54,8 +54,7 @@ cd model_example
 
 To complete the basic setup, create a resource for that Shell in the Inventory page of the CloudShell and reserve
 it. If you'd like to review again the steps of how to do that,
-please refer to the [Getting Started]({{site.baseurl}}/shells
-/{{pageVersion}}/getting-started.html) guide.
+please refer to the [Getting Started]({{site.baseurl}}/shells/{{pageVersion}}/getting-started.html) guide.
 
 ### The Shell Datamodel
 
