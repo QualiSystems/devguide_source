@@ -17,27 +17,36 @@ google_analytics_id: 'UA-81468206-1'
 #   2 - show only if posts are present
 navigation: 1
 
+versions: 
+    - 8.0.0
+    - 8.1.0
+    - 7.1.0
+
+latest_version: 8.1.0
+home_page: the-cloudshell-devguide.html
+home_collection: introduction  
+
 collections:
     introduction:
         output: true
         title: "Introduction"
         display-order: 0
-
+        
     shells:
         output: true
         title: "Extending CloudShell with Shells"
         display-order: 1
-
+        
     orchestration:
         output: true
         title: "Orchestration scripts"
         display-order: 2
-
+        
     devops:
         output: true
         title: "Integrating CloudShell into the DevOps Cycle"
         display-order: 3
-
+        
     reference:
         output: true
         title: "Reference"
@@ -63,8 +72,8 @@ future: true
 gems:
   - jekyll-sitemap
   - jekyll_github_sample
-  - jekyll-lunr-js-search
   - jekyll-seo-tag
+  
 # Exclude non-site files
 exclude: [vendor,'bin', 'README.md']
 

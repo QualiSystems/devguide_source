@@ -1,0 +1,14 @@
+<div class="form-group" onchange="versionChange(this)">
+	<select class="form-control" id="version">
+   {% assign pageUrlSplited = page.url | split: "/" %}
+   {% assign pageVersion = pageUrlSplited[2] %}	
+	{% assign versions = site.versions | sort | reverse %}	
+	{% for version in versions %}
+	{% if version == pageVersion %}
+	  <option value="{{ version }}" selected>{{ version }}</option>
+	{% else %}	  
+	  <option value="{{ version }}">{{ version }}</option>
+	{% endif %}
+	{% endfor %}
+	</select>
+</div>

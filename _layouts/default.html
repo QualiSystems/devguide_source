@@ -21,7 +21,7 @@
         <script src="{{ site.baseurl }}/js/jquery-3.1.0.min.js"></script>
         <script src="{{ site.baseurl }}/js/modernizr.js"></script>
         <script src="{{ site.baseurl }}/js/webflow.js"></script>
-
+        <script src="{{ site.baseurl }}/js/version-redirect.js"></script>
 
         {% if jekyll.environment == 'production' %}
         {% include google_analytics.html %}
@@ -35,10 +35,17 @@
             </div>
         </div>
         <div class="container">
-            <div class="row">
+            <div class="row"> 
+            	
+                <!-- <div class="col-md-3"><span> Sveta </span></div> -->
+                               
                 {% assign post_count = site.posts|size %}
                 {% if site.navigation != 0 and site.navigation == 1 or post_count > 0 %}
                     <div id="navigation" class="col-md-3 col-sm-4">
+                        <span><strong>CloudShell Version: </strong></span>
+                        <div id="versions">
+                            {% include versions.html %}
+                        </div>
                         {% include navigation.html %}
                     </div>
 
