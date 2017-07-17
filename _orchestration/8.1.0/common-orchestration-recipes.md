@@ -9,7 +9,7 @@ version:
 ---
 
 In this section, we’ll provide a few handy examples of common script operations. The intention is to grow this into a good source to copy paste common code from. All of the examples are available in the
-[DevGuide Examples](https://github.com/QualiSystems/devguide_examples) repository under the script_driver_recipes folder.
+[DevGuide Examples](https://github.com/QualiSystems/devguide_examples) repository under the orchestration_scripts_examples folder.
 
 #### Executing commands on sandbox resources
 
@@ -20,7 +20,7 @@ The following script attempts to execute a command only on resources that suppor
 {% github_sample /QualiSystems/devguide_examples/blob/master/orchestration_scripts_examples/try_execute_commands/try_execute_commands.py 8 28 %}
 {% endhighlight %}
 
-#### Cnfiguring Apps in a Sandbox
+#### Configuring Apps in a Sandbox
 
 App configuration in a sandbox, initiated either by setup orchestration or a dedicated orchestration script, can be performed in parallel or ordered by custom logic using the app_configuration methods. 
 In the following example, we will configure all the ‘web servers’ Apps after configuring the ‘application server’ App; Also, to enable connection between the deployed Apps,we will pass the application server’s address to the web servers configuration:
@@ -48,6 +48,8 @@ for server in web_servers:
 sandbox.apps_configuration.apply_apps_configurations(web_servers)
 
 {% endhighlight %}
+
+Make sure to add a requirments.txt file that will include the cloudshell-orch-core package to use this example.
 
 Note the code in the components helper’s method to get the correct Apps from the sandbox and the usage in the App object rather than the name of the App for other methods like _apps_configuration.set_config_param_.
 

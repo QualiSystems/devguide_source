@@ -12,16 +12,16 @@ In this section we’ll take a more in-depth view at scripts and learn how they 
 
 #### How CloudShell handles scripts
 
-CloudShell executes a Python script by creating a temporary virtual environment for the script’s execution, downloading all required packages from the script’s requirement.txt file and executing the script using the Execution Server python engine. 
+CloudShell executes a Python script by creating a temporary virtual environment for the script’s execution, downloading all required packages from the script’s requirements.txt file and executing the script using the Execution Server python engine. 
 
 To send information to the script, CloudShell sets environment variables in the scope of the script process. These environment variables include information about the sandbox reservation, as well as the script’s parameters. The script standard output is returned as the command result. If an exception is raised, or if a non-zero process result code is returned, the execution will be considered a failure.
 
 
-#### Using requirement.txt with CloudShell orchestration scripts
+#### Using requirements.txt with CloudShell orchestration scripts
 
-It’s now possible to attach a requirement.exe file to make sure your script will have all dependencies installed on the virtual environment before the script’s execution starts. 
+It’s now possible to attach a requirements.txt file to make sure your script will have all dependencies installed on the virtual environment before the script’s execution starts. 
 
-*To use the requirement.exe:*
+*To use the requirements.txt:*
 * Archive this file with the orchestration script in one ZIP file. It will then be possible to upload this ZIP file to CloudShell using the CloudShell Portal.
 
 #### Using a main function and packaging multiple files
@@ -30,7 +30,7 @@ As scripts become more complex, instead of structuring them as one big function,
 
 {% highlight python %}
 
-from cloudshell.workflow.orchestration.Sandbox import Sandbox
+from cloudshell.workflow.orchestration.sandbox import Sandbox
 import os
 
 def print_keys():
@@ -56,7 +56,7 @@ if __name__ == "__main__":
 
 {% endhighlight %}
 
-Depending on the complexity of the script, it may be wise to also separate the code into multiple files. To do that, we can take advantage of Python’s ability to support executing .zip archives containing multiple scripts. The only requirement is that one of the files is named ___main__.py, which is how the entry point of the Python process is determined.
+Depending on the complexity of the script, it may be wise to also separate the code into multiple files. To do that, we can take advantage of Python’s ability to support executing .zip archives containing multiple scripts. The only requirement is that one of the files is named ____main____.py, which is how the entry point of the Python process is determined.
 
 #### Setup and teardown scripts
 
@@ -78,7 +78,7 @@ The logger lists all the data that is needed for debugging the script, including
 
 
 {% highlight python %}
-from cloudshell.workflow.orchestration.Sandbox import Sandbox
+from cloudshell.workflow.orchestration.sandbox import Sandbox
 
 Sandbox = Sandbox()
 

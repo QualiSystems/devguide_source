@@ -20,7 +20,7 @@ As of CloudShell 8.1, the default setup and teardown logic moved to a python pac
 
 
 {% highlight python %}
-from cloudshell.workflow.orchestration.Sandbox import Sandbox
+from cloudshell.workflow.orchestration.sandbox import Sandbox
 from cloudshell.workflow.orchestration.setup.default_setup_orchestrator import DefaultSetupWorkflow
 
 sandbox = Sandbox()
@@ -44,23 +44,23 @@ The OOB setup and teardown scripts can easily be customized or extended. Click [
 
 ### Extending the OOB Orchestration Scripts
 
-You can extend the OOB setup and teardown scripts by adding additional steps, or controlling the order of execution. For example, calling additional commands to validate Apps or resource states, launching additional orchestration, or controlling the order in which the sandbox is provisioned.
+You can extend the OOB setup and teardown scripts by adding additional steps, or controlling the order of execution. For example, calling additional commands to validate Apps or resource states, launching additional orchestration, or controlling the order in which the sandbox is provisioned. 
 
 1. Create a copy of the appropriate script, (see below for extension options), and upload the updated version separately into CloudShell Portal as a Setup or Teardown script. DO NOT remove any step in the setup workflow. However, you can add your own steps or change the order of execution.
 
 2. Make sure not to name your extended script ‘setup’ but give it a more specific name. The name ‘setup’ is a reserved name, which may cause unexpected behavior when used on a setup script.
 
-Extending the setup script can be done by implementing the required logic in one of the setup stages: provisioning, connectivity and configuration or as a post stage for validation. For example, adding some logic to the configuration stage can be made in the following way:
+Extending the setup script can be done by implementing the required logic in one of the setup stages: provisioning, connectivity and configuration or as a post stage for validation. Make sure to add a requirments.txt file that will include the cloudshell-orch-core package. For example, adding some logic to the configuration stage can be made in the following way:
 
 {% highlight python %}
-from cloudshell.workflow.orchestration.Sandbox import Sandbox
+from cloudshell.workflow.orchestration.sandbox import Sandbox
 from cloudshell.workflow.orchestration.setup.default_setup_orchestrator import DefaultSetupWorkflow
 
 Sandbox = Sandbox()
 
 DefaultSetupWorkflow().register(Sandbox)
 
-Sandbox.workflow.add_to_configuration(my_custom_login, components)
+sandbox.workflow.add_to_configuration(my_custom_login, components)
 {% endhighlight %}
 
 The workflow helper supports the following extension methods:
@@ -74,7 +74,7 @@ The workflow helper supports the following extension methods:
 Each of the following methods gets a custom function and list of components to use in the function. For example, executing some custom logic to validate resource configuration:
 
 {% highlight python %}
-from cloudshell.workflow.orchestration.Sandbox import Sandbox
+from cloudshell.workflow.orchestration.sandbox import Sandbox
 from cloudshell.workflow.orchestration.setup.default_setup_orchestrator import DefaultSetupWorkflow
 
 def custom_function(sandbox, components):
@@ -93,7 +93,7 @@ Note that all methods of the OOB setup logic in the same stage are executed in p
 The custom function should get arrays of the sandbox and its components as inputs. It’s recommended to use this function template as a starting point:
 
 {% highlight python %}
-from cloudshell.workflow.orchestration.Sandbox import Sandbox
+from cloudshell.workflow.orchestration.sandbox import Sandbox
 
 def custom_func(sandbox, components):
     """
@@ -107,7 +107,7 @@ def custom_func(sandbox, components):
 Here is an implementation example of custom configuration logic for a 3 tier application where each type of App is configured consecutively while passing some global inputs and configuration parameters between the Apps:
 
 {% highlight python %}
-from cloudshell.workflow.orchestration.Sandbox import Sandbox
+from cloudshell.workflow.orchestration.sandbox import Sandbox
 from cloudshell.workflow.orchestration.setup.default_setup_orchestrator import DefaultSetupWorkflow
 
 
@@ -199,4 +199,35 @@ def configure_apps(sandbox, components):
                                                            message='Finished to configure Web Servers')
 
 main()
+{% endhighlight %}
+
+
+Here is another implementation that shows a scenario where some physical devices need to be loaded while few applications are deployed:
+
+{% highlight python %}
+from cloudshell.workflow.orchestration.sandbox import Sandbox
+from cloudshell.workflow.orchestration.setup.default_setup_orchestrator import DefaultSetupWorkflow
+
+
+def load_firmware_sequential(sandbox, components):
+    """
+    :param Sandbox sandbox:
+    :param components:
+    :return:
+    """
+    for component in components:
+        sandbox.automation_api.ExecuteCommand(reservationId=sandbox.id,
+                                              targetName=component.Name,
+                                              targetType='Resource',
+                                              commandName='load_configuration')
+
+
+sandbox = Sandbox()
+DefaultSetupWorkflow().register(sandbox)
+
+chassis = sandbox.components.get_resources_by_model('Generic Chassis Model')
+sandbox.workflow.add_to_provisioning(function=load_firmware_sequential,
+                                     components=chassis)
+
+sandbox.execute_setup()
 {% endhighlight %}
