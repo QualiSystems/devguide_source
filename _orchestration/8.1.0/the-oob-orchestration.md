@@ -202,7 +202,7 @@ main()
 {% endhighlight %}
 
 
-Here is another implementation that shows loading of configuration for physical devices during the some application deployment:
+Here is another implementation that shows a scenario where some physical devices need to be loaded while few applications are deployed:
 
 {% highlight python %}
 from cloudshell.workflow.orchestration.sandbox import Sandbox
