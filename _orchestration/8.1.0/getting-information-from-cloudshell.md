@@ -10,6 +10,10 @@ tags:
     - api
 ---
 
+
+{% assign pageUrlSplited = page.url | split: "/" %}
+{% assign pageVersion = pageUrlSplited[2] %}
+
 Information about the sandbox on which your script is running and its components is available in your script as an environment variable. The standard way to get the information is using the **Sandbox** object.
 
 **To use the *Sandbox* object:** 
@@ -18,10 +22,12 @@ Information about the sandbox on which your script is running and its components
 In this example, the following code gets an object that contains all of the sandbox’s information:
 
 {% highlight python %}
-from cloudshell.workflow.orchestration.Sandbox import Sandbox
+from cloudshell.workflow.orchestration.sandbox import Sandbox
 Sandbox = Sandbox()
 reservation_context_details = Sandbox.reservationContextDetails
 {% endhighlight %}
+
+Note that to execute this code, you will need to include a requirments.txt file in your script, see [Orchestration: Scripts Deep Dive]({{site.baseurl}}/orchestration/{{pageVersion}}/scripts-deep-dive.html) for more details.
 
 To facilitate writing and debugging activities, it is recommended to use advanced IDEs such as PyCharm, which provide autocomplete functionality, as illustrated below. 
 
@@ -34,7 +40,7 @@ Use the **Sandbox** class to access and use the components of a sandbox in your 
 For example, let’s assume we want to get the names of the resources and Apps in a sandbox. To do so, we will use **Sandbox.component**.  The following code will iterate over the resources and Apps in the sandbox and print out their names:
 
 {% highlight python %}
-from cloudshell.workflow.orchestration.Sandbox import Sandbox
+from cloudshell.workflow.orchestration.sandbox import Sandbox
 Sandbox = Sandbox()
 
 for resource_name, resource in Sandbox.components.resources.iteritems():
@@ -101,12 +107,12 @@ import os
 os.environ['Param1']
 {% endhighlight %}
 
-You can also use the scripting helper class:
+You can also use the Sandbox class:
 
 {% highlight python %}
-from cloudshell.workflow.orchestration.Sandbox import Sandbox
+from cloudshell.workflow.orchestration.sandbox import Sandbox
 Sandbox = Sandbox()
-Sandbox.get_user_param('Param1')
+sandbox.get_user_param('Param1')
 
 {% endhighlight %}
 
@@ -121,7 +127,7 @@ A common use case for a script is to get a list of the different Apps and resour
 2. Create a CloudShell API session object. Aince initializing a CloudShell API session object is a very common operation, you can use the **Sandbox** class to directly create an object. The **Sandbox** class will handle the passing of all of the required connectivity information for you. The **Sandbox** class provides a shortcut which makes accessing the CloudShell API from your script much easier. Simply use the following code:
 
 {% highlight python %}
-from cloudshell.workflow.orchestration.Sandbox import Sandbox
+from cloudshell.workflow.orchestration.sandbox import Sandbox
 session = Sandbox.automation_api
 {% endhighlight %}
 

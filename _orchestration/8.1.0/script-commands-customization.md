@@ -18,7 +18,7 @@ To demonstrate these capabilities, we’ll create a simple script, which we’ll
 
 {% highlight python %}
 
-from workflow.orchestration.Sandbox import Sandbox
+from cloudshell.workflow.orchestration.sandbox import Sandbox
 import cloudshell.helpers.scripts.cloudshell_dev_helpers as dev_helpers
 
 def print_parameters_values(Sandbox):
