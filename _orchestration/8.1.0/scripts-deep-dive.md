@@ -42,7 +42,7 @@ def print_app_names(sandbox):
     :param Sandbox sandbox:
     :return:
     """
-    reservation_details = sandbox.automation_api.GetReservationDetails().ReservationDescription
+    reservation_details = sandbox.automation_api.GetReservationDetails(sandbox.id).ReservationDescription
     for app in reservation_details.Apps:
         print app.Name
 
