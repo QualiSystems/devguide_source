@@ -27,7 +27,7 @@ Sandbox = Sandbox()
 reservation_context_details = Sandbox.reservationContextDetails
 {% endhighlight %}
 
-Note that to execute this code, you will need to include a requirments.txt file in your script, see [Orchestration: Scripts Deep Dive]({{site.baseurl}}/orchestration/{{pageVersion}}/scripts-deep-dive.html) for more details.
+Note that to execute this code, you will need to include a requirements.txt file in your script, see [Orchestration: Scripts Deep Dive]({{site.baseurl}}/orchestration/{{pageVersion}}/scripts-deep-dive.html) for more details.
 
 To facilitate writing and debugging activities, it is recommended to use advanced IDEs such as PyCharm, which provide autocomplete functionality, as illustrated below. 
 
