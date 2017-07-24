@@ -42,15 +42,15 @@ DefaultSetupWorkflow().register(Sandbox, enable_connectivity=False)
 The OOB setup and teardown scripts can easily be customized or extended. Click [here](https://github.com/QualiSystems/cloudshell-orch-sandbox/blob/develop/Samples/Setup/ordered_configuration_example.py) for an example on how to customize the app configuration order in the setup stage, or see [other samples](https://github.com/QualiSystems/cloudshell-orch-sandbox/tree/develop/Samples) to learn how to extend the OOB orchestration scripts.
 
 
-### Extending the OOB Orchestration Scripts
+### Extending the OOB Setup Orchestration Scripts
 
-You can extend the OOB setup and teardown scripts by adding additional steps, or controlling the order of execution. For example, calling additional commands to validate Apps or resource states, launching additional orchestration, or controlling the order in which the sandbox is provisioned. 
+You can extend the OOB setup and teardown scripts by adding additional steps, or controlling the order of execution. In this section we will focus in the setup, for examples about how to extend the teardown, see "Extending the OOB Teardown Orchestration Scripts". An example of extending the out-of-the-box setup can be calling additional commands to validate Apps or resource states, launching additional orchestration, or controlling the order in which the sandbox is provisioned. 
 
-1. Create a copy of the appropriate script, (see below for extension options), and upload the updated version separately into CloudShell Portal as a Setup or Teardown script. DO NOT remove any step in the setup workflow. However, you can add your own steps or change the order of execution.
+1. Create a copy of the appropriate script, (see below for extension options), and upload the updated version separately into CloudShell Portal as a Setup script. DO NOT remove any step in the setup workflow. However, you can add your own steps or change the order of execution.
 
 2. Make sure not to name your extended script ‘setup’ but give it a more specific name. The name ‘setup’ is a reserved name, which may cause unexpected behavior when used on a setup script.
 
-Extending the setup script can be done by implementing the required logic in one of the setup stages: provisioning, connectivity and configuration or as a post stage for validation. Make sure to add a requirments.txt file that will include the cloudshell-orch-core package. For example, adding some logic to the configuration stage can be made in the following way:
+Extending the setup script can be done by implementing the required logic in one of the setup stages: preparation, provisioning, connectivity and configuration or as a post stage for validation. Make sure to add a requirements.txt file that will include the cloudshell-orch-core package. For example, adding some logic to the configuration stage can be made in the following way:
 
 {% highlight python %}
 from cloudshell.workflow.orchestration.sandbox import Sandbox
@@ -63,7 +63,9 @@ DefaultSetupWorkflow().register(Sandbox)
 sandbox.workflow.add_to_configuration(my_custom_login, components)
 {% endhighlight %}
 
-The workflow helper supports the following extension methods:
+The workflow helper supports the following extension methods for setup orchestration:
+* add_to_preparation
+* on_preparation_ended
 * add_to_provisioning
 * on_provisioning_ended
 * add_to_connectivity
@@ -231,3 +233,45 @@ sandbox.workflow.add_to_provisioning(function=load_firmware_sequential,
 
 sandbox.execute_setup()
 {% endhighlight %}
+
+
+### Extending the OOB Teardown Orchestration Scripts
+
+Extending the OOB teardown can be made for executing custom steps prior to the out-of-the-box teardown orchestration, or for executing custom steps in parallel to the OOTB teardown. Extending the teardown can be made using the folowing extension methods exist under the workflow property in the **Sandbox** class:
+* add_to_teardown
+* before_teardown_started
+
+Each of the above methods gets a custom function and list of components to use in the function. All steps configured using the before_teardown_started method will be executed in a sequential manner, and all steps configured using the add_to_teardown method will be executed in parallel.
+
+Here is an example of how to execute a command on a resource prior to the default teardown orchestration, note that a requirements.txt file containing cloudshell-orch-core should be attache to the script:
+
+{% highlight python %}
+from cloudshell.workflow.orchestration.sandbox import Sandbox
+from cloudshell.workflow.orchestration.teardown.default_teardown_orchestrator import DefaultTeardownWorkflow
+
+
+def execute_resource_cleanup(sandbox, components):
+    """
+    :param Sandbox sandbox:
+    :param components:
+    :return:
+    """
+    for component in components:
+        sandbox.automation_api.ExecuteCommand(reservationId=sandbox.id,
+                                              targetName=component.Name,
+                                              targetType='Resource',
+                                              commandName='cleanup')
+sandbox = Sandbox()
+
+DefaultTeardownWorkflow().register(sandbox)
+
+chassis = sandbox.components.get_resources_by_model("Generic Chassis Model")
+sandbox.workflow.before_teardown_started(execute_resource_cleanup, chassis)
+
+sandbox.execute_teardown()
+{% endhighlight %}
+
+Make sure to follow these steps while implementing a custom teardown orchestration:
+1. Create a copy of the appropriate script, (see below for extension options), and upload the updated version separately into CloudShell Portal as a Teardown script. DO NOT remove steps from the teardown workflow. However, you can add your own steps or change the order of execution.
+
+2. Make sure not to name your extended script ‘teardown’ but give it a more specific name. The name ‘teardown’ is a reserved name, which may cause unexpected behavior when used on a setup script.

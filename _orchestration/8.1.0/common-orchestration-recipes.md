@@ -27,7 +27,7 @@ In the following example, we will configure all the ‘web servers’ Apps after
 
 {% highlight python %}
 
-from cloudshell.workflow.orchestration.Sandbox import Sandbox
+from cloudshell.workflow.orchestration.sandbox import Sandbox
 
 sandbox = Sandbox()
 
@@ -49,7 +49,7 @@ sandbox.apps_configuration.apply_apps_configurations(web_servers)
 
 {% endhighlight %}
 
-Make sure to add a requirments.txt file that will include the cloudshell-orch-core package to use this example.
+Make sure to add a requirements.txt file that will include the cloudshell-orch-core package to use this example.
 
 Note the code in the components helper’s method to get the correct Apps from the sandbox and the usage in the App object rather than the name of the App for other methods like _apps_configuration.set_config_param_.
 
