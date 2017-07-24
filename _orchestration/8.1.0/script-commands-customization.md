@@ -47,7 +47,7 @@ if __name__ == "__main__":
 
 {%  endhighlight %}
 
-Note that you can get the Sandbox id by using **sandbox.id**
+Note that you can get the Sandbox id by using **sandbox.id**. The Snadbox name is also available using the **sandbox.name** property.
 
 2. In CloudShell Portal, open the **Manage** dashboard.
 
