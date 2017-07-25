@@ -31,7 +31,7 @@ sandbox.execute_setup()
 {% endhighlight %}
 
 As you can see, to use the default orchestration logic, we instantiated the *DefaultSetupWorkflow* class and registered the sandbox to use the default behavior.
-Starting in CloudShell 8.1, sandbox setup is divided into 3 stages: provisioning, connectivity and configuration. It’s possible to disable the default implementation of each stage by setting enable_stageName=False, as illustrated in this example:
+Starting in CloudShell 8.1, sandbox setup is divided into 4 stages: preparation, provisioning, connectivity and configuration. It’s possible to disable the default implementation of each stage by setting enable_stageName=False, as illustrated in this example:
 
 {% highlight python %}
 DefaultSetupWorkflow().register(Sandbox, enable_connectivity=False)
