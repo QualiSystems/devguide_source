@@ -12,7 +12,7 @@ version:
 {% assign pageVersion = pageUrlSplited[2] %}
 
 
-shellfoundry is a command-line utility that allows you to easily create, package and install Shells in CloudShell.  It allows creating basic Shells or Shells based on a common 1st or 2nd generation Shell template. 
+Shellfoundry is a command-line utility that allows you to easily create, package and install Shells in CloudShell.  It allows creating basic Shells or Shells based on a common 1st or 2nd generation Shell template. 
 
 **Note:** Shellfoundry must be installed on an online computer as creating shells from a template requires downloading the templates from the internet.
 
@@ -20,7 +20,7 @@ shellfoundry is a command-line utility that allows you to easily create, package
 ### Version History
 **1.0.3 (2017-06-28)**
 * List command aborts if there is a new major version on pypi
-* Old shellfoundry versions are NOT supported anymore. Please use pip install shellfoundry -U in order to upgrade to the newest version
+* Old Shellfoundry versions are NOT supported anymore. Please use 1pip install shellfoundry -U1 in order to upgrade to the newest version
 
 **1.0.2 (2017-06-27)**
 * New command aborts if there is a new major version on pypi
@@ -31,10 +31,10 @@ shellfoundry is a command-line utility that allows you to easily create, package
 **1.0.0 (2017-06-19)**
 * List command will now show templates that are installable on your cloudshell
 * New command will now create the latest version of the template that match the standards installed on your cloudshell
-* When invoking new or list commands, there will be a notification in the case of a new shellfoundry version
+* When invoking new or list commands, there will be a notification in the case of a new Shellfoundry version
 
 **0.2.7 (2017-05-16)**
-* Shellfoundry will now pack categories.xml if exists
+* Shellfoundry will now pack *categories.xml* if exists
 
 **0.2.6 (2017-03-14)**
 * Fixed some minor bugs
@@ -49,51 +49,51 @@ shellfoundry is a command-line utility that allows you to easily create, package
 * gen2 is now the default view for list command
 
 **0.1.3 (2016-12-27)**
-* shellfoundry config will now echo all default configuration if not override by user
+* `shellfoundry config` will now echo all default configuration if not override by user
 
 **0.1.2 (2016-12-26)**
 * Config command will now encrypt password field
 
 **0.1.0 (2016-12-14)**
 * Show command was added to view all available versions of a template
-* A new option was added to the 'new' command. Please welcome --version. It enables template versioning on shellfoundry.
+* A new option was added to the 'new' command. Please welcome --version. It enables template versioning on Shellfoundry.
 
 **0.0.44 (2016-12-12)**
-* Fixed a bug in config command which caused shellfoundry to crash when config file has not existed
+* Fixed a bug in config command which caused Shellfoundry to crash when config file has not existed
 
 **0.0.43 (2016-12-11)**
-* List command is now able to filter results based on shell type (--tosca, --legacy, --all)
+* List command is now able to filter results based on shell type (`--tosca`, `--legacy`, `--all`)
 
 **0.0.41 (2016-12-08)**
 * Config command was added to allow setting configuration once for all shells in addition to local configuration
 
 **0.0.39 (2016-10-09)**
-* Pack Shell icon if specified in shell-definition.yml file under metadatatemplate_icon for TOSCA based shells
+* Pack Shell icon if specified in the *shell-definition.yml* file under `metadatatemplate_icon` for TOSCA based shells
 
 **0.0.38 (2016-09-28)**
-* Update reference to cloudshell-rest-api 7.2.0.7 to use PUT method in update shell
+* Update reference to *cloudshell-rest-api 7.2.0.7* to use PUT method in update shell
 
 **0.0.35 (2016-09-15)**
 * TOSCA support was added to pack and install commands
-* Generate command was added that generates driver data model in Python
+* Generate command was added to generate the Shell driver data model in Python
 
 **0.0.32 (2016-08-10)**
-* Pack command downloads dependencies into dist directory
+* `pack` command downloads dependencies into *dist* directory
 * Dependency for git was removed
 * Local shell templates are supported
 * Proxy support was added for access to github
 
 **0.0.31 (2016-08-04)**
-* git prerequisite was removed. shellfoundry works without git being preinstalled
+* git prerequisite was removed. Shellfoundry works without git being preinstalled
 
 **0.0.28 (2016-07-07)**
 * Installation of package into CloudShell was fixed
 
 **0.0.26 (2016-06-23)**
-* Images copied to the DataModel folder (Issue #21)
+* Images copied to the *DataModel* folder (Issue #21)
 
 **0.0.17 (2016-05-25)**
-* Proper error message when install command fails in logging in into CloudShell
+* Proper error message when `install` command fails in logging in into CloudShell
 
 **0.0.1 (2016-05-02)**
 * First release on PyPI.
@@ -101,7 +101,7 @@ shellfoundry is a command-line utility that allows you to easily create, package
 ### Usage
 
 #### Installation
-This command installs shellFoundry on your computer. For more information, see [Getting Started]({{site.baseurl}}/shells/{{pageVersion}}/getting-started.html).
+This command installs Shellfoundry on your computer. For more information, see [Getting Started]({{site.baseurl}}/shells/{{pageVersion}}/getting-started.html).
 **Syntax:**
 {% highlight bash %} pip install shellfoundry{% endhighlight %}
 
@@ -119,15 +119,17 @@ Run this command from the Shell’s root folder.
 {% highlight bash %}shellfoundry config <key name> <key value>{% endhighlight %}
 **Example:**
 {% highlight bash %}shellfoundry config username admin{% endhighlight %}
-Key	Value
-username	CloudShell username. For example: “admin”
-domain	CloudShell domain. 
-Note that for 2nd Generation Shells, the domain must be “Global”.
-defaultview	Set the default view. 
-“gen2”/”all””layer1”. Default is “gen2”.
-password	CloudShell password (encrypted).
-host	The hostname or IP address of the CloudShell Portal machine. 
-port	The port to be used for Quali API. Default is “9000”.
+|  Key               |  Value 
+|  ----------------  |  -----------------------------------------------------------------  |            
+|  username          | :CloudShell username. For example: “admin”:                         |
+|  domain            | :CloudShell domain. 
+                        Note that for 2nd Generation Shells, the domain must be “Global”.: |
+|  defaultview       | :Set the default view. 
+                        “gen2”/”all””layer1”. Default is “gen2”.                         : |
+|  password          | :CloudShell password (encrypted).                                 : |
+|  host              | :The hostname or IP address of the CloudShell Portal machine.     : |
+|  port              | :The port to be used for Quali API. Default is “9000”.            : |
+
 
 #### Creating a Shell
 This command creates a Shell that is based on the **gen2/resource** template. Use this if you want to create a Shell to customize or experiment on. For more information, see [The Shell Project Guide]({{site.baseurl}}/shells/{{pageVersion}}/the-shell-project.html).
@@ -150,7 +152,7 @@ Run this command in the Shell’s root folder.
 #### Listing available Shell templates
 This command lists the 1st and 2nd generation Shell templates you can use for your new Shell. For more information, see [Modeling Shells with TOSCA]({{site.baseurl}}/shells/{{pageVersion}}/modeling-the-shell.html).
 **Syntax:**
-Shellfoundry list
+{% highlight bash %}shellfoundry list{% endhighlight %}
 To view templates of a specific type, add the appropriate flag to the command: `--gen1`, `--gen2`, `--layer1`, `--all` (lists all available templates).
 
 #### Listing versions of a Shell template
@@ -164,7 +166,7 @@ This command packs the shell's source code, data model and configuration into a 
 Run this command from the Shell’s root folder.
 {% highlight bash %}shellfoundry pack{% endhighlight %}
 A ZIP package is created in the Shell’s *dist* directory with the name "nutshell.zip".
-**Note:** The `pack` command requires the presence of a *shell.yml* file, which is created by default in Shells created using shellfoundry. However, if your shell was created elsewhere, make sure to add a *shell.yml* file with the following structure:
+**Note:** The `pack` command requires the presence of a *shell.yml* file, which is created by default in Shells created using Shellfoundry. However, if your shell was created elsewhere, make sure to add a *shell.yml* file with the following structure:
 `###shell.yml
  shell:
     name: nutshell`
