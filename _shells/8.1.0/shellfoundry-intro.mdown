@@ -103,7 +103,9 @@ Shellfoundry is a command-line utility that allows you to easily create, package
 #### Installation
 This command installs Shellfoundry on your computer. For more information, see [Getting Started]({{site.baseurl}}/shells/{{pageVersion}}/getting-started.html).
 **Syntax:**
-{% highlight bash %} pip install shellfoundry{% endhighlight %}
+{% highlight bash %}
+pip install shellfoundry
+{% endhighlight %}
 
 
 #### Upgrade
