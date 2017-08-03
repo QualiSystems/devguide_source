@@ -144,7 +144,7 @@ Run this command from the Shell’s root folder.
 {% highlight bash %}shellfoundry config username admin{% endhighlight %}
 
 |  Key               |  Value 
-|  ----------------  | :-----------------------------------------------------------------: |            
+|  ----------------  | ----------------------------------------------------------------- |            
 |  username          |  CloudShell username. For example: “admin”:                         |
 |  domain            |  CloudShell domain. Note that for 2nd Generation Shells, the domain must be “Global”.  |
 |  defaultview       |  Set the default view. Possible values are: `gen`/`gen2`/`all`/`layer1`. Default is “gen2”.                           |
