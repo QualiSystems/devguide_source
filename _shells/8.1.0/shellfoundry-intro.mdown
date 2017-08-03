@@ -17,6 +17,11 @@ Shellfoundry is a command-line utility that allows you to easily create, package
 **Note:** Shellfoundry must be installed on an online computer as creating shells from a template requires downloading the templates from the internet.
 
 
+In his article:
+[Version History]
+[Usage]
+
+
 ### Version History
 **1.0.3 (2017-06-28)**
 * List command aborts if there is a new major version on pypi
@@ -98,29 +103,45 @@ Shellfoundry is a command-line utility that allows you to easily create, package
 **0.0.1 (2016-05-02)**
 * First release on PyPI.
 
+
 ### Usage
+
 
 #### Installation
 This command installs Shellfoundry on your computer. For more information, see [Getting Started]({{site.baseurl}}/shells/{{pageVersion}}/getting-started.html).
+
 **Syntax:**
+
 {% highlight bash %}
 pip install shellfoundry
 {% endhighlight %}
 
 
 #### Upgrade
+
 If you already have shellfoundry installed on your computer, run this command to upgrade it to the latest version. For more information, see [Getting Started]({{site.baseurl}}/shells/{{pageVersion}}/getting-started.html).
+
 **Note:** To prevent backwards compatibility issues, old versions of shellFoundry are disabled with every new shellfoundry release.
+
 **Syntax:**
+
 {% highlight bash %}python -m pip install shellfoundry –upgrade{% endhighlight %}
 
+
 #### Configuring CloudShell settings
+
 (Required) This command sets the CloudShell Portal settings and user access credentials in Shellfoundry. For more information, see [Getting Started]({{site.baseurl}}/shells/{{pageVersion}}/getting-started.html). 
+
 **Syntax:**
+
 Run this command from the Shell’s root folder.
+
 {% highlight bash %}shellfoundry config <key name> <key value>{% endhighlight %}
+
 **Example:**
+
 {% highlight bash %}shellfoundry config username admin{% endhighlight %}
+
 |  Key               |  Value 
 |  ----------------  | :-----------------------------------------------------------------: |            
 |  username          |  CloudShell username. For example: “admin”:                         |
@@ -134,53 +155,93 @@ Run this command from the Shell’s root folder.
 
 
 #### Creating a Shell
+
 This command creates a Shell that is based on the **gen2/resource** template. Use this if you want to create a Shell to customize or experiment on. For more information, see [The Shell Project Guide]({{site.baseurl}}/shells/{{pageVersion}}/the-shell-project.html).
+
 **Syntax:**
+
 Run this command in the Shell’s root folder.
+
 {% highlight bash %}shellfoundry new <Shell-name>{% endhighlight %}
+
 **Example:**
+
 {% highlight bash %}shellfoundry new my-basic-shell{% endhighlight %}
 
+
 #### Creating a Shell from a template
+
 This command creates a Shell that features the template’s settings, attributes and driver. For more information, see [Modeling Shells with TOSCA]({{site.baseurl}}/shells/{{pageVersion}}/modeling-the-shell.html).
+
 **Syntax:**
+
 Run this command in the Shell’s root folder.
+
 {% highlight bash %}shellfoundry new <Shell-name> --template <template>{% endhighlight %}
+
 **Example:**
+
 {% highlight bash %}shellfoundry new my-switch-g2 --template=gen2/networking/switch{% endhighlight %}
 
 **Note:** This command creates a Shell that is based on the latest version of the specified template, which is supported by your CloudShell version. However, you can also create a Shell based on a different version of the template, by adding `--version <version_number>` to the command. 
 
+
 #### Listing available Shell templates
+
 This command lists the 1st and 2nd generation Shell templates you can use for your new Shell. For more information, see [Modeling Shells with TOSCA]({{site.baseurl}}/shells/{{pageVersion}}/modeling-the-shell.html).
+
 **Syntax:**
+
 {% highlight bash %}shellfoundry list{% endhighlight %}
+
 To view templates of a specific type, add the appropriate flag to the command: `--gen1`, `--gen2`, `--layer1`, `--all` (lists all available templates).
 
+
 #### Listing versions of a Shell template
+
 To display a list of the versions for a given template, run the following in command-line:
+
 {% highlight bash %}shellfoundry show <template_name>{% endhighlight %}
+
 The versions are displayed in descending order from latest to earliest.
 
+
 #### Packaging a Shell
+
 This command packs the shell's source code, data model and configuration into a ZIP package, which can be uploaded into CloudShell. For additional information, see [Deploying to Production]({{site.baseurl}}/shells/{{pageVersion}}/deploying-to-production.html).
+
 **Syntax:**
+
 Run this command from the Shell’s root folder.
+
 {% highlight bash %}shellfoundry pack{% endhighlight %}
+
 A ZIP package is created in the Shell’s *dist* directory with the name "nutshell.zip".
+
 **Note:** The `pack` command requires the presence of a *shell.yml* file, which is created by default in Shells created using Shellfoundry. However, if your shell was created elsewhere, make sure to add a *shell.yml* file with the following structure:
+
 `###shell.yml
  shell:
     name: nutshell`
 
+
 #### Packaging and importing a Shell into CloudShell
+
 This command creates a distributable zip file for the Shell and imports it into CloudShell using the CloudShell Portal and user defined by the `shellfoundry configure` command. For more information, see [Getting Started]({{site.baseurl}}/shells/{{pageVersion}}/getting-started.html).
+
 **Syntax:**
+
 Run this command from the Shell’s root folder.
+
 {% highlight bash %}shellfoundry install{% endhighlight %}
 
+
 #### Creating the Shell’s data model file
+
 The shell’s data model (*data_model.py* file) consists of the standard specifications and the extended data model, which is defined in the *shell-definition.yaml* file. When creating a new Shell, you will also need to import its data model. For additional information, see [Managing the Shell’s Data Model]({{site.baseurl}}/shells/{{pageVersion}}/generating-shell-data-model.html).
+
 **Syntax:**
+
 Run this command from the Shell’s root folder.
-{% highlight bash %}shellfoundry generate{% endhighlight %}
+
+{% highlight bash %shellfoundry generate{% endhighlight %}
