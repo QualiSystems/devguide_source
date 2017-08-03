@@ -18,6 +18,7 @@ Shellfoundry is a command-line utility that allows you to easily create, package
 
 
 In his article:
+
 [Version History](#version-history)
 
 [Usage](#usage)
