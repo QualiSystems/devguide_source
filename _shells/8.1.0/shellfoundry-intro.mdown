@@ -220,7 +220,9 @@ A ZIP package is created in the Shell’s *dist* directory with the name "nutshe
 **Note:** The `pack` command requires the presence of a *shell.yml* file, which is created by default in Shells created using Shellfoundry. However, if your shell was created elsewhere, make sure to add a *shell.yml* file with the following structure:
 
 `###shell.yml
+
  shell:
+ 
     name: nutshell`
 
 
