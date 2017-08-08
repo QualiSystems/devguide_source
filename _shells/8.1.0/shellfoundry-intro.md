@@ -245,4 +245,4 @@ The shell’s data model (*data_model.py* file) consists of the standard specifi
 
 Run this command from the Shell’s root folder.
 
-{% highlight bash %shellfoundry generate{% endhighlight %}
+{% highlight bash %} shellfoundry generate {% endhighlight %}
