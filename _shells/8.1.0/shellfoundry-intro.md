@@ -19,90 +19,8 @@ Shellfoundry is a command-line utility that allows you to easily create, package
 
 In his article:
 
-* [Version History](#version-history)
 * [Usage](#usage)
-
-
-### Version History<a name="version-history"></a>
-**1.0.3 (2017-06-28)**
-* List command aborts if there is a new major version on pypi
-* Old Shellfoundry versions are NOT supported anymore. Please use `1pip install shellfoundry -U1` in order to upgrade to the newest version
-
-**1.0.2 (2017-06-27)**
-* New command aborts if there is a new major version on pypi
-
-**1.0.1 (2017-06-26)**
-* New command now conforms to CloudShell naming rules
-
-**1.0.0 (2017-06-19)**
-* List command will now show templates that are installable on your cloudshell
-* New command will now create the latest version of the template that match the standards installed on your cloudshell
-* When invoking new or list commands, there will be a notification in the case of a new Shellfoundry version
-
-**0.2.7 (2017-05-16)**
-* Shellfoundry will now pack *categories.xml* if exists
-
-**0.2.6 (2017-03-14)**
-* Fixed some minor bugs
-
-**0.2.2 (2017-01-22)**
-* **gen2/resource** is the now the default template for new command instead of **gen1/resource**
-
-**0.2.0 (2017-01-17)**
-* List command filtering parameters have changed (legacy => **gen1**, tosca => **gen2**)
-* Added another filtering parameter `--layer1`
-* Minimum CloudShell version column appears on list command output table
-* gen2 is now the default view for list command
-
-**0.1.3 (2016-12-27)**
-* `shellfoundry config` will now echo all default configuration if not override by user
-
-**0.1.2 (2016-12-26)**
-* `shellfoundry config` command will now encrypt password field
-
-**0.1.0 (2016-12-14)**
-* `shellfoudnry show` command was added to view all available versions of a template
-* A new option was added to the `new` command called `--version`. It enables template versioning on Shellfoundry.
-
-**0.0.44 (2016-12-12)**
-* Fixed a bug in the `shellfoundry config` command which caused Shellfoundry to crash if a config file was missing
-
-**0.0.43 (2016-12-11)**
-* List command is now able to filter results based on shell type (`--tosca`, `--legacy`, `--all`)
-
-**0.0.41 (2016-12-08)**
-* Config command was added to allow setting configuration once for all shells in addition to local configuration
-
-**0.0.39 (2016-10-09)**
-* Pack Shell icon if specified in the *shell-definition.yml* file under `metadatatemplate_icon` for TOSCA based shells
-
-**0.0.38 (2016-09-28)**
-* Update reference to *cloudshell-rest-api 7.2.0.7* to use PUT method in update shell
-
-**0.0.35 (2016-09-15)**
-* TOSCA support was added to pack and install commands
-* Generate command was added to generate the Shell driver data model in Python
-
-**0.0.32 (2016-08-10)**
-* `pack` command downloads dependencies into *dist* directory
-* Dependency for git was removed
-* Local shell templates are supported
-* Proxy support was added for access to github
-
-**0.0.31 (2016-08-04)**
-* git prerequisite was removed. Shellfoundry works without git being preinstalled
-
-**0.0.28 (2016-07-07)**
-* Installation of package into CloudShell was fixed
-
-**0.0.26 (2016-06-23)**
-* Images copied to the *DataModel* folder (Issue #21)
-
-**0.0.17 (2016-05-25)**
-* Proper error message when `install` command fails in logging in into CloudShell
-
-**0.0.1 (2016-05-02)**
-* First release on PyPI.
+* [Version History](#version-history)
 
 
 ### Usage<a name="usage"></a>
@@ -131,7 +49,16 @@ If you already have shellfoundry installed on your computer, run this command to
 
 #### Configuring CloudShell settings
 
-(Required) This command sets the CloudShell Portal settings and user access credentials in Shellfoundry. For more information, see [Getting Started]({{site.baseurl}}/shells/{{pageVersion}}/getting-started.html). 
+(Required) This command sets the CloudShell Portal settings and user access credentials in Shellfoundry. For more information, see [Getting Started]({{site.baseurl}}/shells/{{pageVersion}}/getting-started.html).
+
+|  Key               |  Value 
+|  :----------------   | :----------------------------------------------------------------- |            
+|  username          |  CloudShell username. For example: “admin”.                        |
+|  domain            |  CloudShell domain. Note that for 2nd Generation Shells, the domain must be “Global”.  |
+|  defaultview       |  Set the default view. Possible values are: **gen**, **gen2**, **all** and **layer1**. Default is **gen2**.                           |
+|  password          |  CloudShell password (encrypted).                                   |
+|  host              |  The hostname or IP address of the CloudShell Portal machine.       |
+|  port              |  The port to be used for Quali API. Default is “9000”.              |
 
 **Syntax:**
 
@@ -142,15 +69,6 @@ Run this command from the Shell’s root folder.
 **Example:**
 
 {% highlight bash %}shellfoundry config username admin{% endhighlight %}
-
-|  Key               |  Value 
-|  :----------------   | :----------------------------------------------------------------- |            
-|  `username`          |  CloudShell username. For example: “admin”.                        |
-|  `domain`            |  CloudShell domain. Note that for 2nd Generation Shells, the domain must be “Global”.  |
-|  `defaultview`       |  Set the default view. Possible values are: `gen`/`gen2`/`all`/`layer1`. Default is “gen2”.                           |
-|  `password`          |  CloudShell password (encrypted).                                   |
-|  `host`              |  The hostname or IP address of the CloudShell Portal machine.       |
-|  `port`              |  The port to be used for Quali API. Default is “9000”.              |
 
 
 #### Creating a Shell
@@ -219,11 +137,13 @@ A ZIP package is created in the Shell’s *dist* directory with the name "nutshe
 
 **Note:** The `pack` command requires the presence of a *shell.yml* file, which is created by default in Shells created using Shellfoundry. However, if your shell was created elsewhere, make sure to add a *shell.yml* file with the following structure:
 
- `###shell.yml`
+ {% highlight bash %}
+ ###shell.yml
 
- `shell:`
+ shell:
 
- `    name: nutshell`
+     name: nutshell
+{% endhighlight %}
 
 
 #### Packaging and importing a Shell into CloudShell
@@ -246,3 +166,86 @@ The shell’s data model (*data_model.py* file) consists of the standard specifi
 Run this command from the Shell’s root folder.
 
 {% highlight bash %} shellfoundry generate {% endhighlight %}
+
+
+### Version History<a name="version-history"></a>
+**1.0.3 (2017-06-28)**
+* `list` command aborts if there is a new major version on pypi
+* Old Shellfoundry versions are NOT supported anymore. Therefore, in order to upgrade to the newest version, please run this command:
+{% highlight bash %} pip install shellfoundry -U  {% endhighlight %}
+
+**1.0.2 (2017-06-27)**
+* `new` command aborts if there is a new major version on pypi
+
+**1.0.1 (2017-06-26)**
+* `new` command now conforms to CloudShell naming rules
+
+**1.0.0 (2017-06-19)**
+* `list` command now shows templates that are installable on your cloudshell
+* `new` command now creates the latest version of the template that matches the standards installed on your cloudshell
+* When running `new` or `list` commands, a notification is displayed if a new Shellfoundry version is available
+
+**0.2.7 (2017-05-16)**
+* Shellfoundry now packs *categories.xml*, if it exists
+
+**0.2.6 (2017-03-14)**
+* Minor bug fixes
+
+**0.2.2 (2017-01-22)**
+* **gen2/resource** is the now the default template for the `new` command instead of **gen1/resource**
+
+**0.2.0 (2017-01-17)**
+* `list` command filtering parameters have changed (legacy => **gen1**, TOSCA => **gen2**)
+* Added another filtering parameter: **--layer1**
+* Minimum CloudShell version column appears in the `list` command's output table
+* **gen2** is now the default view for list command
+
+**0.1.3 (2016-12-27)**
+* `config` now echoes all default configurations if they have not been overridden by the user
+
+**0.1.2 (2016-12-26)**
+* `config` command now encrypts the password
+
+**0.1.0 (2016-12-14)**
+* `show` command was added to display all available versions of a template
+* A new option was added to the `new` command called **--version**. It enables template versioning on Shellfoundry.
+
+**0.0.44 (2016-12-12)**
+* Fixed a bug with the `config` command, which caused Shellfoundry to crash if a config file was missing
+
+**0.0.43 (2016-12-11)**
+* `list` command is now able to filter results based on shell type (**--tosca**, **--legacy**, **--all**)
+
+**0.0.41 (2016-12-08)**
+* `config` command was added to allow setting configuration globally for all Shells in addition to local configuration
+
+**0.0.39 (2016-10-09)**
+* Pack Shell icon if specified in the *shell-definition.yml* file under `metadatatemplate_icon` for TOSCA based shells
+
+**0.0.38 (2016-09-28)**
+* Update reference to *cloudshell-rest-api 7.2.0.7* to use PUT method in update shell
+
+**0.0.35 (2016-09-15)**
+* TOSCA support was added to the `pack` and `install` commands
+* `generate` command was added to generate the Shell driver's data model in Python
+
+**0.0.32 (2016-08-10)**
+* `pack` command downloads dependencies into *dist* directory
+* Dependency for git was removed
+* Local Shell templates are supported
+* Proxy support was added for access to github
+
+**0.0.31 (2016-08-04)**
+* git prerequisite were removed. Shellfoundry now works even if git is not preinstalled
+
+**0.0.28 (2016-07-07)**
+* Bug pertaining to the installation of packages in CloudShell was fixed
+
+**0.0.26 (2016-06-23)**
+* Images copied to the *DataModel* folder (Issue #21)
+
+**0.0.17 (2016-05-25)**
+* Fixed anj error message that is displayed when `install` command fails in logging in into CloudShell
+
+**0.0.1 (2016-05-02)**
+* First release on PyPI
