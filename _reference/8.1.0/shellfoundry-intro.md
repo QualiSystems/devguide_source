@@ -1,8 +1,8 @@
 ---
 layout: page
 title: Shellfoundry
-category: tut
-order: 16
+category: ref
+order: 8
 comments: true
 version:
     - 8.1.0
