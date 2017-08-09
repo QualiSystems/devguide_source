@@ -27,10 +27,12 @@ To learn more about the  different versions of the Shells used by CloudShell and
 * [Get CloudShell](http://info.quali.com/cloudshell-developer-edition-download): Download the latest CloudShell SDK and run it on your machine.  
 * [Python](https://www.python.org/downloads/): Make sure Python 2.7.x (latest recommended) is installed on your machine.
 * **IDE/Text Editor:** Your preferred IDE editor. We recommend using PyCharm (which offers a free community edition) because of the tooling we’ve already created for that IDE, including a CloudShell developer plugin.
-* [Shellfoundry]({{site.baseurl}}/reference/{{pageVersion}}/shellfoundry-intro.html) Install ShellFoundry using pip. Run the following in your local Command Line:
+*  Shellfoundry: Install ShellFoundry using pip. Run the following in your local Command Line:
 {% highlight bash %} python -m pip install shellfoundry {% endhighlight %}
 If ShellFoundry is already installed, run the following command to update:
 {% highlight bash %} python -m pip install shellfoundry --upgrade {% endhighlight %}
+
+For first time configuration of Shellfoundry, run the `shellfoundry config`, as explained [here]({{site.baseurl}}/reference/{{pageVersion}}/shellfoundry-intro.html).
 
 ### Creating the Shell Project
 To create the Shell project, we’ll use ShellFoundry, a CLI tool for generating and distributing Shells. If you installed the prerequisites listed above, this tool should already be installed and ready on your system.
