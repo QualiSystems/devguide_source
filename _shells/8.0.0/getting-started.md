@@ -140,27 +140,11 @@ We’re now ready to install the new Shell.
 
 #### Install the Shell on CloudShell
 
-ShellFoundry provides an easy and convenient way to create the Shell package and install it on your CloudShell server. To make use of this feature, we’ll need to first configure your CloudShell connection settings on the Shell.
+ShellFoundry provides an easy and convenient way to create the Shell package and install it on your CloudShell server. 
 
 **Note:** 2nd Generation Shells can also be imported into CloudShell Portal.
 
-**To configure CloudShell settings:**
-
-1) Run the following command in your command Line to see all the available configuration parameters:
-{% highlight bash %} shellfoundry config {% endhighlight %}
-
-![Directory Structure]({{ site.baseurl}}/assets/sf_config.png)
-
-The configuration includes some default settings that you can change.
-
-2) To update a default setting, run the _config_ command with two arguments: the parameter name and the new value.
-For example, changing the username to “John”:
-
-{% highlight bash %} shellfoundry config username John {% endhighlight %}
-
- Normally, you would need to set the CloudShell admin user/password and the server address.
-
-3) To package the Shell and install it on your local CloudShell server, run the following command:
+* To package the Shell and install it on your local CloudShell server, run the following command:
 {% highlight bash %} shellfoundry install {% endhighlight %}
 
 
