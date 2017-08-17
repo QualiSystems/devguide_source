@@ -33,7 +33,7 @@ If ShellFoundry is already installed, run the following command to update:
 {% highlight bash %} python -m pip install shellfoundry --upgrade {% endhighlight %}
 
 ### Configuring CloudShell Connection Settings
-To create the Shell project, we’ll use ShellFoundry, a CLI tool for generating and distributing Shells. However, in order to use Shellfoundry, we’ll need to first configure your CloudShell connection settings in Shellfoundry.
+To create the Shell project, we’ll use ShellFoundry, a CLI tool for generating and distributing Shells. However, in order to use Shellfoundry, we’ll need to first set your CloudShell connection settings in Shellfoundry.
 
 **Note:** 2nd Generation Shells can also be imported into CloudShell Portal.
 
