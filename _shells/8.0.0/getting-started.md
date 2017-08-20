@@ -200,21 +200,23 @@ In this tutorial we’ve covered the basic steps to develop a Shell. The process
 
 The basic flow is:
 
-1) Create a new Shell project by running _shellfoundry new_.
+1) Set the CloudShell Server and user credentials in Shellfoundry. You need to do this only once as Shellfoundry remembers the settings for future sessions.
 
-2) Configure the Shell in the _shell-definitions.yaml_ file located in the Shell project’s root folder.
+2) Create a new Shell project by running _shellfoundry new_.
 
-3) Import the Shell to the development server using _shellfoundry install_.
+3) Configure the Shell in the _shell-definitions.yaml_ file located in the Shell project’s root folder.
 
-4) Create a resource of the Shell for testing:
+4) Import the Shell to the development server using _shellfoundry install_.
+
+5) Create a resource of the Shell for testing:
   a. For an *inventory resource* Shell: Create a Shell inventory resource in CloudShell using its *Resource Template*.
   b. For a *deployed app* Shell: Define the App template in CloudShell including the deployment type and parameters, set the App model to the Shell model.
 
-5) 	Create a sandbox for testing in the development server: either add the inventory resource to the sandbox or deploy the App in the sandbox.
+6) 	Create a sandbox for testing in the development server: either add the inventory resource to the sandbox or deploy the App in the sandbox.
 
-6) Make incremental changes to the Shell and update the development server each time with the changes by running _shellfoundry install_.
+7) Make incremental changes to the Shell and update the development server each time with the changes by running _shellfoundry install_.
 
-7) Rinse and repeat!
+8) Rinse and repeat!
 
 For more information on how to deploy the Shell to production, refer to the [Deploying to Production]({{ site.baseurl }}/shells/{{pageVersion}}/deploying-to-production.html) section.
 
