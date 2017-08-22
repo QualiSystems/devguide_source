@@ -12,7 +12,7 @@ As of CloudShell 7.1, the OOB scripts are included as part of the default bluepr
 The following diagram describes the OOB setup and teardown flow:
 
 
-![Setup Workflow]({{ site.baseurl}}/assets/orchestration_workflow.png){: .center-image }
+![Setup Workflow]({{ site.baseurl}}/assets/orchestration_workflow_8.1.png){: .center-image }
 
 These OOB setup and teardown scripts can be found in the Scripts – Blueprint management page. You can review their source code in the [cloudshell-orch-sandbox repository](https://github.com/QualiSystems/cloudshell-orch-sandbox/tree/v8.1/SandboxOrchestration/environment_scripts).
 
