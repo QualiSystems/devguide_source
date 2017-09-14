@@ -33,7 +33,8 @@ This will create two artifacts in the 'dist' sub-folder of the Shell project:
 ### Adding custom attributes to the Shell
 
 Using the API, you can add attributes to your Shell and customize their defaults for this Shell. this is done using the SetCustomShellAttribute method, available in the TestShell and Python APIs.
-Note: This only applies to attributes that already exist in CloudShell.
+
+**Note:** This only applies to attributes that already exist in CloudShell.
 
 The required inputs are:
 * modelName = The Shell’s model (the Shell name; case-sensitive)
