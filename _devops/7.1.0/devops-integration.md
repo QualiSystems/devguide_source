@@ -22,7 +22,7 @@ If not, you can consider using the REST API for whatever subset of the required 
 
 #### Where are the APIs documented?
 The REST API live documentation page is installed with CloudShell. To access it simply browse to the following default address:
-http://[CloudShellPortalAddress]:8032/api/v1/explore/. If you're accessing the link from the CloudShell Portal machine itself, or from the CloudShell SDK edition machine, you can simply use "localhost" or "127.0.0.1". The API documentation page allows you to test and experiment with the APIs as well as provide information on the different operations and parameters.
+http://[CloudShellPortalAddress]:82/api/v1/explore/. If you're accessing the link from the CloudShell Portal machine itself, or from the CloudShell SDK edition machine, you can simply use "localhost" or "127.0.0.1". The API documentation page allows you to test and experiment with the APIs as well as provide information on the different operations and parameters.
 
 You can download the latest Python package reference from the CloudShell online help [here](http://help.qualisystems.com/Online%20Help/7.1.0.0/Portal/Content/API/Pyth-API-Overvw.htm?Highlight=cloudshell-automation-api).
 
@@ -97,6 +97,6 @@ such as Jenkins, Travis or TeamCity.
 
 Several Quali community projects already provide readymade solutions for some CI tools.
 
-The [Sandbox-Jenkins-Plugin](https://github.com/QualiSystems/Sandbox-Jenkins-Plugin) provides build steps for creating and ending sandboxes for Jenkins, as well as integration with the new PipeLines feature for continuous delivery and DevOps automation.
+The [Sandbox-Jenkins-Plugin](https://github.com/jenkinsci/cloudshell-sandbox-plugin) provides build steps for creating and ending sandboxes for Jenkins, as well as integration with the new PipeLines feature for continuous delivery and DevOps automation.
 
 The [Sandbox-Teamcity-Plugin](https://github.com/QualiSystems/Sandbox-TeamCIty-Plugin) provides similar build steps and integration for TeamCity.
