@@ -21,19 +21,24 @@ If the functionality you're looking for is covered by the REST APIs it is recomm
 If not, you can consider using the REST API for whatever subset of the required functionality it does offer and complement that with Python API calls.
 
 #### Where are the APIs documented?
+
+**REST API**
+
 The REST API live documentation page is installed with CloudShell. To access it simply browse to the following default address:
-http://[CloudShellPortalAddress]:8032/api/v1/explore/. If you're accessing the link from the CloudShell Portal machine itself, or from the CloudShell SDK edition machine, you can simply use "localhost" or "127.0.0.1". The API documentation page allows you to test and experiment with the APIs as well as provide information on the different operations and parameters.
+http://[CloudShellPortalAddress]:82/api/v1/explore/. If you're accessing the link from the CloudShell Portal machine itself, or from the CloudShell SDK edition machine, you can simply use "localhost" or "127.0.0.1". The API documentation page allows you to test and experiment with the APIs as well as provide information on the different operations and parameters.
 
-You can download the latest Python package reference from the CloudShell online help [here](http://help.qualisystems.com/Online%20Help/7.1.0.0/Portal/Content/API/Pyth-API-Overvw.htm?Highlight=cloudshell-automation-api).
+**Python API**
 
-When using the _cloudshell-automation-api_ package, make sure to install the version of the API which is compatible with your CloudShell version. To make the task of finding the right version easier, this package follows a versioning schema different from other CloudShell packages. The _major_ and _minor_ version of the _cloudshell-automation-api_ package will always match the CloudShell release its compatible with. Therefore, to install the latest compatible version you need to add these version requirements when installing from pip. For example, to install the latest _cloudshell-automation-api_ compatible with CloudShell 7.0, run:
+You can download the latest Python package reference from the CloudShell online help [here](http://help.quali.com/Online%20Help/8.1.0.4291/Python-API/).
+
+When using the _cloudshell-automation-api_ package, make sure to install the version of the API which is compatible with your CloudShell version. To make the task of finding the right version easier, this package follows a versioning schema different from other CloudShell packages. The _major_ and _minor_ version of the _cloudshell-automation-api_ package will always match the CloudShell release its compatible with. Therefore, to install the latest compatible version you need to add these version requirements when installing from pip. For example, to install the latest _cloudshell-automation-api_ compatible with CloudShell 8.0, run:
 {% highlight bash %}
 python -m pip install "cloudshell-automation-api>=7.0,<7.1"
 {% endhighlight %}
 
-To install the latest _cloudshell-automation-api_ compatible with CloudShell 7.1, run:
+To install the latest _cloudshell-automation-api_ compatible with CloudShell 8.0, run:
 {% highlight bash %}
-python -m pip install "cloudshell-automation-api>=7.1,<7.2"
+python -m pip install "cloudshell-automation-api>=7.1,<8.0"
 {% endhighlight %}
 
 ### Starting and stopping a sandbox
@@ -97,6 +102,6 @@ such as Jenkins, Travis or TeamCity.
 
 Several Quali community projects already provide readymade solutions for some CI tools.
 
-The [Sandbox-Jenkins-Plugin](https://github.com/QualiSystems/Sandbox-Jenkins-Plugin) provides build steps for creating and ending sandboxes for Jenkins, as well as integration with the new PipeLines feature for continuous delivery and DevOps automation.
+The [Sandbox-Jenkins-Plugin](https://github.com/jenkinsci/cloudshell-sandbox-plugin) provides build steps for creating and ending sandboxes for Jenkins, as well as integration with the new PipeLines feature for continuous delivery and DevOps automation.
 
 The [Sandbox-Teamcity-Plugin](https://github.com/QualiSystems/Sandbox-TeamCIty-Plugin) provides similar build steps and integration for TeamCity.
