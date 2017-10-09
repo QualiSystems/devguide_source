@@ -80,7 +80,7 @@ module Jekyll
           }
 
           @index.add(doc)
-          doc.delete("body")
+          # doc.delete("body")
           @docs[i] = doc
 
           Jekyll.logger.debug "Lunr:", (entry.title ? "#{entry.title} (#{entry.version})" : entry.version)
@@ -229,7 +229,7 @@ module Jekyll
       attr_reader :title, :url, :date, :version, :categories, :tags, :is_post, :body, :collection
 
       def initialize(title, url, date, version, categories, tags, is_post, body, collection)
-        @title, @url, @date, @version, @categories, @tags, @is_post, @body, @collection = title, url, date, categories, tags, is_post, body, collection
+        @title, @url, @date, @version, @categories, @tags, @is_post, @body, @collection = title, url, date, version, categories, tags, is_post, body, collection
       end
 
       def strip_index_suffix_from_url!
