@@ -32,8 +32,8 @@ To create the Shell project, we’ll use ShellFoundry, a CLI tool for generating
 * If ShellFoundry is already installed, run the following command to update:
 {% highlight bash %} python -m pip install shellfoundry --upgrade {% endhighlight %}
 
+
 ### Creating the Shell Project
-To create the shell project, we'll take advantage of ShellFoundry, a CLI tool for generating and distributing shells. If you installed the prerequisites listed above this tool should already be installed and ready on your system.
 
 To create a new project, simply run the following command in your local shell, which will create a new sub directory containing the basic shell project structure and files:
 

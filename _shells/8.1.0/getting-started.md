@@ -47,7 +47,7 @@ To create the Shell project, we’ll use ShellFoundry, a CLI tool for generating
 For windows users, it is recommended to add the path to the folder in which ShellFoundry is installed to your local environment variables. For example, _C:\Python27\Scripts_. This will enable us to run the ShellFoundry commands from any folder of the Shell project.
 
 ### Configuring CloudShell Connection Settings
-To create the Shell project, we’ll use ShellFoundry, a CLI tool for generating and distributing Shells. However, in order to use Shellfoundry, we’ll need to first configure your CloudShell connection settings in Shellfoundry.
+ In order to use Shellfoundry, we’ll need to first configure your CloudShell connection settings in Shellfoundry.
 
 **Note:** 2nd Generation Shells can also be imported into CloudShell Portal.
 
