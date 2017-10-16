@@ -12,7 +12,7 @@ As of CloudShell 7.1, the OOB scripts are included as part of the default bluepr
 The following diagram describes the OOB setup and teardown flow:
 
 
-![Setup Workflow]({{ site.baseurl}}/assets/orchestration_workflow.png){: .center-image }
+![Setup Workflow]({{ site.baseurl}}/assets/orchestration_workflow_8.1.png){: .center-image }
 
 These OOB setup and teardown scripts can be found in the Scripts – Blueprint management page. You can review their source code in the [cloudshell-orch-sandbox repository](https://github.com/QualiSystems/cloudshell-orch-sandbox/tree/v8.1/SandboxOrchestration/environment_scripts).
 
@@ -31,7 +31,7 @@ sandbox.execute_setup()
 {% endhighlight %}
 
 As you can see, to use the default orchestration logic, we instantiated the *DefaultSetupWorkflow* class and registered the sandbox to use the default behavior.
-Starting in CloudShell 8.1, sandbox setup is divided into 3 stages: provisioning, connectivity and configuration. It’s possible to disable the default implementation of each stage by setting enable_stageName=False, as illustrated in this example:
+Starting in CloudShell 8.1, sandbox setup is divided into 4 stages: preparation, provisioning, connectivity and configuration. It’s possible to disable the default implementation of each stage by setting enable_stageName=False, as illustrated in this example:
 
 {% highlight python %}
 DefaultSetupWorkflow().register(Sandbox, enable_connectivity=False)
@@ -44,7 +44,17 @@ The OOB setup and teardown scripts can easily be customized or extended. Click [
 
 ### Extending the OOB Setup Orchestration Scripts
 
-You can extend the OOB setup and teardown scripts by adding additional steps, or controlling the order of execution. In this section we will focus on the setup script, for examples about how to extend the teardown, see "Extending the OOB Teardown Orchestration Scripts". An example for extending the OOB Setup script can be calling additional commands to validate Apps or resource states, launching additional orchestration, or controlling the order in which the sandbox is provisioned. 
+Setup script logic is divided into 4 stages – Preparation, Provisioning, Connectivity and Configuration. The OOB setup already includes some default logic in each of the stages as depicted in the diagram above. However, the OOB setup can easily be extended. 
+Each Setup stage has a specific logic functionality.
+
+* **Preparation** is empty in the default Setup script. This is the place to enter any code that logically has to be executed before Setup logic is initiated.
+* **Provisioning** deploys and discovers all apps.
+* **Connectivity** connects all layer 2 connections, powers on and refreshes IPs on deployed apps.
+* **Configuration** applies any additional configuration on deployed apps
+
+Each stage has an interim `on__[stage]_ended` step which allows the execution of any code that has to run between stages. Note that all the functions you add to a stage (using `add_to_configuration`, for example) run in parallel, while `on__[stage]_ended` functions run sequentially.
+
+You can extend the OOB setup and teardown scripts by adding additional steps, or controlling the order of execution. In this section we will focus on the setup script, for examples about how to extend the teardown, see [Extending the OOB Teardown Orchestration Scripts](#OOB-Teardown-scripts) below. An example for extending the OOB Setup script can be calling additional commands to validate Apps or resource states, launching additional orchestration, or controlling the order in which the sandbox is provisioned. 
 
 1. Create a copy of the appropriate script, (see below for extension options), and upload the updated version separately into CloudShell Portal as a Setup script. DO NOT remove any step in the setup workflow. However, you can add your own steps or change the order of execution.
 
@@ -235,7 +245,7 @@ sandbox.execute_setup()
 {% endhighlight %}
 
 
-### Extending the OOB Teardown Orchestration Scripts
+### Extending the OOB Teardown Orchestration Scripts<a name="OOB-Teardown-scripts"></a>
 
 You can extend the OOB Teardown script to execute custom steps prior to the out-of-the-box teardown orchestration, or to execute custom steps in parallel to the OOTB teardown. You can also extend the Teardown script using the following extension methods, which are included in the workflow property in the **Sandbox** class:
 * add_to_teardown
