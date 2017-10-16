@@ -49,6 +49,8 @@ To install ShellFoundry, simply open a new command line  window and type in the 
 
 {% highlight bash %} python -m pip install shellfoundry {% endhighlight %}
 
+For additional information about Shellfoundry, see [Shellfoundry]({{site.baseurl}}/reference/{{pageVersion}}/shellfoundry-intro.html).
+
 ### Install and setup the CloudShell SDK
 
 ![CloudShell]({{ site.baseurl}}/assets/cloudshell-logo.png){:class="img-responsive"}
