@@ -19,13 +19,19 @@ This section will take you through the basic steps of a creating a new Shell. Th
 * **IDE/Text Editor:** Any IDE or editor you'd rather use as an IDE. We recommend using PyCharm (which offers a free community edition) because of the tooling we've already created for that IDE, including a CloudShell developer plugin.
 
 
-### Installing Shellfoundry
+### Installing or Updating Shellfoundry
 To create the Shell project, we’ll use ShellFoundry, a CLI tool for generating and distributing Shells.
 
 **To install Shellfoundry:**
 
-* Run the following in your local shell: 
+* Run the following in your local Command Line:
 {% highlight bash %} python -m pip install shellfoundry {% endhighlight %}
+
+**To update Shellfoundry:**
+
+* If ShellFoundry is already installed, run the following command to update:
+{% highlight bash %} python -m pip install shellfoundry --upgrade {% endhighlight %}
+
 
 ### Creating the Shell Project
 

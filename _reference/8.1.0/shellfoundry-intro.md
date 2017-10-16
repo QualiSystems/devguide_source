@@ -44,7 +44,7 @@ If you already have shellfoundry installed on your computer, run this command to
 
 **Syntax:**
 
-{% highlight bash %}python -m pip install shellfoundry –upgrade{% endhighlight %}
+{% highlight bash %}python -m pip install shellfoundry ––upgrade{% endhighlight %}
 
 
 #### Configuring CloudShell settings
