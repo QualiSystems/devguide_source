@@ -114,6 +114,11 @@ vendor.ImplementingDiscovery:
 
 
 
+For example:
+
+![Discovery Dialog]({{ site.baseurl}}/assets/new_resource_settings.png){:class="img-responsive"}
+
+
 #### Implement the get_inventory function
 
 The goal of the _get_inventory_ function in the Shell’s driver is to query the device and return a list of sub-resources and attribute values back to CloudShell.
