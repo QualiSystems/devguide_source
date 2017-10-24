@@ -26,6 +26,7 @@ To give a few examples:
 * [Compute Shell Standard](https://github.com/QualiSystems/cloudshell-standards/blob/master/Documentation/compute_standard.md)
 * [Networking Shell Standard](https://github.com/QualiSystems/cloudshell-standards/blob/master/Documentation/networking_standard.md)
 * [Firewall Shell Standard](https://github.com/QualiSystems/cloudshell-standards/blob/master/Documentation/firewall_standard.md)
+* [Custom Service Shell Standard](https://github.com/QualiSystems/cloudshell-standards/blob/master/Documentation/Custom%20Service%20Shell%20Standard.md)
 
 **To get a list of the possible templates:**
 * Run the following command in your Command Line:
