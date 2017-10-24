@@ -18,11 +18,13 @@ google_analytics_id: 'UA-81468206-1'
 navigation: 1
 
 versions: 
+    - 7.1.0
     - 8.0.0
     - 8.1.0
-    - 7.1.0
+    - 8.2.0
 
-latest_version: 8.1.0
+
+latest_version: 8.2.0
 home_page: the-cloudshell-devguide.html
 home_collection: introduction  
 

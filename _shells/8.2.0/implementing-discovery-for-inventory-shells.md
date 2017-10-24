@@ -5,7 +5,7 @@ category: tut
 order:  9
 comments: true
 version:
-    - 8.1.0
+    - 8.2.0
 tags:
     - discovery
     - SNMP
