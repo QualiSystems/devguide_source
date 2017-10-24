@@ -33,12 +33,12 @@ You can download the latest Python package reference from the CloudShell online 
 
 When using the _cloudshell-automation-api_ package, make sure to install the version of the API which is compatible with your CloudShell version. To make the task of finding the right version easier, this package follows a versioning schema different from other CloudShell packages. The _major_ and _minor_ version of the _cloudshell-automation-api_ package will always match the CloudShell release its compatible with. Therefore, to install the latest compatible version you need to add these version requirements when installing from pip. For example, to install the latest _cloudshell-automation-api_ compatible with CloudShell 8.0, run:
 {% highlight bash %}
-python -m pip install "cloudshell-automation-api>=7.0,<7.1"
+python -m pip install "cloudshell-automation-api>=8.0,<8.1"
 {% endhighlight %}
 
-To install the latest _cloudshell-automation-api_ compatible with CloudShell 8.0, run:
+To install the latest _cloudshell-automation-api_ compatible with CloudShell 8.1, run:
 {% highlight bash %}
-python -m pip install "cloudshell-automation-api>=7.1,<8.0"
+python -m pip install "cloudshell-automation-api>=8.1,<8.2"
 {% endhighlight %}
 
 ### Starting and stopping a sandbox
@@ -87,8 +87,8 @@ Similar to the REST example, we can wrap the setup and teardown of the sandbox i
 
 ### Executing Orchestration Commands
 
-Executing orchestration commands from the REST API is not yet supported and is also scheduled for 7.2EA.
-Meanwhile, the Python package provides the necessary APIs to execute orchestration scripts in the sandbox:
+Executing orchestration commands from the REST API is supported. This is detailed in the CloudShell Sandbox API in the [CloudShell API Guide](http://www.quali.com/community/training/).
+In addition, the Python package provides the necessary APIs to execute orchestration scripts in the sandbox:
 
 {% github_sample_ref /QualiSystems/devguide_examples/blob/master/devops_integration/python_api/python_api_example.py %}
 {% highlight python %}
