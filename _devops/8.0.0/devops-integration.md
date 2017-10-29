@@ -13,8 +13,8 @@ or other DevOps pipelines. In this context, we'll concentrate on the use case of
 
 CloudShell currently supports two different sets of APIs which can be used to automate and integrate Sandboxes with DevOps.
 
-* The Python cloudshell-automation-api packge - This Python package contains an exhaustive set of APIs for anything from managing inventory and connections to administrating users and groups as well as managing sandboxes and blueprints.  
-* The CloudShell Sandbox REST Apis - These are CloudShell's next generation set of APIs. They are already using the latest terminology (sandboxes and blueprints instead of reservations and topologies/environments) and have advantages in performance and scaling. As of today, these APIs are limited to a specific set of commands focused on the workflow of starting and ending sandboxes. However, with each release more functionality is being added to the REST APIs and the intention is for this API set to eventually replace the Python package completely for most DevOps related workflows.
+* The Python cloudshell-automation-api package - This Python package contains a comprehensive set of APIs for anything from managing inventory and connections to administrating users and groups as well as managing sandboxes and blueprints.  
+* The CloudShell Sandbox REST APIs - These are CloudShell's next generation set of APIs. They are already using the latest terminology (sandboxes and blueprints instead of reservations and topologies/environments) and have advantages in performance and scaling. As of today, these APIs are limited to a specific set of commands focused on the workflow of starting and ending sandboxes. However, with each release more functionality is being added to the REST APIs and the intention is for this API set to eventually replace the Python package completely for most DevOps related workflows.
 
 #### Which API to choose?
 If the functionality you're looking for is covered by the REST APIs it is recommended to use it over the Python package.
@@ -67,7 +67,7 @@ Since sandboxes used this way are really a scope for testing. It can be benefici
 
 **Both of the above examples are Python 2/3 compatible.**
 
-### Sandbox REST API Missing and Upcoming Features
+#### Using the TestShell API from Python
 
 The following code demonstrates implementing the same basic flow using the Python package:
 
@@ -83,9 +83,13 @@ Similar to the REST example, we can wrap the setup and teardown of the sandbox i
 {% github_sample /QualiSystems/devguide_examples/blob/master/devops_integration/python_api/python_api_context_example.py 18 31 %}
 {% endhighlight %}
 
+### Sandbox REST API Missing and Upcoming Features
+
+Currently, the Sandbox REST API does not support the creation of future (pending) sandboxes. If your CloudShell environment does require this feature, you may need to fall back to the _cloudshell-automation-api_ package API for sandbox reservation (using the `CreateReservation` method).
+
 ### Executing Orchestration Commands
 
-Executing orchestration commands from the REST API is supporte. This is detailed in the CloudShell Sandbox API in the [CloudShell API Guide](http://www.quali.com/community/training/).
+Executing orchestration commands from the REST API is supported using the _/sandboxes/{sandbox_identifier}/commands/{command_name}/start_ REST API method.
 In addition, the Python package provides the necessary APIs to execute orchestration scripts in the sandbox:
 
 {% github_sample_ref /QualiSystems/devguide_examples/blob/master/devops_integration/python_api/python_api_example.py %}
