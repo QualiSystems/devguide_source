@@ -8,6 +8,9 @@ version:
     - 8.1.0
 ---
 
+{% assign pageUrlSplited = page.url | split: "/" %}
+{% assign pageVersion = pageUrlSplited[2] %}
+
 In this section, we’ll learn how to add attributes to a Shell and modify attribute rules. 
 
 CloudShell provides two ways to customize attributes:
@@ -18,7 +21,7 @@ This is done by manually editing the Shell’s **shell-definition.yaml** file.
 The second option of association custom attributes with an already installed shell is done by calling the `SetCustomShellAttribute` API method. For additional information on this method, see [Deploying to Production]({{site.baseurl}}/shells/{{pageVersion}}/deploying-to-production.html).
 The first option currently only applies to the root model of the Shell, so if you need to customize your Shell’s sub-resource models, such as blades and ports, use the second option. Note that version 9.0 will support sub-resource attribute modifications via the **shell-definition.yaml** file.
 
-Customizing an existing Shell is done using the {% highlight bash %}shellfoundry extend{% endhighlight %} command. This commands downloads the source code of the Shell you wish to customize to your local machine and updates the Shell's Author. Note that extending official Shells (Shells that were released by Quali) will remove their official tag. The common use cases for customizing or extending a Shell are:
+Customizing an existing Shell is done using the `shellfoundry extend` command. This commands downloads the source code of the Shell you wish to customize to your local machine and updates the Shell's Author. Note that extending official Shells (Shells that were released by Quali) will remove their official tag. The common use cases for customizing or extending a Shell are:
 * Adding new attributes
 * Modifying existing attributes
 * Adding new commands
@@ -38,7 +41,13 @@ Note that deleting a 2nd Gen Shell’s default attributes is not supported. It i
 shellfoundy extend <path-to-Shell's-source-zip>
 {% endhighlight %}
 
-2) In the Shell’s download folder, open the shell-definition.yaml file in your preferred editor.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The Shell's path can be a URL or filesystem path to the source code of the Shell. For example:
+
+{% highlight bash %}
+shellfoundry extend https://github.com/QualiSystems/Juniper-JunOS-Router-Shell-2G/archive/1.0.0.zip
+{% endhighlight %}
+
+2) In the Shell’s download folder, open the _shell-definition.yaml_ file in your preferred editor.
 
 3) Locate `node-types:`.
 
