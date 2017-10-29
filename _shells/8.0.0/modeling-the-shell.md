@@ -253,15 +253,17 @@ The available tags are:
 
 * **configuration**: This tag indicates that this attribute is a resource configuration. CloudShell enables administrators to control the value of this attribute from Resource Manager Client but not from CloudShell Portal.
 
-* **search_filter** (Inventory Resources): Users will be able to filter based on that attribute in CloudShell Portal. It’s recommended to add this tag to attributes, which are both constrained by a limited set of values and often used to filter resources. It may be unnecessary to use this tag for attributes with unique values such as serial number or _uniqueid_, since this tag enables filtering, not searching.
+* **not_searchable** (Inventory Resources): Users will not be able to filter based on that attribute in CloudShell Portal. It’s recommended to aallow the filtering of attributes, which are both constrained by a limited set of values and often used to filter resources. It may be necessary to use this tag for attributes with unique values such as serial number or _uniqueid_, since this tag enables filtering.
 
-* **abstract** (Inventory Resources): This attribute can be added to an abstract resource template.
+* **abstract_filter** (Inventory Resources): This attribute can be added to an abstract resource template.
 
 * **include_in_insight**: This attribute’s value is saved in Insight and can be used to later create BI data for the resources linked to it.
 
-* **admin_only**: Only administrators and domain administrators in CloudShell Portal will be able to modify this attribute. Users will be able to see the attribute but not modify it.
+* **readonly_to_users**: Only administrators and domain administrators in CloudShell Portal will be able to modify this attribute. Users will be able to see the attribute but not modify it.
 
-* **diagram_display**: This attribute will be displayed on the component itself (in the blueprint/sandbox diagram) when using the larger icon size in the diagram.
+* **display_in_diagram**: This attribute will be displayed on the component itself (in the blueprint/sandbox diagram) when using the larger icon size in the diagram.
+
+* **connection_attribute**: This attribute will be displayed in the **Inventory** tab of the **Resource Connections** dialog box. This enables users to specify a specific attribute value (such as Speed) that will apply only to this specific route when it is connected in a sandbox.
 
 * **read_only**: This attribute will be read only and users will not be able to modify it from CloudShell Portal.
 
