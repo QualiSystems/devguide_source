@@ -13,8 +13,8 @@ or other DevOps pipelines. In this context, we'll concentrate on the use case of
 
 CloudShell currently supports two different sets of APIs which can be used to automate and integrate Sandboxes with DevOps.
 
-* The Python cloudshell-automation-api packge - This Python package contains an exhaustive set of APIs for anything from managing inventory and connections to administrating users and groups as well as managing sandboxes and blueprints.  
-* The CloudShell Sandbox REST Apis - These are CloudShell's next generation set of APIs. They are already using the latest terminology (sandboxes and blueprints instead of reservations and topologies/environments) and have advantages in performance and scaling. As of today, these APIs are limited to a specific set of commands focused on the workflow of starting and ending sandboxes. However, with each release more functionality is being added to the REST APIs and the intention is for this API set to eventually replace the Python package completely for most DevOps related workflows.
+* The Python cloudshell-automation-api package - This Python package contains a comprehensive set of APIs for anything from managing inventory and connections to administrating users and groups as well as managing sandboxes and blueprints.  
+* The CloudShell Sandbox REST APIs - These are CloudShell's next generation set of APIs. They are already using the latest terminology (sandboxes and blueprints instead of reservations and topologies/environments) and have advantages in performance and scaling. As of today, these APIs are limited to a specific set of commands focused on the workflow of starting and ending sandboxes. However, with each release more functionality is being added to the REST APIs and the intention is for this API set to eventually replace the Python package completely for most DevOps related workflows.
 
 #### Which API to choose?
 If the functionality you're looking for is covered by the REST APIs it is recommended to use it over the Python package.
@@ -31,14 +31,14 @@ http://[CloudShellPortalAddress]:82/api/v1/explore/. If you're accessing the lin
 
 You can download the latest Python package reference from the CloudShell online help [here](http://help.quali.com/Online%20Help/8.0.0.7641/Python-API/).
 
-When using the _cloudshell-automation-api_ package, make sure to install the version of the API which is compatible with your CloudShell version. To make the task of finding the right version easier, this package follows a versioning schema different from other CloudShell packages. The _major_ and _minor_ version of the _cloudshell-automation-api_ package will always match the CloudShell release its compatible with. Therefore, to install the latest compatible version you need to add these version requirements when installing from pip. For example, to install the latest _cloudshell-automation-api_ compatible with CloudShell 8.0, run:
-{% highlight bash %}
-python -m pip install "cloudshell-automation-api>=7.0,<7.1"
-{% endhighlight %}
-
-To install the latest _cloudshell-automation-api_ compatible with CloudShell 7.1, run:
+When using the _cloudshell-automation-api_ package, make sure to install the version of the API which is compatible with your CloudShell version. To make the task of finding the right version easier, this package follows a versioning schema different from other CloudShell packages. The _major_ and _minor_ version of the _cloudshell-automation-api_ package will always match the CloudShell release its compatible with. Therefore, to install the latest compatible version you need to add these version requirements when installing from pip. For example, to install the latest _cloudshell-automation-api_ compatible with CloudShell 7.1, run:
 {% highlight bash %}
 python -m pip install "cloudshell-automation-api>=7.1,<8.0"
+{% endhighlight %}
+
+To install the latest _cloudshell-automation-api_ compatible with CloudShell 8.0, run:
+{% highlight bash %}
+python -m pip install "cloudshell-automation-api>=8.0,<8.1"
 {% endhighlight %}
 
 ### Starting and stopping a sandbox
@@ -67,9 +67,7 @@ Since sandboxes used this way are really a scope for testing. It can be benefici
 
 **Both of the above examples are Python 2/3 compatible.**
 
-### Sandbox REST API Missing and Upcoming Features
-
-This version of the Sandbox REST API does not support the creation of future (pending) reservation of sandboxes. This feature is currently "in the oven" and scheduled to be released in the future. If your CloudShell environment does require this feature you may need to fall back to the _cloudshel-automation-api_ package API for sandbox reservation.
+#### Using the TestShell API from Python
 
 The following code demonstrates implementing the same basic flow using the Python package:
 
@@ -85,10 +83,14 @@ Similar to the REST example, we can wrap the setup and teardown of the sandbox i
 {% github_sample /QualiSystems/devguide_examples/blob/master/devops_integration/python_api/python_api_context_example.py 18 31 %}
 {% endhighlight %}
 
+### Sandbox REST API Missing and Upcoming Features
+
+Currently, the Sandbox REST API does not support the creation of future (pending) sandboxes. If your CloudShell environment does require this feature, you may need to fall back to the _cloudshell-automation-api_ package API for sandbox reservation (using the `CreateReservation` method).
+
 ### Executing Orchestration Commands
 
-Executing orchestration commands from the REST API is not yet supported and is also scheduled for 7.2EA.
-Meanwhile, the Python package provides the necessary APIs to execute orchestration scripts in the sandbox:
+Executing orchestration commands from the REST API is supported using the _/sandboxes/{sandbox_identifier}/commands/{command_name}/start_ REST API method.
+In addition, the Python package provides the necessary APIs to execute orchestration scripts in the sandbox:
 
 {% github_sample_ref /QualiSystems/devguide_examples/blob/master/devops_integration/python_api/python_api_example.py %}
 {% highlight python %}
