@@ -28,7 +28,7 @@ Note that deleting a 2nd Gen Shell’s default attributes is not supported. It i
 
 
 
-#### Adding attributes to a Shell's model
+### Adding attributes to a Shell's model
 
 **To add attributes to a Shell’s root model:**
 
@@ -82,7 +82,7 @@ shellfoundy extend <path-to-Shell's-source-zip>
 
 
 
-#### Modifying an existing attribute
+### Modifying an existing attribute
 
 **To modify an attribute’s rules:**
 
