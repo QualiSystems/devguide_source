@@ -8,15 +8,14 @@ version:
     - 8.2.0
 ---
 
-This article explains how to associate service categories to a service Shell. CloudShell exposes services to CloudShell users via service categories, which are associated to the CloudShell domains in which the services are required. Note that this operation requires Global admin permissions. By default, each service Shell template is associated to a category in the Global domain. 
+This article explains how to associate service categories to a service Shell. CloudShell exposes services to CloudShell users via service categories, which are associated to the CloudShell domains in which the services are required. The service categories of a specific domain constitute that domain’s services catalog. By default, each service Shell template is associated to a category in the Global domain. 
 
-There are several ways to associate service Shells to categories:
+There are two ways to associate service Shells to categories:
 
-* Import the service directly into the desired domain (manually by dragging the Shell package into CloudShell Portal, or in shellfoundry by setting the domain using `shellfoundry config` and importing the Shell into CloudShell using `shellfoundry install`)
 * Add the desired categories to the service’s family in Resource Manager Client
-* Modify the service Shell’s data model
+* Define the association in the service Shell’s data model
 
-The first two options are discussed in the CloudShell online help. In this article, we’ll learn how to associate categories via the Shell’s data model. 
+In this article, we’ll learn how to associate categories via the Shell’s data model. 
 
 **To associate a category to a service Shell:**
 
