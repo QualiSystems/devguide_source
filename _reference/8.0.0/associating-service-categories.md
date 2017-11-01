@@ -1,11 +1,11 @@
 ---
 layout: page
 title: Associating Categories to 1st Gen Service Shells
-category: tut
-order: 17
+category: ref
+order: 10
 comments: true
 version:
-    - 8.2.0
+    - 8.0.0
 ---
 
 This article explains how to associate service categories to a service Shell. CloudShell exposes services to CloudShell users via service categories, which are associated to the CloudShell domains in which the services are required. The service categories of a specific domain constitute that domain’s services catalog. By default, each service Shell template is associated to a category in the Global domain. 

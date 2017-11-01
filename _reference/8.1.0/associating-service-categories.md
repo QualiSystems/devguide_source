@@ -1,8 +1,8 @@
 ---
 layout: page
 title: Associating Categories to 1st Gen Service Shells
-category: tut
-order: 17
+category: ref
+order: 10
 comments: true
 version:
     - 8.1.0
