@@ -2,7 +2,7 @@
 layout: page
 title: Customizing a 2nd Gen Shell
 category: tut
-order: 16
+order: 13
 comments: true
 version:
     - 8.1.0
