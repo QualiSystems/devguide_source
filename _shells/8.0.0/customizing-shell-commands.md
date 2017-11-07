@@ -5,8 +5,9 @@ category: tut
 order: 18
 comments: true
 version:
-    - 8.2.0
+    - 8.0.0
 ---
+
 
 {% assign pageUrlSplited = page.url | split: "/" %}
 {% assign pageVersion = pageUrlSplited[2] %}
