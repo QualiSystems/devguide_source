@@ -12,17 +12,26 @@ version:
 {% assign pageUrlSplited = page.url | split: "/" %}
 {% assign pageVersion = pageUrlSplited[2] %}
 
-In this article, we will familiarize ourselves with the architecture of the Shell and learn how to develop and customize commands using the Shell infrastructure. Note that this applies to 1st Gen and 2nd Gen Shells.
+In this article, we will familiarize ourselves with the architecture of the shell's automation piece and learn how to develop and customize commands using the shell infrastructure. Note that this applies to 1st Gen and 2nd Gen shells.
+
+## Introduction
+
+CloudShell shells consist of a data model and a driver. The driver is written in python and can have python package dependencies. Quali’s officially released shells use a common set of python packages developed by Quali, which contain most of the logic of Quali shells, while the driver itself (the “.py” file inside the shell) is the thin layer which defines the interface with CloudShell along with the driver python requirements.
+
+Quali’s official shells have a granularity level of Vendor and OS, meaning that a shell supports all devices of a specific vendor and OS, and the exact functionality the shell exposes is defined in the relevant shell standard. The structure of the python packages reflects this granularity; for example, any logic which is common to all networking devices will reside in cloudshell-networking, any Cisco-specific logic will reside in cloudshell-networking-cisco and any Cisco IOS-specific logic will reside in cloudshell-networking-cisco-ios.
+
+When creating your own shell from scratch, or when extending an official Quali shell by adding/modifying commands, it is recommended to leverage Quali’s shell infrastructure and python packages. Adding new commands or customizing the logic of existing commands should be done in the python driver inside the shell itself. You can write your code directly there or you can place it in a separate python package that you’ll add as a requirement to the driver. Such custom python packages can be loaded into our local [PyPi server](http://help.quali.com/Online%20Help/8.2.0.3019/Portal/Content/Admn/Cnfgr-Pyth-Env-Wrk-Offln.htm?Highlight=pypi) and thus be available to your entire CloudShell deployment.
+
 
 ## Python package structure
 
-This diagram shows the classes used by the Shell commands and their dependencies.
+The following diagram shows the python classes used by the shell commands and their dependencies.
 
 ![Python Package Structure Diagram]({{ site.baseurl}}/assets/python-package-structure.png)
 
 ## Architecture
 
-The architecture of a Quali Python Shell comprises four inter-dependent elements:
+The architecture of a Quali python shell comprises four inter-dependent elements:
 * [Runners](#Runners)
 * [Flows](#Flows)
 * [Command Templates](#CommandTemplates)
@@ -34,11 +43,11 @@ An additional element that is used by the runners is the communication handler, 
  
 ## Key Entities<a name="KeyEntities"></a>
 
-There are several objects that we need to initialize in the resource driver, to allow you to work with our infrastructure:
-* **cli** - A Python package that provides an easy abstraction interface for CLI access and communication (Telnet, TCP, SSH etc.) for network devices. The CLI class instance is provided by `cloudshell.cli.cli`. It must be created when the driver is initializing, since it allows the Shell to designate a single session pool for all of the Shell’s commands. You are welcome to use the *_get_cli* helper from *driver_helper* mentioned above. *_get_cli* allows you to define the session pool’s size and idle timeout. 
+There are several objects that should be initialized in the python driver, to allow you to work with Quali's infrastructure:
+* **cli** - A Python package that provides an easy abstraction interface for CLI access and communication (Telnet, TCP, SSH etc.) for network devices. The CLI class instance is provided by `cloudshell.cli.cli`. It must be created when the driver is initializing, since it allows the shell to designate a single session pool for all of the shell’s commands. You are welcome to use the *_get_cli* helper from *driver_helper* mentioned above. *_get_cli* allows you to define the session pool’s size and idle timeout. 
 * **api** is an instance of the *cloudshell-automation-API*’s *CloudShellAPISession* class. It must be created on every command execution. This class has a helper named *_get_api*, which is also provided by the *driver_helper* mentioned above.
 * **logger** is a logger object from *cloudshell-core*. It is recommended to use the *driver_helper’s get_logger_with_thread_id* function.
-* **resource config** – Python implementation of the relevant Quali standard, which defines the Shell’s attribute and default values. For example, a *GenericNetworkingResource* class that contains all attributes required by the networking standard. It can be easily created using the `create_networking_resource_from_context` method from 
+* **resource config** – Python implementation of the relevant Quali standard, which defines the shell’s attributes and default values. For example, a *GenericNetworkingResource* class that contains all attributes required by the networking standard. It can be easily created using the `create_networking_resource_from_context` method from 
 [cloudshell.devices.standards.networking.configuration_attributes_structure](https://github.com/QualiSystems/cloudshell-networking-devices/blob/dev/cloudshell/devices/standards/networking/configuration_attributes_structure.py).
 
 
@@ -48,7 +57,7 @@ For reference, see this [example](https://github.com/QualiSystems/Cisco-NXOS-Swi
 
 ### Communication Handlers<a name="CommunicationHandlers"></a>
 
-The most popular way to communicate with the device is via:
+The most common ways to communicate with the device are via:
 * CLI – cloudshell-cli
 * SNMP – cloudshell-snmp
 
@@ -88,7 +97,7 @@ To initialize the `SNMPHandler` object, you need to pass the following objects: 
 For reference, see [cisco_snmp_handler](https://github.com/QualiSystems/cloudshell-networking-cisco/blob/dev/cloudshell/networking/cisco/snmp/cisco_snmp_handler.py). For more information, see the [Flows](#Flows) section.
  
 ## Runners<a name="Runners"></a>
- This is an abstract class that includes generic implementations for preparing and validating the required parameters. For example, when running the Save command in CloudShell Portal, the runner must validate the folder path provided by the sandbox end-user. Typically, the Shell extracts the data for the required parameters from the resource command’s context and user inputs. 
+ This is an abstract class that includes generic implementations for preparing and validating the required parameters. For example, when running the Save command in CloudShell Portal, the runner must validate the folder path provided by the sandbox end-user. Typically, the shell extracts the data for the required parameters from the resource command’s context and user inputs. 
 
 The necessary interfaces are already implemented in the base Runners. However, you can implement your own base runner, e.g. *ConnectivityRunner* implements  the *ConnectivityOperationsInterface* interface. The runner’s interfaces contain commands that are triggered by the resource driver.
 
@@ -140,7 +149,7 @@ Overall, we have six Runners, all base classes and their interfaces are located 
 
 Flow is an organized sequence of Command Actions. All the base Flows are located in the [cloudshell-networking-devices](https://github.com/QualiSystems/cloudshell-networking-devices/blob/dev/cloudshell/devices/flows/action_flows.py) Python package. They are based on the *BaseFlow* interface located in the same place.
 
-Most Shells include the following flows:
+Most shells include the following flows:
 * Save Configuration Flow
 * Restore Configuration Flow
 * Add Vlan Flow
