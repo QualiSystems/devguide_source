@@ -13,7 +13,7 @@ version:
 
 This section will take you through the basic steps of a creating a new Shell. The goal is to demonstrate the end-to-end cycle, from generating a new Shell project to instancing Shell resources and running commands in CloudShell. 
 
-_**Tip: Before developing shells, please familiarize yourself with CloudShell by taking a course in [Quali University](http://university.quali.com). These courses also include a CloudShell SDK package that installs a lightweight edition of CloudShell on which you can perform your training and development activities.**_
+_**Before developing shells, please familiarize yourself with CloudShell by taking a course in [Quali University](http://university.quali.com). These courses also include installation instructions for the CloudShell SDK package that deploys a developer edition of CloudShell on which you can perform your training and development activities.**_
 
 ### Prerequisites
 * [Get CloudShell](http://info.quali.com/cloudshell-developer-edition-download): Download the latest CloudShell SDK and run it on your machine.  
