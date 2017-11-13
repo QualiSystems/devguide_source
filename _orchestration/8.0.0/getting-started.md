@@ -14,6 +14,8 @@ Orchestration scripts can enable automating sandbox workflows. You can use orche
 and teardown procedures as well as other custom workflows that can be made available in the sandbox. Examples would include
 saving and restoring state, starting test traffic, running a failover scenarios and more.
 
+_**Tip: Before developing scripts, please familiarize yourself with CloudShell by taking a course in [Quali University](http://university.quali.com). These courses also include a CloudShell SDK package that installs a lightweight edition of CloudShell on which you can perform your training and development activities.**_
+
 ### Creating a simple environment script
 
 In your preferred IDE create a new Python file. For now we'll want to keep its functionality very basic.
