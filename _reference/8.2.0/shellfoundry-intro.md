@@ -228,6 +228,9 @@ shellfoundry extend local:./my-shells/JuniperJunOSRouterShell2G
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Before extending a local Shell template, make sure the Shell's destination folder is different from the original Shell template's root folder.
 
 ### Version History<a name="version-history"></a>
+**1.0.4 (2017-08-28)**
+* Fixed some inconsistencies relating to the `extend` and `new` commands, specifically around the shell name
+
 **1.0.3 (2017-06-28)**
 * `list` command aborts if there is a new major version on pypi
 * Old Shellfoundry versions are NOT supported anymore. Therefore, in order to upgrade to the newest version, please run this command:
