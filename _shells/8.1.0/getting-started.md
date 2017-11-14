@@ -13,6 +13,7 @@ version:
 
 In this section, we’ll go through the basic steps of creating a new Shell. The goal is to demonstrate the end-to-end cycle, from generating a new Shell project to instancing Shell resources and running commands in CloudShell.
 
+_**Before developing shells, please familiarize yourself with CloudShell by taking a course in [Quali University](http://university.quali.com). These courses also include installation instructions for the CloudShell SDK package that deploys a developer edition of CloudShell on which you can perform your training and development activities.**_
 
 ### Supported versions - CloudShell v.8.0 and up
 As of version 8.0, CloudShell supports 2nd Gen Shells. This guide includes instructions on developing **2nd Gen Shells only**.

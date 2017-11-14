@@ -15,6 +15,8 @@ Welcome to the CloudShell developer guide!
 These pages will take you through all you need to know to become an expert CloudShell developer.
 The guide is intended both for developers taking their first steps with the platform as well as for seasoned CloudShell developers.
 
+_**Before developing shells and scripts, please familiarize yourself with CloudShell by taking a course in [Quali University](http://university.quali.com). These courses also include installation instructions for the CloudShell SDK package that deploys a developer edition of CloudShell on which you can perform your training and development activities.**_
+
 ### How this guide is organized
 
 The CloudShell developer guide is comprised of three distinct content areas, each describes a different branch of development or integration options possible with CloudShell. Each area of the guide is self contained and includes its own 'getting started' tutorial, examples and articles. You can select which areas are relevant to your development and explore them, there is no specific order to follow in approaching them. The three areas of the DevGuide are:
