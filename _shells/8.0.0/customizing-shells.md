@@ -1,8 +1,8 @@
 ---
 layout: page
-title: Customizing a 2nd Gen Shell
+title: Customizing a 2nd Gen Shell's Attributes
 category: tut
-order: 16
+order: 13
 comments: true
 version:
     - 8.0.0
@@ -11,13 +11,15 @@ version:
 {% assign pageUrlSplited = page.url | split: "/" %}
 {% assign pageVersion = pageUrlSplited[2] %}
 
-In this section, we’ll learn how to configure attributes and commands in a Shell and modify attribute rules. 
+In this section, we’ll learn how to configure and modify attributes in a Shell.
 
 Customizing an existing Shell is done using the `shellfoundry extend` command. This command downloads the source code of the Shell you wish to customize to your local machine and updates the Shell's Author. Note that extending official Shells (Shells that were released by Quali) will remove their official tag. The common use cases for customizing or extending a Shell are:
 * Adding new attributes
 * Modifying existing attributes
 * Adding new commands
 * Modifying existing commands
+
+To learn how to add and customize commands, see [Customizing a Shell's Commands]({{site.baseurl}}/shells/{{pageVersion}}/customizing-shell-commands.html).
 
 CloudShell provides two ways to customize attributes:
 * Customizing an existing Shell: Use this option when the modifications are related to a specific device but are not relevant to other Shells. 

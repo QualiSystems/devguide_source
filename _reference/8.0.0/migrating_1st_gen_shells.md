@@ -1,8 +1,8 @@
 ---
 layout: page
 title: Converting 1st Gen Shells into 2nd Gen Shells
-category: tut
-order:  14
+category: ref
+order: 9
 comments: true
 version:
     - 8.0.0
