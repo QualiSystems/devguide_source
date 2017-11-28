@@ -103,21 +103,21 @@ Run this command in the Shell’s root folder.
 **Note:** This command creates a Shell that is based on the latest version of the specified template, which is supported by your CloudShell version. However, you can also create a Shell based on a different version of the template, by adding `--version <version_number>` to the command. 
 
 
-#### Creating Shells in Offline Mode
+#### Creating Shells from a local template
 
-This section explains how to create Shells with Shellfoundry on an offline computer. This also applies to scenarios where the Shell template isn’t online for some reason (for example, a Shell template you are currently developing). Note that in online mode, this is done automatically by Shellfoundry, which accesses the online repository containing the desired Shell and downloads the source code to your computer.
+This article explains how to create Shells using a Shell template that isn’t online for some reason. For example, you want to use a Shell template you are currently developing.
 
-**To create a Shell in offline mode:**
+**To create a Shell from a local template:**
 
-1) Download the Shell template’s zip package from its GitHub repository.
+1) Make sure the Shell template’s root folder package to is on the computer that has Shellfoundry installed. 
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![Downloading a Shell's ZIP]({{ site.baseurl}}/assets/download-shell-zip.png)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If you have as a ZIP package, extract the package to this computer.
 
 2) Extract the package to the computer that has Shellfoundry installed.
 
-2) On that computer, open command-line and navigate to the directory that will contain the new Shell.
+3) On the computer, open command-line and navigate to the directory that will contain the new Shell.
 
-3) Run the following command:
+4) Run the following command:
 
 {% highlight bash %}shellfoundry new <new-shell-name> --template local:<path-to-template’s-root-folder> {% endhighlight %}
 
@@ -126,9 +126,9 @@ This section explains how to create Shells with Shellfoundry on an offline compu
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The new shell is added to the path from which you ran the `shellfounfry new` command. 
 
-4) Optionally customize the Shell, as explained in [Customizing a 2nd Gen Shell]({{site.baseurl}}/shells/{{pageVersion}}/customizing-shells.html).
+5) Optionally customize the Shell, as explained in [Customizing a 2nd Gen Shell]({{site.baseurl}}/shells/{{pageVersion}}/customizing-shells.html).
 
-5) Package the Shell.
+6) Package the Shell.
 {% highlight bash %}shellfoundry pack{% endhighlight %}
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Alternatively, package and import the Shell into CloudShell:
 {% highlight bash %}shellfoundry install{% endhighlight %}
@@ -228,6 +228,9 @@ shellfoundry extend local:./my-shells/JuniperJunOSRouterShell2G
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Before extending a local Shell template, make sure the Shell's destination folder is different from the original Shell template's root folder.
 
 ### Version History<a name="version-history"></a>
+**1.0.4 (2017-08-28)**
+* Fixed some inconsistencies relating to the `extend` and `new` commands, specifically around the shell name
+
 **1.0.3 (2017-06-28)**
 * `list` command aborts if there is a new major version on pypi
 * Old Shellfoundry versions are NOT supported anymore. Therefore, in order to upgrade to the newest version, please run this command:

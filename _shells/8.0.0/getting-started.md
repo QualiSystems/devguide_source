@@ -20,7 +20,7 @@ As of version 8.0, CloudShell supports 2nd Gen Shells. This guide includes instr
 
 For information on developing 1st Gen Shells, see [CloudShell Developer Guide](https://qualisystems.github.io/devguide_7/) CloudShell v7.1 and below.
 
-To learn more about the  different versions of the Shells used by CloudShell and how to upgrade a 1st Gen Shell, see [Converting 1st Generation Shells]({{site.baseurl}}/shells/{{pageVersion}}/migrating_1st_gen_shells.html)
+To learn more about the  different versions of the Shells used by CloudShell and how to upgrade a 1st Gen Shell, see [Converting 1st Generation Shells]({{site.baseurl}}/reference/{{pageVersion}}/migrating_1st_gen_shells.html)
 
 
 
