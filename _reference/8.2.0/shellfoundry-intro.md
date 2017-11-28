@@ -109,6 +109,13 @@ This section explains how to create Shells with Shellfoundry on an offline compu
 
 **To create a Shell in offline mode:**
 
+Run this command from the directory that will contain the new Shell:
+
+{% highlight bash %}shellfoundry new <new-shell-name> --template local:<path-to-template’s-root-folder> {% endhighlight %}
+
+You can specify a URL to the Shell’s source code zip file on GitHub or the filesystem path containing the extracted source code (prefixed by `local:`).
+
+
 1) Download the Shell template’s zip package from its GitHub repository.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![Downloading a Shell's ZIP]({{ site.baseurl}}/assets/download-shell-zip.png)
@@ -122,7 +129,7 @@ This section explains how to create Shells with Shellfoundry on an offline compu
 {% highlight bash %}shellfoundry new <new-shell-name> --template local:<path-to-template’s-root-folder> {% endhighlight %}
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;For example:
-{% highlight bash %}shellfoundry new my-service-ext --template local: C:\Temp\shell-pdu-standard-master {% endhighlight %}
+{% highlight bash %}shellfoundry new my-service-ext --template local:C:\Temp\shell-pdu-standard-master {% endhighlight %}
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The new shell is added to the path from which you ran the `shellfounfry new` command. 
 
@@ -205,27 +212,29 @@ This command downloads the source code of the Shell you wish to customize to you
 
 **Syntax:**
 
-Run this comamand:
+Run this command from the directory that will contain the new Shell:
 
 {% highlight bash %}
-shellfoundy extend <URL/path-to-Shell-template>
+shellfoundy extend <URL-to-source-code/path-to-extracted-source-code>
 {% endhighlight %}
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The Shell's path can be a URL to the Shell template's zip file on GitHub or the filesystem path (prefixed by `local:./`) to the root folder of the Shell.
+You can specify a URL to the Shell's source code zip file on GitHub or the filesystem path containing the extracted source code (prefixed by `local:`).
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![Downloading a Shell's source code]({{ site.baseurl}}/assets/donwload-shell-source-code.png)
 
 **Examples:**
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Extending a Shell template residing on GitHub:
+Extending a Shell template residing on GitHub:
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{% highlight bash %}
 shellfoundry extend https://github.com/QualiSystems/Juniper-JunOS-Router-Shell-2G/archive/1.0.0.zip
 {% endhighlight %}
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Extending a local Shell template:
+Extending a local Shell template:
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{% highlight bash %}
-shellfoundry extend local:./my-shells/JuniperJunOSRouterShell2G
+shellfoundry extend local:c:\my-shells\Juniper-JunOS-Router-Shell-2G-1.0.0
 {% endhighlight %}
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Before extending a local Shell template, make sure the Shell's destination folder is different from the original Shell template's root folder.
+Before extending a local Shell template, make sure the Shell's destination folder is different from the original Shell template's root folder.
 
 ### Version History<a name="version-history"></a>
 **1.0.3 (2017-06-28)**

@@ -205,13 +205,13 @@ This command downloads the source code of the Shell you wish to customize to you
 
 **Syntax:**
 
-Run this comamand:
+Run this command:
 
 {% highlight bash %}
-shellfoundy extend <URL/path-to-Shell-template>
+shellfoundy extend <URL-to-source-code/path-to-extracted-source-code>
 {% endhighlight %}
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The Shell's path can be a URL to the Shell template's zip file on GitHub or the filesystem path (prefixed by `local:./`) to the root folder of the Shell.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The Shell's path can be a URL to the Shell template's source code zip file on GitHub or the filesystem path containing the extracted source code (prefixed by `local:`).
 
 **Examples:**
 
@@ -222,7 +222,7 @@ shellfoundry extend https://github.com/QualiSystems/Juniper-JunOS-Router-Shell-2
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Extending a local Shell template:
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{% highlight bash %}
-shellfoundry extend local:./my-shells/JuniperJunOSRouterShell2G
+shellfoundry extend local:c:\my-shells\Juniper-JunOS-Router-Shell-2G-1.0.0
 {% endhighlight %}
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Before extending a local Shell template, make sure the Shell's destination folder is different from the original Shell template's root folder.
