@@ -107,31 +107,20 @@ Run this command in the Shell’s root folder.
 
 This article explains how to create Shells using a Shell template that isn’t online for some reason. For example, you want to use a Shell template you are currently developing.
 
-**To create a Shell from a local template:**
+**Syntax:**
 
-1) Make sure the Shell template’s root folder package to is on the computer that has Shellfoundry installed. 
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If you have as a ZIP package, extract the package to this computer.
-
-2) Extract the package to the computer that has Shellfoundry installed.
-
-3) On the computer, open command-line and navigate to the directory that will contain the new Shell.
-
-4) Run the following command:
+Run this command from the directory that will contain the new Shell:
 
 {% highlight bash %}shellfoundry new <new-shell-name> --template local:<path-to-template’s-root-folder> {% endhighlight %}
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;For example:
-{% highlight bash %}shellfoundry new my-service-ext --template local: C:\Temp\shell-pdu-standard-master {% endhighlight %}
+The path can be a URL to the Shell template's zip package on GitHub or the filesystem path (prefixed by `local:./`) to the extracted zip folder:
+
+![Shell Commands]({{ site.baseurl}}/assets/download_shell_zip.png)
+
+**Example:**
+{% highlight bash %}shellfoundry new my-service-ext --template local:C:\Temp\shell-pdu-standard-master {% endhighlight %}
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The new shell is added to the path from which you ran the `shellfounfry new` command. 
-
-5) Optionally customize the Shell, as explained in [Customizing a 2nd Gen Shell]({{site.baseurl}}/shells/{{pageVersion}}/customizing-shells.html).
-
-6) Package the Shell.
-{% highlight bash %}shellfoundry pack{% endhighlight %}
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Alternatively, package and import the Shell into CloudShell:
-{% highlight bash %}shellfoundry install{% endhighlight %}
 
 
 #### Listing available Shell templates
@@ -203,15 +192,19 @@ Run this command from the Shell’s root folder.
 
 This command downloads the source code of the Shell you wish to customize to your local machine and updates the Shell’s Author with the author specified in Shellfoundry. Note that extending official Shells (Shells that were released by Quali) will remove their official tag. For more information, see [Customizing a 2nd Gen Shell]({{site.baseurl}}/shells/{{pageVersion}}/customizing-shells.html).
 
+
 **Syntax:**
 
-Run this comamand:
+Run this command from the directory that will contain the new Shell:
 
 {% highlight bash %}
 shellfoundy extend <URL/path-to-Shell-template>
 {% endhighlight %}
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The Shell's path can be a URL to the Shell template's zip file on GitHub or the filesystem path (prefixed by `local:./`) to the root folder of the Shell.
+The path can be a URL to the Shell template's source code on Quali Developer Center or the filesystem path (prefixed by `local:./`) to the extracted source code folder:
+
+![Shell Commands]({{ site.baseurl}}/assets/download_shell_source_code.png)
+
 
 **Examples:**
 
@@ -222,10 +215,10 @@ shellfoundry extend https://github.com/QualiSystems/Juniper-JunOS-Router-Shell-2
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Extending a local Shell template:
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{% highlight bash %}
-shellfoundry extend local:./my-shells/JuniperJunOSRouterShell2G
+shellfoundry extend local:C:\Temp\my-shells\JuniperJunOSRouterShell2G
 {% endhighlight %}
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Before extending a local Shell template, make sure the Shell's destination folder is different from the original Shell template's root folder.
+Before extending a local Shell template, make sure the Shell's destination folder is different from the original Shell template's root folder.
 
 ### Version History<a name="version-history"></a>
 **1.0.4 (2017-08-28)**
