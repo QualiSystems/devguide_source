@@ -1,32 +1,32 @@
 ---
 layout: page
-title: Customizing a Shell's Commands
-category: tut
-order: 18
+title: Quali’s Shell Framework
+category: ref
+order: 9
 comments: true
 version:
-    - 8.2.0
+    - 8.1.0
 ---
+
 
 {% assign pageUrlSplited = page.url | split: "/" %}
 {% assign pageVersion = pageUrlSplited[2] %}
 
-In this article, we will familiarize ourselves with the architecture of the shell's automation piece and learn how to develop and customize commands using the shell infrastructure. Note that this applies to 1st Gen and 2nd Gen shells.
+In this article, we will familiarize ourselves with the CloudShell Shell framework and learn how to leverage it to develop and customize commands. Note that this applies to 1st Gen and 2nd Gen Shells.
 
 ## Introduction
 
-CloudShell shells consist of a data model and a driver. The driver is written in python and can have python package dependencies. Quali’s officially released shells use a common set of python packages developed by Quali, which contain most of the logic of Quali shells, while the driver itself (the “.py” file inside the shell) is the thin layer which defines the interface with CloudShell along with the driver python requirements.
-
-Quali’s official shells have a granularity level of Vendor and OS, meaning that a shell supports all devices of a specific vendor and OS, and the exact functionality the shell exposes is defined in the relevant shell standard. The structure of the python packages reflects this granularity; for example, any logic which is common to all networking devices will reside in cloudshell-networking, any Cisco-specific logic will reside in cloudshell-networking-cisco and any Cisco IOS-specific logic will reside in cloudshell-networking-cisco-ios.
-
-When creating your own shell from scratch, or when extending an official Quali shell by adding/modifying commands, it is recommended to leverage Quali’s shell infrastructure and python packages. Adding new commands or customizing existing ones should be done in the python driver that resides in the shell itself. You can write your code directly there or you can place it in a separate python package that you’ll add as a requirement to the driver. Such custom python packages can be loaded into our local [PyPi server](http://help.quali.com/Online%20Help/8.2.0.3019/Portal/Content/Admn/Cnfgr-Pyth-Env-Wrk-Offln.htm?Highlight=pypi) and thus be available to your entire CloudShell deployment.
+Every CloudShell shell consists of a data model and a driver. The driver is written in python and can have python package dependencies. Quali’s officially released shells use a common set of python packages developed by Quali, which contain most of the logic of Quali shells, while the driver itself (the “.py” file inside the shell) is the thin layer that defines the interface with CloudShell along with the driver’s python requirements.
+Quali’s official shells have a granularity level of Vendor and OS. This means that each official shell supports all devices of a specific vendor and OS. The exact functionality that is exposed by the shell is defined in the relevant shell standard. The structure of the python packages reflects this granularity – for example, any logic that is common to all networking devices resides in cloudshell-networking, while any Cisco-specific logic resides in cloudshell-networking-cisco, and any Cisco IOS-specific logic resides in cloudshell-networking-cisco-ios.
+It is possible to use Quali’s shell framework when creating your own shells or customizing existing ones. Note that using the framework is optional.
+To work with one or more of the framework’s python packages, you need to list it in your shell project’s requirements, and not fork it or directly edit it. Then you can either write the code, which uses the package, directly in the shell’s driver or create your own python package and add it to the requirements of the driver. Such custom python packages can be loaded into our [PyPi server](http://help.quali.com/Online%20Help/8.2.0.3019/Portal/Content/Admn/Cnfgr-Pyth-Env-Wrk-Offln.htm?Highlight=pypi) and thus be available to your entire CloudShell deployment.
 
 **Important:** It is not recommended to modify Quali python packages as these changes may be overwritten if a newer package that has the same file name is published on the public PyPi repository. Alternatively, you’re welcome to create your own packages, using our python packages as a reference.
 
 
 ## Python package structure
 
-The following diagram shows the python classes used by the shell commands and their dependencies.
+The following diagram shows the python classes used by the shell commands and their dependencies:
 
 ![Python Package Structure Diagram]({{ site.baseurl}}/assets/python-package-structure.png)
 
@@ -44,7 +44,7 @@ An additional element that is used by the runners is the communication handler, 
  
 ## Key Entities<a name="KeyEntities"></a>
 
-There are several objects that should be initialized in the python driver, to allow you to work with Quali's infrastructure:
+There are several objects that must be initialized in the python driver, to allow you to work with Quali's infrastructure:
 * **cli** - A Python package that provides an easy abstraction interface for CLI access and communication (Telnet, TCP, SSH etc.) for network devices. The CLI class instance is provided by `cloudshell.cli.cli`. It must be created when the driver is initializing, since it allows the shell to designate a single session pool for all of the shell’s commands. You are welcome to use the *_get_cli* helper from *driver_helper* mentioned above. *_get_cli* allows you to define the session pool’s size and idle timeout. 
 * **api** is an instance of the *cloudshell-automation-API*’s *CloudShellAPISession* class. It must be created on every command execution. This class has a helper named *_get_api*, which is also provided by the *driver_helper* mentioned above.
 * **logger** is a logger object from *cloudshell-core*. It is recommended to use the *driver_helper’s get_logger_with_thread_id* function.
