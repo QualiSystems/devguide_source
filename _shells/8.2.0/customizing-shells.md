@@ -19,7 +19,7 @@ Customizing an existing Shell is done using the `shellfoundry extend` command. T
 * Adding new commands
 * Modifying existing commands
 
-To learn how to add and customize commands, see [Customizing a Shell's Commands]({{site.baseurl}}/shells/{{pageVersion}}/customizing-shell-commands.html).
+To learn how to add and customize commands, see [Customizing a Shell's Commands]({{site.baseurl}}/reference/{{pageVersion}}/quali-shell-framework.html).
 
 CloudShell provides two ways to customize attributes:
 * Customizing an existing Shell: Use this option when the modifications are related to a specific device but are not relevant to other Shells. 
