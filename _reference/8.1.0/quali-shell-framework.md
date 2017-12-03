@@ -12,7 +12,7 @@ version:
 {% assign pageUrlSplited = page.url | split: "/" %}
 {% assign pageVersion = pageUrlSplited[2] %}
 
-In this article, we will familiarize ourselves with the CloudShell Shell framework and learn how to leverage it to develop and customize commands. Note that this applies to 1st Gen and 2nd Gen Shells.
+In this article, we will familiarize ourselves with the CloudShell shell framework and learn how to leverage it to develop and customize commands. Note that this applies to 1st Gen and 2nd Gen shells.
 
 ## Introduction
 
@@ -201,4 +201,3 @@ We need to (1) pass the `session` object, command template and action/error maps
 {% highlight bash %}
 CommandTemplateExecutor(session, CONFIGURE_VLAN, action_map=action_map, error_map=error_map).execute_command(vlan_id=vlan_id)
 {% endhighlight %}
-
