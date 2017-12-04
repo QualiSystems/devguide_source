@@ -8,15 +8,14 @@ version:
     - 8.2.0
 ---
 
-
 {% assign pageUrlSplited = page.url | split: "/" %}
 {% assign pageVersion = pageUrlSplited[2] %}
 
 In this section, we’ll learn how to create and modify a shell’s commands and attributes.
 
-Customizing an existing Shell is done using the `shellfoundry extend` command. This command downloads the source code of the Shell you wish to customize to your local machine and updates the Shell’s Author. Note that extending official Shells (Shells that were released by Quali) will remove their official tag. 
+Customizing an existing shell is done using the `shellfoundry extend` command. This command downloads the source code of the shell you wish to customize to your local machine and updates the shell’s Author. Note that extending official shells (shells that were released by Quali) will remove their official tag. 
 
-The common use cases for customizing or extending a Shell are:
+The common use cases for customizing or extending a shell are:
 
 * Adding new attributes
 * Modifying existing attributes
@@ -24,15 +23,11 @@ The common use cases for customizing or extending a Shell are:
 * Modifying existing commands
 
 
-## Customizing a shell’s Commands
+## Customizing a shell’s commands
 
 When customizing an official shell you can add new commands, and also modify or hide existing ones.
 
-**To add a new command:**
-
-1)  Add the command in the shell’s driver.py file.
-
-2) Expose the command in the shell’s *drivermetadata.xml* file.
+* **To add a new command:** Add the command in the shell’s driver.py file, and expose the command in the shell’s *drivermetadata.xml* file.
 
 The command’s logic should be placed either in the driver itself or in a separate python package.
 
@@ -46,34 +41,34 @@ It is also possible to hide or remove a command. Hiding a command is done by pla
 
 When adding or modifying a command, you can leverage Quali’s shell framework to ease the development process, see more information [Quali's Shell Framework]({{site.baseurl}}/reference/{{pageVersion}}/quali-shell-framework.html).
 
-See some common examples for shell’s command extension in [Common Driver Recipes]({{site.baseurl}}/shells/{{pageVersion}}/common-driver-recipes.html).
+See some common command extension examples in [Common Driver Recipes]({{site.baseurl}}/shells/{{pageVersion}}/common-driver-recipes.html).
 
 
 ## Customizing a shell’s attributes
 
 CloudShell provides two ways to customize attributes:
 
-* **Customizing an existing Shell**: Use this option when the modifications are related to a specific device but are not relevant to other Shells. This is done by manually editing the Shell’s *shell-definition.yaml* file.
-* **Associating custom attributes with a Shell that is installed in CloudShell**: Use this option when the additional attributes are deployment-related and required in multiple Shells. For example, the Execution Server Selector attribute.
+* **Customizing an existing shell**: Use this option when the modifications are related to a specific device but are not relevant to other shells. This is done by manually editing the shell’s *shell-definition.yaml* file.
+* **Associating custom attributes with a shell that is installed in CloudShell**: Use this option when the additional attributes are deployment-related and required in multiple shells. For example, the Execution Server Selector attribute.
 
 The second option of associating custom attributes with an already installed shell is done by calling the [SetCustomShellAttribute]({{site.baseurl}}/shells/{{pageVersion}}/deploying-to-production.html#SetCustomShellAttribute) API method. For additional information on this method, see [Deploying to Production]({{site.baseurl}}/shells/{{pageVersion}}/deploying-to-production.html). The first option currently only applies to the root model of the shell, so if you need to customize your shell’s sub-resource models, such as blades and ports, use the second option. Note that CloudShell version 9.0 will support sub-resource attribute modifications via the *shell-definition.yaml* file.
 
-**Important:** Deleting a 2nd Gen shell’s default attributes is not supported. It is also not possible to customize a 2nd Gen shell’s data model (families and models) and its structure, which is as defined in the shell standard the original Shell is based on.
+**Important:** Deleting a 2nd Gen shell’s default attributes is not supported. It is also not possible to customize a 2nd Gen shell’s data model (families and models) and its structure, which is as defined in the shell standard the original shell is based on.
 
 
-### Adding attributes to a Shell’s model
+### Adding attributes to a shell’s model
 
 The shell’s path can be a URL to the shell template’s zip file on GitHub or the filesystem path (prefixed by `local:./`) to the root folder of the shell. For additional information and examples, see [Shellfoundry]({{site.baseurl}}/reference/{{pageVersion}}/shellfoundry-intro.html).
 
-**To add attributes to a Shell’s root model:**
+**To add attributes to a shell’s root model:**
 
 1)  Open command-line.
 
-2) To customize a shell that resides on your local machine, make sure command-line is pointing to a different path from the original Shell template’s root folder.
+2) To customize a shell that resides on your local machine, make sure command-line is pointing to a different path from the original shell template’s root folder.
 
 3) Run the following in command-line:
 
-{% highlight bash %}shellfoundy extend <URL/path-to-Shell-template>{% endhighlight %}
+{% highlight bash %}shellfoundy extend <URL/path-to-shell-template>{% endhighlight %}
 
 4) In the shell’s download folder, open the *shell-definition.yaml* file in your preferred editor.
 
@@ -139,7 +134,7 @@ properties:
 {% endhighlight %}
 
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;For details about the tags, see the Modeling Shells with TOSCA.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;For details about the tags, see [Modeling Shells with TOSCA]({{site.baseurl}}/shells/{{pageVersion}}/modeling-the-shell.html).
 
 4) Replace `<property_name>` with the attribute’s name. Do not remove the colon (:) from the end of the line.
 
