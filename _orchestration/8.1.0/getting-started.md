@@ -8,13 +8,28 @@ version:
     - 8.1.0
 tags:
     - orchestration
- 
 ---
+
+{% assign pageUrlSplited = page.url | split: "/" %}
+{% assign pageVersion = pageUrlSplited[2] %}
+
 Orchestration scripts can enable automating sandbox workflows. You can use orchestration scripts to create setup
 and teardown procedures as well as other custom workflows that can be made available in the sandbox. Examples would include
 saving and restoring state, starting test traffic, running a failover scenarios and more.
 
 _**Before developing scripts, please familiarize yourself with CloudShell by taking a course in [Quali University](http://university.quali.com). These courses also include installation instructions for the CloudShell SDK package that deploys a developer edition of CloudShell on which you can perform your training and development activities.**_
+
+### Creating and using orchestration scripts in CloudShell
+
+This procedure shows the basic steps for creating and using orchestration scripts in CloudShell.
+
+1) Create a python script. You can create a single python script, or a more complex orchestration that uses dependencies, as explained in [Scripts Deep Dive]({{site.baseurl}}/orchestration/{{pageVersion}}/scripts-deep-dive.html).
+
+2) If the script requires the use of python dependencies, which aren’t available in the public PyPi repository, add them to the local PyPi Server. See the online help's [Updating Python Dependencies for Shells, Drivers and Scripts](http://help.quali.com/Online%20Help/8.1.0.4496/Portal/Content/Admn/Updt-Pyth-Libs.htm).
+
+3) Upload the script to CloudShell. When uploading the script, you can set it as a setup or teardown script, to have it run automatically in the sandbox, or leave it as a manually launched orchestration script.
+
+4) Attach the script to the blueprint. If it’s a setup or teardown script, remove the blueprint’s existing script first.
 
 ### Creating a simple environment script
 
