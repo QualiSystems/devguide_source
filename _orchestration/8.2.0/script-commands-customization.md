@@ -21,7 +21,7 @@ To demonstrate these capabilities, we’ll create a simple script, which we’ll
 from cloudshell.workflow.orchestration.sandbox import Sandbox
 import cloudshell.helpers.scripts.cloudshell_dev_helpers as dev_helpers
 
-def print_parameters_values(Sandbox):
+def print_parameters_values(sandbox):
     """
     :param Sandbox sandbox:
     :return:
@@ -29,12 +29,12 @@ def print_parameters_values(Sandbox):
     print sandbox.get_user_param('first_param')
     print sandbox.get_user_param('second_param')
 
-def change_reservation_status_to_online(Sandbox):
+def change_reservation_status_to_online(sandbox):
     """
     :param Sandbox sandbox:
     :return:
     """
-    sandbox.automation_api.SetReservationLiveStatus(sandbox.id, "Online")
+    sandbox.automation_api.SetReservationLiveStatus(sandbox.id, "Downloading")
 
 def main():
     dev_helpers.attach_to_cloudshell()
