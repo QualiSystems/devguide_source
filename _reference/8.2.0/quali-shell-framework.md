@@ -136,8 +136,6 @@ Overall, we have six Runners, all base classes and their interfaces are located 
 
 * **[State Runner](https://github.com/QualiSystems/cloudshell-networking-devices/blob/dev/cloudshell/devices/runners/state_runner.py)** – This runner is very similar to the Run Custom Command Runner as it only requires the *cli_handler* object to be implemented. It contains implementations for the `Health Check` and `Shutdown` commands. To initialize this runner, you need to pass the `logger`, `api` and `resource_config` objects mentioned in [Key Entities](#KeyEntities).
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;For reference, see this [example](https://github.com/QualiSystems/cloudshell-networking-cisco/blob/dev/cloudshell/networking/cisco/runners/cisco_state_runner.py).
-
 * **[Autoload Runner](https://github.com/QualiSystems/cloudshell-networking-devices/blob/dev/cloudshell/devices/runners/autoload_runner.py)** – discovers the device’s hardware structure and general details, such as the firmware version and model. This is the only runner that doesn’t require the *cli_handler* object, but requires the following properties to be implemented:
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• snmp_handler
