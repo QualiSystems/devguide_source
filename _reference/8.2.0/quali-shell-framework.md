@@ -132,7 +132,7 @@ Overall, we have six Runners, all base classes and their interfaces are located 
 
 * **[Run Command Runner](https://github.com/QualiSystems/cloudshell-networking-devices/blob/dev/cloudshell/devices/runners/run_command_runner.py)** – As you can see from the name, this Runner handles the `Run Custom Command` and `Run Custom Config Command` driver methods, and doesn’t require anything to implement besides the *cli_handler*. However, if you want to customize the `run_command_flow` property, you are welcome to override it. To initialize this runner, just pass the logger object.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;For reference, see this [example](https://github.com/QualiSystems/cloudshell-networking-cisco/blob/dev/cloudshell/networking/cisco/runners/cisco_run_command_runner.py).
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;For reference, see this [example](https://github.com/QualiSystems/cloudshell-networking-cisco/blob/dev/cloudshell/networking/cisco/runners/cisco_configuration_runner.py).
 
 * **[State Runner](https://github.com/QualiSystems/cloudshell-networking-devices/blob/dev/cloudshell/devices/runners/state_runner.py)** – This runner is very similar to the Run Custom Command Runner as it only requires the *cli_handler* object to be implemented. It contains implementations for the `Health Check` and `Shutdown` commands. To initialize this runner, you need to pass the `logger`, `api` and `resource_config` objects mentioned in [Key Entities](#KeyEntities).
 
