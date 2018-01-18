@@ -292,25 +292,7 @@ artifacts:
 
 
 
-#### Add Shell Capabilities
-The Shell’s standard already defines basic capabilities that can be implemented in the Shell. For example, support for SNMP, console connections, device backup and Auto-discovery. The capabilities that are relevant for the Shell are already defined in the Shell’s standard.
-In the _capabilities_ section, we can add additional capabilities or edit the standard capabilities.
+#### Optional Shell Capabilities
+The Shell supports two capabilities that can be enabled, assuming the Shell's driver supports them: auto discovery and concurrent execution of commands.
 
-
-{% highlight yaml %}
-capabilities:
-  auto_discovery_capability:
-    type: cloudshell.capabilities.AutoDiscovery
-    properties:        
-      enable_auto_discovery:
-        type: boolean
-        default: true
-      auto_discovery_description:
-        type: string
-        default: Describe the auto discovery
-      inventory_description:
-        type: string
-        default: Describe the resource shell template
-{% endhighlight %}
-
-The most common use case is customizing the Auto-discovery process. This is covered in detail in [Auto Discovery For Inventory Shells]({{site.baseurl}}/shells/{{pageVersion}}/implementing-discovery-for-inventory-shells.html)
+The implementation of these capabilities is covered in detail in [Auto Discovery For Inventory Shells]({{site.baseurl}}/shells/{{pageVersion}}/implementing-discovery-for-inventory-shells.html) and the Driver Deep Dive article's [Drivers and concurrency]({{site.baseurl}}/shells/{{pageVersion}}/driver-deep-dive.html#drivers-and-concurrency) section.
