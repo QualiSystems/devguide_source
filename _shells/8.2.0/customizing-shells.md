@@ -39,7 +39,7 @@ When modifying an existing command, you can add optional input parameters. Just 
 
 It is also possible to hide or remove a command. Hiding a command is done by placing it in an “administrative” [category]({{site.baseurl}}/shells/{{pageVersion}}/customizing-driver-commands.html) in the drivermetadata.xml. Note that removing a command might affect how the shell is used since CloudShell and/or some orchestration scripts might depend on the existing driver’s commands.
 
-When adding or modifying a command, you can leverage Quali’s shell framework to ease the development process, see more information [Quali's Shell Framework]({{site.baseurl}}/reference/{{pageVersion}}/quali-shell-framework.html).
+When adding or modifying a command, you can leverage Quali’s shell framework to ease the development process. For details, see [Quali's Shell Framework]({{site.baseurl}}/reference/{{pageVersion}}/quali-shell-framework.html).
 
 See some common command extension examples in [Common Driver Recipes]({{site.baseurl}}/shells/{{pageVersion}}/common-driver-recipes.html).
 
