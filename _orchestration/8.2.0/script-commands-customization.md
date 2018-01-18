@@ -12,7 +12,7 @@ tags:
 ---
 You can control many aspects of how the orchestration commands appear and behave in CloudShell by editing the script from the Scripts management page.
 
-To demonstrate these capabilities, we’ll create a simple script, which we’ll later customize. The script essentially prints out the parameters it receives and then sets the status of the sandbox to ‘Online’.
+To demonstrate these capabilities, we’ll create a simple script, which we’ll later customize. The script essentially prints out the parameters it receives and then sets the status of the sandbox to ‘Downloading’.
 
 1. Create a new Python file and name it customization_test.py. Add the following code:
 
@@ -21,7 +21,7 @@ To demonstrate these capabilities, we’ll create a simple script, which we’ll
 from cloudshell.workflow.orchestration.sandbox import Sandbox
 import cloudshell.helpers.scripts.cloudshell_dev_helpers as dev_helpers
 
-def print_parameters_values(Sandbox):
+def print_parameters_values(sandbox):
     """
     :param Sandbox sandbox:
     :return:
@@ -29,12 +29,12 @@ def print_parameters_values(Sandbox):
     print sandbox.get_user_param('first_param')
     print sandbox.get_user_param('second_param')
 
-def change_reservation_status_to_online(Sandbox):
+def change_reservation_status_to_online(sandbox):
     """
     :param Sandbox sandbox:
     :return:
     """
-    sandbox.automation_api.SetReservationLiveStatus(sandbox.id, "Online")
+    sandbox.automation_api.SetReservationLiveStatus(sandbox.id, "Downloading")
 
 def main():
     dev_helpers.attach_to_cloudshell()
