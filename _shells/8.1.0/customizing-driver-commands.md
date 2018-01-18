@@ -21,7 +21,7 @@ In this section we'll explore the different ways in which these commands can be 
 * [Optional parameters and default values](#customizing_optional_parameters)
 * [Restricting input to a specific set of possible values](#customizing_lookup_values)
 * [Adding categories](#customizing_categories)
-* [Orchestration only commands](#customizing_orchestration_only_commands)
+* [Orchestration only commands (hidden commands)](#customizing_orchestration_only_commands)
 
 If you haven't done some already it is recommended to go through the [Getting Started]({{site.baseurl}}/shells/{{pageVersion}}/getting-started.html) tutorial before continuing to get a better understanding of the overall process of creating and using a shell. We also assume you've gone through the steps described in the [Setting Up the Development IDE]({{site.baseurl}}/introduction/{{pageVersion}}/setting-up-the-development-ide.html) section of this guide.
 
@@ -225,10 +225,10 @@ After re-installing the shell we get the following command panel layout:
 
 <a name="customizing_orchestration_only_commands"></a>
 
-### Orchestration only commands
+### Orchestration only commands (hidden commands)
 
-Sometimes, you may wish to create commands that are intended to be used as a part of an orchestration flow, for example to be called during setup, but that you don't wish users to get direct access to or to be visible via the UI. For example, a command that will be called during a sandbox’s Setup process.
-To support this use case, CloudShell supports a special category, the _Hidden Commands_ category which allows you to mark commands you want to be omitted from the web portal UI but that can still be invoked via the API.
+Sometimes, you may wish to create commands that are intended to be used as a part of an orchestration flow, for example to be called during setup, but want these commands to be inaccessible to users [hidden] from the UI. For example, a command that is called during a sandbox’s Setup process.
+To support this use case, CloudShell supports a special category, the _Hidden Commands_ category, which allows you to omit commands from the web portal UI while allowing them to be invoked via the API.
 
 To demonstrate this capability, let's first add a new function to our driver class in the _driver.py_ file:
 

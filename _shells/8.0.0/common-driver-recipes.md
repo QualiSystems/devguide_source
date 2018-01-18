@@ -73,3 +73,9 @@ We can easily modify the previous code to do that instead:
 {% highlight python %}
 {% github_sample QualiSystems/devguide_examples/blob/master/common_driver_recipes/src/driver.py 57 70 %}
 {% endhighlight %}
+
+#### Sending commands to a networking device
+When adding a new command that requires communication with a networking device, such as a switch or router, you need to open a session to the device. An easy way to do that is by leveraging Quali’s shell framework (*cloudshell-cli* package). The framework can provide a session from a session pool via Telnet, SSH or TCP, based on the configuration saved in the **CLI Connection Type** attribute on the root resource.
+
+See the code below for an example:
+[TBD code snippet]

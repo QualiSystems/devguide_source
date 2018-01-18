@@ -160,7 +160,7 @@ Re-install the shell. You'll now see the commands pane has a regular stop button
 stop button the _is_cancelled_ property on the _cancellation_context_ object will be updated and the driver will get a chance to
 complete its current actions and end its execution.
 
-#### Drivers and concurrency
+#### Drivers and concurrency<a name="drivers-and-concurrency"></a>
 
 CloudShell supports two modes for drivers:
 

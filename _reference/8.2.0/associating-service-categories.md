@@ -2,7 +2,7 @@
 layout: page
 title: Associating Categories to 1st Gen Service Shells
 category: ref
-order: 10
+order: 11
 comments: true
 version:
     - 8.2.0
