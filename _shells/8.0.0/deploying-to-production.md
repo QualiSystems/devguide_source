@@ -51,8 +51,8 @@ In this example, we are adding an Execution Server Selector attribute named "Dom
 Before deploying to the production environment, its important to make sure that all Execution Servers will be able to execute
 the Shell commands, even if they're configured to offline access and can't retrieve the Shell dependencies.
 
-If some of the Execution Servers in your production environment are running in offline mode, simply copy the content of the _offline_requirements_ folder to the offline repository folder. The offline repo folder is defined in the Execution Server customer.config file under _PythonOfflineRepositoryPath_. For more information on how to configure the offline Execution Server,
-consult the relevant [CloudShell Documentation](http://help.qualisystems.com/Online%20Help/7.1.0.0/Portal/Content/Admn/Cnfgr-Pyth-Env.htm?Highlight=execution%20server) article.
+If some of the Execution Servers in your production environment are running in offline mode, simply copy the content of the _offline_requirements_ folder to the offline repository folder. The offline repo folder is defined in the Execution Server _customer.config_ file using the _PythonOfflineRepositoryPath_ configuration key. For more information on how to configure the offline Execution Server,
+consult the relevant [CloudShell Documentation](http://help.quali.com/Online%20Help/8.0.0.7741/Portal/Content/Admn/Cnfgr-Pyth-Env-Wrk-Offln.htm) article.
 
 ### Deploying to the production CloudShell Server
 

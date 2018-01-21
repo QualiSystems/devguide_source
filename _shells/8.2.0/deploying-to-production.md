@@ -32,9 +32,16 @@ This will create two artifacts in the 'dist' sub-folder of the Shell project:
 
 ### Adding custom attributes to the Shell<a name="SetCustomShellAttribute"></a>
 
-Using the API, you can add attributes to your Shell and customize their defaults for this Shell. This is done using the `SetCustomShellAttribute` API method, available in the TestShell XML RPC and Python APIs. 
+In this section, we will explain how to add an attribute to a specific shell. You can do this using CloudShell Portal and the API. 
+
+CloudShell distinguishes between two types of attributes. 
+* Attributes related to the device or shell, like Firmware Version or Port Speed
+* Attributes related to your CloudShell deployment, like Execution Server Selector. 
+Note that deployment-specific attributes are added to the shell by the CloudShell system administrator while device-specific attributes are added to the shell by the shell's developer. 
 
 **Notes:** This only applies to attributes that already exist in CloudShell. When upgrading the Shell, these custom attributes and their association with the Shell will not be overwritten.
+
+Using the API, you can add attributes to your Shell and customize their defaults for this Shell. This is done using the `SetCustomShellAttribute` API method, available in the TestShell XML RPC and Python APIs.
 
 The required inputs are:
 * modelName = The Shell’s model (the Shell name; case-sensitive)
@@ -46,13 +53,10 @@ In this example, we are adding an Execution Server Selector attribute named "Dom
 
 ![Context Object]({{ site.baseurl }}/assets/SetCustomShellAttribute_example.png)
 
-### Configuring offline Execution Servers
+### Enabling Shell commands to run in offline mode
 
-Before deploying to the production environment, its important to make sure that all Execution Servers will be able to execute
-the Shell commands, even if they're configured to offline access and can't retrieve the Shell dependencies.
-
-If some of the Execution Servers in your production environment are running in offline mode, simply copy the content of the _offline_requirements_ folder to the offline repository folder. The offline repo folder is defined in the Execution Server customer.config file under _PythonOfflineRepositoryPath_. For more information on how to configure the offline Execution Server,
-consult the relevant [CloudShell Documentation](http://help.qualisystems.com/Online%20Help/7.1.0.0/Portal/Content/Admn/Cnfgr-Pyth-Env.htm?Highlight=execution%20server) article.
+Before deploying to the production environment, it's important to make sure that your Execution Servers will be able to execute
+the Shell commands, even if your CloudShell deployment is configured to run offline and can't retrieve the Shell dependencies. If this is the case, simply copy the content of the _offline_requirements_ folder to your local PyPi Server repository. For more information, see [Configuring CloudShell to Execute Python Commands in Offline Mode](http://help.quali.com/Online%20Help/8.2.0.3290/Portal/Content/Admn/Cnfgr-Pyth-Env-Wrk-Offln.htm) article.
 
 ### Deploying to the production CloudShell Server
 
