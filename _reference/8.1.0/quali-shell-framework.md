@@ -19,7 +19,7 @@ In this article, we will familiarize ourselves with the CloudShell shell framewo
 Every CloudShell shell consists of a data model and a driver. The driver is written in python and can have python package dependencies. Quali’s officially released shells use a common set of python packages developed by Quali, which contain most of the logic of Quali shells, while the driver itself (the “.py” file inside the shell) is the thin layer that defines the interface with CloudShell along with the driver’s python requirements.
 Quali’s official shells have a granularity level of Vendor and OS. This means that each official shell supports all devices of a specific vendor and OS. The exact functionality that is exposed by the shell is defined in the relevant shell standard. The structure of the python packages reflects this granularity – for example, any logic that is common to all networking devices resides in cloudshell-networking, while any Cisco-specific logic resides in cloudshell-networking-cisco, and any Cisco IOS-specific logic resides in cloudshell-networking-cisco-ios.
 It is possible to use Quali’s shell framework when creating your own shells or customizing existing ones. Note that using the framework is optional.
-To work with one or more of the framework’s python packages, you need to list it in your shell project’s requirements, and not fork it or directly edit it. Then you can either write the code, which uses the package, directly in the shell’s driver or create your own python package and add it to the requirements of the driver. Such custom python packages can be loaded into our [PyPi server](http://help.quali.com/Online%20Help/8.2.0.3019/Portal/Content/Admn/Cnfgr-Pyth-Env-Wrk-Offln.htm?Highlight=pypi) and thus be available to your entire CloudShell deployment.
+To work with one or more of the framework’s python packages, you need to list it in your shell project’s requirements, and not fork it or directly edit it. Then you can either write the code, which uses the package, directly in the shell’s driver or create your own python package and add it to the requirements of the driver. Such custom python packages can be loaded to a designated "offline dependencies" repository in CloudShell and thus be available to your entire CloudShell deployment - for details, click [here](http://help.quali.com/Online%20Help/8.1.0.4496/Portal/Content/Admn/Cnfgr-Pyth-Env-Wrk-Offln.htm).
 
 **Important:** It is not recommended to modify Quali python packages as these changes may be overwritten if a newer package that has the same file name is published on the public PyPi repository. Alternatively, you’re welcome to create your own packages, using our python packages as a reference.
 
@@ -45,7 +45,8 @@ An additional element that is used by the runners is the communication handler, 
 ## Key Entities<a name="KeyEntities"></a>
 
 There are several objects that must be initialized in the python driver, to allow you to work with Quali's infrastructure:
-* **cli** - A Python package that provides an easy abstraction interface for CLI access and communication (Telnet, TCP, SSH etc.) for network devices. The CLI class instance is provided by `cloudshell.cli.cli`. It must be created when the driver is initializing, since it allows the shell to designate a single session pool for all of the shell’s commands. You are welcome to use the *_get_cli* helper from *driver_helper* mentioned above. *_get_cli* allows you to define the session pool’s size and idle timeout. 
+* **Communication Handlers** – These entities handle the communication between the shell and the device. The most common handlers are cli (`cloudshell-cli`) and snmp (`cloudshell-snmp`). These handlers must be initialized whenever calling a shell command, and passed to the runners.
+* **cli** - A Python package that resides in the driver and is used to create the cli handler. This package provides an easy abstraction interface for CLI access and communication (Telnet, TCP, SSH etc.) for network devices. The CLI class instance is provided by `cloudshell.cli.cli`. It must be created when the driver is initializing, since it allows the shell to designate a single session pool for all of the shell’s commands. You are welcome to use the *_get_cli* helper from *driver_helper* mentioned above. *_get_cli* allows you to define the session pool’s size and idle timeout. 
 * **api** is an instance of the *cloudshell-automation-API*’s *CloudShellAPISession* class. It must be created on every command execution. This class has a helper named *_get_api*, which is also provided by the *driver_helper* mentioned above.
 * **logger** is a logger object from *cloudshell-core*. It is recommended to use the *driver_helper’s get_logger_with_thread_id* function.
 * **resource config** – Python implementation of the relevant Quali standard, which defines the shell’s attributes and default values. For example, a *GenericNetworkingResource* class that contains all attributes required by the networking standard. It can be easily created using the `create_networking_resource_from_context` method from 
@@ -61,6 +62,8 @@ For reference, see this [example](https://github.com/QualiSystems/Cisco-NXOS-Swi
 The most common ways to communicate with the device are via:
 * CLI – cloudshell-cli
 * SNMP – cloudshell-snmp
+
+These handlers need to be initialized and passed to the runners.
 
 #### CLI Handler<a name="CliHandler"></a>
 
@@ -104,9 +107,9 @@ The necessary interfaces are already implemented in the base Runners. However, y
 
 Overall, we have six Runners, all base classes and their interfaces are located in [cloudshell-networking-devices](https://github.com/QualiSystems/cloudshell-networking-devices/tree/dev/cloudshell/devices/runners):
 
-**Note:** All runners except for Autoload Runner require the cli-handler property to be implemented in the child runner, like [this](#CliHandler).
+**Note:** All runners except for Autoload Runner require the cli-handler parameter to be passed to the runner while it is being initialized. For example, see  [this](https://github.com/QualiSystems/Cisco-IOS-Shell/blob/5.0.2/src/cisco_ios_resource_driver.py#L86-L87).
 
-* **[Connectivity Runner](https://github.com/QualiSystems/cloudshell-networking-devices/blob/dev/cloudshell/devices/runners/connectivity_runner.py)** – uses multithread logic to speed up the VLAN configuration on the device, especially when the resource needs to undergo a huge request that involves multiple, concurrently run actions. To initialize this runner, you have to provide the logger object (described in [Key Entities](#KeyEntities)). Use the `apply_connectivity_changes` method to start. In addition to the *cli_handler* mentioned above, the following properties have to be implemented:
+* **[Connectivity Runner](https://github.com/QualiSystems/cloudshell-networking-devices/blob/dev/cloudshell/devices/runners/connectivity_runner.py)** – Uses multithread logic to speed up the VLAN configuration on the device, especially when the resource needs to undergo a huge request that involves multiple, concurrently run actions. To initialize this runner, you have to provide the logger and cli_handler objects (described in [Key Entities](#KeyEntities)). Use the `apply_connectivity_changes` method to start. The following properties have to be implemented:
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• add_vlan_flow
 
@@ -114,7 +117,7 @@ Overall, we have six Runners, all base classes and their interfaces are located 
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;For reference, see this [example](https://github.com/QualiSystems/cloudshell-networking-cisco/blob/dev/cloudshell/networking/cisco/runners/cisco_connectivity_runner.py).
 
-* **[Configuration Runner](https://github.com/QualiSystems/cloudshell-networking-devices/blob/dev/cloudshell/devices/runners/configuration_runner.py)** – prepares and validates the provided path for the `save`, `restore`, `orchestration save` and `orchestration restore` commands. To initialize this runner, you have to pass the `logger`, `resource_config` and `api` objects (described in Key Entities). In addition to the *cli_handler*, the following properties have to be implemented:
+* **[Configuration Runner](https://github.com/QualiSystems/cloudshell-networking-devices/blob/dev/cloudshell/devices/runners/configuration_runner.py)** – Prepares and validates the provided path for the `save`, `restore`, `orchestration save` and `orchestration restore` commands. To initialize this runner, you have to pass the *logger*, *resource_config*, *cli_handler* and *api* objects (described in Key Entities). The following properties have to be implemented:
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• save_flow
 
@@ -124,25 +127,23 @@ Overall, we have six Runners, all base classes and their interfaces are located 
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;For reference, see this [example](https://github.com/QualiSystems/cloudshell-networking-cisco/blob/dev/cloudshell/networking/cisco/runners/cisco_configuration_runner.py).
 
-* **[Firmware Runner](https://github.com/QualiSystems/cloudshell-networking-devices/blob/dev/cloudshell/devices/runners/firmware_runner.py)** – This runner serves as a Configuration Runner, and also validates the firmware’s file path and extracts any required values from `resource_config`. To initialize this runner, you need to pass the logger object. In addition to the *cli_handler*, the following property has to be implemented:
+* **[Firmware Runner](https://github.com/QualiSystems/cloudshell-networking-devices/blob/dev/cloudshell/devices/runners/firmware_runner.py)** – This runner serves as a Configuration Runner, and also validates the firmware’s file path. To initialize this runner, you need to pass the *logger* and *cli_handler* objects. The following property has to be implemented:
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• load_firmware_flow
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;For reference, see this [example](https://github.com/QualiSystems/cloudshell-networking-cisco/blob/dev/cloudshell/networking/cisco/runners/cisco_firmware_runner.py).
 
-* **[Run Command Runner](https://github.com/QualiSystems/cloudshell-networking-devices/blob/dev/cloudshell/devices/runners/run_command_runner.py)** – As you can see from the name, this Runner handles the `Run Custom Command` and `Run Custom Config Command` driver methods, and doesn’t require anything to implement besides the *cli_handler*. However, if you want to customize the `run_command_flow` property, you are welcome to override it. To initialize this runner, just pass the logger object.
+* **[Run Command Runner](https://github.com/QualiSystems/cloudshell-networking-devices/blob/dev/cloudshell/devices/runners/run_command_runner.py)** – As you can see from the name, this Runner handles the `Run Custom Command` and `Run Custom Config Command` driver methods, and doesn’t require anything else to implement. However, if you want to customize the `run_command_flow` property, you are welcome to override it. To initialize this runner, just pass the *logger* and *cli_handler* objects.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;For reference, see this [example](https://github.com/QualiSystems/cloudshell-networking-cisco/blob/dev/cloudshell/networking/cisco/runners/cisco_configuration_runner.py).
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;For reference, see this [example](https://github.com/QualiSystems/Cisco-IOS-Shell/blob/5.0.2/src/cisco_ios_resource_driver.py#L79-L87) on how to create the run command runner.
 
-* **[State Runner](https://github.com/QualiSystems/cloudshell-networking-devices/blob/dev/cloudshell/devices/runners/state_runner.py)** – This runner is very similar to the Run Custom Command Runner as it only requires the *cli_handler* object to be implemented. It contains implementations for the `Health Check` and `Shutdown` commands. To initialize this runner, you need to pass the `logger`, `api` and `resource_config` objects mentioned in [Key Entities](#KeyEntities).
+* **[State Runner](https://github.com/QualiSystems/cloudshell-networking-devices/blob/dev/cloudshell/devices/runners/state_runner.py)** – This runner is very similar to the Run Custom Command Runner as it doesn’t require any additional implementations. It contains implementations for the `Health Check` and `Shutdown` commands. To initialize this runner, you need to pass the *logger*, *api*, *cli_handler* and *resource_config* objects mentioned in [Key Entities](#KeyEntities).
 
-* **[Autoload Runner](https://github.com/QualiSystems/cloudshell-networking-devices/blob/dev/cloudshell/devices/runners/autoload_runner.py)** – discovers the device’s hardware structure and general details, such as the firmware version and model. This is the only runner that doesn’t require the *cli_handler* object, but requires the following properties to be implemented:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;For reference, see this [example](https://github.com/QualiSystems/Cisco-IOS-Shell/blob/5.0.2/src/cisco_ios_resource_driver.py#L371-L379) on how to create the state runner.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• snmp_handler
+* **[Autoload Runner](https://github.com/QualiSystems/cloudshell-networking-devices/blob/dev/cloudshell/devices/runners/autoload_runner.py)** – Discovers the device’s hardware structure and general details, such as the firmware version and model. This runner requires the *autoload_flow* property to be implemented.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• autoload_flow
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To initialize this runner, just pass the `resource_config` object. For reference, see this [example](https://github.com/QualiSystems/cloudshell-networking-cisco/blob/dev/cloudshell/networking/cisco/runners/cisco_autoload_runner.py).
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To initialize this runner, just pass the `resource_config` and `snmp_handler` objects. For reference, see this [example](https://github.com/QualiSystems/Cisco-IOS-Shell/blob/5.0.2/src/cisco_ios_resource_driver.py#L60-L65) on how to create the autoload runner.
 
 ## Flows<a name="Flows"></a>
 
