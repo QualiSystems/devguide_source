@@ -78,4 +78,19 @@ We can easily modify the previous code to do that instead:
 When adding a new command that requires communication with a networking device, such as a switch or router, you need to open a session to the device. An easy way to do that is by leveraging Quali’s shell framework (*cloudshell-cli* package). The framework can provide a session from a session pool via Telnet, SSH or TCP, based on the configuration saved in the **CLI Connection Type** attribute on the root resource.
 
 See the code below for an example:
-[TBD code snippet]
+
+{% highlight bash %}
+def some_command(self, command)
+    logger = get_logger_with_thread_id(context)
+    api = get_api(context)
+
+    resource_config = create_networking_resource_from_context(shell_name=self.SHELL_NAME,
+                                                                  supported_os=self.SUPPORTED_OS,
+                                                                  context=context)
+
+    cli_handler = CliHandler(self._cli, resource_config, logger, api)
+    with self._cli_handler.get_cli_service(self._cli_handler.enable_mode) as session:
+        session.send_command("some command")
+        with session.enter_mode(self._cli_handler.config_mode) as config_session:
+            config_session.send_command("some config command")
+            {% endhighlight %}
