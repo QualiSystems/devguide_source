@@ -37,9 +37,10 @@ In this section, we will explain how to add an attribute to a specific shell. Yo
 CloudShell distinguishes between two types of attributes. 
 * Attributes related to the device or shell, like Firmware Version or Port Speed
 * Attributes related to your CloudShell deployment, like Execution Server Selector. 
-Note that deployment-specific attributes are added to the shell by the CloudShell system administrator while device-specific attributes are added to the shell by the shell's developer. 
 
-**Notes:** This only applies to attributes that already exist in CloudShell. When upgrading the Shell, these custom attributes and their association with the Shell will not be overwritten.
+Note that deployment-related attributes are added to the shell by the CloudShell system administrator while attributes related to a device are added to the shell by the shell's developer. 
+
+**Notes:** The below configurations only apply to attributes that already exist in CloudShell. When upgrading the Shell, these custom attributes and their association with the Shell will not be overwritten.
 
 Using the API, you can add attributes to your Shell and customize their defaults for this Shell. This is done using the `SetCustomShellAttribute` API method, available in the TestShell XML RPC and Python APIs.
 
