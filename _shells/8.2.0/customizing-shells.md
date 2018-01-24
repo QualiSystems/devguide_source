@@ -72,19 +72,18 @@ The shell’s path can be a URL to the shell template’s zip file on GitHub or 
 
 4) In the shell’s download folder, open the *shell-definition.yaml* file in your preferred editor.
 
-5) Locate `node-types:`.
+5) Locate `node-types:`
 
-6) Under the root level model, add the following lines:
+6) Under the root level model, under `properties:`, add the following lines:
 
 {% highlight bash %}
-properties:
      <property_name>:
        type: string
        default: fast
        description: Some attribute description
        constraints:
          - valid_values: [fast, slow]
-       tags: [configuration, setting, not_searchable, abstract_filter, include_in_insight, readonly_to_users display_in_diagram, connection_attribute, read_only]
+       tags: [configuration, setting, not_searchable, abstract_filter, include_in_insight, readonly_to_users, display_in_diagram, connection_attribute, read_only]
 {% endhighlight %}
 
 7) Edit their settings, as appropriate. For additional information on these settings, see the CloudShell online help.
@@ -120,23 +119,24 @@ properties:
 
 2) In the shell’s download folder, open the *shell-definition.yaml* file in your preferred editor.
 
-3) Under `node-types:`, add the following lines.
+3) Under `node-types:`, under `properties:`, add the following lines.
 
 {% highlight bash %}
-properties:
      <property_name>:
        type: string
        default: fast
        description: Some attribute description
        constraints:
          - valid_values: [fast, slow]
-       tags: [configuration, setting, not_searchable, abstract_filter, include_in_insight, readonly_to_users display_in_diagram, connection_attribute, read_only]
+       tags: [configuration, setting, not_searchable, abstract_filter, include_in_insight, readonly_to_users, display_in_diagram, connection_attribute, read_only]
 {% endhighlight %}
 
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;For details about the tags, see [Modeling Shells with TOSCA]({{site.baseurl}}/shells/{{pageVersion}}/modeling-the-shell.html).
 
 4) Replace `<property_name>` with the attribute’s name. Do not remove the colon (:) from the end of the line.
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Important:** Do not remove the colon (:) from the end of the line.
 
 5) Edit the attribute’s settings.
 

@@ -74,7 +74,7 @@ The shell’s path can be a URL to the shell template’s zip file on GitHub or 
 
 5) Locate `node-types:`.
 
-6) Under the root level model, add the following lines:
+6) Under the root level model, under `properties:`, add the following lines:
 
 {% highlight bash %}
 properties:
@@ -120,7 +120,7 @@ properties:
 
 2) In the shell’s download folder, open the *shell-definition.yaml* file in your preferred editor.
 
-3) Under `node-types:`, add the following lines.
+3) Under `node-types:`, under `properties:`, add the following lines.
 
 {% highlight bash %}
 properties:
