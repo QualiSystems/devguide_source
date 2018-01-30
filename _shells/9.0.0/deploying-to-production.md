@@ -32,14 +32,31 @@ This will create two artifacts in the 'dist' sub-folder of the Shell project:
 
 ### Adding custom attributes to the Shell<a name="SetCustomShellAttribute"></a>
 
-In this section, we will explain how to add an attribute to a specific shell. You can do this using CloudShell Portal and the API. 
+In this section, we will explain how to add an existing attribute to a specific shell. You can do this using CloudShell Portal and the API. 
 
-CloudShell distinguishes between two types of attributes. 
-* Attributes related to the device or shell, like Firmware Version or Port Speed
-* Attributes related to your CloudShell deployment, like Execution Server Selector. 
+CloudShell distinguishes between two types of attributes: 
+* Attributes related to your CloudShell deployment, like Execution Server Selector
+* Attributes related to the device or shell, like Firmware Version or Port Speed 
+
+In this section, we will explain how to add deployment-related attributes. For details about adding shell or device-specific attributes, see [Customizing Shells]({{site.baseurl}}/shells/{{pageVersion}}/customizing-shells.html).
 
 Note that deployment-related attributes are added to the shell by the CloudShell system administrator while attributes related to a device are added to the shell by the shell's developer. 
 
+#### Using CloudShell Portal
+
+1. Click the Shell's menu button  and select **Edit**. The Edit Resource dialog box is displayed.
+
+2. Click the **Add Custom Attribute** link at the bottom. A New Attribute is added to the list of attributes.
+
+3. Select the **Attribute Name**.
+
+4. Select the **Model Name** that will contain the attribute.
+
+5. Optionally specify a **Default Value**.
+
+6. (For Lookup attributes) Use the **Restricted Values** field to optionally determine the attribute's possible values in this resource.
+
+#### Using API
 **Notes:** The below configurations only apply to attributes that already exist in CloudShell. When upgrading the Shell, these custom attributes and their association with the Shell will not be overwritten.
 
 Using the API, you can add attributes to your Shell and customize their defaults for this Shell. This is done using the `SetCustomShellAttribute` API method, available in the TestShell XML RPC and Python APIs.
