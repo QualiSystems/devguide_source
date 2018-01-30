@@ -136,8 +136,6 @@ The shell’s path can be a URL to the shell template’s zip file on GitHub or 
 
 4) Replace `<property_name>` with the attribute’s name. Do not remove the colon (:) from the end of the line.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Important:** Do not remove the colon (:) from the end of the line.
-
 5) Edit the attribute’s settings.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Note:** You cannot modify attributes **type**, **name**, and any attributes that are associated with the shell’s family as this will affect other shells that use this family.
