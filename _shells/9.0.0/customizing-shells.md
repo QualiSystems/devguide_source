@@ -84,14 +84,14 @@ properties:
        description: Some attribute description
        constraints:
          - valid_values: [fast, slow]
-       tags: [configuration, setting, not_searchable, abstract_filter, include_in_insight, readonly_to_users display_in_diagram, connection_attribute, read_only]
+       tags: [configuration, setting, not_searchable, abstract_filter, include_in_insight, readonly_to_users, display_in_diagram, connection_attribute, read_only]
 {% endhighlight %}
 
 7) Edit their settings, as appropriate. For additional information on these settings, see the CloudShell online help.
 
 |  Properties        |  Description 
 |  :----------------   | :----------------------------------------------------------------- |            
-|  `<property_name>`     |  Replace `<property_name>` with the new attribute’s display name. Do not remove the colon (:) from the end of the line.            |
+|  `<property_name>`     |  Replace `<property_name>` with the new attribute’s display name if you want to add a root level attribute. To add an attribute to a sub-model, replace `<propery_name>` with the sub-model name, followed by the name of the new attribute. For example: "Chassis.My new attribute:". For the sub-models of a specific shell, see the [documentation page](https://github.com/QualiSystems/cloudshell-standards/tree/master/Documentation) of your shell's standard. *Do not remove the colon (:) from the end of the line.*         |
 |  `type`            |   Type of attribute. Optional values: string, integer, float, boolean, cloudshell.datatypes.Password  |
 |  `default`       |  Default value.                           |
 |  `description`          |  Attribute's description                                   |
@@ -130,13 +130,15 @@ properties:
        description: Some attribute description
        constraints:
          - valid_values: [fast, slow]
-       tags: [configuration, setting, not_searchable, abstract_filter, include_in_insight, readonly_to_users display_in_diagram, connection_attribute, read_only]
+       tags: [configuration, setting, not_searchable, abstract_filter, include_in_insight, readonly_to_users, display_in_diagram, connection_attribute, read_only]
 {% endhighlight %}
 
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;For details about the tags, see [Modeling Shells with TOSCA]({{site.baseurl}}/shells/{{pageVersion}}/modeling-the-shell.html).
 
-4) Replace `<property_name>` with the attribute’s name. Do not remove the colon (:) from the end of the line.
+4) To add an attribute to the root model, replace `<property_name>` with the name of the new attribute. To add an attribute to a sub-model, replace `<propery_name>` with the sub-model, followed by a period and the name of the new attribute. For example, Chassis.My new attribute:" adds a "My new attribute" attribute to the chassis of a networking shell. **Important:** Do not remove the colon (:) from the end of the line. 
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;For the sub-models of a specific shell, see the [documentation page](https://github.com/QualiSystems/cloudshell-standards/tree/master/Documentation) of your shell's standard.
 
 5) Edit the attribute’s settings.
 
