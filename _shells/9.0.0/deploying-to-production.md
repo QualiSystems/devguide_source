@@ -56,7 +56,7 @@ Note that deployment-related attributes are added to the shell by the CloudShell
 
 6. (For Lookup attributes) Use the **Restricted Values** field to optionally determine the attribute's possible values in this resource.
 
-#### Using API
+#### Using API<a name="SetCustomShellAttributeUsingAPI"></a>
 
 Using the API, you can add attributes to your Shell and customize their defaults for this Shell. This is done using the `SetCustomShellAttribute` API method, available in the TestShell XML RPC and Python APIs.
 
