@@ -32,7 +32,7 @@ This will create two artifacts in the 'dist' sub-folder of the Shell project:
 
 ### Adding custom attributes to the Shell<a name="SetCustomShellAttribute"></a>
 
-In this section, we will explain how to add an attribute to a specific shell. You can do this using CloudShell Portal and the API. 
+In this section, we will explain how to add an attribute to a specific 2nd Gen shell and customize the attribute's defaults. This is done using the `SetCustomShellAttribute` API method, available in the TestShell XML RPC and Python APIs. 
 
 CloudShell distinguishes between two types of attributes. 
 * Attributes related to the device or shell, like Firmware Version or Port Speed
@@ -42,13 +42,11 @@ Note that deployment-related attributes are added to the shell by the CloudShell
 
 **Notes:** The below configurations only apply to attributes that already exist in CloudShell. When upgrading the Shell, these custom attributes and their association with the Shell will not be overwritten.
 
-Using the API, you can add attributes to your Shell and customize their defaults for this Shell. This is done using the `SetCustomShellAttribute` API method, available in the TestShell XML RPC and Python APIs.
-
 The required inputs are:
-* modelName = The Shell’s model (the Shell name; case-sensitive)
-* attributeName = The attribute’s name (case-sensitive)
+* modelName = The Shell’s model [the Shell name; case-sensitive]
+* attributeName = The attribute’s name [case-sensitive]
 * defaultValue = The default value
-* restrictedValues = (optional) Comma-separated list of possible values
+* restrictedValues = [optional] Comma-separated list of possible values
 
 In this example, we are adding an Execution Server Selector attribute named "Domain_ESS" to a Shell named "ExampleShell" with "Test NY" as the default value:
 
