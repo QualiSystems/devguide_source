@@ -38,13 +38,13 @@ CloudShell distinguishes between two types of attributes:
 * Attributes related to your CloudShell deployment, like Execution Server Selector
 * Attributes related to the device or shell, like Firmware Version or Port Speed 
 
-In this section, we will explain how to add deployment-related attributes. For details about adding shell or device-specific attributes, see [Customizing Shells]({{site.baseurl}}/shells/{{pageVersion}}/customizing-shells.html).
+In this section, we will explain how to add deployment-related attributes (attributes that already exist in CloudShell). When upgrading the Shell, these custom attributes and their association with the Shell will not be overwritten. For details about adding shell or device-specific attributes, see [Customizing Shells]({{site.baseurl}}/shells/{{pageVersion}}/customizing-shells.html).
 
 Note that deployment-related attributes are added to the shell by the CloudShell system administrator while attributes related to a device are added to the shell by the shell's developer. 
 
 #### Using CloudShell Portal
 
-1. Click the Shell's menu button  and select **Edit**. The Edit Resource dialog box is displayed.
+1. Click the Shell's menu button and select **Details/Edit**. The Details/Edit Resource dialog box is displayed.
 
 2. Click the **Add Custom Attribute** link at the bottom. A New Attribute is added to the list of attributes.
 
@@ -57,15 +57,14 @@ Note that deployment-related attributes are added to the shell by the CloudShell
 6. (For Lookup attributes) Use the **Restricted Values** field to optionally determine the attribute's possible values in this resource.
 
 #### Using API
-**Notes:** The below configurations only apply to attributes that already exist in CloudShell. When upgrading the Shell, these custom attributes and their association with the Shell will not be overwritten.
 
 Using the API, you can add attributes to your Shell and customize their defaults for this Shell. This is done using the `SetCustomShellAttribute` API method, available in the TestShell XML RPC and Python APIs.
 
 The required inputs are:
-* modelName = The Shell’s model (the Shell name; case-sensitive)
-* attributeName = The attribute’s name (case-sensitive)
+* modelName = The Shell’s model [the Shell name; case-sensitive]
+* attributeName = The attribute’s name [case-sensitive]
 * defaultValue = The default value
-* restrictedValues = (optional) Comma-separated list of possible values
+* restrictedValues = [optional] Comma-separated list of possible values
 
 In this example, we are adding an Execution Server Selector attribute named "Domain_ESS" to a Shell named "ExampleShell" with "Test NY" as the default value:
 
