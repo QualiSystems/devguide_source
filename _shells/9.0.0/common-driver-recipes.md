@@ -79,18 +79,7 @@ When adding a new command that requires communication with a networking device, 
 
 See the code below for an example:
 
-{% highlight bash %}
-def some_command(self, command)
-    logger = get_logger_with_thread_id(context)
-    api = get_api(context)
-
-    resource_config = create_networking_resource_from_context(shell_name=self.SHELL_NAME,
-                                                                  supported_os=self.SUPPORTED_OS,
-                                                                  context=context)
-
-    cli_handler = CliHandler(self._cli, resource_config, logger, api)
-    with self._cli_handler.get_cli_service(self._cli_handler.enable_mode) as session:
-        session.send_command("some command")
-        with session.enter_mode(self._cli_handler.config_mode) as config_session:
-            config_session.send_command("some config command")
-            {% endhighlight %}
+{% github_sample_ref QualiSystemsLab/Extended-Cisco-NXOS-Shell/blob/master/Ext_Cisco_NXOS_Shell_Package/Resource%20Drivers%20-%20Python/Generic%20Cisco%20NXOS%20Driver%20Version3%20Extended/cisco_nxos_resource_driver.py %}
+{% highlight python %}
+{% github_sample QualiSystemsLab/Extended-Cisco-NXOS-Shell/blob/master/Ext_Cisco_NXOS_Shell_Package/Resource%20Drivers%20-%20Python/Generic%20Cisco%20NXOS%20Driver%20Version3%20Extended/cisco_nxos_resource_driver.py 120 133 %}
+{% endhighlight %}
