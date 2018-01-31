@@ -58,9 +58,9 @@ The second option of associating custom attributes with an already installed she
 
 ### Adding attributes to a shell’s model
 
-The shell’s path can be a URL to the shell template’s zip file on GitHub or the filesystem path (prefixed by `local:./`) to the root folder of the shell. For additional information and examples, see [Shellfoundry]({{site.baseurl}}/reference/{{pageVersion}}/shellfoundry-intro.html).
+You can add attributes to the shell's root model or to a specific sub-model within the shell.
 
-**To add attributes to a shell’s root model:**
+**To add attributes to a shell:**
 
 1)  Open command-line.
 
@@ -69,6 +69,8 @@ The shell’s path can be a URL to the shell template’s zip file on GitHub or 
 3) Run the following in command-line:
 
 {% highlight bash %}shellfoundy extend <URL/path-to-shell-template>{% endhighlight %}
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The shell’s path can be a URL to the shell template’s zip file on GitHub or the filesystem path (prefixed by `local:./`) to the root folder of the shell. For additional information and examples, see [Shellfoundry]({{site.baseurl}}/reference/{{pageVersion}}/shellfoundry-intro.html).
 
 4) In the shell’s download folder, open the *shell-definition.yaml* file in your preferred editor.
 
@@ -91,7 +93,7 @@ properties:
 
 |  Properties        |  Description 
 |  :----------------   | :----------------------------------------------------------------- |            
-|  `<property_name>`     |  Replace `<property_name>` with the new attribute’s display name if you want to add a root level attribute. To add an attribute to a sub-model, replace `<propery_name>` with the sub-model name, followed by the name of the new attribute. For example: "Chassis.My new attribute:". For the sub-models of a specific shell, see the [documentation page](https://github.com/QualiSystems/cloudshell-standards/tree/master/Documentation) of your shell's standard. *Do not remove the colon (:) from the end of the line.*         |
+|  `<property_name>`     |  Replace `<property_name>` with the new attribute’s display name if you want to add a root level attribute. To add an attribute to a sub-model, replace `<propery_name>` with the sub-model name, followed by the name of the new attribute. For example: "Chassis.My new attribute:". For the sub-models of a specific shell, see the [documentation page](https://github.com/QualiSystems/cloudshell-standards/tree/master/Documentation) of your shell's standard. _**Do not remove the colon (:) from the end of the line.**_         |
 |  `type`            |   Type of attribute. Optional values: string, integer, float, boolean, cloudshell.datatypes.Password  |
 |  `default`       |  Default value.                           |
 |  `description`          |  Attribute's description                                   |
@@ -113,6 +115,8 @@ properties:
 {% highlight bash %}shellfoundry install{% endhighlight %}
 
 ### Modifying an existing attribute
+
+You can modify attributes residing on the shell's root model or on a specific sub-model within the shell.
 
 **To modify an attribute’s rules:**
 
@@ -136,9 +140,7 @@ properties:
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;For details about the tags, see [Modeling Shells with TOSCA]({{site.baseurl}}/shells/{{pageVersion}}/modeling-the-shell.html).
 
-4) To add an attribute to the root model, replace `<property_name>` with the name of the new attribute. To add an attribute to a sub-model, replace `<propery_name>` with the sub-model, followed by a period and the name of the new attribute. For example, Chassis.My new attribute:" adds a "My new attribute" attribute to the chassis of a networking shell. **Important:** Do not remove the colon (:) from the end of the line. 
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;For the sub-models of a specific shell, see the [documentation page](https://github.com/QualiSystems/cloudshell-standards/tree/master/Documentation) of your shell's standard.
+4) To add an attribute to the root model, replace `<property_name>` with the name of the new attribute. To add an attribute to a sub-model, replace `<propery_name>` with the sub-model, followed by a period and the name of the new attribute. For example, "Chassis.My new attribute:" adds a "My new attribute" attribute to the chassis of a networking shell. For the sub-models of a specific shell, see the [documentation page](https://github.com/QualiSystems/cloudshell-standards/tree/master/Documentation) of your shell's standard. _**Do not remove the colon (:) from the end of the line.**_ 
 
 5) Edit the attribute’s settings.
 
