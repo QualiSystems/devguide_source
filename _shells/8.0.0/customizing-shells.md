@@ -68,7 +68,7 @@ The shell’s path can be a URL to the shell template’s zip file on GitHub or 
 
 3) Run the following in command-line:
 
-{% highlight bash %}shellfoundy extend <URL/path-to-shell-template>{% endhighlight %}
+{% highlight bash %}shellfoundry extend <URL/path-to-shell-template>{% endhighlight %}
 
 4) In the shell’s download folder, open the *shell-definition.yaml* file in your preferred editor.
 
@@ -91,7 +91,7 @@ properties:
 
 |  Properties        |  Description 
 |  :----------------   | :----------------------------------------------------------------- |            
-|  `<property_name>`     |  Replace `<property_name>` with the new attribute’s display name. Do not remove the colon (:) from the end of the line.            |
+|  `<property_name>`     |  Replace `<property_name>` with the new attribute’s display name. _**Do not remove the colon (:) from the end of the line.**_            |
 |  `type`            |   Type of attribute. Optional values: string, integer, float, boolean, cloudshell.datatypes.Password  |
 |  `default`       |  Default value.                           |
 |  `description`          |  Attribute's description                                   |
@@ -114,7 +114,9 @@ properties:
 
 ### Modifying an existing attribute
 
-**To modify an attribute’s rules:**
+This method should be used when you wish to modify an attribute that is defined in the shell’s standard. To find the attributes defined in the shell’s standard, see the [documentation page](https://github.com/QualiSystems/cloudshell-standards/tree/master/Documentation) of your shell’s standard. For such attributes, you can modify the description, default values, possible values and rules. However, it is not possible to modify the attribute’s name or type.
+
+**To modify an attribute:**
 
 1) Download the shell template, as explained in the above section.
 
@@ -136,11 +138,11 @@ properties:
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;For details about the tags, see [Modeling Shells with TOSCA]({{site.baseurl}}/shells/{{pageVersion}}/modeling-the-shell.html).
 
-4) Replace `<property_name>` with the attribute’s name. Do not remove the colon (:) from the end of the line.
+4) Replace `<property_name>` with the attribute’s name. _**Do not remove the colon (:) from the end of the line.**_
 
 5) Edit the attribute’s settings.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Note:** You cannot modify attributes **type**, **name**, and any attributes that are associated with the shell’s family as this will affect other shells that use this family.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Note:** You cannot modify properties **type** and **name**.
 
 6) Save the file.
 
