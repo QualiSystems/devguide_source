@@ -35,7 +35,7 @@ Modifications to a command can include adding some logic either before or after 
 
 When modifying an existing command, you can add optional input parameters. Just make sure that the implementation is backwards compatible. Note that adding mandatory inputs or removing one of the original inputs is not supported. In these cases, it is recommended to create an additional command with a different name, instead of modifying an existing one.
 
-[TBD – code example]
+For example, in this [Cisco NXOS shell](https://github.com/QualiSystemsLab/Extended-Cisco-NXOS-Shell), we modified the commands that configure VLANs on multiple ports and port channels.
 
 It is also possible to hide or remove a command. Hiding a command is done by placing it in an “administrative” [category]({{site.baseurl}}/shells/{{pageVersion}}/customizing-driver-commands.html) in the drivermetadata.xml. Note that removing a command might affect how the shell is used since CloudShell and/or some orchestration scripts might depend on the existing driver’s commands.
 
@@ -68,13 +68,13 @@ The shell’s path can be a URL to the shell template’s zip file on GitHub or 
 
 3) Run the following in command-line:
 
-{% highlight bash %}shellfoundy extend <URL/path-to-shell-template>{% endhighlight %}
+{% highlight bash %}shellfoundry extend <URL/path-to-shell-template>{% endhighlight %}
 
 4) In the shell’s download folder, open the *shell-definition.yaml* file in your preferred editor.
 
 5) Locate `node-types:`.
 
-6) Under the root level model, add the following lines:
+6) Under the root level model, under `properties:`, add the following lines:
 
 {% highlight bash %}
 properties:
@@ -84,14 +84,14 @@ properties:
        description: Some attribute description
        constraints:
          - valid_values: [fast, slow]
-       tags: [configuration, setting, not_searchable, abstract_filter, include_in_insight, readonly_to_users display_in_diagram, connection_attribute, read_only]
+       tags: [configuration, setting, not_searchable, abstract_filter, include_in_insight, readonly_to_users, display_in_diagram, connection_attribute, read_only]
 {% endhighlight %}
 
 7) Edit their settings, as appropriate. For additional information on these settings, see the CloudShell online help.
 
 |  Properties        |  Description 
 |  :----------------   | :----------------------------------------------------------------- |            
-|  `<property_name>`     |  Replace `<property_name>` with the new attribute’s display name. Do not remove the colon (:) from the end of the line.            |
+|  `<property_name>`     |  Replace `<property_name>` with the new attribute’s display name. _**Do not remove the colon (:) from the end of the line.**_            |
 |  `type`            |   Type of attribute. Optional values: string, integer, float, boolean, cloudshell.datatypes.Password  |
 |  `default`       |  Default value.                           |
 |  `description`          |  Attribute's description                                   |
@@ -114,13 +114,16 @@ properties:
 
 ### Modifying an existing attribute
 
-**To modify an attribute’s rules:**
+This method should be used when you wish to modify an attribute that is defined in the shell’s standard. To find the attributes defined in the shell’s standard see the [documentation page](https://github.com/QualiSystems/cloudshell-standards/tree/master/Documentation) of your shell’s standard. For such attributes, you can modify the description, default values, possible values and rules. However, it is not possible to modify the attribute’s name or type.
+
+**To modify an attribute:**
+
 
 1) Download the shell template, as explained in the above section.
 
 2) In the shell’s download folder, open the *shell-definition.yaml* file in your preferred editor.
 
-3) Under `node-types:`, add the following lines.
+3) Under `node-types:`, under `properties:`, add the following lines.
 
 {% highlight bash %}
 properties:
@@ -130,17 +133,17 @@ properties:
        description: Some attribute description
        constraints:
          - valid_values: [fast, slow]
-       tags: [configuration, setting, not_searchable, abstract_filter, include_in_insight, readonly_to_users display_in_diagram, connection_attribute, read_only]
+       tags: [configuration, setting, not_searchable, abstract_filter, include_in_insight, readonly_to_users, display_in_diagram, connection_attribute, read_only]
 {% endhighlight %}
 
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;For details about the tags, see [Modeling Shells with TOSCA]({{site.baseurl}}/shells/{{pageVersion}}/modeling-the-shell.html).
 
-4) Replace `<property_name>` with the attribute’s name. Do not remove the colon (:) from the end of the line.
+4) Replace `<property_name>` with the attribute’s name. _**Do not remove the colon (:) from the end of the line.**_
 
 5) Edit the attribute’s settings.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Note:** You cannot modify attributes **type**, **name**, and any attributes that are associated with the shell’s family as this will affect other shells that use this family.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Note:** You cannot modify properties **type** and **name**.
 
 6) Save the file.
 
