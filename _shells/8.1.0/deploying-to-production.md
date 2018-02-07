@@ -30,7 +30,7 @@ This will create two artifacts in the 'dist' sub-folder of the Shell project:
 1. A zip file archive called _\<shellname\>.zip_ - This is the Shell distributable package
 2. A folder named _offline_requirements_ - The Python packages required by the Shell. This folder should be used with any offline execution servers, i.e. execution servers where pip will not be able to reach the internet to download the packages specified in requirements.txt
 
-### Adding custom attributes to the Shell<a name="SetCustomShellAttribute"></a>
+### Adding custom attributes to the Shell<a name="SetCustomShellAttributeUsingAPI"></a>
 
 In this section, we will explain how to add an attribute to a specific 2nd Gen shell and customize the attribute's defaults. This is done using the `SetCustomShellAttribute` API method, available in the TestShell XML RPC and Python APIs. 
 
