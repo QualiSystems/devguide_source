@@ -64,11 +64,11 @@ Modification applies to attributes that are defined in the shell’s standard. T
 CloudShell provides two ways to customize attributes, which differ depending on the attribute's usage:
 
 * **Customizing an existing shell**: Use this option when the attributes are related to a specific device but are not relevant to other shells. This is done by manually editing the shell’s *shell-definition.yaml* file. 
-* **Associating custom attributes with a shell that is installed in CloudShell**: Use this option when the additional attributes are deployment-related and required in multiple shells. For example, the Execution Server Selector attribute. *Starting with CloudShell version 9.0, this option applies both to the root model of the shell and to the shell’s sub-resource models, such as blades and ports.*
+* **Associating custom attributes with a shell that is installed in CloudShell**: Use this option when the additional attributes are deployment-related and relevant to multiple resources of different shells. For example, the Execution Server Selector attribute. *Starting with CloudShell version 9.0, this option applies both to the root model of the shell and to the shell’s sub-resource models, such as blades and ports.*
 
 The second option of associating custom attributes with an already installed shell is done either via CloudShell Portal or by calling the [SetCustomShellAttribute]({{site.baseurl}}/shells/{{pageVersion}}/deploying-to-production.html#SetCustomShellAttributeUsingAPI) API method. For additional information on this method, see [Deploying to Production]({{site.baseurl}}/shells/{{pageVersion}}/deploying-to-production.html).
 
-**Important:** Deleting a 2nd Gen shell’s default attributes that come with the standard is not supported. It is also not possible to customize a 2nd Gen shell’s data model (families and models) and its structure, which is as defined in the shell standard the original shell is based on.
+**Important:** Deleting a 2nd Gen shell’s default attributes (those that come with the standard) is not supported. It is also not possible to customize a 2nd Gen shell’s data model (families and models) and its structure, which is as defined in the shell standard the original shell is based on.
 
 
 ### Adding or modifying attributes in a shell’s root or sub-model
