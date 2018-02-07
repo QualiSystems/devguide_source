@@ -13,14 +13,21 @@ version:
 
 In this section, we’ll learn how to create and modify a shell’s commands and attributes.
 
-Customizing an existing shell is done using the `shellfoundry extend` command. This command downloads the source code of the shell you wish to customize to your local machine and updates the shell’s Author. Note that extending official shells (shells that were released by Quali) will remove their official tag. 
+This article addresses two flows:
 
-The common use cases for customizing or extending a shell are:
+* Modifying an existing shell
+* Creating a new shell with modifications to the standard
 
-* Adding new attributes
-* Modifying existing attributes
+Modifying an existing shell is done using the `shellfoundry extend` command. This command downloads the source code of the shell you wish to modify to your local machine and updates the shell’s Author. Note that extending official shells (shells that were released by Quali) will remove their official tag. Keep in mind that modifying a shell that is being used in CloudShell may affect any inventory resources that are based on a previous version of the shell. In the second flow, since we're creating a new shell from the appropriate shell standard, we will use the `shellfoundry new` command and modify the shell's settings.
+ 
+
+The common use cases for customizing a shell are:
+
 * Adding new commands
 * Modifying existing commands
+* [Adding new attributes](#attributes)
+* [Modifying existing attributes](#attributes)
+
 
 
 ## Customizing a shell’s commands
@@ -35,94 +42,60 @@ Modifications to a command can include adding some logic either before or after 
 
 When modifying an existing command, you can add optional input parameters. Just make sure that the implementation is backwards compatible. Note that adding mandatory inputs or removing one of the original inputs is not supported. In these cases, it is recommended to create an additional command with a different name, instead of modifying an existing one.
 
-For example, in this [Cisco NXOS shell](https://github.com/QualiSystemsLab/Extended-Cisco-NXOS-Shell), we modified the commands that configure VLANs on multiple ports and port channels.
+For example, in this customized [Cisco NXOS shell](https://github.com/QualiSystemsLab/Extended-Cisco-NXOS-Shell), we modified the commands that configure VLANs on multiple ports and port channels.
 
 It is also possible to hide or remove a command. Hiding a command is done by placing it in an “administrative” [category]({{site.baseurl}}/shells/{{pageVersion}}/customizing-driver-commands.html) in the drivermetadata.xml. Note that removing a command might affect how the shell is used since CloudShell and/or some orchestration scripts might depend on the existing driver’s commands.
 
 When adding or modifying a command, you can leverage Quali’s shell framework to ease the development process. For details, see [Quali's Shell Framework]({{site.baseurl}}/reference/{{pageVersion}}/quali-shell-framework.html).
 
-See some common command extension examples in [Common Driver Recipes]({{site.baseurl}}/shells/{{pageVersion}}/common-driver-recipes.html).
+See some common command extension examples in [Common Driver Recipes]({{site.baseurl}}/shells/{{pageVersion}}/common-driver-recipes.html).<a name="attributes"></a>
 
 
 ## Customizing a shell’s attributes
 
-CloudShell provides two ways to customize attributes:
+You can add and modify attributes associated with the shell's root model. *Starting with CloudShell version 9.0, this option applies both to the root model of the shell and to the shell’s sub-resource models, such as blades and ports.*
 
-* **Customizing an existing shell**: Use this option when the modifications are related to a specific device but are not relevant to other shells. This is done by manually editing the shell’s *shell-definition.yaml* file.
-* **Associating custom attributes with a shell that is installed in CloudShell**: Use this option when the additional attributes are deployment-related and required in multiple shells. For example, the Execution Server Selector attribute.
+Modification applies to attributes that are defined in the shell’s standard. To find the attributes defined in the shell’s standard, see the [documentation page](https://github.com/QualiSystems/cloudshell-standards/tree/master/Documentation) of your shell’s standard. For such attributes, you can modify the description, default values, possible values and rules.
 
-The second option of associating custom attributes with an already installed shell is done by calling the [SetCustomShellAttribute]({{site.baseurl}}/shells/{{pageVersion}}/deploying-to-production.html#SetCustomShellAttribute) API method. For additional information on this method, see [Deploying to Production]({{site.baseurl}}/shells/{{pageVersion}}/deploying-to-production.html). The first option currently only applies to the root model of the shell, so if you need to customize your shell’s sub-resource models, such as blades and ports, use the second option. Note that CloudShell version 9.0 will support sub-resource attribute modifications via the *shell-definition.yaml* file.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Note:** You cannot modify attributes **type**, **name**, and any attributes that are associated with the shell’s family as this will affect other shells that use this family.
 
-**Important:** Deleting a 2nd Gen shell’s default attributes is not supported. It is also not possible to customize a 2nd Gen shell’s data model (families and models) and its structure, which is as defined in the shell standard the original shell is based on.
+### Deployment-specific vs. shell-specific attributes
+
+CloudShell provides two ways to customize attributes, which differ depending on the attribute's usage:
+
+* **Customizing an existing shell**: Use this option when the attributes are related to a specific device but are not relevant to other shells. This is done by manually editing the shell’s *shell-definition.yaml* file. 
+* **Associating custom attributes with a shell that is installed in CloudShell**: Use this option when the additional attributes are deployment-related and required in multiple shells. For example, the Execution Server Selector attribute. 
+
+The second option of associating custom attributes with an already installed shell is done either via CloudShell Portal or by calling the [SetCustomShellAttribute]({{site.baseurl}}/shells/{{pageVersion}}/deploying-to-production.html#SetCustomShellAttributeUsingAPI) API method. For additional information on this method, see [Deploying to Production]({{site.baseurl}}/shells/{{pageVersion}}/deploying-to-production.html).
+
+**Important:** Deleting a 2nd Gen shell’s default attributes that come with the standard is not supported. It is also not possible to customize a 2nd Gen shell’s data model (families and models) and its structure, which is as defined in the shell standard the original shell is based on.
 
 
-### Adding attributes to a shell’s model
+### Adding or modifying attributes in a shell’s root
 
-The shell’s path can be a URL to the shell template’s zip file on GitHub or the filesystem path (prefixed by `local:./`) to the root folder of the shell. For additional information and examples, see [Shellfoundry]({{site.baseurl}}/reference/{{pageVersion}}/shellfoundry-intro.html).
-
-**To add attributes to a shell’s root model:**
+**To add/modify a shell's attributes:**
 
 1)  Open command-line.
 
 2) To customize a shell that resides on your local machine, make sure command-line is pointing to a different path from the original shell template’s root folder.
 
-3) Run the following in command-line:
+3) Run the appropriate command in command-line:
 
-{% highlight bash %}shellfoundry extend <URL/path-to-shell-template>{% endhighlight %}
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**To modify a shell:**
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{% highlight bash %}shellfoundry extend <URL/path-to-shell-template>{% endhighlight %}
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The shell’s path can be a URL to the shell template’s zip file on GitHub or the filesystem path (prefixed by `local:./`) to the root folder of the shell. For additional information and examples, see [Shellfoundry]({{site.baseurl}}/reference/{{pageVersion}}/shellfoundry-intro.html).
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**To create a new shell based on a specific shell standard:**
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{% highlight bash %}shellfoundry new <Shell-name> --template <template>{% endhighlight %}
 
 4) In the shell’s download folder, open the *shell-definition.yaml* file in your preferred editor.
 
-5) Locate `node-types:`.
+5) Update the `template version`.
 
-6) Under the root level model, under `properties:`, add the following lines:
+6) Locate `node-types:`.
 
-{% highlight bash %}
-properties:
-     <property_name>:
-       type: string
-       default: fast
-       description: Some attribute description
-       constraints:
-         - valid_values: [fast, slow]
-       tags: [configuration, setting, not_searchable, abstract_filter, include_in_insight, readonly_to_users, display_in_diagram, connection_attribute, read_only]
-{% endhighlight %}
-
-7) Edit their settings, as appropriate. For additional information on these settings, see the CloudShell online help.
-
-|  Properties        |  Description 
-|  :----------------   | :----------------------------------------------------------------- |            
-|  `<property_name>`     |  Replace `<property_name>` with the new attribute’s display name. _**Do not remove the colon (:) from the end of the line.**_            |
-|  `type`            |   Type of attribute. Optional values: string, integer, float, boolean, cloudshell.datatypes.Password  |
-|  `default`       |  Default value.                           |
-|  `description`          |  Attribute's description                                   |
-|  `constraints`              |  Permitted values       |
-|  `tags`              |  Attribute rules. For details, see [Modeling Shells with TOSCA]({{site.baseurl}}/shells/{{pageVersion}}/modeling-the-shell.html).            |
-
-8) Remove any unneeded lines.
-
-9) Save the file.
-
-10) In command-line, navigate to the shell’s root folder.
-
-11) Package the shell.
-
-{% highlight bash %}shellfoundry pack{% endhighlight %}
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Alternatively, package and import the shell to CloudShell:
-
-{% highlight bash %}shellfoundry install{% endhighlight %}
-
-### Modifying an existing attribute
-
-This method should be used when you wish to modify an attribute that is defined in the shell’s standard. To find the attributes defined in the shell’s standard, see the [documentation page](https://github.com/QualiSystems/cloudshell-standards/tree/master/Documentation) of your shell’s standard. For such attributes, you can modify the description, default values, possible values and rules. However, it is not possible to modify the attribute’s name or type.
-
-**To modify an attribute:**
-
-1) Download the shell template, as explained in the above section.
-
-2) In the shell’s download folder, open the *shell-definition.yaml* file in your preferred editor.
-
-3) Under `node-types:`, under `properties:`, add the following lines.
+7) Under the root level model, add the following lines:
 
 {% highlight bash %}
 properties:
@@ -135,23 +108,28 @@ properties:
        tags: [configuration, setting, not_searchable, abstract_filter, include_in_insight, readonly_to_users, display_in_diagram, connection_attribute, read_only]
 {% endhighlight %}
 
+8) Edit their settings, as appropriate. For additional information on these settings, see the CloudShell online help.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;For details about the tags, see [Modeling Shells with TOSCA]({{site.baseurl}}/shells/{{pageVersion}}/modeling-the-shell.html).
+|  &nbsp;&nbsp;&nbsp;Properties        |  Description 
+|  :-------------------   | :----------------------------------------------------------------- |            
+|  &nbsp;&nbsp;&nbsp;`properties`         |  Header for the shell's attributes. Needs to be added only once.
+|  &nbsp;&nbsp;&nbsp;`<property_name>`&nbsp;&nbsp;&nbsp;    |  (Relevant when adding an attribute) Replace `<property_name>` with the new attribute’s display name. **Do not remove the colon (:) from the end of the line.**         |
+|  &nbsp;&nbsp;&nbsp;`type`            |   (Relevant when adding an attribute) Type of attribute. Optional values: string, integer, float, boolean, cloudshell.datatypes.Password  |
+|  &nbsp;&nbsp;&nbsp;`default`       |  Default value.                           |
+|  &nbsp;&nbsp;&nbsp;`description`          |  Attribute's description                                   |
+|  &nbsp;&nbsp;&nbsp;`constraints`              |  Permitted values       |
+|  &nbsp;&nbsp;&nbsp;`tags`              |  Attribute rules. For details, see [Modeling Shells with TOSCA]({{site.baseurl}}/shells/{{pageVersion}}/modeling-the-shell.html).            |
 
-4) Replace `<property_name>` with the attribute’s name. _**Do not remove the colon (:) from the end of the line.**_
+9) Remove any unneeded lines.
 
-5) Edit the attribute’s settings.
+10) Save the file.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Note:** You cannot modify properties **type** and **name**.
+11) In command-line, navigate to the shell’s root folder.
 
-6) Save the file.
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The attribute is updated.
-
-7) In command-line, navigate to the shell’s folder and package the shell.
+12) Package the shell.
 
 {% highlight bash %}shellfoundry pack{% endhighlight %}
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Alternatively, package and import the shell to CloudShell:
+13) Import the shell into CloudShell. 
 
-{% highlight bash %}shellfoundry install{% endhighlight %}
+**Important:** If a previous version of the shell already exists in CloudShell, upgrade the existing shell with the new one in CloudShell Portal's **Shells** management page. This capability is available for 2nd Gen shells.
