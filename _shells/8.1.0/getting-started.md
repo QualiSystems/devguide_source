@@ -31,7 +31,7 @@ The basic shell creation process is as follows:
 
 3)  Upload the shell to CloudShell.
 
-4)  If the shell requires the use of python dependencies, which aren’t available in the public PyPi repository, add them to the local PyPi Server. See CloudShell help's help's [Updating Python Dependencies for Shells, Drivers and Scripts](http://help.quali.com/Online%20Help/8.1.0.4496/Portal/Content/Admn/Updt-Pyth-Libs.htm).
+4)  If the shell requires the use of python dependencies, which aren’t available in the public PyPi repository, add them to the local PyPi Server. See CloudShell help's [Updating Python Dependencies for Shells, Drivers and Scripts](http://help.quali.com/Online%20Help/8.1.0.4496/Portal/Content/Admn/Updt-Pyth-Libs.htm).
 
 5)  Create resources in the appropriate domains.
 
