@@ -25,10 +25,10 @@ versions:
     - 8.0.0
     - 8.1.0
     - 8.2.0
-    - 9.0.0
+    - 8.3.0
 
 
-latest_version: 9.0.0
+latest_version: 8.3.0
 home_page: the-cloudshell-devguide.html
 home_collection: introduction  
 
@@ -75,7 +75,7 @@ highlighter: prism
 # Since these are pages, it doesn't really matter
 future: true
 
-gems:
+plugins:
   - jekyll-sitemap
   - jekyll_github_sample
   - jekyll-seo-tag
