@@ -49,7 +49,7 @@ def user_facing_function(self, context, some_parameter, some_other_parameter):
     :type some_parameter: str
     :type some_other_parameter: str
     """
-    print "Thank you for calling this function."
+    return "Thank you for calling this function."
 {% endhighlight %}
 
 We've now created a shell with a single command. Similar to the flow covered in the [Getting Started]({{site.baseurl}}/shells/{{pageVersion}}/getting-started.html) tutorial, the next steps would be to create a resource instance of this shell in CloudShell and add it to a sandbox so we can experiment with it. You should refer to the [Getting Started]({{site.baseurl}}/shells/{{pageVersion}}/getting-started.html) tutorial for any question on how to accomplish the three steps below:
@@ -185,13 +185,13 @@ def backup(self, context):
     """
     :type context: cloudshell.shell.core.driver_context.ResourceCommandContext
     """
-    print "Backing up..."
+    return "Backing up..."
 
 def restore(self, context):
     """
     :type context: cloudshell.shell.core.driver_context.ResourceCommandContext
     """
-    print "Restoring..."
+    return "Restoring..."
 {% endhighlight %}
 
 Grouping together commands under a category is pretty strait forward: Simply add a _Category_ element and nest the relevant commands under it. In this case, we've added a category called _Operate_ for the previous operation we've implemented and a category named _Management_ for the new save and restore functions:
@@ -237,7 +237,7 @@ def api_only_function(self, context):
     """
     :type context: cloudshell.shell.core.driver_context.ResourceCommandContext
     """
-    print "You didn't see this on the web interface..."
+    return "You didn't see this on the web interface..."
 {% endhighlight %}
 
 Next, let's add the special category to the _drivermetadata.xml_ file and nest that command under it:
