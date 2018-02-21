@@ -25,9 +25,10 @@ The common use cases for customizing a shell are:
 
 * Adding new commands
 * Modifying existing commands
-* [Adding new attributes](#attributes)
-* [Modifying existing attributes](#attributes)
-
+* Adding new attributes
+* Modifying existing attributes
+* Publishing attributes in a service shell
+* Associating categories to a service shell
 
 
 ## Customizing a shell’s commands
@@ -48,7 +49,7 @@ It is also possible to hide or remove a command. Hiding a command is done by pla
 
 When adding or modifying a command, you can leverage Quali’s shell framework to ease the development process. For details, see [Quali's Shell Framework]({{site.baseurl}}/reference/{{pageVersion}}/quali-shell-framework.html).
 
-See some common command extension examples in [Common Driver Recipes]({{site.baseurl}}/shells/{{pageVersion}}/common-driver-recipes.html).<a name="attributes"></a>
+See some common command extension examples in [Common Driver Recipes]({{site.baseurl}}/shells/{{pageVersion}}/common-driver-recipes.html).
 
 
 ## Customizing a shell’s attributes
@@ -69,7 +70,6 @@ CloudShell provides two ways to customize attributes, which differ depending on 
 The second option of associating custom attributes with an already installed shell is done either via CloudShell Portal or by calling the [SetCustomShellAttribute]({{site.baseurl}}/shells/{{pageVersion}}/deploying-to-production.html#SetCustomShellAttributeUsingAPI) API method. For additional information on this method, see [Deploying to Production]({{site.baseurl}}/shells/{{pageVersion}}/deploying-to-production.html).
 
 **Important:** Deleting a 2nd Gen shell’s default attributes (those that come with the standard) is not supported. It is also not possible to customize a 2nd Gen shell’s data model (families and models) and its structure, which is as defined in the shell standard the original shell is based on.
-
 
 ### Adding or modifying attributes in a shell’s root or sub-model
 
@@ -118,7 +118,7 @@ properties:
 |  &nbsp;&nbsp;&nbsp;`default`       |  Default value.                           |
 |  &nbsp;&nbsp;&nbsp;`description`          |  Attribute's description                                   |
 |  &nbsp;&nbsp;&nbsp;`constraints`              |  Permitted values       |
-|  &nbsp;&nbsp;&nbsp;`tags`              |  Attribute rules. For details, see [Modeling Shells with TOSCA]({{site.baseurl}}/shells/{{pageVersion}}/modeling-the-shell.html).            |
+|  &nbsp;&nbsp;&nbsp;`tags`              |  Attribute rules. For details, see [Modeling Shells with TOSCA]({{site.baseurl}}/shells/{{pageVersion}}/modeling-the-shell.html). Note that for service shells, the only applicable rule is `user_input`. For details, see [Publishing a service shell's attributes](#publish_attributes).           |
 
 9) Remove any unneeded lines.
 
@@ -133,3 +133,74 @@ properties:
 13) Import the shell into CloudShell. 
 
 **Important:** If a previous version of the shell already exists in CloudShell, upgrade the existing shell with the new one in CloudShell Portal's **Shells** management page. This capability is available for 2nd Gen shells.
+
+## Customizing a service shell
+
+Customizing a service shell's commands is the same as for resource shells, while customizing attributes largely follows the same procedure. The only difference is in how you publish a service's attribute and associate it to service categories.<a name="publish_attributes"></a>
+
+### Publishing a service shell's attributes
+
+Publishing an attribute displays that attribute in the service's settings dialog box when a CloudShell user adds or edits a service in a blueprint or sandbox diagram.
+
+**To publish a service shell's attribute:**
+
+1) Add or modify an existing attribute as explained in the [Customizing a Shell's attributes]() section above.
+
+2) Replace the tags line with the following:
+
+{% highlight bash %}
+       tags: [user_input]
+{% endhighlight %}
+
+3) Save the *shell-definition.yaml* file, package and import the shell into CloudShell.
+
+### Associating categories to a service shell
+
+This procedure explains how to add service categories to a 2nd Gen service Shell. Service categories associate services to specific domains in CloudShell. This is done by associating a service category that includes specific domains to a service.
+
+**To associate service categories to a service shell:**
+
+1) Open command-line.
+
+2) To customize a shell that resides on your local machine, make sure command-line is pointing to a different path from the original shell template’s root folder.
+
+3) Run the appropriate command in command-line:
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**To modify a shell:**
+
+{% highlight bash %}
+shellfoundry extend <URL/path-to-shell-template>
+{% endhighlight %}
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The shell’s path can be a URL to the shell template’s zip file on GitHub or the filesystem path (prefixed by local:./) to the root folder of the shell. For additional information and examples, see [Shellfoundry]({{site.baseurl}}/reference/{{pageVersion}}/shellfoundry-intro.html).
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**To create a new shell based on a specific shell standard:**
+
+{% highlight bash %}
+shellfoundry new <Shell-name> --template <template>
+{% endhighlight %}
+
+4) In the shell’s download folder, open the `shell-definition.yaml` file in your preferred editor.
+
+5) Update the template version.
+
+6) Under `node-types:`, locate `properties:`, and add the following lines underneath:
+properties:
+
+{% highlight bash %}
+  Service Categories:
+    type: list
+    default: [My Category 1, My Category 2]  
+{% endhighlight %}
+
+**Note:** The `properties:` line needs to be added only once, so do not add it if it already exists uncommented in the *shell-definition.yaml*.
+
+7) Specify the categories in the default line (comma-separated list).
+
+Note that if you add a service category to the shell, the shell’s default category will be removed. Each shell template comes with a default category, which is defined in the shell’s standard.
+
+8) Package and import the shell into CloudShell.
+
+The shell’s categories are added to the Global domain, even if CloudShell already includes categories bearing the same name but in other domains.
+
+9) To make the service available in other domains, in CloudShell Portal’s **Categories** management page, add those domains to the service’s categories.
