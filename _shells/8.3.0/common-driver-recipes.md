@@ -7,6 +7,10 @@ order:  14
 version:
     - 8.3.0
 ---
+
+{% assign pageUrlSplited = page.url | split: "/" %}
+{% assign pageVersion = pageUrlSplited[2] %}
+
 In this section we'll provide a few handy examples of common driver operations.
 The intention is to grow this into a good source to copy paste common code from.
 All of the examples will be available in the
@@ -83,3 +87,6 @@ See the code below for an example:
 {% highlight python %}
 {% github_sample QualiSystemsLab/Extended-Cisco-NXOS-Shell/blob/master/Ext_Cisco_NXOS_Shell_Package/Resource%20Drivers%20-%20Python/Generic%20Cisco%20NXOS%20Driver%20Version3%20Extended/cisco_nxos_resource_driver.py 120 133 %}
 {% endhighlight %}
+
+#### Mapping connections using App sub-resources
+CloudShell 8.3 allows developers to map connections between sub-resources residing on deployed Apps. This applies to scenarios where you want to map the port connections between virtual devices residing in App VMs. For example, to map the connection between port 1 residing on a virtual switch and port 2 residing on another virtual switch. For details, see [Mapping Connections using App Sub-resources]({{site.baseurl}}/reference/{{pageVersion}}/mapping-sub-resource-connections.html).
