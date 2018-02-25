@@ -14,13 +14,15 @@ version:
 This article will take you through the development process of an Ansible playbook for CloudShell App deployment.
 
 ### Prerequisites
-* Execution Server installed on linux machine, with ansible attribute set to True.
+* Execution Server installed on Linux machine, with the `ansible` attribute enabled.
 * Ansible 2.2 installed (not provided – should be installed manually by the user).
 
-#### Ansible playbooks for Apps
-Before running the playbook in an App, it is recommended to test it manually. To do that, follow these steps.
+This can be easily done by deploying the [Linux Virtual Appliance](http://help.quali.com/doc/8.2/VA-Linux/Content/Linux/Home.htm), which installs the Execution Server and Ansible on a Linux machine.
 
-1) On a Linux machine, access `/etc/ansible/ansible.cfg` and uncomment the line:
+#### Ansible playbooks for Apps
+Before running the playbook in an App, it is recommended to test it manually. To do that, follow these steps:
+
+1) On a Linux machine, access the `/etc/ansible/ansible.cfg` file and uncomment the line:
 
 {% highlight bash %}
 host_key_checking = False
@@ -34,7 +36,7 @@ host_key_checking = False
  
 4) Add one or more playbook files.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Note:** If you plan on using several playbook files in the App, make sure the main one is named “site.yml”.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Note:** If you plan on using several playbook files in the App, make sure the main one is named *site.yml*.
 
 ![Discovery Dialog]({{ site.baseurl}}/assets/cf-ansible-site-yml-file.png){:class="img-responsive"}
 
@@ -46,8 +48,8 @@ host_key_checking = False
 
 ![Discovery Dialog]({{ site.baseurl}}/assets/cf-ansible-roles-definitions-folder.png){:class="img-responsive"}
 
-6) Test the playbooks by running `ansible-playbook –i <InventoryFile> <MainPlaybookFile.yml>`. For some sample playbooks, see [Ansible Playbook Examples]({{site.baseurl}}/configmanagement/{{pageVersion}}/cf-ansible-examples.html).
+6) Test the playbook by running `ansible-playbook –i <InventoryFile> <MainPlaybookFile.yml>`. For some sample playbooks, see [Ansible Playbook Examples]({{site.baseurl}}/configmanagement/{{pageVersion}}/cf-ansible-examples.html).
 
 ![Discovery Dialog]({{ site.baseurl}}/assets/cf-ansible-run-playbook.png){:class="img-responsive"}
 
-7) Once you are done developing your playbooks, zip the playbook files and roles folder, upload it to a repository, and set the URL in the App, as explained in [Adding the Playbook to an App]({{site.baseurl}}/configmanagement/{{pageVersion}}/cf-add-playbook-to-app.html).
+7) Once you are done developing your playbook, zip the playbook files along with the *roles* folder, upload it to a repository, and set the URL in the App template, as explained in [Adding the Playbook to an App]({{site.baseurl}}/configmanagement/{{pageVersion}}/cf-add-playbook-to-app.html).
