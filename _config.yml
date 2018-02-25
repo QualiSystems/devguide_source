@@ -47,16 +47,21 @@ collections:
         output: true
         title: "Orchestration scripts"
         display-order: 2
-        
+    
+    configmanagement:
+        output: true
+        title: "Configuration Management"
+        display-order: 3
+
     devops:
         output: true
         title: "Integrating CloudShell into the DevOps Cycle"
-        display-order: 3
+        display-order: 4
         
     reference:
         output: true
         title: "Reference"
-        display-order: 4
+        display-order: 5
 
 # URL to source code, used in _includes/footer.html
 codeurl: 'https://github.com/qualisystems'
