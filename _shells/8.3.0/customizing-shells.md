@@ -67,7 +67,7 @@ Modification applies to attributes that are defined in the shell’s standard. T
 CloudShell provides two ways to customize attributes, which differ depending on the attribute's usage:
 
 * **Customizing an existing shell**: Use this option when the attributes are related to a specific device but are not relevant to other shells. This is done by manually editing the shell’s *shell-definition.yaml* file. 
-* **Associating custom attributes with a shell that is installed in CloudShell**: Use this option when the additional attributes are deployment-related and relevant to multiple resources of different shells. For example, the Execution Server Selector attribute. *Starting with CloudShell version 9.0, this option applies both to the root model of the shell and to the shell’s sub-resource models, such as blades and ports.*
+* **Associating custom attributes with a shell that is installed in CloudShell**: Use this option when the additional attributes are deployment-related and relevant to multiple resources of different shells. For example, the Execution Server Selector attribute. *Starting with CloudShell version 8.3, this option applies both to the root model of the shell and to the shell’s sub-resource models, such as blades and ports.*
 
 The second option of associating custom attributes with an already installed shell is done either via CloudShell Portal or by calling the [SetCustomShellAttribute]({{site.baseurl}}/shells/{{pageVersion}}/deploying-to-production.html#SetCustomShellAttributeUsingAPI) API method. For additional information on this method, see [Deploying to Production]({{site.baseurl}}/shells/{{pageVersion}}/deploying-to-production.html).
 
@@ -158,7 +158,7 @@ Publishing an attribute displays that attribute in the service's settings dialog
 
 ### Associating categories to a service shell
 
-This procedure explains how to add service categories to a 2nd Gen service Shell. Service categories appear in the services catalog and are used to expose services in specific domains in CloudShell. This is done by associating a service category that is linked to specific domains to a service shell.
+This procedure explains how to add service categories to a 2nd Gen service Shell. In CloudShell Portal, service categories appear in the services catalog and are used to expose services in specific domains in CloudShell. This is done by associating a service category that is linked to specific domains to a service shell.
 
 **To associate service categories to a service shell:**
 
@@ -199,10 +199,10 @@ properties:
 
 7) Specify the categories in the default line (comma-separated list).
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The category is added to the **Global** domain. However, if a category with the same name exists in a different domain, CloudShell will link this category to the Global domain as well.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The category is added to the **Global** domain. However, if a category with the same name exists in a different domain, CloudShell will also link this category to the Global domain.
 
 8) Package and import the shell into CloudShell.
 
-The shell’s categories are added to the Global domain, even if CloudShell already includes categories bearing the same name but in other domains.
+The shell’s categories are added to the Global domain. If a category with the same exists in another domain, CloudShell will also link this category to the **Global** domain.
 
 9) To make the service available in other domains, in CloudShell Portal’s **Categories** management page, add those domains to the service’s categories.

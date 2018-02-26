@@ -53,8 +53,6 @@ See some common command extension examples in [Common Driver Recipes]({{site.bas
 
 ## Customizing a shell’s attributes
 
-You can add and modify attributes associated with the shell's root model or with a specific sub-model within the shell.
-
 Modification applies to attributes that are defined in the shell’s standard. To find the attributes defined in the shell’s standard, see the [documentation page](https://github.com/QualiSystems/cloudshell-standards/tree/master/Documentation) of your shell’s standard. For such attributes, you can modify the description, default values, possible values and rules.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Note:** You cannot modify attributes **type**, **name**, and any attributes that are associated with the shell’s family as this will affect other shells that use this family.
@@ -64,13 +62,13 @@ Modification applies to attributes that are defined in the shell’s standard. T
 CloudShell provides two ways to customize attributes, which differ depending on the attribute's usage:
 
 * **Customizing an existing shell**: Use this option when the attributes are related to a specific device but are not relevant to other shells. This is done by manually editing the shell’s *shell-definition.yaml* file. 
-* **Associating custom attributes with a shell that is installed in CloudShell**: Use this option when the additional attributes are deployment-related and relevant to multiple resources of different shells. For example, the Execution Server Selector attribute. *Starting with CloudShell version 9.0, this option applies both to the root model of the shell and to the shell’s sub-resource models, such as blades and ports.*
+* **Associating custom attributes with a shell that is installed in CloudShell**: Use this option when the additional attributes are deployment-related and relevant to multiple resources of different shells. For example, the Execution Server Selector attribute. *Starting with CloudShell version 8.3, this option applies both to the root model of the shell and to the shell’s sub-resource models, such as blades and ports.*
 
 The second option of associating custom attributes with an already installed shell is done either via CloudShell Portal or by calling the [SetCustomShellAttribute]({{site.baseurl}}/shells/{{pageVersion}}/deploying-to-production.html#SetCustomShellAttributeUsingAPI) API method. For additional information on this method, see [Deploying to Production]({{site.baseurl}}/shells/{{pageVersion}}/deploying-to-production.html).
 
 **Important:** Deleting a 2nd Gen shell’s default attributes (those that come with the standard) is not supported. It is also not possible to customize a 2nd Gen shell’s data model (families and models) and its structure, which is as defined in the shell standard the original shell is based on.
 
-### Adding or modifying attributes in a shell’s root or sub-model
+### Adding or modifying attributes in a shell’s root model
 
 **To add/modify a shell's attributes:**
 
@@ -112,7 +110,7 @@ properties:
 |  &nbsp;&nbsp;&nbsp;Properties        |  Description 
 |  :-------------------   | :----------------------------------------------------------------- |            
 |  &nbsp;&nbsp;&nbsp;`properties`         |  Header for the shell's attributes. Needs to be added only once.
-|  &nbsp;&nbsp;&nbsp;`<property_name>`&nbsp;&nbsp;&nbsp;    |  (Relevant when adding an attribute) Replace `<property_name>` with the new attribute’s display name if you want to add a root level attribute. To add an attribute to a sub-model, replace `<property_name>` with the sub-model name (**remove any spaces from the name**), followed by the name of the new attribute. For example: "Chassis.My new attribute:". For the sub-models of a specific shell, see the [documentation page](https://github.com/QualiSystems/cloudshell-standards/tree/master/Documentation) of your shell's standard. **Do not remove the colon (:) from the end of the line.**         |
+|  &nbsp;&nbsp;&nbsp;`<property_name>`&nbsp;&nbsp;&nbsp;    |  (Relevant when adding an attribute) Replace `<property_name>` with the new attribute’s display name. For example: "My new attribute:". **Do not remove the colon (:) from the end of the line.**         |
 |  &nbsp;&nbsp;&nbsp;`type`            |   (Relevant when adding an attribute) Type of attribute. Optional values: string, integer, float, boolean, cloudshell.datatypes.Password  |
 |  &nbsp;&nbsp;&nbsp;`default`       |  Default value.                           |
 |  &nbsp;&nbsp;&nbsp;`description`          |  Attribute's description                                   |
@@ -135,7 +133,7 @@ properties:
 
 ## Customizing a service shell
 
-Customizing a service shell's commands is the same as for resource shells, while customizing attributes largely follows the same procedure. The only difference is in how you publish a service's attribute and associate a service shell to service categories.<a name="publish_attributes"></a>
+Customizing a service shell’s commands is the same as for resource shells, while customizing attributes largely follows the same procedure. The only difference is in how you publish a service’s attribute and associate a service shell to service categories.<a name="publish_attributes"></a>
 
 ### Publishing a service shell's attributes
 
@@ -196,7 +194,7 @@ properties:
 
 7) Specify the categories in the default line (comma-separated list).
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The category is added to the **Global** domain. However, if a category with the same name exists in a different domain, CloudShell will link this category to the Global domain as well.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The shell’s categories are added to the Global domain, even if CloudShell already includes categories with the same name in other domains.
 
 8) Package and import the shell into CloudShell.
 
