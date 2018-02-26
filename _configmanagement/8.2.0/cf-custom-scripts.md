@@ -28,7 +28,7 @@ echo “Hello World“
 
 #### Parameters
 
-A basic script that prints out the parameter defined in an App template or API call (see below). This is useful for debugging the script and making sure the parameter is received with the correct value. 
+A basic script that prints out the parameter defined in an App template or API call (see below). This is useful for debugging the script and making sure the parameter is received with the correct value. Note that the parameters are stored as environment variables on the App instance in the sandbox.
 
 {% highlight bash %}
 Windows

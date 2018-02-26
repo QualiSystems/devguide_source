@@ -25,9 +25,10 @@ site.yml
   - name: Print Hello World
     debug: msg="Hello World"
 {% endhighlight %}
+<a name="ConfigureApps"></a>
 
 #### Parameters
-A playbook that prints the parameter defined in an App template or API call (see below). Such playbooks are useful for debugging and making sure parameter variables are set with the correct values.
+A playbook that prints the parameter defined in an App template or API call (see below). Such playbooks are useful for debugging and making sure parameter variables are set with the correct values. Note that the parameters are stored as environment variables on the App instance in the sandbox.
 
 {% highlight bash %}
 site.yml
@@ -64,9 +65,14 @@ session.ConfigureApps(
 * Replace 'LinuxVmApp_9cb2-72d6' with the App’s name.<a name="InventoryGroups"></a>
 
 #### Inventory Groups
-To have an App run only on certain parts of a playbook, specify the inventory groups these tasks belong to. This example shows how the groups entered in the App’s **Configuration Management** page should be written in the Ansible *hosts* file.
+In some cases, a playbook contains plays that target many different VMs that require configuration. In order to have the playbook run only the plays that are relevant to a specific VM, or to a group of hosts (VMs) that your VM belongs to, you can use the **Inventory Groups** field in the App template. 
+In this field, specify the groups that your VM belongs to (more than one group can be provided). Use semicolons ";" to separate multiple groups.
 
-If for example there are 2 groups defined in an App, the corresponding hosts file will look something like this:
+For example , specifying groups "servers/http" and servers/sql":
+
+![Discovery Dialog]({{ site.baseurl}}/assets/cf-ansible-inventory-groups.png){:class="img-responsive"}
+
+This example shows how these groups entered in the App’s **Configuration Management** page should be written in the Ansible *hosts* file.
 
 {% highlight bash %}
 hosts

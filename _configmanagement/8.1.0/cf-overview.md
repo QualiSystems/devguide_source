@@ -11,7 +11,7 @@ version:
 {% assign pageUrlSplited = page.url | split: "/" %}
 {% assign pageVersion = pageUrlSplited[2] %}
 
-Configuration management allows you to run operations on App VMs during their deployment in CloudShell sandboxes. Such operations may include installing an application or running some configurations on the VM’s software or operating system. Configuration management operations can be configured using custom scripts and Ansible playbooks. Custom scripts are typically used for simple operations, like installing a program on the VM or printing some messages, while Ansible is used for more complex tasks.
+Configuration management allows you to run scripts that install applications on the virtual machines (VMs) deployed in the sandbox or run post-deployment configuration. This configuration can be executed as part of the sandbox setup, or later on in a live sandbox. Configuration management operations can be performed using custom scripts and Ansible playbooks. Custom scripts are typically used for simple operations, like installing a program on the VM or printing some messages, while Ansible is used for more complex tasks.
 
 ### Developing configuration management
 

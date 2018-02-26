@@ -17,7 +17,7 @@ This article will take you through the development process of an Ansible playboo
 * Execution Server installed on Linux machine, with the `ansible` attribute enabled.
 * Ansible 2.2 installed (not provided – should be installed manually by the user).
 
-This can be easily done by deploying the [Linux Virtual Appliance](http://help.quali.com/doc/8.2/VA-Linux/Content/Linux/Home.htm), which installs the Execution Server and Ansible on a Linux machine.
+This can be easily done by deploying the <a href="http://help.quali.com/doc/8.0/VA-Linux/Content/Linux/Home.htm" target="_blank">Linux Virtual Appliance</a>, which installs the Execution Server and Ansible on a Linux machine.
 
 #### Ansible playbooks for Apps
 Before running the playbook in an App, it is recommended to test it manually. To do that, follow these steps:

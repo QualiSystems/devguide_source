@@ -8,6 +8,9 @@ version:
     - 8.2.0
 ---
 
+{% assign pageUrlSplited = page.url | split: "/" %}
+{% assign pageVersion = pageUrlSplited[2] %}
+
 Now that we have tested and debugged our script, the next step is to add it to an App template.
 
 1)	In CloudShell Portal, open the **Manage>Apps** page.
@@ -28,7 +31,11 @@ If the URL is protected by Basic Authentication, specify the **Username** and **
 
 7)	To pass parameters to the script (as environment variables), click **Add Parameter** and enter each parameter’s name and value.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;You may want the parameter value to be taken dynamically from a Global Input, when reserving the blueprint. To do so, just enter the global input’s name in curly brackets as the parameter value, or click the “plus” button to select an available Global Input.
+You can add parameters to the App template in the following ways:
+*  Provide the value as part of the App template, making it the default value for every instance of this App template
+*  Specify a static value in the App in the blueprint
+*  Specify a dynamic value in the App in the blueprint, linking the parameter to one of the blueprint's Global Inputs. To do so, just enter the global input’s name in curly brackets as the parameter value, or click the “plus” button to select an available Global Input.
+*  Pass a value using the API, as illustrated in this [example]({{site.baseurl}}/configmanagement/{{pageVersion}}/cf-custom-scripts.html#CustomScriptParams). This will replace any value provided in the App template or in the blueprint
 
 ![Discovery Dialog]({{ site.baseurl}}/assets/cf-custom-script-Configuration-Management-page.png){:class="img-responsive"}
 
