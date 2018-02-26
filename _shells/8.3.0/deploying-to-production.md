@@ -62,7 +62,7 @@ Note that deployment-related attributes are added to the shell by the CloudShell
 
 #### Using API<a name="SetCustomShellAttributeUsingAPI"></a>
 
-Using the API, you can add attributes to your Shell and customize their defaults for this Shell. This is done using the `SetCustomShellAttribute` API method, available in the TestShell XML RPC and Python APIs.
+Using the API, you can add attributes to your Shell and customize their defaults for this Shell. This is done using the `SetCustomShellAttribute` API method, available in the TestShell XML RPC and CloudShell Automation API.
 
 The required inputs are:
 * modelName = The Shell’s model [the Shell name; case-sensitive]

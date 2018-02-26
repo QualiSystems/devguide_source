@@ -32,7 +32,7 @@ This will create two artifacts in the 'dist' sub-folder of the Shell project:
 
 ### Adding custom attributes to the Shell<a name="SetCustomShellAttributeUsingAPI"></a>
 
-In this section, we will explain how to add an attribute to a specific 2nd Gen shell and customize the attribute's defaults. This is done using the `SetCustomShellAttribute` API method, available in the TestShell XML RPC and Python APIs. 
+In this section, we will explain how to add an attribute to a specific 2nd Gen shell and customize the attribute's defaults. This is done using the `SetCustomShellAttribute` API method, available in the TestShell XML RPC and CloudShell Automation API. 
 
 CloudShell distinguishes between two types of attributes. 
 * Attributes related to the device or shell, like Firmware Version or Port Speed
