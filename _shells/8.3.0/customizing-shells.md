@@ -29,6 +29,8 @@ The common use cases for customizing a shell are:
 * Modifying existing attributes
 * Publishing attributes in a service shell
 * Associating categories to a service shell
+* Publishing attributes in a service shell
+* Associating categories to a service shell
 
 
 ## Customizing a shell’s commands
@@ -136,7 +138,7 @@ properties:
 
 ## Customizing a service shell
 
-Customizing a service shell's commands is the same as for resource shells, while customizing attributes largely follows the same procedure. The only difference is in how you publish a service's attribute and associate it to service categories.<a name="publish_attributes"></a>
+Customizing a service shell’s commands is the same as for resource shells, while customizing attributes largely follows the same procedure. The only difference is in how you publish a service’s attribute and associate a service shell to service categories.<a name="publish_attributes"></a>
 
 ### Publishing a service shell's attributes
 
@@ -146,7 +148,7 @@ Publishing an attribute displays that attribute in the service's settings dialog
 
 1) Add or modify an existing attribute as explained in the [Customizing a Shell's attributes]() section above.
 
-2) Replace the tags line with the following:
+2) If you want the service’s attribute to be exposed in the blueprint and sandbox, replace the tags line with the following:
 
 {% highlight bash %}
        tags: [user_input]
@@ -156,7 +158,7 @@ Publishing an attribute displays that attribute in the service's settings dialog
 
 ### Associating categories to a service shell
 
-This procedure explains how to add service categories to a 2nd Gen service Shell. Service categories associate services to specific domains in CloudShell. This is done by associating a service category that includes specific domains to a service.
+This procedure explains how to add service categories to a 2nd Gen service Shell. Service categories appear in the services catalog and are used to expose services in specific domains in CloudShell. This is done by associating a service category that is linked to specific domains to a service shell.
 
 **To associate service categories to a service shell:**
 
@@ -197,7 +199,7 @@ properties:
 
 7) Specify the categories in the default line (comma-separated list).
 
-Note that if you add a service category to the shell, the shell’s default category will be removed. Each shell template comes with a default category, which is defined in the shell’s standard.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The category is added to the **Global** domain. However, if a category with the same name exists in a different domain, CloudShell will link this category to the Global domain as well.
 
 8) Package and import the shell into CloudShell.
 
