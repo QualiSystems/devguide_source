@@ -18,6 +18,7 @@ We’ve put together some basic playbook examples to help you get started. If yo
 A basic playbook that prints “Hello World”, just to make sure we’re communicating with the VM, and are able to run the playbook. When run as part of an App’s deployment in CloudShell, the message will be displayed in the sandbox diagram's **Output** window.
 
 {% highlight bash %}
+
 site.yml
 ---
 - hosts: all
@@ -25,6 +26,7 @@ site.yml
   - name: Print Hello World
     debug: msg="Hello World"
 {% endhighlight %}
+
 <a name="ConfigureApps"></a>
 
 #### Parameters
