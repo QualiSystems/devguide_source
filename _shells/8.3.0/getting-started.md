@@ -21,7 +21,7 @@ A Shell enables CloudShell users to interact with different sandbox elements, li
 
 In our [community](http://community.quali.com/spaces/12/index.html?__hstc=46213176.aaafbe5adb338215377a985e0c025079.1467146361756.1471392182746.1471395614692.11&__hssc=46213176.1.1471395614692&__hsfp=2437115919), you can find both officially released shells and shells developed in our developer community. If you find a shell that fits your needs, you’re welcome to use it as is, or, you can customize its settings and automation, as explained in [Customizing Shells]({{site.baseurl}}/shells/{{pageVersion}}/customizing-shells.html). If you can’t find the shell you’re looking for, you’re welcome to create a new one from scratch using one of our shell standard templates and contribute it to the community for others to use it as well.
 
-Historically, we have had two types of shells in CloudShell, 1st Generation shells and 2nd Generation shells. While 1st Gen shells are still used, all new shells are released only as 2nd Generation shells and this developer guide focuses on this type of shells. For additional information, see CloudShell Help's [Shells Overview](http://help.quali.com/Online%20Help/8.2.0.3019/Portal/Content/CSP/LAB-MNG/Shells.htm).
+Historically, we have had two types of shells in CloudShell, 1st Generation shells and 2nd Generation shells. While 1st Gen shells are still used, all new shells are released only as 2nd Generation shells and this developer guide focuses on this type of shells. For additional information, see CloudShell Help's <a href="http://help.quali.com/Online%20Help/8.3/Portal/Content/CSP/LAB-MNG/Shells.htm" target="_blank">Shells Overview</a>.
 
 The basic shell creation process is as follows:
 
@@ -31,7 +31,7 @@ The basic shell creation process is as follows:
 
 3)  Upload the shell to CloudShell.
 
-4)  If the shell requires the use of python dependencies, which aren’t available in the public PyPi repository, add them to the local PyPi Server. See CloudShell help's [Updating Python Dependencies for Shells, Drivers and Scripts](http://help.quali.com/Online%20Help/8.2.0.3019/Portal/Content/Admn/Updt-Pyth-Libs.htm).
+4)  If the shell requires the use of python dependencies, which aren’t available in the public PyPi repository, add them to the local PyPi Server. See CloudShell help's <a href="http://help.quali.com/Online%20Help/8.3/Portal/Content/Admn/Updt-Pyth-Libs.htm" target="_blank">Updating Python Dependencies for Shells, Drivers and Scripts</a>.
 
 5)  Create resources in the appropriate domains.
 

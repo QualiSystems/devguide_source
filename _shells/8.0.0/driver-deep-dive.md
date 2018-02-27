@@ -164,7 +164,7 @@ complete its current actions and end its execution.
 
 CloudShell supports two modes for drivers:
 
-* A serial mode (default) of execution in which for each app/resource driver instance CloudShell will send one command at a time.
+* A serial mode - default - of execution in which for each app/resource driver instance CloudShell will send one command at a time.
     With this mode, you can be sure that when a command is executed no other command will run in parallel with that
     same resource/app and using that driver instance object.
 

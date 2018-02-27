@@ -52,7 +52,7 @@ if __name__ == "__main__":
 
 As you're writing more complex orchestration scripts, it may become prudent to also separate
 the code to multiple files. To do that, we can take advantage of Python's ability to support executing _.zip_ archives
-containing multiple scripts. The only requirement, is that one of the files is named _\_\_main\_\_.py, which is how
+containing multiple scripts. The only requirement, is that one of the files is named _\_\_main\_\_.py_, which is how
 the entry point of the Python process is determined.
 
 #### Referencing other packages

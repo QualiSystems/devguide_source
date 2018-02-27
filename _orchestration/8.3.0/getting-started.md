@@ -25,7 +25,7 @@ This procedure shows the basic steps for creating and using orchestration script
 
 1) Create a python script. You can create a single python script, or a more complex orchestration that uses dependencies, as explained in [Scripts Deep Dive]({{site.baseurl}}/orchestration/{{pageVersion}}/scripts-deep-dive.html).
 
-2) If the script requires the use of python dependencies, which aren’t available in the public PyPi repository, add them to the local PyPi Server. See CloudShell Help's [Updating Python Dependencies for Shells, Drivers and Scripts](http://help.quali.com/Online%20Help/8.2.0.3019/Portal/Content/Admn/Updt-Pyth-Libs.htm).
+2) If the script requires the use of python dependencies, which aren’t available in the public PyPi repository, add them to the local PyPi Server. See CloudShell Help's <a href="http://help.quali.com/Online%20Help/8.3/Portal/Content/Admn/Updt-Pyth-Libs.htm" target="_blank">Updating Python Dependencies for Shells, Drivers and Scripts</a>.
 
 3) Upload the script to CloudShell. When uploading the script, you can set it as a setup or teardown script, to have it run automatically in the sandbox, or leave it as a manually launched orchestration script.
 

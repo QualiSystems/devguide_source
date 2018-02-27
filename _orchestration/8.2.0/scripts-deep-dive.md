@@ -64,7 +64,7 @@ Setup and teardown are special types of orchestration scripts. There are two thi
 1. They can’t have any inputs as they are launched automatically
 2. If you use CloudShell’s default *Python Setup & Teardown* driver, then simply including a teardown or setup script in the reservation and setting a duration for the setup/teardown is enough for CloudShell to launch it.
 
-*To set a script as a teardown or setup script: *
+*To set a script as a teardown or setup script:*
 
 1. In the *Scripts - Blueprint* management page, edit the script. 
 2. From the script’s *Script Type* dropdown list, select *Setup* or *Teardown*, as appropriate.
@@ -98,7 +98,7 @@ CloudShell includes some helper functions to make it easier to debug a script by
 
 As you're writing more complex orchestration scripts, it may become prudent to also separate
 the code to multiple files. To do that, we can take advantage of Python's ability to support executing _.zip_ archives
-containing multiple scripts. The only requirement, is that one of the files is named _\_\_main\_\_.py, which is how
+containing multiple scripts. The only requirement, is that one of the files is named _\_\_main\_\_.py_, which is how
 the entry point of the Python process is determined.
 
 #### Referencing other packages

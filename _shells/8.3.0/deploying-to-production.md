@@ -77,7 +77,7 @@ In this example, we are adding an Execution Server Selector attribute named "Dom
 ### Enabling Shell commands to run in offline mode
 
 Before deploying to the production environment, it's important to make sure that your Execution Servers will be able to execute
-the Shell commands, even if your CloudShell deployment is configured to run offline and can't retrieve the Shell dependencies. If this is the case, simply copy the content of the _offline_requirements_ folder to your local PyPi Server repository. For more information, see [Configuring CloudShell to Execute Python Commands in Offline Mode](http://help.quali.com/Online%20Help/8.2.0.3290/Portal/Content/Admn/Cnfgr-Pyth-Env-Wrk-Offln.htm) article.
+the Shell commands, even if your CloudShell deployment is configured to run offline and can't retrieve the Shell dependencies. If this is the case, simply copy the content of the _offline_requirements_ folder to your local PyPi Server repository. For more information, see <a href="http://help.quali.com/Online%20Help/8.3/Portal/Content/Admn/Cnfgr-Pyth-Env-Wrk-Offln.htm" target="_blank">CloudShell Documentation</a>.
 
 ### Deploying to the production CloudShell Server
 
