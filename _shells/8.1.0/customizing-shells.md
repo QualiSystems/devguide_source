@@ -19,6 +19,7 @@ This article addresses two flows:
 * Creating a new shell with modifications to the standard
 
 Modifying an existing shell is done using the `shellfoundry extend` command. This command downloads the source code of the shell you wish to modify to your local machine and updates the shell’s Author. Note that extending official shells (shells that were released by Quali) will remove their official tag. Keep in mind that modifying a shell that is being used in CloudShell may affect any inventory resources that are based on a previous version of the shell. In the second flow, since we're creating a new shell from the appropriate shell standard, we will use the `shellfoundry new` command and modify the shell's settings.
+
  
 
 The common use cases for customizing a shell are:
@@ -49,7 +50,7 @@ It is also possible to hide or remove a command. Hiding a command is done by pla
 
 When adding or modifying a command, you can leverage Quali’s shell framework to ease the development process. For details, see [Quali's Shell Framework]({{site.baseurl}}/reference/{{pageVersion}}/quali-shell-framework.html).
 
-See some common command extension examples in [Common Driver Recipes]({{site.baseurl}}/shells/{{pageVersion}}/common-driver-recipes.html).
+See some common command extension examples in [Common Driver Recipes]({{site.baseurl}}/shells/{{pageVersion}}/common-driver-recipes.html).<a name="attributes"></a>
 
 ## Customizing a shell’s attributes
 
@@ -72,7 +73,8 @@ The second option of associating custom attributes with an already installed she
 
 **To add/modify a shell's attributes:**
 
-1)  Open command-line.
+
+
 
 2) To customize a shell that resides on your local machine, make sure command-line is pointing to a different path from the original shell template’s root folder.
 
@@ -144,6 +146,7 @@ Publishing an attribute displays that attribute in the service's settings dialog
 1) Add or modify an existing attribute as explained in the [Customizing a Shell's attributes]() section above.
 
 2) If you want the service’s attribute to be exposed in the blueprint and sandbox, replace the tags line with the following:
+
 
 {% highlight bash %}
        tags: [user_input]

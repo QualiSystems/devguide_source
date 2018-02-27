@@ -49,9 +49,10 @@ It is also possible to hide or remove a command. Hiding a command is done by pla
 
 When adding or modifying a command, you can leverage Quali’s shell framework to ease the development process. For details, see [Quali's Shell Framework]({{site.baseurl}}/reference/{{pageVersion}}/quali-shell-framework.html).
 
-See some common command extension examples in [Common Driver Recipes]({{site.baseurl}}/shells/{{pageVersion}}/common-driver-recipes.html).
+See some common command extension examples in [Common Driver Recipes]({{site.baseurl}}/shells/{{pageVersion}}/common-driver-recipes.html).<a name="attributes"></a>
 
 ## Customizing a shell’s attributes
+
 
 Modification applies to attributes that are defined in the shell’s standard. To find the attributes defined in the shell’s standard, see the [documentation page](https://github.com/QualiSystems/cloudshell-standards/tree/master/Documentation) of your shell’s standard. For such attributes, you can modify the description, default values, possible values and rules.
 
@@ -94,16 +95,10 @@ The second option of associating custom attributes with an already installed she
 
 7) Under the root level model, add the following lines:
 
-{% highlight bash %}
-properties:
-     <property_name>:
-       type: string
-       default: fast
-       description: Some attribute description
-       constraints:
-         - valid_values: [fast, slow]
-       tags: [configuration, setting, not_searchable, abstract_filter, include_in_insight, readonly_to_users, display_in_diagram, connection_attribute, read_only]
-{% endhighlight %}
+
+* **Customizing an existing shell**: Use this option when the attributes are related to a specific device but are not relevant to other shells. This is done by manually editing the shell’s *shell-definition.yaml* file. 
+* **Associating custom attributes with a shell that is installed in CloudShell**: Use this option when the additional attributes are deployment-related and relevant to multiple resources of different shells. For example, the Execution Server Selector attribute. 
+
 
 8) Edit their settings, as appropriate. For additional information on these settings, see the CloudShell online help.
 
@@ -125,7 +120,9 @@ properties:
 
 12) Package the shell.
 
-{% highlight bash %}shellfoundry pack{% endhighlight %}
+
+2) To customize a shell that resides on your local machine, make sure command-line is pointing to a different path from the original shell template’s root folder.
+
 
 13) Import the shell into CloudShell. 
 
@@ -145,9 +142,11 @@ Publishing an attribute displays that attribute in the service's settings dialog
 
 2) If you want the service’s attribute to be exposed in the blueprint and sandbox, replace the tags line with the following:
 
+
 {% highlight bash %}
        tags: [user_input]
 {% endhighlight %}
+
 
 3) Save the *shell-definition.yaml* file, package and import the shell into CloudShell.
 
@@ -197,6 +196,7 @@ properties:
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The shell’s categories are added to the Global domain, even if CloudShell already includes categories with the same name in other domains.
 
 8) Package and import the shell into CloudShell.
+
 
 The shell’s categories are added to the Global domain, even if CloudShell already includes categories bearing the same name but in other domains.
 
