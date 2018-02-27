@@ -20,7 +20,6 @@ This article addresses two flows:
 
 Modifying an existing shell is done using the `shellfoundry extend` command. This command downloads the source code of the shell you wish to modify to your local machine and updates the shell’s Author. Note that extending official shells (shells that were released by Quali) will remove their official tag. Keep in mind that modifying a shell that is being used in CloudShell may affect any inventory resources that are based on a previous version of the shell. In the second flow, since we're creating a new shell from the appropriate shell standard, we will use the `shellfoundry new` command and modify the shell's settings.
  
-
 The common use cases for customizing a shell are:
 
 * Adding new commands
@@ -29,9 +28,6 @@ The common use cases for customizing a shell are:
 * Modifying existing attributes
 * Publishing attributes in a service shell
 * Associating categories to a service shell
-* Publishing attributes in a service shell
-* Associating categories to a service shell
-
 
 ## Customizing a shell’s commands
 
@@ -52,7 +48,6 @@ It is also possible to hide or remove a command. Hiding a command is done by pla
 When adding or modifying a command, you can leverage Quali’s shell framework to ease the development process. For details, see [Quali's Shell Framework]({{site.baseurl}}/reference/{{pageVersion}}/quali-shell-framework.html).
 
 See some common command extension examples in [Common Driver Recipes]({{site.baseurl}}/shells/{{pageVersion}}/common-driver-recipes.html).
-
 
 ## Customizing a shell’s attributes
 
@@ -199,10 +194,8 @@ properties:
 
 7) Specify the categories in the default line (comma-separated list).
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The category is added to the **Global** domain. However, if a category with the same name exists in a different domain, CloudShell will also link this category to the Global domain.
-
 8) Package and import the shell into CloudShell.
 
-The shell’s categories are added to the Global domain. If a category with the same exists in another domain, CloudShell will also link this category to the **Global** domain.
+The shell’s categories are added to the Global domain. If a category with the same name exists in another domain, CloudShell will also link this category to the **Global** domain.
 
 9) To make the service available in other domains, in CloudShell Portal’s **Categories** management page, add those domains to the service’s categories.

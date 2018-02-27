@@ -18,10 +18,7 @@ This article addresses two flows:
 * Modifying an existing shell
 * Creating a new shell with modifications to the standard
 
-
 Modifying an existing shell is done using the `shellfoundry extend` command. This command downloads the source code of the shell you wish to modify to your local machine and updates the shell’s Author. Note that extending official shells (shells that were released by Quali) will remove their official tag. Keep in mind that modifying a shell that is being used in CloudShell may affect any inventory resources that are based on a previous version of the shell. In the second flow, since we're creating a new shell from the appropriate shell standard, we will use the `shellfoundry new` command and modify the shell's settings.
-
- 
 
 The common use cases for customizing a shell are:
 
@@ -31,7 +28,6 @@ The common use cases for customizing a shell are:
 * Modifying existing attributes
 * Publishing attributes in a service shell
 * Associating categories to a service shell
-
 
 ## Customizing a shell’s commands
 
@@ -55,7 +51,6 @@ See some common command extension examples in [Common Driver Recipes]({{site.bas
 
 ## Customizing a shell’s attributes
 
-
 Modification applies to attributes that are defined in the shell’s standard. To find the attributes defined in the shell’s standard, see the [documentation page](https://github.com/QualiSystems/cloudshell-standards/tree/master/Documentation) of your shell’s standard. For such attributes, you can modify the description, default values, possible values and rules.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Note:** You cannot modify attributes **type**, **name**, and any attributes that are associated with the shell’s family as this will affect other shells that use this family.
@@ -77,10 +72,7 @@ The second option of associating custom attributes with an already installed she
 
 1)  Open command-line.
 
-
-* **Customizing an existing shell**: Use this option when the attributes are related to a specific device but are not relevant to other shells. This is done by manually editing the shell’s *shell-definition.yaml* file. 
-* **Associating custom attributes with a shell that is installed in CloudShell**: Use this option when the additional attributes are deployment-related and relevant to multiple resources of different shells. For example, the Execution Server Selector attribute. 
-
+2) To customize a shell that resides on your local machine, make sure command-line is pointing to a different path from the original shell template’s root folder.
 
 3) Run the appropriate command in command-line:
 
@@ -92,8 +84,7 @@ The second option of associating custom attributes with an already installed she
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**To create a new shell based on a specific shell standard:**
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{% highlight bash %}shellfoundry new <Shell-name> --template <template>{% endhighlight %}
 
-
-
+4) In the shell’s download folder, open the *shell-definition.yaml* file in your preferred editor.
 
 5) Update the `template version`.
 
@@ -132,9 +123,7 @@ properties:
 
 12) Package the shell.
 
-
-2) To customize a shell that resides on your local machine, make sure command-line is pointing to a different path from the original shell template’s root folder.
-
+{% highlight bash %}shellfoundry pack{% endhighlight %}
 
 13) Import the shell into CloudShell. 
 
@@ -174,7 +163,6 @@ This procedure explains how to add service categories to a 2nd Gen service Shell
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**To modify a shell:**
 
-
 {% highlight bash %}
 shellfoundry extend <URL/path-to-shell-template>
 {% endhighlight %}
@@ -200,16 +188,12 @@ properties:
     default: [My Category 1, My Category 2]  
 {% endhighlight %}
 
-**Note:** The `properties:` line needs to be added only once, so do not add it if it already exists uncommented in the *shell-definition.yaml*.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Note:** The `properties:` line needs to be added only once, so do not add it if it already exists uncommented in the *shell-definition.yaml*.
 
 7) Specify the categories in the default line (comma-separated list).
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The shell’s categories are added to the Global domain, even if CloudShell already includes categories with the same name in other domains.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The shell’s categories will be added to the Global domain, even if CloudShell already includes categories with the same name in other domains.
 
 8) Package and import the shell into CloudShell.
 
-
-The shell’s categories are added to the Global domain, even if CloudShell already includes categories bearing the same name but in other domains.
-
 9) To make the service available in other domains, in CloudShell Portal’s **Categories** management page, add those domains to the service’s categories.
-

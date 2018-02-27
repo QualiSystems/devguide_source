@@ -20,8 +20,6 @@ This article addresses two flows:
 
 Modifying an existing shell is done using the `shellfoundry extend` command. This command downloads the source code of the shell you wish to modify to your local machine and updates the shell’s Author. Note that extending official shells (shells that were released by Quali) will remove their official tag. Keep in mind that modifying a shell that is being used in CloudShell may affect any inventory resources that are based on a previous version of the shell. In the second flow, since we're creating a new shell from the appropriate shell standard, we will use the `shellfoundry new` command and modify the shell's settings.
 
- 
-
 The common use cases for customizing a shell are:
 
 * Adding new commands
@@ -30,7 +28,6 @@ The common use cases for customizing a shell are:
 * Modifying existing attributes
 * Publishing attributes in a service shell
 * Associating categories to a service shell
-
 
 ## Customizing a shell’s commands
 
@@ -73,8 +70,7 @@ The second option of associating custom attributes with an already installed she
 
 **To add/modify a shell's attributes:**
 
-
-
+1) Open command-line.
 
 2) To customize a shell that resides on your local machine, make sure command-line is pointing to a different path from the original shell template’s root folder.
 
@@ -147,7 +143,6 @@ Publishing an attribute displays that attribute in the service's settings dialog
 
 2) If you want the service’s attribute to be exposed in the blueprint and sandbox, replace the tags line with the following:
 
-
 {% highlight bash %}
        tags: [user_input]
 {% endhighlight %}
@@ -193,14 +188,12 @@ properties:
     default: [My Category 1, My Category 2]  
 {% endhighlight %}
 
-**Note:** The `properties:` line needs to be added only once, so do not add it if it already exists uncommented in the *shell-definition.yaml*.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Note:** The `properties:` line needs to be added only once, so do not add it if it already exists uncommented in the *shell-definition.yaml*.
 
 7) Specify the categories in the default line (comma-separated list).
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The shell’s categories are added to the Global domain, even if CloudShell already includes categories with the same name in other domains.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The shell’s categories will be added to the Global domain, even if CloudShell already includes categories with the same name in other domains.
 
 8) Package and import the shell into CloudShell.
-
-The shell’s categories are added to the Global domain, even if CloudShell already includes categories bearing the same name but in other domains.
 
 9) To make the service available in other domains, in CloudShell Portal’s **Categories** management page, add those domains to the service’s categories.
