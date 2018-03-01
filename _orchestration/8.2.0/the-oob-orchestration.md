@@ -247,7 +247,7 @@ sandbox.execute_setup()
 
 ### Extending the OOB Teardown Orchestration Scripts<a name="OOB-Teardown-scripts"></a>
 
-You can extend the OOB Teardown script to execute custom steps prior to the out-of-the-box teardown orchestration, or to execute custom steps in parallel to the OOTB teardown. You can also extend the Teardown script using the following extension methods, which are included in the workflow property in the **Sandbox** class:
+You can extend the OOB Teardown script to execute custom steps prior to the out-of-the-box teardown orchestration, or to execute custom steps in parallel to the OOTB teardown. This is done using the following extension methods, which are included in the workflow property in the **Sandbox** class:
 * add_to_teardown
 * before_teardown_started
 

@@ -104,6 +104,8 @@ with ErrorHandlingContext(logger):
 Using this scope any exception raised within the _ErrorHandlingContext_ will be logged, even if no code remembered
 to explicitly call the logger.
 
+In addition, you can use this attribute to pass environment variables to shell drivers/scripts running on a specific Execution Server.
+
 ### Nested scopes
 
 Finally, nesting the three helpers mentioned in this article makes a lot of sense as they're not mutually exclusive.

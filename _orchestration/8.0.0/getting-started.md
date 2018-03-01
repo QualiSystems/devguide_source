@@ -17,7 +17,7 @@ Orchestration scripts can enable automating sandbox workflows. You can use orche
 and teardown procedures as well as other custom workflows that can be made available in the sandbox. Examples would include
 saving and restoring state, starting test traffic, running a failover scenarios and more.
 
-_**Before developing scripts, please familiarize yourself with CloudShell by taking [Quali U courses](http://university.quali.com). These courses also include installation instructions for the CloudShell SDK package that deploys a developer edition of CloudShell on which you can perform your training and development activities.**_
+_**Before developing scripts, please familiarize yourself with CloudShell by taking [Quali U courses](http://courses.quali.com). These courses also include installation instructions for the CloudShell SDK package that deploys a developer edition of CloudShell on which you can perform your training and development activities.**_
 
 ### Creating and using orchestration scripts in CloudShell
 
@@ -25,7 +25,7 @@ This procedure shows the basic steps for creating and using orchestration script
 
 1) Create a python script. You can create a single python script, or a more complex orchestration that uses dependencies, as explained in [Scripts Deep Dive]({{site.baseurl}}/orchestration/{{pageVersion}}/scripts-deep-dive.html).
 
-2) If the script requires the use of python dependencies, which aren’t available in the public PyPi repository, add them to the local PyPi Server. See CloudShell Help's [Updating Python Dependencies for Shells and Drivers](http://help.quali.com/Online%20Help/8.0.0.7741/Portal/Content/Admn/Updt-Python-Libs.htm).
+2) If the script requires the use of python dependencies, which aren’t available in the public PyPi repository, add them to the local python repository. See CloudShell Help's <a href="http://help.quali.com/Online%20Help/8.0.0.7741/Portal/Content/Admn/Updt-Python-Libs.htm" target="_blank">Updating Python Dependencies for Shells and Drivers</a>.
 
 3) Upload the script to CloudShell. When uploading the script, you can set it as a setup or teardown script, to have it run automatically in the sandbox, or leave it as a manually launched orchestration script.
 
