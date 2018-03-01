@@ -14,7 +14,7 @@ tags:
 
 A common way to query inventory resources is using SNMP. Quali has created its own
 SNMP package, [cloudshell-snmp](https://github.com/QualiSystems/cloudshell-snmp), which uses
-[PySNMP](http://pysnmp.sourceforge.net/) under the hoods.
+[PySNMP](https://pypi.org/project/pysnmp/) under the hoods.
 
 The [cloudshell-snmp](https://github.com/QualiSystems/cloudshell-snmp) package comes bundled
 with common SNMP MIBs which are pretty generic across most devices.
@@ -71,7 +71,7 @@ def get_inventory(self, context):
 Some vendors will use their own custom MIBs which you'll want to include in the discovery. For example, this  CISCO site provides access to some common
 MIBS you can download: http://tools.cisco.com/ITDIT/MIBS/MainServlet?ReleaseSel=3&PlatformSel=236&fsSel=368. Other vendors have their own MIBs download links.
 
-To compile the MIBs we recommend using the [mibdump.py](https://github.com/etingof/pysmi/blob/master/scripts/mibdump.py) script which is part of the [PySMI](http://pysmi.sourceforge.net) SNMP libraries and tools. The _mibdump.py_ script supports both compiling MIB sources you've downloaded locally as well as using remote MIB sources. For example, the [snmplabs](http://mibs.snmplabs.com/asn1/) repository provides a wealth of publicly available MIBs. Notice, if you are trying to compile MIB sources you've downloaded locally, you should be sure to download all of the dependencies to the same folder (e.g. IF-MIB depends on SNMPV2-MIB). However, you can specify more than one MIB source, so you can include both your local MIB sources and remote repositories.
+To compile the MIBs we recommend using the [mibdump.py](https://github.com/etingof/pysmi/blob/master/scripts/mibdump.py) script which is part of the [PySMI](https://pypi.org/project/pysmi) SNMP libraries and tools. The _mibdump.py_ script supports both compiling MIB sources you've downloaded locally as well as using remote MIB sources. For example, the [snmplabs](http://mibs.snmplabs.com/asn1/) repository provides a wealth of publicly available MIBs. Notice, if you are trying to compile MIB sources you've downloaded locally, you should be sure to download all of the dependencies to the same folder (e.g. IF-MIB depends on SNMPV2-MIB). However, you can specify more than one MIB source, so you can include both your local MIB sources and remote repositories.
 
 The following example will compile the IF-MIB source from the _snmplabs_ repository:
 {% highlight bash %}
