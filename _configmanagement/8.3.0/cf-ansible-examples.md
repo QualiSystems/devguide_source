@@ -32,12 +32,13 @@ site.yml
 #### Parameters
 A playbook that prints the parameter defined in an App template or API call (see below). Such playbooks are useful for debugging and making sure parameter variables are set with the correct values. Note that the parameters are stored as environment variables on the App instance in the sandbox.
 
+{% assign special = "{{P1|default('No Message')}}" %}
 {% highlight bash %}
 site.yml
 ---
 - hosts: all
   vars: 
-  - msg: "{{P1|default('No Message')}}"
+  - msg: "{{special}}"
   tasks:
   - name: Print P1
     debug: var=msg
