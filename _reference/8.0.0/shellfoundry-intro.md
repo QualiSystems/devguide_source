@@ -221,6 +221,25 @@ shellfoundry extend local:C:\Temp\my-shells\JuniperJunOSRouterShell2G
 Before extending a local Shell template, make sure the Shell's destination folder is different from the original Shell template's root folder.
 
 ### Version History<a name="version-history"></a>
+
+**1.1.5 (2018-03-01)**
+* Added new online template for Traffic Generator Controller Service
+
+**1.1.4 (2018-02-21)**
+* Added new 2nd Gen online template for Traffic Generator Chassis
+
+**1.1.2 (2018-01-09)**
+* Enhanced `extend` command logic
+
+**1.1.1 (2017-11-14)**
+* Added new online templates
+* Added specific error message to Layer 1 Shell `pack` and `install` commands
+
+**1.1.0 (2017-10-30)**
+* Added `author` field to shellfoundry configuration
+* Added `extend` command behavior
+* Added verification when upgrading an official shell to unofficial
+
 **1.0.4 (2017-08-28)**
 * Fixed some inconsistencies relating to the `extend` and `new` commands, specifically around the shell name
 
