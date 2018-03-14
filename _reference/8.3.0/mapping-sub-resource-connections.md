@@ -11,9 +11,9 @@ version:
 {% assign pageUrlSplited = page.url | split: "/" %}
 {% assign pageVersion = pageUrlSplited[2] %}
 
-CloudShell 8.3 and above allows developers to map connections between sub resources residing on deployed Apps. This applies to scenarios where you want to map the port connections between virtual devices residing in App VMs. For example, to map the connection between port 1 residing on a virtual switch and port 2 residing on another virtual switch. For details, see 
+CloudShell 8.3 and above allows developers to map connections between sub-resources residing on deployed Apps. This applies to scenarios where you want to map the port connections between virtual devices residing in App VMs. For example, to map the connection between port 1 residing on a virtual switch and port 2 residing on another virtual switch.
 
-The port mapping is done during the deployment of the App. This requires creating a shell and specifying the port's vNIC name in an attribute on the `Get_Inventory` command of the deployed App’s shell driver, and associating that shell to the desired App. Then, to map that App's vNIC, the blueprint designer will need to specify the that vNIC name on the App to use for the connection.
+The port mapping is done during the deployment of the App. This requires creating a shell and specifying the port's vNIC name in an attribute on the `Get_Inventory` command of the deployed App’s shell driver, and associating that shell to the desired App. Then, to map that App's vNIC, the blueprint designer will need to specify the vNIC name on the App.
 
 This is supported for vCenter, AWS EC2 and OpenStack Apps.
 
@@ -23,11 +23,11 @@ In this procedure, we will guide you on how to enable sub-resource mapping betwe
 
 1) Download the driver of the App's cloud provider from CloudShell Portal's **Manage>Drivers>Resource** page.
 
-2) Edit the driver.py file in your preferred editor.
+2) Edit the *driver.py* file in your preferred editor.
 
-3) Modify the `get_inventory` command to include the sub resources you want to support and the vNIC names.
+3) Modify the `get_inventory` command to include the sub-resources you want to support and the vNIC names.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;For example, 2 sub-resources with vNIC names 'Port 1' and 'Port 2':
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;For example, 2 sub-resources with vNIC names "Port 1" and "Port 2":
 
 {% highlight xml %}
     def get_inventory(self, context):
@@ -53,7 +53,7 @@ In this procedure, we will guide you on how to enable sub-resource mapping betwe
 
 6) Associate the port model defined in the command to the new shell in **Resource Manager Client>Resource Structure**. 
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In our example, we used a port model called Generic Ethernet Port.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In the above example, we used a port model called Generic Ethernet Port.
 
 7) Add the driver to CloudShell Portal's **Manage>Drivers>Resource** page and associate the new shell model.
 
@@ -61,7 +61,7 @@ In this procedure, we will guide you on how to enable sub-resource mapping betwe
 
 1) In CloudShell Portal's **Manage>Apps** page, create or edit an App template.
 
-2) In the App's App Resource page, select the shell you created.
+2) In the App's **App Resource** page, select the shell you created.
 
 3) Add the App to a blueprint.
 
