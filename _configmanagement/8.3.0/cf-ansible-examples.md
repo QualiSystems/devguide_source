@@ -87,5 +87,31 @@ sql
 192.168.1.2
 
 [sql]
-192.168.1.2
+192.168.1.12
+{% endhighlight %}
+
+Now let’s say you want the Ansible to dynamically get the user and password from the App when running a task on that App's VM. To achieve this, you will need to add the following two parameters to your App’s **Configuration Management** tab:
+* **ansible_become_user** - the user with the stronger permissions (probably a root user)
+* **ansible_become_pass** - the password to that user
+
+For example:
+
+![Discovery Dialog]({{ site.baseurl}}/assets/cf-ansible-dynamic-creds.png){:class="img-responsive"}
+
+And modify the *site.yml* file to get the relevant VM’s user and password from these parameters for each task:
+
+{% highlight bash %}
+site.yml
+---
+- hosts: all
+  tasks:    
+    - name: Get sudoers file content
+      become: yes
+      become_method: su
+      command: cat /etc/sudoers
+      register: cmd_var
+
+    - name: Print output
+      debug: msg= "{{ cmd_var.stdout }}"
+
 {% endhighlight %}
