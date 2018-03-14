@@ -93,14 +93,14 @@ The second option of associating custom attributes with an already installed she
 7) Under the root level model, add the following lines:
 
 {% highlight bash %}
-properties:
-     <property_name>:
-       type: string
-       default: fast
-       description: Some attribute description
-       constraints:
-         - valid_values: [fast, slow]
-       tags: [configuration, setting, not_searchable, abstract_filter, include_in_insight, readonly_to_users, display_in_diagram, connection_attribute, read_only]
+    properties:
+      my_property:
+        type: string
+        default: fast
+        description: Some attribute description
+        constraints:
+          - valid_values: [fast, slow]
+        tags: [configuration, setting, not_searchable, abstract_filter, include_in_insight, readonly_to_users, display_in_diagram, connection_attribute, read_only]
 {% endhighlight %}
 
 8) Edit their settings, as appropriate. For additional information on these settings, see the CloudShell online help.
@@ -108,7 +108,7 @@ properties:
 |  &nbsp;&nbsp;&nbsp;Properties        |  Description 
 |  :-------------------   | :----------------------------------------------------------------- |            
 |  &nbsp;&nbsp;&nbsp;`properties`         |  Header for the shell's attributes. Needs to be added only once.
-|  &nbsp;&nbsp;&nbsp;`<property_name>`&nbsp;&nbsp;&nbsp;    |  (Relevant when adding an attribute) Replace `<property_name>` with the new attribute’s display name. For example: "My new attribute:". **Do not remove the colon (:) from the end of the line.**         |
+|  &nbsp;&nbsp;&nbsp;`<property_name>`&nbsp;&nbsp;&nbsp;    |  (Relevant when adding an attribute) Replace `my_property` with the new attribute’s display name. For example: "My new attribute:". **Do not remove the colon (:) from the end of the line.**         |
 |  &nbsp;&nbsp;&nbsp;`type`            |   (Relevant when adding an attribute) Type of attribute. Optional values: string, integer, float, boolean, cloudshell.datatypes.Password  |
 |  &nbsp;&nbsp;&nbsp;`default`       |  Default value.                           |
 |  &nbsp;&nbsp;&nbsp;`description`          |  Attribute's description                                   |
@@ -180,7 +180,6 @@ shellfoundry new <Shell-name> --template <template>
 5) Update the template version.
 
 6) Under `node-types:`, locate `properties:`, and add the following lines underneath:
-properties:
 
 {% highlight bash %}
   Service Categories:
@@ -190,7 +189,7 @@ properties:
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Note:** The `properties:` line needs to be added only once, so do not add it if it already exists uncommented in the *shell-definition.yaml*.
 
-7) Specify the categories in the default line (comma-separated list).
+7) Specify the categories in the `default:` line (comma-separated list).
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The shell’s categories will be added to the Global domain, even if CloudShell already includes categories with the same name in other domains.
 
