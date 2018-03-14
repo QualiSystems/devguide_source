@@ -53,9 +53,9 @@ See some common command extension examples in [Common Driver Recipes]({{site.bas
 
 You can add and modify attributes associated with the shell's root model or with a specific sub-model within the shell.
 
-Modification applies to attributes that are defined in the shell’s standard. To find the attributes defined in the shell’s standard, see the [documentation page](https://github.com/QualiSystems/cloudshell-standards/tree/master/Documentation) of your shell’s standard. For such attributes, you can modify the description, default values, possible values and rules.
+Modification applies to attributes that are defined in the shell’s standard. To find the attributes defined in the shell’s standard, see the <a href="https://github.com/QualiSystems/cloudshell-standards/tree/master/Documentation" target="_blank">documentation page</a> of your shell’s standard. For such attributes, you can modify the description, default values, possible values and rules.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Note:** You cannot modify attributes **type**, **name**, and any attributes that are associated with the shell’s family as this will affect other shells that use this family. To identify your shell's family attributes, see the shell's <a href="https://github.com/QualiSystems/cloudshell-standards/tree/master/Documentation" target="_blank">standard</a>.
+**Note:** You cannot modify attributes **type**, **name**, and any attributes that are associated with the shell’s family as this will affect other shells that use this family. The family attributes are listed in the shell's standard.
 
 ### Deployment-specific vs. shell-specific attributes
 
