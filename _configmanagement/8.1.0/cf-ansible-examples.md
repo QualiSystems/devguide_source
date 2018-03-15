@@ -103,6 +103,7 @@ For example:
 
 And modify the *site.yml* file to get the relevant VM’s user and password from these parameters for each task:
 
+{% assign special = "{{ cmd_var.stdout }}" %}
 {% highlight bash %}
 ---
 - hosts: all
@@ -114,6 +115,6 @@ And modify the *site.yml* file to get the relevant VM’s user and password from
       register: cmd_var
 
     - name: Print output
-      debug: var=cmd_var
+      debug: msg= "{{ special }}"
 
 {% endhighlight %}
