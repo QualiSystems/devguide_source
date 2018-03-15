@@ -17,9 +17,10 @@ We’ve put together some basic playbook examples to help you get started. If yo
 #### Hello World
 A basic playbook that prints “Hello World”, just to make sure we’re communicating with the VM, and are able to run the playbook. When run as part of an App’s deployment in CloudShell, the message will be displayed in the sandbox diagram's **Output** window.
 
+For example, the *site.yml* file may look something like this:
+
 {% highlight bash %}
 
-site.yml
 ---
 - hosts: all
   tasks:
@@ -32,9 +33,10 @@ site.yml
 #### Parameters
 A playbook that prints the parameter defined in an App template or API call (see below). Such playbooks are useful for debugging and making sure parameter variables are set with the correct values. Note that the parameters are stored as environment variables on the App instance in the sandbox.
 
+The *site.yml* file will look something like this:
+
 {% assign special = "{{P1|default('No Message')}}" %}
 {% highlight bash %}
-site.yml
 ---
 - hosts: all
   vars: 
@@ -48,7 +50,7 @@ site.yml
 
 ![Discovery Dialog]({{ site.baseurl}}/assets/cf-ansible-params.png){:class="img-responsive"}
 
-* Parameter defined in the `ConfigureApps` API method:
+* Parameter defined in the `ConfigureApps` API method (python file):
 
 {% highlight bash %}
 Python
@@ -90,7 +92,8 @@ sql
 192.168.1.12
 {% endhighlight %}
 
-Now let’s say you want the Ansible to dynamically get the user and password from the App when running a task on that App's VM. To achieve this, you will need to add the following two parameters to your App’s **Configuration Management** tab:
+#### Privilege escalation
+Now let’s say you want Ansible to dynamically get the user and password from the App when running a task on a particular App's VM. This is useful if the VM credentials on the App are not strong enough for the task you wish to run. To achieve this, you will need to add the following two parameters to your App’s **Configuration Management** tab:
 * **ansible_become_user** - the user with the stronger permissions (probably a root user)
 * **ansible_become_pass** - the password to that user
 
@@ -101,7 +104,6 @@ For example:
 And modify the *site.yml* file to get the relevant VM’s user and password from these parameters for each task:
 
 {% highlight bash %}
-site.yml
 ---
 - hosts: all
   tasks:    
