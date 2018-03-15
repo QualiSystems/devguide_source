@@ -51,9 +51,9 @@ See some common command extension examples in [Common Driver Recipes]({{site.bas
 
 ## Customizing a shell’s attributes
 
-Modification applies to attributes that are defined in the shell’s standard. To find the attributes defined in the shell’s standard, see the [documentation page](https://github.com/QualiSystems/cloudshell-standards/tree/master/Documentation) of your shell’s standard. For such attributes, you can modify the description, default values, possible values and rules.
+Modification applies to attributes that are defined in the shell’s standard. To find the attributes defined in the shell’s standard, see the <a href="https://github.com/QualiSystems/cloudshell-standards/tree/master/Documentation" target="_blank">documentation page</a> of your shell’s standard. For such attributes, you can modify the description, default values, possible values and rules.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Note:** You cannot modify attributes **type**, **name**, and any attributes that are associated with the shell’s family as this will affect other shells that use this family.
+**Note:** You cannot modify attributes **type**, **name**, and any attributes that are associated with the shell’s family as this will affect other shells that use this family. The family attributes are listed in the shell's standard.
 
 ### Deployment-specific vs. shell-specific attributes
 
@@ -92,15 +92,15 @@ The second option of associating custom attributes with an already installed she
 
 7) Under the root level model, add the following lines:
 
-{% highlight bash %}
+{% highlight yaml %}
 properties:
-     <property_name>:
-       type: string
-       default: fast
-       description: Some attribute description
-       constraints:
-         - valid_values: [fast, slow]
-       tags: [configuration, setting, not_searchable, abstract_filter, include_in_insight, readonly_to_users, display_in_diagram, connection_attribute, read_only]
+  my_property:
+    type: string
+    default: fast
+    description: Some attribute description
+    constraints:
+      - valid_values: [fast, slow]
+    tags: [configuration, setting, not_searchable, abstract_filter, include_in_insight, readonly_to_users, display_in_diagram, connection_attribute, read_only]
 {% endhighlight %}
 
 8) Edit their settings, as appropriate. For additional information on these settings, see the CloudShell online help.
@@ -108,7 +108,7 @@ properties:
 |  &nbsp;&nbsp;&nbsp;Properties        |  Description 
 |  :-------------------   | :----------------------------------------------------------------- |            
 |  &nbsp;&nbsp;&nbsp;`properties`         |  Header for the shell's attributes. Needs to be added only once.
-|  &nbsp;&nbsp;&nbsp;`<property_name>`&nbsp;&nbsp;&nbsp;    |  (Relevant when adding an attribute) Replace `<property_name>` with the new attribute’s display name. For example: "My new attribute:". **Do not remove the colon (:) from the end of the line.**         |
+|  &nbsp;&nbsp;&nbsp;`<property_name>`&nbsp;&nbsp;&nbsp;    |  (Relevant when adding an attribute) Replace `my_property` with the new attribute’s display name. For example: "My new attribute:". **Do not remove the colon (:) from the end of the line.**         |
 |  &nbsp;&nbsp;&nbsp;`type`            |   (Relevant when adding an attribute) Type of attribute. Optional values: string, integer, float, boolean, cloudshell.datatypes.Password  |
 |  &nbsp;&nbsp;&nbsp;`default`       |  Default value.                           |
 |  &nbsp;&nbsp;&nbsp;`description`          |  Attribute's description                                   |
@@ -143,8 +143,8 @@ Publishing an attribute displays that attribute in the service's settings dialog
 
 2) If you want the service’s attribute to be exposed in the blueprint and sandbox, replace the tags line with the following:
 
-{% highlight bash %}
-       tags: [user_input]
+{% highlight yaml %}
+    tags: [user_input]
 {% endhighlight %}
 
 3) Save the *shell-definition.yaml* file, package and import the shell into CloudShell.
@@ -180,17 +180,16 @@ shellfoundry new <Shell-name> --template <template>
 5) Update the template version.
 
 6) Under `node-types:`, locate `properties:`, and add the following lines underneath:
-properties:
 
-{% highlight bash %}
-  Service Categories:
-    type: list
-    default: [My Category 1, My Category 2]  
+{% highlight yaml %}
+Service Categories:
+  type: list
+  default: [My Category 1, My Category 2]  
 {% endhighlight %}
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Note:** The `properties:` line needs to be added only once, so do not add it if it already exists uncommented in the *shell-definition.yaml*.
 
-7) Specify the categories in the default line (comma-separated list).
+7) Specify the categories in the `default:` line (comma-separated list).
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The shell’s categories will be added to the Global domain, even if CloudShell already includes categories with the same name in other domains.
 
