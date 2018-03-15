@@ -114,6 +114,6 @@ And modify the *site.yml* file to get the relevant VM’s user and password from
       register: cmd_var
 
     - name: Print output
-      debug: msg= "{{ cmd_var.stdout }}"
+      debug: var=cmd_var
 
 {% endhighlight %}
