@@ -70,6 +70,8 @@ The second option of associating custom attributes with an already installed she
 
 ### Adding or modifying attributes in a shell’s root or sub-model
 
+This section explains how to add attributes to the shell's root model and to specific models within the shell. To learn how to expose attributes that are required for the discovery of the resource (in the **Inventory** dashboard's **Resource** discovery dialog box), see [Auto-discovery for Inventory Shells]({{site.baseurl}}/shells/{{pageVersion}}/implementing-discovery-for-inventory-shells.html).
+
 **To add/modify a shell's attributes:**
 
 1)  Open command-line.
