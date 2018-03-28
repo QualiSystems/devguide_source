@@ -18,6 +18,8 @@ This article addresses two flows:
 * Modifying an existing shell
 * Creating a new shell with modifications to the standard
 
+_At the end of this article, you can find an end-to-end example of how to extend an existing shell with attributes and commands. To see the example, click [here](#end-to-end-example)._ 
+
 Modifying an existing shell is done using the `shellfoundry extend` command. This command downloads the source code of the shell you wish to modify to your local machine and updates the shell’s Author. Note that extending official shells (shells that were released by Quali) will remove their official tag. Keep in mind that modifying a shell that is being used in CloudShell may affect any inventory resources that are based on a previous version of the shell. In the second flow, since we're creating a new shell from the appropriate shell standard, we will use the `shellfoundry new` command and modify the shell's settings.
  
 The common use cases for customizing a shell are:
@@ -200,3 +202,190 @@ Service Categories:
 The shell’s categories are added to the Global domain. If a category with the same name exists in another domain, CloudShell will also link this category to the **Global** domain.
 
 9) To make the service available in other domains, in CloudShell Portal’s **Categories** management page, add those domains to the service’s categories.
+<a name="end-to-end-example"></a>
+
+## Example: Extending a shell with attributes and commands
+
+To help us understand the shell customization process, let’s extend a shell with attributes and commands.
+
+Let’s start by extending a shell.
+
+{% highlight yaml %}
+shellfoundry new my-extended-shell --template gen2/resource
+{% endhighlight %}
+
+The shell project is created in the directory from which you ran the command.
+
+![Context Object]({{ site.baseurl }}/assets/customizing-shells-shell-project.png)
+
+Let’s open the shell project’s *shell-definition.yaml* file. When you extend a shell, it's recommended to change the shell’s version and author.
+
+{% highlight yaml %}
+metadata:
+  template_name: CustomDataModel
+  template_author: steven
+  template_version: 0.1.1
+{% endhighlight %}
+
+To check, let’s install the shell in CloudShell Portal.
+
+{% highlight yaml %}
+shellfoundry install
+{% endhighlight %}
+
+In the **Shells** page, we can see the shell's updated author and version.
+
+![Context Object]({{ site.baseurl }}/assets/customizing-shells-metadata.png)
+
+We can also change the image. To do so, add the file to the shell project's root folder and in the `artifacts` section of the *shell-definition.yaml*, set the file name.
+
+{% highlight yaml %}
+artifacts:
+  icon:
+    file: shell-icon.png
+    type: tosca.artifacts.File
+  driver:
+    file: CustomDataModelDriver.zip
+    type: tosca.artifacts.File
+{% endhighlight %}
+
+And set it in the `metadata` section.
+
+{% highlight yaml %}
+metadata:
+  template_name: CustomDataModel
+  template_author: steven
+  template_version: 0.1.1
+  template_icon: shell-icon.png
+{% endhighlight %}
+
+To see the image, we'll re-install the shell.
+
+{% highlight yaml %}
+shellfoundry install
+{% endhighlight %}
+
+The image is displayed on resources based on this shell.
+
+![Context Object]({{ site.baseurl }}/assets/customizing-shells-image.png)
+
+Next, we’ll create an attribute on the root model of the resource. Attributes are created in the `properties` section of the *shell-definition.yaml*. We’ll add a string attribute called "my attribute" with a default value and some rules.
+
+{% highlight yaml %}
+properties:
+  my attribute:
+    type: string
+    default: value1
+    description: This is my new attribute.
+    constraints:
+      - valid_values: [value1, value2, value3]
+    tags: [setting, configuration]
+{% endhighlight %}
+
+The attribute will be displayed on resources created from this shell. To see the attribute, open the **Inventory** dashboard and edit a resource that is based on this attribute.
+
+![Context Object]({{ site.baseurl }}/assets/customizing-shells-root-attribute.png)
+
+Let’s say we want to create an attribute on the shell’s port. Starting with CloudShell 8.3, this capability is supported. Adding sub-model attributes is the same as adding root model attributes. The only difference is that for sub-model attributes, we need to include the sub-model before the property name (in our case, the sub-model is "Resource Port"). If the sub-model consists of several words, remove any spaces between them. 
+
+{% highlight yaml %}
+ResourcePort.my port speed:
+  type: string
+  default: 5 GHz
+  description:
+  constraints:
+    - valid_values: [5 GHz, 10 GHz, 15 GHz]
+  tags: [setting, configuration]
+{% endhighlight %}
+
+We can also add attributes that are required for the resource’s discovery. While non-discovery attributes only need to be added to the `properties` section, discovery attributes are added to the `capabilities` section of the *shell-definition.yaml*. We'll add the **User** and **Password** attributes. 
+
+{% highlight yaml %}
+capabilities:
+  auto_discovery_capability:
+    type: cloudshell.capabilities.AutoDiscovery
+    properties:        
+      enable_auto_discovery:
+        type: boolean
+        default: true
+      auto_discovery_description:
+        type: string
+        default: Describe the auto discovery
+      inventory_description:
+        type: string
+        default: Describe the resource shell template
+      User:
+        type: string
+        default: admin
+      Password:
+        type: cloudshell.datatypes.Password   
+{% endhighlight %}
+
+To see a resource's discovery page, in the **Inventory** dashboard, select **Discover** from the resource's more options menu. The resource's discovery attributes should look like this:
+
+![Context Object]({{ site.baseurl }}/assets/customizing-shells-discover-params-1.png)
+
+Since these attributes are included in the shell's standard, we only needed to specify them in the `capabilities` section. However, if we want to create a discovery attribute that is not included in the standard, we need to also declare it in the `properties` section. To illustrate this, let's create a discovery attribute called **Number of Ports**.
+
+{% highlight yaml %}
+Number of Ports:
+  type: string
+  default: 4
+{% endhighlight %}
+
+The resource's discovery attributes should now include the new **Number of Ports** attribute.
+
+![Context Object]({{ site.baseurl }}/assets/customizing-shells-discover-params-2.png)
+
+Now let’s add a simple command that prints “hello world” to the **Output** console. In the *driver.py* file, add the command.
+
+{% highlight python %}
+def hello_world(self):
+    return "hello world"
+    pass
+{% endhighlight %}
+
+In the *drivermetadata.xml* file, add a category for the command and a display name. You need to do this if you want to expose the command in CloudShell Portal.
+
+{% highlight python %}
+<Category Name="My Commands">
+    <Command Description="" DisplayName="Hello World" Name="hello_world" />
+</Category>
+{% endhighlight %}
+
+In a CloudShell sandbox, hover over the resource and click **Commmands**. The command is displayed in the resource’s commands pane.
+
+![Context Object]({{ site.baseurl }}/assets/customizing-shells-sandbox-command.png)
+
+And running the command prints the message to the **Output** window.
+
+![Context Object]({{ site.baseurl }}/assets/customizing-shells-output.png)
+
+Note that you can also add global attributes to shells that are installed on CloudShell. This is done using a python script which connects to CloudShell, searches for the shell by name, and adds the attribute to it. Starting with CloudShell 8.3, you can also do this directly from the CloudShell Portal - see [Adding custom attributes to the Shell]({{site.baseurl}}/shells/{{pageVersion}}/deploying-to-production.html#SetCustomShellAttribute).
+
+For example, this script adds the **Execution Server Selector** attribute (with a default value) to our shell:
+
+{% highlight python %}
+    import cloudshell.api.cloudshell_api as api
+    username = 'admin'
+    password = 'admin'
+    server = 'localhost'
+    domain = 'Global'
+
+    session = api.CloudShellAPISession(
+        username=username,
+        password=password,
+        domain=domain,
+        host=server
+    )
+
+    session.SetCustomShellAttribute(
+        modelName='MyExtendedShell',
+        attributeName='Execution Server Selector',
+        defaultValue='NY Test'
+    )
+ {% endhighlight %}
+
+After shell installation, the attribute is added to the shell's resources.
+
+![Context Object]({{ site.baseurl }}/assets/customizing-shells-SetCustomShellAttribute.png)
