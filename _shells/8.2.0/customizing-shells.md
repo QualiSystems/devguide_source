@@ -208,7 +208,7 @@ To help us understand the shell customization process, let’s add attributes an
 
 Start by extending the shell. In the <a href="https://community.quali.com/integrations" target="_blank">Quali Community Integrations</a> page, find the **Cisco IOS Router 2G Shell - Mock Autoload** shell and download its source code to your computer. Extract the source code zip package. Then, run `shellfoundry extend` using the URL.
 
-The command should look like this:
+For example:
 
 {% highlight yaml %}
 shellfoundry extend local:C:\Users\steven.g\Downloads\CiscoIOSRouter2GWithAutoload-master\CiscoIOSRouter2GWithAutoload-master\Cisco-IOS-Router-Shell-2G
@@ -363,7 +363,7 @@ And running the command prints the message to the **Output** window.
 
 ![Context Object]({{ site.baseurl }}/assets/customizing-shells-output.png)
 
-So far in this example, we discussed how to create attributes that are specific to the shell. However, CloudShell also includes global attributes that are not isolated to a specific shell and can be used among different CloudShell elements. You can add these global attributes to shells that are already installed on CloudShell using the `SetCustomShellAttribute` API method which connects to CloudShell, searches for the shell by name, and adds the attribute to it. Starting with CloudShell 8.3, you can also do this directly from CloudShell Portal - see [Adding custom attributes to the Shell]({{site.baseurl}}/shells/{{pageVersion}}/deploying-to-production.html#SetCustomShellAttribute).
+So far in this example, we discussed how to create attributes that are specific to the shell. However, CloudShell also includes global attributes that are not isolated to a specific shell and can be used among different CloudShell elements. You can add these global attributes to shells that are already installed on CloudShell using the `SetCustomShellAttribute` API method which connects to CloudShell, searches for the shell by name, and adds the attribute to it. Starting with CloudShell 8.3, you can also do this directly from CloudShell Portal - see [Adding custom attributes to the Shell]({{site.baseurl}}/shells/{{pageVersion}}/deploying-to-production.html#SetCustomShellAttributeUsingAPI).
 
 For example, this script adds the **Execution Server Selector** attribute (with a default value) to our shell:
 
