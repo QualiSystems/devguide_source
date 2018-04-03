@@ -333,7 +333,7 @@ capabilities:
         default: true
 {% endhighlight %}
 
-Let's make sure the attribute was added to the shell. In the **Inventory** dashboard, select **Discover** from the resource's more options menu. The attribute should be listed on the resource:
+Let's make sure the attribute was added to the shell. In the **Inventory** dashboard, select **Discover** from the resource's more options menu. The attribute should be listed on the resource.
 
 ![Context Object]({{ site.baseurl }}/assets/customizing-shells-discover-params.png)
 
@@ -363,7 +363,7 @@ And running the command prints the message to the **Output** window.
 
 ![Context Object]({{ site.baseurl }}/assets/customizing-shells-output.png)
 
-So far in this example, we discussed how to create attributes that are specific to the shell. However, CloudShell also includes global attributes that are not isolated to a specific shell and can be used among different CloudShell elements. You can add these global attributes to shells that are already installed on CloudShell using the `SetCustomShellAttribute` API method which connects to CloudShell, searches for the shell by name, and adds the attribute to it. Starting with CloudShell 8.3, you can also do this directly from CloudShell Portal - see [Adding custom attributes to the Shell]({{site.baseurl}}/shells/{{pageVersion}}/deploying-to-production.html#SetCustomShellAttributeUsingAPI).
+So far in this example, we discussed how to create attributes that are specific to the shell. However, CloudShell also includes global attributes that are not isolated to a specific shell and can be used among different CloudShell elements. You can add these global attributes to shells that are already installed on CloudShell using the `SetCustomShellAttribute` API method which connects to CloudShell, searches for the shell by name, and adds the attribute to it.
 
 For example, this script adds the **Execution Server Selector** attribute (with a default value) to our shell:
 

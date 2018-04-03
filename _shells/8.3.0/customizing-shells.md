@@ -335,7 +335,7 @@ capabilities:
         default: true
 {% endhighlight %}
 
-Let's make sure the attribute was added to the shell. In the **Inventory** dashboard, select **Discover** from the resource's more options menu. The attribute should be listed on the resource:
+Let's make sure the attribute was added to the shell. In the **Inventory** dashboard, select **Discover** from the resource's more options menu. The attribute should be listed on the resource.
 
 ![Context Object]({{ site.baseurl }}/assets/customizing-shells-discover-params.png)
 
