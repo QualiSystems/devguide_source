@@ -231,6 +231,8 @@ metadata:
 
 To see how it looks in CloudShell Portal, navigate to the shell’s root folder in command-line and install the shell.
 
+For example:
+
 {% highlight yaml %}
 cd "c:\My Shells\Cisco-IOS-Router-Shell-2G"
 shellfoundry install
@@ -339,7 +341,7 @@ Let's make sure the attribute was added to the shell. In the **Inventory** dashb
 
 ![Context Object]({{ site.baseurl }}/assets/customizing-shells-discover-params.png)
 
-Note that if we’re adding an attribute that is already included in the shell’s standard, we only need to define it in the `capabilities` section. 
+Note that if we’re adding a discovery attribute that is already included in the shell’s standard, we only need to define it in the `capabilities` section. 
 
 Now let’s add a simple command that prints “hello world” to the **Output** console. In the *driver.py* file, add the command.
 
