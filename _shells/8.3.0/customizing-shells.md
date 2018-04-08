@@ -208,7 +208,7 @@ The shell’s categories are added to the Global domain. If a category with the 
 
 To help us understand the shell customization process, let’s add attributes and commands to a shell. To simulate this process, we’ve created a modified version of the Cisco IOS Router Shell, which creates a mock resource structure of 16 ports. Please feel free to use it.
 
-Start by extending the shell. In the <a href="https://community.quali.com/integrations" target="_blank">Quali Community Integrations</a> page, find the **Cisco IOS Router 2G Shell - Mock Autoload** shell and download its source code to your computer. Extract the source code zip package. Then, run `shellfoundry extend` using the URL.
+Start by extending the shell. In the <a href="https://community.quali.com/integrations" target="_blank">Quali Community Integrations</a> page, find the **Cisco IOS Router 2G Shell - Mock Autoload** shell and download its source code to your computer. Extract the source code zip package. Then, run `shellfoundry extend` using the path to the shell's root folder.
 
 For example:
 
