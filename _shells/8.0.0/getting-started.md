@@ -49,9 +49,8 @@ To learn more about the  different versions of the Shells used by CloudShell and
 * **Python**: Make sure Python [Python](https://www.python.org/downloads/) 2.7.x (latest recommended) is installed on your machine.
 * **IDE/Text Editor:** Your preferred IDE editor. We recommend using PyCharm (which offers a free community edition) because of the tooling we’ve already created for that IDE, including a CloudShell developer plugin.
 
-
 ### Installing or Updating Shellfoundry
-To create the Shell project, we’ll use Shellfoundry, a CLI tool for generating and distributing Shells.
+To create the Shell project, we’ll use [Shellfoundry]({{site.baseurl}}/reference/{{pageVersion}}/shellfoundry-intro.html), a CLI tool for generating and distributing Shells.
 
 **To install Shellfoundry:**
 
@@ -65,7 +64,7 @@ To create the Shell project, we’ll use Shellfoundry, a CLI tool for generating
 
 
 ### Configuring CloudShell Connection Settings
-To create the Shell project, we’ll use ShellFoundry, a CLI tool for generating and distributing Shells. However, in order to use Shellfoundry, we’ll need to first configure your CloudShell connection settings in Shellfoundry.
+In order to use Shellfoundry, we’ll need to first configure your CloudShell connection settings in Shellfoundry.
 
 **Note:** 2nd Generation Shells can also be imported into CloudShell Portal.
 
@@ -88,7 +87,6 @@ For example, changing the username to “John”:
 
 ### Creating the Shell Project
 For windows users, it is recommended to add the path to the folder in which ShellFoundry is installed to your local environment variables. For example, _C:\Python27\Scripts_. This will enable us to run the ShellFoundry commands from any folder of the Shell project.
-
 
 **To create a new project:**
 
