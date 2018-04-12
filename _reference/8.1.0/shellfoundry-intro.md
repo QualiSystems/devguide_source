@@ -198,27 +198,27 @@ This command downloads the source code of the Shell you wish to customize to you
 Run this command from the directory that will contain the new Shell:
 
 {% highlight bash %}
-shellfoundy extend <URL/path-to-Shell-template>
+shellfoundy extend <URL/path-to-Shell>
 {% endhighlight %}
 
-The path can be a URL to the Shell template's source code on [Quali Conmmunity's Integrations](https://community.quali.com/integrations) page or the filesystem path (prefixed by `local:./`) to the extracted source code folder:
+The path can be a URL to the Shell's source code on [Quali Conmmunity's Integrations](https://community.quali.com/integrations) page or the filesystem path (prefixed by `local:./`) to the extracted source code folder:
 
 ![Shell Commands]({{ site.baseurl}}/assets/download_shell_source_code.png)
 
 
 **Examples:**
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Extending a Shell template residing on GitHub:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Extending a Shell residing on GitHub:
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{% highlight bash %}
 shellfoundry extend https://github.com/QualiSystems/Juniper-JunOS-Router-Shell-2G/archive/1.0.0.zip
 {% endhighlight %}
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Extending a local Shell template:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Extending a local Shell:
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{% highlight bash %}
 shellfoundry extend local:C:\Temp\my-shells\JuniperJunOSRouterShell2G
 {% endhighlight %}
 
-Before extending a local Shell template, make sure the Shell's destination folder is different from the original Shell template's root folder.
+Before extending a local Shell, make sure the Shell's destination folder is different from the original Shell's root folder.
 
 ### Version History<a name="version-history"></a>
 
