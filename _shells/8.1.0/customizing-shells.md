@@ -83,7 +83,7 @@ This section explains how to add attributes to the shell's root model and to spe
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**To modify a shell:**
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{% highlight bash %}shellfoundry extend <URL/path-to-shell>{% endhighlight %}
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The path can be a URL to the Shell's source code on [Quali Conmmunity's Integrations](https://community.quali.com/integrations) page or the filesystem path (prefixed by `local:./`) to the extracted source code folder:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The path can be a URL to the Shell's source code on [Quali Community's Integrations](https://community.quali.com/integrations) page or the filesystem path (prefixed by `local:./`) to the extracted source code folder.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**To create a new shell based on a specific shell standard:**
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{% highlight bash %}shellfoundry new <Shell-name> --template <template>{% endhighlight %}
@@ -171,7 +171,7 @@ This procedure explains how to add service categories to a 2nd Gen service Shell
 shellfoundry extend <URL/path-to-shell-template>
 {% endhighlight %}
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The shell’s path can be a URL to the shell template’s zip file on GitHub or the filesystem path (prefixed by local:./) to the root folder of the shell. For additional information and examples, see [Shellfoundry]({{site.baseurl}}/reference/{{pageVersion}}/shellfoundry-intro.html).
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The path can be a URL to the Shell's source code on [Quali Community's Integrations](https://community.quali.com/integrations) page or the filesystem path (prefixed by `local:./`) to the extracted source code folder.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**To create a new shell based on a specific shell standard:**
 
