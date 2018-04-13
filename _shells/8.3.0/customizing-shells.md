@@ -106,7 +106,7 @@ properties:
     description: Some attribute description
     constraints:
       - valid_values: [fast, slow]
-    tags: [configuration, setting, not_searchable, abstract_filter, include_in_insight, readonly_to_users, display_in_diagram, connection_attribute, read_only]
+    tags: [configuration, setting, search_filter, abstract_filter, include_in_insight, readonly_to_users, display_in_diagram, connection_attribute, read_only]
 {% endhighlight %}
 
 8) Edit their settings, as appropriate. For additional information on these settings, see the CloudShell online help.
