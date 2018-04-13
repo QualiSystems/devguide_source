@@ -1,0 +1,84 @@
+.wrrap {
+  height: 100vh;
+}
+
+.image_site {
+  height: 90px;
+  background-image: -webkit-linear-gradient(270deg, #f5f7f7, #f5f7f7);
+  background-image: linear-gradient(180deg, #f5f7f7, #f5f7f7);
+}
+
+.header {
+  position: static;
+  left: 0px;
+  top: 0px;
+  right: 0px;
+  padding: 10px;
+  background-image: -webkit-linear-gradient(270deg, #f5f7f7, #f5f7f7);
+  background-image: linear-gradient(180deg, #f5f7f7, #f5f7f7);
+}
+
+.hot_box {
+    padding: 18px 10px;
+    background-color: #0082f1;
+}
+
+.text {
+  font-family: Lato, sans-serif;
+  color: #fff;
+}
+
+.text1 {
+    font-family: Roboto, sans-serif;
+    font-size: 15px;
+    font-weight: 200;
+    text-align: center;
+}
+
+.span_text {
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.field {
+  width: 600px;
+  float: left;
+  clear: none;
+}
+
+.from {
+  position: static;
+  display: block;
+  overflow: visible;
+  float: right;
+}
+
+.btn {
+  margin-left: 30px;
+}
+
+.cloudshell-logo-image {
+    float: left;
+}
+.cloudshell-logo-text {
+  position: static;
+  margin-left: 10px;
+  padding-top: 15px;
+  font-family: Roboto, sans-serif;
+  color: #979797;
+  font-size: 20px;
+  font-weight: 200;
+  text-decoration: none;
+  float: left;
+}
+
+.san_logo {
+  color: #585757;
+  font-weight: 400;
+}
+
+@media (max-width: 767px) {
+  .text1 {
+    line-height: 26px;
+  }
+}

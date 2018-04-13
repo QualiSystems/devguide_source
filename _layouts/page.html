@@ -2,9 +2,19 @@
 layout: default
 ---
 
+
+{% if page.name == 'index.md' %}
+        {% include notice.html %}
+{% endif %}
+
 <div class="page-header" data-page-id="{{ page.path }}">
     <h2>{{ page.title }}
         {% if page.subtitle %}<small>{{ page.subtitle }}</small>{% endif %}
+        {% if page.title != "Search Results" %}
+          {% if jekyll.environment == 'production' %}
+          <span style="float: right;font-size: 20px"><small><a href="https://github.com/QualiSystems/devguide_source/tree/master/{{ page.relative_path }}">Suggest edits</a></small></span>
+          {% endif %}
+        {% endif %}
     </h2>
 </div>
 
@@ -15,6 +25,20 @@ layout: default
 {% include disqus.html %}
 
 {% include related_posts.html %}
+
+<script src="{{ site.baseurl }}/js/search.js" type="text/javascript" charset="utf-8"></script>
+
+<script type="text/javascript">
+  $(function() {
+    $('#search-query').lunrSearch({
+      indexUrl  : '{{site.baseurl}}/js/index.json',           // url for the .json file containing search index data
+      results   : '#search-results',          // selector for containing search results element
+      template  : '#search-results-template', // selector for Mustache.js template
+      titleMsg  : '',   // message attached in front of results (can be empty)
+      emptyMsg  : '<p>Nothing found.</p>'     // shown message if search returns no results
+    });
+  });
+</script>
 
 <script>
 $(function() {

@@ -2,12 +2,15 @@
 title: 'CloudShell Developer Guide'
 subtitle: ''
 description: 'CloudShell is a platform for Cloud Sandbox automation for devops and tests. This is the developer guide and knowledgebase for CloudShell Shell and orchestration scripts developers.'
-url: https://qualisystems.github.io
+
+url: 'https://qualisystems.github.io'
+home: 'https://qualisystems.github.io'
+
 # if you wish to integrate disqus on pages set your shortname here
 disqus_shortname: ''
 twitter:
   username: qualisystems
-logo: '/assets/Quali Logo.png'
+logo: './assets/logo.png'
 # if you use google analytics, add your tracking id here
 google_analytics_id: 'UA-81468206-1'
 
@@ -17,26 +20,48 @@ google_analytics_id: 'UA-81468206-1'
 #   2 - show only if posts are present
 navigation: 1
 
-collections:
-    setting-up:
-        output: true
-        title: "Setting up for development"
+versions: 
+    - 7.1.0
+    - 8.0.0
+    - 8.1.0
+    - 8.2.0
+    - 8.3.0
 
+
+latest_version: 8.3.0
+home_page: the-cloudshell-devguide.html
+home_collection: introduction  
+
+collections:
+    introduction:
+        output: true
+        title: "Introduction"
+        display-order: 0
+        
     shells:
         output: true
         title: "Extending CloudShell with Shells"
-
+        display-order: 1
+        
     orchestration:
         output: true
         title: "Orchestration scripts"
+        display-order: 2
+    
+    configmanagement:
+        output: true
+        title: "Configuration Management"
+        display-order: 3
 
     devops:
         output: true
         title: "Integrating CloudShell into the DevOps Cycle"
-
+        display-order: 4
+        
     reference:
         output: true
         title: "Reference"
+        display-order: 5
 
 # URL to source code, used in _includes/footer.html
 codeurl: 'https://github.com/qualisystems'
@@ -55,13 +80,13 @@ highlighter: prism
 # Since these are pages, it doesn't really matter
 future: true
 
-gems:
+plugins:
   - jekyll-sitemap
   - jekyll_github_sample
-  - jekyll-lunr-js-search
   - jekyll-seo-tag
+  
 # Exclude non-site files
-exclude: ['bin', 'README.md']
+exclude: [vendor,'bin', 'README.md']
 
 # Use the kramdown Markdown renderer
 markdown: kramdown
