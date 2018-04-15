@@ -321,6 +321,10 @@ node_types:
         tags: [setting, configuration]
 {% endhighlight %}
 
+To see the new attribute, in the **Inventory** dashboard, find the resource's ports (you can use the search field), click a port's "more info" button and in the window that pops up, scroll down until you see the attribute.
+
+![Context Object]({{ site.baseurl }}/assets/customizing-shells-submodel-attribute.png)
+
 You can also add attributes that are required for the resource’s discovery. While non-discovery attributes only need to be added to the `properties` section, new discovery attributes are added both to the `properties` section of the *shell-definition.yaml*, and to the `capabilities` section's `properties`. We'll add an attribute called "my discovery attribute". 
 
 {% highlight yaml %}
