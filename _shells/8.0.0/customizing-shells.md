@@ -206,12 +206,12 @@ Service Categories:
 
 To help us understand the shell customization process, let’s add attributes and commands to a shell. To simulate this process, we’ve created a modified version of the Cisco IOS Router Shell, which creates a mock resource structure of 16 ports. Please feel free to use it.
 
-Start by extending the shell. In the <a href="https://community.quali.com/integrations" target="_blank">Quali Community Integrations</a> page, find the **Cisco IOS Router 2G Shell - Mock Autoload** shell and download its source code to your computer. Extract the source code zip package. Then, run `shellfoundry extend` using the path to the shell's root folder.
+Start by extending the shell. From the <a href="https://github.com/QualiSystemsLab/CiscoIOSRouter2GWithAutoload/releases" target="_blank">CiscoIOSRouter2GWithAutoload</a> shell's GitHub **Releases** page, copy the source code link address of the latest release. Then, run `shellfoundry extend`.
 
 For example:
 
 {% highlight yaml %}
-shellfoundry extend local:C:\Users\steven.g\Downloads\CiscoIOSRouter2GWithAutoload-master\CiscoIOSRouter2GWithAutoload-master\Cisco-IOS-Router-Shell-2G
+shellfoundry extend https://github.com/QualiSystemsLab/CiscoIOSRouter2GWithAutoload/archive/1.0.zip
 {% endhighlight %}
 
 The shell project is created in the directory from which you ran the command.
@@ -219,6 +219,8 @@ The shell project is created in the directory from which you ran the command.
 ![Context Object]({{ site.baseurl }}/assets/customizing-shells-shell-project.png)
 
 When you extend a shell, it's recommended to change the shell’s version and author. This is done in the shell project’s *shell-definition.yaml* file.
+
+For example:
 
 {% highlight yaml %}
 metadata:
@@ -232,7 +234,7 @@ To see how it looks in CloudShell Portal, navigate to the shell’s root folder 
 For example:
 
 {% highlight yaml %}
-cd "c:\My Shells\Cisco-IOS-Router-Shell-2G"
+cd "c:\My Shells\CiscoIOSRouter2GWithAutoload"
 shellfoundry install
 {% endhighlight %}
 
