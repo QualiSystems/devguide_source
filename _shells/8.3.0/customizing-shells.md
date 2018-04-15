@@ -323,7 +323,7 @@ node_types:
         tags: [setting, configuration]
 {% endhighlight %}
 
-To see the new attribute, in the **Inventory** dashboard, find one of the resource's ports (you can use the search field), click a port's "more info" button and in the window that pops up, scroll down until you see the attribute.
+To see the new attribute, in the **Inventory** dashboard, find the resource's ports (you can use the search field), click a port's "more info" button and in the window that pops up, scroll down until you see the attribute.
 
 ![Context Object]({{ site.baseurl }}/assets/customizing-shells-submodel-attribute.png)
 
