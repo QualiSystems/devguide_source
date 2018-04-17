@@ -17,7 +17,7 @@ _**Before developing shells, please familiarize yourself with CloudShell by taki
 
 ### What is a shell?
 
-A Shell enables CloudShell users to interact with different sandbox elements, like physical devices and virtual appliances. A Shell models the sandbox element in CloudShell and provides commands that CloudShell users and automation processes can run on it, like Power On and Health Check.
+A Shell enables CloudShell users to interact with different sandbox elements, like physical devices and virtual appliances. A Shell models the sandbox element in CloudShell and provides commands that CloudShell users and automation processes can run on it, like Power On and Health Check. Each 2nd Gen Shell is modeled after a CloudShell standard, from which the shell inherits its default settings, attributes and driver.
 
 In our [community](http://community.quali.com/spaces/12/index.html?__hstc=46213176.aaafbe5adb338215377a985e0c025079.1467146361756.1471392182746.1471395614692.11&__hssc=46213176.1.1471395614692&__hsfp=2437115919), you can find both officially released shells and shells developed in our developer community. If you find a shell that fits your needs, you’re welcome to use it as is, or, you can customize its settings and automation, as explained in [Customizing Shells]({{site.baseurl}}/shells/{{pageVersion}}/customizing-shells.html). If you can’t find the shell you’re looking for, you’re welcome to create a new one from scratch using one of our shell standard templates and contribute it to the community for others to use it as well.
 
