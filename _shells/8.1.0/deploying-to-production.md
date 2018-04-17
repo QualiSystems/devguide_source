@@ -71,3 +71,7 @@ To deploy the Shell to the production CloudShell server:
 ![Context Object]({{ site.baseurl }}/assets/import_package.png){: .center-image }
 
 Your Shell should now be ready for use in the production environment.
+
+### Share status
+
+Each resource family within a shell has a share status, which it passes to its model. The share status determines whether a specific resource or sub-resource of a particular model can be used in different sandboxes at the same time. A family's share status is determined by the Locked By Default rule, which defines the family as unshared. To find out the share status of a specific family in your shell, have a look at the shell's standard. For example, the Shell Resource Standard's <a href="https://github.com/QualiSystems/cloudshell-standards/blob/master/Documentation/shell_resource_standard.md#data-model-structure" target="_blank">Data Model Structure</a> section indicates its families' settings. 
