@@ -176,7 +176,7 @@ metadata:
 
 * **template_version** defines the version number of the Shell.
 
-* **template_icon** is the image that is displayed on the shell’s resources in CloudShell Portal.
+* **template_icon** is the image that is displayed to the CloudShell administrator in CloudShell Portal’s **Manage** page.
 
 
 #### Add a custom attribute to the Shell
