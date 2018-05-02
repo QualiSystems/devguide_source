@@ -57,6 +57,8 @@ To create the Shell project, we’ll use [Shellfoundry]({{site.baseurl}}/referen
 * Run the following in your local Command Line:
 {% highlight bash %} python -m pip install shellfoundry {% endhighlight %}
 
+For windows users, it is recommended to add the path (to the shellfoundry installation folder) to your local environment variables. For example, _C:\Python27\Scripts_. This will enable us to run the ShellFoundry commands from any folder of the Shell project.
+
 **To update Shellfoundry:**
 * If ShellFoundry is already installed, run the following command to update:
 {% highlight bash %} python -m pip install shellfoundry --upgrade {% endhighlight %}
@@ -85,7 +87,6 @@ For example, changing the username to “John”:
  Normally, you would need to set the CloudShell admin user/password and the server address.
 
 ### Creating the Shell Project
-For windows users, it is recommended to add the path to the folder in which ShellFoundry is installed to your local environment variables. For example, _C:\Python27\Scripts_. This will enable us to run the ShellFoundry commands from any folder of the Shell project.
 
 **To create a new project:**
 
