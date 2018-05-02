@@ -31,14 +31,14 @@ The basic shell creation process is as follows:
 
 3)  Upload the shell to CloudShell.
 
-4)  If the shell requires the use of python dependencies, which aren’t available in the public PyPi repository, add them to the local PyPi Server. See CloudShell help's <a href="http://help.quali.com/Online%20Help/8.3/Portal/Content/Admn/Updt-Pyth-Libs.htm" target="_blank">Updating Python Dependencies for Shells, Drivers and Scripts</a>.
+4)  If the shell requires the use of python dependencies, which aren’t available in the public PyPi repository, add them to the local PyPi Server. See CloudShell help's <a href="http://help.quali.com/Online%20Help/8.3/Portal/Content/Admn/Pyth-Cnfg-Mds.htm" target="_blank">PyPi Server - Managing Python Driver and Script Dependencies</a>.
 
 5)  Create resources in the appropriate domains.
 
 ### Supported versions - CloudShell v.8.0 and up
 As of version 8.0, CloudShell supports 2nd Gen Shells. This guide includes instructions on developing **2nd Gen Shells only**.
 
-For information on developing 1st Gen Shells, see [CloudShell Developer Guide](https://qualisystems.github.io/devguide_7/) CloudShell v7.1 and below.
+For information on developing 1st Gen Shells, see the CloudShell Developer Guide for version 7.1.
 
 To learn more about the  different versions of the Shells used by CloudShell and how to upgrade a 1st Gen Shell, see [Converting 1st Generation Shells]({{site.baseurl}}/reference/{{pageVersion}}/migrating_1st_gen_shells.html).
 
@@ -56,6 +56,8 @@ To create the Shell project, we’ll use [Shellfoundry]({{site.baseurl}}/referen
 
 * Run the following in your local Command Line:
 {% highlight bash %} python -m pip install shellfoundry {% endhighlight %}
+
+For windows users, it is recommended to add the path (to the shellfoundry installation folder) to your local environment variables. For example, _C:\Python27\Scripts_. This will enable us to run the ShellFoundry commands from any folder of the Shell project.
 
 **To update Shellfoundry:**
 * If ShellFoundry is already installed, run the following command to update:
@@ -85,7 +87,6 @@ For example, changing the username to “John”:
  Normally, you would need to set the CloudShell admin user/password and the server address.
 
 ### Creating the Shell Project
-For windows users, it is recommended to add the path to the folder in which ShellFoundry is installed to your local environment variables. For example, _C:\Python27\Scripts_. This will enable us to run the ShellFoundry commands from any folder of the Shell project.
 
 **To create a new project:**
 

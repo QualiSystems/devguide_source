@@ -18,7 +18,7 @@ As of version 8.0, CloudShell supports 2nd Generation Shells. In this topic weâ€
 
 
 ### Overview
-CloudShell Shells can be thought of as either 1st Generation Shells (1st Gen) or 2nd Generation Shells (2nd Gen). Both types of Shells can coexist inside the same CloudShell sandbox, but they differ in their structure and in the way that they are managed.
+CloudShell Shells can be thought of as either 1st Generation Shells (1st Gen) or 2nd Generation Shells (2nd Gen). Both types of Shells can coexist inside the same CloudShell sandbox, but they differ in their structure and in the way that they are managed. 
 
 *	**1st Gen Shells** are imported as CloudShell packages that contain the data model and driver for the intended sandbox element. 1st Gen Shells allow extensive control of the family and model, and therefore are not standardized. While they allow maximal flexibility, when using them, some Shell management capabilities may not be available.
 

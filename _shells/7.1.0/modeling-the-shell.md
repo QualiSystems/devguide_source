@@ -287,7 +287,7 @@ specify the rules for selection.
 * **_Displayed In Diagram_** This attribute will be displayed on the diagram component itself when using the larger icon size
 in the diagram.
 
-* **_Displayed In Insight (CloudShell 7.1EA and above only)_** This attribute value will be saved in Insight and can be used to later create BI around the resources
+* **_Displayed In Insight (CloudShell 7.1 EA and above only)_** This attribute value will be saved in Insight and can be used to later create BI around the resources
 linked to it.
 
 ### Restricting attributes to specific values
