@@ -213,7 +213,9 @@ The format is aligned with the TOSCA representation:
 By modifying the _properties_ section, you can add your own custom attributes.
 
 Let’s see how CloudShell presents the Shell inside a sandbox.
-** To see the attributes in CloudShell: **
+
+**To see the attributes in CloudShell:**
+
 1) Add the following attribute to the _shell-definition.yaml_ file:
 {% highlight yaml %}
 properties:
