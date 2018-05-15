@@ -122,7 +122,7 @@ For example:
 #### Implement the get_inventory function
 
 The goal of the _get_inventory_ function in the Shell’s driver is to query the device and return a list of sub-resources and attribute values back to CloudShell.
-After querying the device, the function should return a specific result to CloudShell to allow creating the right resources.
+After querying the device, the function should return a specific result to CloudShell to allow creating the right resources. This process is called _discovery_ in CloudShell Portal, and _autoload_ in Resource Manager Client. 
 
 **To implement the get_inventory function:**
 
@@ -136,9 +136,9 @@ This is an example of the _get_inventory_ implementation:
 {% github_sample QualiSystems/devguide_examples/blob/master/2nd%20gen%20shells%20-%20implementing_discovery/src/driver.py 14 42 %}
 {% endhighlight %}
 
-This _get_inventory_ code creates an instance of the root resource by calling the _create_from_context_ function. Then, it assigns attribute values and creates a hierarchy of sub-resources.
+This _get_inventory_ code creates an instance of the root resource by calling the _create_from_context_ function. In this particular example, we’re autoloading the root’s sub-resources and their attributes, and populating the Vendor and Model attribute values on the root resource.
 
-Note that we’re only returning information about sub-resources. The root resource already exists at this stage and already has the mandatory attributes defined by the template.
+Note that _get_inventory_ only creates the sub-resources and configures their attributes as the root resource already exists at this stage. Autoload can also update the attribute values on the root level.
 
 This sample creates _GenericChassis_, _GenericModule_ and _GenericPort_ resource models and uses the _add_sub_resource_ function to build the resource hierarchy.
 
