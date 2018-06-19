@@ -28,6 +28,8 @@ To give a few examples:
 * [Firewall Shell Standard](https://github.com/QualiSystems/cloudshell-standards/blob/master/Documentation/firewall_standard.md)
 * [Custom Service Shell Standard](https://github.com/QualiSystems/cloudshell-standards/blob/master/Documentation/Custom%20Service%20Shell%20Standard.md)
 
+*Regarding the **Layer 1 Shell** template, please note that this is a special kind of shell with its own template and mechanism, and works differently from 1st and 2nd Gen shells. For more information, see [Creating an L1 Switch Shell]({{site.baseurl}}/reference/{{pageVersion}}/L1-switch-shell.html).*
+
 **To get a list of the possible templates:**
 * Run the following command in your Command Line:
 {% highlight bash %}
