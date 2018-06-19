@@ -54,7 +54,8 @@ In this example, we are adding an Execution Server Selector attribute named "Dom
 
 ### Enabling Shell commands to run in offline mode
 
-Before deploying to the production environment, it’s important to make sure that Quali Server and the Execution Servers can access the python packages and files required to run the Shell commands. If these machines have an internet connection, CloudShell will automatically download the required dependencies from the public PyPi repository. However, if your CloudShell deployment is configured to run offline or your automation needs to use dependencies that are not in the public PyPi repository, you will have to manually add these dependencies to the local PyPi repository on the Quali Server machine. To do so, if you have access to the local PyPi repository, simply copy the contents of the *offline_requirements* folder to your local PyPi Server repository. If you don’t have access to the repository, you can remotely load the packages using command-line, as explained in this CloudShell Help <a href="http://help.quali.com/Online%20Help/8.2/Portal/Content/Admn/Pyth-Cnfg-Mds.htm#Loading" target="_blank">article</a>.
+Before deploying to the production environment, it's important to make sure that your Execution Servers will be able to execute
+the Shell commands, even if your CloudShell deployment is configured to run offline and can't retrieve the Shell dependencies. If this is the case, simply copy the content of the _offline_requirements_ folder to your local PyPi Server repository. For more information, see [Configuring CloudShell to Execute Python Commands in Offline Mode](http://help.quali.com/Online%20Help/8.2/Portal/Content/Admn/Cnfgr-Pyth-Env-Wrk-Offln.htm) article.
 
 ### Deploying to the production CloudShell Server
 
