@@ -17,7 +17,7 @@ _**Before developing shells, please familiarize yourself with CloudShell by taki
 
 ### What is a shell?
 
-A Shell enables CloudShell users to interact with different sandbox elements, like physical devices and virtual appliances. A Shell models the sandbox element in CloudShell and provides commands that CloudShell users and automation processes can run on it, like Power On and Health Check.
+A Shell enables CloudShell users to interact with different sandbox elements, like physical devices and virtual appliances. A Shell models the sandbox element in CloudShell and provides commands that CloudShell users and automation processes can run on it, like Power On and Health Check. Each 2nd Gen Shell is modeled after a CloudShell standard, from which the shell inherits its default settings, attributes and driver.
 
 In our [community](http://community.quali.com/spaces/12/index.html?__hstc=46213176.aaafbe5adb338215377a985e0c025079.1467146361756.1471392182746.1471395614692.11&__hssc=46213176.1.1471395614692&__hsfp=2437115919), you can find both officially released shells and shells developed in our developer community. If you find a shell that fits your needs, you’re welcome to use it as is, or, you can customize its settings and automation, as explained in [Customizing Shells]({{site.baseurl}}/shells/{{pageVersion}}/customizing-shells.html). If you can’t find the shell you’re looking for, you’re welcome to create a new one from scratch using one of our shell standard templates and contribute it to the community for others to use it as well.
 
@@ -38,7 +38,7 @@ The basic shell creation process is as follows:
 ### Supported versions - CloudShell v.8.0 and up
 As of version 8.0, CloudShell supports 2nd Gen Shells. This guide includes instructions on developing **2nd Gen Shells only**.
 
-For information on developing 1st Gen Shells, see [CloudShell Developer Guide](https://qualisystems.github.io/devguide_7/) CloudShell v7.1 and below.
+For information on developing 1st Gen Shells, see the CloudShell Developer Guide for version 7.1.
 
 To learn more about the  different versions of the Shells used by CloudShell and how to upgrade a 1st Gen Shell, see [Converting 1st Generation Shells]({{site.baseurl}}/reference/{{pageVersion}}/migrating_1st_gen_shells.html).
 
@@ -49,14 +49,15 @@ To learn more about the  different versions of the Shells used by CloudShell and
 * **Python**: Make sure Python [Python](https://www.python.org/downloads/) 2.7.x (latest recommended) is installed on your machine.
 * **IDE/Text Editor:** Your preferred IDE editor. We recommend using PyCharm (which offers a free community edition) because of the tooling we’ve already created for that IDE, including a CloudShell developer plugin.
 
-
 ### Installing or Updating Shellfoundry
-To create the Shell project, we’ll use Shellfoundry, a CLI tool for generating and distributing Shells.
+To create the Shell project, we’ll use [Shellfoundry]({{site.baseurl}}/reference/{{pageVersion}}/shellfoundry-intro.html), a CLI tool for generating and distributing Shells.
 
 **To install Shellfoundry:**
 
 * Run the following in your local Command Line:
 {% highlight bash %} python -m pip install shellfoundry {% endhighlight %}
+
+For windows users, it is recommended to add the path (to the shellfoundry installation folder) to your local environment variables. For example, _C:\Python27\Scripts_. This will enable us to run the ShellFoundry commands from any folder of the Shell project.
 
 **To update Shellfoundry:**
 
@@ -65,7 +66,7 @@ To create the Shell project, we’ll use Shellfoundry, a CLI tool for generating
 
 
 ### Configuring CloudShell Connection Settings
-To create the Shell project, we’ll use ShellFoundry, a CLI tool for generating and distributing Shells. However, in order to use Shellfoundry, we’ll need to first configure your CloudShell connection settings in Shellfoundry.
+In order to use Shellfoundry, we’ll need to first configure your CloudShell connection settings in Shellfoundry.
 
 **Note:** 2nd Generation Shells can also be imported into CloudShell Portal.
 
@@ -87,8 +88,6 @@ For example, changing the username to “John”:
 
 
 ### Creating the Shell Project
-For windows users, it is recommended to add the path to the folder in which ShellFoundry is installed to your local environment variables. For example, _C:\Python27\Scripts_. This will enable us to run the ShellFoundry commands from any folder of the Shell project.
-
 
 **To create a new project:**
 

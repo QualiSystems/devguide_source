@@ -34,7 +34,7 @@ This will create two artifacts in the 'dist' sub-folder of the Shell project:
 1. A zip file archive called _\<shellname\>.zip_ - This is the Shell distributable package
 2. A folder named _offline_requirements_ - The Python packages required by the Shell. This folder should be used with any offline execution servers, i.e. execution servers where pip will not be able to reach the internet to download the packages specified in requirements.txt
 
-### Adding custom attributes to the Shell<a name="SetCustomShellAttribute"></a>
+### Adding custom attributes to the Shell<a name="SetCustomShellAttributeUsingAPI"></a>
 
 In this section, we will explain how to add an existing attribute to a specific shell. You can do this using CloudShell Portal and the API. 
 
@@ -76,17 +76,26 @@ In this example, we are adding an Execution Server Selector attribute named "Dom
 
 ### Enabling Shell commands to run in offline mode
 
-Before deploying to the production environment, it's important to make sure that your Execution Servers will be able to execute
-the Shell commands, even if your CloudShell deployment is configured to run offline and can't retrieve the Shell dependencies. If this is the case, simply copy the content of the _offline_requirements_ folder to your local PyPi Server repository. For more information, see <a href="http://help.quali.com/Online%20Help/8.3/Portal/Content/Admn/Cnfgr-Pyth-Env-Wrk-Offln.htm" target="_blank">CloudShell Documentation</a>.
+Before deploying to the production environment, it’s important to make sure that Quali Server and the Execution Servers can access the python packages and files required to run the Shell commands. If these machines have an internet connection, CloudShell will automatically download the required dependencies from the public PyPi repository. However, if your CloudShell deployment is configured to run offline or your automation needs to use dependencies that are not in the public PyPi repository, you will have to manually add these dependencies to the local PyPi repository on the Quali Server machine. To do so, if you have access to the local PyPi repository, simply copy the contents of the *offline_requirements* folder to your local PyPi Server repository. If you don’t have access to the repository, you can remotely load the packages using command-line, as explained in this CloudShell Help <a href="http://help.quali.com/Online%20Help/8.3/Portal/Content/Admn/Pyth-Cnfg-Mds.htm#Loading" target="_blank">article</a>.
 
 ### Deploying to the production CloudShell Server
 
-To deploy the Shell to the production CloudShell server:
+**To deploy the Shell to the production CloudShell server:**
 
-1. Log in as an administrator.
-2. Open the _Admin_ menu located on the top of the page, and select _Import Package_
-3. Select the Shell zip file created earlier and click _Open_ to import it.
+1) Log in as an administrator.
 
-![Context Object]({{ site.baseurl }}/assets/import_package.png){: .center-image }
+2) Import the shell into CloudShell. You can use the `shellfoundry install` command-line, or import the package manually. 
 
-Your Shell should now be ready for use in the production environment.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To manually import a 2nd Gen shell, in the **Manage** dashboard, open the **Shells** page and click **Import**. 
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;For 1st Gen shells, open the **Admin** menu located at the top of the page, and select **Import Package**.
+
+3) Select the Shell zip file created earlier and click **Open**.
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![Simple String Result]({{ site.baseurl}}/assets/Import2ndGenShellsPortal.png)
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Your Shell should now be ready for use in the production environment.
+
+### Share status
+
+Each of the shell’s resource levels is defined in the shell standard as a resource family and has a share status. The share status determines whether a specific resource or sub-resource of a particular family can be used in different sandboxes at the same time. A family’s share status is determined by the Locked By Default rule, which when set to True defines the family as unshared. More about family properties can be found in this CloudShell Help <a href="http://help.quali.com/Online Help/8.3/Portal/Content/Admn/Dfn-Rsrc-Data-Mdl.htm?Highlight=locked%20by%20default#Creating" target="_blank">article</a>. To find out the share status of a specific family in your shell, have a look at the shell's standard. For example, the Shell Resource Standard's <a href="https://github.com/QualiSystems/cloudshell-standards/blob/master/Documentation/shell_resource_standard.md#data-model-structure" target="_blank">Data Model Structure</a> section indicates its families' settings. 

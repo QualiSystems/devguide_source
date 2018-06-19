@@ -94,7 +94,7 @@ Like the CLI handler, the main responsibilities of the SNMP handler are:
 * Trigger the appropriate flow. 
 To initialize the `SNMPHandler` object, you need to pass the following objects: `resource_config`, `logger`, `api`. To use the handler, you must implement the following properties in your child class:
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• _create_enable_flow 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• _create_enable_flow
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• _create_disable_flow
 

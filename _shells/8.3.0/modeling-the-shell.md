@@ -179,7 +179,7 @@ metadata:
 
 * **template_version** defines the version number of the Shell.
 
-* **template_icon** is the image that is displayed to the CloudShell administrator in CloudShell Portal’s **Manage** page.
+* **template_icon** is the image that is displayed on the shell’s resources in CloudShell Portal.
 
 
 #### Add a custom attribute to the Shell
@@ -248,7 +248,7 @@ properties:
   Att1:
     type: string          
     default: fast
-    tags: [setting, configuration, not_searchable]
+    tags: [setting, configuration, search_filter]
 {% endhighlight %}
 
 
@@ -258,7 +258,7 @@ The available tags are:
 
 * **configuration**: This tag indicates that this attribute is a resource configuration. CloudShell enables administrators to control the value of this attribute from Resource Manager Client but not from CloudShell Portal.
 
-* **not_searchable** (Inventory Resources): Users will not be able to filter based on that attribute in CloudShell Portal. It’s recommended to aallow the filtering of attributes, which are both constrained by a limited set of values and often used to filter resources. It may be necessary to use this tag for attributes with unique values such as serial number or _uniqueid_, since this tag enables filtering.
+* **search_filter** (Inventory Resources): Users will be able to filter based on that attribute in CloudShell Portal. It’s recommended to allow the filtering of attributes, which are both constrained by a limited set of values and often used to filter resources. Omitting this tag is relevant for attributes with unique values such as serial number or _uniqueid_, since this tag enables filtering.
 
 * **abstract_filter** (Inventory Resources): This attribute can be added to an abstract resource template.
 

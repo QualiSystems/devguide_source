@@ -198,29 +198,48 @@ This command downloads the source code of the Shell you wish to customize to you
 Run this command from the directory that will contain the new Shell:
 
 {% highlight bash %}
-shellfoundy extend <URL/path-to-Shell-template>
+shellfoundy extend <URL/path-to-Shell>
 {% endhighlight %}
 
-The path can be a URL to the Shell template's source code on Quali Developer Center or the filesystem path (prefixed by `local:./`) to the extracted source code folder:
+The path can be a URL to the Shell's source code on [Quali Community's Integrations](https://community.quali.com/integrations) page or the filesystem path (prefixed by `local:./`) to the extracted source code folder:
 
 ![Shell Commands]({{ site.baseurl}}/assets/download_shell_source_code.png)
 
 
 **Examples:**
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Extending a Shell template residing on GitHub:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Extending a Shell residing on GitHub:
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{% highlight bash %}
 shellfoundry extend https://github.com/QualiSystems/Juniper-JunOS-Router-Shell-2G/archive/1.0.0.zip
 {% endhighlight %}
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Extending a local Shell template:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Extending a local Shell:
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{% highlight bash %}
 shellfoundry extend local:C:\Temp\my-shells\JuniperJunOSRouterShell2G
 {% endhighlight %}
 
-Before extending a local Shell template, make sure the Shell's destination folder is different from the original Shell template's root folder.
+Before extending a local Shell, make sure the Shell's destination folder is different from the original Shell's root folder.
 
 ### Version History<a name="version-history"></a>
+
+**1.1.5 (2018-03-01)**
+* Added new online template for Traffic Generator Controller Service
+
+**1.1.4 (2018-02-21)**
+* Added new 2nd Gen online template for Traffic Generator Chassis
+
+**1.1.2 (2018-01-09)**
+* Enhanced `extend` command logic
+
+**1.1.1 (2017-11-14)**
+* Added new online templates
+* Added specific error message to Layer 1 Shell `pack` and `install` commands
+
+**1.1.0 (2017-10-30)**
+* Added `author` field to shellfoundry configuration
+* Added `extend` command behavior
+* Added verification when upgrading an official shell to unofficial
+
 **1.0.4 (2017-08-28)**
 * Fixed some inconsistencies relating to the `extend` and `new` commands, specifically around the shell name
 
