@@ -29,7 +29,7 @@ http://[CloudShellPortalAddress]:82/api/v1/explore/. If you're accessing the lin
 
 **Automation API**
 
-The latest 8.2 Automation API online help is available <a href="http://help.quali.com/Online%20Help/8.3/Python-API/" target="_blank">here</a>.
+The latest 8.2 Automation API online help is available <a href="http://help.quali.com/Online%20Help/8.2/Python-API/" target="_blank">here</a>.
 
 When using the _cloudshell-automation-api_ package, make sure to install the version of the API which is compatible with your CloudShell version. To make the task of finding the right version easier, this package follows a versioning schema different from other CloudShell packages. The _major_ and _minor_ version of the _cloudshell-automation-api_ package will always match the CloudShell release its compatible with. Therefore, to install the latest compatible version you need to add these version requirements when installing from pip. For example, to install the latest _cloudshell-automation-api_ compatible with CloudShell 8.1, run:
 {% highlight bash %}

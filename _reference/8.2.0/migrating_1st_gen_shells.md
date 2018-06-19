@@ -143,14 +143,9 @@ imports:
   - cloudshell_standard: cloudshell_networking_standard_4_0_1.yaml
 {% endhighlight %}
 
-*	If the Shell includes custom attributes, see the following page to learn how to model them in 2nd Gen Shell format:
+*	If the Shell includes custom attributes, see [Modeling the Shell]({{site.baseurl}}/shells/{{pageVersion}}/modeling-the-shell.html) to learn how to model them in 2nd Gen Shell format.
 
-[Modeling the Shell]({{site.baseurl}}/shells/{{pageVersion}}/modeling-the-shell.html)
-
-*	If the Shell includes custom attributes in the discovery process, see the following page to learn how to customize the Auto-discovery process:
-
-[Auto Discovery For Inventory Shells]({{site.baseurl}}/shells/{{pageVersion}}/implementing-discovery-for-inventory-shells.html)
-
+*	If the Shell includes custom attributes in the discovery process, see [Auto Discovery For Inventory Shells]({{site.baseurl}}/shells/{{pageVersion}}/implementing-discovery-for-inventory-shells.html) to learn how to customize the Auto-discovery process.
 
 ### Convert the Driver
 To convert the driver, we need to update the driver files and then update the code.
