@@ -5,8 +5,11 @@ category: ref
 order: 12
 comments: true
 version:
-    - 8.1.0
+    - 8.0.0
 ---
+
+{% assign pageUrlSplited = page.url | split: "/" %}
+{% assign pageVersion = pageUrlSplited[2] %}
 
 {% assign pageUrlSplited = page.url | split: "/" %}
 {% assign pageVersion = pageUrlSplited[2] %}
@@ -48,7 +51,7 @@ $ pip install -r .\cloudshell-L1-DriverName\requirements.txt
 
 ### Implementing the shell commands
 
-1) Implement methods of the `DriverCommands` class in *<project_slug>/driver_commands.py*.
+1) Implement methods of the `DriverCommands` class in `<project_slug>/driver_commands.py`.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Follow the <a href="https://github.com/QualiSystems/shell-L1-template/blob/dev/DEVGUIDE.md" target="_blank">L1 shell Developer guide</a> and docstrings with description. 
 
@@ -62,7 +65,7 @@ $ pip install -r .\cloudshell-L1-DriverName\requirements.txt
 
 1) Copy the project's *Cloudshell-L1-DriverName* folder to the Quali Server's */Drivers* folder.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The drivers folder's path is usually "C:\Program Files (x86)\QualiSystems\CloudShell\Server\Drivers").
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The drivers folder's path is usually *C:\Program Files (x86)\QualiSystems\CloudShell\Server\Drivers*.
 
 2) Compile the shell's exe file using your preferred bat to exe converter. For example, iExpress is provided with Windows 2000 and later. 
 
@@ -77,3 +80,4 @@ $ pip install -r .\cloudshell-L1-DriverName\requirements.txt
 2) Build a blueprint with 2 resources and a route.
 
 3) Reserve this blueprint and connect the route.
+
