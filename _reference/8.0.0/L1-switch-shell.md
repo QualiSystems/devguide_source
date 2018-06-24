@@ -11,9 +11,6 @@ version:
 {% assign pageUrlSplited = page.url | split: "/" %}
 {% assign pageVersion = pageUrlSplited[2] %}
 
-{% assign pageUrlSplited = page.url | split: "/" %}
-{% assign pageVersion = pageUrlSplited[2] %}
-
 This article provides a high level overview of the L1 switch shell.
 
 An L1 switch shell is provided as a self-executable application which runs on CloudShell.
