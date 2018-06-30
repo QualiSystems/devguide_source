@@ -30,6 +30,10 @@ Developers can extend CloudShell’s capabilities to provide additional function
 Orchestration scripts are a feature in CloudShell that enables the implementation of sandbox workflows. CloudShell has built-in flows for setup and teardown, which deploy and tear down Apps, resources and connections between components in the sandbox without having to add additional code. Users can extend or fork these scripts, as well as implement additional workflows for save/restore operations, scaling, or more use case-specific workflows for anything from performance testing to failover simulation or traffic generation.
 
 
+#### [Configuration Management: Developing configuration scripts for App VMs]({{site.baseurl}}/configmanagement/{{pageVersion}}/cf-overview.html)
+Configuration management extends CloudShell Apps by allowing the running of scripts, which install applications on virtual machines (VMs) deployed in the sandbox or run post-deployment configuration. This configuration can be executed as part of the sandbox setup, or later on in a live sandbox. Configuration management operations can be performed using custom scripts or Ansible playbooks.
+
+
 #### [Integrating CloudShell into the DevOps Cycle]({{site.baseurl}}/devops/{{pageVersion}}/devops-integration.html)
 
 This area examines how CloudShell can be used in conjunction with other DevOps tools and within the DevOps pipeline. This includes CloudShell’s APIs as well as existing Open Source projects for integrating CloudShell with other products.
@@ -42,4 +46,5 @@ You can then proceed to any one of the development areas described above:
 
 * [Extending cloudShell with Shells]({{site.baseurl}}/shells/{{pageVersion}}/getting-started.html)
 * [Orchestration Scripts]({{site.baseurl}}/orchestration/{{pageVersion}}/getting-started.html)
+* [Configuration Management]({{site.baseurl}}/configmanagement/{{pageVersion}}/cf-overview.html)
 * [Integrating CloudShell into the DevOps Cycle]({{site.baseurl}}/devops/{{pageVersion}}/devops-integration.html)
