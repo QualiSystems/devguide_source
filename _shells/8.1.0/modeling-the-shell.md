@@ -17,6 +17,7 @@ By defining how a Shell is modeled in CloudShell, we can control how it’s repr
 
 In this section, we’ll take a more in-depth look at how we can customize how Shell resources or deployed Apps are presented and behave in CloudShell.
 
+<iframe width="854" height="480" src="https://www.youtube.com/embed/fJIQvjR5_RA?list=PLnWTXOESKY41iU_0InfWSkwYq7IDkv7pH" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
 ### Setting the Standard
 The first thing to do is to classify the Shell according to one of the CloudShell standards. CloudShell has a growing number of standards, which make it easier to create a new Shell.

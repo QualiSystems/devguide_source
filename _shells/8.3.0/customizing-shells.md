@@ -31,6 +31,10 @@ The common use cases for customizing a shell are:
 * Publishing attributes in a service shell
 * Associating categories to a service shell
 
+*Please watch this video if you're not sure whether to create a new shell or customize an existing one:*
+
+<iframe width="854" height="480" src="https://www.youtube.com/embed/a8yEgOG7-bI?list=PLnWTXOESKY41iU_0InfWSkwYq7IDkv7pH" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
 ## Customizing a shell’s commands
 
 When customizing an official shell you can add new commands, and also modify or hide existing ones.
@@ -51,6 +55,15 @@ When adding or modifying a command, you can leverage Quali’s shell framework t
 
 See some common command extension examples in [Common Driver Recipes]({{site.baseurl}}/shells/{{pageVersion}}/common-driver-recipes.html).
 
+Please check out the following instructional videos on how to develop basic driver commands:
+
+<iframe width="30%" height="30%" src="https://www.youtube.com/embed/lj6t3t39zzE?list=PLnWTXOESKY41iU_0InfWSkwYq7IDkv7pH" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+<iframe width="30%" height="30%" src="https://www.youtube.com/embed/L6G0WYI4S-M?list=PLnWTXOESKY41iU_0InfWSkwYq7IDkv7pH" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+<iframe width="30%" height="30%" src="https://www.youtube.com/embed/fermXrIEul0?list=PLnWTXOESKY41iU_0InfWSkwYq7IDkv7pH" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+
 ## Customizing a shell’s attributes
 
 You can add and modify attributes associated with the shell's root model or with a specific sub-model within the shell.
@@ -58,6 +71,8 @@ You can add and modify attributes associated with the shell's root model or with
 Modification applies to attributes that are defined in the shell’s standard. To find the attributes defined in the shell’s standard, see the <a href="https://github.com/QualiSystems/cloudshell-standards/tree/master/Documentation" target="_blank">documentation page</a> of your shell’s standard. For such attributes, you can modify the description, default values, possible values and rules.
 
 **Note:** You cannot modify attributes **type**, **name**, and any attributes that are associated with the shell’s family as this will affect other shells that use this family. The family attributes are listed in the shell's standard.
+
+<iframe width="854" height="480" src="https://www.youtube.com/embed/qkYmdezOLhw?list=PLnWTXOESKY41iU_0InfWSkwYq7IDkv7pH" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
 ### Deployment-specific vs. shell-specific attributes
 

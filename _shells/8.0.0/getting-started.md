@@ -23,6 +23,10 @@ In our [community](http://community.quali.com/spaces/12/index.html?__hstc=462131
 
 Historically, we have had two types of shells in CloudShell, 1st Generation shells and 2nd Generation shells. While 1st Gen shells are still used, all new shells are released only as 2nd Generation shells and this developer guide focuses on this type of shells. For additional information, see CloudShell Help's <a href="http://help.quali.com/Online%20Help/8.0/Portal/Content/CSP/LAB-MNG/Shells.htm" target="_blank">Shells Overview</a>.
 
+<iframe width="854" height="480" src="https://www.youtube.com/embed/AWgSUgJub90?list=PLnWTXOESKY41iU_0InfWSkwYq7IDkv7pH" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+#### How are shells created?
+
 The basic shell creation process is as follows:
 
 1)  Install shellfoundry, our command-line utility for creating and managing the shell development process
@@ -34,6 +38,10 @@ The basic shell creation process is as follows:
 4)  If the shell requires the use of python dependencies, which aren’t available in the public PyPi repository, add them to the local PyPi Server. See CloudShell Help's <a href="http://help.quali.com/Online%20Help/8.0/Portal/Content/Admn/Updt-Python-Libs.htm" target="_blank">Updating Python Dependencies for Shells and Drivers</a>.
 
 5)  Create resources in the appropriate domains.
+
+*Before developing your shell, please watch the following video to determine whether you need to create a new shell or customize an existing one:*
+
+<iframe width="854" height="480" src="https://www.youtube.com/embed/a8yEgOG7-bI?list=PLnWTXOESKY41iU_0InfWSkwYq7IDkv7pH" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
 ### Supported versions - CloudShell v.8.0 and up
 As of version 8.0, CloudShell supports 2nd Gen Shells. This guide includes instructions on developing **2nd Gen Shells only**.

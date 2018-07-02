@@ -21,6 +21,8 @@ shellfoundry new driver-example --template=gen2/resource
 cd driver_example
 {% endhighlight %}
 
+<iframe width="854" height="480" src="https://www.youtube.com/embed/lj6t3t39zzE?list=PLnWTXOESKY41iU_0InfWSkwYq7IDkv7pH" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
 #### The driver structure
 
 The **_src_** folder in the Shell project is the driver source code root. On some IDEs
@@ -77,7 +79,7 @@ According to this constraint, pip will not automatically install any minor versi
 
 Any result returned by the Python driver command function will be considered the command result by CloudShell.
 String will be returned as is, if you return an object CloudShell will try to convert it into a string JSON.
-Its not advisable to return complex objects that cannot be serialized such as sessions or connections as that would most
+It's not advisable to return complex objects that cannot be serialized such as sessions or connections as that would most
 likely result in an error.
 
 To demonstrate this, let's add a couple of functions to the driver:
@@ -105,6 +107,7 @@ Returning a result has several effects:
 
 * The command will appear as having completed successfully in the commands panel:
 
+<iframe width="854" height="480" src="https://www.youtube.com/embed/L6G0WYI4S-M?list=PLnWTXOESKY41iU_0InfWSkwYq7IDkv7pH" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
 #### Handling failure
 
@@ -240,3 +243,5 @@ Then, paste the following function:
 Now that we have a CloudShell API session, there are three main things we may want to do with it from our driver:
 Decrypt a password attribute, update the resource live status or update the console widget with progress report.
 You can find the code for these operations in the [Common Driver Recipes section]({{ site.baseurl}}/shells/{{pageVersion}}/common-driver-recipes.html) of this guide.
+
+<iframe width="854" height="480" src="https://www.youtube.com/embed/fermXrIEul0?list=PLnWTXOESKY41iU_0InfWSkwYq7IDkv7pH" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
