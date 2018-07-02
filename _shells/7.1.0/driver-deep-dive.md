@@ -76,7 +76,7 @@ According to this constraint, pip will not automatically install any minor versi
 
 Any result returned by the Python driver command function will be considered the command result by CloudShell.
 String will be returned as is, if you return an object CloudShell will try to convert it into a string JSON.
-Its not advisable to return complex objects that cannot be serialized such as sessions or connections as that would most
+It's not advisable to return complex objects that cannot be serialized such as sessions or connections as that would most
 likely result in an error.
 
 To demonstrate this, let's add a couple of functions to the driver:
