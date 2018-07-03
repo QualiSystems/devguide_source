@@ -11,12 +11,9 @@ version:
 {% assign pageUrlSplited = page.url | split: "/" %}
 {% assign pageVersion = pageUrlSplited[2] %}
 
-This article provides a high level overview of the L1 switch shell.
+This article guides you on how to create and develop an L1 switch shell.
 
-An L1 switch shell is provided as a self-executable application which runs on CloudShell.
-It listens to the specified port and waits for a connection from CloudShell. CloudShell communicates with the shell using XML commands. The shell converts command data and calls specific methods of the `DriverCommands` class, which are associated with the command name.
-
-These shells are based on the <a href="https://github.com/QualiSystems/shell-L1-template" target="_blank">L1 shell template</a>. Unlike 1st and 2nd generation shells, this is a special kind of shell with its own mechanism and is created a little differently.
+The <a href="https://github.com/QualiSystems/shell-L1-template" target="_blank">L1 Switch Shell template</a> is a standardized python-based template that contains the structure and common predefined commands required from an L1 switch shell. Note that previous versions of the L1 shell were based on TCL. However, to simplify the development and maintenance, we changed the infrastructure to be python-based, which provides a standardized development experience similar to our other shells. Due to the implementation of the L1 switch infrastructure in CloudShell, importing this type of shell follows a unique procedure, which is explained later on in this article.
 
 ### Creating the L1 switch shell
 
