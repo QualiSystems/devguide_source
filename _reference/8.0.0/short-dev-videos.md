@@ -40,7 +40,7 @@ This tutorial demonstrates how to add basic commands that print information, use
 
 This tutorial discusses the use of CloudShell Automation API in shell commands and demonstrates API methods that apply to shells.
 
-<iframe width="854" height="480" src="https://www.youtube.com/embed/fermXrIEul0?list=PLnWTXOESKY41iU_0InfWSkwYq7IDkv7pH" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+<iframe width="854" height="480" src="https://www.youtube.com/embed/Lt5BhmUZR1o" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
 ### Adding attributes
 

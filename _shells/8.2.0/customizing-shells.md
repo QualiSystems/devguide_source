@@ -61,7 +61,7 @@ Please check out the following instructional videos on how to develop basic driv
 
 <iframe width="30%" height="30%" src="https://www.youtube.com/embed/L6G0WYI4S-M?list=PLnWTXOESKY41iU_0InfWSkwYq7IDkv7pH" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
-<iframe width="30%" height="30%" src="https://www.youtube.com/embed/fermXrIEul0?list=PLnWTXOESKY41iU_0InfWSkwYq7IDkv7pH" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+<iframe width="30%" height="30%" src="https://www.youtube.com/embed/Lt5BhmUZR1o" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
 ## Customizing a shell’s attributes
 
