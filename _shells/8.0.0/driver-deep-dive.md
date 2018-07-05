@@ -244,4 +244,4 @@ Now that we have a CloudShell API session, there are three main things we may wa
 Decrypt a password attribute, update the resource live status or update the console widget with progress report.
 You can find the code for these operations in the [Common Driver Recipes section]({{ site.baseurl}}/shells/{{pageVersion}}/common-driver-recipes.html) of this guide.
 
-<iframe width="854" height="480" src="https://www.youtube.com/embed/fermXrIEul0?list=PLnWTXOESKY41iU_0InfWSkwYq7IDkv7pH" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+<iframe width="854" height="480" src="https://www.youtube.com/embed/Lt5BhmUZR1o" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
