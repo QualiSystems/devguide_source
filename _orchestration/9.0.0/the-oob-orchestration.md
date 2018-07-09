@@ -9,7 +9,7 @@ order:  9
 ---
 Every CloudShell installation includes out of the box workflows. These reflect some common workflows we see across many of our customers that we’ve decided to integrate as default behavior. The OOB setup and teardown processes handle App deployment and startup, connectivity, App discovery and installation. The OOB Save and Restore processes are used for saving the sandbox state and restoring it as a new sandbox. The setup and teardown OOB scripts are included as part of the default blueprint template as of CloudShell 7.1, while the Save and Restore OOB scripts are included starting with CloudShell 9.0. 
 
-In his article:
+In this article:
 
 * [Setup and Teardown Orchestration](#setup)
 * [Save and Restore Orchestration](#SaveRestore)
@@ -295,7 +295,7 @@ Make sure to follow these steps when implementing a custom teardown orchestratio
 
 ### Save and Restore Orchestration
 
-*Note that these orchestration scripts apply to customers who have purchased the **Save and Restore** paid add-on. For details about Save and Restore, see <a href="http://help.quali.com/Online%20Help/8.4/CloudShell/Content/CSP/LAB-MNG/Sndbx-Sv-Rstr-Ovrvw.htm" target="_blank">Sandbox Save and Restore Overview</a>. Contact your account manager to obtain a license.*
+*Note that these orchestration scripts apply to customers who have purchased the **Save and Restore** paid add-on. Contact your account manager to obtain a license.*
 
 Starting with CloudShell 9.0, Save and Restore scripts are provided to support the capability to save and restore sandboxes. They reside in a python package called *cloudshell-orch-core*. The OOB default blueprint template includes these orchestration scripts and a reference to the *cloudshell-orch-core* package (required by these scripts) using the requirements.txt mechanism. Here is the implementation of the OOB Save script:
 
@@ -307,7 +307,7 @@ sandbox = Sandbox()
 sandbox.execute_save()
 {%  endhighlight %}
 
-By running the `execute_save` method on a sandbox, the script will call a server logic that will create a saved sandbox. For details about the saving process, see this CloudShell Help [article](http://help.quali.com/Online%20Help/8.3/Portal/Content/CSP/LAB-MNG/Sndbx-Sv.htm).
+By running the `execute_save` method on a sandbox, the script will call a server logic that will create a saved sandbox. For details about the saving process, see the <a href="http://help.quali.com/" target="_blank">CloudShell Help</a>.
 
 #### Extending the OOB Save Orchestration Script
 
