@@ -7,17 +7,20 @@ version:
     - 9.0.0
 order:  9
 ---
-Every CloudShell installation includes out of the box setup and teardown workflows. These reflect some common workflows we see across many of our customers that we’ve decided to integrate as default behavior. The OOB setup and teardown processes handle App deployment and startup, connectivity, App discovery and installation. 
-As of CloudShell 7.1, the OOB scripts are included as part of the default blueprint template.
+Every CloudShell installation includes out of the box workflows. These reflect some common workflows we see across many of our customers that we’ve decided to integrate as default behavior. The OOB setup and teardown processes handle App deployment and startup, connectivity, App discovery and installation. The OOB Save and Restore processes are used for saving the sandbox state and restoring it as a new sandbox. The setup and teardown OOB scripts are included as part of the default blueprint template as of CloudShell 7.1, while the Save and Restore OOB scripts are included starting with CloudShell 9.0. 
+
+### Setup and Teardown Orchestration
+
 The following diagram describes the OOB setup and teardown flow:
 
 
-![Setup Workflow]({{ site.baseurl}}/assets/orchestration_workflow_8.1.png){: .center-image }
+![Setup Workflow]({{site.baseurl}}/assets/orchestration_workflow_8.1.png){: .center-image }
 
 These OOB setup and teardown scripts can be found in the Scripts – Blueprint management page. You can review their source code in the [cloudshell-orch-sandbox repository](https://github.com/QualiSystems/cloudshell-orch-sandbox/tree/v8.1/SandboxOrchestration/environment_scripts).
 
-As of CloudShell 8.1, the default setup and teardown logic moved to a python package called cloudshell-orch-core for ease of use. The default blueprint template includes a reference to the cloudshell-orch-core package using the requirments.txt mechanism, which is supported for orchestration scripts. Here is the implementation of the OOTB setup script:
+As of CloudShell 8.1, the default setup and teardown logic moved to a python package called cloudshell-orch-core for ease of use. The default blueprint template includes a reference to the cloudshell-orch-core package using the requirments.txt mechanism, which is supported for orchestration scripts. 
 
+Here is the implementation of the OOB setup script:
 
 {% highlight python %}
 from cloudshell.workflow.orchestration.sandbox import Sandbox
@@ -37,12 +40,9 @@ Starting in CloudShell 8.1, sandbox setup is divided into 4 stages: preparation,
 DefaultSetupWorkflow().register(Sandbox, enable_connectivity=False)
 {% endhighlight %}
 
-
-
 The OOB setup and teardown scripts can easily be customized or extended. Click [here](https://github.com/QualiSystems/cloudshell-orch-sandbox/blob/develop/Samples/Setup/ordered_configuration_example.py) for an example on how to customize the app configuration order in the setup stage, or see [other samples](https://github.com/QualiSystems/cloudshell-orch-sandbox/tree/develop/Samples) to learn how to extend the OOB orchestration scripts.
 
-
-### Extending the OOB Setup Orchestration Scripts
+#### Extending the OOB Setup Orchestration Scripts
 
 Setup script logic is divided into 4 stages – Preparation, Provisioning, Connectivity and Configuration. The OOB setup already includes some default logic in each of the stages as depicted in the diagram above. However, the OOB setup can easily be extended. 
 Each Setup stage has a specific logic functionality.
@@ -128,7 +128,7 @@ def main():
     sandbox.automation_api.WriteMessageToReservationOutput(reservationId=sandbox.id,
                                                            message='Starting to execute the cool stuff!')
 
-    DefaultSetupWorkflow().register(sandbox, enable_configuration=False)  # Disable OOTB configuration
+    DefaultSetupWorkflow().register(sandbox, enable_configuration=False)  # Disable OOB configuration
     sandbox.workflow.add_to_configuration(function=configure_apps,
                                           components=sandbox.components.apps)
     sandbox.execute_setup()
@@ -245,9 +245,9 @@ sandbox.execute_setup()
 {% endhighlight %}
 
 
-### Extending the OOB Teardown Orchestration Scripts<a name="OOB-Teardown-scripts"></a>
+#### Extending the OOB Teardown Orchestration Scripts<a name="OOB-Teardown-scripts"></a>
 
-You can extend the OOB Teardown script to execute custom steps prior to the out-of-the-box teardown orchestration, or to execute custom steps in parallel to the OOTB teardown. This is done using the following extension methods, which are included in the workflow property in the **Sandbox** class:
+You can extend the OOB Teardown script to execute custom steps prior to the out-of-the-box teardown orchestration, or to execute custom steps in parallel to the OOB teardown. This is done using the following extension methods, which are included in the workflow property in the **Sandbox** class:
 * add_to_teardown
 * before_teardown_started
 
@@ -285,3 +285,77 @@ Make sure to follow these steps when implementing a custom teardown orchestratio
 1. Create a copy of the appropriate script, (see below for extension options), and upload the updated version separately into CloudShell Portal as a Teardown script. DO NOT remove steps from the teardown workflow. However, you can add your own steps or change the order of execution.
 
 2. Make sure not to name your extended script ‘teardown’ but give it a more specific name. The name ‘teardown’ is a reserved name, which may cause unexpected behavior when used on a setup script.
+
+### Save and Restore orchestration
+
+*Note that these orchestration scripts apply to customers who have purchased the **Save and Restore** paid add-on. For details about Save and Restore, see <a href="http://help.quali.com/Online%20Help/8.4/CloudShell/Content/CSP/LAB-MNG/Sndbx-Sv-Rstr-Ovrvw.htm" target="_blank">Sandbox Save and Restore Overview</a>. Contact your account manager to obtain a license.*
+
+Starting with CloudShell 9.0, Save and Restore scripts are provided to support the capability to save and restore sandboxes. They reside in a python package called *cloudshell-orch-core*. The OOB default blueprint template includes these orchestration scripts and a reference to the *cloudshell-orch-core* package (required by these scripts) using the requirements.txt mechanism. Here is the implementation of the OOB Save script:
+
+{% highlight python %}
+from cloudshell.workflow.orchestration.sandbox import Sandbox
+
+sandbox = Sandbox()
+
+sandbox.execute_save()
+{%  endhighlight %}
+
+By running the `execute_save` method on a sandbox, the script will call a server logic that will create a saved sandbox. For details about the saving process, see this CloudShell Help [article](http://help.quali.com/Online%20Help/8.3/Portal/Content/CSP/LAB-MNG/Sndbx-Sv.htm).
+
+#### Extending the OOB Save script
+
+You can extend the OOB Save script to execute custom steps before or after the default sandbox save process takes place. 
+
+To do this, simply add your custom code before or after the line that executes the Save operation. For example, a Save orchestration script that sends a simple notification email when the Save operation completes:
+
+{% highlight python %}
+from cloudshell.workflow.orchestration.sandbox import Sandbox
+import smtplib 
+
+sandbox = Sandbox()
+
+sandbox.execute_save()
+
+# code for sending email notification:
+server = smtplib.SMTP('smtp.gmail.com', 587)
+
+server.ehlo()
+server.starttls()
+server.ehlo()
+
+#Next, log in to the server
+server.login("<sender_username>", "<sender_password>")
+
+#Send the mail
+msg = "Sandbox was saved successfully"
+server.sendmail("<sender_email>", "<target_email>", msg)
+{%  endhighlight %}
+
+#### Extending the OOB Restore script
+
+You can also extend the OOB Restore script to execute custom functionality at any point during the default sandbox restore process. The Restore script uses the same execution logic and steps that the default Setup script uses and therefore can be extended the same way. The only difference between the two is that the Restore script calls the *execute_restore()* method, which is executed when a user chooses to restore a saved sandbox in CloudShell, and not as part of a sandbox's Setup process. For detailed explanations on how to extend the script's stages and use its extension methods, see the [Setup and Teardown Orchestration](#setup-and-teardown-orchestration) section above.
+
+For example, a Restore script that writes a message to the **Output** console before the Restore workflow operation (to extend the workflow operation itself, use the above extension methods in the [Extending the OOB Setup Orchestration Scripts](#extending-the-oob-setup-orchestration-scripts) section above):
+
+{% highlight python %}
+from cloudshell.workflow.orchestration.sandbox import Sandbox
+from cloudshell.workflow.orchestration.setup.default_setup_orchestrator import DefaultSetupWorkflow
+
+sandbox = Sandbox()
+
+def func(sandbox, components):
+    sandbox.automation_api.WriteMessageToReservationOutput(sandbox.id, "my custom message")
+
+DefaultSetupWorkflow().register(sandbox)
+
+sandbox.workflow.add_to_configuration(func, None)
+
+sandbox.execute_restore()
+
+{%  endhighlight %}
+
+As you can see, to use the default orchestration logic, we instantiated the DefaultSetupWorkflow class and registered the sandbox to use the default Setup orchestration behavior. Starting in CloudShell 8.1, sandbox setup is divided into 4 stages: preparation, provisioning, connectivity and configuration. It’s possible to disable the default implementation of each stage by setting enable_stageName=False, as illustrated in this example:
+
+{% highlight python %}
+DefaultSetupWorkflow().register(sandbox, enable_connectivity=False)
+{%  endhighlight %}
