@@ -18,7 +18,7 @@ _**Before developing shells and scripts, please familiarize yourself with CloudS
 
 ### How this guide is organized
 
-The CloudShell developer guide is comprised of three distinct content areas. Each one describes a different branch of development or possible integration options with CloudShell. Each area of the guide is independent of the other two and includes its own ‘getting started’ tutorials, examples, instructional videos and articles. You don’t have to follow a specific order so feel free to explore the areas that are relevant to your development. The three areas of the DevGuide are:
+The CloudShell developer guide is comprised of several distinct content areas. Each one describes a different branch of development or possible integration options with CloudShell. Each area of the guide is independent of the other two and includes its own ‘getting started’ tutorials, examples, instructional videos and articles. You don’t have to follow a specific order so feel free to explore the areas that are relevant to your development. The areas of the DevGuide are:
 
 #### [Shells: Extending CloudShell’s functionality]({{site.baseurl}}/shells/{{pageVersion}}/getting-started.html)
 

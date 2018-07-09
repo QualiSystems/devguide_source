@@ -56,6 +56,9 @@ If you already have shellfoundry installed on your computer, run this command to
 |  username          |  CloudShell username. For example: “admin”.                        |
 |  domain            |  CloudShell domain. Note that for 2nd Generation Shells, the domain must be “Global”.  |
 |  defaultview       |  Set the default view. Possible values are: **gen**, **gen2**, **all** and **layer1**. Default is **gen2**.                           |
+|  online_mode       |  Shellfoundry computer's mode (online or offline). Online mode is the default.     |
+|  author          |  The author to be specified on the shell (in the shell's metadata).                                   |
+|  template_location          |   File system path to the folder containing the offline shell templates. Alternatively, you can specify the template location when running 'shellfoundry new' in command-line.                                  |
 |  password          |  CloudShell password (encrypted).                                   |
 |  host              |  The hostname or IP address of the CloudShell Portal machine.       |
 |  port              |  The port to be used for Quali API. Default is “9000”.              |
@@ -177,15 +180,19 @@ Run this command from the Shell’s root folder.
 {% highlight bash %}shellfoundry install{% endhighlight %}
 
 
-#### Creating the Shell’s data model file
+#### Generating the Shell’s data model file
 
-The shell’s data model (*data_model.py* file) consists of the standard specifications and the extended data model, which is defined in the *shell-definition.yaml* file. When creating a new Shell, you will also need to import its data model. For additional information, see [Managing the Shell’s Data Model]({{site.baseurl}}/shells/{{pageVersion}}/generating-shell-data-model.html).
+The shell’s data model (*data_model.py* file) consists of the standard specifications and the extended data model, which is defined in the *shell-definition.yaml* file. The shell's data model is mainly used to work with resource attributes and implement the Auto-discovery process. After importing the _data_model_, PyCharm (and some other IDEs) will recognize the docstring code-hint annotations and will enable autocomplete as you can see below:
+
+![Directory Structure]({{site.baseurl}}/assets/auto_complete_demo.png)
 
 **Syntax:**
 
 Run this command from the Shell’s root folder.
 
 {% highlight bash %} shellfoundry generate {% endhighlight %}
+
+For additional information, see [Managing the Shell’s Data Model]({{site.baseurl}}/shells/{{pageVersion}}/generating-shell-data-model.html).
 
 
 #### Customizing a 2nd Gen Shell
@@ -221,6 +228,19 @@ shellfoundry extend local:C:\Temp\my-shells\JuniperJunOSRouterShell2G
 Before extending a local Shell, make sure the Shell's destination folder is different from the original Shell's root folder.
 
 ### Version History<a name="version-history"></a>
+
+**1.1.9 (2018-05-03)**
+* Added offline mode functionality
+
+**1.1.8 (2018-04-23)**
+* Fixed typo in `pack` command behavior
+* Added new online template for Cloud Provider
+
+**1.1.7 (2018-04-03)**
+* Shellfoundry now packs deployment options if any exist
+
+**1.1.6 (2018-03-27)**
+* Added limitation installing a gen2 shell (regular/service) into a non-Global domain
 
 **1.1.5 (2018-03-01)**
 * Added new online template for Traffic Generator Controller Service
