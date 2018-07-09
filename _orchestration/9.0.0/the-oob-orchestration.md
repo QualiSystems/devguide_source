@@ -9,6 +9,12 @@ order:  9
 ---
 Every CloudShell installation includes out of the box workflows. These reflect some common workflows we see across many of our customers that we’ve decided to integrate as default behavior. The OOB setup and teardown processes handle App deployment and startup, connectivity, App discovery and installation. The OOB Save and Restore processes are used for saving the sandbox state and restoring it as a new sandbox. The setup and teardown OOB scripts are included as part of the default blueprint template as of CloudShell 7.1, while the Save and Restore OOB scripts are included starting with CloudShell 9.0. 
 
+In his article:
+
+* [Setup and Teardown Orchestration](#setup)
+* [Save and Restore Orchestration](#SaveRestore)
+<a name="setup"></a>
+
 ### Setup and Teardown Orchestration
 
 The following diagram describes the OOB setup and teardown flow:
@@ -285,8 +291,9 @@ Make sure to follow these steps when implementing a custom teardown orchestratio
 1. Create a copy of the appropriate script, (see below for extension options), and upload the updated version separately into CloudShell Portal as a Teardown script. DO NOT remove steps from the teardown workflow. However, you can add your own steps or change the order of execution.
 
 2. Make sure not to name your extended script ‘teardown’ but give it a more specific name. The name ‘teardown’ is a reserved name, which may cause unexpected behavior when used on a setup script.
+<a name="SaveRestore"></a>
 
-### Save and Restore orchestration
+### Save and Restore Orchestration
 
 *Note that these orchestration scripts apply to customers who have purchased the **Save and Restore** paid add-on. For details about Save and Restore, see <a href="http://help.quali.com/Online%20Help/8.4/CloudShell/Content/CSP/LAB-MNG/Sndbx-Sv-Rstr-Ovrvw.htm" target="_blank">Sandbox Save and Restore Overview</a>. Contact your account manager to obtain a license.*
 
@@ -302,7 +309,7 @@ sandbox.execute_save()
 
 By running the `execute_save` method on a sandbox, the script will call a server logic that will create a saved sandbox. For details about the saving process, see this CloudShell Help [article](http://help.quali.com/Online%20Help/8.3/Portal/Content/CSP/LAB-MNG/Sndbx-Sv.htm).
 
-#### Extending the OOB Save script
+#### Extending the OOB Save Orchestration Script
 
 You can extend the OOB Save script to execute custom steps before or after the default sandbox save process takes place. 
 
@@ -331,7 +338,7 @@ msg = "Sandbox was saved successfully"
 server.sendmail("<sender_email>", "<target_email>", msg)
 {%  endhighlight %}
 
-#### Extending the OOB Restore script
+#### Extending the OOB Restore Orchestration Script
 
 You can also extend the OOB Restore script to execute custom functionality at any point during the default sandbox restore process. The Restore script uses the same execution logic and steps that the default Setup script uses and therefore can be extended the same way. The only difference between the two is that the Restore script calls the *execute_restore()* method, which is executed when a user chooses to restore a saved sandbox in CloudShell, and not as part of a sandbox's Setup process. For detailed explanations on how to extend the script's stages and use its extension methods, see the [Setup and Teardown Orchestration](#setup-and-teardown-orchestration) section above.
 
