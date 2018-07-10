@@ -307,7 +307,7 @@ sandbox = Sandbox()
 sandbox.execute_save()
 {%  endhighlight %}
 
-By running the `execute_save` method on a sandbox, the script will call a server logic that will create a saved sandbox. For details about the saving process, see the <a href="http://help.quali.com/" target="_blank">CloudShell Help</a>.
+By running the `execute_save` method on a sandbox, the script will call a server logic that will create a saved sandbox. 
 
 #### Extending the OOB Save Orchestration Script
 
