@@ -17,7 +17,7 @@ Shellfoundry is a command-line utility that allows you to easily create, package
 **Note:** Shellfoundry must be installed on an online computer as creating shells from a template requires downloading the templates from the internet.
 
 
-In his article:
+In this article:
 
 * [Usage](#usage)
 * [Version History](#version-history)
