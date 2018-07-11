@@ -115,12 +115,26 @@ Run this command from the directory that will contain the new Shell:
 
 The path can be a URL to the Shell template's zip package on GitHub or the filesystem path (prefixed by `local:./`) to the extracted zip folder:
 
-![Shell Commands]({{ site.baseurl}}/assets/download_shell_zip.png)
+![Shell Commands]({{site.baseurl}}/assets/download_shell_zip.png)
 
 **Example:**
 {% highlight bash %}shellfoundry new my-service-ext --template local:C:\Temp\shell-pdu-standard-master {% endhighlight %}
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The new shell is added to the path from which you ran the `shellfounfry new` command. 
+
+
+#### Creating a Shell of a specific version
+
+Follow the steps in this section to create an older version of a Shell. 
+
+First, run the `shellfoundry show` command to see the Shell's versions.
+
+**Example:**
+{% highlight bash %}shellfoundry show <template-name> {% endhighlight %}
+
+Then, in the `shellfoundry new` command, specify the version you need. For example, "5.0.2":
+
+{% highlight bash %}shellfoundry new router-shell-502 --template gen2/networking/router --version 5.0.2 {% endhighlight %}
 
 
 #### Listing available Shell templates
