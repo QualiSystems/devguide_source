@@ -22,6 +22,12 @@ This video discusses the structure and logic of CloudShell shells.
 
 <iframe width="854" height="480" src="https://www.youtube.com/embed/fJIQvjR5_RA?list=PLnWTXOESKY41iU_0InfWSkwYq7IDkv7pH" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
+### Creating or extending a shell
+
+This video will assist you in deciding whether to create a new shell or extend an existing one.
+
+<iframe width="854" height="480" src="https://www.youtube.com/embed/a8yEgOG7-bI?list=PLnWTXOESKY41iU_0InfWSkwYq7IDkv7pH" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
 ### Adding shell commands
 
 #### Introduction to shell commands
