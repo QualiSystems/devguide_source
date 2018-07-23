@@ -42,7 +42,7 @@ This tutorial demonstrates how to add basic commands that print information, use
 
 <iframe width="854" height="480" src="https://www.youtube.com/embed/L6G0WYI4S-M?list=PLnWTXOESKY41iU_0InfWSkwYq7IDkv7pH" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
-#### Adding API commands
+#### Using API in shell commands
 
 This tutorial discusses the use of CloudShell Automation API in shell commands and demonstrates API methods that apply to shells.
 
