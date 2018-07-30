@@ -243,6 +243,9 @@ Before extending a local Shell, make sure the Shell's destination folder is diff
 
 ### Version History<a name="version-history"></a>
 
+**1.2.0 (2018-07-26)**
+* Extended the `new` command behaviour for offline mode
+* Added validation to check if the template and standard versions are compatible
 
 **1.1.9 (2018-05-03)**
 * Added offline mode functionality
