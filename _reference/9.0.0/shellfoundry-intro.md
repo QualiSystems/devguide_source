@@ -56,9 +56,9 @@ If you already have shellfoundry installed on your computer, run this command to
 |  username          |  CloudShell username. For example: “admin”.                        |
 |  domain            |  CloudShell domain. Note that for 2nd Generation Shells, the domain must be “Global”.  |
 |  defaultview       |  Set the default view. Possible values are: **gen**, **gen2**, **all** and **layer1**. Default is **gen2**.                           |
-|  online_mode       |  Shellfoundry computer's mode (online or offline). Online mode is the default.     |
+|  online_mode       |  Shellfoundry computer's mode (online or offline). Online mode (`True`) is the default. in online mode, shellfoundry templates on GitHub are used, while for offline mode, you will need to copy the shellfoundry templates to your local machine. For offline mode, use `template_location` to define the local templates folder.     |
 |  author          |  The author to be specified on the shell (in the shell's metadata).                                   |
-|  template_location          |   File system path to the folder containing the offline shell templates. Alternatively, you can specify the template location when running 'shellfoundry new' in command-line.                                  |
+|  template_location          |   (Required if `online_mode` is set to `False`. File system path to the folder containing the offline shell templates. Alternatively, you can specify the template location using "local:" when running 'shellfoundry new' in command-line.                                  |
 |  password          |  CloudShell password (encrypted).                                   |
 |  host              |  The hostname or IP address of the CloudShell Portal machine.       |
 |  port              |  The port to be used for Quali API. Default is “9000”.              |
@@ -146,7 +146,7 @@ Then, in the `shellfoundry new` command, specify the version you need. For examp
 
 #### Listing available Shell templates
 
-This command lists the 1st and 2nd generation Shell templates you can use for your new Shell. For more information, see [Modeling Shells with TOSCA]({{site.baseurl}}/shells/{{pageVersion}}/modeling-the-shell.html).
+This command lists the 1st and 2nd generation Shell templates you can use for your new Shell. Note that in offline mode, the command lists the shell templates residing locally in the folder defined in the shellfoundry config's template_location attribute. For more information, see [Modeling Shells with TOSCA]({{site.baseurl}}/shells/{{pageVersion}}/modeling-the-shell.html).
 
 **Syntax:**
 
