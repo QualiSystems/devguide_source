@@ -76,8 +76,6 @@ For windows users, it is recommended to add the path (to the shellfoundry instal
 ### Configuring CloudShell Connection Settings
 In order to use Shellfoundry, we’ll need to first configure your CloudShell connection settings in Shellfoundry.
 
-**Note:** 2nd Generation Shells can also be imported into CloudShell Portal.
-
 **To configure CloudShell settings:** 
 
 1) Run the following command in your command Line to see all the available configuration parameters:
