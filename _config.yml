@@ -59,10 +59,15 @@ collections:
         title: "Integrating CloudShell into the DevOps Cycle"
         display-order: 4
         
+    cloudproviders:
+        output: true
+        title: "Extending Cloud Providers"
+        display-order: 5
+        
     reference:
         output: true
         title: "Reference"
-        display-order: 5
+        display-order: 6
 
 # URL to source code, used in _includes/footer.html
 codeurl: 'https://github.com/qualisystems'
