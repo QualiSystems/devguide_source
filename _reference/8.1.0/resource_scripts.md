@@ -19,13 +19,13 @@ Resource scripts get information from the sandbox component using the script_hel
 
 **To use the script helper:** 
 
-Import the cloudshell-orch-core python package and add it to your script, as illustrated in the example below. Note that the package is automatically imported when your sandbox starts. In this example, the following code gets an object that contains all of the sandbox’s information:
+Import the cloudshell-automation-api python package and add it to your script, as illustrated in the example below. Note that the package is automatically imported when your sandbox starts. In this example, the following code gets an object that contains all of the sandbox’s information:
 
 {% highlight python %}
 import cloudshell.helpers.scripts.cloudshell_scripts_helpers as script_help
 {% endhighlight %}
 
-Note that to execute this code, you will need to include a requirements.txt file in your script.
+Note that to execute this code, you will need to include a *requirements.txt* file in your script.
 
 To facilitate writing and debugging activities, it is recommended to use advanced IDEs such as PyCharm, which provide autocomplete functionality, as illustrated below. 
 
@@ -66,7 +66,7 @@ To use the API, create a session variable that uses the helper's get_api_session
 session = script_help.get_api_session()
 {% endhighlight %}
 
-### Associating a resource script to a CloudShell resource or script
+### Associating a resource script to a CloudShell resource
 
 1) Place the python script(s) and requirements.txt files in a folder.
 
@@ -87,7 +87,7 @@ In this example, we use the CloudShell Automation API to get the resource's vend
 **requirements.txt**
 
 {% highlight bash %}
-cloudshell-orch-core
+cloudshell-automation-api>=8.1,<8.2
 {% endhighlight %}
 
 **__main__.py**
