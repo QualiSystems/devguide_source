@@ -49,7 +49,7 @@ If you already have shellfoundry installed on your computer, run this command to
 
 #### Configuring CloudShell settings
 
-(Required) This command sets the CloudShell Portal settings and user access credentials in Shellfoundry. For more information, see [Getting Started]({{site.baseurl}}/shells/{{pageVersion}}/getting-started.html).
+(Required) This command sets the CloudShell Portal settings and user access credentials in Shellfoundry. Note that in offline mode, the `shellfoundry list` command lists the shell templates residing locally in the folder defined in the shellfoundry config's template_location attribute. For more information, see [Getting Started]({{site.baseurl}}/shells/{{pageVersion}}/getting-started.html).
 
 |  Key               |  Value 
 |  :----------------   | :----------------------------------------------------------------- |            
@@ -146,7 +146,9 @@ Then, in the `shellfoundry new` command, specify the version you need. For examp
 
 #### Listing available Shell templates
 
-This command lists the 1st and 2nd generation Shell templates you can use for your new Shell. Note that in offline mode, the command lists the shell templates residing locally in the folder defined in the shellfoundry config's template_location attribute. For more information, see [Modeling Shells with TOSCA]({{site.baseurl}}/shells/{{pageVersion}}/modeling-the-shell.html).
+This command lists the 1st and 2nd generation Shell templates you can use for your new Shell. For more information, see [Modeling Shells with TOSCA]({{site.baseurl}}/shells/{{pageVersion}}/modeling-the-shell.html). 
+
+Note that in offline mode, the command lists the shell templates residing locally in the folder defined in the shellfoundry config's `template_location` attribute.
 
 **Syntax:**
 
