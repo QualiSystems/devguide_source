@@ -1,6 +1,6 @@
 ---
 layout: page
-title: "Adding the Cloud Provider Shell's Attributes"
+title: "Extending the Shell's Data Model"
 order: 7
 comments: true
 version:
@@ -10,7 +10,9 @@ version:
 {% assign pageUrlSplited = page.url | split: "/" %}
 {% assign pageVersion = pageUrlSplited[2] %}
 
-In this article, we will learn how to add attributes to our shell or modify existing ones. Attributes can be added to the cloud provider shell itself and to the deployment path on the App. Attributes on the shell are for general authentication/authorization purposes and for setting defaults for the cloud provider's deployment paths, while attributes on the deployment path are typically settings that apply to the App's VM. For example, Region applies to the cloud provider shell and Image ID applies to the deployment path. We will cover deployment path attributes in the next article.
+In this article, we will learn how to add attributes to our shell or modify existing ones. 
+
+Attributes can be added to the cloud provider shell or to the deployment path on the App template. Attributes on the shell are for general authentication/authorization purposes and for setting general configurations for the cloud provider integration, while attributes on the deployment path are typically settings that apply to the App's VM. For example, Region applies to the cloud provider shell and Image ID applies to the deployment path. We will cover deployment path attributes in the next article.
 
 _**Notes:**_
 * *You cannot modify attributes **type**, **name**, and any attributes that are associated with the shell’s family as this will affect other shells that use this family. The family attributes are listed in the shell’s standard. To find the attributes defined in the shell’s standard, see the <a href="https://github.com/QualiSystems/cloudshell-standards/tree/master/Documentation" target="_blank">documentation page</a> of your shell’s standard.*
@@ -32,14 +34,14 @@ The second option of associating custom attributes with an already installed she
 
 Adding attributes to the shell is done in the shell's *shell-definition.yaml* file. 
 
-Let's start by adding the **Networking Type** attribute from the standard. Attributes that are included with the shell's standard, like this attribute, need to be added to the `capabilities` section:
+Let's start by adding the **Networking Type** attribute from the standard. Attributes that are included on the shell's standard, like this attribute, need to be added to the `capabilities` section:
 
 {% highlight yaml %}
 capabilities:
 auto_discovery_capability:
 type: cloudshell.capabilities.AutoDiscovery
 properties:
-  Networking type:
+  VLAN Type:
     type: string       # supported types are: string, integer, float, boolean, cloudshell.datatypes.Password
 {% endhighlight %}
 
@@ -54,18 +56,19 @@ The attribute is displayed:
 
 ![Resource information]({{site.baseurl}}/assets/cp-discovery-attribute.png){:class="img-responsive"}
 
-The attribute's name and type are enough, but you can also set the attribute's default value, description, and rules (`tags` property). For example:
+Note that since the **VLAN Type** attribute is defined on the family, the attribute's settings (possible values in this case) are inherited from the standard itself. The attribute's name and type are required, but you can also set the attribute's default value, description, and [rules]({{site.baseurl}}/shells/{{pageVersion}}/modeling-the-shell.html#determine-the-usage-of-custom-shell-attributes) (`tags` property). For example:
 
 {% highlight yaml %} 
 properties:
-  Networking type:
+  VLAN Type:
     type: string
-    default: L2
-    description: "This is my Networking type attribute."
+    default: VLAN
+    description: "Select the VLAN type to use - VLAN or VXLAN"
     tags: [setting, configuration]      # supported tags are: configuration, setting, search_filter, abstract_filter, include_in_insight, readonly_to_users, display_in_diagram, connection_attribute, read_only
 {% endhighlight %}
 
-However, if the attribute is not included in the standard, you will need to set it both in the `properties:` section, and in the `capabilities:` section’s properties. We’ll add an attribute called “my discovery attribute”.
+However, if the attribute is not included in the shell's family, you will need to set it both in the `properties:` section, and in the `capabilities:` section’s properties. We’ll add an attribute called “my discovery attribute”.
+
 First we'll add it to the capabilities section:
 
 {% highlight yaml %}
@@ -90,7 +93,7 @@ node_types:
       	type: string
 {% endhighlight %}
 
-Like with standard attributes, you can also configure additional settings. Unlike standard attributes, you can also set possible values (`constraints` property).
+You can also set additional settings. Since this attribute is not included on the family, you can also set possible values (`constraints` property).
 
 For example:
 

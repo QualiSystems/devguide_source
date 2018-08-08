@@ -54,14 +54,14 @@ collections:
         title: "Configuration Management"
         display-order: 3
 
+    cloudproviders:
+        output: true
+        title: "Developing Cloud Providers"
+        display-order: 4
+
     devops:
         output: true
         title: "Integrating CloudShell into the DevOps Cycle"
-        display-order: 4
-        
-    cloudproviders:
-        output: true
-        title: "Extending Cloud Providers"
         display-order: 5
         
     reference:

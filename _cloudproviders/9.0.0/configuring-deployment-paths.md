@@ -16,7 +16,7 @@ The shell's deployment paths are defined in the shell project's **Deployments** 
 
 Note that since Cloud Provider is a 2nd Gen shell, the deployment paths are not available in Resource Manager Client's **Resource Families** explorer.
 
-### Setting the deployment path and image
+### Setting up the deployment type and image
 
 Let's start by configuring a new deployment path. In the **Deployments** folder, open the *deployment-path.yaml*, and locate the following line:
 
@@ -24,7 +24,7 @@ Let's start by configuring a new deployment path. In the **Deployments** folder,
 vendor.resource.MyDeploymentPath:
 {% endhighlight %}
 
-Replace "MyDeploymentPath" with the display name of the new deployment path. For example: "MyTestPath".
+Replace "MyDeploymentPath" with the new display name of the new deployment path. For example: "MyTestPath".
 
 Install the shell on CloudShell and in the **Manage>Apps** page, create an App template. You should be able to see the new deployment option in the **Select Deployment Type** area:
 
@@ -32,12 +32,12 @@ Install the shell on CloudShell and in the **Manage>Apps** page, create an App t
 
 We can also change the icon of the deployment path by placing the new image file in the **Deployments** folder and replacing *shell-icon.png* in the yaml's `artifacts:` section with the new file name.
 
-For example, setting image file "MyTestPath-icon.png":
+For example, setting image file "my-icon.png":
 
 {% highlight yaml %}
 artifacts:
   icon:
-    file: MyTestPath-icon.png
+    file: my-icon.png
     type: tosca.artifacts.File
 {% endhighlight %}
 
@@ -78,7 +78,7 @@ My attribute:
 
 ### Setting attributes as read only in the blueprint
 
-In some cases, you may want a specific deployment attribute to be unavailable for editing from the blueprint, possibly because it defines critical VM properties, like the image ID or public IP. If this is the case, you can set the attribute to only be editable by the admin in the App template. To do so, add the `editable_only_in_app_template` rule to the attribute. For example:
+In some cases, you may want a specific deployment attribute to be unavailable for editing from the blueprint, possibly because it defines critical VM properties, like the image ID. If this is the case, you can set the attribute to only be editable by the admin in the App template. To do so, add the `editable_only_in_app_template` rule to the attribute. For example:
 
 {% highlight yaml %}
 My attribute:
@@ -89,6 +89,6 @@ My attribute:
   tags: [user_input, editable_only_in_app_template]
 {% endhighlight %}
 
-The attribute will be read only in the blueprint.
-
 *Note that the `editable_only_in_app_template` rule only blocks admins from editing the attribute value in the blueprint but not in the sandbox, where the attribute is available for editing by design. Regular users cannot edit the attribute in blueprints and sandboxes.* 
+
+The attribute will be read only in the blueprint.
