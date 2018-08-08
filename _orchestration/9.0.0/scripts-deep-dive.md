@@ -8,6 +8,9 @@ version:
 order:  6
 ---
 
+{% assign pageUrlSplited = page.url | split: "/" %}
+{% assign pageVersion = pageUrlSplited[2] %}
+
 In this section we’ll take a more in-depth view at scripts and learn how they can be used most effectively for CloudShell orchestration.
 
 #### How CloudShell handles scripts
@@ -88,6 +91,10 @@ try:
 except:
     Sandbox.logger.error('Failed to include resource {0}'.format(resource_name))
 {% endhighlight %}
+
+Orchestration script logs are saved on the execution server's *%programdata%\QualiSystems\logs\<reservationid>* folder in a dedicated sub-folder with the reservation ID as the name. For example:
+
+![Log Structure]({{site.baseurl}}/assets/logging-reservation-id.png){:class="img-responsive"}
 
 #### Debugging scripts
 
