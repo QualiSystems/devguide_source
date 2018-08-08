@@ -61,7 +61,7 @@ collections:
 
     devops:
         output: true
-        title: "Integrating CloudShell into the DevOps Cycle"
+        title: "CloudShell APIs"
         display-order: 5
         
     reference:
