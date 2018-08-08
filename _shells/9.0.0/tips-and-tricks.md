@@ -38,7 +38,7 @@ Any logging package can be used with CloudShell. Quali has a customized logging 
 
 #### Where can I see the execution logs?
 
-All logs are saved on the Execution Server where the script or driver is running (except for L1 shell logs, which reside on the Quali Server). For exact locations, see the Troubleshooting Guide's <a href="http://help.quali.com/doc/8.3/Troubleshooting/Content/Troubleshooting/Collecting-logs.htm" target="_blank">Collecting Logs</a> article.
+All logs are saved on the Execution Server where the script or driver is running (except for L1 shell logs, which reside on the Quali Server). For exact locations, see the Troubleshooting Guide's <a href="http://help.quali.com/doc/9.0/Troubleshooting/Content/Troubleshooting/Collecting-logs.htm" target="_blank">Collecting Logs</a> article.
 
 ![Log Structure]({{site.baseurl}}/assets/logging-inventory-shells.png){:class="img-responsive"}
 
