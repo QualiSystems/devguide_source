@@ -24,7 +24,11 @@ Let's start by configuring a new deployment path. In the **Deployments** folder,
 vendor.resource.MyDeploymentPath:
 {% endhighlight %}
 
-Replace "MyDeploymentPath" with the new display name of the new deployment path. For example: "MyTestPath".
+Replace "MyDeploymentPath" with the new display name of the new deployment path (spaces are supported). For example: "My Test Path".
+
+{% highlight yaml %}
+vendor.resource.My Test Path:
+{% endhighlight %}
 
 Install the shell on CloudShell and in the **Manage>Apps** page, create an App template. You should be able to see the new deployment option in the **Select Deployment Type** area:
 
@@ -53,12 +57,14 @@ _CloudShell does not allow upgrading shells with deleted/modified attributes. Th
 Place the cursor at the end of the `derived_from:` line and press the **[Enter]** key. Type "properties:" and press **[Enter]** again. Press the **[Tab]** key and add the attribute. _**To make the attribute visible to the user in CloudShell, make sure to include the "tags: [user_input]" line.**_ For example, adding a string attribute called "My attribute":
 
 {% highlight yaml %}
-vendor.resource.MyTestPath:
-derived_from: cloudshell.nodes.CustomDeploymentOption
-properties:
-  My attribute:
-    type: string       # supported types are: string, integer, float, boolean, cloudshell.datatypes.Password
-    tags: [user_input]
+node_types:
+
+  vendor.resource.My Test Path:
+    derived_from: cloudshell.nodes.CustomDeploymentOption
+    properties:
+      My attribute:
+        type: string
+        tags: [user_input]       # supported types are: string, integer, float, boolean, cloudshell.datatypes.Password
 {% endhighlight %}
 
 The deployment path should look something like this:
@@ -71,7 +77,7 @@ Same as with attributes in the *shell-definition.yaml*, you can also specify add
 My attribute:
   type: string
   default: value 1
-  description: "This is my Networking type attribute."
+  description: "This is my my attribute."
   constraints: value 1, value 2, value 3
   tags: [user_input]
 {% endhighlight %}
@@ -84,7 +90,7 @@ In some cases, you may want a specific deployment attribute to be unavailable fo
 My attribute:
   type: string
   default: value 1
-  description: "This is my Networking type attribute."
+  description: "This is my attribute."
   constraints: value 1, value 2, value 3
   tags: [user_input, editable_only_in_app_template]
 {% endhighlight %}

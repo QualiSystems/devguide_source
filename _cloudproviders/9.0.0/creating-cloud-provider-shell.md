@@ -22,10 +22,10 @@ Since the Cloud Provider shell only works with CloudShell 9.0 and above, make su
 shellfoundry config host 192.168.85.13
 {% endhighlight %}
 
-Navigate to the folder that will contain the Cloud Provider shell and create the shell. For example, creating a shell called MyCloudProviderShell:
+Navigate to the folder that will contain the Cloud Provider shell and create the shell. For example, creating a shell called CLPShell:
 
 {% highlight bash %}
-shellfoundry new my-cloud-provider-shell --template gen2/cloud-provider
+shellfoundry new clp-shell --template gen2/cloud-provider
 {% endhighlight %}
 
 The shell is created in the folder.

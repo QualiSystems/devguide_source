@@ -34,15 +34,20 @@ The second option of associating custom attributes with an already installed she
 
 Adding attributes to the shell is done in the shell's *shell-definition.yaml* file. 
 
-Let's start by adding the **Networking Type** attribute from the standard. Attributes that are included on the shell's standard, like this attribute, need to be added to the `capabilities` section:
+Let's start by adding the **Networking Type** attribute from the standard. Attributes that are included on the shell's standard, like this attribute, need to be added to the `capabilities` section, under `properties`:
 
 {% highlight yaml %}
-capabilities:
-auto_discovery_capability:
-type: cloudshell.capabilities.AutoDiscovery
-properties:
-  VLAN Type:
-    type: string       # supported types are: string, integer, float, boolean, cloudshell.datatypes.Password
+node_types:
+ vendor.resource.ClpShell:
+    derived_from: cloudshell.nodes.CustomCloudProvider
+    capabilities:
+      concurrent_execution:
+        type: cloudshell.capabilities.SupportConcurrentCommands
+      auto_discovery_capability:
+        type: cloudshell.capabilities.AutoDiscovery
+        properties:
+          VLAN Type:
+            type: string       # supported types are: string, integer, float, boolean, cloudshell.datatypes.Password
 {% endhighlight %}
 
 Let's see how it looks on CloudShell. Install the shell:
@@ -52,7 +57,7 @@ shellfoundry install
 {% endhighlight %}
 
 Open CloudShell Portal, in the **Inventory** dashboard, create a resource from the shell.
-The attribute is displayed:
+The attribute is displayed in the resource's **Validation & Discovery** page:
 
 ![Resource information]({{site.baseurl}}/assets/cp-discovery-attribute.png){:class="img-responsive"}
 
@@ -67,19 +72,22 @@ properties:
     tags: [setting, configuration]      # supported tags are: configuration, setting, search_filter, abstract_filter, include_in_insight, readonly_to_users, display_in_diagram, connection_attribute, read_only
 {% endhighlight %}
 
-However, if the attribute is not included in the shell's family, you will need to set it both in the `properties:` section, and in the `capabilities:` section’s properties. We’ll add an attribute called “my discovery attribute”.
+However, if the attribute is not included in the shell's family, you will need to set it both in the `properties:` section, and in the `capabilities:` section’s `properties`. We’ll add an attribute called “my discovery attribute”.
 
-First we'll add it to the capabilities section:
+First we'll add it to the `capabilities` section:
 
 {% highlight yaml %}
-capabilities:
-  concurrent_execution:
-    type: cloudshell.capabilities.SupportConcurrentCommands
-  auto_discovery_capability:
-    type: cloudshell.capabilities.AutoDiscovery
-    properties:
-      my discovery attribute:
-        type: string
+node_types:
+ vendor.resource.ClpShell:
+    derived_from: cloudshell.nodes.CustomCloudProvider
+      capabilities:
+        concurrent_execution:
+          type: cloudshell.capabilities.SupportConcurrentCommands
+        auto_discovery_capability:
+          type: cloudshell.capabilities.AutoDiscovery
+          properties:
+            my discovery attribute:
+              type: string
 {% endhighlight %}
 
 And then we'll add it to the `properties:` section as well (note that this section is missing, so you'll need to add it directly under the `derived_from:` line:
@@ -93,7 +101,15 @@ node_types:
       	type: string
 {% endhighlight %}
 
-You can also set additional settings. Since this attribute is not included on the family, you can also set possible values (`constraints` property).
+Return to CloudShell Portal, in the **Inventory** dashboard, click the resource's more actions button and select **Discover**:
+
+![Resource information]({{site.baseurl}}/assets/cp-open-resource-discovery-page.png){:class="img-responsive"}
+
+The resource's **Validation & Discovery** page is displayed, showing the new discovery attribute we created.
+
+![Resource information]({{site.baseurl}}/assets/cp-discovery-attribute-2.png){:class="img-responsive"}
+
+You can also set additional settings. Since this attribute is not included in the family, you can also set possible values (`constraints` property).
 
 For example:
 
