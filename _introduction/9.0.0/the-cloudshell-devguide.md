@@ -34,9 +34,9 @@ Orchestration scripts are a feature in CloudShell that enables the implementatio
 Configuration management extends CloudShell Apps by allowing the running of scripts, which install applications on virtual machines (VMs) deployed in the sandbox or run post-deployment configuration. This configuration can be executed as part of the sandbox setup, or later on in a live sandbox. Configuration management operations can be performed using custom scripts or Ansible playbooks.
 
 
-#### [Custom Cloud Providers: Implementing support for cloud providers]({{site.baseurl}}/configmanagement/{{pageVersion}}/cf-overview.html)
+#### [Custom Cloud Providers: Implementing support for cloud providers]({{site.baseurl}}/cloudproviders/{{pageVersion}}/getting-started-with-cloud-providers.html)
 
-CloudShell 9.0 provides support for the Cloud Provider shell, which enables you to integrate CloudShell with the cloud provider of your choice. CloudShell provides ou-of-the-box support for cloud providers AWS EC2, Microsoft Azure, VMware vCenter and OpenStack. However, to deploy VMs on other cloud providers, such as kubernetis and Oracle Cloud, or create a modified version of one of our out-of-the-box cloud providers, you will need to create a shell that allows this to happen.
+CloudShell 9.0 provides support for the Cloud Provider shell, which enables you to integrate CloudShell with the cloud provider of your choice. CloudShell provides out-of-the-box support for cloud providers AWS EC2, Microsoft Azure, VMware vCenter and OpenStack. However, to deploy VMs on other cloud providers, such as Kubernetes or Oracle Cloud, or create a modified version of one of our out-of-the-box cloud providers, you will need to create a shell that allows this to happen.
 
 
 #### [Integrating CloudShell into the DevOps Cycle]({{site.baseurl}}/devops/{{pageVersion}}/devops-integration.html)
