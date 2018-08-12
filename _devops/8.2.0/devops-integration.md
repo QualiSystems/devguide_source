@@ -2,7 +2,7 @@
 layout: page
 title: Automating CloudShell Sandboxes for DevOps
 comments: true
-order:  1
+order:  2
 version:
     - 8.2.0
 ---
