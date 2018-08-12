@@ -10,27 +10,13 @@ version:
 {% assign pageUrlSplited = page.url | split: "/" %}
 {% assign pageVersion = pageUrlSplited[2] %}
 
-In this article, we will learn how to add attributes to our shell or modify existing ones. 
+In this article, we will learn how to add attributes to our shell. For information about modifying or deleting attributes from the shell, scroll down to the bottom of this article.
 
 Attributes can be added to the cloud provider shell or to the deployment path on the App template. Attributes on the shell are for general authentication/authorization purposes and for setting general configurations for the cloud provider integration, while attributes on the deployment path are typically settings that apply to the App's VM. For example, Region applies to the cloud provider shell and Image ID applies to the deployment path. We will cover deployment path attributes in the next article.
 
-_**Notes:**_
-* *You cannot modify attributes **type**, **name**, and any attributes that are associated with the shell’s family as this will affect other shells that use this family. The family attributes are listed in the shell’s standard. To find the attributes defined in the shell’s standard, see the <a href="https://github.com/QualiSystems/cloudshell-standards/tree/master/Documentation" target="_blank">documentation page</a> of your shell’s standard.*
+_**Note:** CloudShell does not allow upgrading shells with deleted/modified attributes. Therefore, if you need to make an unsupported change to an attribute (for example, deleting an attribute or changing its type), you will need to remove the shell from CloudShell before you install the updated version._
 
-* *CloudShell does not allow upgrading shells with deleted/modified attributes. Therefore, if you need to make an unsupported change to an attribute (for example, deleting an attribute or changing its type), you will need to remove the shell from CloudShell before you install the updated version.*
-
-### Deployment-specific vs. shell-specific attributes
-
-CloudShell provides two ways to customize attributes, which differ depending on the attribute's usage:
-
-* **Customizing an existing shell**: Use this option when the attributes are related to this specific cloud provider shell but are not relevant to other shells. This is done by manually editing the shell’s *shell-definition.yaml* file. 
-* **Associating custom attributes with a shell that is installed in CloudShell**: Use this option when the additional attributes are deployment-related and relevant to multiple resources of different shells. For example, the Execution Server Selector attribute.
-
-The second option of associating custom attributes with an already installed shell is done either via CloudShell Portal or by calling the [SetCustomShellAttribute]({{site.baseurl}}/shells/{{pageVersion}}/deploying-to-production.html#SetCustomShellAttributeUsingAPI) API method.
-
-**Important:** Deleting a 2nd Gen shell’s default attributes (those that come with the standard) is not supported. It is also not possible to customize a 2nd Gen shell’s data model (families and models) and its structure, which is as defined in the Cloud Provider Shell Standard.
-
-### Add an attribute to the shell
+### Adding an attribute to the shell
 
 Adding attributes to the shell is done in the shell's *shell-definition.yaml* file. 
 
@@ -122,3 +108,11 @@ properties:
     constraints: [value 1, value 2, value 3]
     tags: [setting, configuration]
 {% endhighlight %}
+
+### Modifying an attribute on a shell
+
+You cannot modify attributes **type**, **name**, and any attributes that are associated with the shell’s family as this will affect other shells that use this family. The family attributes are listed in the shell’s standard. To find the attributes defined in the shell’s standard, see the <a href="https://github.com/QualiSystems/cloudshell-standards/tree/master/Documentation" target="_blank">documentation page</a> of your shell’s standard.
+
+### Deleting an attribute from a shell
+
+Deleting any of the shell's default attributes (those that come with the standard) is not supported. It is also not possible to customize a 2nd Gen shell’s data model (families and models) and its structure, which is as defined in the Cloud Provider Shell Standard.
