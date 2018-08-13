@@ -42,7 +42,9 @@ If you're using the PyCharm application, open the shell project folder, click **
 
 #### Debugging the shell
 
-Using the mock debugger is easy. All you need to do is add the following mock code to the shell, and specify some details, like reservation ID, resource address and name, and any attributes required for resource discovery (for example, User, Password and SNMP Read Community. 
+Using the mock debugger is easy. 
+
+Add the following mock code to the shell, and specify some details, like reservation ID, resource address and name, and any attributes required for resource discovery (for example, User, Password and SNMP Read Community. 
 
 {% highlight python %}
 if __name__ == "__main__":
@@ -70,14 +72,13 @@ if __name__ == "__main__":
     print "done"
 {% endhighlight %}
 
-Then, specify the attributes or commands you want to debug (`result =` line) and add your break points. For example:
+Specify the attributes or commands you want to debug (`result =` line) and add your break points. For example:
 
 ![Context Object]({{ site.baseurl }}/assets/debugging-mock.png)
 
+And debug the shell. When debugging, the mock code will run instead of the shell’s default initialization commands and will call the commands you want to test. When shell development is finished, you can leave the mock code in the shell as CloudShell will ignore it.
 
-When debugging, the mock code will run instead of the shell’s default initialization commands and will call the commands you want to test. When shell development is finished, you can leave the mock code in the shell as CloudShell will ignore it.
-
-To learn how to do this, see our instructional video on debugging with the mock package:
+For a step-by-step tutorial, see our instructional video on debugging with the mock package:
 
 <iframe width="854" height="480" src="https://www.youtube.com/embed/LvPGHm2T3nk" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
