@@ -109,7 +109,7 @@ Then create an instance of the DebuggingExample resource and add it to a sandbox
 These steps are identical to the ones demonstrated in the [Getting Started]({{site.baseurl}}/shells/{{pageVersion}}/getting-started.html) section,
 which you can use a reference.
 
-#### Setting up
+#### Preparing your environment
 
 As part of the generated shell project, a _deployment.xml_ file has been automatically created.
 The _deployment.xml_ file contains the mappings required for the PyCharm plugin to know where the source code is,
