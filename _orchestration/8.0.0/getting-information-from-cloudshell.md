@@ -127,7 +127,7 @@ You’ll be able to access it using an environment variable by that name:
 
 {% highlight python %}
 import os
-os.environ['Param1']
+os.environ['PARAM1']
 {% endhighlight %}
 
 You can also use the scripting helper class:
@@ -136,3 +136,5 @@ You can also use the scripting helper class:
 import cloudshell.helpers.scripts.cloudshell_scripts_helpers as helpers
 helpers.get_user_param('Param1')
 {% endhighlight %}
+
+Note that when using the *get_user_param* helper function, the input name is case insensitive since the function will uppercase it.
