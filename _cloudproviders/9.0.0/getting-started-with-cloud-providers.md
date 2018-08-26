@@ -23,15 +23,15 @@ A Cloud Provider shell may include more than one deployment type, allowing a var
 
 The basic creation and implementation process is as follows:
 
-1) Create or customize a Cloud Provider shell.
+1) Create a new Cloud Provider shell.
 
-2) Implement the Cloud Provider interface. In other words, develop the communication interface between CloudShell and the cloud provider, add the automation commands that will run on the cloud provider, such as deploying and tearing down VMs, and refreshing the VM's IP.
+2) Set up the Cloud Provider interface. In other words, implement the cloud provider driver that will be called by the server when interaction with the cloud provider is needed. 
 
 3) If the shell requires the use of python dependencies, which aren't available in the public PyPi repository, add them to the local PyPi Server repository. See CloudShell Help's <a href="http://help.quali.com/Online%20Help/8.3/Portal/Content/Admn/Pyth-Cnfg-Mds.htm" target="_blank">PyPi Server - Managing Python Driver and Script Dependencies</a>.
 
 4) Debug the shell.
 
-5) In CloudShell, create a resource based on the new shell and see that it works. 
+5) In CloudShell, create a resource based on the new shell and make sure it works. 
 
 *Before developing your shell, please watch the following video to determine whether you need to create a new shell or customize an existing one:*
 
@@ -39,7 +39,7 @@ The basic creation and implementation process is as follows:
 
 ## Supported versions - CloudShell v9.0 and up
 
-As of version 9.0, CloudShell supports Cloud Provider shells. In addition, CloudShell provides out-of-the-box support for cloud providers VMware vCenter, AWS EC2, Microsoft Azure and OpenStack. Note that these cloud provider shells cannot be modified. 
+As of version 9.0, CloudShell supports the ability to define custom cloud providers (using the `cloud_provider` shell template), as well as the out-of-the-box cloud providers VMware vCenter, AWS EC2, Microsoft Azure and OpenStack. Note that the out-of-the-box cloud provider shells cannot be modified. 
 
 ## Prerequisites
 

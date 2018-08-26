@@ -56,7 +56,7 @@ collections:
 
     cloudproviders:
         output: true
-        title: "Developing Cloud Providers"
+        title: "Extending CloudShell with Cloud Providers"
         display-order: 4
 
     devops:

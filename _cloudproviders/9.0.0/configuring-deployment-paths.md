@@ -18,13 +18,17 @@ Note that since Cloud Provider is a 2nd Gen shell, the deployment paths are not 
 
 ### Setting up the deployment type and image
 
-Let's start by configuring a new deployment path. In the **Deployments** folder, open the *deployment-path.yaml*, and locate the following line:
+Let's start by configuring a new deployment path. 
+
+In the **Deployments** folder, rename the *deployment-path.yaml* to the name of the deployment option. For example, "my-deployment-path.yaml".
+
+Open the yaml and locate the following line:
 
 {% highlight yaml %}
 vendor.resource.MyDeploymentPath:
 {% endhighlight %}
 
-Replace "MyDeploymentPath" with the new display name of the new deployment path (spaces are supported). For example: "My Test Path".
+Replace "MyDeploymentPath" with the new display name of the deployment path (spaces are supported). For example: "My Test Path".
 
 {% highlight yaml %}
 vendor.resource.My Test Path:
