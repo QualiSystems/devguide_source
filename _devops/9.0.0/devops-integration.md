@@ -14,7 +14,7 @@ or other DevOps pipelines. In this context, we'll concentrate on the use case of
 CloudShell currently supports two different sets of APIs which can be used to automate and integrate Sandboxes with DevOps.
 
 * The CloudShell Automation API (_cloudshell-automation-api_ package) - This python package contains a comprehensive set of APIs for anything from managing inventory and connections to administrating users and groups as well as managing sandboxes and blueprints. The package allows developers to use the TestShell API in shell drivers and python scripts.
-* The CloudShell Sandbox APIs - These RESTful APIs comprise CloudShell's next generation set of APIs. They are already using the latest terminology (sandboxes and blueprints instead of reservations and topologies/environments) and have advantages in performance and scaling. As of today, these APIs are limited to a specific set of commands focused on the workflow of starting and ending sandboxes. However, with each release, more functionality is being added to the Sandbox APIs and the intention is for this API set to eventually replace the CloudShell Automation API package completely for most DevOps-related workflows.
+* The CloudShell Sandbox APIs - This RESTful API is intended for automating the consumption of sandboxes oustide of CloudShell. As such, it provides a specific set of commands focused on the workflow of starting and ending sandboxes, and running automation.
 
 #### Which API to choose?
 If the functionality you're looking for is covered in the Sandbox APIs, it is recommended to use it over the CloudShell Automation API package.
@@ -25,7 +25,7 @@ If not, you can consider using the Sandbox API for whatever subset of the requir
 **CloudShell Sandbox API**
 
 The Sandbox API live documentation page is installed with CloudShell. To access it, simply browse to the following default address:
-http://[CloudShellPortalAddress]:82/api/v1/explore/. If you're accessing the link from the CloudShell Portal machine itself, or from the CloudShell SDK edition machine, you can simply use "localhost" or "127.0.0.1". The API documentation page allows you to test and experiment with the APIs as well as provide information on the different operations and parameters.
+http://[CloudShellPortalAddress]:82/api/v2/explore/. If you're accessing the link from the CloudShell Portal machine itself, or from the CloudShell SDK edition machine, you can simply use "localhost" or "127.0.0.1". The API documentation page allows you to test and experiment with the APIs as well as provide information on the different operations and parameters.
 
 **CloudShell Automation API**
 
