@@ -1,0 +1,92 @@
+---
+layout: page
+title: "L2 Network Connectivity"
+order: 21
+comments: true
+version:
+    - 9.0.0
+---
+
+Now that we've set up the cloud provider shell's automation, let's learn how to implement network connectivity. This article discusses layer 2 connectivity. If you're developing an L3 cloud provider, skip to the next article.
+
+## ApplyConnectivityChanges method
+
+To add support for L2 VLAN connectivity in a custom cloud provider, we need to implement the *ApplyConnectivityChanges* method. This method is used to connect the VMs in the sandbox to the network elements. 
+
+The VLAN IDs are allocated by Quali Server, according to the settings of the VLAN service. These IDs are sent to the command as parameters. The implementation of this method needs to be able to support Access mode, Trunk mode, VLAN and VXLAN ranges, if supported by your cloud provider. Additionally, the implementation needs to support a range of VLAN IDs.
+
+This method can receive 2 types of actions: *setVlan* and *removeVlan*. Each call to the method can contain multiple actions from different types. The command receives an action for each connection that needs to be created or disconnected. In case of P2P connections, there will be 2 requests, one for each App.
+
+Like other commands, this command needs to return an action result in the response per connection. If the command execution fails, the failure needs to be indicated in the returned action or raise an exception. 
+
+### Called when
+It is run automatically when reserving the sandbox, as part of CloudShell's default sandbox setup script, and is also called in an active sandbox when a deployed App is connected or disconnected from a VLAN service or from another deployed App in a P2P connection.
+
+### Error handling
+
+If *ApplyConnectivityChanges* fails, return a "success false" action result.
+
+### Signature
+
+{% highlight python %}
+def ApplyConnectivityChanges(self, context, request):
+{% endhighlight %}
+
+### Inputs
+
+**Context**: *context* is a *ResourceCommandContext* object that contains:
+
+1. connectivity - CloudShell server connectivity data for authentication with CloudShell Automation API 
+2. resource - resource configuration settings entered when creating the Cloud Provider resource in the **Inventory** dashboard
+3. reservation - current reservation details
+4. connectors – details of any visual connectors between the Cloud Provider App and other endppoints in the sandbox. <a href="https://github.com/QualiSystems/cloudshell-shell-core/blob/36009fdec45134ae38cb9273328b7686be66e553/cloudshell/shell/core/driver_context.py#L17-L18" target="_blank">Code example</a>.
+
+
+#### Handle Request
+
+*customAttributes* is a list of special attributes for a specific action. The *setVlan* action can get a custom attribute called **Vnic Name**. When this attribute exists, we can use it in custom logic that will allocate a specific VNIC to the App's VM. For example, the **Vnic Name** value is 1 and the cloud provider shell needs to create the VLAN connection on eth1.
+
+<a href="https://github.com/QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/ac94224fd2368aaa9b589bcdfd30e449a53c90ce/src/heavenly_cloud_service_wrapper.py#L299" target="_blank">Code example</a>
+
+#### Method result
+
+**setVlan action result:**
+
+If the action is successful, you need to set *updatedInterface* property. The value of this property is set on an attribute on the relevant connector. Each connector in CloudShell has a source and a target component. Cloudshell will automatically determine if the action result is for source or target of the connector and set this value on the appropriate attribute - **Source Interface** or **Target Interface**.
+
+<a href="https://github.com/QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/e5a7fffbda4e661b58dc30f9e6355981dfc0bb86/src/heavenly_cloud_service_wrapper.py#L300-L302" target="_blank">Code example</a>
+
+**removeVlan action result:**
+
+You only need to indicate if the action is successful or not.
+
+<a href="https://github.com/QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/e5a7fffbda4e661b58dc30f9e6355981dfc0bb86/src/heavenly_cloud_service_wrapper.py#L340-L344" target="_blank">Code example</a>
+
+### ApplyConnectivityChanges method implementation
+
+The *ApplyConnectivityChanges* method should perform the following steps:
+
+&nbsp;1. <a href="https://github.com/QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/625d52ae7740cf3d77e529f6b0b0f8d05df472b2/src/driver.py#L229" target="_blank">Retrieve cloud provider resource connection credentials</a>
+
+&nbsp;2. <a href="https://github.com/QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/625d52ae7740cf3d77e529f6b0b0f8d05df472b2/src/driver.py#L230" target="_blank">Retrieve actions from request</a>
+
+&nbsp;3. <a href="https://github.com/QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/625d52ae7740cf3d77e529f6b0b0f8d05df472b2/src/driver.py#L232-L234" target="_blank">Handle Remove Vlan actions</a>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a. <a href="https://github.com/QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/7bd55725d8e8dbd741270f5d082f05062c1d1fab/src/heavenly_cloud_service_wrapper.py#L371" target="_blank">Retrieve requested interface to disconnect</a>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b. <a href="https://github.com/QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/7bd55725d8e8dbd741270f5d082f05062c1d1fab/src/heavenly_cloud_service_wrapper.py#L372" target="_blank">Retrieve requested VM id to disconnect</a>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c. <a href="https://github.com/QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/7bd55725d8e8dbd741270f5d082f05062c1d1fab/src/heavenly_cloud_service_wrapper.py#L373" target="_blank">Disconnect</a>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;d. <a href="https://github.com/QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/7bd55725d8e8dbd741270f5d082f05062c1d1fab/src/heavenly_cloud_service_wrapper.py#L375" target="_blank">Return Result</a>
+
+&nbsp;4. <a href="https://github.com/QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/7bd55725d8e8dbd741270f5d082f05062c1d1fab/src/driver.py#L236-L237" target="_blank">Handle *setVlan* actions</a>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a. <a href="https://github.com/QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/7bd55725d8e8dbd741270f5d082f05062c1d1fab/src/heavenly_cloud_service_wrapper.py#L320-L324" target="_blank">Retrieve VLAN parameters (VNIC name, VLAN mode, VLAN id)</a>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b. <a href="https://github.com/QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/e5a7fffbda4e661b58dc30f9e6355981dfc0bb86/src/heavenly_cloud_service_wrapper.py#L300" target="_blank">Connect</a>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c. <a href="https://github.com/QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/7bd55725d8e8dbd741270f5d082f05062c1d1fab/src/heavenly_cloud_service_wrapper.py#L325" target="_blank">Add new interface id to result</a>
+
+&nbsp;5. <a href="https://github.com/QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/625d52ae7740cf3d77e529f6b0b0f8d05df472b2/src/driver.py#L239" target="_blank">Return appropriate result</a>
+
