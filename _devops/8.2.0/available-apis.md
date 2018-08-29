@@ -73,8 +73,6 @@ For additional information, see the appropriate TestShell API Reference Guide:
 * <a href="http://help.quali.com/Online%20Help/8.2/testshell-api/TestShell%20TCL%20API.html" target="_blank">TestShell API TCL Reference Guide</a>
 * <a href="http://help.quali.com/Online%20Help/8.2/testshell-api/TestShell%20XML%20RPC%20API.html" target="_blank">TestShell API XML RPC Reference Guide</a>
 
-#### Examples
-
 ### Quali API
 
 Quali API allows you to automate the scheduling and queuing of test automation suites. It can be used in C# and TCL, and is also used for getting sandbox attachments and execution server details.
@@ -83,8 +81,6 @@ For additional information, see the appropriate Quali API Reference Guide:
 * <a href="http://help.quali.com/Online%20Help/8.2/quali-api/Quali%20API%20Library.html" target="_blank">Quali API Library Reference Guide</a>
 * <a href="http://help.quali.com/Online%20Help/8.2/quali-api/Quali%20cSharp%20API.html" target="_blank">Quali API C# Reference Guide</a>
 * <a href="http://help.quali.com/Online%20Help/8.2/quali-api/Quali%20REST%20API.html" target="_blank">Quali API REST Reference Guide</a>
-
-#### Examples
 
 ### Packaging API
 
