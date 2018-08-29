@@ -1,6 +1,6 @@
 ---
 layout: page
-title: "App Deployment (Deploy)"
+title: "App Deployment"
 order: 17
 comments: true
 version:
@@ -54,7 +54,7 @@ cloud_provider_resource = HeavenlyCloudsShell.create_from_context(context)
 
 **Request**
 
-*Request* object that contains the resource deployment path and App resource configuration.
+*Request* object that contains the resource deployment path and deployed App configuration (in the App template's **App Resource** page).
 
 **cancellation_context**
 
@@ -123,8 +123,10 @@ Note that the links in the above workflow pertain to a driver of an L3 implement
 | vmName                      | string       | Unique name of the resource in CloudShell. |
 | vmUuid                      | string       | Unique resource id. Populate *vmUuid* with the unique id of the resource in your custom cloud provider. Cloudshell does not use this id, but will keep it for other method calls. |
 | deployedAppAdditionalData   | dictionary   | Container used to persist custom data in resource, similar to AWS Tags. Included in all resource API query results. For <a href="https://github.com/QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/ac94224fd2368aaa9b589bcdfd30e449a53c90ce/src/heavenly_cloud_service_wrapper.py#L209-L213" target="_blank">example</a>, reading the custom data and returning it in the VM Details.|
+| deployedAppAttributes       | array        | Contains data describing the deployed app attributes, and are displayed in the App's **Attributes** pane in the sandbox. It should be used to change default values of the deployed app resource attributes. For example User & Password attributes exist as part of the default deployed app model. If your custom CLP generates a password in runtime for the VM than you should update the *deployedAppAttributes* property accordingly. |
+
 | vmDetailsData               | array        | Array of cloudshell-cp-core attribute objects. Contains data describing the deployed App's attributes. It should be used to change default values of the deployed App resource attributes. For example the User and Password attributes exist as part of the default Deployed App shell. If your custom cloud provider generates a password in runtime for the VM, please update the **deployedAppAttributes** property accordingly. |
-| vmDetailsData               | object        | Contains vmNetworkData and vmInstanceData. Displayed in the App's VM Details pane. See the vmDetailsData table below. |
+| vmDetailsData               | object        | Contains vmNetworkData and vmInstanceData. Displayed in the App's VM Details pane. See the* vmDetailsData* table below. |
 
 #### vmDetailsData properties
 
@@ -134,7 +136,7 @@ Note that the links in the above workflow pertain to a driver of an L3 implement
 | appName         | String   | The App's name. No need to assign it in the deploy operation. Must be assigned in *getVmDetails* method. |
 | errorMessage    | string   | Indication message to be displayed to the sandbox end-user when getting the vmDetails. |
 | vmNetworkData   | array    | Array of cloudshell-cp-core  VmDetailsNetworkInterface object. Create a *vmNetworkData* object for each VM NIC you wish to associate with resource. See the VmDetailsNetworkInterface table below. |
-| vmInstanceData  | array    | Array of cloudshell-cp-core's VmDetailsProperty. Contains data about the VM instance attributes. It should be used to change persist values of the VM resource. For example to persist Storage and operating system data use it. See the VmDetailsProperty table below.  |
+| vmInstanceData  | array    | Array of cloudshell-cp-core's *VmDetailsProperty*. Contains data about the VM instance attributes. It should be used to change persist values of the VM resource. For example to persist Storage and operating system data use it. See the VmDetailsProperty table below.  |
 
 #### VmDetailsNetworkInterface
 
@@ -176,7 +178,7 @@ def PowerOn(self, context, ports)
 1. connectivity - CloudShell server connectivity data for authentication with CloudShell Automation API 
 2. resource - resource configuration settings entered by the user when creating the Cloud Provider resource in the **Inventory** dashboard
 3. remote_reservation – reservation details
-4. remote_endpoints- will contain a single [ResourceContextDetails](https://github.com/QualiSystems/cloudshell-shell-core/blob/36009fdec45134ae38cb9273328b7686be66e553/cloudshell/shell/core/driver_context.py#L38-L64) object which provides data for the operation.
+4. remote_endpoints- will contain a single <a href="https://github.com/QualiSystems/cloudshell-shell-core/blob/36009fdec45134ae38cb9273328b7686be66e553/cloudshell/shell/core/driver_context.py#L38-L64" target="_blank">ResourceContextDetails</a> object which provides data for the operation.
 
 **Ports**
 
@@ -221,7 +223,7 @@ def remote_refresh_ip(self, context, ports, cancellation_context):
 1. connectivity - CloudShell server connectivity data for authentication with CloudShell Automation API 
 2. resource - resource configuration settings entered when creating the Cloud Provider resource in the **Inventory** dashboard
 3. remote_reservation – reservation details
-4. remote_endpoints - will contain a single [ResourceContextDetails](https://github.com/QualiSystems/cloudshell-shell-core/blob/36009fdec45134ae38cb9273328b7686be66e553/cloudshell/shell/core/driver_context.py#L38-L64) object which provides data for the operation.
+4. remote_endpoints - will contain a single <a href="https://github.com/QualiSystems/cloudshell-shell-core/blob/36009fdec45134ae38cb9273328b7686be66e553/cloudshell/shell/core/driver_context.py#L38-L64" target="_blank">ResourceContextDetails</a> object which provides data for the operation.
 
 {% github_sample_ref /QualiSystems/cloudshell-shell-core/blob/36009fdec45134ae38cb9273328b7686be66e553/cloudshell/shell/core/driver_context.py %}
 {% highlight python %}

@@ -23,9 +23,9 @@ The articles are:
 
 *For illustration purposes, we will use a mock shell called HeavenlyCloud, which demonstrates the use and implementation of a custom cloud provider. We've created two versions of the shell, **L2HeavenlyCloudShell** for private clouds <a href="https://github.com/QualiSystems/Custom-L2-Cloud-Provider-Shell-Example" target="_blank">(download here)</a> and **L3HeavenlyCloudShell** for public clouds <a href="https://github.com/QualiSystems/Custom-L3-Cloud-Provider-Shell-Example" target="_blank">(download here)</a>. The difference between the two is in the networking connectivity implementation.*
 
-To see how the HeavenlyCloud cloud provider works, let’s create a resource using the HeavenlyCloud shell in CloudShell Portal.
+To see how the HeavenlyCloud cloud provider works, let’s create a resource using the HeavenlyCloud shell in CloudShell Portal. First, download the appropriate mock shell .zip file from GitHub and extract it to your computer.
 
-First, download the appropriate mock shell .zip file from GitHub and extract it to your computer.
+![Shell Commands]({{ site.baseurl}}/assets/cp-heavenly-cloud-project.png)
 
 Install the shell on CloudShell by running this command-line from the extracted shell project folder:
 
@@ -34,8 +34,6 @@ shellfoundry install
 {% endhighlight %}
 
 In CloudShell Portal, open the **Inventory** dashboard and create a resource from the **HeavenlyCloud** shell.
-
-![Shell Commands]({{ site.baseurl}}/assets/cp-L2-heavenly-cloud-resource.png)
 
 In the **Manage>Apps** page, create a new App template. Note that two new deployment types have been added, HeavenlyCloudAngelDeployment and HeavenlyCloudManDeployment. Select a deployment type and carry on setting the App template. 
 

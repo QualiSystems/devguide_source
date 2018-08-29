@@ -28,7 +28,7 @@ def PowerOff(self, context, ports)
 1. connectivity - CloudShell server connectivity data for authentication with CloudShell Automation API 
 2. resource - resource configuration settings entered by the user when creating the Cloud Provider resource in the **Inventory** dashboard
 3. remote_reservation – reservation details
-4. remote_endpoints - will contain a single [ResourceContextDetails](https://github.com/QualiSystems/cloudshell-shell-core/blob/36009fdec45134ae38cb9273328b7686be66e553/cloudshell/shell/core/driver_context.py#L38-L64) object which provides data for the operation.
+4. remote_endpoints - will contain a single <a href="https://github.com/QualiSystems/cloudshell-shell-core/blob/36009fdec45134ae38cb9273328b7686be66e553/cloudshell/shell/core/driver_context.py#L38-L64" target="_blank">ResourceContextDetails</a> object which provides data for the operation.
 
 {% github_sample_ref /QualiSystems/cloudshell-shell-core/blob/36009fdec45134ae38cb9273328b7686be66e553/cloudshell/shell/core/driver_context.py %}
 {% highlight python %}
@@ -70,7 +70,7 @@ def DeleteInstance(self, context, ports)
 1. connectivity - CloudShell server connectivity data for authentication with CloudShell Automation API 
 2. resource - resource configuration settings entered by the user when creating the Cloud Provider resource in the **Inventory** dashboard
 3. remote_reservation – reservation details
-4. remote_endpoints- will contain a single [ResourceContextDetails](https://github.com/QualiSystems/cloudshell-shell-core/blob/36009fdec45134ae38cb9273328b7686be66e553/cloudshell/shell/core/driver_context.py#L171-L180) object which provides data for the operation.
+4. remote_endpoints- will contain a single <a href="https://github.com/QualiSystems/cloudshell-shell-core/blob/36009fdec45134ae38cb9273328b7686be66e553/cloudshell/shell/core/driver_context.py#L171-L180" target="_blank">ResourceContextDetails</a> object which provides data for the operation.
 
 {% github_sample_ref /QualiSystems/cloudshell-shell-core/blob/36009fdec45134ae38cb9273328b7686be66e553/cloudshell/shell/core/driver_context.py %}
 {% highlight python %}

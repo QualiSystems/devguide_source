@@ -1,6 +1,6 @@
 ---
 layout: page
-title: "Resource Discovery (get_inventory)"
+title: "Resource Discovery"
 order: 15
 comments: true
 version:
@@ -46,7 +46,7 @@ The *AutoloaDetails* class that represents details discovered by the *get_invent
 ### Error handling
 If one of the validations failed, an error indication will be displayed in CloudShell and the resource will be marked as excluded.
 
-### Implementation example: resource discovery
+### get_inventory method implementation example
 
 {% github_sample_ref /QualiSystems/Custom-Cloud-Provider-Shell-Example/blob/4aa0c863da205686952e414e16a0baea954b2bfa/src/driver.py %}
 {% highlight python %}
