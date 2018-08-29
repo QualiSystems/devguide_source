@@ -53,3 +53,9 @@ This tutorial discusses the use of CloudShell Automation API in shell commands a
 This tutorial demonstrates how to add attributes to the shell, including custom attributes like root, sub-model and discovery attributes, and global attributes that already exist in CloudShell.
 
 <iframe width="854" height="480" src="https://www.youtube.com/embed/qkYmdezOLhw?list=PLnWTXOESKY41iU_0InfWSkwYq7IDkv7pH" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+### Debugging shells
+
+This tutorial demonstrates how to debug your shell using the mock open source python package.
+
+<iframe width="854" height="480" src="https://www.youtube.com/embed/LvPGHm2T3nk?list=PLnWTXOESKY41iU_0InfWSkwYq7IDkv7pH" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
