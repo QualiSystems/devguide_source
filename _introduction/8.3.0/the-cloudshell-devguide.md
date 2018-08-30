@@ -32,7 +32,7 @@ Orchestration scripts are a feature in CloudShell that enables the implementatio
 
 #### [Custom Cloud Providers: Implementing support for cloud providers](http://devguide.quali.com/cloudproviders/9.0.0/getting-started-with-cloud-providers.html)
 
-CloudShell 9.0 provides support for the Cloud Provider shell, which enables you to integrate CloudShell with the cloud provider of your choice. CloudShell provides out-of-the-box support for cloud providers AWS EC2, Microsoft Azure, VMware vCenter and OpenStack. However, to deploy VMs on other cloud providers, such as Kubernetes or Oracle Cloud, or create a modified version of one of our out-of-the-box cloud providers, you will need to create a shell that allows this to happen. Learn all about it in the 9.0.0 dev guide's [Developing Cloud Providers](https://devguide.quali.com/cloudproviders/9.0.0/getting-started-with-cloud-providers.html) chapter.
+CloudShell 9.0 provides support for the Cloud Provider shell, which enables you to integrate CloudShell with the cloud provider of your choice. CloudShell provides out-of-the-box support for cloud providers AWS EC2, Microsoft Azure, VMware vCenter and OpenStack. However, to deploy VMs on other cloud providers, such as Kubernetes or Oracle Cloud, or create a modified version of one of our out-of-the-box cloud providers, you will need to create a shell that allows this to happen. Learn all about it in the 9.0.0 dev guide's [Developing Cloud Providers]({{site.baseurl}}/cloudproviders/9.0.0/getting-started-with-cloud-providers.html) chapter.
 
 
 #### [Configuration Management: Developing configuration scripts for App VMs]({{site.baseurl}}/configmanagement/{{pageVersion}}/cf-overview.html)
