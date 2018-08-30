@@ -65,7 +65,7 @@ def PrepareSandboxInfra(self, context, request, cancellation_context)
 1. connectivity - CloudShell server connectivity data for authentication with CloudShell Automation API 
 2. resource - resource configuration settings entered when creating the Cloud Provider resource in the **Inventory** dashboard
 3. reservation - current reservation details
-4. connectors – details of any visual connectors between the Cloud Provider App and other endppoints in the sandbox. <a href="https://github.com/QualiSystems/cloudshell-shell-core/blob/36009fdec45134ae38cb9273328b7686be66e553/cloudshell/shell/core/driver_context.pyL9-L18" target="_blank">Code example</a>.
+4. connectors – details of any visual connectors between the Cloud Provider App and other endppoints in the sandbox. <a href="https://github.com/QualiSystems/cloudshell-shell-core/blob/36009fdec45134ae38cb9273328b7686be66e553/cloudshell/shell/core/driver_context.py#L9-L18" target="_blank">Code example</a>.
 
 Here's a code sample that extracts the cloud provider data from the *context*:
 

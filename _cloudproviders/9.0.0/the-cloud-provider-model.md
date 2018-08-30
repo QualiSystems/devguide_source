@@ -9,7 +9,7 @@ version:
 
 In this article, we'll learn about the Cloud Provider shell's model.
 
-The Cloud Provider Shell Standard defines two elements: the Cloud Provider shell and the Deployment Type service. The Cloud Provider shell is responsible for accessing the cloud provider and executing the App's automation commands (like deploy VM, power on, power off, refresh IP). And the deployment type service shell sets the deployment path on the App template, including the VM's definition. The service contains the attributes of the deployment type, but has no driver since the automation commands are defined in the Cloud Provider shell's driver.
+The <a href="https://github.com/QualiSystems/cloudshell-standards/blob/master/Documentation/cloud_provider_standard.md" target="_blank">Cloud Provider Standard</a> defines two elements: the Cloud Provider shell and the Deployment Type service. The Cloud Provider shell is responsible for accessing the cloud provider and executing the App's automation commands (like deploy VM, power on, power off, refresh IP). And the deployment type service shell sets the deployment path on the App template, including the VM's definition. The service contains the attributes of the deployment type, but has no driver since the automation commands are defined in the Cloud Provider shell's driver.
 
 * The cloud provider model extension includes the attributes that control the behavior of the cloud provider as a whole. For example the region name and default values for elements created in the cloud. 
 

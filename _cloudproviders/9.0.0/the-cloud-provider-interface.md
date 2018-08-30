@@ -17,9 +17,8 @@ The articles are:
 * [Resource Discovery (get_inventory)]({{site.baseurl}}/cloudproviders/{{pageVersion}}/resource-discovery.html)
 * [App Deployment (Deploy)]({{site.baseurl}}/cloudproviders/{{pageVersion}}/app-deployment.html)
 * [Power off and Delete VM]({{site.baseurl}}/cloudproviders/{{pageVersion}}/power-off-and-delete.html)
-* [L2 Network Connectivity]({{site.baseurl}}/cloudproviders/{{pageVersion}}/networking-management-L2.html)
-* [L3 Network Connectivity]({{site.baseurl}}/cloudproviders/{{pageVersion}}/networking-management-L3.html)
-* [Request/Response Reference]({{site.baseurl}}/cloudproviders/{{pageVersion}}/reference-request-response.html)
+* [L2 Network Connectivity]({{site.baseurl}}/cloudproviders/{{pageVersion}}/L2-networking-management.html)
+* [L3 Network Connectivity]({{site.baseurl}}/cloudproviders/{{pageVersion}}/L3-networking-management.html)
 
 *For illustration purposes, we will use a mock shell called HeavenlyCloud, which demonstrates the use and implementation of a custom cloud provider. We've created two versions of the shell, **L2HeavenlyCloudShell** for private clouds <a href="https://github.com/QualiSystems/Custom-L2-Cloud-Provider-Shell-Example" target="_blank">(download here)</a> and **L3HeavenlyCloudShell** for public clouds <a href="https://github.com/QualiSystems/Custom-L3-Cloud-Provider-Shell-Example" target="_blank">(download here)</a>. The difference between the two is in the networking connectivity implementation.*
 
