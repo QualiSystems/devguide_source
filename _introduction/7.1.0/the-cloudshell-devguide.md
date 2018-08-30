@@ -35,9 +35,11 @@ connected without having to add additional code. Users can extend or fork these 
 workflows for save/restore, scaling, or more use case specific workflows for anything from performance testing to
 failover simulation or traffic generation.
 
-#### [Integrating CloudShell into the DevOps Cycle]({{site.baseurl}}/devops/{{pageVersion}}/devops-integration.html)
+#### [CloudShell APIs]({{site.baseurl}}/devops/{{pageVersion}}/devops-integration.html)
 
-This area will examine how CloudShell can be used in conjunction with other DevOps tools and as a part of the DevOps pipeline. This includes the available APIs as well as existing Open Source projects for integrating CloudShell with other products.
+This chapter describes the different APIs CloudShell offers, the uses for each as well as useful links and implementation examples.
+
+In addition, this area examines how CloudShell can be used in conjunction with other DevOps tools and within the DevOps pipeline. This includes CloudShell’s APIs as well as existing Open Source projects for integrating CloudShell with other products.
 
 ### Where to go next
 

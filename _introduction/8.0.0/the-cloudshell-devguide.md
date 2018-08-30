@@ -34,9 +34,16 @@ Orchestration scripts are a feature in CloudShell that enables the implementatio
 Configuration management extends CloudShell Apps by allowing the running of scripts, which install applications on virtual machines (VMs) deployed in the sandbox or run post-deployment configuration. This configuration can be executed as part of the sandbox setup, or later on in a live sandbox. Configuration management operations can be performed using custom scripts or Ansible playbooks.
 
 
-#### [Integrating CloudShell into the DevOps Cycle]({{site.baseurl}}/devops/{{pageVersion}}/devops-integration.html)
+#### [Custom Cloud Providers: Implementing support for cloud providers]({{site.baseurl}}/cloudproviders/9.0.0/getting-started-with-cloud-providers.html)
 
-This area examines how CloudShell can be used in conjunction with other DevOps tools and within the DevOps pipeline. This includes CloudShell’s APIs as well as existing Open Source projects for integrating CloudShell with other products.
+CloudShell 9.0 provides support for the Cloud Provider shell, which enables you to integrate CloudShell with the cloud provider of your choice. CloudShell provides out-of-the-box support for cloud providers AWS EC2, Microsoft Azure, VMware vCenter and OpenStack. However, to deploy VMs on other cloud providers, such as Kubernetes or Oracle Cloud, or create a modified version of one of our out-of-the-box cloud providers, you will need to create a shell that allows this to happen. Learn all about it in the 9.0.0 dev guide's [Developing Cloud Providers]({{site.baseurl}}/cloudproviders/9.0.0/getting-started-with-cloud-providers.html) chapter.
+
+
+#### [CloudShell APIs]({{site.baseurl}}/devops/{{pageVersion}}/devops-integration.html)
+
+This chapter describes the different APIs CloudShell offers, the uses for each as well as useful links and implementation examples.
+
+In addition, this area examines how CloudShell can be used in conjunction with other DevOps tools and within the DevOps pipeline. This includes CloudShell’s APIs as well as existing Open Source projects for integrating CloudShell with other products.
 
 ### Where to go next
 
@@ -47,4 +54,4 @@ You can then proceed to any one of the development areas described above:
 * [Extending cloudShell with Shells]({{site.baseurl}}/shells/{{pageVersion}}/getting-started.html)
 * [Orchestration Scripts]({{site.baseurl}}/orchestration/{{pageVersion}}/getting-started.html)
 * [Configuration Management]({{site.baseurl}}/configmanagement/{{pageVersion}}/cf-overview.html)
-* [Integrating CloudShell into the DevOps Cycle]({{site.baseurl}}/devops/{{pageVersion}}/devops-integration.html)
+* [CloudShell APIs]({{site.baseurl}}/devops/{{pageVersion}}/available-apis.html)

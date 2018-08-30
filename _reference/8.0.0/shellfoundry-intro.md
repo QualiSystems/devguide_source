@@ -17,7 +17,7 @@ Shellfoundry is a command-line utility that allows you to easily create, package
 **Note:** Shellfoundry must be installed on an online computer as creating shells from a template requires downloading the templates from the internet.
 
 
-In his article:
+In this article:
 
 * [Usage](#usage)
 * [Version History](#version-history)
@@ -56,6 +56,9 @@ If you already have shellfoundry installed on your computer, run this command to
 |  username          |  CloudShell username. For example: “admin”.                        |
 |  domain            |  CloudShell domain. Note that for 2nd Generation Shells, the domain must be “Global”.  |
 |  defaultview       |  Set the default view. Possible values are: **gen**, **gen2**, **all** and **layer1**. Default is **gen2**.                           |
+|  online_mode       |  Shellfoundry computer's mode (online or offline). Online mode (`True`) is the default. in online mode, shellfoundry templates on GitHub are used, while for offline mode, you will need to copy the shellfoundry templates to your local machine. For offline mode, use `template_location` to define the local templates folder.     |
+|  author          |  The author to be specified on the shell (in the shell's metadata).                                   |
+|  template_location          |   (Required if `online_mode` is set to `False`. File system path to the folder containing the offline shell templates. Alternatively, you can specify the template location using "local:" when running 'shellfoundry new' in command-line.                                  |
 |  password          |  CloudShell password (encrypted).                                   |
 |  host              |  The hostname or IP address of the CloudShell Portal machine.       |
 |  port              |  The port to be used for Quali API. Default is “9000”.              |
@@ -115,7 +118,7 @@ Run this command from the directory that will contain the new Shell:
 
 The path can be a URL to the Shell template's zip package on GitHub or the filesystem path (prefixed by `local:./`) to the extracted zip folder:
 
-![Shell Commands]({{ site.baseurl}}/assets/download_shell_zip.png)
+![Shell Commands]({{site.baseurl}}/assets/download_shell_zip.png)
 
 **Example:**
 {% highlight bash %}shellfoundry new my-service-ext --template local:C:\Temp\shell-pdu-standard-master {% endhighlight %}
@@ -123,9 +126,23 @@ The path can be a URL to the Shell template's zip package on GitHub or the files
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The new shell is added to the path from which you ran the `shellfounfry new` command. 
 
 
+#### Creating a Shell of a specific version
+
+Follow the steps in this section to create an older version of a Shell. 
+
+First, run the `shellfoundry show` command to see the Shell's versions.
+
+**Example:**
+{% highlight bash %}shellfoundry show <template-name> {% endhighlight %}
+
+Then, in the `shellfoundry new` command, specify the version you need. For example, "5.0.2":
+
+{% highlight bash %}shellfoundry new router-shell-502 --template gen2/networking/router --version 5.0.2 {% endhighlight %}
+
+
 #### Listing available Shell templates
 
-This command lists the 1st and 2nd generation Shell templates you can use for your new Shell. For more information, see [Modeling Shells with TOSCA]({{site.baseurl}}/shells/{{pageVersion}}/modeling-the-shell.html).
+This command lists the 1st and 2nd generation Shell templates you can use for your new Shell. Note that in offline mode, the command lists the shell templates residing locally in the folder defined in the shellfoundry config's template_location attribute. For more information, see [Modeling Shells with TOSCA]({{site.baseurl}}/shells/{{pageVersion}}/modeling-the-shell.html).
 
 **Syntax:**
 
@@ -226,6 +243,9 @@ Before extending a local Shell, make sure the Shell's destination folder is diff
 
 ### Version History<a name="version-history"></a>
 
+**1.2.0 (2018-07-26)**
+* Extended the `new` command behaviour for offline mode
+* Added validation to check if the template and standard versions are compatible
 
 **1.1.9 (2018-05-03)**
 * Added offline mode functionality

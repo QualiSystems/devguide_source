@@ -71,4 +71,4 @@ This guide contains three main areas depending on the type of development or int
 * [Extending cloudShell with Shells]({{site.baseurl}}/shells/{{pageVersion}}/getting-started.html)
 * [Orchestration Scripts]({{site.baseurl}}/orchestration/{{pageVersion}}/getting-started.html)
 * [Configuration Management]({{site.baseurl}}/configmanagement/{{pageVersion}}/cf-overview.html)
-* [Integrating CloudShell into the DevOps Cycle]({{site.baseurl}}/devops/{{pageVersion}}/devops-integration.html)
+* [CloudShell APIs]({{site.baseurl}}/devops/{{pageVersion}}/available-apis.html)

@@ -65,18 +65,16 @@ To create the Shell project, we’ll use [Shellfoundry]({{site.baseurl}}/referen
 * Run the following in your local Command Line:
 {% highlight bash %} python -m pip install shellfoundry {% endhighlight %}
 
-For windows users, it is recommended to add the path (to the shellfoundry installation folder) to your local environment variables. For example, _C:\Python27\Scripts_. This will enable us to run the ShellFoundry commands from any folder of the Shell project.
+For windows users, it is recommended to add the path (to the shellfoundry installation folder) to your local environment variables. For example, _C:\Python27\Scripts_. This will enable us to run the Shellfoundry commands from any folder of the Shell project.
 
 **To update Shellfoundry:**
-* If ShellFoundry is already installed, run the following command to update:
+* If Shellfoundry is already installed, run the following command to update:
 {% highlight bash %} python -m pip install shellfoundry --upgrade {% endhighlight %}
 
 For first time configuration of Shellfoundry, run the `shellfoundry config`, as explained [here]({{site.baseurl}}/reference/{{pageVersion}}/shellfoundry-intro.html).
 
 ### Configuring CloudShell Connection Settings
  In order to use Shellfoundry, we’ll need to first configure your CloudShell connection settings in Shellfoundry.
-
-**Note:** 2nd Generation Shells can also be imported into CloudShell Portal.
 
 **To configure CloudShell settings:**
 
@@ -92,7 +90,7 @@ For example, changing the username to “John”:
 
 {% highlight bash %} shellfoundry config username John {% endhighlight %}
 
- Normally, you would need to set the CloudShell admin user/password and the server address.
+ Normally, you would need to set the CloudShell admin user/password and the server address. For details, see [Shellfoundry]({{ site.baseurl }}/reference/{{pageVersion}}/shellfoundry-intro.html).
 
 ### Creating the Shell Project
 
@@ -131,7 +129,7 @@ This command makes sure all of the basic package requirements for the Shell are 
 
 #### Make a minor change to the driver
 
-The source control for the Shell is managed under the _src_ folder. When importing the project template, ShellFoundry already created a driver template under this folder.
+The source control for the Shell is managed under the _src_ folder. When importing the project template, Shellfoundry already created a driver template under this folder.
 To make sure everything is in working order, we’ll implement an example command in the _driver.py_ file.
 We’ll also want to add basic metadata including an alias and description. The way to do that is by editing the _drivermetadata.xml_ file located in the _src_ folder. For example, we can add a new command category under the _Layout_ element.
 
@@ -178,7 +176,7 @@ We’re now ready to install the new Shell.
 
 #### Install the Shell on CloudShell
 
-ShellFoundry provides an easy and convenient way to create the Shell package and install it on your CloudShell server. 
+Shellfoundry provides an easy and convenient way to create the Shell package and install it on your CloudShell server. 
 
 * To package the Shell and install it on your local CloudShell server, run the following command:
 {% highlight bash %} shellfoundry install {% endhighlight %}

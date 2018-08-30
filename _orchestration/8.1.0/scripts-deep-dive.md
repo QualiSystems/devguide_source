@@ -89,6 +89,10 @@ except:
     Sandbox.logger.error('Failed to include resource {0}'.format(resource_name))
 {% endhighlight %}
 
+Orchestration script logs are saved on the execution server's *%programdata%\QualiSystems\logs\<reservationid>* folder in a dedicated sub-folder with the reservation ID as the name. For example:
+
+![Log Structure]({{site.baseurl}}/assets/logging-reservation-id.png){:class="img-responsive"}
+
 #### Debugging scripts
 
 CloudShell includes some helper functions to make it easier to debug a script by running it on real sandbox reservation data. The helper functions allow the script to be “attached” to a CloudShell sandbox, by filling in all of the script’s environment variables so that the same information is available to it as if it were launched by CloudShell.

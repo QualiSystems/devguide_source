@@ -71,7 +71,7 @@ From the _Step-by-step installation guide_ section perform steps 1-6 only. Don't
 
 This guide contains three main areas depending on the type of development or integration you wish to do with CloudShell:
 
-* [Extending cloudShell with Shells]({{site.baseurl}}/shells/{{pageVersion}}/getting-started.html)
+* [Extending CloudShell with Shells]({{site.baseurl}}/shells/{{pageVersion}}/getting-started.html)
 * [Orchestration Scripts]({{site.baseurl}}/orchestration/{{pageVersion}}/getting-started.html)
 * [Configuration Management]({{site.baseurl}}/configmanagement/{{pageVersion}}/cf-overview.html)
-* [Integrating CloudShell into the DevOps Cycle]({{site.baseurl}}/devops/{{pageVersion}}/devops-integration.html)
+* [CloudShell APIs]({{site.baseurl}}/devops/{{pageVersion}}/available-apis.html)

@@ -13,9 +13,81 @@ version:
 
 
 As a part of developing the Shell driver you'll probably need to debug it in order to
-troubleshoot issues or get actual results from the app/device to understand how the code behaves.
-In order to help with this process, CloudShell provides debugging capabilities that you can
-use to attach to the driver process and debug it step by step.
+troubleshoot issues or get actual results from the app/device to understand how the code behaves. 
+
+In this article:
+
+* [Debugging a 2nd Gen Shell](#gen2)
+* [Debugging a 1st Gen Shell](#gen1)<a name="gen2"></a>
+
+### Debugging a 2nd Gen Shell
+
+To debug our shell, we'll use the <a href="https://pypi.org/project/mock/" target="_blank">mock</a> python open source package. 
+
+The mock package allows us to simulate the use of CloudShell and therefore is also useful for debugging early stage shells which are not yet ready to be installed on CloudShell. For example, you have not yet developed critical shell components, like communication with the device and auto-discovery, or you’re still developing the component or command you want to test, but are not sure what information the command will need.
+
+#### Setting up
+
+Create a new 2nd Gen shell project using Shellfoundry by running:
+
+{% highlight bash %}
+shellfoundry new mock-debug-shell --template gen2/resource
+{% endhighlight %}
+
+#### Preparing your environment
+
+When running a shell command from within CloudShell, the CloudShell execution server creates a virtual environment for the shell and downloads the required python dependencies automatically. However, since we will run the debug outside of CloudShell, you will also need to update your project’s runtime with the shell’s dependencies. We recommend creating a new virtual environment for the project, and then downloading the shell’s dependencies into the virtual environment. 
+
+If you're using the PyCharm application, open the shell project folder, click **Settings>Tools>Python Integrated Tools** and in the **Package requirements file** field, specify the shell's *requirements.txt*. For example: ”C:\My Shells\debugging-example\src\requirements.txt”. 
+
+#### Debugging the shell
+
+Using the mock debugger is easy. 
+
+Add the following mock code to the shell, and specify some details, like reservation ID, resource address and name, and any attributes required for resource discovery (for example, User, Password and SNMP Read Community. 
+
+{% highlight python %}
+if __name__ == "__main__":
+    import mock
+    shell_name = "DebuggingExample"
+
+    cancellation_context = mock.create_autospec(CancellationContext)
+    context = mock.create_autospec(ResourceCommandContext)
+    context.resource = mock.MagicMock()
+    context.reservation = mock.MagicMock()
+    context.connectivity = mock.MagicMock()
+    context.reservation.reservation_id = "<RESERVATION_ID>"
+    context.resource.address = "<RESOURCE_ADDRESS>"
+    context.resource.name = "<RESOURCE_NAME>"
+    context.resource.attributes = dict()
+    context.resource.attributes["{}.User".format(shell_name)] = "<USER>"
+    context.resource.attributes["{}.Password".format(shell_name)] = "<PASSWORD>"
+    context.resource.attributes["{}.SNMP Read Community".format(shell_name)] = "<READ_COMMUNITY_STRING>"
+
+    driver = DebuggingExampleDriver()
+    # print driver.run_custom_command(context, custom_command="sh run", cancellation_context=cancellation_context)
+    driver.initialize(context)
+    result = driver.get_inventory(context)
+
+    print "done"
+{% endhighlight %}
+
+Specify the attributes or commands you want to debug (`result =` line) and add your break points. For example:
+
+![Context Object]({{ site.baseurl }}/assets/debugging-mock.png)
+
+And debug the shell. When debugging, the mock code will run instead of the shell’s default initialization commands and will call the commands you want to test. When shell development is finished, you can leave the mock code in the shell as CloudShell will ignore it.
+
+For a step-by-step tutorial, see our instructional video on debugging with the mock package:
+
+<iframe width="854" height="480" src="https://www.youtube.com/embed/LvPGHm2T3nk" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+<a name="gen1"></a>
+
+### Debugging a 1st Gen Shell
+
+In order to help with this process, we will use CloudShell's Pycharm plugin, which provides debugging capabilities that you can use to attach to the driver process and debug it step by step.
+
 
 #### Prerequisites
 
@@ -37,7 +109,7 @@ Then create an instance of the DebuggingExample resource and add it to a sandbox
 These steps are identical to the ones demonstrated in the [Getting Started]({{site.baseurl}}/shells/{{pageVersion}}/getting-started.html) section,
 which you can use a reference.
 
-#### Setting up
+#### Preparing your environment
 
 As part of the generated shell project, a _deployment.xml_ file has been automatically created.
 The _deployment.xml_ file contains the mappings required for the PyCharm plugin to know where the source code is,

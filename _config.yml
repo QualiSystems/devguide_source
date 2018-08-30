@@ -26,6 +26,7 @@ versions:
     - 8.1.0
     - 8.2.0
     - 8.3.0
+    - 9.0.0
 
 
 latest_version: 8.3.0
@@ -53,15 +54,20 @@ collections:
         title: "Configuration Management"
         display-order: 3
 
+    cloudproviders:
+        output: true
+        title: "Extending CloudShell with Cloud Providers"
+        display-order: 4
+
     devops:
         output: true
-        title: "Integrating CloudShell into the DevOps Cycle"
-        display-order: 4
+        title: "CloudShell APIs"
+        display-order: 5
         
     reference:
         output: true
         title: "Reference"
-        display-order: 5
+        display-order: 6
 
 # URL to source code, used in _includes/footer.html
 codeurl: 'https://github.com/qualisystems'
