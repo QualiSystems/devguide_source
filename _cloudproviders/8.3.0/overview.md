@@ -13,4 +13,4 @@ In CloudShell 9.0, we added the capability to integrate with any private or publ
 
 A cloud provider shell may include more than one deployment type, allowing a variety of options to base the virtual instance on (for example, selecting the image from the marketplace or loading a custom one).
 
-For details, see <a href="https://devguide.quali.com/cloudproviders/9.0.0/getting-started-with-cloud-providers.html">CloudShell Dev Guide version 9.0.0</a>.
+For details, see <a href="{{site.baseurl}}/cloudproviders/9.0.0/getting-started-with-cloud-providers.html">CloudShell Dev Guide version 9.0.0</a>.

@@ -20,7 +20,7 @@ The articles are:
 * [L2 Network Connectivity]({{site.baseurl}}/cloudproviders/{{pageVersion}}/L2-networking-management.html)
 * [L3 Network Connectivity]({{site.baseurl}}/cloudproviders/{{pageVersion}}/L3-networking-management.html)
 
-*For illustration purposes, we will use a mock shell called HeavenlyCloud, which demonstrates the use and implementation of a custom cloud provider. We've created two versions of the shell, **L2HeavenlyCloudShell** for private clouds <a href="https://github.com/QualiSystems/Custom-L2-Cloud-Provider-Shell-Example" target="_blank">(download here)</a> and **L3HeavenlyCloudShell** for public clouds <a href="https://github.com/QualiSystems/Custom-L3-Cloud-Provider-Shell-Example" target="_blank">(download here)</a>. The difference between the two is in the networking connectivity implementation.*
+*For illustration purposes, we will use a mock shell called HeavenlyCloud, which demonstrates the use and implementation of a custom cloud provider. We've created two versions of the shell, **L2HeavenlyCloudShell** for L2 clouds <a href="https://github.com/QualiSystems/Custom-L2-Cloud-Provider-Shell-Example" target="_blank">(download here)</a> and **L3HeavenlyCloudShell** for L3 clouds <a href="https://github.com/QualiSystems/Custom-L3-Cloud-Provider-Shell-Example" target="_blank">(download here)</a>. The difference between the two is in the networking connectivity implementation.*
 
 To see how the HeavenlyCloud cloud provider works, let’s create a resource using the HeavenlyCloud shell in CloudShell Portal. First, download the appropriate mock shell .zip file from GitHub and extract it to your computer.
 

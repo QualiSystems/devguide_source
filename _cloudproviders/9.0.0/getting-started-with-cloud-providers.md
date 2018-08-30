@@ -14,7 +14,7 @@ In this chapter, we'll learn how to create a Cloud Provider shell. The goal is t
 
 ### What is a Cloud Provider shell?
 
-The Cloud Provider shell standard is a project used to define a new cloud provider in CloudShell. The Cloud Provider shell is used to extend the system, allowing deployment of applications to an additional private or public cloud. The Cloud Provider Standard may also be used to implement deployment of applications as part of deployment containers.
+The Cloud Provider shell standard is a project used to define a new cloud provider in CloudShell. The Cloud Provider shell is used to extend the system, allowing deployment of applications to an additional L2 or L3 cloud. The Cloud Provider Standard may also be used to implement deployment of applications as part of deployment containers.
 
 A Cloud Provider shell may include more than one deployment type, allowing a variety of options to base the virtual instance on (for example, selecting the image from the marketplace or loading a custom one).
 

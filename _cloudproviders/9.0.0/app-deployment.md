@@ -7,6 +7,9 @@ version:
     - 9.0.0
 ---
 
+{% assign pageUrlSplited = page.url | split: "/" %}
+{% assign pageVersion = pageUrlSplited[2] %}
+
 In this article, we'll learn how to implement the App's deployment.
 
 To deploy an App successfully, you need to implement the following 4 methods:
@@ -16,7 +19,7 @@ To deploy an App successfully, you need to implement the following 4 methods:
 3. [remote_refresh_ip](#RemoteRefreshIp) updates the deployed App's IP address. 
 4. [GetVmDetails](#GetVmDetails) gets information about the VM itself, its operating system, specifications and networking information.
 
-These methods are executed in the above order during the deployment of an App in the sandbox (either automatically as part of the default sandbox setup script that runs when reserving a sandbox or manually by the user after adding an App to an active sandbox). Once the App is deployed, these methods can be run as individual commands from the deployed App's commands pane.<a name="Deploy"></a>.
+These methods are executed in the above order during the deployment of an App in the sandbox (either automatically as part of the default sandbox setup script that runs when reserving a sandbox or manually by the user after adding an App to an active sandbox). Once the App is deployed, these methods can be run as individual commands from the deployed App's commands pane, with the exception of the *Deploy* command which is no longer needed once the App is deployed.<a name="Deploy"></a>.
 
 ## Deploy method
 
@@ -79,7 +82,7 @@ if cancellation_context.is_cancelled:
                            errorMessage='Operation canceled')
 {% endhighlight %}
 
-Output
+### Output
 
 *DriverResponse* object that contains a list of action results.
 
@@ -105,7 +108,7 @@ The deploy method should perform the following steps:
 8. <a href="https://github.com/QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/a9a14e87570fdc52d9994950e161b104c62401fb/src/heavenly_cloud_service_wrapper.py#L92-L99" target="_blank">Return *DeployAppResult*</a>.
 9. <a href="https://github.com/QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/a9a14e87570fdc52d9994950e161b104c62401fb/src/driver.py#L112" target="_blank">Return *DriverResponse*</a>.
 
-Note that the links in the above workflow pertain to a driver of an L3 implementation. However, the only difference between L2 and L3 driver implementations is that L2 implements *ApplyConnectivityChanges* while L3 uses *PrepareSandboxInfra* and the *CleanSandboxInfra* methods.
+Note that the links in the above workflow pertain to a driver of an L2 implementation. However, the only difference between L2 and L3 driver implementations is that L2 implements *ApplyConnectivityChanges* while L3 uses *PrepareSandboxInfra* and the *CleanSandboxInfra* methods.
 
 ### DeployAppResult JSON example
 
@@ -160,7 +163,7 @@ Note that the links in the above workflow pertain to a driver of an L3 implement
 
 ## PowerOn method
 
-The *PowerOn* method spins up the VM. It is run autoamtically when reserving the sandbox, as part of CloudShell's default sandbox setup script, and can also be run manually by the sandbox end-user from the deployed App's commands pane. When *PowerOn* completes successfully, the VM's IP address and a green live status icon are displayed on the App in sandbox. 
+The *PowerOn* method spins up the VM. It is run automatically when reserving the sandbox, as part of CloudShell's default sandbox setup script, and can also be run manually by the sandbox end-user from the deployed App's commands pane. During *PowerOn*, the VM's IP address and a green live status icon are displayed on the App in sandbox. 
 
 You don't have to implement this method if the *deploy* method has been configured to spin up the VM.
 If *PowerOn* does not fail, CloudShell will set resource state to "online" once the VM is up.
@@ -192,6 +195,13 @@ The *PowerOn* method should perform the following steps:
 2. Convert the *deployed_app_json* context from string to object.
 3. Power off the deployed App resource.
 
+### PowerOn implemantation example
+
+{% github_sample_ref /QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/a9a14e87570fdc52d9994950e161b104c62401fb/src/driver.py %}
+{% highlight python %}
+{% github_sample /QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/a9a14e87570fdc52d9994950e161b104c62401fb/src/driver.py 114 128 %}
+{% endhighlight %}
+
 ### Return values
 
 None
@@ -206,9 +216,9 @@ In case of an error, the command should raise an exception.
 
 The *remote_refresh_ip* method retrieves the VM's updated IP address from the cloud provider and sets it on the deployed App resource. The IP of the main network interface also needs to be retrieved from the cloud provider. Both private and public IPs are retrieved, as appropriate.
 
-*remote_refresh_ip* is called during the sandbox's setup, after the VM is created and connected to networks. It is also called when the user manually triggers the App's **Refresh Ip** command in the sandbox.
+*remote_refresh_ip* is run automatically during the sandbox's setup, after the VM is created and connected to networks, and can also be run manually by the sandbox end-user by running the **Refresh IP** command in the sandbox.
 
-**Note:** You can choose not to implement this method, depending on your needs. You should implement this method if the VM address will not be allocated during the **deploy** method or you plan on changing the address via another command.
+**Note:** This method is mandatory. However, you can choose to disable the call to this method during setup using the **Wait for IP** attribute. For details, see [Controlling App Deployment Orchestration]({{site.baseurl}}/cloudproviders/{{pageVersion}}/controlling-app-deployment-orchestration.html).
 
 ### Signature
 
@@ -245,7 +255,7 @@ Legacy argument. Obsolete for custom cloud providers.
 
 None.
 
-Unlike other methods that update data using the result, *remote_refresh_ip* updates the deployed App resource by calling *cloudshell-core-api*.
+Unlike other methods that update data using the result, *remote_refresh_ip* updates the deployed App resource by calling *cloudshell-automation-api*.
 
 ### Error handling
 
@@ -257,19 +267,19 @@ This method should perform the following steps:
 
 1. <a href="https://github.com/QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/a8a2f48952e4daaf563e75a32692d280f750a414/src/driver.py#L200" target="_blank">Retrieve the Cloud Provider resource's connection credentials</a>.
 2. <a href="https://github.com/QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/a8a2f48952e4daaf563e75a32692d280f750a414/src/driver.py#L201" target="_blank">Convert the *deployed_app_json* context from string to object</a>.
-3. <a href="https://github.com/QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/a8a2f48952e4daaf563e75a32692d280f750a414/src/driver.py#L202-L212" target="_blank">Retrieve previously known private/public IPS (if there are any), VM instawnce id</a>.
-* <a href="https://github.com/QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/7b97c9d21c1de3946f1ed6b6d715127684638e59/src/heavenly_cloud_service_wrapper.py#L292-L293" target="_blank">Allocate a new private IP to the VM instance</a>.
-* If the operation succeeds, <a href="https://github.com/QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/7b97c9d21c1de3946f1ed6b6d715127684638e59/src/heavenly_cloud_service_wrapper.py#L295-L296" target="_blank">update the deployed App resource's private ip in CloudShell via API</a>.
+3. <a href="https://github.com/QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/a8a2f48952e4daaf563e75a32692d280f750a414/src/driver.py#L202-L212" target="_blank">Retrieve previously known private/public IPs (if there are any), VM instawnce id</a>.
+* <a href="https://github.com/QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/7b97c9d21c1de3946f1ed6b6d715127684638e59/src/heavenly_cloud_service_wrapper.py#L292-L293" target="_blank">Verify that the deployed App's private IP is the same as the ip in the cloud provider</a>. If it's different, update the deployed App ip with the IP on the cloud provider.
+* If the IPs are different, <a href="https://github.com/QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/7b97c9d21c1de3946f1ed6b6d715127684638e59/src/heavenly_cloud_service_wrapper.py#L295-L296" target="_blank">update the deployed App IP with the IP on the cloud provider via API</a>.
 * If the operation fails, display an error to the sandbox end-user.
-6. <a href="https://github.com/QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/7b97c9d21c1de3946f1ed6b6d715127684638e59/src/heavenly_cloud_service_wrapper.py#L298-L300" target="_blank">Allocate a new public IP to the VM instance</a>.
-* If the operation succeeds, <a href="https://github.com/QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/7b97c9d21c1de3946f1ed6b6d715127684638e59/src/heavenly_cloud_service_wrapper.py#L301" target="_blank">update the deployed App resource's public ip in CloudShell via API</a>.
-* If the operation fails, throw error.
+6. <a href="https://github.com/QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/7b97c9d21c1de3946f1ed6b6d715127684638e59/src/heavenly_cloud_service_wrapper.py#L298-L300" target="_blank">If needed, verify that the deployed App's public IP is the same as the ip in the cloud provider</a>.
+* If the IPs are different, <a href="https://github.com/QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/7b97c9d21c1de3946f1ed6b6d715127684638e59/src/heavenly_cloud_service_wrapper.py#L301" target="_blank">update the deployed App ip with the ip on the cloud provider via API</a>.
+* If the operation fails, display an error to the sandbox end-user.
 
 <a name="GetVmDetails"></a>
 
 ## GetVmDetails method
 
-The *GetVmDetails* method gets information about the App's VM, operating system, specifications and networking information. It is called by the default setup script when reserving the sandbox, after the *RefreshIp* method is called, and can also be run manually by the sandbox end-user on deployed Apps from the App's command pane.
+The *GetVmDetails* method gets information about the App's VM, operating system, specifications and networking information. It is called by the default setup script when reserving the sandbox, after the *RefreshIp* method is called, and can also be run manually by the sandbox end-user on deployed Apps from the App's **VM Details** pane.
 
 **Note:** The implementation is expected to query the cloud provider for the details, but not return any cached or stored data.
 

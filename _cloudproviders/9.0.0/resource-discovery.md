@@ -7,7 +7,7 @@ version:
     - 9.0.0
 ---
 
-The *get_inventory* command “discovers” the resource in CloudShell, or in other words, validates the values of the cloud provider attributes that were entered by the user. It is performed when creating the resource in CloudShell, and can be manually run later on, for example, if you change some of the resource’s attribute values.
+The *get_inventory* command “discovers” the resource in CloudShell, or in other words, validates the values of the cloud provider attributes that were entered by the user. It is executed when creating the resource in CloudShell, and can be manually run later on, for example, if you change some of the resource’s attribute values.
 
 For example, in a vCenter cloud provider, *get_inventory* would check the value provided in the **Default DataCenter** attribute
 to validate that such a datacenter exists in the vCenter Server.

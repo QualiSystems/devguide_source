@@ -11,7 +11,7 @@ In this article, we'll learn how to implement the PowerOff and DeleteInstance co
 
 ## PowerOff method
 
-The *PowerOff* method shuts down (or powers off) the VM instance. It is run automatically when reserving the sandbox, as part of CloudShell's default sandbox setup script, and can also be run manually by the sandbox end-user from the deployed App's commands pane. When *PowerOff* completes, the green 'online' live status icon is replaced with a grey one on the App resource, indicating it is offline.
+The *PowerOff* method shuts down (or powers off) the VM instance. It is run automatically as part of the sandbox's teardown, and can also be run manually by the sandbox end-user from the deployed App's commands pane. When *PowerOff* completes, the green 'online' live status icon is replaced with a grey one on the App resource, indicating it is offline.
 
 **Note:** CloudShell sets the resource state to 'offline' if *PowerOff* completed successfully.
 
@@ -57,7 +57,7 @@ None
 
 ## DeleteInstance method
 
-The *DeleteInstance* method powers off the VM, deletes the VM from the cloud provider and removes the App from the sandbox. It is run automatically when reserving the sandbox, as part of CloudShell's default sandbox setup script, and can also be run manually by the sandbox end-user from the deployed App's commands pane. 
+The *DeleteInstance* method powers off the VM, deletes the VM from the cloud provider and removes the App from the sandbox. It is run when removing the deployed App from the sandbox or during the sandbox's teardown. 
 
 ### Signature
 
