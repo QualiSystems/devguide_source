@@ -39,7 +39,7 @@ Configuration management extends CloudShell Apps by allowing the running of scri
 CloudShell 9.0 provides support for the Cloud Provider shell, which enables you to integrate CloudShell with the cloud provider of your choice. CloudShell provides out-of-the-box support for cloud providers AWS EC2, Microsoft Azure, VMware vCenter and OpenStack. However, to deploy VMs on other cloud providers, such as Kubernetes or Oracle Cloud, or create a modified version of one of our out-of-the-box cloud providers, you will need to create a shell that allows this to happen.
 
 
-#### [CloudShell APIs]({{site.baseurl}}/devops/{{pageVersion}}/devops-integration.html)
+#### [CloudShell APIs]({{site.baseurl}}/devops/{{pageVersion}}/available-apis.html)
 
 This chapter describes the different APIs CloudShell offers, the uses for each as well as useful links and implementation examples.
 
