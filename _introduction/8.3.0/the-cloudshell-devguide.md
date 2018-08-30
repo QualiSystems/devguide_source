@@ -51,5 +51,4 @@ You can then proceed to any one of the development areas described above:
 * [Extending CloudShell with Shells]({{site.baseurl}}/shells/{{pageVersion}}/getting-started.html)
 * [Orchestration Scripts]({{site.baseurl}}/orchestration/{{pageVersion}}/getting-started.html)
 * [Configuration Management]({{site.baseurl}}/configmanagement/{{pageVersion}}/cf-overview.html)
-* [Extending CloudShell with Cloud Providers]({{site.baseurl}}/cloudproviders/{{pageVersion}}/getting-started-with-cloud-providers.html)
 * [CloudShell APIs]({{site.baseurl}}/devops/{{pageVersion}}/available-apis.html)
