@@ -60,7 +60,7 @@ def PrepareSandboxInfra(self, context, request, cancellation_context)
 
 ### Inputs
 
-**Context:** *context* is a *ResourceCommandContext* object that contains:
+**context:** *context* is a *ResourceCommandContext* object that contains:
 
 1. connectivity - CloudShell server connectivity data for authentication with CloudShell Automation API 
 2. resource - resource configuration settings entered when creating the Cloud Provider resource in the **Inventory** dashboard
@@ -86,19 +86,19 @@ JSON string that contains the requested actions.
 
 ### PrepareSandboxInfra method implementation
 
-&nbsp;1.	<a href="https://github.com/QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/a9a14e87570fdc52d9994950e161b104c62401fb/src/driver.py#L91" target="_blank">Retrieve cloud provider resource connection credentials</a>
+&nbsp;1.	<a href="https://github.com/QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/a9a14e87570fdc52d9994950e161b104c62401fb/src/driver.py#L91" target="_blank">Retrieve the cloud provider resource connection credentials</a>.
 
-&nbsp;2.	<a href="https://github.com/QualiSystems/Custom-L3-Cloud-Provider-Shell-Example/blob/6f62a52ca2a66b8f37bf4d2364c92ec8dc89c383/src/driver.py#L248-L258" target="_blank">Retrieve requested actions (1 PrepareCloudInfra, 1 CreateKeys, >=1 PrepareSubnet)</a>
+&nbsp;2.	<a href="https://github.com/QualiSystems/Custom-L3-Cloud-Provider-Shell-Example/blob/6f62a52ca2a66b8f37bf4d2364c92ec8dc89c383/src/driver.py#L248-L258" target="_blank">Retrieve requested actions (1 PrepareCloudInfra, 1 CreateKeys, >=1 PrepareSubnet)</a>.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a.	<a href="https://github.com/QualiSystems/Custom-L3-Cloud-Provider-Shell-Example/blob/6f62a52ca2a66b8f37bf4d2364c92ec8dc89c383/src/heavenly_cloud_service_wrapper.py#L429-L443" target="_blank">Handle PrepareCloudInfra</a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a.	<a href="https://github.com/QualiSystems/Custom-L3-Cloud-Provider-Shell-Example/blob/6f62a52ca2a66b8f37bf4d2364c92ec8dc89c383/src/heavenly_cloud_service_wrapper.py#L429-L443" target="_blank">Handle *PrepareCloudInfra*</a>.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b.	<a href="https://github.com/QualiSystems/Custom-L3-Cloud-Provider-Shell-Example/blob/6f62a52ca2a66b8f37bf4d2364c92ec8dc89c383/src/heavenly_cloud_service_wrapper.py#L447-L456" target="_blank">Optional – Handle CreateKeys</a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b.	<a href="https://github.com/QualiSystems/Custom-L3-Cloud-Provider-Shell-Example/blob/6f62a52ca2a66b8f37bf4d2364c92ec8dc89c383/src/heavenly_cloud_service_wrapper.py#L447-L456" target="_blank">Optionally, handle *CreateKeys*</a>.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c.	<a href="https://github.com/QualiSystems/Custom-L3-Cloud-Provider-Shell-Example/blob/6f62a52ca2a66b8f37bf4d2364c92ec8dc89c383/src/heavenly_cloud_service_wrapper.py#L460-L471" target="_blank">Handle PrepareSubnet action(s)</a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c.	<a href="https://github.com/QualiSystems/Custom-L3-Cloud-Provider-Shell-Example/blob/6f62a52ca2a66b8f37bf4d2364c92ec8dc89c383/src/heavenly_cloud_service_wrapper.py#L460-L471" target="_blank">Handle the *PrepareSubnet* action(s)</a>.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;d.	<a href="https://github.com/QualiSystems/Custom-L3-Cloud-Provider-Shell-Example/blob/6f62a52ca2a66b8f37bf4d2364c92ec8dc89c383/src/heavenly_cloud_service_wrapper.py#L475" target="_blank">Return actions results</a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;d.	<a href="https://github.com/QualiSystems/Custom-L3-Cloud-Provider-Shell-Example/blob/6f62a52ca2a66b8f37bf4d2364c92ec8dc89c383/src/heavenly_cloud_service_wrapper.py#L475" target="_blank">Return the action results</a>.
 
-&nbsp;3.	<a href="https://github.com/QualiSystems/Custom-L3-Cloud-Provider-Shell-Example/blob/6f62a52ca2a66b8f37bf4d2364c92ec8dc89c383/src/driver.py#L260-L269" target="_blank">Return driver response</a>
+&nbsp;3.	<a href="https://github.com/QualiSystems/Custom-L3-Cloud-Provider-Shell-Example/blob/6f62a52ca2a66b8f37bf4d2364c92ec8dc89c383/src/driver.py#L260-L269" target="_blank">Return the driver's response</a>.
 
 ## Deploy method with L3 connectivity
 
@@ -112,29 +112,29 @@ The *connectToSubnet* action contains a special property called **vnicName**. Wh
 
 In L3, the *Deploy* method should perform the following steps:
 
-&nbsp;1. <a href="https://github.com/QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/a9a14e87570fdc52d9994950e161b104c62401fb/src/driver.py#L91" target="_blank">Retrieve the cloud provider resource connection credentials</a>
+&nbsp;1. <a href="https://github.com/QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/a9a14e87570fdc52d9994950e161b104c62401fb/src/driver.py#L91" target="_blank">Retrieve the cloud provider resource connection credentials</a>.
 
-&nbsp;2. <a href="https://github.com/QualiSystems/Custom-L3-Cloud-Provider-Shell-Example/blob/f26b3b5d92da04ecfac1238aa8334ba86a89a301/src/driver.py#L92-L95" target="_blank">Retrieve the *Deploy* action</a>
+&nbsp;2. <a href="https://github.com/QualiSystems/Custom-L3-Cloud-Provider-Shell-Example/blob/f26b3b5d92da04ecfac1238aa8334ba86a89a301/src/driver.py#L92-L95" target="_blank">Retrieve the *Deploy* action</a>.
 
-&nbsp;3. <a href="https://github.com/QualiSystems/Custom-L3-Cloud-Provider-Shell-Example/blob/f26b3b5d92da04ecfac1238aa8334ba86a89a301/src/driver.py#L97-L98" target="_blank">Retrieve *CononectToSubnetActions*</a>
+&nbsp;3. <a href="https://github.com/QualiSystems/Custom-L3-Cloud-Provider-Shell-Example/blob/f26b3b5d92da04ecfac1238aa8334ba86a89a301/src/driver.py#L97-L98" target="_blank">Retrieve *CononectToSubnetActions*</a>.
 
-&nbsp;4. <a href="https://github.com/QualiSystems/Custom-L3-Cloud-Provider-Shell-Example/blob/f26b3b5d92da04ecfac1238aa8334ba86a89a301/src/driver.py#L100-L117" target="_blank">Call the *Deploy* logic of the selected deployment type</a>
+&nbsp;4. <a href="https://github.com/QualiSystems/Custom-L3-Cloud-Provider-Shell-Example/blob/f26b3b5d92da04ecfac1238aa8334ba86a89a301/src/driver.py#L100-L117" target="_blank">Call the *Deploy* logic of the selected deployment type</a>.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a. <a href="https://github.com/QualiSystems/Custom-L3-Cloud-Provider-Shell-Example/blob/6f62a52ca2a66b8f37bf4d2364c92ec8dc89c383/src/heavenly_cloud_service_wrapper.py#L118" target="_blank">(Steps 4-a to -4-e are performed by the *Deploy* logic) Generate a unique App name</a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a. <a href="https://github.com/QualiSystems/Custom-L3-Cloud-Provider-Shell-Example/blob/6f62a52ca2a66b8f37bf4d2364c92ec8dc89c383/src/heavenly_cloud_service_wrapper.py#L118" target="_blank">(Steps 4-a to -4-e are performed by the *Deploy* logic) Generate a unique App name</a>.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b. <a href="https://github.com/QualiSystems/Custom-L3-Cloud-Provider-Shell-Example/blob/f26b3b5d92da04ecfac1238aa8334ba86a89a301/src/sdk/heavenly_cloud_service.py#L105-L123" target="_blank">Create the network configuration plan to use when calling the cloud provider SDK VM instance deploy</a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b. <a href="https://github.com/QualiSystems/Custom-L3-Cloud-Provider-Shell-Example/blob/f26b3b5d92da04ecfac1238aa8334ba86a89a301/src/sdk/heavenly_cloud_service.py#L105-L123" target="_blank">Create the network configuration plan to use when calling the cloud provider SDK VM instance deploy</a>.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c. <a href="https://github.com/QualiSystems/Custom-L3-Cloud-Provider-Shell-Example/blob/47e55422d3ef155fc6d126ee75be5d85be909496/src/heavenly_cloud_service_wrapper.py#L136-L142" target="_blank">Create VM instance using deployment path attributes and network plan</a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c. <a href="https://github.com/QualiSystems/Custom-L3-Cloud-Provider-Shell-Example/blob/47e55422d3ef155fc6d126ee75be5d85be909496/src/heavenly_cloud_service_wrapper.py#L136-L142" target="_blank">Create the VM instance using the deployment path attributes and network plan</a>.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;d. If *Deploy* succeeds, do the following:
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i.	<a href="https://github.com/QualiSystems/Custom-L3-Cloud-Provider-Shell-Example/blob/47e55422d3ef155fc6d126ee75be5d85be909496/src/heavenly_cloud_service_wrapper.py#L146-L147" target="_blank">Collect VM details (operating system, specifications, networking information)</a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i.	<a href="https://github.com/QualiSystems/Custom-L3-Cloud-Provider-Shell-Example/blob/47e55422d3ef155fc6d126ee75be5d85be909496/src/heavenly_cloud_service_wrapper.py#L146-L147" target="_blank">Collect the VM's details (operating system, specifications, networking information)</a>.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ii.	<a href="https://github.com/QualiSystems/Custom-L3-Cloud-Provider-Shell-Example/blob/47e55422d3ef155fc6d126ee75be5d85be909496/src/heavenly_cloud_service_wrapper.py#L165-L169" target="_blank">Create *ConnectToSubnet* results</a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ii.	<a href="https://github.com/QualiSystems/Custom-L3-Cloud-Provider-Shell-Example/blob/47e55422d3ef155fc6d126ee75be5d85be909496/src/heavenly_cloud_service_wrapper.py#L165-L169" target="_blank">Create *ConnectToSubnet* results</a>.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e. <a href="https://github.com/QualiSystems/Custom-L3-Cloud-Provider-Shell-Example/blob/47e55422d3ef155fc6d126ee75be5d85be909496/src/heavenly_cloud_service_wrapper.py#L173" target="_blank">Return results</a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e. <a href="https://github.com/QualiSystems/Custom-L3-Cloud-Provider-Shell-Example/blob/47e55422d3ef155fc6d126ee75be5d85be909496/src/heavenly_cloud_service_wrapper.py#L173" target="_blank">Return results</a>.
 
-&nbsp;5. <a href="https://github.com/QualiSystems/Custom-L3-Cloud-Provider-Shell-Example/blob/47e55422d3ef155fc6d126ee75be5d85be909496/src/driver.py#L122" target="_blank">Return driver response</a>       
+&nbsp;5. <a href="https://github.com/QualiSystems/Custom-L3-Cloud-Provider-Shell-Example/blob/47e55422d3ef155fc6d126ee75be5d85be909496/src/driver.py#L122" target="_blank">Return the driver's response</a>.    
 
 ## CleanupSandboxInfra
 
@@ -156,7 +156,7 @@ def CleanupSandboxInfra(self, context, request):
 
 ### Inputs
 
-**Context:** *context* is a *ResourceCommandContext* object that contains:
+**context:** *context* is a *ResourceCommandContext* object that contains:
 
 1. connectivity - CloudShell server connectivity data for authentication with CloudShell Automation API 
 2. resource - resource configuration settings entered when creating the Cloud Provider resource in the **Inventory** dashboard
@@ -169,10 +169,10 @@ JSON string contains single *CleanupSandboxInfra* action.
 
 ### CleanupSandboxInfra method implementation
 
-&nbsp;1. <a href="https://github.com/QualiSystems/Custom-L3-Cloud-Provider-Shell-Example/blob/4666a14a0634e82a01692a60a3da1314cd4d863c/src/driver.py#L284" target="_blank">Retrieve cloud provider resource connection credentials</a>
+&nbsp;1. <a href="https://github.com/QualiSystems/Custom-L3-Cloud-Provider-Shell-Example/blob/4666a14a0634e82a01692a60a3da1314cd4d863c/src/driver.py#L284" target="_blank">Retrieve the cloud provider resource connection credentials</a>.
 
-&nbsp;2. <a href="https://github.com/QualiSystems/Custom-L3-Cloud-Provider-Shell-Example/blob/4666a14a0634e82a01692a60a3da1314cd4d863c/src/driver.py#L286-L290" target="_blank">Retrieve  CleanupSandboxInfra action</a>
+&nbsp;2. <a href="https://github.com/QualiSystems/Custom-L3-Cloud-Provider-Shell-Example/blob/4666a14a0634e82a01692a60a3da1314cd4d863c/src/driver.py#L286-L290" target="_blank">Retrieve the *CleanupSandboxInfra* action</a>.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* <a href="https://github.com/QualiSystems/Custom-L3-Cloud-Provider-Shell-Example/blob/4666a14a0634e82a01692a60a3da1314cd4d863c/src/heavenly_cloud_service_wrapper.py#L477-L479" target="_blank">Clean created sandbox infrastructure resources created and return success result</a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* <a href="https://github.com/QualiSystems/Custom-L3-Cloud-Provider-Shell-Example/blob/4666a14a0634e82a01692a60a3da1314cd4d863c/src/heavenly_cloud_service_wrapper.py#L477-L479" target="_blank">Clean the sandbx-created infrastructure resources and return a success result</a>.
 
-&nbsp;3. <a href="https://github.com/QualiSystems/Custom-L3-Cloud-Provider-Shell-Example/blob/4666a14a0634e82a01692a60a3da1314cd4d863c/src/driver.py#L296" target="_blank">Return result</a>
+&nbsp;3. <a href="https://github.com/QualiSystems/Custom-L3-Cloud-Provider-Shell-Example/blob/4666a14a0634e82a01692a60a3da1314cd4d863c/src/driver.py#L296" target="_blank">Return result</a>.

@@ -22,7 +22,7 @@ def get_inventory(self, context)
 
 ### Inputs
 
-**Context**: *context* is an *AutoLoadCommandContext* object that contains:
+**context**: *context* is an *AutoLoadCommandContext* object that contains:
 
 * connectivity - CloudShell server connectivity data for authentication with CloudShell Automation API 
 * resource - resource configuration settings entered by the user when creating the new resource in the **Inventory** dashboard

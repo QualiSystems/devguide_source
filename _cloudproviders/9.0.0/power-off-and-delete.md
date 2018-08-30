@@ -23,7 +23,7 @@ def PowerOff(self, context, ports)
 
 ### Inputs
 
-**Context**: *context* is a *ResourceRemoteCommandContext* object that contains:
+**context**: *context* is a *ResourceRemoteCommandContext* object that contains:
 
 1. connectivity - CloudShell server connectivity data for authentication with CloudShell Automation API 
 2. resource - resource configuration settings entered by the user when creating the Cloud Provider resource in the **Inventory** dashboard
@@ -65,7 +65,7 @@ def DeleteInstance(self, context, ports)
 
 ### Inputs
 
-**Context**: *context* is a *ResourceRemoteCommandContext* object that contains:
+**context**: *context* is a *ResourceRemoteCommandContext* object that contains:
 
 1. connectivity - CloudShell server connectivity data for authentication with CloudShell Automation API 
 2. resource - resource configuration settings entered by the user when creating the Cloud Provider resource in the **Inventory** dashboard
@@ -86,6 +86,6 @@ Legacy argument. Obsolete for custom cloud providers.
 The *DeleteInstance* method should perform the following steps:
 
 1. Retrieve the cloud provider resource's connection credentials.
-2. Convert context deployed_app_json  string to object.
+2. Convert the *deployed_app_json* context string to object.
 3. Delete the VM instance from the cloud provider.
 

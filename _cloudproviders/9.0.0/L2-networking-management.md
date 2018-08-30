@@ -34,7 +34,7 @@ def ApplyConnectivityChanges(self, context, request):
 
 ### Inputs
 
-**Context**: *context* is a *ResourceCommandContext* object that contains:
+**context**: *context* is a *ResourceCommandContext* object that contains:
 
 1. connectivity - CloudShell server connectivity data for authentication with CloudShell Automation API 
 2. resource - resource configuration settings entered when creating the Cloud Provider resource in the **Inventory** dashboard
@@ -66,27 +66,27 @@ You only need to indicate if the action is successful or not.
 
 The *ApplyConnectivityChanges* method should perform the following steps:
 
-&nbsp;1. <a href="https://github.com/QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/625d52ae7740cf3d77e529f6b0b0f8d05df472b2/src/driver.py#L229" target="_blank">Retrieve cloud provider resource connection credentials</a>
+&nbsp;1. <a href="https://github.com/QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/625d52ae7740cf3d77e529f6b0b0f8d05df472b2/src/driver.py#L229" target="_blank">Retrieve cloud provider resource connection credentials</a>.
 
-&nbsp;2. <a href="https://github.com/QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/625d52ae7740cf3d77e529f6b0b0f8d05df472b2/src/driver.py#L230" target="_blank">Retrieve actions from request</a>
+&nbsp;2. <a href="https://github.com/QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/625d52ae7740cf3d77e529f6b0b0f8d05df472b2/src/driver.py#L230" target="_blank">Retrieve actions from request</a>.
 
-&nbsp;3. <a href="https://github.com/QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/625d52ae7740cf3d77e529f6b0b0f8d05df472b2/src/driver.py#L232-L234" target="_blank">Handle Remove Vlan actions</a>
+&nbsp;3. <a href="https://github.com/QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/625d52ae7740cf3d77e529f6b0b0f8d05df472b2/src/driver.py#L232-L234" target="_blank">Handle Remove Vlan actions</a>.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a. <a href="https://github.com/QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/7bd55725d8e8dbd741270f5d082f05062c1d1fab/src/heavenly_cloud_service_wrapper.py#L371" target="_blank">Retrieve requested interface to disconnect</a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a. <a href="https://github.com/QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/7bd55725d8e8dbd741270f5d082f05062c1d1fab/src/heavenly_cloud_service_wrapper.py#L371" target="_blank">Retrieve requested interface to disconnect</a>.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b. <a href="https://github.com/QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/7bd55725d8e8dbd741270f5d082f05062c1d1fab/src/heavenly_cloud_service_wrapper.py#L372" target="_blank">Retrieve requested VM id to disconnect</a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b. <a href="https://github.com/QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/7bd55725d8e8dbd741270f5d082f05062c1d1fab/src/heavenly_cloud_service_wrapper.py#L372" target="_blank">Retrieve requested VM id to disconnect</a>.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c. <a href="https://github.com/QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/7bd55725d8e8dbd741270f5d082f05062c1d1fab/src/heavenly_cloud_service_wrapper.py#L373" target="_blank">Disconnect</a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c. <a href="https://github.com/QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/7bd55725d8e8dbd741270f5d082f05062c1d1fab/src/heavenly_cloud_service_wrapper.py#L373" target="_blank">Disconnect</a>.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;d. <a href="https://github.com/QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/7bd55725d8e8dbd741270f5d082f05062c1d1fab/src/heavenly_cloud_service_wrapper.py#L375" target="_blank">Return Result</a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;d. <a href="https://github.com/QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/7bd55725d8e8dbd741270f5d082f05062c1d1fab/src/heavenly_cloud_service_wrapper.py#L375" target="_blank">Return the result</a>.
 
-&nbsp;4. <a href="https://github.com/QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/7bd55725d8e8dbd741270f5d082f05062c1d1fab/src/driver.py#L236-L237" target="_blank">Handle *setVlan* actions</a>
+&nbsp;4. <a href="https://github.com/QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/7bd55725d8e8dbd741270f5d082f05062c1d1fab/src/driver.py#L236-L237" target="_blank">Handle *setVlan* actions</a>.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a. <a href="https://github.com/QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/7bd55725d8e8dbd741270f5d082f05062c1d1fab/src/heavenly_cloud_service_wrapper.py#L320-L324" target="_blank">Retrieve VLAN parameters (VNIC name, VLAN mode, VLAN id)</a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a. <a href="https://github.com/QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/7bd55725d8e8dbd741270f5d082f05062c1d1fab/src/heavenly_cloud_service_wrapper.py#L320-L324" target="_blank">Retrieve VLAN parameters (VNIC name, VLAN mode, VLAN id)</a>.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b. <a href="https://github.com/QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/e5a7fffbda4e661b58dc30f9e6355981dfc0bb86/src/heavenly_cloud_service_wrapper.py#L300" target="_blank">Connect</a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b. <a href="https://github.com/QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/e5a7fffbda4e661b58dc30f9e6355981dfc0bb86/src/heavenly_cloud_service_wrapper.py#L300" target="_blank">Connect</a>.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c. <a href="https://github.com/QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/7bd55725d8e8dbd741270f5d082f05062c1d1fab/src/heavenly_cloud_service_wrapper.py#L325" target="_blank">Add new interface id to result</a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c. <a href="https://github.com/QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/7bd55725d8e8dbd741270f5d082f05062c1d1fab/src/heavenly_cloud_service_wrapper.py#L325" target="_blank">Add a new interface id to the result</a>.
 
-&nbsp;5. <a href="https://github.com/QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/625d52ae7740cf3d77e529f6b0b0f8d05df472b2/src/driver.py#L239" target="_blank">Return appropriate result</a>
+&nbsp;5. <a href="https://github.com/QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/625d52ae7740cf3d77e529f6b0b0f8d05df472b2/src/driver.py#L239" target="_blank">Return the appropriate result</a>.
 

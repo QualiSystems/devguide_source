@@ -16,7 +16,7 @@ To deploy an App successfully, you need to implement the following 4 methods:
 3. [remote_refresh_ip](#RemoteRefreshIp) updates the deployed App's IP address. 
 4. [GetVmDetails](#GetVmDetails) gets information about the VM itself, its operating system, specifications and networking information.
 
-These methods are executed in the above order during the deployment of an App in the sandbox (either automatically as part of the default sandbox setup script that runs when reserving a sandbox or manually by the user after adding an App to an active sandbox). Once the App is deployed, these methods can be run as individual commands from the deployed App's commands pane.<a name="Deploy"></a>
+These methods are executed in the above order during the deployment of an App in the sandbox (either automatically as part of the default sandbox setup script that runs when reserving a sandbox or manually by the user after adding an App to an active sandbox). Once the App is deployed, these methods can be run as individual commands from the deployed App's commands pane.<a name="Deploy"></a>.
 
 ## Deploy method
 
@@ -34,7 +34,7 @@ def Deploy(self, context, request=None, cancellation_context=None)
 
 **context**
 
-_**Context** :context_ is a *ResourceCommandContext* object that contains:
+**Context:** *context* is a *ResourceCommandContext* object that contains:
 
 1. connectivity - CloudShell server connectivity data for authentication with CloudShell Automation API 
 2. resource - resource configuration settings entered when creating the Cloud Provider resource in the **Inventory** dashboard
@@ -173,7 +173,7 @@ def PowerOn(self, context, ports)
 
 ### Inputs
 
-**context** is a *ResourceRemoteCommandContext* object that contains:
+**context:** *context* is a *ResourceRemoteCommandContext* object that contains:
 
 1. connectivity - CloudShell server connectivity data for authentication with CloudShell Automation API 
 2. resource - resource configuration settings entered by the user when creating the Cloud Provider resource in the **Inventory** dashboard
@@ -255,13 +255,14 @@ If the operation fails, the command should raise an exception.
 
 This method should perform the following steps:
 
-1. Retrieve the Cloud Provider resource's connection credentials.
-2. Convert the *deployed_app_json* context from string to object.
-3. Allocate a new private IP to the VM instance.
-* If the operation succeeds, update the deployed App resource's private ip in CloudShell via API.
+1. <a href="https://github.com/QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/a8a2f48952e4daaf563e75a32692d280f750a414/src/driver.py#L200" target="_blank">Retrieve the Cloud Provider resource's connection credentials</a>.
+2. <a href="https://github.com/QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/a8a2f48952e4daaf563e75a32692d280f750a414/src/driver.py#L201" target="_blank">Convert the *deployed_app_json* context from string to object</a>.
+3. <a href="https://github.com/QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/a8a2f48952e4daaf563e75a32692d280f750a414/src/driver.py#L202-L212" target="_blank">Retrieve previously known private/public IPS (if there are any), VM instawnce id</a>.
+* <a href="https://github.com/QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/7b97c9d21c1de3946f1ed6b6d715127684638e59/src/heavenly_cloud_service_wrapper.py#L292-L293" target="_blank">Allocate a new private IP to the VM instance</a>.
+* If the operation succeeds, <a href="https://github.com/QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/7b97c9d21c1de3946f1ed6b6d715127684638e59/src/heavenly_cloud_service_wrapper.py#L295-L296" target="_blank">update the deployed App resource's private ip in CloudShell via API</a>.
 * If the operation fails, display an error to the sandbox end-user.
-6. If needed, allocate a new public IP to the VM instance.
-* If the operation succeeds, update the deployed App resource's public ip in CloudShell via API.
+6. <a href="https://github.com/QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/7b97c9d21c1de3946f1ed6b6d715127684638e59/src/heavenly_cloud_service_wrapper.py#L298-L300" target="_blank">Allocate a new public IP to the VM instance</a>.
+* If the operation succeeds, <a href="https://github.com/QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/7b97c9d21c1de3946f1ed6b6d715127684638e59/src/heavenly_cloud_service_wrapper.py#L301" target="_blank">update the deployed App resource's public ip in CloudShell via API</a>.
 * If the operation fails, throw error.
 
 <a name="GetVmDetails"></a>
