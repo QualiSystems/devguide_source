@@ -7,7 +7,7 @@ version:
     - 9.0.0
 ---
 
-Now that we've set up the cloud provider shell's automation, let's learn how to implement network connectivity. This article discusses layer 2 connectivity. If you're developing an L3 cloud provider, skip to the next article.
+Now that we've set up the cloud provider shell's automation, let's learn how to implement network connectivity. CloudShell supports two networking modes, L2 for VLAN-level management and L3 for subnet-level management. This article discusses layer 2 connectivity. If you're developing an L3 cloud provider, skip to the next article.
 
 ## ApplyConnectivityChanges method
 
@@ -15,16 +15,16 @@ To add support for L2 VLAN connectivity in a custom cloud provider, we need to i
 
 The VLAN IDs are allocated by Quali Server, according to the settings of the VLAN service. These IDs are sent to the command as parameters. The implementation of this method needs to be able to support Access mode, Trunk mode, VLAN and VXLAN ranges, if supported by your cloud provider. Additionally, the implementation needs to support a range of VLAN IDs.
 
-This method can receive 2 types of actions: *setVlan* and *removeVlan*. Each call to the method can contain multiple actions from different types. The command receives an action for each connection that needs to be created or disconnected. In case of P2P connections, there will be 2 requests, one for each App.
+The *ApplyConnectivityChanges* method can receive a list of actions of type _**setVlan**_ or _**removeVlan**_. The method receives an action for each connection that needs to be created or disconnected. In case of P2P connections, the method receives two requests, one for each App.
 
-Like other commands, this command needs to return an action result in the response per connection. If the command execution fails, the failure needs to be indicated in the returned action or raise an exception. 
+Like other methods, this method needs to return an action result in the response per connection. If the method's execution fails, CloudShell needs to indicate the failure in the returned action or raise an exception. 
 
 ### Called when
 It is run automatically when reserving the sandbox, as part of CloudShell's default sandbox setup script, and is also called in an active sandbox when a deployed App is connected or disconnected from a VLAN service or from another deployed App in a P2P connection.
 
 ### Error handling
 
-If *ApplyConnectivityChanges* fails, return a "success false" action result.
+If *ApplyConnectivityChanges* fails, CloudShell needs to indicate the failure in the returned action or raise an exception.
 
 ### Signature
 
@@ -44,15 +44,22 @@ def ApplyConnectivityChanges(self, context, request):
 
 #### Handle Request
 
-*customAttributes* is a list of special attributes for a specific action. The *setVlan* action can get a custom attribute called **Vnic Name**. When this attribute exists, we can use it in custom logic that will allocate a specific VNIC to the App's VM. For example, the **Vnic Name** value is 1 and the cloud provider shell needs to create the VLAN connection on eth1.
+**setVlan action request:**
 
-<a href="https://github.com/QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/ac94224fd2368aaa9b589bcdfd30e449a53c90ce/src/heavenly_cloud_service_wrapper.py#L299" target="_blank">Code example</a>
+* The requested VLAN mode is indicated in a property called *mode* under *connectionParams*. The VLAN id array can receive many VLAN id permutations. Please refer to the online help for all support permutations.
+* If the cloud provider supports VXLAN or both VLAN and VXLAN, it is required to expose a discoverable attribute on the cloud provider's **VLAN Type** call. The default value is **VLAN** and cloudshell permits VLAN ids in the 2-4096 range. If the **VLAN Type** attribute is set to **VXLAN**, CloudShell will permit VLAN ids to be allocated in the 2-16,000,000 range.
+* *customAttributes* is a list of special attributes for a specific action. The *setVlan* action can get a custom attribute called **Vnic Name**. When this attribute exists, we can use it in custom logic that will allocate a specific VNIC to the App's VM. For example, the **Vnic Name** value is 1 and the cloud provider shell needs to create the VLAN connection on eth1. <a href="https://github.com/QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/ac94224fd2368aaa9b589bcdfd30e449a53c90ce/src/heavenly_cloud_service_wrapper.py#L299" target="_blank">Code example</a>.
+
+**removeVlan action request:**
+
+* The *actionTarget* property is an object that indicates on which compute resource we need to apply the *removeVlan* action request. 
+* The target resource might have more than one network interface so to determine on which interface to perform the *removeVlan* action, you need to find the *interface* attribute value. The *removeVlan* request contains an array of all connector attributes. The unique identifier of the network interface to disconnect is the value of the *Interface* attribute.
 
 #### Method result
 
 **setVlan action result:**
 
-If the action is successful, you need to set *updatedInterface* property. The value of this property is set on an attribute on the relevant connector. Each connector in CloudShell has a source and a target component. Cloudshell will automatically determine if the action result is for source or target of the connector and set this value on the appropriate attribute - **Source Interface** or **Target Interface**.
+If the action is successful, you need to set *updatedInterface* property. The value of this property is set on an attribute on the relevant connector. Each connector in CloudShell has a source and a target component. Cloudshell automatically determines if the action result is for source or target of the connector and sets this value on the appropriate attribute - **Source Interface** or **Target Interface**.
 
 <a href="https://github.com/QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/e5a7fffbda4e661b58dc30f9e6355981dfc0bb86/src/heavenly_cloud_service_wrapper.py#L300-L302" target="_blank">Code example</a>
 

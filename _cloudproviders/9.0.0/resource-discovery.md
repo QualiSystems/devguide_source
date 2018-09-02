@@ -48,9 +48,9 @@ If one of the validations failed, an error indication will be displayed in Cloud
 
 ### get_inventory method implementation example
 
-{% github_sample_ref /QualiSystems/Custom-Cloud-Provider-Shell-Example/blob/4aa0c863da205686952e414e16a0baea954b2bfa/src/driver.py %}
+{% github_sample_ref /QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/865f356f4aec14e170cd9e5f30b575c48f2dc865/src/driver.py %}
 {% highlight python %}
-{% github_sample /QualiSystems/Custom-Cloud-Provider-Shell-Example/blob/4aa0c863da205686952e414e16a0baea954b2bfa/src/driver.py 50 77 %}
+{% github_sample /QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/865f356f4aec14e170cd9e5f30b575c48f2dc865/src/driver.py 42 70 %}
 {% endhighlight %}
 
 
