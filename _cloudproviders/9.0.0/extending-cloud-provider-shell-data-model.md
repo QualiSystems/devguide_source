@@ -42,7 +42,8 @@ Let's see how it looks on CloudShell. Install the shell:
 shellfoundry install
 {% endhighlight %}
 
-Open CloudShell Portal, in the **Inventory** dashboard, create a resource from the shell.
+Log in to CloudShell Portal, and open the required domain to enable the Apps based on this cloud provider resource to be usable in this domain. In the **Inventory** dashboard, create a resource from the shell. 
+
 The attribute is displayed in the resource's **Validation & Discovery** page:
 
 ![Resource information]({{site.baseurl}}/assets/cp-discovery-attribute.png){:class="img-responsive"}

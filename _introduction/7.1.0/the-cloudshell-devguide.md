@@ -37,9 +37,7 @@ failover simulation or traffic generation.
 
 #### [CloudShell APIs]({{site.baseurl}}/devops/{{pageVersion}}/devops-integration.html)
 
-This chapter describes the different APIs CloudShell offers, the uses for each as well as useful links and implementation examples.
-
-In addition, this area examines how CloudShell can be used in conjunction with other DevOps tools and within the DevOps pipeline. This includes CloudShell’s APIs as well as existing Open Source projects for integrating CloudShell with other products.
+This area examines how CloudShell can be used in conjunction with other DevOps tools and within the DevOps pipeline. This includes CloudShell’s APIs as well as existing Open Source projects for integrating CloudShell with other products.
 
 ### Where to go next
 

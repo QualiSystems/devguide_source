@@ -29,15 +29,16 @@ Creates the App's VM instance.
 
 The *deploy* method accepts three inputs: *context*, *request*, and *cancellation_context*.
 
+{% github_sample_ref /QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/865f356f4aec14e170cd9e5f30b575c48f2dc865/src/driver.py %}
 {% highlight python %}
-def Deploy(self, context, request=None, cancellation_context=None)
+{% github_sample /QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/865f356f4aec14e170cd9e5f30b575c48f2dc865/src/driver.py 75 %}
 {% endhighlight %}
 
 ### Inputs
 
 **context**
 
-**Context:** *context* is a *ResourceCommandContext* object that contains:
+**context:** *context* is a *ResourceCommandContext* object that contains:
 
 1. connectivity - CloudShell server connectivity data for authentication with CloudShell Automation API 
 2. resource - resource configuration settings entered when creating the Cloud Provider resource in the **Inventory** dashboard
@@ -47,12 +48,6 @@ def Deploy(self, context, request=None, cancellation_context=None)
 {% github_sample_ref /QualiSystems/cloudshell-shell-core/blob/36009fdec45134ae38cb9273328b7686be66e553/cloudshell/shell/core/driver_context.py %}
 {% highlight python %}
 {% github_sample /QualiSystems/cloudshell-shell-core/blob/36009fdec45134ae38cb9273328b7686be66e553/cloudshell/shell/core/driver_context.py 9 18 %}
-{% endhighlight %}
-
-Here's a sample code that extracts the cloud provider data from the context:
-
-{% highlight python %}
-cloud_provider_resource = HeavenlyCloudsShell.create_from_context(context)
 {% endhighlight %}
 
 **Request**
@@ -75,11 +70,9 @@ To allow the cancellation of a command on the Cloud Provider's Apps, we need to:
 
 Usage example
 
+{% github_sample_ref /QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/865f356f4aec14e170cd9e5f30b575c48f2dc865/src/heavenly_cloud_service_wrapper.py %}
 {% highlight python %}
-if cancellation_context.is_cancelled:
-    self.rollback()
-    return DeployAppResult(actionId=deploy_app_action.actionId, success=False,
-                           errorMessage='Operation canceled')
+{% github_sample /QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/865f356f4aec14e170cd9e5f30b575c48f2dc865/src/heavenly_cloud_service_wrapper.py 15 19 %}
 {% endhighlight %}
 
 ### Output
@@ -97,8 +90,7 @@ The deploy method should perform the following steps:
 1. <a href="https://github.com/QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/a9a14e87570fdc52d9994950e161b104c62401fb/src/driver.py#L91" target="_blank">Retrieve the cloud provider resource's connection credentials</a>.
 2. <a href="https://github.com/QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/a9a14e87570fdc52d9994950e161b104c62401fb/src/driver.py#L92-L95" target="_blank">Retrieve the *Deploy* action</a>.
 3. <a href="https://github.com/QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/a9a14e87570fdc52d9994950e161b104c62401fb/src/driver.py#L99-L106" target="_blank">Call the *Deploy* logic of the selected deployment type</a>.
-
-4. *(Steps 4 - 8 are performed within the deploy logic)* <a href="https://github.com/QualiSystems/Custom-L3-Cloud-Provider-Shell-Example/blob/4aa0c863da205686952e414e16a0baea954b2bfa/src/heavenly_cloud_service_wrapper.py#L22" target="_blank">Generate a unique name for the App</a>. 
+4. *(Steps 4 - 8 are performed within the deploy logic)* <a href="https://github.com/QualiSystems/Custom-L3-Cloud-Provider-Shell-Example/blob/4aa0c863da205686952e414e16a0baea954b2bfa/src/heavenly_cloud_service_wrapper.py#L22" target="_blank">Generate a unique name for the App. For example, "My-App_968e-a950"</a>. Deployed Apps are classified as resources in CloudShell and therefore must have a unique name.
 5. <a href="https://github.com/QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/a9a14e87570fdc52d9994950e161b104c62401fb/src/heavenly_cloud_service_wrapper.py#L47-L48" target="_blank">Create a VM instance using the deployment path attributes</a> (the HeavenlyCloud service represents your custom cloud SDK). 
 6. If VM deployment is successful: 
 * <a href="https://github.com/QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/a9a14e87570fdc52d9994950e161b104c62401fb/src/heavenly_cloud_service_wrapper.py#L78-L79" target="_blank">Collect VM details</a> (operating system, specifications, networking information).
@@ -108,11 +100,114 @@ The deploy method should perform the following steps:
 8. <a href="https://github.com/QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/a9a14e87570fdc52d9994950e161b104c62401fb/src/heavenly_cloud_service_wrapper.py#L92-L99" target="_blank">Return *DeployAppResult*</a>.
 9. <a href="https://github.com/QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/a9a14e87570fdc52d9994950e161b104c62401fb/src/driver.py#L112" target="_blank">Return *DriverResponse*</a>.
 
-Note that the links in the above workflow pertain to a driver of an L2 implementation. However, the only difference between L2 and L3 driver implementations is that L2 implements *ApplyConnectivityChanges* while L3 uses *PrepareSandboxInfra* and the *CleanSandboxInfra* methods.
+Note that the links in the above workflow pertain to a driver of an L2 implementation. However, the only difference between L2 and L3 driver implementations is that L2 implements *ApplyConnectivityChanges* while L3 uses the *PrepareSandboxInfra* and *CleanSandboxInfra* methods.
+
 
 ### DeployAppResult JSON example
+<details><summary>Click here</summary>
+<p>
 
-{"actionId":"aac7cc0c-a215-4aee-8fc1-f79025034423","deployedAppAdditionalData":{},"deployedAppAddress":"192.168.0.5","deployedAppAttributes":[{"attributeName":"Password","attributeValue":"123456"},{"attributeName":"User","attributeValue":"super user"}],"errorMessage":"","infoMessage":"","success":true,"type":"DeployApp","vmDetailsData":{"appName":"","errorMessage":"","vmInstanceData":[{"hidden":false,"key":"Cloud Name","value":"white"},{"hidden":false,"key":"Cloud Index","value":"0"},{"hidden":false,"key":"Cloud Size","value":"not so big"},{"hidden":false,"key":"Instance Name","value":"angel vm__ca11f5"},{"hidden":true,"key":"Hidden stuff","value":"something not for UI"}],"vmNetworkData":[{"interfaceId":0,"isPredefined":false,"isPrimary":true,"networkData":[{"hidden":false,"key":"MaxSpeed","value":"1KB"},{"hidden":false,"key":"Network Type","value":"Ethernet"}],"networkId":0,"privateIpAddress":"10.0.0.0","publicIpAddress":"8.8.8.0"},{"interfaceId":1,"isPredefined":false,"isPrimary":false,"networkData":[{"hidden":false,"key":"MaxSpeed","value":"1KB"},{"hidden":false,"key":"Network Type","value":"Ethernet"}],"networkId":1,"privateIpAddress":"10.0.0.1","publicIpAddress":"8.8.8.1"}]},"vmName":"angel vm__ca11f5","vmUuid":"027ad770-9ecb-4936-a7df-aeaf526dfc34"}
+{% prism javascript %}
+{
+  "actionId": "aac7cc0c-a215-4aee-8fc1-f79025034423",
+  "deployedAppAdditionalData": {},
+  "deployedAppAddress": "192.168.0.5",
+  "deployedAppAttributes": [
+    {
+      "attributeName": "Password",
+      "attributeValue": "123456"
+    },
+    {
+      "attributeName": "User",
+      "attributeValue": "super user"
+    }
+  ],
+  "errorMessage": "",
+  "infoMessage": "",
+  "success": true,
+  "type": "DeployApp",
+  "vmDetailsData": {
+    "appName": "",
+    "errorMessage": "",
+    "vmInstanceData": [
+      {
+        "hidden": false,
+        "key": "Cloud Name",
+        "value": "white"
+      },
+      {
+        "hidden": false,
+        "key": "Cloud Index",
+        "value": "0"
+      },
+      {
+        "hidden": false,
+        "key": "Cloud Size",
+        "value": "not so big"
+      },
+      {
+        "hidden": false,
+        "key": "Instance Name",
+        "value": "angel vm__ca11f5"
+      },
+      {
+        "hidden": true,
+        "key": "Hidden stuff",
+        "value": "something not for UI"
+      }
+    ],
+    "vmNetworkData": [
+      {
+        "interfaceId": 0,
+        "isPredefined": false,
+        "isPrimary": true,
+        "networkData": [
+          {
+            "hidden": false,
+            "key": "MaxSpeed",
+            "value": "1KB"
+          },
+          {
+            "hidden": false,
+            "key": "Network Type",
+            "value": "Ethernet"
+          }
+        ],
+        "networkId": 0,
+        "privateIpAddress": "10.0.0.0",
+        "publicIpAddress": "8.8.8.0"
+      },
+      {
+        "interfaceId": 1,
+        "isPredefined": false,
+        "isPrimary": false,
+        "networkData": [
+          {
+            "hidden": false,
+            "key": "MaxSpeed",
+            "value": "1KB"
+          },
+          {
+            "hidden": false,
+            "key": "Network Type",
+            "value": "Ethernet"
+          }
+        ],
+        "networkId": 1,
+        "privateIpAddress": "10.0.0.1",
+        "publicIpAddress": "8.8.8.1"
+      }
+    ]
+  },
+  "vmName": "angel vm__ca11f5",
+  "vmUuid": "027ad770-9ecb-4936-a7df-aeaf526dfc34"
+}
+}
+{% endprism %}
+
+
+</p>
+</details>
 
 #### DeployAppResult properties
 
@@ -228,7 +323,7 @@ def remote_refresh_ip(self, context, ports, cancellation_context):
 
 ### Inputs
 
-**Context**: *context* is a *ResourceRemoteCommandContextobject* that contains:
+**context**: *context* is a *ResourceRemoteCommandContextobject* that contains:
 
 1. connectivity - CloudShell server connectivity data for authentication with CloudShell Automation API 
 2. resource - resource configuration settings entered when creating the Cloud Provider resource in the **Inventory** dashboard
@@ -265,14 +360,14 @@ If the operation fails, the command should raise an exception.
 
 This method should perform the following steps:
 
-1. <a href="https://github.com/QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/a8a2f48952e4daaf563e75a32692d280f750a414/src/driver.py#L200" target="_blank">Retrieve the Cloud Provider resource's connection credentials</a>.
-2. <a href="https://github.com/QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/a8a2f48952e4daaf563e75a32692d280f750a414/src/driver.py#L201" target="_blank">Convert the *deployed_app_json* context from string to object</a>.
-3. <a href="https://github.com/QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/a8a2f48952e4daaf563e75a32692d280f750a414/src/driver.py#L202-L212" target="_blank">Retrieve previously known private/public IPs (if there are any), VM instawnce id</a>.
-* <a href="https://github.com/QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/7b97c9d21c1de3946f1ed6b6d715127684638e59/src/heavenly_cloud_service_wrapper.py#L292-L293" target="_blank">Verify that the deployed App's private IP is the same as the ip in the cloud provider</a>. If it's different, update the deployed App ip with the IP on the cloud provider.
-* If the IPs are different, <a href="https://github.com/QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/7b97c9d21c1de3946f1ed6b6d715127684638e59/src/heavenly_cloud_service_wrapper.py#L295-L296" target="_blank">update the deployed App IP with the IP on the cloud provider via API</a>.
+1. <a href="https://github.com/QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/ede6f78b4d4a78ae61b628696f6903d684e2224b/src/driver.py#L200" target="_blank">Retrieve the Cloud Provider resource's connection credentials</a>.
+2. <a href="https://github.com/QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/ede6f78b4d4a78ae61b628696f6903d684e2224b/src/driver.py#L201" target="_blank">Convert the *deployed_app_json* context from string to object</a>.
+3. <a href="https://github.com/QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/ede6f78b4d4a78ae61b628696f6903d684e2224b/src/driver.py#L202-L212" target="_blank">Retrieve previously known private/public IPs (if there are any), VM instance id</a>.
+4. <a href="https://github.com/QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/ede6f78b4d4a78ae61b628696f6903d684e2224b/src/heavenly_cloud_service_wrapper.py#L294" target="_blank">Verify that the deployed App's private IP is the same as the ip in the cloud provider</a>. If it's different, update the deployed App ip with the IP on the cloud provider.
+* If the IPs are different, <a href="https://github.com/QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/ede6f78b4d4a78ae61b628696f6903d684e2224b/src/heavenly_cloud_service_wrapper.py#L294-L295" target="_blank">update the deployed App IP with the IP on the cloud provider by calling *UpdateResourceAddress*</a>.
 * If the operation fails, display an error to the sandbox end-user.
-6. <a href="https://github.com/QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/7b97c9d21c1de3946f1ed6b6d715127684638e59/src/heavenly_cloud_service_wrapper.py#L298-L300" target="_blank">If needed, verify that the deployed App's public IP is the same as the ip in the cloud provider</a>.
-* If the IPs are different, <a href="https://github.com/QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/7b97c9d21c1de3946f1ed6b6d715127684638e59/src/heavenly_cloud_service_wrapper.py#L301" target="_blank">update the deployed App ip with the ip on the cloud provider via API</a>.
+5. If needed, verify that the deployed App's public IP is the same as the ip in the cloud provider.
+* If the IPs are different, <a href="https://github.com/QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/ede6f78b4d4a78ae61b628696f6903d684e2224b/src/heavenly_cloud_service_wrapper.py#L297-L298" target="_blank">update the deployed App ip with the ip on the cloud provider by calling *SetAttributeValue* and setting the *Public IP* attribute</a>.
 * If the operation fails, display an error to the sandbox end-user.
 
 <a name="GetVmDetails"></a>
@@ -291,7 +386,7 @@ def GetVmDetails(self, context, requests, cancellation_context):
 
 ### Inputs
 
-**Context**: *context* is a *ResourceCommandContext* object that contains:
+**context**: *context* is a *ResourceCommandContext* object that contains:
 
 1. connectivity - CloudShell server connectivity data for authentication with CloudShell Automation API 
 2. resource - resource configuration settings entered when creating the Cloud Provider resource in the **Inventory** dashboard
@@ -322,3 +417,17 @@ JSON string that contains a list of items containing App requests and deployed A
 {% highlight python %}
 {% github_sample /QualiSystems/cloudshell-cp-core/blob/d58c094d9600b5a6232da16dada1d3a408a88ac9/package/cloudshell/cp/core/models.py 281 293 %}
 {% endhighlight %}
+
+### GetVmDetails method implementation
+
+This method should perform the following steps:
+
+1. <a href="https://github.com/QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/ede6f78b4d4a78ae61b628696f6903d684e2224b/src/driver.py#L177" target="_blank">Retrieve cloud provider resource connection credentials</a>.
+2. <a href="https://github.com/QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/ede6f78b4d4a78ae61b628696f6903d684e2224b/src/heavenly_cloud_service_wrapper.py#L228" target="_blank">Convert the JSON string to object
+3. For each request, do the following:
+* <a href="https://github.com/QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/d17640899a06fb69e61ac678d620301d76dfd3cb/src/heavenly_cloud_service_wrapper.py#L237-L239" target="_blank">Retrieve identifiers</a>.
+* <a href="https://github.com/QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/d17640899a06fb69e61ac678d620301d76dfd3cb/src/heavenly_cloud_service_wrapper.py#L241" target="_blank">Query the cloud provider for the VM's configuration and networks</a>.
+* <a href="https://github.com/QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/d17640899a06fb69e61ac678d620301d76dfd3cb/src/heavenly_cloud_service_wrapper.py#L242" target="_blank">Populate *vmInstanceData* with the data (key-value) you wish to persist on the VM resource</a>. For example to persist the VM's Storage & operating system data.
+* <a href="https://github.com/QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/d17640899a06fb69e61ac678d620301d76dfd3cb/src/heavenly_cloud_service_wrapper.py#L243" target="_blank">Create *vmNetworkData*</a>. <a href="https://github.com/QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/d17640899a06fb69e61ac678d620301d76dfd3cb/src/heavenly_cloud_service_wrapper.py#L194-L215" target="_blank">*vmNetworkData*</a> is a list of *VmDetailsNetworkInterface*, one for each VM NIC you wish to associate with the resource.
+* <a href="https://github.com/QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/d17640899a06fb69e61ac678d620301d76dfd3cb/src/heavenly_cloud_service_wrapper.py#L251-L252" target="_blank">Collect as *VmDetailsData* result</a>.
+4. <a href="https://github.com/QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/ede6f78b4d4a78ae61b628696f6903d684e2224b/src/driver.py#L178-L180" target="_blank">Convert to JSON and return the result</a>. 

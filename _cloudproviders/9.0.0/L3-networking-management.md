@@ -7,6 +7,8 @@ version:
     - 9.0.0
 ---
 
+In this article, we'll learn how to implement L3 network connectivity. Cloudshell recognizes a cloud provider shell as an L3 networking cloud provider if the method *PrepareSandboxInfra* exists in the shell driver. If the method doesn’t exist, CloudShell considers the shell as an L2 networking shell.
+
 To add support for L3 subnet connectivity in a custom cloud provider, we'll need to implement 3 methods:
 
 * *PrepareSandboxInfra* is used to prepare the infrastructure required  for a sandbox operating with L3 connectivity.
