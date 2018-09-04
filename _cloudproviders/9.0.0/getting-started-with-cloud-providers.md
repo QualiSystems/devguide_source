@@ -31,7 +31,9 @@ The basic creation and implementation process is as follows:
 
 4) Debug the shell.
 
-5) In CloudShell, create a resource based on the new shell and make sure it works. 
+5) Install the shell on CloudShell. 
+
+6) In CloudShell, create a resource based on the new shell and make sure it works. 
 
 *Before developing your shell, please watch the following video to determine whether you need to create a new shell or customize an existing one:*
 
