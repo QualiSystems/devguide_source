@@ -14,7 +14,7 @@ In this article, we will learn how to add attributes to our shell. For informati
 
 Attributes can be added to the cloud provider shell or to the deployment path on the App template. Attributes on the shell are for general authentication/authorization purposes and for setting general configurations for the cloud provider integration, while attributes on the deployment path are typically settings that apply to the App's VM. For example, Region applies to the cloud provider shell and Image ID applies to the deployment path. We will cover deployment path attributes in the next article.
 
-_**Note:** CloudShell does not allow upgrading shells with deleted/modified attributes. Therefore, if you need to make an unsupported change to an attribute (for example, deleting an attribute or changing its type), you will need to remove the shell from CloudShell before you install the updated version._
+<font color="red">CloudShell does not allow upgrading shells with deleted/modified attributes. Therefore, if you need to make an unsupported change to an attribute (for example, deleting an attribute or changing its type), you will need to remove the shell from CloudShell before you install the updated version.</font>
 
 ### Adding an attribute to the shell
 
