@@ -14,7 +14,10 @@ version:
 
 Shellfoundry is a command-line utility that allows you to easily create, package and install Shells in CloudShell.  It allows creating basic Shells or Shells based on a common 1st or 2nd generation Shell template. 
 
-**Note:** Shellfoundry must be installed on an online computer as creating shells from a template requires downloading the templates from the internet.
+**Notes:** 
+
+* Shellfoundry must be installed on an online computer as creating shells from a template requires downloading the templates from the internet.
+* Shellfoundary cannot work if there's a proxy server present between the shellfoundry machine and the remote Quali Server machine.
 
 
 In this article:

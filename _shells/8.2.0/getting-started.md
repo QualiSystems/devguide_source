@@ -53,12 +53,14 @@ To learn more about the  different versions of the Shells used by CloudShell and
 
 
 ### Prerequisites
-* [Get CloudShell](http://info.quali.com/cloudshell-developer-edition-download): Download the latest CloudShell SDK and run it on your machine.  
+* [Get CloudShell](http://info.quali.com/cloudshell-developer-edition-download): Download the latest CloudShell SDK and run it on your machine. 
 * [Python](https://www.python.org/downloads/): Make sure Python 2.7.x (latest recommended) is installed on your machine.
 * **IDE/Text Editor:** Your preferred IDE editor. We recommend using PyCharm (which offers a free community edition) because of the tooling we’ve already created for that IDE, including a CloudShell developer plugin.
 
 ### Installing or Updating Shellfoundry
 To create the Shell project, we’ll use [Shellfoundry]({{site.baseurl}}/reference/{{pageVersion}}/shellfoundry-intro.html), a CLI tool for generating and distributing Shells.
+
+**Note:** Shellfoundary cannot work if there's a proxy server present between the shellfoundry machine and the remote Quali Server machine.
 
 **To install Shellfoundry:**
 
@@ -150,7 +152,7 @@ def say_hello(self, context, name):
 
 3) Open the _drivermetadata.xml_ file in your preferred IDE and replace the highlighted section so that it matches the test below:
 
-{% prism python linenos=3-12 %}
+{% highlight python %}
 <Driver Description="Describe the purpose of your CloudShell shell" MainClass="driver.LinuxServerShellDriver" Name="LinuxServerShellDriver" Version="1.0.0">
     <Layout>
         <Category Name="Samples">
@@ -164,7 +166,7 @@ def say_hello(self, context, name):
     </Layout>
 </Driver>
 
-{% endprism %}
+{% endhighlight %}
 
 There is no need to get into too many details at this stage. We’ll dive more deeply into the _drivermetadata.xml_ file in a later section of this guide. For now it’s sufficient to understand that we use this file to provide more CloudShell-specific information regarding how to interpret and display the driver’s commands and their parameters.
 

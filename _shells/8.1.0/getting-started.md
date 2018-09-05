@@ -53,12 +53,14 @@ To learn more about the  different versions of the Shells used by CloudShell and
 
 
 ### Prerequisites
-* [Get CloudShell](http://info.quali.com/cloudshell-developer-edition-download): Download the latest CloudShell SDK and run it on your machine.  
+* [Get CloudShell](http://info.quali.com/cloudshell-developer-edition-download): Download the latest CloudShell SDK and run it on your machine. 
 * [Python](https://www.python.org/downloads/): Make sure Python 2.7.x (latest recommended) is installed on your machine.
 * **IDE/Text Editor:** Your preferred IDE editor. We recommend using PyCharm (which offers a free community edition) because of the tooling we’ve already created for that IDE, including a CloudShell developer plugin.
 
 ### Installing or Updating Shellfoundry
 To create the Shell project, we’ll use [Shellfoundry]({{site.baseurl}}/reference/{{pageVersion}}/shellfoundry-intro.html), a CLI tool for generating and distributing Shells.
+
+**Note:** Shellfoundary cannot work if there's a proxy server present between the shellfoundry machine and the remote Quali Server machine.
 
 **To install Shellfoundry:**
 
