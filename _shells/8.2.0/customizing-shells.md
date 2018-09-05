@@ -80,7 +80,7 @@ CloudShell provides two ways to customize attributes, which differ depending on 
 
 The second option of associating custom attributes with an already installed shell is done either via CloudShell Portal or by calling the [SetCustomShellAttribute]({{site.baseurl}}/shells/{{pageVersion}}/deploying-to-production.html#SetCustomShellAttributeUsingAPI) API method. For additional information on this method, see [Deploying to Production]({{site.baseurl}}/shells/{{pageVersion}}/deploying-to-production.html).
 
-**Important:** Deleting a 2nd Gen shell’s default attributes (those that come with the standard) is not supported. It is also not possible to customize a 2nd Gen shell’s data model (families and models) and its structure, which is as defined in the shell standard the original shell is based on.
+<font color="red">Deleting a 2nd Gen shell’s default attributes (those that come with the standard) is not supported. It is also not possible to customize a 2nd Gen shell’s data model (families and models) and its structure, which is as defined in the shell standard the original shell is based on.</font>
 
 ### Adding or modifying attributes in a shell’s root model
 
@@ -121,17 +121,14 @@ properties:
     tags: [configuration, setting, search_filter, abstract_filter, include_in_insight, readonly_to_users, display_in_diagram, connection_attribute, read_only]
 {% endhighlight %}
 
-8) Edit their settings, as appropriate. For additional information on these settings, see the CloudShell online help.
-
-|  &nbsp;&nbsp;&nbsp;Properties        |  Description 
-|  :-------------------   | :----------------------------------------------------------------- |            
-|  &nbsp;&nbsp;&nbsp;`properties`         |  Header for the shell's attributes. Needs to be added only once.
-|  &nbsp;&nbsp;&nbsp;`<property_name>`&nbsp;&nbsp;&nbsp;    |  (Relevant when adding an attribute) Replace `my_property` with the new attribute’s display name. For example: "My new attribute:". **Do not remove the colon (:) from the end of the line.**         |
-|  &nbsp;&nbsp;&nbsp;`type`            |   (Relevant when adding an attribute) Type of attribute. Optional values: string, integer, float, boolean, cloudshell.datatypes.Password  |
-|  &nbsp;&nbsp;&nbsp;`default`       |  Default value.                           |
-|  &nbsp;&nbsp;&nbsp;`description`          |  Attribute's description                                   |
-|  &nbsp;&nbsp;&nbsp;`constraints`              |  Permitted values       |
-|  &nbsp;&nbsp;&nbsp;`tags`              |  Attribute rules. For details, see [Modeling Shells with TOSCA]({{site.baseurl}}/shells/{{pageVersion}}/modeling-the-shell.html). Note that for service shells, the only applicable rule is `user_input`. For details, see [Publishing a service shell's attributes](#publish_attributes).           |
+8) Edit the values, as appropriate.
+* **properties**: Header for the shell's attributes. Needs to be added only once.
+* **property_name**: (Relevant when adding an attribute) Replace **my_property** with the new attribute’s display name. For example: "My new attribute:". <font color="green">Do not remove the colon (:) from the end of the line.</font>
+* **type**: (Relevant when adding an attribute) Type of attribute. Optional values: string, integer, float, boolean, cloudshell.datatypes.Password.
+* **default**: Default value.
+* **description**: Attribute's description.
+* **constraints** Permitted values.
+* **tags**: Attribute rules. For details, see [Modeling Shells with TOSCA]({{site.baseurl}}/shells/{{pageVersion}}/modeling-the-shell.html). Note that for service shells, the only applicable rule is **user_input**. For details, see [Publishing a service shell's attributes](#publish_attributes).
 
 9) Remove any unneeded lines.
 

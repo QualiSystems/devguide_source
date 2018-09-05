@@ -209,6 +209,24 @@ Note that the links in the above workflow pertain to a driver of an L2 implement
 </p>
 </details>
 
+<style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+</style>
+
 #### DeployAppResult properties
 
 | **Name**                    |**Type**      | **Description** |
@@ -221,9 +239,8 @@ Note that the links in the above workflow pertain to a driver of an L2 implement
 | vmName                      | string       | Unique name of the resource in CloudShell. |
 | vmUuid                      | string       | Unique resource id. Populate *vmUuid* with the unique id of the resource in your custom cloud provider. Cloudshell does not use this id, but will keep it for other method calls. |
 | deployedAppAdditionalData   | dictionary   | Container used to persist custom data in resource, similar to AWS Tags. Included in all resource API query results. For <a href="https://github.com/QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/ac94224fd2368aaa9b589bcdfd30e449a53c90ce/src/heavenly_cloud_service_wrapper.py#L209-L213" target="_blank">example</a>, reading the custom data and returning it in the VM Details.|
-| deployedAppAttributes       | array        | Contains data describing the deployed app attributes, and are displayed in the App's **Attributes** pane in the sandbox. It should be used to change default values of the deployed app resource attributes. For example User & Password attributes exist as part of the default deployed app model. If your custom CLP generates a password in runtime for the VM than you should update the *deployedAppAttributes* property accordingly. |
-
-| vmDetailsData               | array        | Array of cloudshell-cp-core attribute objects. Contains data describing the deployed App's attributes. It should be used to change default values of the deployed App resource attributes. For example the User and Password attributes exist as part of the default Deployed App shell. If your custom cloud provider generates a password in runtime for the VM, please update the **deployedAppAttributes** property accordingly. |
+| deployedAppAttributes       | array        | Contains data describing the deployed app attributes, and are displayed in the App's **Attributes** pane in the sandbox. It should be used to change default attribute values on the deployed App resource. For example User & Password attributes exist as part of the default deployed App model. If your custom cloud provider generates a password in runtime for the VM, you should update the *deployedAppAttributes* property accordingly. |
+| vmDetailsData               | array        | Array of cloudshell-cp-core attribute objects. Contains data describing the deployed App's attributes. It should be used to change default attribute values on the deployed App resource. For example the User and Password attributes exist as part of the default Deployed App shell. If your custom cloud provider generates a password in runtime for the VM, please update the **deployedAppAttributes** property accordingly. |
 | vmDetailsData               | object        | Contains vmNetworkData and vmInstanceData. Displayed in the App's VM Details pane. See the* vmDetailsData* table below. |
 
 #### vmDetailsData properties
@@ -234,7 +251,7 @@ Note that the links in the above workflow pertain to a driver of an L2 implement
 | appName         | String   | The App's name. No need to assign it in the deploy operation. Must be assigned in *getVmDetails* method. |
 | errorMessage    | string   | Indication message to be displayed to the sandbox end-user when getting the vmDetails. |
 | vmNetworkData   | array    | Array of cloudshell-cp-core  VmDetailsNetworkInterface object. Create a *vmNetworkData* object for each VM NIC you wish to associate with resource. See the VmDetailsNetworkInterface table below. |
-| vmInstanceData  | array    | Array of cloudshell-cp-core's *VmDetailsProperty*. Contains data about the VM instance attributes. It should be used to change persist values of the VM resource. For example to persist Storage and operating system data use it. See the VmDetailsProperty table below.  |
+| vmInstanceData  | array    | Array of cloudshell-cp-core's *VmDetailsProperty*. Contains data about the VM instance attributes. It should be used to change persist values of the VM resource. For example to persist Storage and operating system data. See the VmDetailsProperty table below.  |
 
 #### VmDetailsNetworkInterface
 
