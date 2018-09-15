@@ -305,7 +305,7 @@ The *PowerOn* method should perform the following steps:
 
 1. Retrieve cloud provider resource connection credentials.
 2. Convert the *deployed_app_json* context from string to object.
-3. Power off the deployed App resource.
+3. Power on the deployed App resource.
 
 ### PowerOn implemantation example
 
