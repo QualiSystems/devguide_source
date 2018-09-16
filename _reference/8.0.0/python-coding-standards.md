@@ -22,7 +22,7 @@ Quali Python Standard derives from [PEP 0008 -- Style Guide for Python Code](htt
 - Constants - UPPER_CASE_WITH_UNDERSCORES
 - Inline comments should start with # and a leading space
 - Code should be documented with doc string according to Sphynx.
-    For details guideline see: [Spinx Guideline](http://www.sphinx-doc.org/en/stable/domains.html#the-python-domain)
+    For details guideline see: [Spinx Guideline](http://www.sphinx-doc.org/)
 
 ## Sphinx documentation example
 
