@@ -240,7 +240,7 @@ tr:nth-child(even) {
 | vmUuid                      | string       | Unique resource id. Populate *vmUuid* with the unique id of the resource in your custom cloud provider. Cloudshell does not use this id, but will keep it for other method calls. |
 | deployedAppAdditionalData   | dictionary   | Container used to persist custom data in resource, similar to AWS Tags. Included in all resource API query results. For <a href="https://github.com/QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/ac94224fd2368aaa9b589bcdfd30e449a53c90ce/src/heavenly_cloud_service_wrapper.py#L209-L213" target="_blank">example</a>, reading the custom data and returning it in the VM Details.|
 | deployedAppAttributes       | array        | Contains data describing the deployed app attributes, and are displayed in the App's **Attributes** pane in the sandbox. It should be used to change default attribute values on the deployed App resource. For example User & Password attributes exist as part of the default deployed App model. If your custom cloud provider generates a password in runtime for the VM, you should update the *deployedAppAttributes* property accordingly. |
-| vmDetailsData               | object        | Contains vmNetworkData and vmInstanceData. Displayed in the App's VM Details pane. See the [GetVmDetails method](#GetVmDetails)'s **Return values** section below. |
+| vmDetailsData               | object        | Contains vmNetworkData and vmInstanceData. Displayed in the App's VM Details pane. For details about the return data, see the [GetVmDetails method](#GetVmDetails)'s **Return values** section below. |
 
 <a name="PowerOn"></a>
 
