@@ -240,36 +240,7 @@ tr:nth-child(even) {
 | vmUuid                      | string       | Unique resource id. Populate *vmUuid* with the unique id of the resource in your custom cloud provider. Cloudshell does not use this id, but will keep it for other method calls. |
 | deployedAppAdditionalData   | dictionary   | Container used to persist custom data in resource, similar to AWS Tags. Included in all resource API query results. For <a href="https://github.com/QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/ac94224fd2368aaa9b589bcdfd30e449a53c90ce/src/heavenly_cloud_service_wrapper.py#L209-L213" target="_blank">example</a>, reading the custom data and returning it in the VM Details.|
 | deployedAppAttributes       | array        | Contains data describing the deployed app attributes, and are displayed in the App's **Attributes** pane in the sandbox. It should be used to change default attribute values on the deployed App resource. For example User & Password attributes exist as part of the default deployed App model. If your custom cloud provider generates a password in runtime for the VM, you should update the *deployedAppAttributes* property accordingly. |
-| vmDetailsData               | array        | Array of cloudshell-cp-core attribute objects. Contains data describing the deployed App's attributes. It should be used to change default attribute values on the deployed App resource. For example the User and Password attributes exist as part of the default Deployed App shell. If your custom cloud provider generates a password in runtime for the VM, please update the **deployedAppAttributes** property accordingly. |
-| vmDetailsData               | object        | Contains vmNetworkData and vmInstanceData. Displayed in the App's VM Details pane. See the* vmDetailsData* table below. |
-
-#### vmDetailsData properties
-
-*vmDetailsData* is used to describe the App's VM. All properties are optional.
-
-| **Name**        |**Type**  | **Description** |
-| appName         | String   | The App's name. No need to assign it in the deploy operation. Must be assigned in *getVmDetails* method. |
-| errorMessage    | string   | Indication message to be displayed to the sandbox end-user when getting the vmDetails. |
-| vmNetworkData   | array    | Array of cloudshell-cp-core  VmDetailsNetworkInterface object. Create a *vmNetworkData* object for each VM NIC you wish to associate with resource. See the VmDetailsNetworkInterface table below. |
-| vmInstanceData  | array    | Array of cloudshell-cp-core's *VmDetailsProperty*. Contains data about the VM instance attributes. It should be used to change persist values of the VM resource. For example to persist Storage and operating system data. See the VmDetailsProperty table below.  |
-
-#### VmDetailsNetworkInterface
-
-| **Name**         |**Type**  | **Description** |
-| interfaceId      | String   | The network interface id with which the address is associated. |
-| networkId        | string   | The unique id of the network associated with the network interface. |
-| isPrimary        | bool     | Determines if NIC is primary. Primary affects the default selected network in VmDetailsTab in cloudshell |
-|isPredefined      | bool     | Determines if NIC is predefined. Predefined means that the network existed before the sandbox reservation. for example, a Static Management network that is not modeled in the blueprint. |
-| networkData      | array    | Array of cloudshell-cp-core VmDetailsProperty. Contains data describing the NIC. Examples of network properties include Device Index and MAC Address. |
-| privateIpAddress | string   | NIC address. |
-| publicIpAddress  | string   | The public ip associated with the NIC's private ip.
-
-#### VmDetailsProperty
-
-| **Name**  |**Type**  | **Description** |
-| key       | string   |                  |
-| value     | string   |                  |
-| hidden    | bool     |  Determines if the property is displayed to the sandbox end-user. |
+| vmDetailsData               | object        | Contains vmNetworkData and vmInstanceData. Displayed in the App's VM Details pane. See the [GetVmDetails method](#GetVmDetails)'s **Return values** section below. |
 
 <a name="PowerOn"></a>
 
@@ -434,6 +405,34 @@ JSON string that contains a list of items containing App requests and deployed A
 {% highlight python %}
 {% github_sample /QualiSystems/cloudshell-cp-core/blob/d58c094d9600b5a6232da16dada1d3a408a88ac9/package/cloudshell/cp/core/models.py 281 293 %}
 {% endhighlight %}
+
+#### vmDetailsData properties
+
+*vmDetailsData* is used to describe the App's VM. All properties are optional.
+
+| **Name**        |**Type**  | **Description** |
+| appName         | String   | The App's name. No need to assign it in the deploy operation. Must be assigned in *getVmDetails* method. |
+| errorMessage    | string   | Indication message to be displayed to the sandbox end-user when getting the vmDetails. |
+| vmNetworkData   | array    | Array of cloudshell-cp-core  VmDetailsNetworkInterface object. Create a *vmNetworkData* object for each VM NIC you wish to associate with resource. See the VmDetailsNetworkInterface table below. |
+| vmInstanceData  | array    | Array of cloudshell-cp-core's *VmDetailsProperty*. Contains data about the VM instance attributes. It should be used to change persist values of the VM resource. For example to persist Storage and operating system data. See the VmDetailsProperty table below.  |
+
+#### VmDetailsNetworkInterface
+
+| **Name**         |**Type**  | **Description** |
+| interfaceId      | String   | The network interface id with which the address is associated. |
+| networkId        | string   | The unique id of the network associated with the network interface. |
+| isPrimary        | bool     | Determines if NIC is primary. Primary affects the default selected network in VmDetailsTab in cloudshell |
+|isPredefined      | bool     | Determines if NIC is predefined. Predefined means that the network existed before the sandbox reservation. for example, a Static Management network that is not modeled in the blueprint. |
+| networkData      | array    | Array of cloudshell-cp-core VmDetailsProperty. Contains data describing the NIC. Examples of network properties include Device Index and MAC Address. |
+| privateIpAddress | string   | NIC address. |
+| publicIpAddress  | string   | The public ip associated with the NIC's private ip.
+
+#### VmDetailsProperty
+
+| **Name**  |**Type**  | **Description** |
+| key       | string   |                  |
+| value     | string   |                  |
+| hidden    | bool     |  Determines if the property is displayed to the sandbox end-user. |
 
 ### GetVmDetails method implementation
 
