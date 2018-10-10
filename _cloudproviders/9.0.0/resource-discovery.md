@@ -34,7 +34,7 @@ def get_inventory(self, context)
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Note:** The convention for specifying *context.resource.attributes* keys in the driver files(s) is: `my_shell_name.attribute_name`.
 
-### Return values
+### Return value
 
 The *AutoloaDetails* class that represents details discovered by the *get_inventory* function. 
 
