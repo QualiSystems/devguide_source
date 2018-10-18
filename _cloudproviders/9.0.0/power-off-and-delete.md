@@ -51,6 +51,13 @@ The *PowerOff* method should perform the following steps:
 2. Convert context deployed_app_json string to object
 3. Power off the deployed App resource
 
+### PowerOff implementation example
+
+{% github_sample_ref /QualiSystems/cloudshell-shell-core/blob/36009fdec45134ae38cb9273328b7686be66e553/cloudshell/shell/core/driver_context.py %}
+{% highlight python %}
+{% github_sample /QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/ea88bab874c42d69508ba5b2542e867c5b375d5f/src/driver.py 129 144 %}
+{% endhighlight %}
+
 ### Return value
 
 None
@@ -88,4 +95,15 @@ The *DeleteInstance* method should perform the following steps:
 1. Retrieve the cloud provider resource's connection credentials.
 2. Convert the *deployed_app_json* context string to object.
 3. Delete the VM instance from the cloud provider.
+
+### DeleteInstance implementation example
+
+{% github_sample_ref /QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/ea88bab874c42d69508ba5b2542e867c5b375d5f/src/driver.py %}
+{% highlight python %}
+{% github_sample /QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/ea88bab874c42d69508ba5b2542e867c5b375d5f/src/driver.py 148 163 %}
+{% endhighlight %}
+
+### Return value
+
+None
 

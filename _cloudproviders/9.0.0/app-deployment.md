@@ -280,9 +280,9 @@ The *PowerOn* method should perform the following steps:
 
 ### PowerOn implementation example
 
-{% github_sample_ref /QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/a9a14e87570fdc52d9994950e161b104c62401fb/src/driver.py %}
+{% github_sample_ref /QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/ea88bab874c42d69508ba5b2542e867c5b375d5f/src/driver.py %}
 {% highlight python %}
-{% github_sample /QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/a9a14e87570fdc52d9994950e161b104c62401fb/src/driver.py 114 128 %}
+{% github_sample /QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/ea88bab874c42d69508ba5b2542e867c5b375d5f/src/driver.py 113 128 %}
 {% endhighlight %}
 
 ### Return value
