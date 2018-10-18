@@ -47,7 +47,7 @@ The *deploy* method accepts three inputs: *context*, *request*, and *cancellatio
 
 {% github_sample_ref /QualiSystems/cloudshell-shell-core/blob/36009fdec45134ae38cb9273328b7686be66e553/cloudshell/shell/core/driver_context.py %}
 {% highlight python %}
-{% github_sample /QualiSystems/cloudshell-shell-core/blob/36009fdec45134ae38cb9273328b7686be66e553/cloudshell/shell/core/driver_context.py 9 18 %}
+{% github_sample /QualiSystems/cloudshell-shell-core/blob/36009fdec45134ae38cb9273328b7686be66e553/cloudshell/shell/core/driver_context.py 8 18 %}
 {% endhighlight %}
 
 **Request**
@@ -240,7 +240,7 @@ tr:nth-child(even) {
 | vmUuid                      | string       | Unique resource id. Populate *vmUuid* with the unique id of the resource in your custom cloud provider. Cloudshell does not use this id, but will keep it for other method calls. |
 | deployedAppAdditionalData   | dictionary   | Container used to persist custom data in resource, similar to AWS Tags. Included in all resource API query results. For <a href="https://github.com/QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/ac94224fd2368aaa9b589bcdfd30e449a53c90ce/src/heavenly_cloud_service_wrapper.py#L209-L213" target="_blank">example</a>, reading the custom data and returning it in the VM Details.|
 | deployedAppAttributes       | array        | Contains data describing the deployed app attributes, and are displayed in the App's **Attributes** pane in the sandbox. It should be used to change default attribute values on the deployed App resource. For example User & Password attributes exist as part of the default deployed App model. If your custom cloud provider generates a password in runtime for the VM, you should update the *deployedAppAttributes* property accordingly. |
-| vmDetailsData               | object        | Contains vmNetworkData and vmInstanceData. Displayed in the App's VM Details pane. For details about the return data, see the [GetVmDetails method](#GetVmDetails)'s **Return values** section below. |
+| vmDetailsData               | object        | Contains vmNetworkData and vmInstanceData. Displayed in the App's VM Details pane. For details about the return data, see the [GetVmDetails method](#GetVmDetails)'s **Return value** section below. |
 
 <a name="PowerOn"></a>
 
@@ -259,7 +259,7 @@ def PowerOn(self, context, ports)
 
 ### Inputs
 
-**context:** *context* is a *ResourceRemoteCommandContext* object that contains:
+**context:** *context* is a <a href="https://github.com/QualiSystems/cloudshell-shell-core/blob/36009fdec45134ae38cb9273328b7686be66e553/cloudshell/shell/core/driver_context.py#L171-L180" target="_blank">ResourceRemoteCommandContext</a> object that contains:
 
 1. connectivity - CloudShell server connectivity data for authentication with CloudShell Automation API 
 2. resource - resource configuration settings entered by the user when creating the Cloud Provider resource in the **Inventory** dashboard
@@ -278,14 +278,14 @@ The *PowerOn* method should perform the following steps:
 2. Convert the *deployed_app_json* context from string to object.
 3. Power on the deployed App resource.
 
-### PowerOn implemantation example
+### PowerOn implementation example
 
 {% github_sample_ref /QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/a9a14e87570fdc52d9994950e161b104c62401fb/src/driver.py %}
 {% highlight python %}
 {% github_sample /QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/a9a14e87570fdc52d9994950e161b104c62401fb/src/driver.py 114 128 %}
 {% endhighlight %}
 
-### Return values
+### Return value
 
 None
 
@@ -311,7 +311,7 @@ def remote_refresh_ip(self, context, ports, cancellation_context):
 
 ### Inputs
 
-**context**: *context* is a *ResourceRemoteCommandContextobject* that contains:
+**context**: *context* is a <a href="https://github.com/QualiSystems/cloudshell-shell-core/blob/36009fdec45134ae38cb9273328b7686be66e553/cloudshell/shell/core/driver_context.py#L171-L180" target="_blank">ResourceRemoteCommandContext</a> object that contains:
 
 1. connectivity - CloudShell server connectivity data for authentication with CloudShell Automation API 
 2. resource - resource configuration settings entered when creating the Cloud Provider resource in the **Inventory** dashboard
@@ -334,7 +334,7 @@ Legacy argument. Obsolete for custom cloud providers.
 {% github_sample /QualiSystems/cloudshell-shell-core/blob/36009fdec45134ae38cb9273328b7686be66e553/cloudshell/shell/core/driver_context.py 127 130 %}
 {% endhighlight %}
 
-### Return values
+### Return value
 
 None.
 
@@ -383,7 +383,7 @@ def GetVmDetails(self, context, requests, cancellation_context):
 
 {% github_sample_ref /QualiSystems/cloudshell-shell-core/blob/36009fdec45134ae38cb9273328b7686be66e553/cloudshell/shell/core/driver_context.py %}
 {% highlight python %}
-{% github_sample /QualiSystems/cloudshell-shell-core/blob/36009fdec45134ae38cb9273328b7686be66e553/cloudshell/shell/core/driver_context.py 9 18 %}
+{% github_sample /QualiSystems/cloudshell-shell-core/blob/36009fdec45134ae38cb9273328b7686be66e553/cloudshell/shell/core/driver_context.py 8 18 %}
 {% endhighlight %}
 
 **Requests**
@@ -397,7 +397,7 @@ JSON string that contains a list of items containing App requests and deployed A
 {% github_sample /QualiSystems/cloudshell-shell-core/blob/36009fdec45134ae38cb9273328b7686be66e553/cloudshell/shell/core/driver_context.py 127 130 %}
 {% endhighlight %}
 
-### Return values
+### Return value
 
 *VmDetailsData* object in a serialized JSON.
 

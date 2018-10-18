@@ -2,4 +2,6 @@
 set -e # halt script on error
 
 bundle exec jekyll build
-bundle exec htmlproofer ./_site --url-swap ^/devguide:
+
+echo bundle exec htmlproofer ./_site --url-swap ^/devguide: --url-ignore "/https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css/"
+bundle exec htmlproofer ./_site --url-swap ^/devguide: --url-ignore "/https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css/"

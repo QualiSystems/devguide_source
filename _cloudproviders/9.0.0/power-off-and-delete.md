@@ -23,7 +23,7 @@ def PowerOff(self, context, ports)
 
 ### Inputs
 
-**context**: *context* is a *ResourceRemoteCommandContext* object that contains:
+**context**: *context* is a <a href="https://github.com/QualiSystems/cloudshell-shell-core/blob/36009fdec45134ae38cb9273328b7686be66e553/cloudshell/shell/core/driver_context.py#L171-L180" target="_blank">ResourceRemoteCommandContext</a> object that contains:
 
 1. connectivity - CloudShell server connectivity data for authentication with CloudShell Automation API 
 2. resource - resource configuration settings entered by the user when creating the Cloud Provider resource in the **Inventory** dashboard
@@ -51,7 +51,7 @@ The *PowerOff* method should perform the following steps:
 2. Convert context deployed_app_json string to object
 3. Power off the deployed App resource
 
-### Return values
+### Return value
 
 None
 
@@ -65,7 +65,7 @@ def DeleteInstance(self, context, ports)
 
 ### Inputs
 
-**context**: *context* is a *ResourceRemoteCommandContext* object that contains:
+**context**: *context* is a <a href="https://github.com/QualiSystems/cloudshell-shell-core/blob/36009fdec45134ae38cb9273328b7686be66e553/cloudshell/shell/core/driver_context.py#L171-L180" target="_blank">ResourceRemoteCommandContext</a> object that contains:
 
 1. connectivity - CloudShell server connectivity data for authentication with CloudShell Automation API 
 2. resource - resource configuration settings entered by the user when creating the Cloud Provider resource in the **Inventory** dashboard
