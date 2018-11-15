@@ -137,9 +137,9 @@ session = Sandbox.automation_api
 
 ![Sandbox information]({{site.baseurl}}/assets/sandbox_automation_api.png){:class="img-responsive"}
 
-### Getting saved sandbox information using the API
+### Getting saved sandbox information
 
-Starting with CloudShell 9.0, the CloudShell Automation API includes a new *cloudshell-orch-core* class called *reservationLifecycleDetails*, which allows you to get the following details about your sandbox: reservation id, saved sandbox name and description, and the current sandbox user name.
+Starting with CloudShell 9.0, the *cloudshell-orch-core* python package includes a new class called *reservationLifecycleDetails*, which allows you to get the following details about your sandbox: saved sandbox name and description, and the current sandbox user name.
 
 ![Sandbox information]({{site.baseurl}}/assets/reservationLifecycleDetails.png){:class="img-responsive"}
 
