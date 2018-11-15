@@ -126,7 +126,7 @@ A common use case for a script is to get a list of the different Apps and resour
 
 1. Obtain the Quali Server’s connectivity details. These details are also available as an environment variable in your script called ‘qualiConnectivityContext’. As with the sandbox information, you can use the Sandbox class to quickly get the connectivity information in a more convenient object form and initialize a CloudShellAPISession object by calling **Sandbox.connectivityContextDetails**.
 
-2. Create a CloudShell API session object. Aince initializing a CloudShell API session object is a very common operation, you can use the **Sandbox** class to directly create an object. The **Sandbox** class will handle the passing of all of the required connectivity information for you. The **Sandbox** class provides a shortcut which makes accessing the CloudShell API from your script much easier. Simply use the following code:
+2. Create a CloudShell API session object. Since initializing a CloudShell API session object is a very common operation, you can use the **Sandbox** class to directly create an object. The **Sandbox** class will handle the passing of all of the required connectivity information for you. The **Sandbox** class provides a shortcut which makes accessing the CloudShell API from your script much easier. Simply use the following code:
 
 {% highlight python %}
 from cloudshell.workflow.orchestration.sandbox import Sandbox

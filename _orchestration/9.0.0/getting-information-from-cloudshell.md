@@ -31,7 +31,7 @@ Note that to execute this code, you will need to include a requirements.txt file
 
 To facilitate writing and debugging activities, it is recommended to use advanced IDEs such as PyCharm, which provide autocomplete functionality, as illustrated below. 
 
-![Sandbox information]({{ site.baseurl}}/assets/reservation_context_8_1.png){:class="img-responsive"}
+![Sandbox information]({{site.baseurl}}/assets/reservation_context_8_1.png){:class="img-responsive"}
 
 ### Accessing the sandbox components
 
@@ -98,7 +98,7 @@ the same name as the parameter.
 
 This means that if your script looks like this, with a parameter called ‘Param1’ defined:
 
-![Sandbox information]({{ site.baseurl}}/assets/script_param.png){:class="img-responsive"}
+![Sandbox information]({{site.baseurl}}/assets/script_param.png){:class="img-responsive"}
 
 You’ll be able to access it using an environment variable by that name:
 
@@ -126,7 +126,7 @@ A common use case for a script is to get a list of the different Apps and resour
 
 1. Obtain the Quali Server’s connectivity details. These details are also available as an environment variable in your script called ‘qualiConnectivityContext’. As with the sandbox information, you can use the Sandbox class to quickly get the connectivity information in a more convenient object form and initialize a CloudShellAPISession object by calling **Sandbox.connectivityContextDetails**.
 
-2. Create a CloudShell API session object. Aince initializing a CloudShell API session object is a very common operation, you can use the **Sandbox** class to directly create an object. The **Sandbox** class will handle the passing of all of the required connectivity information for you. The **Sandbox** class provides a shortcut which makes accessing the CloudShell API from your script much easier. Simply use the following code:
+2. Create a CloudShell API session object. Since initializing a CloudShell API session object is a very common operation, you can use the **Sandbox** class to directly create an object. The **Sandbox** class will handle the passing of all of the required connectivity information for you. The **Sandbox** class provides a shortcut which makes accessing the CloudShell API from your script much easier. Simply use the following code:
 
 {% highlight python %}
 from cloudshell.workflow.orchestration.sandbox import Sandbox
@@ -135,4 +135,12 @@ session = Sandbox.automation_api
 
 **Sandbox.automation_api** is a CloudShell API session object. You can use the IDE’s autocomplete capabilities to explore the available functions:
 
-![Sandbox information]({{ site.baseurl}}/assets/sandbox_automation_api.png){:class="img-responsive"}
+![Sandbox information]({{site.baseurl}}/assets/sandbox_automation_api.png){:class="img-responsive"}
+
+### Getting saved sandbox information using the API
+
+Starting with CloudShell 9.0, the CloudShell Automation API includes a new *cloudshell-orch-core* class called *reservationLifecycleDetails*, which allows you to get the following details about your sandbox: reservation id, saved sandbox name and description, and the current sandbox user name.
+
+![Sandbox information]({{site.baseurl}}/assets/reservationLifecycleDetails.png){:class="img-responsive"}
+
+Note that depending on the sandbox, the information may be partial. For example, if the sandbox is not a saved sandbox, the saved sandbox name and description will be missing. For details about our OOB saved sandbox orchestration scripts, see [CloudShell's OOB Orchestration]({{site.baseurl}}/orchestration/{{pageVersion}}/the-oob-orchestration.html).
