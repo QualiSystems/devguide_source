@@ -100,13 +100,36 @@ Orchestration script logs are saved on the execution server's *%programdata%\Qua
 
 CloudShell includes some helper functions to make it easier to debug a script by running it on real sandbox reservation data. The helper functions allow the script to be “attached” to a CloudShell sandbox, by filling in all of the script’s environment variables so that the same information is available to it as if it were launched by CloudShell.
 
-*To attach a script to a CloudShell sandbox:*
+**To attach a script to a CloudShell sandbox:**
 
+1) Create a sandbox reservation.
 
-As you're writing more complex orchestration scripts, it may become prudent to also separate
-the code to multiple files. To do that, we can take advantage of Python's ability to support executing _.zip_ archives
-containing multiple scripts. The only requirement, is that one of the files is named _\_\_main\_\_.py_, which is how
-the entry point of the Python process is determined.
+2) In the script's project folder, create a python script. We'll use this script as our debugger.
+
+3) Paste the following code into the script:
+
+{% highlight python %}
+from cloudshell.helpers.scripts.cloudshell_dev_helpers import attach_to_cloudshell_as
+attach_to_cloudshell_as('CLOUDSHELL_USER', 'CLOUDSHELL_PWD', 'DOMAIN', 'RESERVATION_ID', 'SERVER_ADDRESS')
+{% endhighlight %}
+
+3) To debug a specific function in your script, you will need to call the function from the debugger script.
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;For example, calling the *connect_layer1_routes* function from a script called *Setup_Script*:
+
+{% highlight python %}
+from cloudshell.helpers.scripts.cloudshell_dev_helpers import attach_to_cloudshell_as
+attach_to_cloudshell_as('admin', 'admin', 'Global', 'c425c01c-2cc6-4a3a-bb45-d357be6c294f', '192.168.42.125')
+
+from Setup_Script import connect_layer1_routes
+connect_layer1_routes()
+{% endhighlight %}
+
+4) Set the relevant details and debug the new script.
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;You can add additional functions to the script, from the same file or other ones in the project folder. 
+
+As you write more complex orchestration scripts, you may want to separate the code to multiple files. To do that, we can take advantage of Python's ability to support executing _.zip_ archives containing multiple scripts. The only requirement, is that one of the files is named _\_\_main\_\_.py_, which is how the entry point of the Python process is determined.
 
 #### Referencing other packages
 
