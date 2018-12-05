@@ -4,7 +4,7 @@ title: CloudShell's OOB Orchestration
 category: orch
 comments: true
 version: 
-    - 9.0.0
+    - 9.1.0
 order:  9
 ---
 Every CloudShell installation includes out of the box workflows. These reflect some common workflows we see across many of our customers that we’ve decided to integrate as default behavior. The OOB setup and teardown processes handle App deployment and startup, connectivity, App discovery and installation. The OOB Save and Restore processes are used for saving the sandbox state and restoring it as a new sandbox. The setup and teardown OOB scripts are included as part of the default blueprint template as of CloudShell 7.1, while the Save and Restore OOB scripts are included starting with CloudShell 9.0. 
