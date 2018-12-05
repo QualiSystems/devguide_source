@@ -100,8 +100,11 @@ After adding the functions reinstall the Shell using ShellFoundry and run the ne
 
 Returning a result has several effects:
 
-* The result will appear in the environment output and be linked from the commands panel (unless the command was executed with
-    the no-output parameter)
+* The result will appear in the environment output and be linked from the commands panel, unless the command was executed via an API method that includes the `PrintOutput=False` tag. For example:
+
+{% highlight python %}
+sandbox.automation_api.ExecuteCommand(sandbox.id, 'my switch', 'Resource', 'run_traffic', printOutput=False)
+{% endhighlight %}
 
 * If another command or an orchestration script called this command, it will receive back the result.
 
