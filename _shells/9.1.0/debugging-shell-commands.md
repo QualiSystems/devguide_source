@@ -46,8 +46,6 @@ Using the mock debugger is easy.
 
 Add the following mock code to the shell, and specify some details, like reservation ID, resource address and name, and any attributes required for resource discovery (for example, User, Password and SNMP Read Community. 
 
-Note: If you specify a password type attribute, CloudShell will encrypt it, and you will need to implement an API method to decrypt the value in order to use it. In debugging, you can simply specify the password in plain text.
-
 {% highlight python %}
 if __name__ == "__main__":
     import mock
