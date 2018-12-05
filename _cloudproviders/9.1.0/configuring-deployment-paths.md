@@ -54,7 +54,7 @@ artifacts:
 Next, add the required attributes. 
 
 _**Notes:**_
-_You cannot modify attributes **type**, **name**, and any attributes that are associated with the shell’s family as this will affect other shells that use this family. The family attributes are listed in the Cloud Provider Shell Standard._
+_You cannot modify attribute properties **type** and **name**, and any attributes that are associated with the shell’s family as this will affect other shells that use this family. The family attributes are listed in the Cloud Provider Shell Standard._
 
 _CloudShell does not allow upgrading shells with deleted/modified attributes. Therefore, if you need to make an unsupported change to an attribute (for example, deleting an attribute or changing its type), make sure to remove the shell from CloudShell before you install the updated version._ 
 
