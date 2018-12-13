@@ -20,7 +20,7 @@ Attributes can be added to the cloud provider shell or to the deployment path on
 
 Adding attributes to the shell is done in the shell's *shell-definition.yaml* file. 
 
-Let's start by adding the **Networking Type** attribute from the standard. Attributes that are included on the shell's standard, like this attribute, need to be added to the `capabilities` section, under `properties`:
+Let's start by adding the **VLAN Type** attribute from the standard. Attributes that are included on the shell's standard, like this attribute, need to be added to the `capabilities` section, under `properties`:
 
 {% highlight yaml %}
 node_types:
