@@ -154,7 +154,9 @@ Customizing a service shell’s commands is the same as for resource shells, whi
 
 ### Publishing a service shell's attributes
 
-Publishing an attribute displays that attribute in the service's settings dialog box when a CloudShell user adds or edits a service in a blueprint or sandbox diagram.
+Publishing an attribute displays that attribute in the service's settings dialog box when a CloudShell user adds or edits a service in a blueprint or sandbox diagram. This is done by adding the `user_input` tag to the attribute.
+
+Note that starting with CloudShell 9.1 GA, custom attributes on a service shell are by default defined as "user input".
 
 **To publish a service shell's attribute:**
 
