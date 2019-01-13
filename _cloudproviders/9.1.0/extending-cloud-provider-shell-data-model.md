@@ -88,7 +88,7 @@ node_types:
       	type: string
 {% endhighlight %}
 
-Return to CloudShell Portal, in the **Inventory** dashboard, click the resource's more actions button and select **Discover**:
+Install the shell and return to CloudShell Portal, in the **Inventory** dashboard, click the resource's more actions button and select **Discover**:
 
 ![Resource information]({{site.baseurl}}/assets/cp-open-resource-discovery-page.png){:class="img-responsive"}
 
@@ -112,7 +112,7 @@ properties:
 
 ### Modifying an attribute on a shell
 
-You cannot modify attributes **type**, **name**, and any attributes that are associated with the shell’s family as this will affect other shells that use this family. The family attributes are listed in the shell’s standard. To find the attributes defined in the shell’s standard, see the <a href="https://github.com/QualiSystems/cloudshell-standards/tree/master/Documentation" target="_blank">documentation page</a> of your shell’s standard.
+You cannot modify attribute properties **type** and **name**, and any attributes that are associated with the shell’s family as this will affect other shells that use this family. The family attributes are listed in the shell’s standard. To find the attributes defined in the shell’s standard, see the <a href="https://github.com/QualiSystems/cloudshell-standards/tree/master/Documentation" target="_blank">documentation page</a> of your shell’s standard.
 
 ### Deleting an attribute from a shell
 
