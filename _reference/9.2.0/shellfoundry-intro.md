@@ -232,7 +232,7 @@ shellfoundy extend <URL/path-to-Shell>
 
 The path can be a URL to the Shell's source code on [Quali Community's Integrations](https://community.quali.com/integrations) page or the filesystem path (prefixed by `local:./`) to the extracted source code folder:
 
-![Shell Commands]({{ site.baseurl}}/assets/download_shell_source_code.png)
+![Shell Commands]({{site.baseurl}}/assets/download_shell_source_code.png)
 
 
 **Examples:**
@@ -265,11 +265,11 @@ Before extending a local Shell, make sure the Shell's destination folder is diff
 * Added dynamical determination of minimal CloudShell version from templates
 
 **1.2.0 (2018-07-26)**
-* Extended the `new` command behaviour for offline mode
+* Extended `new` command behaviour for offline mode
 * Added validation to check if the template and standard versions are compatible
 
 **1.1.9 (2018-05-03)**
-* Added offline mode functionality
+* Added Offline Mode functionality
 
 **1.1.8 (2018-04-23)**
 * Fixed typo in `pack` command behavior
