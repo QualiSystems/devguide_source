@@ -269,7 +269,7 @@ Before extending a local Shell, make sure the Shell's destination folder is diff
 * Added validation to check if the template and standard versions are compatible
 
 **1.1.9 (2018-05-03)**
-* Added offline mode functionality
+* Added Offline Mode functionality
 
 **1.1.8 (2018-04-23)**
 * Fixed typo in `pack` command behavior
