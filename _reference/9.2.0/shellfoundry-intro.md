@@ -251,6 +251,19 @@ Before extending a local Shell, make sure the Shell's destination folder is diff
 
 ### Version History<a name="version-history"></a>
 
+**1.2.5 (2018-10-04)**
+* Set strict python version
+
+**1.2.4 (2018-09-26)**
+* Removed unnecessary *cloudshell-automation-api* dependency from requirements
+* Set static version for package click in requirements. click==6.7
+
+**1.2.2 (2018-08-16)**
+* Fixed bug related to template verifications and standards compatibilities
+
+**1.2.1 (2018-08-13)**
+* Added dynamical determination of minimal CloudShell version from templates
+
 **1.2.0 (2018-07-26)**
 * Extended the `new` command behaviour for offline mode
 * Added validation to check if the template and standard versions are compatible
