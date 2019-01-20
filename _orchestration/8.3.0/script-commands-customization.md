@@ -10,11 +10,15 @@ version:
 tags:
     - orchestration
 ---
+
+{% assign pageUrlSplited = page.url | split: "/" %}
+{% assign pageVersion = pageUrlSplited[2] %}
+
 You can control many aspects of how the orchestration commands appear and behave in CloudShell by editing the script from the Scripts management page.
 
 To demonstrate these capabilities, we’ll create a simple script, which we’ll later customize. The script essentially prints out the parameters it receives and then sets the status of the sandbox to ‘Downloading’.
 
-1. Create a new Python file and name it customization_test.py. Add the following code:
+1) Create a new Python file and name it customization_test.py. Add the following code:
 
 {% highlight python %}
 
@@ -47,17 +51,19 @@ if __name__ == "__main__":
 
 {%  endhighlight %}
 
-Note that you can get the Sandbox id by using **sandbox.id**. The Sandbox name is also available using the **sandbox.name** property.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Note that you can get the Sandbox id by using **sandbox.id**. The Sandbox name is also available via the **sandbox.name** property.
 
-2. In CloudShell Portal, open the **Manage** dashboard.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Since this script has imports, you'll need a *requirements.txt* file and a *main.py* function. For details, see [Scripts Deep Dive]({{site.baseurl}}/orchestration/{{pageVersion}}/scripts-deep-dive.html).
 
-3. Navigate to the _Scripts_ sub section and select **Blueprint**.
+2) In CloudShell Portal, open the **Manage** dashboard.
+
+3) Navigate to the _Scripts_ sub section and select **Blueprint**.
 
 ![Scripts Management Page]({{ site.baseurl}}/assets/environment_scripts.png){:class="img-responsive"}
 
-4. Add the script into CloudShell by dragging the script into the _Scripts_ – **Blueprint** page or add the customization_test.py script. 
+4) Add the script into CloudShell by dragging the script into the _Scripts_ – **Blueprint** page or add the customization_test.py script. 
 
-5. To customize the script, click the Edit button.
+5) To customize the script, click the Edit button.
 ![Scripts Management Page]({{ site.baseurl}}/assets/orch_script_edit.png){:class="img-responsive"}
 
 
