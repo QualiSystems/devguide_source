@@ -67,6 +67,8 @@ Run this command from the Shell’s root folder.
 The following keys are available:
 * **username**: CloudShell username. For example: “admin”.
 * **domain**: CloudShell domain. Note that for 2nd Generation Shells, the domain must be “Global”.
+* **github_login**: GitHub username. To be used to download shellfoundry templates via `shellfoundry get_templates`.
+* **github_password**: GitHub user password. To be used to download shellfoundry templates via `shellfoundry get_templates`.
 * **defaultview**: Set the default view. Possible values are: **gen**, **gen2**, **all** and **layer1**. Default is **gen2**.
 * **online_mode**: Shellfoundry computer's mode (online or offline). Online mode (`True`) is the default. in online mode, shellfoundry templates on GitHub are used, while for offline mode, you will need to copy the shellfoundry templates to your local machine. For offline mode, use `template_location` to define the local templates folder.
 * **author**: The author to be specified on the shell (in the shell's metadata).
@@ -144,6 +146,20 @@ First, run the `shellfoundry show` command to see the Shell's versions.
 Then, in the `shellfoundry new` command, specify the version you need. For example, "5.0.2":
 
 {% highlight bash %}shellfoundry new router-shell-502 --template gen2/networking/router --version 5.0.2 {% endhighlight %}
+
+
+#### Downloading shellfoundry templates
+
+This command downloads all shellfoundry templates from GitHub, which you can use to create shells in offline mode. Note that shellfoundry uses GitHub API to fetch the templates, so you will need to set a GitHub user (via `shellfoundry config`) to grant shellfoundry unrestricted access to GitHub API. For details, see this GitHub Developer <a href="https://developer.github.com/v3/#rate-limiting" target="_blank">article</a>.
+
+**Syntax:**
+
+{% highlight bash %}shellfoundry get_templates <CloudShell version>{% endhighlight %}
+
+Shellfoundry will download the latest template versions that are compatible with the specified CloudShell version.
+
+**Example:**
+{% highlight bash %}shellfoundry get_templates 9.1{% endhighlight %}
 
 
 #### Listing available Shell templates
@@ -251,12 +267,15 @@ Before extending a local Shell, make sure the Shell's destination folder is diff
 
 ### Version History<a name="version-history"></a>
 
+**1.2.6 (2019-01-21)**
+* Added `get_templates` command for downloading shellfoundry templates for offline mode
+
 **1.2.5 (2018-10-04)**
 * Set strict python version
 
 **1.2.4 (2018-09-26)**
 * Removed unnecessary *cloudshell-automation-api* dependency from requirements
-* Set static version for package click in requirements. click==6.7
+* Set static version for package 'click' in *requirements.txt* file. click==6.7
 
 **1.2.2 (2018-08-16)**
 * Fixed bug related to template verifications and standards compatibilities
