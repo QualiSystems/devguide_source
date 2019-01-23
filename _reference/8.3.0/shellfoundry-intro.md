@@ -148,6 +148,23 @@ Then, in the `shellfoundry new` command, specify the version you need. For examp
 {% highlight bash %}shellfoundry new router-shell-502 --template gen2/networking/router --version 5.0.2 {% endhighlight %}
 
 
+#### Downloading shellfoundry templates
+
+This command downloads all shellfoundry templates from GitHub, which you can use to create shells in offline mode. Note that shellfoundry uses GitHub API to fetch the templates, so you will need to set a GitHub user (via `shellfoundry config`) to grant shellfoundry unrestricted access to GitHub API. For details, see this GitHub Developer <a href="https://developer.github.com/v3/#rate-limiting" target="_blank">article</a>.
+
+**Syntax:**
+
+Run this command from the directory that will contain the shell templates:
+
+{% highlight bash %}shellfoundry get_templates <CloudShell version>{% endhighlight %}
+
+Shellfoundry downloads the latest template versions that are compatible with the specified CloudShell version.
+
+**Example:**
+
+{% highlight bash %}shellfoundry get_templates 9.1{% endhighlight %}
+
+
 #### Listing available Shell templates
 
 This command lists the 1st and 2nd generation Shell templates you can use for your new Shell. For more information, see [Modeling Shells with TOSCA]({{site.baseurl}}/shells/{{pageVersion}}/modeling-the-shell.html). 
@@ -159,20 +176,6 @@ Note that in offline mode, the command lists the shell templates residing locall
 {% highlight bash %}shellfoundry list{% endhighlight %}
 
 To view templates of a specific type, add the appropriate flag to the command: `--gen1`, `--gen2`, `--layer1`, `--all` (lists all available templates).
-
-
-#### Downloading shellfoundry templates
-
-This command downloads all shellfoundry templates from GitHub, which you can use to create shells in offline mode. Note that shellfoundry uses GitHub API to fetch the templates, so you will need to set a GitHub user (via `shellfoundry config`) to grant shellfoundry unrestricted access to GitHub API. For details, see this GitHub Developer <a href="https://developer.github.com/v3/#rate-limiting" target="_blank">article</a>.
-
-**Syntax:**
-
-{% highlight bash %}shellfoundry get_templates <CloudShell version>{% endhighlight %}
-
-Shellfoundry will download the latest template versions that are compatible with the specified CloudShell version.
-
-**Example:**
-{% highlight bash %}shellfoundry get_templates 9.1{% endhighlight %}
 
 
 #### Listing versions of a Shell template

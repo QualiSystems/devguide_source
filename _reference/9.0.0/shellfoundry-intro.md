@@ -154,11 +154,14 @@ This command downloads all shellfoundry templates from GitHub, which you can use
 
 **Syntax:**
 
+Run this command from the directory that will contain the shell templates:
+
 {% highlight bash %}shellfoundry get_templates <CloudShell version>{% endhighlight %}
 
-Shellfoundry will download the latest template versions that are compatible with the specified CloudShell version.
+Shellfoundry downloads the latest template versions that are compatible with the specified CloudShell version.
 
 **Example:**
+
 {% highlight bash %}shellfoundry get_templates 9.1{% endhighlight %}
 
 
