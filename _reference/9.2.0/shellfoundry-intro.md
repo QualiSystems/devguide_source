@@ -148,6 +148,21 @@ Then, in the `shellfoundry new` command, specify the version you need. For examp
 {% highlight bash %}shellfoundry new router-shell-502 --template gen2/networking/router --version 5.0.2 {% endhighlight %}
 
 
+#### Deleting a shell from Cloudshell
+
+Starting with CloudShell 9.1, it is possible to delete shells that are installed on CloudShell. Note that you cannot delete shells that have resources.
+
+**Syntax:**
+
+{% highlight bash %}shellfoundry delete <"shell name">{% endhighlight %}
+
+Where the shell's name is the name of the shell, as displayed in CloudShell Portal's **Manage - Shells** page.
+
+**Example:**
+
+{% highlight bash %}shellfoundry delete "Juniper JunOS Switch Shell 2G"{% endhighlight %}
+
+
 #### Downloading shellfoundry templates
 
 This command downloads all shellfoundry templates from GitHub, which you can use to create shells in offline mode. Note that shellfoundry uses GitHub API to fetch the templates, so you will need to set a GitHub user (via `shellfoundry config`) to grant shellfoundry unrestricted access to GitHub API. For details, see this GitHub Developer <a href="https://developer.github.com/v3/#rate-limiting" target="_blank">article</a>.
