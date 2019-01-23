@@ -5,7 +5,7 @@ category: ref
 order: 8
 comments: true
 version:
-    - 9.1.0
+    - 9.2.0
 ---
 
 {% assign pageUrlSplited = page.url | split: "/" %}
@@ -151,10 +151,17 @@ Then, in the `shellfoundry new` command, specify the version you need. For examp
 #### Downloading shellfoundry templates
 
 This command downloads all shellfoundry templates from GitHub, which you can use to create shells in offline mode. Note that shellfoundry uses GitHub API to fetch the templates, so you will need to set a GitHub user (via `shellfoundry config`) to grant shellfoundry unrestricted access to GitHub API. For details, see this GitHub Developer <a href="https://developer.github.com/v3/#rate-limiting" target="_blank">article</a>.
+
 **Syntax:**
+
+Run this command from the directory that will contain the shell templates:
+
 {% highlight bash %}shellfoundry get_templates <CloudShell version>{% endhighlight %}
-Shellfoundry will download the latest template versions that are compatible with the specified CloudShell version.
+
+Shellfoundry downloads the latest template versions that are compatible with the specified CloudShell version.
+
 **Example:**
+
 {% highlight bash %}shellfoundry get_templates 9.1{% endhighlight %}
 
 

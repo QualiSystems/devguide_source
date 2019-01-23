@@ -5,7 +5,7 @@ category: ref
 order: 17
 comments: true
 version:
-    - 9.1.0
+    - 9.2.0
 ---
 
 {% assign pageUrlSplited = page.url | split: "/" %}

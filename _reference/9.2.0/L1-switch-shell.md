@@ -5,7 +5,7 @@ category: ref
 order: 13
 comments: true
 version:
-    - 9.1.0
+    - 9.2.0
 ---
 
 This article guides you on how to create and develop an L1 switch shell.
