@@ -154,13 +154,13 @@ Starting with CloudShell 9.1, it is possible to delete shells that are installed
 
 **Syntax:**
 
-{% highlight bash %}shellfoundry delete <shell name>{% endhighlight %}
+{% highlight bash %}shellfoundry delete "<shell name>"{% endhighlight %}
 
 Where the shell's name is the name of the shell, as displayed in CloudShell Portal's **Manage - Shells** page.
 
 **Example:**
 
-{% highlight bash %}shellfoundry delete Juniper JunOS Switch Shell 2G{% endhighlight %}
+{% highlight bash %}shellfoundry delete "Juniper JunOS Switch Shell 2G"{% endhighlight %}
 
 
 #### Downloading shellfoundry templates
