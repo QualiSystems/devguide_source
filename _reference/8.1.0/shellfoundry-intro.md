@@ -270,8 +270,9 @@ Before extending a local Shell, make sure the Shell's destination folder is diff
 
 ### Version History<a name="version-history"></a>
 
-**1.2.6 (2019-01-21)**
+**1.2.6 (2019-01-24)**
 * Added `get_templates` command for downloading shellfoundry templates for offline mode
+* Added `delete` command for deleting shells installed on CloudShell
 
 **1.2.5 (2018-10-04)**
 * Set strict python version
