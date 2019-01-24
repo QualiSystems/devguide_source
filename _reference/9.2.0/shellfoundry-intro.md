@@ -154,7 +154,7 @@ Starting with CloudShell 9.1, it is possible to delete shells that are installed
 
 **Syntax:**
 
-{% highlight bash %}shellfoundry delete <"shell name">{% endhighlight %}
+{% highlight bash %}shellfoundry delete "<shell name>"{% endhighlight %}
 
 Where the shell's name is the name of the shell, as displayed in CloudShell Portal's **Manage - Shells** page.
 
@@ -173,11 +173,13 @@ Run this command from the directory that will contain the shell templates:
 
 {% highlight bash %}shellfoundry get_templates <CloudShell version>{% endhighlight %}
 
-Shellfoundry downloads the latest template versions that are compatible with the specified CloudShell version.
+Optionally, add `--output_dir="<containing_folder_path>"` to set a different containing folder.
 
 **Example:**
 
-{% highlight bash %}shellfoundry get_templates 9.1{% endhighlight %}
+{% highlight bash %}shellfoundry get_templates 9.1 --output_dir="c:\users\steven.g\shell templates"{% endhighlight %}
+
+Shellfoundry downloads the latest template versions that are compatible with the specified CloudShell version.
 
 
 #### Listing available Shell templates
@@ -284,6 +286,10 @@ shellfoundry extend local:C:\Temp\my-shells\JuniperJunOSRouterShell2G
 Before extending a local Shell, make sure the Shell's destination folder is different from the original Shell's root folder.
 
 ### Version History<a name="version-history"></a>
+
+**1.2.6 (2019-01-24)**
+* Added `get_templates` command for downloading shellfoundry templates for offline mode
+* Added `delete` command for deleting shells installed on CloudShell
 
 **1.2.5 (2018-10-04)**
 * Set strict python version
