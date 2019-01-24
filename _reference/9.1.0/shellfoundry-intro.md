@@ -154,13 +154,13 @@ Starting with CloudShell 9.1, it is possible to delete shells that are installed
 
 **Syntax:**
 
-{% highlight bash %}shellfoundry delete <shell name>{% endhighlight %}
+{% highlight bash %}shellfoundry delete "<shell name>"{% endhighlight %}
 
 Where the shell's name is the name of the shell, as displayed in CloudShell Portal's **Manage - Shells** page.
 
 **Example:**
 
-{% highlight bash %}shellfoundry delete Juniper JunOS Switch Shell 2G{% endhighlight %}
+{% highlight bash %}shellfoundry delete "Juniper JunOS Switch Shell 2G"{% endhighlight %}
 
 
 #### Downloading shellfoundry templates
@@ -173,11 +173,13 @@ Run this command from the directory that will contain the shell templates:
 
 {% highlight bash %}shellfoundry get_templates <CloudShell version>{% endhighlight %}
 
-Shellfoundry downloads the latest template versions that are compatible with the specified CloudShell version.
+Optionally, add `--output_dir="<containing_folder_path>"` to set a different containing folder.
 
 **Example:**
 
-{% highlight bash %}shellfoundry get_templates 9.1{% endhighlight %}
+{% highlight bash %}shellfoundry get_templates 9.1 --output_dir="c:\users\steven.g\shell templates"{% endhighlight %}
+
+Shellfoundry downloads the latest template versions that are compatible with the specified CloudShell version.
 
 
 #### Listing available Shell templates
@@ -285,8 +287,9 @@ Before extending a local Shell, make sure the Shell's destination folder is diff
 
 ### Version History<a name="version-history"></a>
 
-**1.2.6 (2019-01-21)**
+**1.2.6 (2019-01-25)**
 * Added `get_templates` command for downloading shellfoundry templates for offline mode
+* Added `delete` command for deleting shells installed on CloudShell
 
 **1.2.5 (2018-10-04)**
 * Set strict python version
