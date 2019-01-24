@@ -274,7 +274,7 @@ Before extending a local Shell, make sure the Shell's destination folder is diff
 
 **1.2.6 (2019-01-25)**
 * Added `get_templates` command for downloading shellfoundry templates for offline mode
-* Added `delete` command for deleting shells installed on CloudShell
+* Added `delete` command for deleting shells installed on CloudShell (supported in CloudShell 9.1 GA and up)
 
 **1.2.5 (2018-10-04)**
 * Set strict python version
