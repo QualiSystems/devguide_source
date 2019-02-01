@@ -29,9 +29,9 @@ Historically, we have had two types of shells in CloudShell, 1st Generation shel
 
 The basic shell creation process is as follows:
 
-1)  Install shellfoundry, our command-line utility for creating and managing the shell development process
+1)  Install shellfoundry, our command-line utility for creating and managing the shell development process.
 
-2)  Create or customize a shell. 
+2)  Create or customize a shell.
 
 3)  Upload the shell to CloudShell.
 
@@ -53,7 +53,7 @@ To learn more about the  different versions of the Shells used by CloudShell and
 
 
 ### Prerequisites
-* [Get CloudShell](http://info.quali.com/cloudshell-developer-edition-download): Download the latest CloudShell SDK and run it on your machine. 
+* [Get CloudShell](http://info.quali.com/cloudshell-developer-edition-download): Download the latest CloudShell SDK and run it on your machine.
 * [Python](https://www.python.org/downloads/): Make sure Python 2.7.x (latest recommended) is installed on your machine.
 * **IDE/Text Editor:** Your preferred IDE editor. We recommend using PyCharm (which offers a free community edition) because of the tooling we’ve already created for that IDE, including a CloudShell developer plugin.
 
@@ -178,7 +178,7 @@ We’re now ready to install the new Shell.
 
 #### Install the Shell on CloudShell
 
-Shellfoundry provides an easy and convenient way to create the Shell package and install it on your CloudShell server. 
+Shellfoundry provides an easy and convenient way to create the Shell package and install it on your CloudShell server.
 
 * To package the Shell and install it on your local CloudShell server, run the following command:
 {% highlight bash %} shellfoundry install {% endhighlight %}
