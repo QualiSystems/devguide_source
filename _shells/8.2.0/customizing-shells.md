@@ -123,7 +123,7 @@ properties:
 
 8) Edit the values, as appropriate.
 * **properties**: Header for the shell's attributes. Needs to be added only once.
-* **property_name**: (Relevant when adding an attribute) Replace **my_property** with the new attribute’s display name. For example: "My new attribute:". <font color="green">Do not remove the colon (:) from the end of the line.</font>
+* **property_name**: (Relevant when adding an attribute) Replace **my_property** with the new attribute’s display name (spaces are supported). For example: "My new attribute:". <font color="green">Do not remove the colon (:) from the end of the line.</font>
 * **type**: (Relevant when adding an attribute) Type of attribute. Optional values: string, integer, float, boolean, cloudshell.datatypes.Password.
 * **default**: Default value.
 * **description**: Attribute's description.
