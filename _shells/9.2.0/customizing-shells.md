@@ -126,7 +126,8 @@ properties:
 
 8) Edit the values, as appropriate.
 * **properties**: Header for the shell's attributes. Needs to be added only once.
-* **property_name**: (Relevant when adding an attribute) Replace **my_property** with the new attribute’s display name if you want to add a root level attribute. To add an attribute to a sub-model, replace **my_property** with the sub-model name (<font color="green">remove any spaces from the name</font>), followed by the name of the new attribute. For example: "Chassis.My new attribute:". For the sub-models of a specific shell, see the [documentation page](https://github.com/QualiSystems/cloudshell-standards/tree/master/Documentation) of your shell's standard. <font color="green">Do not remove the colon (:) from the end of the line.</font> 
+* **property_name**: (Relevant when adding an attribute) Replace **my_property** with the new attribute’s display name if you want to add a root level attribute. Note that spaces in the attribute's name are supported. 
+<br>To add an attribute to a sub-model, replace **my_property** with the sub-model name (<font color="green">remove any spaces from the name</font>), followed by the name of the new attribute. For example: "Chassis.My new attribute:". For the sub-models of a specific shell, see the [documentation page](https://github.com/QualiSystems/cloudshell-standards/tree/master/Documentation) of your shell's standard. <font color="green">Do not remove the colon (:) from the end of the line.</font> </br>
 * **type**: (Relevant when adding an attribute) Type of attribute. Optional values: string, integer, float, boolean, cloudshell.datatypes.Password.
 * **default**: Default value.
 * **description**: Attribute's description.
