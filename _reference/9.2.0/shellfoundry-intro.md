@@ -240,7 +240,9 @@ Run this command from the Shell’s root folder.
 
 #### Generating the Shell’s data model file
 
-The shell’s data model (*data_model.py* file) consists of the standard specifications and the extended data model, which is defined in the *shell-definition.yaml* file. The shell's data model is mainly used to work with resource attributes and implement the Auto-discovery process. After importing the _data_model_, PyCharm (and some other IDEs) will recognize the docstring code-hint annotations and will enable autocomplete as you can see below:
+The shell’s data model (*data_model.py* file) consists of the standard specifications and the extended data model, which is defined in the *shell-definition.yaml* file. The shell's data model is mainly used to work with resource attributes and implement the Auto-discovery process. For additional information, see [Managing the Shell’s Data Model]({{site.baseurl}}/shells/{{pageVersion}}/generating-shell-data-model.html).
+
+After importing the _data_model_, PyCharm (and some other IDEs) will recognize the docstring code-hint annotations and will enable autocomplete as you can see below:
 
 ![Directory Structure]({{site.baseurl}}/assets/auto_complete_demo.png)
 
@@ -250,7 +252,7 @@ Run this command from the Shell’s root folder.
 
 {% highlight bash %} shellfoundry generate {% endhighlight %}
 
-For additional information, see [Managing the Shell’s Data Model]({{site.baseurl}}/shells/{{pageVersion}}/generating-shell-data-model.html).
+Note that changing the shell's name from the *shell-definition.yaml* file will corrupt the data model.
 
 
 #### Customizing a 2nd Gen Shell
