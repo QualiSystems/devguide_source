@@ -55,7 +55,7 @@ if __name__ == "__main__":
 
 3) Navigate to the _Scripts_ sub section and select **Blueprint**.
 
-![Scripts Management Page]({{ site.baseurl}}/assets/environment_scripts.png){:class="img-responsive"}
+![Scripts Management Page]({{ site.baseurl}}/assets/environment_scripts_9.2.png){:class="img-responsive"}
 
 4) Add the script into CloudShell by dragging the script into the **Scripts – **Blueprint** page or add the customization_test.py script. 
 
@@ -89,9 +89,9 @@ Note that if the command parameters don’t have default values, they will becom
 ### Test the new look and feel
 
 To test the script, we need to add it to a blueprint. 
-1. In CloudShell Portal, click **Lab Management**.
+1. In CloudShell Portal, click **Blueprints**.
 
-   The **Blueprints Catalog** is displayed.
+   The **Blueprint Catalog** is displayed.
 
 2. Create a new blueprint or select an existing one.
 
