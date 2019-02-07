@@ -19,6 +19,11 @@ saving and restoring state, starting test traffic, running a failover scenarios 
 
 _**Before developing scripts, please familiarize yourself with CloudShell by taking [Quali U courses](http://courses.quali.com). These courses also include installation instructions for the CloudShell SDK package that deploys a developer edition of CloudShell on which you can perform your training and development activities.**_
 
+### Prerequisites
+* [Get CloudShell](http://info.quali.com/cloudshell-developer-edition-download): Download the latest CloudShell SDK and run it on your machine. 
+* [Python](https://www.python.org/downloads/): Make sure Python 2.7.x (latest recommended) is installed on your machine.
+* **IDE/Text Editor:** Your preferred IDE editor. We recommend using PyCharm (which offers a free community edition) because of the tooling we’ve already created for that IDE, including a CloudShell developer plugin.
+
 ### Creating and using orchestration scripts in CloudShell
 
 This procedure shows the basic steps for creating and using orchestration scripts in CloudShell.
@@ -46,35 +51,38 @@ Save the file and give it any name, for example 'hello.py'.
 
 ### Uploading the orchestration script to CloudShell
 
-In CloudShell portal, open the Manage dashboard. In the left sidebar, click _Scripts_ and select the _Environment_ option.
+In CloudShell Portal, open the **Manage** dashboard. In the left sidebar, click **Scripts** and select the **Blueprint** option.
 The page should be similar to this:
 
 ![Scripts Management Page]({{ site.baseurl}}/assets/environment_scripts.png){:class="img-responsive"}
 
-Click the ‘Add New Script’ button to fill in some basic details on your script and upload it to CloudShell.
-For now, just provide a name for the script, click _Browse_ to upload your script and finally hit click _Save_ to seal the deal. Your script is now in CloudShell, all we need now is a blueprint where it can work its magic.
+Click the **Add New Script** button and browse for the script. Once the script is uploaded, click **Edit**. 
+For now, just provide a name for the script (the script's file name is the default). 
+
+And click **Save** to seal the deal. Your script is now in CloudShell, all we need now is a blueprint where it can work its magic.
 
 ### Attaching the script to an environment
 
-Open the _Lab Management_ dashboard and select _Environments_. Click _Add New_. A new environment will be created and you’ll be taken to the environment workspace.
+Open the **Blueprints** dashboard. Click **Add New**. A new blueprint will be created and you’ll be taken to the blueprint's workspace.
 
-Take a second to name your environment, you can do that by clicking on the name next to the pencil icon.
-Then click on the environment drop down menu to select _Properties_ that is where we’ll connect our new script.
+Take a second to name your blueprint, you can do that by clicking the name next to the pencil icon.
 
-The last stop is the properties page. Here we’ll simply click the ‘Add Script’ button to assign our new script to the environment
-and click the ‘Update’ button at the bottom of the page. That’s it! Our script is ready to be used. However, in order to run
-it we’ll need to make our environment go live by creating a reservation. Click the ‘Reserve’ button to create a sandbox
-from the environment blueprint. Now, to run the script.
+The last stop is the properties page. This is where we’ll connect our new script. Click the **Blueprint** drop down menu and select **Properties**. 
 
-### Executing the script on the sandbox.
+Here we’ll simply click the **Add Script** button to assign our new script to the environment
+and click the **Update’** button at the bottom of the page. That’s it! Our script is ready to be used. However, in order to run it, we’ll need to make our blueprint go live by creating a reservation. Click the **Reserve** button to create a sandbox
+from the environment blueprint. Next, let's run the script.
 
-Click the _Commands_ button on the toolbar to open the environment commands side-pane.
-Click the ‘Play’ icon next to the command to launch it!
+### Executing the script in the sandbox.
 
-If the command executed successfully you should see a checkmark appear next to the command name and the output pane
+Click the **Commands** button on the toolbar to open the **Blueprint Commands** side-pane.
+
+Click the **Run** icon next to the command to launch it!
+
+If the command executed successfully you should see a checkmark appear next to the command name and the **Output** pane
 will display the command output.
 
-![Scripts Management Page]({{ site.baseurl}}/assets/run_script.png){:class="img-responsive"}
+![Scripts Management Page]({{ site.baseurl}}/assets/run_script_8.0.png){:class="img-responsive"}
 
-In the scope of this simple tutorial, we’ve seen how to link a trivial Python script with a CloudShell environment.
-We'll look into more concrete example and nuances in later sections of the guide.
+In the scope of this simple tutorial, we’ve seen how to link a trivial Python script with a CloudShell blueprint.
+We'll look into more concrete examples and nuances in later sections of the guide.
