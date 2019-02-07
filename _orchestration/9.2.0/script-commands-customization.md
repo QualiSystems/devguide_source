@@ -57,7 +57,7 @@ if __name__ == "__main__":
 
 ![Scripts Management Page]({{ site.baseurl}}/assets/environment_scripts_9.2.png){:class="img-responsive"}
 
-4) Add the script into CloudShell by dragging the script into the **Scripts – **Blueprint** page or add the customization_test.py script. 
+4) Add the script into CloudShell by dragging the script into the **Scripts – Blueprint** page or add the customization_test.py script. 
 
 5) To customize the script, click the **Edit** button.
 ![Scripts Management Page]({{ site.baseurl}}/assets/orch_script_edit.png){:class="img-responsive"}
