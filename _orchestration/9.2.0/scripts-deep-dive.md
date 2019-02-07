@@ -65,13 +65,24 @@ Depending on the complexity of the script, it may be wise to also separate the c
 
 Setup and teardown are special types of orchestration scripts. There are two things that make them special:
 1. They can’t have any inputs as they are launched automatically
-2. If you use CloudShell’s default *Python Setup & Teardown* driver, then simply including a teardown or setup script in the reservation and setting a duration for the setup/teardown is enough for CloudShell to launch it.
+2. If you use CloudShell’s default *Python Setup & Teardown* driver, then simply including a teardown or setup script in the sandbox and setting a duration for the setup/teardown is enough for CloudShell to launch it.
 
 *To set a script as a teardown or setup script:*
 
 1. In the *Scripts - Blueprint* management page, edit the script. 
 2. From the script’s *Script Type* dropdown list, select *Setup* or *Teardown*, as appropriate.
 The script will take on that special behavior. Note that the script can only run as part of the sandbox Setup or Teardown process. In addition, you won’t be able to add any inputs to it.
+
+
+#### Getting the script's python version
+
+To get the script's python version (2.7.x/3.x), use the following:
+
+{% highlight python %}
+import sys
+print ("You are using python: " + str(sys.version_info[0]))
+{% endhighlight %}
+
 
 #### Logging in orchestration scripts
 *To implement logging in your orchestration script:*

@@ -77,9 +77,9 @@ User inputs provided by the user when they reserved the blueprint can be accesse
 
 * **Resource requirements** - These are inputs related to abstract resources. An abstract resource in CloudShell allows you to declare a generic spec or criteria for a resource rather than explicitly using a specific one. When customizing such an abstract resource, you can choose to make some of its properties available for the user to select, so as to make it more flexible. For example, for a physical device, instead of specifying the model in the blueprint, you can set the model as a parameter with a dropdown list for the user to select from when reserving it. Resource requirements are accessed using the RESOURCEREQUIREMENTS environment variable.
 
-* **Resource additional info** -  When customizing an abstract resource, you can also choose to add some parameters to the resource that are not requirements but rather instructions on what to do with it. An example would be specifying an OS version to install on it. In this case, this parameter is not used to select the resource but rather to operate on the selected resource in the active environment. Additional info parameters are accessed using the RESOURCEADDITIONALINFO environment variable.
+* **Resource additional info** -  When customizing an abstract resource, you can also choose to add some parameters to the resource that are not requirements but rather instructions on what to do with it. An example would be specifying an OS version to install on it. In this case, this parameter is not used to select the resource but rather to operate on the selected resource in the active sandbox. Additional info parameters are accessed using the RESOURCEADDITIONALINFO environment variable.
 
- As with sandboxes, we can use some helper modules to get the resource information in Python using the same object we used to get the reservation details:  
+ As with sandboxes, we can use some helper modules to get the resource information in Python using the same object we used to get the reservation's details:  
 
  {% highlight python %}
 Sandbox = Sandbox()
