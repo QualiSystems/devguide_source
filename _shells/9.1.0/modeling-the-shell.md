@@ -203,7 +203,7 @@ properties:
 
 
 The format is aligned with the TOSCA representation:
-* **my_property**: The name of the attribute. Replace _my_property_ with the name of your custom attribute.
+* **my_property**: The name of the attribute. Replace _my_property_ with the name of your custom attribute (spaces are supported).
 
 * **type**: This is a mandatory definition. Specify the data type of the attribute: _string_, _integer_, _float_, _boolean_ or _cloudshell.datatypes.Password_.
 
