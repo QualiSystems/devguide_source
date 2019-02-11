@@ -66,6 +66,17 @@ To use the API, create a session variable that uses the helper's get_api_session
 session = script_help.get_api_session()
 {% endhighlight %}
 
+### Getting the user context
+
+Starting with CloudShell 9.2, you can get the CloudShell user who ran the command using the *get_reservation_context_details* helper.
+
+For example:
+
+{% highlight python %}
+from cloudshell.helpers.scripts.cloudshell_scripts_helpers import get_reservation_context_details
+user = get_reservation_context_details().running_user
+{% endhighlight %}
+
 ### Associating a resource script to a CloudShell resource
 
 1) Place the python script(s) and requirements.txt files in a folder.
