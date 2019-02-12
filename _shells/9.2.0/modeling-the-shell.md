@@ -271,7 +271,8 @@ The available tags are:
 
 * **connection_attribute**: This attribute will be displayed in the **Inventory** tab of the **Resource Connections** dialog box. This enables users to specify a specific attribute value (such as Speed) that will apply only to this specific route when it is connected in a sandbox.
 
-* **read_only**: This attribute will be read only and users will not be able to modify it from CloudShell Portal.
+* **read_only**: This attribute will be read only and users will not be able to modify it from CloudShell Portal. 
+<br>Note that in CloudShell 9.2 and above, admins can change the values on read only attributes that were added to the resource discovery form (in the **Inventory dashboard**). Furthermore, the discovery process will use these updated values as is without running validations on them. 
 
 
 
