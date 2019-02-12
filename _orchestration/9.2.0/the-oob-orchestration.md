@@ -20,7 +20,7 @@ In this article:
 The following diagram describes the OOB setup and teardown flow:
 
 
-![Setup Workflow]({{site.baseurl}}/assets/orchestration_workflow_8.1.png){: .center-image }
+![Setup Workflow]({{site.baseurl}}/assets/orchestration_workflow_9.2.png){: .center-image }
 
 These OOB setup and teardown scripts can be found in the Scripts – Blueprint management page. You can review their source code in the [cloudshell-orch-sandbox repository](https://github.com/QualiSystems/cloudshell-orch-sandbox/tree/v8.1/SandboxOrchestration/environment_scripts).
 
@@ -55,7 +55,7 @@ Each Setup stage has a specific logic functionality.
 
 * **Preparation** is empty in the default Setup script. This is the place to enter any code that logically has to be executed before Setup logic is initiated.
 * **Provisioning** deploys and discovers all apps.
-* **Connectivity** connects all layer 2 connections, powers on and refreshes IPs on deployed apps.
+* **Connectivity** connects all layer 1/layer 2/subnet connections, powers on and refreshes IPs on deployed apps.
 * **Configuration** applies any additional configuration on deployed apps
 
 Each stage has an interim `on__[stage]_ended` step which allows the execution of any code that has to run between stages. Note that all the functions you add to a stage (using `add_to_configuration`, for example) run in parallel, while `on__[stage]_ended` functions run sequentially.
