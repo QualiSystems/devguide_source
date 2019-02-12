@@ -76,16 +76,19 @@ For the first round of customizations, we'll work on the user facing function an
 {% highlight xml %}
 <Driver Description="Describe the purpose of your CloudShell shell" MainClass="driver.CustomizationExampleDriver" Name="CustomizationExampleDriver" Version="1.0.0">
     <Layout>
-        <Command Description="This command is for the user" DisplayName="User Command" Name="user_facing_function" >
+        <Command Description="This command is for the user" DisplayName="User Command" Name="user_facing_function" Visibility="Everyone">
         </Command>
     </Layout>
 </Driver>
 {% endhighlight %}
 
-Each _Command_ element in the xml above customizes a single python function specified by the _Name_ attribute. The _DisplayName_ and _Description_ attributes will determine the name of the command as it appears to the user and the description appearing next to it, respectively.
+Each _Command_ element in the xml above customizes a single python function specified by the _Name_ attribute. The _DisplayName_ and _Description_ attributes determines the name of the command as it appears to the user and the description appearing next to it, respectively. And the _Visibility_ attribute determines which user types (*AdminOnly*/*Everyone*) can see the command in the blueprint or sandbox.
 
-Reinstall the Shell in CloudShell by running {% highlight bash %} shellfoundry install {% endhighlight %} from command line and check the sandbox command panel again.
-The shell commands should now appear as follows:
+Reinstall the Shell in CloudShell by running the following command-line and check the **Resource Commands** panel again.
+
+{% highlight bash %} shellfoundry install {% endhighlight %}
+
+The shell commands should now look like this:
 
 ![Shell Commands]({{ site.baseurl}}/assets/commands_name_customization.png)
 
@@ -271,6 +274,8 @@ Next, let's add the special category to the _drivermetadata.xml_ file and nest t
 
 After re-installing the shell you'll see the new function doesn't appear in the Commands pane:
 ![Shell Commands]({{ site.baseurl}}/assets/commands_hidden_customization.png)
+
+Note that the *Visibility* attribute we discussed earlier in this article does not apply to commands in this category and will be ignored.
 
 However if you query the list of commands on the shell via the API, you'll be able to see it as well as invoke it:
 ![Shell Commands]({{ site.baseurl}}/assets/commands_hidden_list_from_api.png)
