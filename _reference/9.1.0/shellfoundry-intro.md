@@ -287,9 +287,13 @@ Before extending a local Shell, make sure the Shell's destination folder is diff
 
 ### Version History<a name="version-history"></a>
 
+**1.2.7 (2019-02-12)**
+* Fixed issue in "generate" command after renaming root folder
+
 **1.2.6 (2019-01-25)**
 * Added `get_templates` command for downloading shellfoundry templates for offline mode
-* Added `delete` command for deleting shells installed on CloudShell
+* Added `delete` command for deleting shells installed on CloudShell (supported in CloudShell 9.1 GA and up)
+* Implemented the capability to generate shell documentation based on the template
 
 **1.2.5 (2018-10-04)**
 * Set strict python version
