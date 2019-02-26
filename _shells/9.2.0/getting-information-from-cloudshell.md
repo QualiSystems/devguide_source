@@ -10,6 +10,9 @@ tags:
     - api
 ---
 
+{% assign pageUrlSplited = page.url | split: "/" %}
+{% assign pageVersion = pageUrlSplited[2] %}
+
 A typical Shell driver will first get crucial information from the sandbox and then use that information to access the device it controls. Some common information would be the address of the resource or App, attributes such as username and password, and information from other sandbox settings or components.
 
 To provide easy access to such common information, each driver function has access to a special context object parameter, which is created by CloudShell for each driver command’s execution.
@@ -133,6 +136,9 @@ You can find JSON schema definitions of these two JSON objects here:
 
 * [Deployed App JSON Schema](https://github.com/QualiSystems/cloudshell-shell-core/blob/dev/cloudshell/shell/core/schemas/deployed_app.json)
 
+#### Custom sandbox metadata
+
+Starting with CloudShell 9.2, it is possible to store and retrieve custom key-value data from the sandbox. For details, see [Working with Custom Sandbox Metadata]({{site.baseurl}}/reference/{{pageVersion}}/working-with-sandbox-metadata.html).
 
 #### Custom Attributes and the Shell’s data model
 In many cases, the Shell has specific information that is stored in attributes. For example, user credentials that are needed in order to connect to the resource. These attributes are part of the Shell’s data model. Their value can be easily retrieved by converting the _ResourceCommandContext_ to an instance of the generated Shell’s data model.

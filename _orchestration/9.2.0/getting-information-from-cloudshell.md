@@ -137,6 +137,10 @@ session = Sandbox.automation_api
 
 ![Sandbox information]({{site.baseurl}}/assets/sandbox_automation_api.png){:class="img-responsive"}
 
+### Getting custom sandbox metadata
+
+Starting with CloudShell 9.2, it is possible to store and retrieve custom key-value data from the sandbox. For details, see [Working with Custom Sandbox Metadata]({{site.baseurl}}/reference/{{pageVersion}}/working-with-sandbox-metadata.html).
+
 ### Getting saved sandbox information
 
 Starting with CloudShell 9.0, the *cloudshell-orch-core* python package includes a new class called *reservationLifecycleDetails*, which allows you to get the following details about your sandbox: saved sandbox name and description, and the current sandbox user name.
