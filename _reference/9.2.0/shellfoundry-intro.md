@@ -179,7 +179,7 @@ Optionally, add `--output_dir="<containing_folder_path>"` to set a different con
 
 {% highlight bash %}shellfoundry get_templates 9.1 --output_dir="c:\users\steven.g\shell templates"{% endhighlight %}
 
-Shellfoundry downloads the latest template versions that are compatible with the specified CloudShell version.
+Shellfoundry downloads the latest template versions that are compatible with the latest patch of the specified CloudShell version.
 
 
 #### Listing available Shell templates
@@ -289,9 +289,13 @@ Before extending a local Shell, make sure the Shell's destination folder is diff
 
 ### Version History<a name="version-history"></a>
 
-**1.2.6 (2019-01-24)**
+**1.2.7 (2019-02-12)**
+* Fixed issue in "generate" command after renaming root folder
+
+**1.2.6 (2019-01-25)**
 * Added `get_templates` command for downloading shellfoundry templates for offline mode
-* Added `delete` command for deleting shells installed on CloudShell
+* Added `delete` command for deleting shells installed on CloudShell (supported in CloudShell 9.1 GA and up)
+* Implemented the capability to generate shell documentation based on the template
 
 **1.2.5 (2018-10-04)**
 * Set strict python version
