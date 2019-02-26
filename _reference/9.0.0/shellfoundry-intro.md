@@ -164,7 +164,7 @@ Optionally, add `--output_dir="<containing_folder_path>"` to set a different con
 
 {% highlight bash %}shellfoundry get_templates 9.1 --output_dir="c:\users\steven.g\shell templates"{% endhighlight %}
 
-Shellfoundry downloads the latest template versions that are compatible with the latest patch version of the specified CloudShell version.
+Shellfoundry downloads the latest template versions that are compatible with the latest patch of the specified CloudShell version.
 
 
 #### Listing available Shell templates
