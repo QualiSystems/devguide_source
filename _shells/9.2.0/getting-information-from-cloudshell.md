@@ -123,7 +123,17 @@ context.reservation.owner_user
 context.reservation.owner_email
 # the email of the owner of the reservation
 """:type : str"""
+context.reservation.saved_sandbox_name
+# the name of the saved sandbox
+""":type : str"""
+context.reservation.saved_sandbox_id
+# the reservation id of the restored sandbox
+""":type : str"""
+context.reservation.running_user
+# the CloudShell user that executed the command
+""":type : str"""
 {% endhighlight %}
+
 
 #### Additional information for apps and VMs
 

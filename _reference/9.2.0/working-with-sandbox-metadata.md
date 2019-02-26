@@ -19,7 +19,7 @@ The data is stored as key-value pairs in a container that is attached to the san
 
 The following API methods are provided:
 
-+ *SetSandboxData*: sets the key-value pairs in the custom data container. 
++ *SetSandboxData*: sets the key-value pairs in the custom data container.
 * *GetSandboxData*: retrieves custom data from the sandbox
 * *ClearSandboxData*: clears the custom data container
 
