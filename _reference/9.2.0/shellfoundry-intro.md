@@ -252,8 +252,6 @@ Run this command from the Shell’s root folder.
 
 {% highlight bash %} shellfoundry generate {% endhighlight %}
 
-Note that changing the shell's name from the *shell-definition.yaml* file will corrupt the data model.
-
 
 #### Customizing a 2nd Gen Shell
 

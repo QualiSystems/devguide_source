@@ -174,7 +174,7 @@ metadata:
 {% endhighlight %}
 
 
-* **template_name** is the Shell name that is displayed to the CloudShell administrator in CloudShell Portal’s **Manage** page. Do not change the shell's name from the *shell-definition.yaml* file as this will corrupt the shell's data model.
+* **template_name** is the Shell name that is displayed to the CloudShell administrator in CloudShell Portal’s **Manage** page.
 
 * **template_author** is the developer’s name. It is recommended to edit this field.
 
