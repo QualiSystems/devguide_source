@@ -17,7 +17,7 @@ CloudShell applications have multiple APIs, which enable you to get services fro
 
 #### Examples
 
-For implementation examples, visit our <a href="https://github.com/QualiSystems/Sandbox-TeamCIty-Plugin/blob/master/README.md" target="_blank">TeamCity</a> or <a href="https://plugins.jenkins.io/cloudshell-sandbox" target="_blank">Jenkins</a> plugin documentation, which leverages CloudShell Sandbox API to automate the consumption of sandboxes as part of the devops cycle.
+For implementation examples, visit our <a href="https://github.com/QualiSystems/Sandbox-TeamCIty-Plugin/blob/master/README.md" target="_blank">TeamCity</a> or <a href="plugins.jenkins.io/cloudshell-sandbox" target="_blank">Jenkins</a> plugin documentation, which leverages CloudShell Sandbox API to automate the consumption of sandboxes as part of the devops cycle.
 
 ### CloudShell Automation API
 
