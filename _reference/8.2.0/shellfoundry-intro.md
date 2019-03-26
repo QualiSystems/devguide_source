@@ -16,7 +16,7 @@ Shellfoundry is a command-line utility that allows you to easily create, package
 
 **Notes:** 
 
-* Shellfoundry must be installed on an online computer as creating shells from a template requires downloading the templates from the internet.
+* In order to use shellfoundry on an offline computer, you will need to first download the shellfoundry templates locally and configure shellfoundry to run in offline mode. For details, see [Downloading shellfoundry templates](#downloading-shellfoundry-templates).
 * Shellfoundary cannot work if there's a proxy server present between the shellfoundry machine and the remote Quali Server machine.
 
 
@@ -37,6 +37,10 @@ This command installs Shellfoundry on your computer. For more information, see [
 {% highlight bash %}
 pip install shellfoundry
 {% endhighlight %}
+
+To install a specific shellfoundry version, run: `pip install shellfoundry==<version>`
+
+For the version history, click [here](#version-history).
 
 
 #### Upgrade
@@ -150,7 +154,7 @@ Optionally, add `--output_dir="<containing_folder_path>"` to set a different con
 
 {% highlight bash %}shellfoundry get_templates 9.1 --output_dir="c:\users\steven.g\shell templates"{% endhighlight %}
 
-Shellfoundry downloads the latest template versions that are compatible with the specified CloudShell version.
+Shellfoundry downloads the latest template versions that are compatible with the latest patch of the specified CloudShell version.
 
 #### Listing available Shell templates
 
@@ -271,11 +275,11 @@ Before extending a local Shell, make sure the Shell's destination folder is diff
 
 ### Version History<a name="version-history"></a>
 
-**1.2.6 (2019-01-25)**
+**1.2.8 (2019-03-06)**
+* Fixed issue in "generate" command after renaming root folder
 * Added `get_templates` command for downloading shellfoundry templates for offline mode
 * Added `delete` command for deleting shells installed on CloudShell (supported in CloudShell 9.1 GA and up)
-
-**1.2.5 (2018-10-04)**
+* Implemented the capability to generate shell documentation based on the template
 * Set strict python version
 
 **1.2.4 (2018-09-26)**
@@ -294,27 +298,17 @@ Before extending a local Shell, make sure the Shell's destination folder is diff
 
 **1.1.9 (2018-05-03)**
 * Added offline mode functionality
-
-**1.1.8 (2018-04-23)**
 * Fixed typo in `pack` command behavior
 * Added new online template for Cloud Provider
-
-**1.1.7 (2018-04-03)**
 * Shellfoundry now packs deployment options if any exist
-
-**1.1.6 (2018-03-27)**
 * Added limitation installing a gen2 shell (regular/service) into a non-Global domain
 
 **1.1.5 (2018-03-01)**
 * Added new online template for Traffic Generator Controller Service
-
-**1.1.4 (2018-02-21)**
 * Added new 2nd Gen online template for Traffic Generator Chassis
 
 **1.1.2 (2018-01-09)**
 * Enhanced `extend` command logic
-
-**1.1.1 (2017-11-14)**
 * Added new online templates
 * Added specific error message to Layer 1 Shell `pack` and `install` commands
 
@@ -322,22 +316,14 @@ Before extending a local Shell, make sure the Shell's destination folder is diff
 * Added `author` field to shellfoundry configuration
 * Added `extend` command behavior
 * Added verification when upgrading an official shell to unofficial
-
-**1.0.4 (2017-08-28)**
 * Fixed some inconsistencies relating to the `extend` and `new` commands, specifically around the shell name
 
 **1.0.3 (2017-06-28)**
 * `list` command aborts if there is a new major version on pypi
 * Old Shellfoundry versions are NOT supported anymore. Therefore, in order to upgrade to the newest version, please run this command:
 {% highlight bash %} pip install shellfoundry -U  {% endhighlight %}
-
-**1.0.2 (2017-06-27)**
 * `new` command aborts if there is a new major version on pypi
-
-**1.0.1 (2017-06-26)**
 * `new` command now conforms to CloudShell naming rules
-
-**1.0.0 (2017-06-19)**
 * `list` command now shows templates that are installable on your cloudshell
 * `new` command now creates the latest version of the template that matches the standards installed on your cloudshell
 * When running `new` or `list` commands, a notification is displayed if a new Shellfoundry version is available
@@ -348,41 +334,21 @@ Before extending a local Shell, make sure the Shell's destination folder is diff
 **0.2.6 (2017-03-14)**
 * Minor bug fixes
 
-**0.2.2 (2017-01-22)**
+**0.2.5 (2017-03-13)**
 * **gen2/resource** is the now the default template for the `new` command instead of **gen1/resource**
-
-**0.2.0 (2017-01-17)**
 * `list` command filtering parameters have changed (legacy => **gen1**, TOSCA => **gen2**)
 * Added another filtering parameter: **--layer1**
 * Minimum CloudShell version column appears in the `list` command's output table
 * **gen2** is now the default view for list command
-
-**0.1.3 (2016-12-27)**
 * `config` now echoes all default configurations if they have not been overridden by the user
-
-**0.1.2 (2016-12-26)**
 * `config` command now encrypts the password
-
-**0.1.0 (2016-12-14)**
 * `show` command was added to display all available versions of a template
 * A new option was added to the `new` command called **--version**. It enables template versioning on Shellfoundry.
-
-**0.0.44 (2016-12-12)**
 * Fixed a bug with the `config` command, which caused Shellfoundry to crash if a config file was missing
-
-**0.0.43 (2016-12-11)**
 * `list` command is now able to filter results based on shell type (**--tosca**, **--legacy**, **--all**)
-
-**0.0.41 (2016-12-08)**
 * `config` command was added to allow setting configuration globally for all Shells in addition to local configuration
-
-**0.0.39 (2016-10-09)**
 * Pack Shell icon if specified in the *shell-definition.yml* file under `metadatatemplate_icon` for TOSCA based shells
-
-**0.0.38 (2016-09-28)**
 * Update reference to *cloudshell-rest-api 7.2.0.7* to use PUT method in update shell
-
-**0.0.35 (2016-09-15)**
 * TOSCA support was added to the `pack` and `install` commands
 * `generate` command was added to generate the Shell driver's data model in Python
 
@@ -404,5 +370,5 @@ Before extending a local Shell, make sure the Shell's destination folder is diff
 **0.0.17 (2016-05-25)**
 * Fixed anj error message that is displayed when `install` command fails in logging in into CloudShell
 
-**0.0.1 (2016-05-02)**
+**0.0.1 (2016-05-15)**
 * First release on PyPI

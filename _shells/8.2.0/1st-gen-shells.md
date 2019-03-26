@@ -22,7 +22,7 @@ However, unlike 2nd Gen Shells, 1st Gen Shells carry several limitations:
 
 Today you can still find 1st Gen Shells in our community but all new official shells are released as 2nd Gen Shells only. "2nd Gen" is the “code name” for shell entity, a new feature introduced in 8.0. For more information about 2nd Gen Shells, see the <a href="http://help.quali.com/Online%20Help/8.2/Portal/Content/CSP/LAB-MNG/Shells.htm" target="_blank">CloudShell online help</a>.
 
-Note that the same 2nd Gen Shell standards apply to 1st Gen (but are not enforced but CloudShell). There are 1st Gen Shell templates available for Shell development in [Shellfoundry]({{site.baseurl}}/reference/{{pageVersion}}/shellfoundry-intro.html). However, it is recommended to develop only 2nd Gen Shells using the official Shell templates and guidelines. 
+Note that the same 2nd Gen Shell standards apply to 1st Gen (but are not enforced by CloudShell). There are 1st Gen Shell templates available for Shell development in [Shellfoundry]({{site.baseurl}}/reference/{{pageVersion}}/shellfoundry-intro.html). However, it is recommended to develop only 2nd Gen Shells using the official Shell templates and guidelines. 
 
 The following articles relate to 1st Gen Shells:
 
