@@ -10,6 +10,10 @@ version:
 tags:
     - orchestration
 ---
+
+{% assign pageUrlSplited = page.url | split: "/" %}
+{% assign pageVersion = pageUrlSplited[2] %}
+
 You can control many aspects of how the orchestration commands appear and behave in CloudShell by editing the script from the Scripts management page.
 
 To demonstrate these capabilities, we’ll create a simple script, which we’ll later customize. The script essentially prints out the parameters it receives and then sets the status of the sandbox to ‘Downloading’.
