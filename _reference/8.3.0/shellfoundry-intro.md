@@ -16,7 +16,7 @@ Shellfoundry is a command-line utility that allows you to easily create, package
 
 **Notes:** 
 
-* Shellfoundry must be installed on an online computer as creating shells from a template requires downloading the templates from the internet.
+* In order to use shellfoundry on an offline computer, you will need to first download the shellfoundry templates locally and configure shellfoundry to run in offline mode. For details, see [Downloading shellfoundry templates](#downloading-shellfoundry-templates).
 * Shellfoundary cannot work if there's a proxy server present between the shellfoundry machine and the remote Quali Server machine.
 
 
