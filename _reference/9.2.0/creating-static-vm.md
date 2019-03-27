@@ -11,7 +11,7 @@ version:
 {% assign pageUrlSplited = page.url | split: "/" %}
 {% assign pageVersion = pageUrlSplited[2] %}
 
-In this article, we will learn how to customize a shell template to load a static VM into CloudShell. A static VM is a VM whose lifecycle is not managed through CloudShell sandboxes. For example, a VM that provides critical services or data, like a database, switch or bridge. For additional information about static VMs, see the CloudShell Help's <a href="https://help.quali.com/Online%20Help/9.2/Portal/Content/CSP/INVN/Load-vCenter-VM-Rsrc.htm?Highlight=static" target="_blank">Static VMs Overview</a> article.
+In this article, we will learn how to customize a shell template to load a static VM into CloudShell. A static VM is a VM whose lifecycle is not managed through CloudShell sandboxes. For example, a VM that provides critical services or data, like a database, switch or bridge. For additional information about static VMs, see the CloudShell Help's <a href="https://help.quali.com/Online%20Help/9.2/Portal/Content/CSP/LAB-MNG/Static-VMs.htm" target="_blank">Static VMs Overview</a> article.
 
 Static VMs are viewed as resources by CloudShell. The only difference between a static VM resource and a regular resource is that the static VM needs to find the VM in the cloud provider and create a link between the CloudShell resource and the cloud provider resource, thus giving it the cloud provider shell's capabilities. This is done by modifying the shell's *get_inventory* command to load the VM's details into CloudShell, using a CloudShell cloud provider resource to access the cloud provider server. 
 
@@ -86,25 +86,7 @@ In the CloudShell sandbox, the static VM will look like any other resource, with
 
 If you want to allow the admin to provide the details during resource discovery, you will need to dynamically pull them from the context. For illustration purposes, we will set an attribute called "vCenter Name" that will define  the vCenter cloud provider resource to be used to load and power on/off the VM.
 
-First, generate the shell's data model by running the following command-line from the shell's root folder:
-
-{% highlight bash %}
-shellfoundry generate
-{% endhighlight %}
-
-In the driver, replace the following line:
-
-{% highlight python %}
-my_clp_name = 'my_clp_resource_name'
-{% endhighlight %}
-
-With this:
-
-{% highlight python %}
-my_clp_name = context.resource.attributes['MyStaticVm.vCenter Name']
-{% endhighlight %}
-
-In the *shell-definition.yaml*, add the attribute as a discovery attribute. For example:
+First, in the *shell-definition.yaml*, add the attribute as a discovery attribute. For example:
 
 {% highlight yaml %}
 node_types:
@@ -124,6 +106,26 @@ node_types:
             tags: [setting, configuration]
 {% endhighlight %}
 
+Now, let's generate the shell's data model by running the following command-line from the shell's root folder:
+
+{% highlight bash %}
+shellfoundry generate
+{% endhighlight %}
+
+The data model file is created in the shell project's *src* folder and lists the shell's attributes and functions, including those that come with the shell's standard and custom ones, like our **vCenter Name** attribute.
+
+In the driver, replace the following line:
+
+{% highlight python %}
+my_clp_name = 'my_clp_resource_name'
+{% endhighlight %}
+
+With this:
+
+{% highlight python %}
+my_clp_name = context.resource.attributes['MyStaticVm.vCenter Name']
+{% endhighlight %}
+
 And install the shell on CloudShell:
 
 {% highlight bash %}
@@ -133,4 +135,3 @@ shellfoundry install
 The resource's discovery page will look something like this:
 
 ![Shell Commands]({{site.baseurl}}/assets/static-vm-resource-discovery_9.2.png)
-
