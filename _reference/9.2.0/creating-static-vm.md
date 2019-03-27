@@ -86,25 +86,7 @@ In the CloudShell sandbox, the static VM will look like any other resource, with
 
 If you want to allow the admin to provide the details during resource discovery, you will need to dynamically pull them from the context. For illustration purposes, we will set an attribute called "vCenter Name" that will define  the vCenter cloud provider resource to be used to load and power on/off the VM.
 
-First, generate the shell's data model by running the following command-line from the shell's root folder:
-
-{% highlight bash %}
-shellfoundry generate
-{% endhighlight %}
-
-In the driver, replace the following line:
-
-{% highlight python %}
-my_clp_name = 'my_clp_resource_name'
-{% endhighlight %}
-
-With this:
-
-{% highlight python %}
-my_clp_name = context.resource.attributes['MyStaticVm.vCenter Name']
-{% endhighlight %}
-
-In the *shell-definition.yaml*, add the attribute as a discovery attribute. For example:
+First, in the *shell-definition.yaml*, add the attribute as a discovery attribute. For example:
 
 {% highlight yaml %}
 node_types:
@@ -124,6 +106,26 @@ node_types:
             tags: [setting, configuration]
 {% endhighlight %}
 
+Now, let's generate the shell's data model by running the following command-line from the shell's root folder:
+
+{% highlight bash %}
+shellfoundry generate
+{% endhighlight %}
+
+The data model file is created in the shell project's *src* folder and lists the shell's attributes and functions, including those that come with the shell's standard and custom ones, like our **vCenter Name** attribute.
+
+In the driver, replace the following line:
+
+{% highlight python %}
+my_clp_name = 'my_clp_resource_name'
+{% endhighlight %}
+
+With this:
+
+{% highlight python %}
+my_clp_name = context.resource.attributes['MyStaticVm.vCenter Name']
+{% endhighlight %}
+
 And install the shell on CloudShell:
 
 {% highlight bash %}
@@ -133,4 +135,3 @@ shellfoundry install
 The resource's discovery page will look something like this:
 
 ![Shell Commands]({{site.baseurl}}/assets/static-vm-resource-discovery_9.2.png)
-
