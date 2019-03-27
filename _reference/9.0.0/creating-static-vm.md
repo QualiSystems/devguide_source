@@ -11,7 +11,7 @@ version:
 {% assign pageUrlSplited = page.url | split: "/" %}
 {% assign pageVersion = pageUrlSplited[2] %}
 
-In this article, we will learn how to customize a shell template to load a static VM into CloudShell. A static VM is a VM whose lifecycle is not managed through CloudShell sandboxes. For example, a VM that provides critical services or data, like a database, switch or bridge. For additional information about static VMs, see the CloudShell Help's <a href="https://help.quali.com/Online%20Help/9.2/Portal/Content/CSP/INVN/Load-vCenter-VM-Rsrc.htm?Highlight=static" target="_blank">Static VMs Overview</a> article.
+In this article, we will learn how to customize a shell template to load a static VM into CloudShell. A static VM is a VM whose lifecycle is not managed through CloudShell sandboxes. For example, a VM that provides critical services or data, like a database, switch or bridge. For additional information about static VMs, see the CloudShell Help's <a href="https://help.quali.com/Online%20Help/9.2/Portal/Content/CSP/LAB-MNG/Static-VMs.htm" target="_blank">Static VMs Overview</a> article.
 
 Static VMs are viewed as resources by CloudShell. The only difference between a static VM resource and a regular resource is that the static VM needs to find the VM in the cloud provider and create a link between the CloudShell resource and the cloud provider resource, thus giving it the cloud provider shell's capabilities. This is done by modifying the shell's *get_inventory* command to load the VM's details into CloudShell, using a CloudShell cloud provider resource to access the cloud provider server. 
 
