@@ -8,6 +8,9 @@ version:
 order:  6
 ---
 
+{% assign pageUrlSplited = page.url | split: "/" %}
+{% assign pageVersion = pageUrlSplited[2] %}
+
 In this section we’ll take a more in-depth view at scripts and learn how they can be used most effectively for CloudShell orchestration.
 
 #### How CloudShell handles scripts
@@ -19,7 +22,7 @@ To send information to the script, CloudShell sets environment variables in the 
 
 #### Using requirements.txt with CloudShell orchestration scripts
 
-It’s now possible to attach a requirements.txt file to make sure your script will have all dependencies installed on the virtual environment before the script’s execution starts. 
+It’s now possible to attach a requirements.txt file to make sure your script will have all dependencies installed on the virtual environment before the script’s execution starts. For details about the *cloudshell-orch-core* package, see this [Getting Started]({{site.baseurl}}/orchestration/{{pageVersion}}/getting-started.html#best-practices-for-working-with-orchestration-scripts) section.
 
 *To use the requirements.txt:*
 * Archive this file with the orchestration script in one ZIP file. It will then be possible to upload this ZIP file to CloudShell using the CloudShell Portal.
