@@ -86,3 +86,42 @@ will display the command output.
 
 In the scope of this simple tutorial, we’ve seen how to link a trivial Python script with a CloudShell blueprint.
 We'll look into more concrete examples and nuances in later sections of the guide.
+
+### Best Practices for working with orchestration scripts
+
+When developing orchestration scripts, we recommend to download the latest default setup or teardown script from CloudShell Portal's **Manage>Scripts** page, make a copy and modify the contents. This will ensure you are using the right packages and structure.
+
+If you wish to develop an orchestration script from scratch or develop a script for a different CloudShell version, you will need to import the *cloudshell-orch-core* package, which provides the basic features and capabilities needed for CloudShell orchestration scripts. Use this table to decide which version to use:
+
+<style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+</style>
+
+| CloudShell version | cloudshell-orch-core version |
+| :--------- | :--------- |
+| 8.3 | >=1.7.5.0,<1.7.6.0 |
+|9.0 GA | >=2.0.0.0,<2.1.0.0 |
+| 9.1 | >=2.1.0.0,<2.2.0.0 |
+| 9.2 EA | >=3.0.0.0,<3.1.0.0 |
+
+To set a specific version of the package, add a line to the script's requirements.txt file. For example:
+
+{% highlight bash %}
+cloudshell-orch-core>=2.1.0.0,<2.2.0.0
+{% endhighlight %}
+
+For details about the requirements.txt file, see [Scripts Deep Dive]({{site.baseurl}}/orchestration/{{pageVersion}}/scripts-deep-dive.html).
