@@ -46,8 +46,8 @@ All logs are saved on the Execution Server where the script or driver is running
 
 The simplest way to get a hold of a logger object is to use the _get_qs_logger_ module:
 {% highlight python %}
-from cloudshell.core.logger.qs_logger import get_qs_logger
-logger = get_qs_logger(log_category=reservation_id,log_group=resource_name)
+from cloudshell.logging.qs_logger import get_qs_logger
+logger = get_qs_logger(log_file_prefix=file_prefix,log_category=reservation_id,log_group=resource_name)
 logger.info("log something")
 {% endhighlight %}
 
@@ -60,7 +60,8 @@ def some_command(self, context):
     :param ResourceCommandContext context:
     :return:
     """
-    logger = get_qs_logger(log_category=context.reservation.reservation_id,
+    logger = get_qs_logger(log_file_prefix='CloudShell Sandbox Orchestration',
+                           log_category=context.reservation.reservation_id,
                            log_group=context.resource.name)
     logger.info("this is a log in the command")
     return "done"
