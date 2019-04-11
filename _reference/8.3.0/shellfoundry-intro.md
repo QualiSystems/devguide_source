@@ -228,7 +228,7 @@ Run this command from the Shell’s root folder.
 shellfoundry dist
 {% endhighlight %}
 
-By default, the command downloads the dependencies from public PyPi. However, if you are developing the shell and have some custom dependencies that are not in public PyPi, add the `--enable_cs_repo` flag to also include the shell's dependencies in your local PyPi repo folder.
+By default, the command downloads the dependencies from public PyPi. However, if you are developing the shell and have some custom dependencies that are not in public PyPi, add the `--enable_cs_repo` flag to also include the shell's dependencies from your local PyPi repository folder.
 
 
 #### Packaging and importing a Shell into CloudShell
