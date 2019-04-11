@@ -231,6 +231,21 @@ A ZIP package is created in the Shell’s *dist* directory with the name "nutshe
 {% endhighlight %}
 
 
+#### Packaging a shell's dependencies
+
+This command creates a zip file in the shell project's `dist` folder that includes the shell's dependencies. This is especially useful for offline mode and during shell development.   
+
+Run this command from the Shell’s root folder.
+
+**Syntax:**
+
+{% highlight bash %}
+shellfoundry dist
+{% endhighlight %}
+
+By default, the command downloads the dependencies from public PyPi. However, if you are developing the shell and have some custom dependencies that are not in public PyPi, add the `--enable_cs_repo` flag to also include the shell's dependencies in your local PyPi repo folder.
+
+
 #### Packaging and importing a Shell into CloudShell
 
 This command creates a distributable zip file for the Shell and imports it into CloudShell using the CloudShell Portal and user defined by the `shellfoundry configure` command. For more information, see [Getting Started]({{site.baseurl}}/shells/{{pageVersion}}/getting-started.html).
@@ -369,7 +384,6 @@ Before extending a local Shell, make sure the Shell's destination folder is diff
 * `generate` command was added to generate the Shell driver's data model in Python
 
 **0.0.32 (2016-08-10)**
-* `pack` command downloads dependencies into *dist* directory
 * Dependency for git was removed
 * Local Shell templates are supported
 * Proxy support was added for access to github
