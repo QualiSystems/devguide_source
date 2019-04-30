@@ -291,8 +291,12 @@ Before extending a local Shell, make sure the Shell's destination folder is diff
 
 ### Version History<a name="version-history"></a>
 
+**1.2.10 (2019-04-22)**
+* Added attribute to `dist` command that allows using locally installed shell dependencies when packaging the dependencies zip
+* Added support for pip 19.1
+
 **1.2.8 (2019-03-06)**
-* Fixed issue in "generate" command after renaming root folder
+* Fixed issue in `generate` command after renaming root folder
 * Added `get_templates` command for downloading shellfoundry templates for offline mode
 * Added `delete` command for deleting shells installed on CloudShell (supported in CloudShell 9.1 GA and up)
 * Implemented the capability to generate shell documentation based on the template
