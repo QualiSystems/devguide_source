@@ -294,12 +294,12 @@ The path can be a URL to the source code of the shell's desired release on [Qual
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Extending a Shell residing on GitHub:
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{% highlight bash %}
-shellfoundry extend https://github.com/QualiSystems/Juniper-JunOS-Router-Shell-2G/archive/1.0.0.zip
+shellfoundry extend https://github.com/QualiSystems/Cisco-NXOS-Switch-Shell-2G/archive/2.0.0.zip
 {% endhighlight %}
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Extending a local Shell:
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{% highlight bash %}
-shellfoundry extend local:C:\Temp\my-shells\JuniperJunOSRouterShell2G
+shellfoundry extend local:C:\temp\Cisco-NXOS-Switch-Shell-2G-2.0.1
 {% endhighlight %}
 
 Before extending a local Shell, make sure the Shell's destination folder is different from the original Shell's root folder.
