@@ -299,7 +299,7 @@ shellfoundry extend https://github.com/QualiSystems/Cisco-NXOS-Switch-Shell-2G/a
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Extending a local Shell:
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{% highlight bash %}
-shellfoundry extend local:C:\temp\Cisco-NXOS-Switch-Shell-2G-2.0.1
+shellfoundry extend local:C:\temp\Cisco-NXOS-Switch-Shell-2G-2.0.0
 {% endhighlight %}
 
 Before extending a local Shell, make sure the Shell's destination folder is different from the original Shell's root folder.
