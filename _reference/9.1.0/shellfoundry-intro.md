@@ -285,7 +285,7 @@ Run this command from the directory that will contain the new Shell:
 shellfoundy extend <URL/path-to-Shell>
 {% endhighlight %}
 
-The path can be a URL to the Shell's source code on [Quali Community's Integrations](https://community.quali.com/integrations) page or the filesystem path (prefixed by `local:./`) to the extracted source code folder:
+The path can be a URL to the source code of the shell's desired release on [Quali Community's Integrations](https://community.quali.com/integrations) page or the filesystem path (prefixed by `local:./`) to the extracted source code folder:
 
 ![Shell Commands]({{site.baseurl}}/assets/download_shell_source_code.png)
 
@@ -294,12 +294,12 @@ The path can be a URL to the Shell's source code on [Quali Community's Integrati
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Extending a Shell residing on GitHub:
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{% highlight bash %}
-shellfoundry extend https://github.com/QualiSystems/Juniper-JunOS-Router-Shell-2G/archive/1.0.0.zip
+shellfoundry extend https://github.com/QualiSystems/Cisco-NXOS-Switch-Shell-2G/archive/2.0.0.zip
 {% endhighlight %}
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Extending a local Shell:
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{% highlight bash %}
-shellfoundry extend local:C:\Temp\my-shells\JuniperJunOSRouterShell2G
+shellfoundry extend local:C:\temp\Cisco-NXOS-Switch-Shell-2G-2.0.1
 {% endhighlight %}
 
 Before extending a local Shell, make sure the Shell's destination folder is different from the original Shell's root folder.
