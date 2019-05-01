@@ -285,7 +285,7 @@ Run this command from the directory that will contain the new Shell:
 shellfoundy extend <URL/path-to-Shell>
 {% endhighlight %}
 
-The path can be a URL to the Shell's source code on [Quali Community's Integrations](https://community.quali.com/integrations) page or the filesystem path (prefixed by `local:./`) to the extracted source code folder:
+The path can be a URL to the source code of the shell's desired release on [Quali Community's Integrations](https://community.quali.com/integrations) page or the filesystem path (prefixed by `local:./`) to the extracted source code folder:
 
 ![Shell Commands]({{site.baseurl}}/assets/download_shell_source_code.png)
 
