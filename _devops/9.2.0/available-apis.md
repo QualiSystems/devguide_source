@@ -13,7 +13,7 @@ CloudShell applications have multiple APIs, which enable you to get services fro
 
 ### CloudShell Sandbox API
 
-**CloudShell Sandbox API** is a RESTful API that allows you to use CloudShell sandboxes as part of your CI/CD process. For example, you can start, extend and stop sandboxes, run sandbox orchestration and automation commands, and get information about your sandboxes and execution activity. For additional information, see the CloudShell API Guide's <a href="https://help.quali.com/Online%20Help/9.2/Api-Guide/Content/API/REST-API-Overvw.htm" target="_blank">CloudShell Sandbox API Overview</a>.
+**CloudShell Sandbox API** is a RESTful API that allows you to use CloudShell sandboxes as part of your CI/CD process. For example, you can start, extend and stop sandboxes, run sandbox orchestration and automation commands, and get information about your sandboxes and execution activity. For additional information, see the CloudShell API Guide's <a href="https://help.quali.com/Online%20Help/9.2/Api-Guide/Content/API/CS-Snbx-API-Topic.htm" target="_blank">CloudShell Sandbox API Overview</a>.
 
 #### Examples
 
