@@ -7,13 +7,14 @@ version:
     - 9.1.0
 ---
 
-In this article, we'll discuss the different CloudShell APIs. 
+In this article, we'll discuss the different CloudShell APIs.
 
 CloudShell applications have multiple APIs, which enable you to get services from the Quali Server and to utilize CloudShell's capabilities for Shell automation, blueprint orchestration, sandbox deployment and test automation. CloudShell APIs can be classified as outbound and inbound APIs. In other words, APIs that are used to serve CloudShell in a wider context (our RESTful Sandbox API), like CI/CD processes, and APIs used to extend CloudShell automation and orchestration. For additional information, visit the <a href="https://help.quali.com/Online%20Help/9.1/Api-Guide/Content/API/CS-API-Ovrvew.htm" target="_blank">CloudShell API Guide</a>.
 
 ### CloudShell Sandbox API
 
 **CloudShell Sandbox API** is a RESTful API that allows you to use CloudShell sandboxes as part of your CI/CD process. For example, you can start, extend and stop sandboxes, run sandbox orchestration and automation commands, and get information about your sandboxes and execution activity. For additional information, see the CloudShell API Guide's <a href="https://help.quali.com/Online%20Help/9.1/Api-Guide/Content/API/REST-API-Overvw.htm" target="_blank">CloudShell Sandbox API Overview</a>.
+
 
 #### Examples
 
@@ -65,13 +66,15 @@ def execute():
 
 ### TestShell API
 
-The **TestShell API** allows designing orchestration and automation using C#, TCL API and XML RPC. It is intended for performing a wide variety of operations within CloudShell; from administrative tasks, such as managing inventory or users, to sandbox operations, such as executing commands and controlling both resource and sandbox live statuses. It is especially useful for writing tests, and obtaining information about resources, blueprints and sandboxes. TestShell API and CloudShell Automation API provide the same capabilities and functionality. 
+The **TestShell API** allows designing orchestration and automation using C#, TCL API and XML RPC. It is intended for performing a wide variety of operations within CloudShell; from administrative tasks, such as managing inventory or users, to sandbox operations, such as executing commands and controlling both resource and sandbox live statuses. It is especially useful for writing tests, and obtaining information about resources, blueprints and sandboxes. TestShell API and CloudShell Automation API provide the same capabilities and functionality.
 
 For additional information, see the appropriate TestShell API Reference Guide:
+
 * <a href="https://help.quali.com/Online%20Help/9.1/testshell-api/TestShell%20API%20Library.html" target="_blank">TestShell API Library Reference Guide</a>
 * <a href="https://help.quali.com/Online%20Help/9.1/testshell-api/TestShell%20cSharp%20API.html" target="_blank">TestShell API C# Reference Guide</a>
 * <a href="https://help.quali.com/Online%20Help/9.1/testshell-api/TestShell%20TCL%20API.html" target="_blank">TestShell API TCL Reference Guide</a>
 * <a href="https://help.quali.com/Online%20Help/9.1/testshell-api/TestShell%20XML%20RPC%20API.html" target="_blank">TestShell API XML RPC Reference Guide</a>
+
 
 ### Quali API
 
