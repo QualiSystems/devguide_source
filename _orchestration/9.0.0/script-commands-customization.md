@@ -69,10 +69,9 @@ if __name__ == "__main__":
 
 ### Setting display name, descriptions and category
 
-* You can set the script’s display name or alias by editing the **Alias** field in the edit form. Note that if you try to execute this script as a command from the API, you’ll still need to reference it by its name. Set the alias to _Customization Script_.
-
-* The **Description** is also easy to set via the edit form. Enter any text here, it will be displayed as a reference under the script name in the commands pane.
-
+* You can set the script’s display name or alias by editing the **Alias** field in the edit form. Note that if you try to execute this script as a command from the API, you’ll still need to reference it by its name.
+* **Script Type** allows you to set the script as an orchestration script that CloudShell will run accordingly. 
+* The **Description** is also easy to set via the edit form. Enter any text here, it will be displayed as a reference under the script name in the commands pane. This does not apply to orchestration scripts.
 * Categories help improve usability by grouping commands with a similar role or domain under a folder in the sandbox’s command pane. This grouping is for visual purposes only and does not affect API calls. For this example, let’s set the category name to ‘Customization’.
 
 
