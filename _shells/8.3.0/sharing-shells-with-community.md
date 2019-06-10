@@ -34,7 +34,4 @@ The shell’s repository should be displayed shortly in the **Integrations** pag
 
 ## Publishing a customized version of an existing shell
 
-1. In the relevant shell GitHub repository, open a pull request or issue that briefly explains why we should merge the change(s).
-2. Quali’s engineering will review the shell. If it’s rejected, we’ll provide architecture and design assistance based on priority and availability.
-
-Once the request is accepted, we will merge it to the master branch only if we can successfully validate the shell against the real device (through automation and Shell functionality testing). This doesn’t guarantee that Quali will accept every shell certification request. We’ll do our best to respond in a timely manner according to priorities.
+In the relevant shell GitHub repository, open a pull request or issue that briefly explains why we should merge the change(s).
