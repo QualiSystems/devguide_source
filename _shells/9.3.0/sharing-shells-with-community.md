@@ -16,7 +16,7 @@ In this article, we’ll learn how to share our shell with the Quali Community, 
 ## Publishing a new shell
 
 To share a shell with the Quali Community, all you need to do is post it in our community. 
-Sign in to <a href="https://community.quali.com/integrations" target="_blank">Quali’s Community Integrations</a> page with a community user, click the **Share an Integration** button, fill in the details. 
+Sign in to <a href="https://community.quali.com/integrations" target="_blank">Quali’s Community Integrations</a> page with a community user, click the **Share an Integration** button and fill in the details. 
 
 For example:
 
