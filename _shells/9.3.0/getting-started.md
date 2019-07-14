@@ -54,7 +54,8 @@ To learn more about the  different versions of the Shells used by CloudShell and
 
 ### Prerequisites
 * [Get CloudShell](http://info.quali.com/cloudshell-developer-edition-download): Download the latest CloudShell SDK and run it on your machine. 
-* [Python](https://www.python.org/downloads/): Make sure Python 2.7.x (latest recommended) is installed on your machine.
+* [Python](https://www.python.org/downloads/): Make sure the appropriate Python version - 2.7.x and/or 3.x - (latest recommended) is installed on your machine.
+<br>Starting with CloudShell 9.3, CloudShell comes with out-of-the-box support for python 3 for shells.
 * **IDE/Text Editor:** Your preferred IDE editor. We recommend using PyCharm (which offers a free community edition) because of the tooling we’ve already created for that IDE, including a CloudShell developer plugin.
 
 ### Installing or Updating Shellfoundry
@@ -93,6 +94,14 @@ For example, changing the username to “John”:
 {% highlight bash %} shellfoundry config username John {% endhighlight %}
 
  Normally, you would need to set the CloudShell admin user/password and the server address. For details, see [Shellfoundry]({{ site.baseurl }}/reference/{{pageVersion}}/shellfoundry-intro.html).
+
+### Setting the default python version for new shells
+
+Starting with CloudShell 9.3, the *DefaultPythonVersion* admin key allows you to control the python version in which all new shells are created. For details, see CloudShell help's <a href="https://help.quali.com/Online%20Help/0.0/Portal/Content/Admn/Wrk-wth-Cnfg-Ky.htm" target="_blank">Advanced CloudShell Customizations</a>.
+
+You can change the python version for specific shells in the 
+
+Note that this key also applies to orchestration scripts.
 
 ### Creating the Shell Project
 
