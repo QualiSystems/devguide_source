@@ -130,9 +130,3 @@ cloudshell-orch-core>=2.1.0.0,<2.2.0.0
 {% endhighlight %}
 
 For details about the requirements.txt file, see [Scripts Deep Dive]({{site.baseurl}}/orchestration/{{pageVersion}}/scripts-deep-dive.html).
-
-### Setting the default python version for new orchestration scripts
-
-Starting with CloudShell 9.2, the *DefaultPythonVersion* admin key allows you to control the python version in which all new orchestration scripts are created. For details, see CloudShell help's <a href="https://help.quali.com/Online%20Help/0.0/Portal/Content/Admn/Wrk-wth-Cnfg-Ky.htm" target="_blank">Advanced CloudShell Customizations</a>.
-
-Note that this key also applies to new shells.
