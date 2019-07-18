@@ -16,6 +16,7 @@ version:
 The Shell driver commands are accessible to CloudShell users via the portal as well as to orchestration scripts running on the sandbox.
 In this section we'll explore the different ways in which these commands can be customized in their appearance and behavior. The following customization options will be reviewed:
 
+* [Changing the shell's python version](#changing-the-shells-python-version)
 * [Changing the function display name and description](#customize_names)
 * [Specifying display name and descriptions for each parameter](#customize_parameter_names)
 * [Optional parameters and default values](#customizing_optional_parameters)
@@ -67,8 +68,6 @@ As you can see, we didn't need to specify any additional details to get our Pyth
 
 The information on how to display the driver functions in CloudShell is stored in the _drivermetadata.xml_ file located in the driver _src_ directory.
 
-<a name="customize_names"></a>
-
 ### Changing the shell's python version
 
 To change the shell's default python version, open the *drivermetadata.xml* file and in the `Driver` line, add the `DefaultPythonVersion` property with the new version (2 or 3). For example:
@@ -76,6 +75,8 @@ To change the shell's default python version, open the *drivermetadata.xml* file
 {% highlight xml %}
 <Driver Description="Describe the purpose of your CloudShell shell" MainClass="driver.CloudService2Driver" Name="CloudService2Driver" Version="1.0.0" DefaultPythonVersion="3"/>
 {% endhighlight %}
+
+<a name="customize_names"></a>
 
 ### Changing the function display name and description
 
