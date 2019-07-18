@@ -342,6 +342,8 @@ server.sendmail("<sender_email>", "<target_email>", msg)
 
 You can also extend the OOB Restore script to execute custom functionality at any point during the default sandbox restore process. The Restore script is a part of the sandbox setup process, and actually replaces the setup. Out of the box, the setup and restore logic are identical. However, if you customized the Setup script and you want the same customized script to be launched when restoring a sandbox, you should customize the Restore script as well, as the Restore script is the one that is being launched in a restored sandbox’s setup phase. It is also possible to customize the Restore script to have a different logic than the Setup script, to create a logic that is relevant only for restored sandboxes. For detailed explanations on how to extend the script's stages and use its extension methods, see the [Setup and Teardown Orchestration](#setup-and-teardown-orchestration) section above.
 
+*Note that CloudShell does not support executing the Setup command directly via the Restore script using APIs, such as ExecuteEnvironmentCommand or EnqueueEnvironmentCommand.*
+
 For example, a Restore script that writes a message to the **Output** console before the Restore workflow operation (to extend the workflow operation itself, use the above extension methods in the [Extending the OOB Setup Orchestration Scripts](#extending-the-oob-setup-orchestration-scripts) section above):
 
 {% highlight python %}
