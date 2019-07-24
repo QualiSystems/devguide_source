@@ -344,9 +344,9 @@ Legacy argument. Obsolete for custom cloud providers.
 
 ### Return value
 
-None.
+None. 
 
-Unlike other methods that update data using the result, *remote_refresh_ip* updates the deployed App resource by calling *cloudshell-automation-api*.
+Unlike other methods that update data using the result, *remote_refresh_ip* updates the deployed App resource with the IP by calling *cloudshell-automation-api*. However, if you implemented a return output, make sure to convert the *remote_refresh_ip* object to a string and pass the value to the "IP" attribute on the deployed App. 
 
 ### Error handling
 
