@@ -73,7 +73,7 @@ The information on how to display the driver functions in CloudShell is stored i
 To change the shell's default python version, open the *drivermetadata.xml* file and in the `Driver` line, add the `PythonVersion` property with the new version (2 or 3). For example:
 
 {% highlight xml %}
-<Driver Description="Describe the purpose of your CloudShell shell" MainClass="driver.CloudService2Driver" Name="CloudService2Driver" Version="1.0.0" PythonVersion="3"/>
+<Driver Description="Describe the purpose of your CloudShell shell" MainClass="driver.CloudService2Driver" Name="CloudService2Driver" Version="1.0.0" PythonVersion="3">
 {% endhighlight %}
 
 <a name="customize_names"></a>
