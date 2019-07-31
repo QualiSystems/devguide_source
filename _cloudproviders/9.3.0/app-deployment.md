@@ -4,7 +4,7 @@ title: "App Deployment"
 order: 17
 comments: true
 version:
-    - 9.2.0
+    - 9.3.0
 ---
 
 {% assign pageUrlSplited = page.url | split: "/" %}
@@ -109,7 +109,7 @@ Note that the links in the above workflow pertain to a driver of an L2 implement
 
 {% prism javascript %}
 {
-  "actionId": "aac7cc0c-a215-4aee-8fc1-f79025034423",
+  "actionId": "aac7cc0c-a215-4aee-8fc1-f79.3.034423",
   "deployedAppAdditionalData": {},
   "deployedAppAddress": "192.168.0.5",
   "deployedAppAttributes": [
@@ -344,7 +344,7 @@ Legacy argument. Obsolete for custom cloud providers.
 
 ### Return value
 
-None.
+None. 
 
 Unlike other methods that update data using the result, *remote_refresh_ip* updates the deployed App resource with the IP by calling *cloudshell-automation-api*. However, if you implemented a return output, make sure to convert the *remote_refresh_ip* object to a string and pass the value to the "IP" attribute on the deployed App. 
 
@@ -455,3 +455,4 @@ This method should perform the following steps:
 * <a href="https://github.com/QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/d17640899a06fb69e61ac678d620301d76dfd3cb/src/heavenly_cloud_service_wrapper.py#L243" target="_blank">Create *vmNetworkData*</a>. <a href="https://github.com/QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/d17640899a06fb69e61ac678d620301d76dfd3cb/src/heavenly_cloud_service_wrapper.py#L194-L215" target="_blank">*vmNetworkData*</a> is a list of *VmDetailsNetworkInterface*, one for each VM NIC you wish to associate with the resource.
 * <a href="https://github.com/QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/d17640899a06fb69e61ac678d620301d76dfd3cb/src/heavenly_cloud_service_wrapper.py#L251-L252" target="_blank">Collect as *VmDetailsData* result</a>.
 4. <a href="https://github.com/QualiSystems/Custom-L2-Cloud-Provider-Shell-Example/blob/ede6f78b4d4a78ae61b628696f6903d684e2224b/src/driver.py#L178-L180" target="_blank">Convert to JSON and return the result</a>. 
+
