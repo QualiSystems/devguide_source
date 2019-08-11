@@ -66,14 +66,23 @@ To use the API, create a session variable that uses the helper's get_api_session
 session = script_help.get_api_session()
 {% endhighlight %}
 
-### Getting the user context
+### Getting reservation context details
 
-Starting with CloudShell 9.2, you can get the CloudShell user who ran the command using the *get_reservation_context_details* helper.
+The *get_reservation_context_details* helper provides the reservation context. 
+
+![get_reservation_context_from_resource_scripts]({{ site.baseurl}}/assets/resource_reservation_context_details.png)
+
+To get this object, include this line in your script:
+
+{% highlight python %}
+from cloudshell.helpers.scripts.cloudshell_scripts_helpers import get_reservation_context_details
+{% endhighlight %}
+
+Note that starting with CloudShell 9.2, you can also get the CloudShell user who ran the command using the *get_reservation_context_details* helper.
 
 For example:
 
 {% highlight python %}
-from cloudshell.helpers.scripts.cloudshell_scripts_helpers import get_reservation_context_details
 user = get_reservation_context_details().running_user
 {% endhighlight %}
 
@@ -98,7 +107,7 @@ In this example, we use the CloudShell Automation API to get the resource's vend
 **requirements.txt**
 
 {% highlight bash %}
-cloudshell-automation-api>=8.3,<9.0
+cloudshell-automation-api>=9.3,<9.4
 {% endhighlight %}
 
 **__main__.py**
