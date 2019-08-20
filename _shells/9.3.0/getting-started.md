@@ -101,6 +101,7 @@ Starting with CloudShell 9.3, the *DefaultPythonVersion* admin key allows you to
 
 You can also change this default for your shell in the shell project's *drivermetadata.xml* file, but we'll discuss that later on.
 
+
 ### Creating the Shell Project
 
 **To create a new project:**
