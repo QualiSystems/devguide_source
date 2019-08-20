@@ -97,9 +97,10 @@ For example, changing the username to “John”:
 
 ### Setting the default python version for new shells
 
-Starting with CloudShell 9.3, the *DefaultPythonVersion* admin key allows you to control the python version in which all new shells are created. For details, see CloudShell help's <a href="https://help.quali.com/Online%20Help/0.0/Portal/Content/Admn/Wrk-wth-Cnfg-Ky.htm" target="_blank">Advanced CloudShell Customizations</a>. Note that this key also applies to orchestration scripts.
+Starting with CloudShell 9.3, the *DefaultPythonVersion* admin key allows you to control the python version in which all new shells are created. For details, see CloudShell help's <a href="https://help.quali.com/Online%20Help/0.0/Portal/Content/Admn/Wrk-wth-Cnfg-Ky.htm" target="_blank">Advanced CloudShell Customizations</a>. 
 
-You can also change this default in your shell's *drivermetadata.xml* file using the `PythonVersion` property, but we'll discuss that later on.
+Note that this key also applies to orchestration scripts.
+
 
 ### Creating the Shell Project
 
