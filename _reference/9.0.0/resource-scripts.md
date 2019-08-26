@@ -66,6 +66,22 @@ To use the API, create a session variable that uses the helper's get_api_session
 session = script_help.get_api_session()
 {% endhighlight %}
 
+### Returning outputs from a resource script
+
+In order to return outputs, use `print`. This applies to flat scripts and methods nested within resource scripts. 
+
+The script standard output is returned as the command result. However, if an exception is raised, or if a non-zero process result code is returned, the execution will be considered a failure. As a side note, in CloudShell, the output of a script is displayed in the **Output** console in the sandbox workspace, so whatever you print in your script will find its way there. 
+
+For example:
+
+{% highlight python %}
+import cloudshell.helpers.scripts.cloudshell_scripts_helpers as script_help
+
+def print_output():
+    resource_address = script_help.get_resource_context_details().address
+    print(resource_address)
+ {% endhighlight %}
+
 ### Associating a resource script to a CloudShell resource
 
 1) Place the python script(s) and requirements.txt files in a folder.
