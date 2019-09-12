@@ -114,11 +114,11 @@ tr:nth-child(even) {
 
 | CloudShell version | cloudshell-orch-core version |
 | :--------- | :--------- |
-| 8.3 | >=1.7.5.0,<1.7.6.0 |
-|9.0 GA | >=2.0.0.0,<2.1.0.0 |
-| 9.1 | >=2.1.0.0,<2.2.0.0 |
+| 8.3 GA | >=1.7.5.0,<1.7.6.0 |
+| 9.0 GA | >=2.0.0.0,<2.1.0.0 |
+| 9.1 GA | >=2.1.0.0,<2.2.0.0 |
 | 9.2 GA | >=3.0.0.0,<3.1.0.0 |
-| 9.3 EA | >=3.1.0.0,<3.2.0.0 |
+| 9.3 GA | >=3.2.0.0,<3.3.0.0 |
 
 To set a specific version of the package, add a line to the script's requirements.txt file. For example:
 
