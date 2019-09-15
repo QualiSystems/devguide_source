@@ -50,13 +50,23 @@ The OOB setup and teardown scripts can easily be customized or extended. Click [
 
 #### Extending the OOB Setup Orchestration Scripts
 
-Setup script logic is divided into 4 stages – Preparation, Provisioning, Connectivity and Configuration. The OOB setup already includes some default logic in each of the stages as depicted in the diagram above. However, the OOB setup can easily be extended. 
-Each Setup stage has a specific logic functionality.
+Setup script logic is divided into 4 stages – Preparation, Provisioning, Connectivity and Configuration. Each Setup stage has a specific logic functionality.
 
 * **Preparation** is empty in the default Setup script. This is the place to enter any code that logically has to be executed before Setup logic is initiated.
 * **Provisioning** deploys and discovers all apps.
-* **Connectivity** connects all layer 2 connections, powers on and refreshes IPs on deployed apps.
+* **Connectivity** connects all layer 1/layer 2/subnet connections, powers on and refreshes IPs on deployed apps.
 * **Configuration** applies any additional configuration on deployed apps
+
+Note that the OOB setup already includes some default logic in each of the stages as depicted in the diagram at the top of this page. However, the OOB setup can easily be extended using the following extension methods:
+
+* add_to_preparation
+* on_preparation_ended
+* add_to_provisioning
+* on_provisioning_ended
+* add_to_connectivity
+* on_connectivity_ended
+* add_to_configuration
+* on_configuration_ended
 
 Each stage has an interim `on__[stage]_ended` step which allows the execution of any code that has to run between stages. Note that all the functions you add to a stage (using `add_to_configuration`, for example) run in parallel, while `on__[stage]_ended` functions run sequentially.
 
@@ -79,17 +89,8 @@ DefaultSetupWorkflow().register(Sandbox)
 sandbox.workflow.add_to_configuration(my_custom_login, components)
 {% endhighlight %}
 
-The workflow helper supports the following extension methods for setup orchestration:
-* add_to_preparation
-* on_preparation_ended
-* add_to_provisioning
-* on_provisioning_ended
-* add_to_connectivity
-* on_connectivity_ended
-* add_to_configuration
-* on_configuration_ended
 
-Each of the following methods gets a custom function and list of components to use in the function. For example, executing some custom logic to validate resource configuration:
+Each of the extension methods can get a custom function and list of components to use in the function. For example, executing some custom logic to validate resource configuration:
 
 {% highlight python %}
 from cloudshell.workflow.orchestration.sandbox import Sandbox
