@@ -90,7 +90,7 @@ sandbox.workflow.add_to_configuration(my_custom_login, components)
 {% endhighlight %}
 
 
-Each of the extension methods can get a custom function and list of components to use in the function. For example, executing some custom logic to validate resource configuration:
+Each of the following methods gets a custom function and list of components to use in the function. For example, executing some custom logic to validate resource configuration:
 
 {% highlight python %}
 from cloudshell.workflow.orchestration.sandbox import Sandbox
