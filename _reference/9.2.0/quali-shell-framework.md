@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Quali’s Shell Framework
+title: Quali’s Shell Framework (Python 2)
 category: ref
 order: 9
 comments: true
@@ -12,16 +12,17 @@ version:
 {% assign pageUrlSplited = page.url | split: "/" %}
 {% assign pageVersion = pageUrlSplited[2] %}
 
-In this article, we will familiarize ourselves with the CloudShell shell framework and learn how to leverage it to develop and customize commands. Note that this applies to 1st Gen and 2nd Gen shells.
+In this article, we will familiarize ourselves with the CloudShell shell framework and learn how to leverage it to develop and customize commands in shells based on Python 2. Note that this applies to 1st Gen and 2nd Gen shells.
 
 ## Introduction
 
 Every CloudShell shell consists of a data model and a driver. The driver is written in python and can have python package dependencies. Quali’s officially released shells use a common set of python packages developed by Quali, which contain most of the logic of Quali shells, while the driver itself (the “.py” file inside the shell) is the thin layer that defines the interface with CloudShell along with the driver’s python requirements.
-Quali’s official shells have a granularity level of Vendor and OS. This means that each official shell supports all devices of a specific vendor and OS. The exact functionality that is exposed by the shell is defined in the relevant shell standard. The structure of the python packages reflects this granularity – for example, any logic that is common to all networking devices resides in cloudshell-networking, while any Cisco-specific logic resides in cloudshell-networking-cisco, and any Cisco IOS-specific logic resides in cloudshell-networking-cisco-ios.
-It is possible to use Quali’s shell framework when creating your own shells or customizing existing ones. Note that using the framework is optional.
-To work with one or more of the framework’s python packages, you need to list it in your shell project’s requirements, and not fork it or directly edit it. Then you can either write the code, which uses the package, directly in the shell’s driver or create your own python package and add it to the requirements of the driver. Such custom python packages can be loaded into our [PyPi server](http://help.quali.com/Online%20Help/8.3/Portal/Content/Admn/Cnfgr-Pyth-Env-Wrk-Offln.htm?Highlight=pypi) and thus be available to your entire CloudShell deployment.
 
-**Important:** It is not recommended to modify Quali python packages as these changes may be overwritten if a newer package that has the same file name is published on the public PyPi repository. Alternatively, you’re welcome to create your own packages, using our python packages as a reference.
+Quali’s official shells have a granularity level of Vendor and OS. This means that each official shell supports all devices of a specific vendor and OS. The exact functionality that is exposed by the shell is defined in the relevant [shell standard](https://github.com/QualiSystems/cloudshell-standards/tree/master/Documentation). The structure of the python packages reflects this granularity – for example, any logic that is common to all networking devices resides in cloudshell-networking, while any Cisco-specific logic resides in cloudshell-networking-cisco, and any Cisco IOS-specific logic resides in cloudshell-networking-cisco-ios. It is possible to use Quali’s shell framework when creating your own shells or customizing existing ones. 
+
+Note that using the framework is optional. To work with one or more of Quali framework’s python packages, you need to list them in your shell project’s requirements.txt file. Then, you can either write the code, which uses the packages, directly in the shell’s driver or create your own python packages and add them to the shell's requirements file. You can also load such custom python packages into your local [PyPi server repository](http://help.quali.com/Online%20Help/9.2/Portal/Content/Admn/Cnfgr-Pyth-Env-Wrk-Offln.htm?Highlight=pypi) on the Quali Server machine to make them available to your entire CloudShell deployment.
+
+**Important:** We don't recommend to modify Quali python packages as CloudShell may overwrite them if a newer package that has the same file name is published on the public PyPi repository. Alternatively, you’re welcome to create your own packages, using our python packages as a reference.
 
 
 ## Python package structure
@@ -67,9 +68,9 @@ These handlers need to be initialized and passed to the runners.
 
 #### CLI Handler<a name="CliHandler"></a>
 
-There is a nice guide on how to use *cloudshell-cli* [here](https://github.com/QualiSystems/cloudshell-cli/blob/dev/README.md). However, to simplify the usage of the CloudShell CLI, we implemented a *CliHandlerImpl* base class located [here](https://github.com/QualiSystems/cloudshell-networking-devices/blob/dev/cloudshell/devices/cli_handler_impl.py).
+The CLI handler includes all the typical CloudShell CLI attributes you would need in order to communicate and work with a device modeled in CloudShell. For example, it knows how to retrieve the device’s username and password, create a session, determine what kind of session to initiate, etc. For reference, see [cisco_cli_handler.py](https://github.com/QualiSystems/cloudshell-networking-cisco/blob/dev/cloudshell/networking/cisco/cli/cisco_cli_handler.py) and [cisco_command_modes.py](https://github.com/QualiSystems/cloudshell-networking-cisco/blob/dev/cloudshell/networking/cisco/cli/cisco_command_modes.py).
 
-It includes all the typical CLI capabilities you would need from CloudShell CLI. In addition, it knows how to retrieve the device’s username and password, create a session, determine what kind of session to initiate, etc. For reference, see [cisco_cli_handler.py](https://github.com/QualiSystems/cloudshell-networking-cisco/blob/dev/cloudshell/networking/cisco/cli/cisco_cli_handler.py) and [cisco_command_modes.py](https://github.com/QualiSystems/cloudshell-networking-cisco/blob/dev/cloudshell/networking/cisco/cli/cisco_command_modes.py).
+There is a nice guide on how to use *cloudshell-cli* [here](https://github.com/QualiSystems/cloudshell-cli/blob/dev/README.md). However, to simplify the usage of the CloudShell CLI, we implemented a *CliHandlerImpl* base class located [here](https://github.com/QualiSystems/cloudshell-networking-devices/blob/dev/cloudshell/devices/cli_handler_impl.py).
 
 In the child class, you only need to implement these methods and properties:
 
@@ -88,7 +89,7 @@ Note that the first parameter, `cli`, needs a CLI instance from *cloudshell.cli.
 
 #### SNMP Handler
 
-Like the CLI handler, the main responsibilities of the SNMP handler are:
+The SNMP handler provides SNMP communication with the device. Like the CLI handler, the main responsibilities of the SNMP handler are:
 * Initialize *QualiSnmp*. It does this by extracting and preparing the *QualiSnmp* parameters provided by the resource driver’s context
 * Analyze Enable and Disable SNMP attributes from the command context
 * Trigger the appropriate flow. 
