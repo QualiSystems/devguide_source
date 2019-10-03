@@ -2,7 +2,7 @@
 layout: page
 title: Shellfoundry
 category: ref
-order: 8
+order: 5
 comments: true
 version:
     - 9.3.0

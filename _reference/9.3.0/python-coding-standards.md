@@ -2,7 +2,7 @@
 layout: page
 title: Python Coding Standards
 category: ref
-order: 7
+order: 3
 comments: true
 version:
     - 9.3.0
