@@ -30,6 +30,8 @@ See the code below for an example:
 {% github_sample /QualiSystems/devguide_examples/blob/driver_deep_dive/adding_examples/common_driver_recipes/src/driver.py 28 38 %}
 {% endhighlight %}
 
+Note that in Python 3 shells, you no longer need to decrypt passwords as this is done out of the box by the [cloudshell-shell-networking-standard](https://pypi.org/project/cloudshell-shell-networking-standard/) python package.
+
 #### Updating the resource live status
 
 The resource live status can be used to indicate the current state of the resource on the diagram.
