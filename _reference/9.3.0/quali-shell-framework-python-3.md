@@ -120,7 +120,7 @@ Overall, we have six flows, all base classes and their interfaces are located in
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• *_remove_vlan_flow*
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;For reference, see this [example](https://github.com/QualiSystems/cloudshell-networking-cisco/blob/dev/cloudshell/networking/cisco/runners/cisco_connectivity_runner.py).
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;For reference, see this [example](https://github.com/QualiSystems/cloudshell-networking-cisco/blob/5.2.16/cloudshell/networking/cisco/runners/cisco_connectivity_runner.py).
 
 * **[Configuration Flow](https://github.com/QualiSystems/cloudshell-networking-devices/blob/dev/cloudshell/devices/runners/configuration_runner.py)** – Prepares and validates the provided path for the `save`, `restore`, `orchestration save` and `orchestration restore` commands. To initialize this flow, you have to pass the *logger*, *resource_config*, *cli_handler* and *api* objects (described in [Key Entities](#KeyEntities)). The following methods must be implemented:
 
@@ -130,13 +130,13 @@ Overall, we have six flows, all base classes and their interfaces are located in
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• *_file_system* – a default filesystem value, see example below.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;For reference, see this [example](https://github.com/QualiSystems/cloudshell-networking-cisco/blob/dev/cloudshell/networking/cisco/runners/cisco_configuration_runner.py).
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;For reference, see this [example](https://github.com/QualiSystems/cloudshell-networking-cisco/blob/5.2.16/cloudshell/networking/cisco/runners/cisco_configuration_runner.py).
 
 * **[Firmware Flow](https://github.com/QualiSystems/cloudshell-networking-devices/blob/dev/cloudshell/devices/runners/firmware_runner.py)** – This flow serves as a configuration flow and also validates the firmware’s file path. To initialize this flow, you need to pass the *logger* object. The following method must be implemented:
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• *_load_firmware_flow*
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;For reference, see this [example](https://github.com/QualiSystems/cloudshell-networking-cisco/blob/dev/cloudshell/networking/cisco/runners/cisco_firmware_runner.py).
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;For reference, see this [example](https://github.com/QualiSystems/cloudshell-networking-cisco/blob/5.2.16/cloudshell/networking/cisco/runners/cisco_firmware_runner.py).
 
 * **[Run Command Flow](https://github.com/QualiSystems/cloudshell-networking-devices/blob/dev/cloudshell/devices/runners/run_command_runner.py)** – As you can see from the name, this flow handles the `Run Custom Command` and `Run Custom Config Command` driver methods and doesn’t require anything else to implement. However, if you want to customize the `run_command_flow` property, you are welcome to override it. To initialize this flow, just pass the *logger* and *cli_handler* objects.
 
