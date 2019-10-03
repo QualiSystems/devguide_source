@@ -20,7 +20,7 @@ Every CloudShell shell consists of a data model and a driver. The driver is writ
 
 Quali’s official shells have a granularity level of Vendor and OS. This means that each official shell supports all devices of a specific vendor and OS. The exact functionality that is exposed by the shell is defined in the relevant [shell standard](https://github.com/QualiSystems/cloudshell-standards/tree/master/Documentation). The structure of the python packages reflects this granularity – for example, any logic that is common to all networking devices resides in cloudshell-networking, while any Cisco-specific logic resides in cloudshell-networking-cisco, and any Cisco IOS-specific logic resides in cloudshell-networking-cisco-ios. It is possible to use Quali’s shell framework when creating your own shells or customizing existing ones. 
 
-Note that using the framework is optional. To work with one or more of Quali framework’s python packages, you need to list them in your shell project’s requirements.txt file. Then, you can either write the code, which uses the packages, directly in the shell’s driver or create your own python packages and add them to the shell's requirements file. You can also load such custom python packages into your local [PyPi server repository](http://help.quali.com/Online%20Help/9.0/Portal/Content/Admn/Cnfgr-Pyth-Env-Wrk-Offln.htm?Highlight=pypi) on the Quali Server machine to make them available to your entire CloudShell deployment.
+Note that using the framework is optional. To work with one or more of Quali framework’s python packages, you need to list them in your shell project’s requirements.txt file. Then, you can either write the code, which uses the packages, directly in the shell’s driver or create your own python packages and add them to the shell's requirements file. You can also load such custom python packages into your local [PyPi server repository](http://help.quali.com/Online%20Help/9.1/Portal/Content/Admn/Cnfgr-Pyth-Env-Wrk-Offln.htm?Highlight=pypi) on the Quali Server machine to make them available to your entire CloudShell deployment.
 
 **Important:** We don't recommend to modify Quali python packages as CloudShell may overwrite them if a newer package that has the same file name is published on the public PyPi repository. Alternatively, you’re welcome to create your own packages, using our python packages as a reference.
 
@@ -68,18 +68,18 @@ These handlers need to be initialized and passed to the runners.
 
 #### CLI Handler<a name="CliHandler"></a>
 
-The CLI handler includes all the typical CloudShell CLI attributes you would need in order to communicate and work with a device modeled in CloudShell. For example, it knows how to retrieve the device’s username and password, create a session, determine what kind of session to initiate, etc. For reference, see [cisco_cli_handler.py](https://github.com/QualiSystems/cloudshell-networking-cisco/blob/dev/cloudshell/networking/cisco/cli/cisco_cli_handler.py) and [cisco_command_modes.py](https://github.com/QualiSystems/cloudshell-networking-cisco/blob/dev/cloudshell/networking/cisco/cli/cisco_command_modes.py).
+The CLI handler includes all the typical CloudShell CLI attributes you would need in order to communicate and work with a device modeled in CloudShell. For example, it knows how to retrieve the device’s username and password, create a session, determine what kind of session to initiate, etc. For reference, see [cisco_cli_handler.py](https://github.com/QualiSystems/cloudshell-networking-cisco/blob/5.2.16/cloudshell/networking/cisco/cli/cisco_cli_handler.py) and [cisco_command_modes.py](https://github.com/QualiSystems/cloudshell-networking-cisco/blob/dev/cloudshell/networking/cisco/cli/cisco_command_modes.py).
 
 There is a nice guide on how to use *cloudshell-cli* [here](https://github.com/QualiSystems/cloudshell-cli/blob/dev/README.md). However, to simplify the usage of the CloudShell CLI, we implemented a *CliHandlerImpl* base class located [here](https://github.com/QualiSystems/cloudshell-networking-devices/blob/dev/cloudshell/devices/cli_handler_impl.py).
 
 In the child class, you only need to implement these methods and properties:
 
-* **enable_mode** – is a property that returns the *CommandMode* class, which enables you to use the **Enable** mode, a mode that grants you root admin access to a Linux device. [Example](https://github.com/QualiSystems/cloudshell-networking-cisco/blob/dev/cloudshell/networking/cisco/cli/cisco_command_modes.py#L46).
+* **enable_mode** – is a property that returns the *CommandMode* class, which enables you to use the **Enable** mode, a mode that grants you root admin access to a Linux device. [Example](https://github.com/QualiSystems/cloudshell-networking-cisco/blob/5.2.16/cloudshell/networking/cisco/cli/cisco_command_modes.py#L46).
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;For details and implementation examples of *CommandMode*, click [here](https://github.com/QualiSystems/cloudshell-cli/blob/dev/README.md).
 
-* **config_mode** – is a property that returns the *CommandMode* class, which enables you to use the **Configuration** mode, which allows you to configure the device’s settings. [Example](https://github.com/QualiSystems/cloudshell-networking-cisco/blob/dev/cloudshell/networking/cisco/cli/cisco_command_modes.py#L83).
-* **on_session_start** – is a method that contains the commands you want to automatically execute at the start of each session. [Example](https://github.com/QualiSystems/cloudshell-networking-cisco/blob/dev/cloudshell/networking/cisco/cli/cisco_cli_handler.py#L80).
+* **config_mode** – is a property that returns the *CommandMode* class, which enables you to use the **Configuration** mode, which allows you to configure the device’s settings. [Example](https://github.com/QualiSystems/cloudshell-networking-cisco/blob/5.2.16/cloudshell/networking/cisco/cli/cisco_command_modes.py#L83).
+* **on_session_start** – is a method that contains the commands you want to automatically execute at the start of each session. [Example](https://github.com/QualiSystems/cloudshell-networking-cisco/blob/5.2.16/cloudshell/networking/cisco/cli/cisco_cli_handler.py#L80).
 
 Example: Cli handler that requires the parameters `cli`, `resource_config`, `logger` and `api`:
 
@@ -99,7 +99,7 @@ To initialize the `SNMPHandler` object, you need to pass the following objects: 
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• _create_disable_flow
 
-For reference, see [cisco_snmp_handler](https://github.com/QualiSystems/cloudshell-networking-cisco/blob/dev/cloudshell/networking/cisco/snmp/cisco_snmp_handler.py). For more information, see the [Flows](#Flows) section.
+For reference, see [cisco_snmp_handler](https://github.com/QualiSystems/cloudshell-networking-cisco/blob/5.2.16/cloudshell/networking/cisco/snmp/cisco_snmp_handler.py). For more information, see the [Flows](#Flows) section.
  
 ## Runners<a name="Runners"></a>
  This is an abstract class that includes generic implementations for preparing and validating the required parameters. For example, when running the Save command in CloudShell Portal, the runner must validate the folder path provided by the sandbox end-user. Typically, the shell extracts the data for the required parameters from the resource command’s context and user inputs. 
@@ -116,7 +116,7 @@ Overall, we have six Runners, all base classes and their interfaces are located 
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• remove_vlan_flow
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;For reference, see this [example](https://github.com/QualiSystems/cloudshell-networking-cisco/blob/dev/cloudshell/networking/cisco/runners/cisco_connectivity_runner.py).
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;For reference, see this [example](https://github.com/QualiSystems/cloudshell-networking-cisco/blob/5.2.16/cloudshell/networking/cisco/runners/cisco_connectivity_runner.py).
 
 * **[Configuration Runner](https://github.com/QualiSystems/cloudshell-networking-devices/blob/dev/cloudshell/devices/runners/configuration_runner.py)** – Prepares and validates the provided path for the `save`, `restore`, `orchestration save` and `orchestration restore` commands. To initialize this runner, you have to pass the *logger*, *resource_config*, *cli_handler* and *api* objects (described in Key Entities). The following properties have to be implemented:
 
@@ -126,13 +126,13 @@ Overall, we have six Runners, all base classes and their interfaces are located 
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• file_system – a default filesystem value, see example below.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;For reference, see this [example](https://github.com/QualiSystems/cloudshell-networking-cisco/blob/dev/cloudshell/networking/cisco/runners/cisco_configuration_runner.py).
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;For reference, see this [example](https://github.com/QualiSystems/cloudshell-networking-cisco/blob/5.2.16/cloudshell/networking/cisco/runners/cisco_configuration_runner.py).
 
 * **[Firmware Runner](https://github.com/QualiSystems/cloudshell-networking-devices/blob/dev/cloudshell/devices/runners/firmware_runner.py)** – This runner serves as a Configuration Runner, and also validates the firmware’s file path. To initialize this runner, you need to pass the *logger* and *cli_handler* objects. The following property has to be implemented:
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• load_firmware_flow
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;For reference, see this [example](https://github.com/QualiSystems/cloudshell-networking-cisco/blob/dev/cloudshell/networking/cisco/runners/cisco_firmware_runner.py).
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;For reference, see this [example](https://github.com/QualiSystems/cloudshell-networking-cisco/blob/5.2.16/cloudshell/networking/cisco/runners/cisco_firmware_runner.py).
 
 * **[Run Command Runner](https://github.com/QualiSystems/cloudshell-networking-devices/blob/dev/cloudshell/devices/runners/run_command_runner.py)** – As you can see from the name, this Runner handles the `Run Custom Command` and `Run Custom Config Command` driver methods, and doesn’t require anything else to implement. However, if you want to customize the `run_command_flow` property, you are welcome to override it. To initialize this runner, just pass the *logger* and *cli_handler* objects.
 
@@ -163,7 +163,7 @@ Most shells include the following flows:
 
 Note that *Run Command Flow* doesn’t require you to implement the `execute_flow` method as it’s already implemented there. The only difference between the *Run Command Flow* and the rest is a set of parameters. Run Command Flow has a generic approach to all devices, and doesn’t require any specific implementation. 
 
-For reference, see these [files](https://github.com/QualiSystems/cloudshell-networking-cisco/tree/dev/cloudshell/networking/cisco/flows).
+For reference, see these [files](https://github.com/QualiSystems/cloudshell-networking-cisco/tree/5.2.16/cloudshell/networking/cisco/flows).
 
 ## Command Templates<a name="CommandTemplates"></a>
 
@@ -184,11 +184,11 @@ r'\(y/n\)': lambda session, logger: session.send_line('y', logger)
 r"[Ii]nvalid\s*([Ii]nput|[Cc]ommand ":  “Override mode is not supported”
 {% endhighlight %}
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;For reference, see this command template [file](https://github.com/QualiSystems/cloudshell-networking-cisco/blob/dev/cloudshell/networking/cisco/command_templates/configuration.py).
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;For reference, see this command template [file](https://github.com/QualiSystems/cloudshell-networking-cisco/blob/5.2.16/cloudshell/networking/cisco/command_templates/configuration.py).
 
 ## Command Actions<a name="CommandActions"></a>
 
-Command Action is a method or function (depending on your implementation) that runs one or more Command Templates. The [CommandTemplateExecutor](https://github.com/QualiSystems/cloudshell-cli/blob/dev/cloudshell/cli/command_template/command_template_executor.py) is provided for running command templates. For reference, see this [example](https://github.com/QualiSystems/cloudshell-networking-cisco/blob/dev/cloudshell/networking/cisco/command_actions/add_remove_vlan_actions.py).
+Command Action is a method or function (depending on your implementation) that runs one or more Command Templates. The [CommandTemplateExecutor](https://github.com/QualiSystems/cloudshell-cli/blob/dev/cloudshell/cli/command_template/command_template_executor.py) is provided for running command templates. For reference, see this [example](https://github.com/QualiSystems/cloudshell-networking-cisco/blob/5.2.16/cloudshell/networking/cisco/command_actions/add_remove_vlan_actions.py).
 
 For example, if we want to execute the CONFIGURE_VLAN command template:
 
