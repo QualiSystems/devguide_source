@@ -17,7 +17,7 @@ A typical Shell driver will first get crucial information from the sandbox and t
 
 To provide easy access to such common information, each driver function has access to a special context object parameter, which is created by CloudShell for each driver command’s execution.
 
-If you’ve generated the default driver template, you may have noticed that the pre-generated functions already have some docstring code-hint annotation. This allows some IDEs like PyCharm to provide autocomplete for the class properties and make it a lot easier to user.
+If you’ve generated the default driver template, you may have noticed that the pre-generated functions already have some docstring code-hint annotation. This allows some IDEs like PyCharm to provide autocomplete for the class properties and make it a lot easier to use. For details, see [Docstrings in shells]({{site.baseurl}}/reference/{{pageVersion}}/enabling-autocomplete-with-docstrings.html#docstrings-in-shells).
 
 
 ### CloudShell Shell Core
