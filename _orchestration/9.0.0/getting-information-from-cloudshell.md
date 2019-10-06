@@ -33,6 +33,8 @@ To facilitate writing and debugging activities, it is recommended to use advance
 
 ![Sandbox information]({{site.baseurl}}/assets/reservation_context_8_1.png){:class="img-responsive"}
 
+Note that if you plan on using methods in your script, and want the IDE to autocomplete the *sandbox* object's class properties from within the method, you will need to include a docstring referencing the object. For details, see [Docstrings in orchestration scripts]({{site.baseurl}}/reference/{{pageVersion}}/enabling-intellisense-with-docstrings.html#docstrings-in-orchestration-scripts).
+
 ### Accessing the sandbox components
 
 Use the **Sandbox** class to access and use the components of a sandbox in your orchestration scripts to implement custom logic. 
