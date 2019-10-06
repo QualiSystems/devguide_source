@@ -1,11 +1,11 @@
 ---
 layout: page
-title: Enabling Autocomplete in Shells and Scripts (using Docstrings)
+title: Enabling Intellisense in Shells and Scripts (using Docstrings)
 category: ref
 order: 23
 comments: true
 version:
-    - 9.0.0
+    - 9.1.0
 ---
 
 {% assign pageUrlSplited = page.url | split: "/" %}

@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Enabling Autocomplete in Shells and Scripts (using Docstrings)
+title: Enabling Intellisense in Shells and Scripts (using Docstrings)
 category: ref
 order: 23
 comments: true
