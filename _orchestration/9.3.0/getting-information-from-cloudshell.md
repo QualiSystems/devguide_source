@@ -33,7 +33,7 @@ To facilitate writing and debugging activities, it is recommended to use advance
 
 ![Sandbox information]({{site.baseurl}}/assets/reservation_context_8_1.png){:class="img-responsive"}
 
-Note that if you plan on using methods in your script, and want the IDE to autocomplete the *sandbox* object's class properties from within the method, you will need to include a docstring referencing the object. For details, see [Docstrings in orchestration scripts]({{site.baseurl}}/reference/{{pageVersion}}/enabling-intellisense-with-docstrings.html#docstrings-in-orchestration-scripts).
+Note that if you plan on using methods in your script, and want the IDE to autocomplete the *sandbox* object's class properties from within the method, you will need to include a docstring referencing the object. For details, see [Docstrings in orchestration scripts]({{site.baseurl}}/reference/{{pageVersion}}/intellisense-with-docstrings.html#docstrings-in-orchestration-scripts).
 
 ### Accessing the sandbox components
 
@@ -141,7 +141,7 @@ session = Sandbox.automation_api
 
 ### Getting custom sandbox metadata
 
-Starting with CloudShell 9.2, it is possible to store and retrieve custom key-value data from the sandbox. For details, see [Working with Custom Sandbox Metadata]({{site.baseurl}}/reference/{{pageVersion}}/working-with-sandbox-metadata.html).
+Starting with CloudShell 9.2, it is possible to store and retrieve custom key-value data from the sandbox. For details, see [Custom Sandbox Metadata]({{site.baseurl}}/reference/{{pageVersion}}/working-with-sandbox-metadata.html).
 
 ### Getting saved sandbox information
 

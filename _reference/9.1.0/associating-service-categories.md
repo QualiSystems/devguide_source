@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Associating Categories to 1st Gen Service Shells
+title: Categories in 1st Gen Service Shells
 category: ref
 order: 11
 comments: true

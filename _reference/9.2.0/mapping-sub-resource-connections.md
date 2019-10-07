@@ -11,7 +11,7 @@ version:
 {% assign pageUrlSplited = page.url | split: "/" %}
 {% assign pageVersion = pageUrlSplited[2] %}
 
-CloudShell 8.3 and above allows developers to map connections between sub-resources residing on deployed Apps. This applies to scenarios where you want to map the port connections between virtual devices residing in App VMs. For example, to map the connection between port 1 residing on a virtual switch and port 2 residing on another virtual switch.
+CloudShell allows developers to map connections between sub-resources residing on deployed Apps. This applies to scenarios where you want to map the port connections between virtual devices residing in App VMs. For example, to map the connection between port 1 residing on a virtual switch and port 2 residing on another virtual switch.
 
 The port mapping is done during the deployment of the App. This requires creating a shell and specifying the port's vNIC name in an attribute on the `Get_Inventory` command of the deployed App’s shell driver, and associating that shell to the desired App. Then, to map that App's vNIC, the blueprint designer will need to specify the vNIC name on the App.
 

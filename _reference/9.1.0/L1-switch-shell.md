@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Creating an L1 Switch Shell
+title: L1 Switch Shells
 category: ref
 order: 13
 comments: true

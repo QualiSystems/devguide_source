@@ -17,7 +17,7 @@ A typical Shell driver will first get crucial information from the sandbox and t
 
 To provide easy access to such common information, each driver function has access to a special context object parameter, which is created by CloudShell for each driver command’s execution.
 
-If you’ve generated the default driver template, you may have noticed that the pre-generated functions already have some docstring code-hint annotation. This allows some IDEs like PyCharm to provide autocomplete for the class properties and make it a lot easier to use. For details, see [Docstrings in shells]({{site.baseurl}}/reference/{{pageVersion}}/enabling-intellisense-with-docstrings.html#docstrings-in-shells).
+If you’ve generated the default driver template, you may have noticed that the pre-generated functions already have some docstring code-hint annotation. This allows some IDEs like PyCharm to provide autocomplete for the class properties and make it a lot easier to use. For details, see [Docstrings in shells]({{site.baseurl}}/reference/{{pageVersion}}/intellisense-with-docstrings.html#docstrings-in-shells).
 
 
 ### CloudShell Shell Core
@@ -148,7 +148,7 @@ You can find JSON schema definitions of these two JSON objects here:
 
 #### Custom sandbox metadata
 
-Starting with CloudShell 9.2, it is possible to store and retrieve custom key-value data from the sandbox. For details, see [Working with Custom Sandbox Metadata]({{site.baseurl}}/reference/{{pageVersion}}/working-with-sandbox-metadata.html).
+Starting with CloudShell 9.2, it is possible to store and retrieve custom key-value data from the sandbox. For details, see [Custom Sandbox Metadata]({{site.baseurl}}/reference/{{pageVersion}}/working-with-sandbox-metadata.html).
 
 #### Custom Attributes and the Shell’s data model
 In many cases, the Shell has specific information that is stored in attributes. For example, user credentials that are needed in order to connect to the resource. These attributes are part of the Shell’s data model. Their value can be easily retrieved by converting the _ResourceCommandContext_ to an instance of the generated Shell’s data model.

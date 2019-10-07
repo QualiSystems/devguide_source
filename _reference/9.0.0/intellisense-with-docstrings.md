@@ -1,11 +1,11 @@
 ---
 layout: page
-title: Enabling Intellisense in Shells and Scripts (using Docstrings)
+title: Intellisense in Shells and Scripts (using Docstrings)
 category: ref
 order: 23
 comments: true
 version:
-    - 9.3.0
+    - 9.0.0
 ---
 
 {% assign pageUrlSplited = page.url | split: "/" %}
