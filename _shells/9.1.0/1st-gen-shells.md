@@ -26,7 +26,7 @@ Note that the same 2nd Gen Shell standards apply to 1st Gen (but are not enforce
 
 The following articles relate to 1st Gen Shells:
 
-* [Converting 1st Gen Shells into 2nd Gen Shells]({{site.baseurl}}/reference/{{pageVersion}}/migrating_1st_gen_shells.html)
+* [Converting 1st Gen Shells into 2nd Gen]({{site.baseurl}}/reference/{{pageVersion}}/migrating_1st_gen_shells.html)
 
-* [Associating Categories to 1st Gen Service Shells]({{site.baseurl}}/reference/{{pageVersion}}/associating-service-categories.html)
+* [Categories in 1st Gen Service Shells]({{site.baseurl}}/reference/{{pageVersion}}/associating-service-categories.html)
 

@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Defining Custom Routing for Azure Apps
+title: Custom Routing for Azure Apps
 category: ref
 order: 17
 comments: true

@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Creating a Shell that Loads a Static VM
+title: Shells that Load a Static VM
 category: ref
 order: 21
 comments: true

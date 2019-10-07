@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Working with Custom Sandbox Metadata
+title: Custom Sandbox Metadata
 category: ref
 order: 19
 comments: true

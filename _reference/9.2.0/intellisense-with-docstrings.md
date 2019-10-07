@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Enabling Intellisense in Shells and Scripts (using Docstrings)
+title: Intellisense in Shells and Scripts (using Docstrings)
 category: ref
 order: 23
 comments: true

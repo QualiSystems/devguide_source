@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Using Resource Scripts
+title: Resource Scripts
 category: ref
 order: 15
 comments: true
