@@ -11,9 +11,9 @@ version:
 {% assign pageUrlSplited = page.url | split: "/" %}
 {% assign pageVersion = pageUrlSplited[2] %}
 
-In this article, we'll learn how to set up Python documentation strings in shells and scripts. 
+In this article, we'll learn how to allow the IDE to recognize the CloudShell elements we want to use. This way, whenever we type in these elements in our methods, the IDE will provide useful code editing features, including code completion, parameter info and member lists. 
 
-Python documentation strings (or docstrings) allow you to associate documentation with python modules, functions, classes and methods. This will allow the IDE to recognize the CloudShell elements we want to use, and provide intellisense whenever we type them in our methods. For additional information about docstrings, check out this <a href="https://docs.python.org/3/tutorial/controlflow.html#documentation-strings" target="_blank">Python documentation page</a>.
+This is done by including Python documentation strings in our methods. Python documentation strings (or docstrings) allow you to associate documentation with python modules, functions, classes and methods. For additional information about docstrings, check out this <a href="https://docs.python.org/3/tutorial/controlflow.html#documentation-strings" target="_blank">Python documentation page</a>.
 
 *To make use of intellisense, we recommend to use an IDE that supports such capabilities, such as PyCharm.*
 
