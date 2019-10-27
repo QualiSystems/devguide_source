@@ -106,6 +106,12 @@ cd linux-server-shell
 
 A new sub folder containing the basic Shell project’s structure and files will be created.
 
+Note that by default, the shell is based on python 2. To use python 3, create the shell with the `--python 3` tag as follows:
+
+{% highlight bash %}
+shellfoundry new linux-server-shell --python 3
+{% endhighlight %}
+
 2) Navigate to the new folder. The following files have been created for you:
 
 ![Directory Structure]({{ site.baseurl}}/assets/shell_folder.png)
