@@ -84,9 +84,7 @@ The following keys are available:
 
 #### Creating a Shell
 
-This command creates a Shell that is based on the **gen2/resource** template. Use this if you want to create a Shell to customize or experiment on. For more information, see [The Shell Project Guide]({{site.baseurl}}/shells/{{pageVersion}}/the-shell-project.html).
-
-**Note:** `shellfoundry new` creates the latest shell version that is supported by your CloudShell installation. 
+The `new` command creates a shell from a shell template.
 
 **Syntax:**
 
@@ -94,28 +92,26 @@ Run this command in the Shell’s root folder.
 
 {% highlight bash %}shellfoundry new <Shell-name>{% endhighlight %}
 
-**Example:**
+**Options:**
 
-{% highlight bash %}shellfoundry new my-basic-shell{% endhighlight %}
+* **-****-template**: Creates a shell from a specific shellfoundry template, featuring the template's settings, attributes and driver commands. For details, see [Modeling Shells with TOSCA]({{site.baseurl}}/shells/{{pageVersion}}/modeling-the-shell.html).
+<br>**Note:** If you don't specify a template, shellfoundry will create the shell from the **gen2/resource** template. Use this if you want to create a Shell to customize or experiment on. For more information, see [The Shell Project Guide]({{site.baseurl}}/shells/{{pageVersion}}/the-shell-project.html). 
+* **-****-version**: Creates a shell based on a specific shell version. If you don't specify the version, shellfoundry will create the shell using the latest shell version that is supported by your CloudShell installation.
+* **-****-python**: Determines the python version of the shell. Options are "2" or "3" (Default is 2).  
 
+**Examples:**
 
-#### Creating a Shell from a template
+Generic resource shell based on python 3:
 
-This command creates a Shell that features the template’s settings, attributes and driver. For more information, see [Modeling Shells with TOSCA]({{site.baseurl}}/shells/{{pageVersion}}/modeling-the-shell.html). 
+{% highlight bash %}
+shellfoundry new my-basic-shell --python 3
+{% endhighlight %}
 
-**Note:** `shellfoundry new` creates the latest shell version that is supported by your CloudShell installation. 
+Networking switch shell version 5.0.2:
 
-**Syntax:**
-
-Run this command in the Shell’s root folder.
-
-{% highlight bash %}shellfoundry new <Shell-name> --template <template>{% endhighlight %}
-
-**Example:**
-
-{% highlight bash %}shellfoundry new my-switch-g2 --template=gen2/networking/switch{% endhighlight %}
-
-**Note:** This command creates a Shell that is based on the latest version of the specified template, which is supported by your CloudShell version. However, you can also create a Shell based on a different version of the template, by adding `--version <version_number>` to the command. 
+{% highlight bash %}
+shellfoundry new my-switch-shell --template gen2/networking/switch --version 5.0.2
+{% endhighlight %}
 
 
 #### Creating a Shell from a local template
@@ -136,20 +132,6 @@ The path can be a URL to the Shell template's zip package on GitHub or the files
 {% highlight bash %}shellfoundry new my-service-ext --template local:C:\Temp\shell-pdu-standard-master {% endhighlight %}
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The new shell is added to the path from which you ran the `shellfounfry new` command. 
-
-
-#### Creating a Shell of a specific version
-
-Follow the steps in this section to create an older version of a Shell. 
-
-First, run the `shellfoundry show` command to see the Shell's versions.
-
-**Example:**
-{% highlight bash %}shellfoundry show <template-name> {% endhighlight %}
-
-Then, in the `shellfoundry new` command, specify the version you need. For example, "5.0.2":
-
-{% highlight bash %}shellfoundry new router-shell-502 --template gen2/networking/router --version 5.0.2 {% endhighlight %}
 
 
 #### Deleting a shell from Cloudshell
@@ -305,6 +287,9 @@ shellfoundry extend local:C:\temp\Cisco-NXOS-Switch-Shell-2G-2.0.0
 Before extending a local Shell, make sure the Shell's destination folder is different from the original Shell's root folder.
 
 ### Version History<a name="version-history"></a>
+
+**1.2.12 (2019-10-16)**
+* Added `--python` attribute to `new` command that allows setting the python version of the shell
 
 **1.2.10 (2019-04-22)**
 * Added attribute to `dist` command that allows using locally installed shell dependencies when packaging the dependencies zip

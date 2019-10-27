@@ -107,12 +107,19 @@ You can also change this default for your shell in the shell project's *driverme
 **To create a new project:**
 
 1) Run the following command in your local Command Line:
+
 {% highlight bash %}
 shellfoundry new linux-server-shell
 cd linux-server-shell
 {% endhighlight %}
 
 A new sub folder containing the basic Shell project’s structure and files will be created.
+
+Note that by default, the shell is based on python 2. To use python 3, create the shell with the `--python 3` tag as follows:
+
+{% highlight bash %}
+shellfoundry new linux-server-shell --python 3
+{% endhighlight %}
 
 2) Navigate to the new folder. The following files have been created for you:
 
