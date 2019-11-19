@@ -107,7 +107,7 @@ This is an abstract class that includes generic implementations for preparing an
 
 The necessary interfaces are already implemented in the base flows.
 
-* **[Connectivity Flow](https://github.com/QualiSystems/cloudshell-shell-flows/blob/dev/cloudshell/shell/flows/connectivity/basic_flow.py)** – Uses multithread logic to speed up the VLAN configuration on the device, especially when the resource needs to undergo a huge request that involves multiple, concurrently run actions. To initialize this flow, you have to provide the *logger* and *cli_handler* objects (described in [Key Entities](#KeyEntities)). Use the `apply_connectivity_changes` method to start. The following methods must be implemented:
+* **[Connectivity Flow](https://github.com/QualiSystems/cloudshell-shell-connectivity-flow/blob/dev/cloudshell/shell/flows/connectivity/basic_flow.py)** – Uses multithread logic to speed up the VLAN configuration on the device, especially when the resource needs to undergo a huge request that involves multiple, concurrently run actions. To initialize this flow, you have to provide the *logger* and *cli_handler* objects (described in [Key Entities](#KeyEntities)). Use the `apply_connectivity_changes` method to start. The following methods must be implemented:
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• *_add_vlan_flow*
 
