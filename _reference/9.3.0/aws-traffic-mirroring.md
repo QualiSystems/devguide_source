@@ -61,7 +61,7 @@ Mandatory parameters are indicated.
     - **sessionId**: (Mandatory, Str) Traffic mirror session ID (this ID is automatically assigned by AWS and returned in the *CreateTrafficMirroring* output).
     
     **Notes:**
-    * Make sure to include both the `sessionNumber` and `TargetNicId` parameters, but provide a value only for one of them, as illustrated in the [RemoveTrafficMirroring](#removetrafficmirroring-1) example. 
+    * Make sure to include both the `sessionId` and `TargetNicId` parameters, but provide a value only for one of them, as illustrated in the [RemoveTrafficMirroring](#removetrafficmirroring-1) example. 
     * You cannot use the `sourceNic` parameter to remove traffic mirroring sessions.
 
 ## Examples
