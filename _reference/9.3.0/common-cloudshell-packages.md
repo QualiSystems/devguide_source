@@ -45,5 +45,4 @@ tr:nth-child(even) {
 |   cloudshell-snmp              | Python 2/3 | Package for developing shell communication with devices via SNMP.  | [PyPi](https://pypi.org/project/cloudshell-snmp/)/[GitHub](https://github.com/QualiSystems/cloudshell-snmp) |
 |   cloudshell-cli               | Python 2/3 | Package for developing shell communication with devices via CLI.              | [PyPi](https://pypi.org/project/cloudshell-cli/)/[GitHub](https://github.com/QualiSystems/cloudshell-cli)  |
 |   cloudshell-shell-core        | Python 2/3 | Package containing base shell functionality and interfaces. | [PyPi](https://pypi.org/project/cloudshell-shell-core/)/[GitHub](https://github.com/QualiSystems/cloudshell-shell-core) |
-|   cloudshell-networking        | Python 2 | Legacy networking package for Python 2 networking shells and cloud providers.  | [PyPi](https://pypi.org/project/cloudshell-networking/)/[GitHub](https://github.com/QualiSystems/cloudshell-networking) |
-|   cloudshell-shell-connectivity-flow  | Python 2/3  | Package for handling shell connectivity.  | [PyPi](https://pypi.org/project/cloudshell-shell-connectivity-flow/)/[GitHub](https://github.com/QualiSystems/cloudshell-shell-connectivity-flow) |
+
