@@ -39,7 +39,7 @@ tr:nth-child(even) {
 
 | **Package**                    | **Python version**   |**Description**        | **Links** |
 |   cloudshell-orch-core         | Python 2/3           | Package for writing CloudShell orchestration scripts. For additional information, see [Best Practices for working with orchestration scripts]({{site.baseurl}}/orchestration/{{pageVersion}}/getting-started.html). | [PyPi](https://pypi.org/project/cloudshell-orch-core/)/[GitHub](https://github.com/QualiSystems/cloudshell-orch-core) | 
-|   cloudshell-automation-api    | Python 2/3           | Package for working with CloudShell Automation API.  | [PyPi](https://pypi.org/project/cloudshell-automation-api/)/[GitHub](https://github.com/QualiSystems/cloudshell-automation-api) |
+|   cloudshell-automation-api    | Python 2/3           | Package for working with CloudShell Automation API.  | [PyPi](https://pypi.org/project/cloudshell-automation-api/)/[Documentation](https://help.quali.com/Online%20Help/0.0/Python-API/) |
 |   cloudshell-logging           | Python 2/3             | Package for creating shell loggers.  | [PyPi](https://pypi.org/project/cloudshell-logging)/[GitHub](https://github.com/QualiSystems/cloudshell-logging) |
 |   cloudshell-core              | Python 2 | Legacy logging package (replaced with *cloudshell-logging* in version 9.3).  | [PyPi](https://pypi.org/project/cloudshell-core/)/[GitHub](https://github.com/QualiSystems/cloudshell-core) |
 |   cloudshell-snmp              | Python 2/3 | Package for developing shell communication with devices via SNMP.  | [PyPi](https://pypi.org/project/cloudshell-snmp/)/[GitHub](https://github.com/QualiSystems/cloudshell-snmp) |
