@@ -34,7 +34,7 @@ with CloudShellSessionContext(context) as session:
 
 ### Logging
 
-Any logging package can be used with CloudShell. Quali has a customized logging solution, which is thread and process safe. This package also organizes logs in different files according to resource and sandboxes. The Quali logging module is defined in the _cloudshell_core_ package.
+Any logging package can be used with CloudShell. Quali has a customized logging solution, which is thread and process safe. This package also organizes logs in different files according to resource and sandboxes. The Quali logging module is defined in the _cloudshell_logging_ package.
 
 #### Where can I see the execution logs?
 
