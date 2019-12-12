@@ -50,7 +50,18 @@ There are several objects that must be initialized in the python driver, to allo
 * **Communication Handlers** – These entities handle the communication between the shell and the device. The most common handlers are cli (`cloudshell-cli`) and snmp (`cloudshell-snmp`). These handlers must be initialized whenever calling a shell command and passed to the flows.
 * **cli** - A Python package that resides in the driver and is used to create the CLI configurator. This package provides an easy abstraction interface for CLI access and communication (Telnet, TCP, SSH etc.) for network devices. The CLI class instance is provided by `cloudshell.cli.cli`. It must be created when the driver is initializing, since it allows the shell to designate a single session pool for the shell’s commands. You are welcome to use the *_get_cli* helper from *driver_helper* mentioned above. *_get_cli* allows you to define the session pool’s size and idle timeout. 
 * **api** is an instance of the *cloudshell-automation-API*’s *CloudShellAPISession* class. It must be created on every command execution. This class has a helper named *_get_api*, which is also provided by the *driver_helper* mentioned above.
-* **logger** is a logger object from *cloudshell-core*. It is recommended to use the *driver_helper’s get_logger_with_thread_id* function.
+* **logger** is a logger object residing in the *cloudshell-logging* package. It is recommended to use it in your methods as follows:
+
+{% highlight python %}
+from cloudshell.shell.core.session.logging_session import LoggingSessionContext
+
+
+def print_hello_world_to_logger(context)
+    with LoggingSessionContext(context) as logger:
+        logger.info("Hello World")
+
+{% endhighlight %}
+
 * **resource config** – Python implementation of the relevant Quali standard, which defines the shell’s attributes and default values. For example, a *NetworkingResourceConfig* class that contains all the attributes required by the networking standard. It can be easily created using the `NetworkingResourceConfig.from_context` method, which is provided with the [cloudshell-shell-networking-standard](https://pypi.org/project/cloudshell-shell-networking-standard/) python package.
 
 For reference, see this [example](https://github.com/QualiSystems/Cisco-IOS-Switch-Shell-2G/blob/dev/src/driver.py).
@@ -101,13 +112,13 @@ For reference, see [cisco_snmp_handler](https://github.com/QualiSystems/cloudshe
  
 ## Flows<a name="Flows"></a>
 
-A flow is an organized sequence of Command Actions. Each flow has interfaces, which contain commands that are triggered by the resource driver. All the base flows are located in the [cloudshell-shell-flows](https://github.com/QualiSystems/cloudshell-shell-flows/tree/dev/cloudshell/shell/flows) python package. They are based on the *BaseFlow* interface, which is also located in the package.
+A flow is an organized sequence of Command Actions. Each flow has interfaces, which contain commands that are triggered by the resource driver. All the base flows are located in the [cloudshell-shell-flows](https://github.com/QualiSystems/cloudshell-shell-flows/tree/dev/cloudshell/shell/flows) python package, except for the connectivity flow which is detailed below. They are based on the *BaseFlow* interfaces, which are also located in the corresponding packages (_cloudshell-shell-flows_ or _cloudshel-shell-connectivity-flow_).
 
 This is an abstract class that includes generic implementations for preparing and validating the required parameters. For example, when running the Save command in CloudShell Portal, the flow must validate the folder path provided by the sandbox end-user. 
 
 The necessary interfaces are already implemented in the base flows.
 
-* **[Connectivity Flow](https://github.com/QualiSystems/cloudshell-shell-connectivity-flow/blob/dev/cloudshell/shell/flows/connectivity/basic_flow.py)** – Uses multithread logic to speed up the VLAN configuration on the device, especially when the resource needs to undergo a huge request that involves multiple, concurrently run actions. To initialize this flow, you have to provide the *logger* and *cli_handler* objects (described in [Key Entities](#KeyEntities)). Use the `apply_connectivity_changes` method to start. The following methods must be implemented:
+* **[Connectivity Flow](https://github.com/QualiSystems/cloudshell-shell-connectivity-flow/blob/dev/cloudshell/shell/flows/connectivity/basic_flow.py)** – Uses multithread logic to speed up the VLAN configuration on the device, especially when the resource needs to undergo a huge request that involves multiple, concurrently run actions. Note that unlike the rest of the flows, this flow resides in the _cloudshell-shell-connectivity-flow_ package. To initialize this flow, you have to provide the *logger* and *cli_handler* objects (described in [Key Entities](#KeyEntities)). Use the `apply_connectivity_changes` method to start. The following methods must be implemented:
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• *_add_vlan_flow*
 
