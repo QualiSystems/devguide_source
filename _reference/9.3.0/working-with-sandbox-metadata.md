@@ -69,6 +69,91 @@ res_id = 'de035c9c-75b0-4eca-b797-698b0f26675f'
 session.ClearSandboxData(res_id)
 {% endhighlight %}
 
+
+## End-to-end example: Managing registration keys for AWS services
+
+In this example, we'll use a customized setup script to store an authentication key for an AWS CDN service on the sandbox and a customized teardown script that will unregister the CDN service and then clear the metadata from the sandbox. In this example, we assume that a CloudShell service called **CDN Service** is used to perform the actual registration to Amazon.
+
+**Custom setup script that registers an Amazon CDN service:**
+
+{% highlight python %}
+from cloudshell.workflow.orchestration.setup.default_setup_orchestrator import DefaultSetupWorkflow
+from cloudshell.workflow.orchestration.sandbox import Sandbox
+from cloudshell.api.cloudshell_api import SandboxDataKeyValue
+
+
+def set_registration_keys(sandbox, components=None):
+    """
+    orchestration stage functions MUST have (sandbox, components) signature
+    :param Sandbox sandbox:
+    :return:
+    """
+    api = sandbox.automation_api
+    res_id = sandbox.id
+
+    # register to CDN service using a CloudShell service component
+    service_key_value = api.ExecuteCommand(reservationId=res_id,
+                       targetName='CDN Service',
+                       targetType='Service',
+                       commandName='register_cdn').Output
+
+    # store key in sandbox metadata
+    registration_data = SandboxDataKeyValue('cdn_key', service_key_value)
+    all_data = [registration_data]
+    api.SetSandboxData(res_id, all_data)
+
+
+sandbox = Sandbox()
+DefaultSetupWorkflow().register(sandbox)
+sandbox.workflow.on_configuration_ended(set_registration_keys, None)
+sandbox.execute_setup()
+
+{% endhighlight %}
+
+**Custom teardown script that unregisters the CDN service and clears the sandbox metadata:**
+
+{% highlight python %}
+from cloudshell.workflow.orchestration.teardown.default_teardown_orchestrator import DefaultTeardownWorkflow
+from cloudshell.workflow.orchestration.sandbox import Sandbox
+from cloudshell.api.cloudshell_api import InputNameValue
+
+
+def unregister_cdn(sandbox, components=None):
+    """
+    Functions passed into orchestration stage MUST have (sandbox, components) signature
+    :param Sandbox sandbox:
+    :return:
+    """
+    api = sandbox.automation_api
+    res_id = sandbox.id
+    api.ClearSandboxData(res_id)
+
+    # get sandbox metadata list
+    sandbox_data = api.GetSandboxData(reservationId=res_id).SandboxDataKeyValues
+
+    # filter for 'cdn_key' value
+    cdn_key_value = [data for data in sandbox_data if data.Key == 'cdn_key'][0].Value
+
+    # unregister cdn service
+    command_inputs = [InputNameValue(Name='cdn_service_key', Value=cdn_key_value)]
+    api.ExecuteCommand(reservationId=res_id,
+                       targetName='CDN Service',
+                       targetType='Service',
+                       commandName='unregister_cdn',
+                       commandInputs=command_inputs)
+
+    # clear sandbox metadata
+    api.ClearSandboxData(reservationId=res_id)
+
+
+sandbox = Sandbox()
+DefaultTeardownWorkflow().register(sandbox)
+sandbox.workflow.before_teardown_started(unregister_cdn, None)
+sandbox.execute_teardown()
+
+{% endhighlight %}
+
+
 ## Using custom sandbox data in JSON format
 
 JSON is a very common data format so we figured we'd include some code samples.
