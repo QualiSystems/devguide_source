@@ -70,7 +70,7 @@ session.ClearSandboxData(res_id)
 {% endhighlight %}
 
 
-## End-to-end example: Managing registration keys for AWS services
+### End-to-end example: Managing registration keys for AWS services
 
 In this example, we'll use a customized setup script to store an authentication key for an AWS CDN service on the sandbox and a customized teardown script that will unregister the CDN service and then clear the metadata from the sandbox. In this example, we assume that a CloudShell service called **CDN Service** is used to perform the actual registration to Amazon.
 
