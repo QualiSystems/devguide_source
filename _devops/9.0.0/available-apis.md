@@ -63,6 +63,25 @@ def execute():
     Sandbox.automation_api.WriteMessageToReservationOutput(Reservation_Id, "resources connected")
 {% endhighlight %}
 
+* Starting an API session outside of CloudShell for performing admin tasks:
+
+{% highlight python %}
+from cloudshell.api.cloudshell_api import CloudShellAPISession
+
+# add credentials
+user = "admin"
+password = "admin"
+server = "localhost"
+domain = "Global"
+
+# start session
+api = CloudShellAPISession(host=server, username=user, password=password, domain=domain)
+
+# find resources of target model
+res_details = api.FindResources(resourceModel="Putshell")
+{% endhighlight %}
+
+
 ### TestShell API
 
 The **TestShell API** allows designing orchestration and automation using C#, TCL API and XML RPC. It is intended for performing a wide variety of operations within CloudShell; from administrative tasks, such as managing inventory or users, to sandbox operations, such as executing commands and controlling both resource and sandbox live statuses. It is especially useful for writing tests, and obtaining information about resources, blueprints and sandboxes. TestShell API and CloudShell Automation API provide the same capabilities and functionality. 
