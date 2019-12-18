@@ -64,6 +64,8 @@ def execute():
 {% endhighlight %}
 
 * Starting an API session outside of CloudShell for performing admin tasks:
+<br><br>
+_As this requires the use of the CloudShell Automation API package, make sure to first install the package. From command-line, run `pip install cloudshell-automation-api`._
 
 {% highlight python %}
 from cloudshell.api.cloudshell_api import CloudShellAPISession

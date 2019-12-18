@@ -23,7 +23,7 @@ For implementation examples, visit our <a href="https://github.com/QualiSystems/
 
 **CloudShell Automation API** is a Python open source package you can use to develop CloudShell orchestration and automation capabilities. Using the CloudShell Automation API, you can design orchestration scripts that communicate and run operations on CloudShell, from administrative operations like adding users, to sandbox-level operations like provisioning resources, resolving connectivity and running health check on the sandbox's elements. For additional information, see the <a href="https://help.quali.com/Online%20Help/9.2/API-Guide/Content/API/Pyth-API-Overvw.htm" target="_blank">CloudShell Automation API</a> online help page, and the <a href="https://help.quali.com/Online%20Help/9.2/Python-API/" target="_blank">CloudShell Automation API Reference Guide</a>.
 
-shellfoundry extendNote that since CloudShell Automation API can perform sandbox and CloudShell-level operations, it mostly applies to orchestration scripts and is not recommended to be used in shells. Having said that, there are two methods in the API that apply directly to shells: *WriteMessageToReservationOutput* allows the driver to print messages in real time to the output console, and *SetResourceLiveStatus* allows the driver to indicate the resource’s state with an icon. For example, online and offline.
+Note that since CloudShell Automation API can perform sandbox and CloudShell-level operations, it mostly applies to orchestration scripts and is not recommended to be used in shells. Having said that, there are two methods in the API that apply directly to shells: *WriteMessageToReservationOutput* allows the driver to print messages in real time to the output console, and *SetResourceLiveStatus* allows the driver to indicate the resource’s state with an icon. For example, online and offline.
 
 #### Examples
 
@@ -64,6 +64,8 @@ def execute():
 {% endhighlight %}
 
 * Starting an API session outside of CloudShell for performing admin tasks:
+<br><br>
+_As this requires the use of the CloudShell Automation API package, make sure to first install the package. From command-line, run `pip install cloudshell-automation-api`._
 
 {% highlight python %}
 from cloudshell.api.cloudshell_api import CloudShellAPISession
