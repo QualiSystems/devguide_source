@@ -11,7 +11,9 @@ version:
 {% assign pageUrlSplited = page.url | split: "/" %}
 {% assign pageVersion = pageUrlSplited[2] %}
 
-This article lists the most common Python packages. These packages were developed by Quali and are available on public PyPi. 
+This article lists the basic Python packages you would need for shells and scripts. These packages were developed by Quali and are available on public PyPi.
+
+_While there are additional packages for specific needs and capabilities, the packages listed below cover most of the required functionality. For additional information, see [Quali’s Shell Framework (Python 2)]({{site.baseurl}}/reference/{{pageVersion}}/quali-shell-framework.html) for python 2.7 automation and [Quali’s Shell Framework (Python 3)]({{site.baseurl}}/reference/{{pageVersion}}/quali-shell-framework-python-3.html) if you're developing in Python 3.x._ 
 
 **Notes:** 
 * *cloudshell-orch-core* is the only package you need for orchestration scripts.
