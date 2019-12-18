@@ -11,7 +11,7 @@ version:
 {% assign pageUrlSplited = page.url | split: "/" %}
 {% assign pageVersion = pageUrlSplited[2] %}
 
-This article lists the most common Python packages. These packages were developed by Quali and are available on public PyPi. 
+This article lists our more commonly used Python packages for shells and scripts. These packages were developed by Quali and are available on public PyPi. 
 
 **Notes:** 
 * *cloudshell-orch-core* is the only package you need for orchestration scripts.
