@@ -96,8 +96,8 @@ Run this command in the Shell’s root folder.
 
 * **-****-template**: Creates a shell from a specific shellfoundry template, featuring the template's settings, attributes and driver commands. For details, see [Modeling Shells with TOSCA]({{site.baseurl}}/shells/{{pageVersion}}/modeling-the-shell.html).
 <br>**Note:** If you don't specify a template, shellfoundry will create the shell from the **gen2/resource** template. Use this if you want to create a Shell to customize or experiment on. For more information, see [The Shell Project Guide]({{site.baseurl}}/shells/{{pageVersion}}/the-shell-project.html). 
-* **-****-version**: Creates a shell based on a specific shell version. If you don't specify the version, shellfoundry will create the shell using the latest shell version that is supported by your CloudShell installation.
-* **-****-python**: Determines the python version of the shell. Options are "2" or "3" (Default is 2).  
+* **-****-version**: Creates a shell based on a specific shell template version. If you don't specify the version, shellfoundry will create the shell using the latest shell version that is supported by your CloudShell installation. For details about each version release, see [CloudShell Standards](https://github.com/QualiSystems/cloudshell-standards).
+* **-****-python**: Determines the python version of the shell. Options are "2" or "3" (Default is 2).
 
 **Examples:**
 
