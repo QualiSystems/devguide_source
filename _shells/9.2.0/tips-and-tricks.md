@@ -105,8 +105,7 @@ UNIX_LOG_PATH='/var/log/qualisystems'
 DEFAULT_LOG_PATH='../../Logs'
 {% endhighlight %}
 
-Note that this change will only be valid for that virtual environment, so if the driver
-is recycled due to inactivity the log level will revert to the default value.
+Note that this change will only be valid for that virtual environment, so if you upgrade the shell or the script, CloudShell will create a new virtual environment that uses the default values.
 
 To change the log level for the entire ES, without editing any files, add the following key to the ES
 _customer.config_ (change 'DEBUG' to the log level you wish to set):
