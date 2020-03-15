@@ -285,15 +285,15 @@ However if you query the list of commands on the shell via the API, you'll be ab
 
 In some scenarios, a command that runs on a specific resource logically requires the use of a different resource. These types of commands are called connected commands. They are executed on a resource in CloudShell Portal but in reality run on the connected resource (for example, a power switch) that performs the action.
 
-There are two types of connected commands - power commands and generic connected commands.
-* Power commands power on/off a resource and actually run on a power switch
-* Generic resource commands may be used to modify a resource's settings and run on the server that performs the modifications
+There are two types of connected commands:
+* **Power commands**: Let's say you have a target resource that is controlled by a power switch (PDU). When you run a **Power On** command on the target resource, the user may think the command is running on that resource but it actually runs on the PDU that is connected to the resource.
+* **Generic resource commands**: A remote command is similar to a power command but is not limited to power commands only. For example, you could have a command, which modifies a target resource's settings, but is actually running on the server that performs the modifications.
 
-Note that in CloudShell, the resource containing the connected command and the target resource must be directly connected to each other. If you have a switch resource in between, the connected command will not show on the target resource.
+To create a connected command, you need to use a shell based on a standard that supports connected commands, currently, only [PDU](https://github.com/QualiSystems/cloudshell-standards/blob/master/Documentation/pdu_standard.md) for power commands and the [Generic Resource with Connected Commands](https://github.com/QualiSystems/cloudshell-standards/blob/master/Documentation/Generic%20Resource%20with%20Connected%20Commands.md). These commands need to be defined in two places, in the *drivermetadata.xml* and in the *driver.py* file.
 
-To create a connected command, you need to use a shell based on a template that supports connected commands, currently, only **PDU** and **Generic Resource With Connected Commands**. In addition, in that shell’s driver, you will need to define which commands are connected.  This is done in the driver’s *drivermetadata.xml*, as follows:
+In the driver’s *drivermetadata.xml*, you define which commands are connected, as follows:
 
-For power commands, the command must include the `Tags=”power”` flag and the driver must include all three power commands (Power On, Power Off and Power Cycle):
+* For power commands, the command must include the `Tags=”power”` flag and the driver must include all three power commands (Power On, Power Off and Power Cycle):
 
 {% highlight xml %}
 <Driver Description="Describe the purpose of your CloudShell shell" MainClass="driver.MyPduShellDriver" Name="MyPduShellDriver" Version="1.0.0">
@@ -315,7 +315,7 @@ For power commands, the command must include the `Tags=”power”` flag and the
 </Driver>
 {%  endhighlight %}
 
-And for generic connected commands, you must use a shell that is based on a supporting standard (**Generic Resource With Connected Commands**) and include the `Tags=remote_connectivity"` flag on the command:
+* For generic connected commands, you must use a shell that is based on a supporting standard and include the `Tags=remote_connectivity"` flag on the command:
 
 {% highlight xml %}
 <Driver Description="Describe the purpose of your CloudShell shell" MainClass="driver.MyRemoteResourceDriver" Name="MyRemoteResourceDriver" Version="1.0.0">
@@ -332,7 +332,7 @@ And for generic connected commands, you must use a shell that is based on a supp
 </Driver>
 {%  endhighlight %}
 
-To enable intellisense, on the *driver.py*, include the `ResourceRemoteCommandContext` context in the command's definition:
+And finally, in the *driver.py* file, define the connected commands. In this case, PowerOn, PowerOff and PowerCycle:
 
 {% highlight python %}
 def PowerOn(self, context, ports):
@@ -342,7 +342,49 @@ def PowerOn(self, context, ports):
     Pass
 {%  endhighlight %}
 
-For reference, see the <a href="https://github.com/QualiSystems/shellfoundry-tosca-pdu-template" target="_blank">PDU shell template</a> or <a href="https://github.com/QualiSystems/shellfoundry-tosca-resource_with_connected_commands-template" target="_blank">PDU shell template</a>.
+To enable intellisense, on the *driver.py*, include the `ResourceRemoteCommandContext` context in the command's definition, as shown above.
+
+**Notes:**
+* Connected command definitions must include a **ports** parameter. You don't need to actually use it in your command. Just make sure it's included as it allows the connected command to run on multiple resources at the same time.
+* Power commands only apply to unshared resources while generic resource commands can run on both shared and unshared resources.
+* In CloudShell, the resource containing the connected command and the target resource must be directly connected to each other. If you have a switch resource in between, the connected command will not show on the target resource.
+* You can use the CloudShell Automation API's *ExecuteResourceConnectedCommand* and "power management" commands to add connected commands to other shells.
+
+**Example - power commands on a PDU shell:**
+
+`SetPortState` should be a driver helper function that implements the specific logic of how to change the power port state for the specific PDU.
+
+{% highlight python %}
+import cloudshell.api.cloudshell_api as api
+
+def PowerOn(self, context, ports):
+    """
+    :type context: drivercontext.ResourceRemoteCommandContext
+    """
+    api = self.__initApiSession__(context)
+    output = ''
+    for i in range(len(ports)):
+        self.SetPortState(context, ports[i].split('/')[-1], "Online")  # Split the port number from its full address
+        api.SetResourceLiveStatus(context.remote_endpoints[i].fullname, "Online", "The Resource is powered on")
+        output += "Powered On {0}\n".format(context.remote_endpoints[i].fullname)
+    return output
+
+def PowerOff(self, context, ports):
+    api = self.__initApiSession__(context)
+    output = ''
+    for i in range(len(ports)):
+        self.SetPortState(context, ports[i].split('/')[-1], "Offline")  # Split the port number from its full address
+        api.SetResourceLiveStatus(context.remote_endpoints[i].fullname, "Offline", "The Resource is powered off")
+        output += "Powered Off {0}\n".format(context.remote_endpoints[i].fullname)
+    return output
+
+def PowerCycle(self, context, ports, delay):
+    self.PowerOff(context, ports)
+    sleep(int(delay))
+    self.PowerOn(context, ports)
+{% endhighlight %}
+
+For reference, see the <a href="https://github.com/QualiSystems/shellfoundry-tosca-pdu-template" target="_blank">PDU shell template</a> or <a href="https://github.com/QualiSystems/shellfoundry-tosca-resource_with_connected_commands-template" target="_blank">Generic resource with connected commands shell template</a>.
 
 ### Summary
 
