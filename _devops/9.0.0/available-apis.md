@@ -27,7 +27,7 @@ Note that since CloudShell Automation API can perform sandbox and CloudShell-lev
 
 #### Examples
 
-* Adding resources to the sandbox, creating resource connections and setting 'online' live status icon on the resources:
+* Adding resources to the sandbox, creating L1 resource connections and setting 'online' live status icon on the resources:
 
 {% highlight python %}
 import time
@@ -61,6 +61,24 @@ def execute():
                                                     mappingType='bi', routeAlias='API-created route')
     time.sleep(1)
     Sandbox.automation_api.WriteMessageToReservationOutput(Reservation_Id, "resources connected")
+{% endhighlight %}
+
+* Connecting L2 routes: While connecting L1 routes is done via the `CreateRouteInReservation` API (example above), L2 "Connector" routes are established using the `SetConnectorRequest API`. For example:
+
+{% highlight python %}
+import time
+
+
+def execute_L2():
+    from cloudshell.api.cloudshell_api import SetConnectorRequest
+    from cloudshell.workflow.orchestration.sandbox import Sandbox
+    Sandbox = Sandbox()
+    Reservation_Id = Sandbox.reservationContextDetails.id
+
+    time.sleep(3)
+    connector_request = SetConnectorRequest('PUT Mock/Port 1', 'Traffic Mock/Port 1', 'bi', 'API-created route')
+    sandbox.automation_api.SetConnectorsInReservation(reservationId=reservation_id, connectors=[connector_request])
+
 {% endhighlight %}
 
 * Starting an API session outside of CloudShell for performing admin tasks:
