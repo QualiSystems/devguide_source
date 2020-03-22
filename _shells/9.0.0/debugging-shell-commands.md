@@ -49,6 +49,9 @@ Add the following mock code to the shell, and specify some details, like reserva
 {% highlight python %}
 if __name__ == "__main__":
     import mock
+    from cloudshell.shell.core.driver_context import CancellationContext
+
+    
     shell_name = "DebuggingExample"
 
     cancellation_context = mock.create_autospec(CancellationContext)
