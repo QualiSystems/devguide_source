@@ -288,6 +288,10 @@ Before extending a local Shell, make sure the Shell's destination folder is diff
 
 ### Version History<a name="version-history"></a>
 
+**1.2.16 (2020-01-02)**
+* Fixed password modification error
+* Fixeed cookiecutter version incompatibility
+
 **1.2.12 (2019-10-16)**
 * Added `--python` attribute to `new` command that allows setting the python version of the shell
 
