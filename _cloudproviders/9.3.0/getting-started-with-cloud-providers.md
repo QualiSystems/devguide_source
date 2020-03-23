@@ -46,7 +46,9 @@ As of version 9.0, CloudShell supports the ability to define custom cloud provid
 ## Prerequisites
 
 * [Get CloudShell](http://info.quali.com/cloudshell-developer-edition-download): Download the latest CloudShell SDK and run it on your machine.  
-* [Python](https://www.python.org/downloads/): Make sure Python 2.7.x (latest recommended) is installed on your machine.
+* [Python](https://www.python.org/downloads/): Make sure the appropriate Python version - 2.7.x and/or 3.x - (latest recommended) is installed on your machine.
+<br>Starting with CloudShell 9.3, CloudShell comes with out-of-the-box support for python 3 for shells.
+* For python 3 shell automation, make sure to install Microsoft Visual C++ Redistributable 2015 Redistributable on the Execution Server(s).
 * **IDE/Text Editor:** Your preferred IDE editor. We recommend using PyCharm (which offers a free community edition) because of the tooling we’ve already created for that IDE, including a CloudShell developer plugin.
 * **Shellfoundry:** Shellfoundry is our CLI tool that allows you to quickly and easily generate and distribute Shells. Make sure to install it on your machine. See [Installing or Updating Shellfoundry]({{site.baseurl}}/shells/{{pageVersion}}/getting-started.html#installing-or-updating-shellfoundry) for details.
 
