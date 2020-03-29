@@ -1,7 +1,7 @@
 module Jekyll
   module VersionFilter
     def filterVersionDocument(collection, current_page_url)
-      reg_str = '\d\.\d\.\d'
+      reg_str = '\d{1,4}\.\d\.\d'
       new_collection = []
       current_version = current_page_url.match(reg_str)
       collection.each do |i|
