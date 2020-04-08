@@ -19,13 +19,15 @@ Resource scripts get information from the sandbox component using the script_hel
 
 **To use the script helper:** 
 
-Import the cloudshell-automation-api python package and add it to your script, as illustrated in the example below. Note that the package is automatically imported when your sandbox starts. In this example, the following code gets an object that contains all of the sandbox’s information:
+Import the *cloudshell-automation-api* python package and add it to your script, as illustrated in the example below. Note that the package is automatically imported when your sandbox starts. In this example, the following code gets an object that contains all of the sandbox’s information:
 
 {% highlight python %}
 import cloudshell.helpers.scripts.cloudshell_scripts_helpers as script_help
 {% endhighlight %}
 
-Note that to execute this code, you will need to include a *requirements.txt* file in your script. If you want to write your own packages and use them in your script, make sure to place them in the local PyPi Server repository on the Quali Server machine. For details, see CloudShell Help's <a href="http://help.quali.com/Online%20Help/8.3/Portal/Content/Admn/Pyth-Cnfg-Mds.htm" target="_blank">PyPi Server - Managing Python Driver and Script Dependencies</a>.
+To execute this code from within CloudShell, you will also need to include a *requirements.txt* file with your script, and rename the resource script to **__main__.py**. The **__main__.py** file is used as the script's entry point, when the script is a package containing multiple files. Finally, zip the two files together, upload the zip package to CloudShell Portal's **Manage>Scripts>Resource** page and make sure to specify the **Models** of the resources this script applies to.
+
+If you want to write your own packages and use them in your script, make sure to place them in the local PyPi Server repository on the Quali Server machine. For details, see CloudShell Help's <a href="http://help.quali.com/Online%20Help/8.3/Portal/Content/Admn/Pyth-Cnfg-Mds.htm" target="_blank">PyPi Server - Managing Python Driver and Script Dependencies</a>.
 
 To facilitate writing and debugging activities, it is recommended to use advanced IDEs such as PyCharm, which provide autocomplete functionality, as illustrated below. 
 
