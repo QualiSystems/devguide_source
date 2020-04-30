@@ -146,3 +146,15 @@ Starting with CloudShell 9.0, the *cloudshell-orch-core* python package includes
 ![Sandbox information]({{site.baseurl}}/assets/reservationLifecycleDetails.png){:class="img-responsive"}
 
 Note that depending on the sandbox, the information may be partial. For example, if the sandbox is not a saved sandbox, the saved sandbox name and description will be missing. For details about our OOB saved sandbox orchestration scripts, see [CloudShell's OOB Orchestration]({{site.baseurl}}/orchestration/{{pageVersion}}/the-oob-orchestration.html).
+
+### Getting the user context
+
+Starting with CloudShell 9.0, you can get the CloudShell user who ran the blueprint/orchestration command in the **Sandbox** class.
+
+For example:
+
+{% highlight python %}
+from cloudshell.workflow.orchestration.sandbox import Sandbox
+Sandbox = Sandbox()
+user = Sandbox.reservationContextDetails.running_user
+{% endhighlight %}

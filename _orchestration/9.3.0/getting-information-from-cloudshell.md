@@ -153,7 +153,7 @@ Note that depending on the sandbox, the information may be partial. For example,
 
 ### Getting the user context
 
-Starting with CloudShell 9.2, you can get the CloudShell user who ran the blueprint/orchestration command in the **Sandbox** class.
+Starting with CloudShell 9.0, you can get the CloudShell user who ran the blueprint/orchestration command in the **Sandbox** class.
 
 For example:
 
