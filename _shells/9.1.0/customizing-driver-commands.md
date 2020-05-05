@@ -16,8 +16,9 @@ version:
 The Shell driver commands are accessible to CloudShell users via the portal as well as to orchestration scripts running on the sandbox.
 In this section we'll explore the different ways in which these commands can be customized in their appearance and behavior. The following customization options will be reviewed:
 
-* [Changing the function display name and description](#customize_names)
-* [Specifying display name and descriptions for each parameter](#customize_parameter_names)
+* [Setting up](#setting_up)
+* [Changing the function's display name and description](#customize_names)
+* [Setting "admin only" functions](#admin-only)
 * [Optional parameters and default values](#customizing_optional_parameters)
 * [Restricting input to a specific set of possible values](#customizing_lookup_values)
 * [Adding categories](#customizing_categories)
@@ -68,54 +69,48 @@ The information on how to display the driver functions in CloudShell is stored i
 
 <a name="customize_names"></a>
 
-### Changing the function display name and description
+### Changing the function's display name and description
 
 For the first round of customizations, we'll work on the user facing function and improve the naming of the command and its parameters as they appear to the user in CloudShell. Open the _drivermetadata.xml_ file and add the following text to it:
 
 {% highlight xml %}
 <Driver Description="Describe the purpose of your CloudShell shell" MainClass="driver.CustomizationExampleDriver" Name="CustomizationExampleDriver" Version="1.0.0">
     <Layout>
-        <Command Description="This command is for the user" DisplayName="User Command" Name="user_facing_function" >
+        <Command Description="This command is for the user" DisplayName="User Command" Name="user_facing_function">
         </Command>
     </Layout>
 </Driver>
 {% endhighlight %}
 
-Each _Command_ element in the xml above customizes a single python function specified by the _Name_ attribute. The _DisplayName_ and _Description_ attributes will determine the name of the command as it appears to the user and the description appearing next to it, respectively.
+Each _Command_ element in the xml above customizes a single python function specified by the **Name** attribute. The **DisplayName** and **Description** attributes determines the name of the command as it appears to the user and the description appearing next to it, respectively. 
 
-Reinstall the Shell in CloudShell by running {% highlight bash %} shellfoundry install {% endhighlight %} from command line and check the sandbox command panel again.
-The shell commands should now appear as follows:
+Reinstall the Shell in CloudShell by running the following command-line and check the **Resource Commands** panel again.
+
+{% highlight bash %} shellfoundry install {% endhighlight %}
+
+The shell commands should now look like this:
 
 ![Shell Commands]({{ site.baseurl}}/assets/commands_name_customization.png)
 
 Please note that changing the display name of a function will affect only how its visually rendered in the UI.
 Code trying to execute this command using the CloudShell API will need to still refer to it by the command _name_.
 
-<a name="customize_parameter_names"></a>
+<a name="admin-only"></a>
 
-### Specify display name and descriptions for each parameter
+### Setting "admin only" functions
 
-You may have noticed that the  parameter names still look pretty raw and code like. We might want to customize that as well. We can do that by adding additional nested elements describing the parameters under each command. Update the _drivermetadata.xml_ file as follows:
+It is also possible to set certain functions to only be accessible to admins. This is done using the **Visibility** attribute, which determines which user types can see the command in the blueprint or sandbox. Options are **AdminOnly** and **Everyone**. By default, all commands are accessible to everyone.
 
-{% highlight xml %}
+In the *drivermetadata.xml* file, add the `Visibility="AdminOnly"` attribute to the command:
+
+ {% highlight xml %}
 <Driver Description="Describe the purpose of your CloudShell shell" MainClass="driver.CustomizationExampleDriver" Name="CustomizationExampleDriver" Version="1.0.0">
     <Layout>
-        <Command Description="This command is for the user" DisplayName="User Command" Name="user_facing_function" >
-            <Parameters>
-                    <Parameter Name="some_parameter" DisplayName="Some Parameter" Description="More info here about the parameter"/>
-                    <Parameter Name="some_other_parameter" DisplayName="Some Other Parameter" Description="More info here about the parameter"/>
-                </Parameters>
+        <Command Description="This command is for the user" DisplayName="Admin-only Command" Name="user_facing_function" Visibility="AdminOnly">
         </Command>
-
     </Layout>
 </Driver>
 {% endhighlight %}
-
-In the _drivermetadata.xml_ XML, the _Parameters_ element  contains a list of _Parameter_ elements, each is responsible for a specific function parameter. The _DisplayName_ and _Description_ attributes will determine the name of the command as it appears to the user and the description appearing next to it, respectively.
-
-After installing the shell again, the parameters for the command will now appear in a more readable format:
-
-![Shell Commands]({{ site.baseurl}}/assets/commands_param_customization.png)
 
 <a name="customizing_optional_parameters"></a>
 
