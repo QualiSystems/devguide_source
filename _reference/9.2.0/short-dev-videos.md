@@ -18,6 +18,7 @@ In this article:
 * [Adding shell commands](#ShellsCommands)
 * [Adding attributes](#ShellsAttributes)
 * [Debugging shells](#ShellsDebugging)
+* [Creating resource scripts](#creating-resource-scripts)
 
 <a name="ShellsIntro"></a>
 
@@ -80,3 +81,9 @@ This tutorial demonstrates how to add attributes to the shell, including custom 
 This tutorial demonstrates how to debug your shell using the mock open source python package.
 
 <iframe width="854" height="480" src="https://www.youtube.com/embed/LvPGHm2T3nk?list=PLnWTXOESKY41iU_0InfWSkwYq7IDkv7pH" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+### Creating resource scripts
+
+This tutorial demonstrates how to create resource and associate them to shells in CloudShell.
+
+<iframe width="854" height="480" src="https://www.youtube.com/embed/OZ9MRzZOd0E" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
