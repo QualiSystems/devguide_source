@@ -13,6 +13,8 @@ version:
 
 Resource scripts allow you to add automation to specific sandbox components. These scripts are intended to add simple functionality, or to be used for testing and debugging activities. Note that in order to add automation to a shell, the best practice is to use the component's driver.
 
+<iframe width="854" height="480" src="https://www.youtube.com/embed/OZ9MRzZOd0E" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
 ### Using the script_helper
 
 Resource scripts get information from the sandbox component using the script_helper.
