@@ -30,7 +30,7 @@ shellfoundry new clp-shell --template gen2/cloud-provider
 
 The shell is created in the folder.
 
-Note that the shell project comprises the same files and folders as any other shell, with one exception, the Cloud Provider shell also includes a **Deployments** folder, which contains the deployment paths for the Cloud Provider’s App templates. More on this in [Configuring Deployment Paths]({{site.baseurl}}/cloudproviders/{{pageVersion}}/configuring-deployment-paths.html). For details about the shell project structure, see [The Shell Project Guide]({{site.baseurl}}/shells/{{pageVersion}}/getting-started.html).
+Note that the shell project comprises the same files and folders as any other shell, with one exception, the Cloud Provider shell also includes a **Deployments** folder, which contains the deployment paths for the Cloud Provider’s App templates. More on this in [Configuring Deployment Paths]({{site.baseurl}}/cloudproviders/{{pageVersion}}/configuring-deployment-paths.html). For details about the shell project structure, see [The Shell Project Guide]({{site.baseurl}}/shells/{{pageVersion}}/the-shell-project.html).
 
 Let's make sure the shell was imported into CloudShell. In command-line, navigate to the shell's root folder and run:
 
