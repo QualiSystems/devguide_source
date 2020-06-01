@@ -39,7 +39,7 @@ To learn more about the  different versions of the Shells used by CloudShell and
 * [Get CloudShell](http://info.quali.com/cloudshell-developer-edition-download): Download the latest CloudShell SDK and run it on your machine. 
 * [Python](https://www.python.org/downloads/): Make sure the appropriate Python version - 2.7.x and/or 3.x - (latest recommended) is installed on your machine.
 <br>Starting with CloudShell 9.3, CloudShell comes with out-of-the-box support for python 3 for shells.
-* For python 3 shell automation, make sure to install Microsoft Visual C++ Redistributable 2015 Redistributable on the Execution Server(s).
+* For python 3 shell automation, make sure to install Microsoft Visual C++ Redistributable 2015 on the Execution Server(s).
 * **IDE/Text Editor:** Your preferred IDE editor. We recommend using PyCharm (which offers a free community edition) because of the tooling we’ve already created for that IDE, including a CloudShell developer plugin.
 
 ### Installing or Updating Shellfoundry
