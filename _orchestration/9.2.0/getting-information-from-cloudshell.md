@@ -139,6 +139,42 @@ session = Sandbox.automation_api
 
 ![Sandbox information]({{site.baseurl}}/assets/sandbox_automation_api.png){:class="img-responsive"}
 
+### Getting the sandbox's current status
+
+This is done by calling the GetReservationStatus API and requires obtaining two details from the sandbox - **Status** and **ProvisioningStatus**:
+
+* **Status** provides the reservation status. Possible responses are:
+
+  * **Pending**: Sandbox is scheduled to start in the future
+  * **Started**: Sandbox is currently running
+  * **In Use**: Sandbox is running and has "in use" resources
+  * **Completed**: Sandbox has ended
+  * **Overtime**: Sandbox is in Overtime mode (i.e. sandbox has reached its scheduled end time but has "in use" resource)
+
+* **ProvisioningStatus** provides the sandbox's current phase. Possible responses are:
+  * **Not Run**: Sandbox is scheduled to start in the future
+  * **Setup**: Sandbox is running Setup
+  * **Ready**: Sandbox is "Active" (without errors)
+  * **Teardown**: Sandbox is in Teardown state
+  * **Error**: Sandbox is "Active with Error"
+  * **BeforeSetup**: Sandbox is running, but Setup hasn't started
+
+For example, running a custom "health check" operation on the environment once the sandbox is active:
+
+{% highlight python %}
+from cloudshell.workflow.orchestration.sandbox import Sandbox
+import post_setup_configurations as configs
+ 
+sandbox = Sandbox()
+reservation_id = sandbox.reservationContextDetails.id
+api = sandbox.automation_api
+ 
+result = api.GetReservationStatus(reservation_id)
+ 
+if result.ReservationSlimStatus.Status == 'Started' and result.ReservationSlimStatus.ProvisioningStatus == 'Ready':
+    configs.run_health_check
+{% endhighlight %}
+
 ### Getting custom sandbox metadata
 
 Starting with CloudShell 9.2, it is possible to store and retrieve custom key-value data from the sandbox. For details, see [
