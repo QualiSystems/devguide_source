@@ -69,15 +69,15 @@ Run this command from the Shell’s root folder.
 {% highlight bash %}shellfoundry config username admin{% endhighlight %}
 
 The following keys are available:
-* **username**: CloudShell username. For example: “admin”.
-* **domain**: CloudShell domain. Note that for 2nd Generation Shells, the domain must be “Global”.
+* **username**: CloudShell username. For example: “admin”. Colons (:) are not supported.
+* **domain**: CloudShell domain. Note that for 2nd Generation Shells, the domain must be “Global”. Colons (:) are not supported.
 * **github_login**: GitHub username. To be used to download shellfoundry templates via `shellfoundry get_templates`.
 * **github_password**: GitHub user password. To be used to download shellfoundry templates via `shellfoundry get_templates`.
 * **defaultview**: Set the default view. Possible values are: **gen**, **gen2**, **all** and **layer1**. Default is **gen2**.
 * **online_mode**: Shellfoundry computer's mode (online or offline). Online mode (`True`) is the default. in online mode, shellfoundry templates on GitHub are used, while for offline mode, you will need to copy the shellfoundry templates to your local machine. For offline mode, use `template_location` to define the local templates folder.
 * **author**: The author to be specified on the shell (in the shell's metadata).
 * **template_location**: (Required if `online_mode` is set to `False`) File system path to the folder containing the offline shell templates. Alternatively, you can specify the template location using "local:" when running 'shellfoundry new' in command-line.
-* **password**: CloudShell password (encrypted).
+* **password**: CloudShell password (encrypted). Colons (:) are not supported.
 * **host**: The hostname or IP address of the CloudShell Portal machine.
 * **port**: The port to be used for Quali API. Default is “9000”.
 
