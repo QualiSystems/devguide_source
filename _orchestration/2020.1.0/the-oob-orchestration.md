@@ -50,6 +50,8 @@ The OOB setup and teardown scripts can easily be customized or extended. Click [
 
 #### Extending the OOB Setup Orchestration Scripts
 
+<iframe width="854" height="480" src="https://www.youtube.com/embed/AWgSUgJub90?list=PLnWTXOESKY41iU_0InfWSkwYq7IDkv7pH" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
 Setup script logic is divided into 4 stages – Preparation, Provisioning, Connectivity and Configuration. Each Setup stage has a specific logic functionality.
 
 * **Preparation** is empty in the default Setup script. This is the place to enter any code that logically has to be executed before Setup logic is initiated.

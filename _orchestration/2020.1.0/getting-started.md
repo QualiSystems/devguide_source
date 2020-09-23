@@ -124,11 +124,18 @@ tr:nth-child(even) {
 | 9.1 GA | >=2.1.0.0,<2.2.0.0 |
 | 9.2 GA | >=3.0.0.0,<3.1.0.0 |
 | 9.3 GA | >=3.2.0.0,<3.3.0.0 |
+| 2020.1 GA | >=3.2.0.0,<3.3.0.0 |
 
-To set a specific version of the package, add a line to the script's requirements.txt file. For example:
+To set a range for a package, add a line to the script's requirements.txt that states the minimum and maximum versions. For example:
 
 {% highlight bash %}
 cloudshell-orch-core>=2.1.0.0,<2.2.0.0
+{% endhighlight %}
+
+To set a specific version of the package, use "==". For example:
+
+{% highlight bash %}
+cloudshell-orch-core==2.1.0.563
 {% endhighlight %}
 
 For details about the requirements.txt file, see [Scripts Deep Dive]({{site.baseurl}}/orchestration/{{pageVersion}}/scripts-deep-dive.html).
