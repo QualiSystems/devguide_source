@@ -33,6 +33,8 @@ The password for logging into the device/app will be passed as an encrypted valu
 as a part of the context object. In order to be able to use it to log in you'll most likely
 need to decrypt it. To do that, you can use the CloudShellAPI function **_DecryptPassword_**.
 
+**Note:** **_DecryptPassword_** is for decrypting password-type attributes and can only be executed by CloudShell admins.
+
 See the code below for an example:
 
 {% github_sample_ref /QualiSystems/devguide_examples/blob/driver_deep_dive/adding_examples/common_driver_recipes/src/driver.py %}
