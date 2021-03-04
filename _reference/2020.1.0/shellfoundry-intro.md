@@ -165,7 +165,13 @@ Optionally, add `--output_dir="<containing_folder_path>"` to set a different con
 
 {% highlight bash %}shellfoundry get_templates 9.1 --output_dir="c:\users\steven.g\shell templates"{% endhighlight %}
 
-Shellfoundry downloads the latest template versions that are compatible with the latest patch of the specified CloudShell version.
+**Note:** Shellfoundry downloads the latest template versions that are compatible with the latest patch of the specified CloudShell version.
+
+The shell templates are downloaded in a zip file. 
+
+Once the shell templates are downloaded, extract the zip file and set the extracted directory as the new **template_location**. 
+
+{% highlight bash %}shellfoundry config template_location "C:\Users\steven.g\shell templates"{% endhighlight %}
 
 
 #### Listing available Shell templates
